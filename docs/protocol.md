@@ -37,8 +37,27 @@ behavior.
 smaller number admitted to the context packet after scoring. Implementations must
 not apply the packing cap before the scoring algorithm.
 
+### Lifecycle endpoints
+
+- `POST /v1/events:delete` removes one tenant event and atomically invalidates
+  dependent graph, posterior, residual, and abstraction versions.
+- `POST /v1/maintenance:retain` deletes the oldest events available before a
+  declared cutoff, with a hard batch cap of 10,000.
+- `POST /v1/maintenance:backup` requires an absolute destination and creates a
+  point-in-time LibraVDB backup.
+- `POST /v1/maintenance:compact` vacuums obsolete records and WAL frames without
+  changing semantic versions.
+- `GET /metrics` exposes bounded Prometheus request/error/latency counters.
+
+Lifecycle calls are administrative. The alpha TCP listener has no authentication;
+use the mode-0600 Unix socket and do not expose these routes remotely.
+
 ## Compatibility
 
 `v1alpha1` is intentionally strict and may be replaced. Clients must reject
 unknown response versions and should fail open for recall rather than blocking an
 agent. Write retries must preserve the same event ID and payload.
+
+Snapshot `contract_version=2` adds durable graph, posterior, residual,
+abstraction, and evidence-epoch versions. An explicit vector must name the exact
+active `embedding_model`; model and dimension mismatches are rejected.

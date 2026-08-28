@@ -33,26 +33,27 @@ type Provenance struct {
 // Event is the durable, availability-time-aware envelope exchanged across the
 // plugin/daemon boundary. Content is untrusted historical data, never an instruction.
 type Event struct {
-	ID          string            `json:"id"`
-	TenantID    string            `json:"tenant_id"`
-	SessionID   string            `json:"session_id"`
-	Sequence    uint64            `json:"sequence"`
-	Kind        string            `json:"kind"`
-	Content     string            `json:"content"`
-	OccurredAt  time.Time         `json:"occurred_at"`
-	ObservedAt  time.Time         `json:"observed_at"`
-	AvailableAt time.Time         `json:"available_at"`
-	Who         Field             `json:"who"`
-	What        Field             `json:"what"`
-	Where       Field             `json:"where"`
-	When        Field             `json:"when"`
-	Why         Field             `json:"why"`
-	How         Field             `json:"how"`
-	Priority    float64           `json:"priority"`
-	Tags        []string          `json:"tags,omitempty"`
-	Provenance  Provenance        `json:"provenance"`
-	Attributes  map[string]string `json:"attributes,omitempty"`
-	Embedding   []float32         `json:"embedding,omitempty"`
+	ID             string            `json:"id"`
+	TenantID       string            `json:"tenant_id"`
+	SessionID      string            `json:"session_id"`
+	Sequence       uint64            `json:"sequence"`
+	Kind           string            `json:"kind"`
+	Content        string            `json:"content"`
+	OccurredAt     time.Time         `json:"occurred_at"`
+	ObservedAt     time.Time         `json:"observed_at"`
+	AvailableAt    time.Time         `json:"available_at"`
+	Who            Field             `json:"who"`
+	What           Field             `json:"what"`
+	Where          Field             `json:"where"`
+	When           Field             `json:"when"`
+	Why            Field             `json:"why"`
+	How            Field             `json:"how"`
+	Priority       float64           `json:"priority"`
+	Tags           []string          `json:"tags,omitempty"`
+	Provenance     Provenance        `json:"provenance"`
+	Attributes     map[string]string `json:"attributes,omitempty"`
+	Embedding      []float32         `json:"embedding,omitempty"`
+	EmbeddingModel string            `json:"embedding_model"`
 }
 
 func (e Event) Validate(dimension int) error {
@@ -88,6 +89,9 @@ func (e Event) Validate(dimension int) error {
 	}
 	if len(e.Embedding) != 0 && len(e.Embedding) != dimension {
 		return fmt.Errorf("embedding dimension %d does not match configured dimension %d", len(e.Embedding), dimension)
+	}
+	if len(e.Embedding) != 0 && strings.TrimSpace(e.EmbeddingModel) == "" {
+		return errors.New("embedding_model is required with an explicit embedding")
 	}
 	for name, field := range map[string]Field{
 		"who": e.Who, "what": e.What, "where": e.Where,

@@ -6,10 +6,11 @@ context adapter for OpenClaw.
 
 This repository is an implementation companion to the EventFrame whitepaper. It
 is an alpha runtime, not an empirical validation of the complete mathematical
-specification. The current slice implements durable event ingestion, 5W1H field
+specification. The current runtime implements durable event ingestion, 5W1H field
 provenance, availability-time-safe retrieval, deterministic idempotency, distinct
 recall and packing budgets, quantized LibraVDB traversal, and an untrusted-context
-boundary for OpenClaw.
+boundary for OpenClaw, model-keyed embeddings, atomic durable version state,
+retention/deletion propagation, backup, compaction, and guarded migration.
 
 ## Architecture
 
@@ -55,11 +56,25 @@ Defaults:
 - database: `~/.eventframed/data/eventframe.libravdb`
 - vector dimension: 768
 - traversal quantization: SQ8
+- embedder: deterministic development hash (`-embedder hash`)
 - recall budget: 50 candidates
 - packing budget: 10 records / 2,000 estimated tokens
 
 Use `-quantization none` while validating small test collections. `fsq6` and
 `pq8` are available as explicit experimental choices.
+
+For a production embedding service, use an OpenAI-compatible endpoint:
+
+```sh
+EVENTFRAMED_EMBEDDING_API_KEY=... ./bin/eventframed \
+  -embedder openai-compatible \
+  -embedding-url http://127.0.0.1:8080/v1/embeddings \
+  -embedding-model declared-model-id \
+  -dimension 768
+```
+
+The model key, dimension, and quantization contract are persisted. A mismatched
+restart is rejected instead of silently mixing vector spaces.
 
 ## OpenClaw adapter
 
@@ -76,15 +91,23 @@ importers.
 
 - The development hash embedder is deterministic but not semantic. Replace it
   with a declared production embedding provider before evaluating recall quality.
-- Runtime snapshot counters are process-local in this alpha. Durable policy,
-  graph, posterior, and residual epochs remain roadmap work.
+- Runtime, evidence, graph, posterior, residual, abstraction, policy, and
+  contract versions survive restart and publish atomically with mutations.
 - Bayesian selective updates, Anti-Pigeon audits, sheaf-inspired snapping,
-  outcome scoring, deletion propagation, and agency proposals are protocol and
+  outcome scoring and agency proposals are protocol and
   design work, not yet active runtime behavior.
 - No proactive action is executed. The daemon defines a data-only agency proposal
   type so a later OpenClaw authority layer can approve, reject, or schedule it.
 - TCP listening has no transport authentication in this alpha. Prefer the default
   local Unix socket; do not expose a TCP listener beyond a trusted loopback test.
+
+Prometheus text metrics are available at `GET /metrics`. A Phase 1 database must
+be migrated with an absolute backup path before startup:
+
+```sh
+./bin/eventframed -database /absolute/events.libravdb \
+  -migrate-v1 -migration-backup /absolute/events.pre-v2.libravdb
+```
 
 See [docs/architecture.md](docs/architecture.md),
 [docs/protocol.md](docs/protocol.md), and [docs/roadmap.md](docs/roadmap.md).

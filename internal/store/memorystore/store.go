@@ -2,6 +2,7 @@ package memorystore
 
 import (
 	"context"
+	"errors"
 	"math"
 	"sort"
 	"sync"
@@ -18,11 +19,14 @@ type entry struct {
 }
 
 type Store struct {
-	mu      sync.RWMutex
-	entries map[string]map[string]entry
+	mu       sync.RWMutex
+	entries  map[string]map[string]entry
+	snapshot model.Snapshot
 }
 
-func New() *Store { return &Store{entries: make(map[string]map[string]entry)} }
+func New() *Store {
+	return &Store{entries: make(map[string]map[string]entry), snapshot: initialSnapshot()}
+}
 
 func (s *Store) Put(_ context.Context, event model.Event, vector []float32, digest string) (store.PutResult, error) {
 	s.mu.Lock()
@@ -36,10 +40,12 @@ func (s *Store) Put(_ context.Context, event model.Event, vector []float32, dige
 		if current.digest != digest {
 			return store.PutResult{}, store.ErrIdempotencyConflict
 		}
-		return store.PutResult{Duplicate: true}, nil
+		return store.PutResult{Duplicate: true, Snapshot: s.snapshot}, nil
 	}
 	tenant[event.ID] = entry{event: event, vector: append([]float32(nil), vector...), digest: digest}
-	return store.PutResult{}, nil
+	s.snapshot.RuntimeVersion++
+	s.snapshot.EvidenceEpoch++
+	return store.PutResult{Snapshot: s.snapshot}, nil
 }
 
 func (s *Store) Search(_ context.Context, tenantID string, vector []float32, availableBy time.Time, limit int) ([]store.SearchResult, error) {
@@ -69,7 +75,61 @@ func (s *Store) Stats(_ context.Context) (store.Stats, error) {
 	return stats, nil
 }
 
+func (s *Store) Delete(_ context.Context, tenantID, eventID string) (store.DeleteResult, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if _, ok := s.entries[tenantID][eventID]; !ok {
+		return store.DeleteResult{Snapshot: s.snapshot}, nil
+	}
+	delete(s.entries[tenantID], eventID)
+	s.invalidate()
+	return store.DeleteResult{Deleted: true, Snapshot: s.snapshot}, nil
+}
+
+func (s *Store) DeleteBefore(_ context.Context, tenantID string, before time.Time, limit int) (store.RetentionResult, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	ids := make([]string, 0)
+	for id, item := range s.entries[tenantID] {
+		if item.event.AvailableAt.Before(before) && len(ids) < limit {
+			ids = append(ids, id)
+		}
+	}
+	sort.Strings(ids)
+	for _, id := range ids {
+		delete(s.entries[tenantID], id)
+	}
+	if len(ids) > 0 {
+		s.invalidate()
+	}
+	return store.RetentionResult{DeletedIDs: ids, Snapshot: s.snapshot}, nil
+}
+
+func (s *Store) Backup(context.Context, string) error {
+	return errors.New("memory store does not support backup")
+}
+func (s *Store) Compact(context.Context) error { return nil }
+
 func (s *Store) Close() error { return nil }
+
+func (s *Store) Snapshot(_ context.Context) model.Snapshot {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	return s.snapshot
+}
+
+func initialSnapshot() model.Snapshot {
+	return model.Snapshot{PolicyVersion: 1, ContractVersion: 2, GraphVersion: 1, PosteriorVersion: 1, ResidualVersion: 1, AbstractionVersion: 1}
+}
+
+func (s *Store) invalidate() {
+	s.snapshot.RuntimeVersion++
+	s.snapshot.EvidenceEpoch++
+	s.snapshot.GraphVersion++
+	s.snapshot.PosteriorVersion++
+	s.snapshot.ResidualVersion++
+	s.snapshot.AbstractionVersion++
+}
 
 func cosine(left, right []float32) float64 {
 	if len(left) != len(right) || len(left) == 0 {

@@ -10,14 +10,21 @@ import (
 )
 
 type Config struct {
-	Listen       string
-	DatabasePath string
-	Dimension    int
-	Quantization string
-	RecallK      int
-	PackK        int
-	TokenBudget  int
-	LogLevel     string
+	Listen                  string
+	DatabasePath            string
+	Dimension               int
+	Quantization            string
+	RecallK                 int
+	PackK                   int
+	TokenBudget             int
+	LogLevel                string
+	Embedder                string
+	EmbeddingURL            string
+	EmbeddingModel          string
+	EmbeddingAPIKeyEnv      string
+	EmbeddingTimeoutSeconds int
+	MigrateV1               bool
+	MigrationBackup         string
 }
 
 func Parse(args []string) (Config, error) {
@@ -36,6 +43,13 @@ func Parse(args []string) (Config, error) {
 	set.IntVar(&config.PackK, "pack-k", 10, "default final packing budget")
 	set.IntVar(&config.TokenBudget, "token-budget", 2000, "default memory token budget")
 	set.StringVar(&config.LogLevel, "log-level", "info", "log level: debug, info, warn, or error")
+	set.StringVar(&config.Embedder, "embedder", "hash", "embedding provider: hash or openai-compatible")
+	set.StringVar(&config.EmbeddingURL, "embedding-url", "", "OpenAI-compatible embeddings endpoint")
+	set.StringVar(&config.EmbeddingModel, "embedding-model", "", "embedding model name")
+	set.StringVar(&config.EmbeddingAPIKeyEnv, "embedding-api-key-env", "EVENTFRAMED_EMBEDDING_API_KEY", "environment variable containing the embedding API key")
+	set.IntVar(&config.EmbeddingTimeoutSeconds, "embedding-timeout", 10, "embedding request timeout in seconds")
+	set.BoolVar(&config.MigrateV1, "migrate-v1", false, "migrate a Phase 1 database to the durable schema, then exit")
+	set.StringVar(&config.MigrationBackup, "migration-backup", "", "required absolute backup path for migration")
 	if err := set.Parse(args); err != nil {
 		return Config{}, err
 	}
@@ -52,6 +66,18 @@ func Parse(args []string) (Config, error) {
 	}
 	if !strings.HasPrefix(config.Listen, "unix://") && !strings.HasPrefix(config.Listen, "tcp://") {
 		return Config{}, errors.New("listen must begin with unix:// or tcp://")
+	}
+	if config.Embedder != "hash" && config.Embedder != "openai-compatible" {
+		return Config{}, fmt.Errorf("unsupported embedder %q", config.Embedder)
+	}
+	if config.Embedder == "openai-compatible" && (config.EmbeddingURL == "" || config.EmbeddingModel == "") {
+		return Config{}, errors.New("openai-compatible embedder requires embedding-url and embedding-model")
+	}
+	if config.EmbeddingTimeoutSeconds <= 0 {
+		return Config{}, errors.New("embedding-timeout must be positive")
+	}
+	if config.MigrateV1 && !filepath.IsAbs(config.MigrationBackup) {
+		return Config{}, errors.New("migrate-v1 requires an absolute migration-backup path")
 	}
 	return config, nil
 }

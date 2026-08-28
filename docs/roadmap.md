@@ -10,11 +10,12 @@
 
 ## Milestone 2: production embeddings and lifecycle
 
-- Pluggable embedding provider and embedding-model version keys
-- Canonical-vector persistence with measured SQ8/FSQ6/PQ traversal
-- Durable runtime, policy, graph, posterior, and contract versions
-- Deletion, retention, compaction, backup, and recovery propagation
-- Migration tooling and protocol compatibility tests
+- [x] Pluggable embedding provider and embedding-model version keys
+- [x] Canonical-vector persistence with SQ8/FSQ6/PQ traversal contracts
+- [x] Durable runtime, policy, graph, posterior, residual, abstraction, and contract versions
+- [x] Deletion, retention, compaction, backup, and recovery propagation
+- [x] Guarded Phase 1 migration with mandatory pre-migration backup
+- [x] Restart, recovery, model-mismatch, and protocol compatibility tests
 
 ## Milestone 3: selective Bayesian layer
 

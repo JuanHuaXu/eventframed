@@ -34,6 +34,21 @@ func TestObserveIsIdempotentAndRejectsConflicts(t *testing.T) {
 	}
 }
 
+func TestObserveRejectsSameIDWithDifferentExplicitVector(t *testing.T) {
+	runtime := newMemoryService(t)
+	event := testutil.Event("vector-id", "same", time.Now().UTC())
+	event.Embedding = []float32{1, 0, 0, 0, 0, 0, 0, 0}
+	event.EmbeddingModel = "feature-hash-v1:d8"
+	request := model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: event.ID, Event: event}
+	if _, err := runtime.Observe(context.Background(), request); err != nil {
+		t.Fatal(err)
+	}
+	request.Event.Embedding = []float32{0, 1, 0, 0, 0, 0, 0, 0}
+	if _, err := runtime.Observe(context.Background(), request); !errors.Is(err, store.ErrIdempotencyConflict) {
+		t.Fatalf("error = %v", err)
+	}
+}
+
 func TestRecallExcludesUnavailableEventsBeforeCandidateLimit(t *testing.T) {
 	runtime := newMemoryService(t)
 	now := time.Now().UTC()
@@ -116,10 +131,19 @@ type fixedStore struct{ results []store.SearchResult }
 func (s *fixedStore) Put(context.Context, model.Event, []float32, string) (store.PutResult, error) {
 	return store.PutResult{}, nil
 }
+func (s *fixedStore) Delete(context.Context, string, string) (store.DeleteResult, error) {
+	return store.DeleteResult{}, nil
+}
+func (s *fixedStore) DeleteBefore(context.Context, string, time.Time, int) (store.RetentionResult, error) {
+	return store.RetentionResult{}, nil
+}
+func (s *fixedStore) Backup(context.Context, string) error { return nil }
+func (s *fixedStore) Compact(context.Context) error        { return nil }
 func (s *fixedStore) Search(_ context.Context, _ string, _ []float32, _ time.Time, limit int) ([]store.SearchResult, error) {
 	return s.results[:min(limit, len(s.results))], nil
 }
 func (s *fixedStore) Stats(context.Context) (store.Stats, error) {
 	return store.Stats{Backend: "fixed"}, nil
 }
-func (s *fixedStore) Close() error { return nil }
+func (s *fixedStore) Snapshot(context.Context) model.Snapshot { return model.Snapshot{} }
+func (s *fixedStore) Close() error                            { return nil }

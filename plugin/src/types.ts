@@ -35,6 +35,7 @@ export type EventFrame = {
     run_id?: string;
   };
   attributes?: Record<string, string>;
+  embedding_model?: string;
 };
 
 export type ContextCandidate = {
@@ -55,6 +56,11 @@ export type ContextPacket = {
     runtime_version: number;
     policy_version: number;
     contract_version: number;
+    graph_version: number;
+    posterior_version: number;
+    residual_version: number;
+    abstraction_version: number;
+    evidence_epoch: number;
   };
 };
 

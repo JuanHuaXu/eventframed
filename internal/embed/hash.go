@@ -2,6 +2,7 @@ package embed
 
 import (
 	"errors"
+	"fmt"
 	"hash/fnv"
 	"math"
 	"strings"
@@ -12,6 +13,7 @@ type Embedder interface {
 	Embed(text string) ([]float32, error)
 	Dimension() int
 	Name() string
+	ModelKey() string
 }
 
 // HashEmbedder is a deterministic, dependency-free development fallback. It
@@ -27,8 +29,9 @@ func NewHashEmbedder(dimension int) (*HashEmbedder, error) {
 	return &HashEmbedder{dimension: dimension}, nil
 }
 
-func (h *HashEmbedder) Dimension() int { return h.dimension }
-func (h *HashEmbedder) Name() string   { return "feature-hash-v1" }
+func (h *HashEmbedder) Dimension() int   { return h.dimension }
+func (h *HashEmbedder) Name() string     { return "feature-hash-v1" }
+func (h *HashEmbedder) ModelKey() string { return fmt.Sprintf("feature-hash-v1:d%d", h.dimension) }
 
 func (h *HashEmbedder) Embed(text string) ([]float32, error) {
 	vector := make([]float32, h.dimension)

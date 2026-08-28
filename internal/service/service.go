@@ -8,9 +8,9 @@ import (
 	"errors"
 	"fmt"
 	"math"
+	"path/filepath"
 	"sort"
 	"strings"
-	"sync/atomic"
 	"time"
 	"unicode/utf8"
 
@@ -28,10 +28,9 @@ type Config struct {
 }
 
 type Service struct {
-	store          store.EventStore
-	embedder       embed.Embedder
-	config         Config
-	runtimeVersion atomic.Uint64
+	store    store.EventStore
+	embedder embed.Embedder
+	config   Config
 }
 
 func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*Service, error) {
@@ -70,6 +69,9 @@ func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (mo
 		if err != nil {
 			return model.ObserveResponse{}, fmt.Errorf("embed event: %w", err)
 		}
+		request.Event.EmbeddingModel = s.embedder.ModelKey()
+	} else if request.Event.EmbeddingModel != s.embedder.ModelKey() {
+		return model.ObserveResponse{}, fmt.Errorf("embedding_model %q does not match active model %q", request.Event.EmbeddingModel, s.embedder.ModelKey())
 	}
 	digest, err := eventDigest(request.Event)
 	if err != nil {
@@ -79,14 +81,11 @@ func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (mo
 	if err != nil {
 		return model.ObserveResponse{}, err
 	}
-	if !result.Duplicate {
-		s.runtimeVersion.Add(1)
-	}
 	return model.ObserveResponse{
 		ProtocolVersion: model.ProtocolVersion,
 		EventID:         request.Event.ID,
 		Duplicate:       result.Duplicate,
-		Snapshot:        s.snapshot(),
+		Snapshot:        result.Snapshot,
 	}, nil
 }
 
@@ -115,6 +114,8 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		}
 	} else if len(vector) != s.embedder.Dimension() {
 		return model.ContextPacket{}, fmt.Errorf("query embedding dimension %d does not match %d", len(vector), s.embedder.Dimension())
+	} else if request.EmbeddingModel != s.embedder.ModelKey() {
+		return model.ContextPacket{}, errors.New("query embedding_model does not match active model")
 	}
 	searchLimit := recallK * s.config.OverfetchMultiplier
 	results, err := s.store.Search(ctx, request.TenantID, vector, request.AsOf, searchLimit)
@@ -164,7 +165,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		Eligible:        eligible,
 		Packed:          len(packed),
 		UsedTokens:      usedTokens,
-		Snapshot:        s.snapshot(),
+		Snapshot:        s.store.Snapshot(ctx),
 	}, nil
 }
 
@@ -179,15 +180,65 @@ func (s *Service) Health(ctx context.Context) (model.HealthResponse, error) {
 		Store:           stats.Backend,
 		Dimension:       s.embedder.Dimension(),
 		Quantization:    s.config.Quantization,
-		Snapshot:        s.snapshot(),
+		Snapshot:        s.store.Snapshot(ctx),
 	}, nil
 }
 
-func (s *Service) Close() error { return s.store.Close() }
-
-func (s *Service) snapshot() model.Snapshot {
-	return model.Snapshot{RuntimeVersion: s.runtimeVersion.Load(), PolicyVersion: 1, ContractVersion: 1}
+func (s *Service) Delete(ctx context.Context, request model.DeleteRequest) (model.DeleteResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.DeleteResponse{}, err
+	}
+	if strings.TrimSpace(request.TenantID) == "" || strings.TrimSpace(request.EventID) == "" {
+		return model.DeleteResponse{}, errors.New("tenant_id and event_id are required")
+	}
+	result, err := s.store.Delete(ctx, request.TenantID, request.EventID)
+	if err != nil {
+		return model.DeleteResponse{}, err
+	}
+	return model.DeleteResponse{ProtocolVersion: model.ProtocolVersion, EventID: request.EventID, Deleted: result.Deleted, Snapshot: result.Snapshot}, nil
 }
+
+func (s *Service) Retain(ctx context.Context, request model.RetentionRequest) (model.RetentionResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.RetentionResponse{}, err
+	}
+	if request.TenantID == "" || request.Before.IsZero() {
+		return model.RetentionResponse{}, errors.New("tenant_id and before are required")
+	}
+	if request.Limit == 0 {
+		request.Limit = 1000
+	}
+	if request.Limit < 1 || request.Limit > 10000 {
+		return model.RetentionResponse{}, errors.New("retention limit must be in [1,10000]")
+	}
+	result, err := s.store.DeleteBefore(ctx, request.TenantID, request.Before, request.Limit)
+	if err != nil {
+		return model.RetentionResponse{}, err
+	}
+	return model.RetentionResponse{ProtocolVersion: model.ProtocolVersion, DeletedIDs: result.DeletedIDs, Snapshot: result.Snapshot}, nil
+}
+
+func (s *Service) Backup(ctx context.Context, request model.BackupRequest) (model.MaintenanceResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.MaintenanceResponse{}, err
+	}
+	if !filepath.IsAbs(request.Destination) {
+		return model.MaintenanceResponse{}, errors.New("backup destination must be an absolute path")
+	}
+	if err := s.store.Backup(ctx, request.Destination); err != nil {
+		return model.MaintenanceResponse{}, err
+	}
+	return model.MaintenanceResponse{ProtocolVersion: model.ProtocolVersion, Operation: "backup", Snapshot: s.store.Snapshot(ctx)}, nil
+}
+
+func (s *Service) Compact(ctx context.Context) (model.MaintenanceResponse, error) {
+	if err := s.store.Compact(ctx); err != nil {
+		return model.MaintenanceResponse{}, err
+	}
+	return model.MaintenanceResponse{ProtocolVersion: model.ProtocolVersion, Operation: "compact", Snapshot: s.store.Snapshot(ctx)}, nil
+}
+
+func (s *Service) Close() error { return s.store.Close() }
 
 func (s *Service) resolveBudgets(request model.RecallRequest) (int, int, int, error) {
 	recallK, packK, tokenBudget := request.RecallK, request.PackK, request.TokenBudget
@@ -220,7 +271,6 @@ func checkProtocol(version string) error {
 }
 
 func eventDigest(event model.Event) (string, error) {
-	event.Embedding = nil
 	payload, err := json.Marshal(event)
 	if err != nil {
 		return "", fmt.Errorf("digest event: %w", err)

@@ -38,21 +38,29 @@ func run(args []string) error {
 		return err
 	}
 	logger := slog.New(slog.NewJSONHandler(os.Stderr, &slog.HandlerOptions{Level: parseLogLevel(settings.LogLevel)}))
-	eventStore, err := libravdbstore.Open(libravdbstore.Config{
-		Path:          settings.DatabasePath,
-		Dimension:     settings.Dimension,
-		Quantization:  settings.Quantization,
-		MemoryMapping: true,
-	})
+	activeEmbedder, err := buildEmbedder(settings)
 	if err != nil {
 		return err
 	}
-	embedder, err := embed.NewHashEmbedder(settings.Dimension)
+	storeConfig := libravdbstore.Config{
+		Path:           settings.DatabasePath,
+		Dimension:      settings.Dimension,
+		Quantization:   settings.Quantization,
+		MemoryMapping:  true,
+		EmbeddingModel: activeEmbedder.ModelKey(),
+	}
+	if settings.MigrateV1 {
+		if err := libravdbstore.MigrateLegacy(context.Background(), storeConfig, settings.MigrationBackup); err != nil {
+			return err
+		}
+		fmt.Println("eventframed: migration completed; backup:", settings.MigrationBackup)
+		return nil
+	}
+	eventStore, err := libravdbstore.Open(storeConfig)
 	if err != nil {
-		_ = eventStore.Close()
 		return err
 	}
-	runtime, err := service.New(eventStore, embedder, service.Config{
+	runtime, err := service.New(eventStore, activeEmbedder, service.Config{
 		DefaultRecallK:      settings.RecallK,
 		DefaultPackK:        settings.PackK,
 		DefaultTokenBudget:  settings.TokenBudget,
@@ -80,7 +88,7 @@ func run(args []string) error {
 	}
 	serveErr := make(chan error, 1)
 	go func() { serveErr <- server.Serve(listener) }()
-	logger.Info("eventframed started", "version", version, "listen", settings.Listen, "database", settings.DatabasePath, "dimension", settings.Dimension, "quantization", settings.Quantization, "embedder", embedder.Name())
+	logger.Info("eventframed started", "version", version, "listen", settings.Listen, "database", settings.DatabasePath, "dimension", settings.Dimension, "quantization", settings.Quantization, "embedder", activeEmbedder.Name(), "embedding_model", activeEmbedder.ModelKey())
 
 	shutdownContext, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
@@ -98,6 +106,13 @@ func run(args []string) error {
 	}
 	logger.Info("eventframed stopped")
 	return nil
+}
+
+func buildEmbedder(settings config.Config) (embed.Embedder, error) {
+	if settings.Embedder == "hash" {
+		return embed.NewHashEmbedder(settings.Dimension)
+	}
+	return embed.NewOpenAICompatible(embed.OpenAICompatibleConfig{URL: settings.EmbeddingURL, Model: settings.EmbeddingModel, APIKey: os.Getenv(settings.EmbeddingAPIKeyEnv), Dimension: settings.Dimension, Timeout: time.Duration(settings.EmbeddingTimeoutSeconds) * time.Second})
 }
 
 func listen(endpoint string) (net.Listener, func(), error) {

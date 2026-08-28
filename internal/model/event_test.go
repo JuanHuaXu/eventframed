@@ -18,6 +18,7 @@ func TestEventValidateRejectsTimeTravelAtIngest(t *testing.T) {
 func TestEventValidateRejectsWrongEmbeddingDimension(t *testing.T) {
 	event := testutil.Event("event-1", "content", time.Now().UTC())
 	event.Embedding = []float32{1, 2}
+	event.EmbeddingModel = "test"
 	if err := event.Validate(8); err == nil {
 		t.Fatal("expected embedding dimension error")
 	}

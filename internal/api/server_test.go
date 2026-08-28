@@ -49,6 +49,27 @@ func TestObserveThenRecallOverHTTP(t *testing.T) {
 	if len(packet.Candidates) != 1 || packet.Candidates[0].Event.ID != event.ID {
 		t.Fatalf("recall response = %+v", packet)
 	}
+	var deleted model.DeleteResponse
+	postJSON(t, server.URL+"/v1/events:delete", model.DeleteRequest{ProtocolVersion: model.ProtocolVersion, TenantID: event.TenantID, EventID: event.ID}, &deleted)
+	if !deleted.Deleted || deleted.Snapshot.ResidualVersion != 2 {
+		t.Fatalf("delete response = %+v", deleted)
+	}
+	postJSON(t, server.URL+"/v1/context:recall", model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: event.TenantID, SessionID: event.SessionID,
+		Query: "deployment key", AsOf: now, RecallK: 50, PackK: 10, TokenBudget: 200,
+	}, &packet)
+	if len(packet.Candidates) != 0 {
+		t.Fatalf("deleted event recalled: %+v", packet.Candidates)
+	}
+	metrics, err := http.Get(server.URL + "/metrics")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer metrics.Body.Close()
+	body, _ := io.ReadAll(metrics.Body)
+	if !bytes.Contains(body, []byte("eventframed_http_requests_total")) {
+		t.Fatalf("metrics = %s", body)
+	}
 }
 
 func TestRejectsUnknownJSONFields(t *testing.T) {
