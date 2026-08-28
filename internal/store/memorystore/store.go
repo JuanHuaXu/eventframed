@@ -32,6 +32,8 @@ type Store struct {
 	outcomeDigests         map[string]map[string]string
 	posteriors             map[string]map[string]model.BayesianPosterior
 	residuals              map[string]map[string]model.ResidualRecord
+	graphs                 map[string]model.PredictiveGraph
+	snaps                  map[string]map[string]model.PredictiveSnapRecord
 	policyDigest           string
 	snapshot               model.Snapshot
 }
@@ -56,7 +58,103 @@ func New() *Store {
 		antiPigeonCertificates: make(map[string]model.AntiPigeonCertificate), antiPigeonIndex: make(map[string]map[string]string),
 		outcomeDigests: make(map[string]map[string]string), posteriors: make(map[string]map[string]model.BayesianPosterior),
 		residuals: make(map[string]map[string]model.ResidualRecord),
-		snapshot:  initialSnapshot(),
+		graphs:    make(map[string]model.PredictiveGraph), snaps: make(map[string]map[string]model.PredictiveSnapRecord),
+		snapshot: initialSnapshot(),
+	}
+}
+
+func (s *Store) GetPredictiveGraph(_ context.Context, tenantID string) (model.PredictiveGraph, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	graph := s.graphs[tenantID]
+	if graph.TenantID == "" {
+		graph = model.PredictiveGraph{TenantID: tenantID}
+	}
+	graph.Version = s.snapshot.GraphVersion
+	return graph, nil
+}
+
+func (s *Store) PublishPredictiveSnap(_ context.Context, record model.PredictiveSnapRecord) (model.PredictiveGraph, model.Snapshot, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	current := s.graphs[record.TenantID]
+	if current.TenantID == "" {
+		current = model.PredictiveGraph{TenantID: record.TenantID}
+	}
+	current.Version = s.snapshot.GraphVersion
+	if !reflect.DeepEqual(current, record.PreviousGraph) || s.snapshot.GraphVersion != record.PreviousGraph.Version {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+	}
+	if s.snaps[record.TenantID] == nil {
+		s.snaps[record.TenantID] = make(map[string]model.PredictiveSnapRecord)
+	}
+	if existing, ok := s.snaps[record.TenantID][record.ID]; ok {
+		if !reflect.DeepEqual(existing, record) {
+			return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+		}
+		return current, s.snapshot, nil
+	}
+	s.snapshot.RuntimeVersion++
+	s.snapshot.GraphVersion++
+	s.snapshot.AbstractionVersion++
+	s.snapshot.PosteriorVersion++
+	s.snapshot.ResidualVersion++
+	graph := record.PublishedGraph
+	graph.Version = s.snapshot.GraphVersion
+	record.PublishedGraph = graph
+	s.invalidateClosure(record.TenantID, record.Closure)
+	s.graphs[record.TenantID] = graph
+	s.snaps[record.TenantID][record.ID] = record
+	return graph, s.snapshot, nil
+}
+
+func (s *Store) RollbackPredictiveSnap(_ context.Context, tenantID, snapID, reason string) (model.PredictiveGraph, model.Snapshot, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	record, ok := s.snaps[tenantID][snapID]
+	if !ok {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapNotFound
+	}
+	current := s.graphs[tenantID]
+	if record.RolledBack || current.SourceSnapID != snapID {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+	}
+	s.snapshot.RuntimeVersion++
+	s.snapshot.GraphVersion++
+	s.snapshot.AbstractionVersion++
+	s.snapshot.PosteriorVersion++
+	s.snapshot.ResidualVersion++
+	graph := record.PreviousGraph
+	graph.Version = s.snapshot.GraphVersion
+	graph.PublishedAt = time.Now().UTC()
+	graph.SourceSnapID = "rollback:" + snapID
+	record.RolledBack = true
+	record.RollbackReason = reason
+	s.snaps[tenantID][snapID] = record
+	s.invalidateClosure(tenantID, record.Closure)
+	s.graphs[tenantID] = graph
+	return graph, s.snapshot, nil
+}
+
+func (s *Store) invalidateClosure(tenantID string, closure model.DependencyClosure) {
+	posteriorKeys, eventIDs := make(map[string]struct{}), make(map[string]struct{})
+	for _, key := range closure.PosteriorKeys {
+		posteriorKeys[key] = struct{}{}
+		if posterior, ok := s.posteriors[tenantID][key]; ok {
+			posterior.Certified = false
+			s.posteriors[tenantID][key] = posterior
+		}
+	}
+	for _, id := range closure.EventIDs {
+		eventIDs[id] = struct{}{}
+	}
+	for key, record := range s.residuals[tenantID] {
+		_, posteriorAffected := posteriorKeys[record.PosteriorKey]
+		_, eventAffected := eventIDs[record.SourceEventID]
+		if posteriorAffected || eventAffected {
+			record.Active = false
+			s.residuals[tenantID][key] = record
+		}
 	}
 }
 

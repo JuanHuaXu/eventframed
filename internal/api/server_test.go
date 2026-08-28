@@ -89,6 +89,32 @@ func TestRejectsUnknownJSONFields(t *testing.T) {
 	}
 }
 
+func TestGetPredictiveGraphOverHTTP(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, _ := service.New(memorystore.New(), embedder, service.Config{
+		DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000, OverfetchMultiplier: 4,
+	})
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+
+	response, err := http.Get(server.URL + "/v1/abstraction/graph?tenant_id=tenant-a")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer response.Body.Close()
+	if response.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(response.Body)
+		t.Fatalf("status %d: %s", response.StatusCode, body)
+	}
+	var graph model.PredictiveGraphResponse
+	if err := json.NewDecoder(response.Body).Decode(&graph); err != nil {
+		t.Fatal(err)
+	}
+	if graph.ProtocolVersion != model.ProtocolVersion || graph.Graph.TenantID != "tenant-a" || graph.Graph.Version != graph.Snapshot.GraphVersion {
+		t.Fatalf("graph response = %+v", graph)
+	}
+}
+
 func postJSON(t *testing.T, url string, input, output any) {
 	t.Helper()
 	payload, err := json.Marshal(input)

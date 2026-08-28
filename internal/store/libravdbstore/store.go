@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"reflect"
 	"sort"
 	"strings"
 	"sync"
@@ -522,6 +523,202 @@ func (s *Store) GetResidualCandidates(ctx context.Context, tenantID, actionKey, 
 	return candidates, nil
 }
 
+func (s *Store) GetPredictiveGraph(ctx context.Context, tenantID string) (model.PredictiveGraph, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	return s.getPredictiveGraphLocked(ctx, tenantID)
+}
+
+func (s *Store) PublishPredictiveSnap(ctx context.Context, snap model.PredictiveSnapRecord) (model.PredictiveGraph, model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	current, err := s.getPredictiveGraphLocked(ctx, snap.TenantID)
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	if !reflect.DeepEqual(current, snap.PreviousGraph) || s.snapshot.GraphVersion != snap.PreviousGraph.Version {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+	}
+	if existing, getErr := s.bayesian.Get(ctx, predictiveSnapRecordID(snap.TenantID, snap.ID)); getErr == nil {
+		encoded, _ := existing.Metadata["snap_json"].(string)
+		var prior model.PredictiveSnapRecord
+		if json.Unmarshal([]byte(encoded), &prior) != nil || !reflect.DeepEqual(prior, snap) {
+			return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+		}
+		return current, s.snapshot, nil
+	} else if !errors.Is(getErr, libra.ErrRecordNotFound) {
+		return model.PredictiveGraph{}, model.Snapshot{}, getErr
+	}
+	next := snapInvalidatedSnapshot(s.snapshot)
+	snap.PublishedGraph.Version = next.GraphVersion
+	invalidations, err := s.snapInvalidations(ctx, snap.TenantID, snap.Closure)
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	if err := s.writeSnapTransaction(ctx, snap, snap.PublishedGraph, next, invalidations); err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	s.snapshot = next
+	return snap.PublishedGraph, next, nil
+}
+
+func (s *Store) RollbackPredictiveSnap(ctx context.Context, tenantID, snapID, reason string) (model.PredictiveGraph, model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	record, err := s.bayesian.Get(ctx, predictiveSnapRecordID(tenantID, snapID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapNotFound
+	}
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	encoded, _ := record.Metadata["snap_json"].(string)
+	var snap model.PredictiveSnapRecord
+	if json.Unmarshal([]byte(encoded), &snap) != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, errors.New("predictive snap record is malformed")
+	}
+	current, err := s.getPredictiveGraphLocked(ctx, tenantID)
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	if snap.RolledBack || current.SourceSnapID != snapID {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+	}
+	next := snapInvalidatedSnapshot(s.snapshot)
+	graph := snap.PreviousGraph
+	graph.Version = next.GraphVersion
+	graph.PublishedAt = time.Now().UTC()
+	graph.SourceSnapID = "rollback:" + snapID
+	snap.RolledBack, snap.RollbackReason = true, reason
+	invalidations, err := s.snapInvalidations(ctx, tenantID, snap.Closure)
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	if err := s.writeSnapTransaction(ctx, snap, graph, next, invalidations); err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	s.snapshot = next
+	return graph, next, nil
+}
+
+type snapInvalidation struct {
+	id       string
+	metadata map[string]interface{}
+}
+
+func (s *Store) snapInvalidations(ctx context.Context, tenantID string, closure model.DependencyClosure) ([]snapInvalidation, error) {
+	keys, events := make(map[string]struct{}), make(map[string]struct{})
+	for _, key := range closure.PosteriorKeys {
+		keys[key] = struct{}{}
+	}
+	for _, id := range closure.EventIDs {
+		events[id] = struct{}{}
+	}
+	records, err := s.bayesian.ListAll(ctx)
+	if err != nil {
+		return nil, err
+	}
+	out := make([]snapInvalidation, 0)
+	for _, record := range records {
+		if encoded, ok := record.Metadata["posterior_json"].(string); ok {
+			var posterior model.BayesianPosterior
+			if json.Unmarshal([]byte(encoded), &posterior) == nil && posterior.TenantID == tenantID {
+				if _, affected := keys[posterior.PosteriorKey]; affected {
+					posterior.Certified = false
+					payload, _ := json.Marshal(posterior)
+					metadata := cloneMap(record.Metadata)
+					metadata["posterior_json"] = string(payload)
+					out = append(out, snapInvalidation{id: record.ID, metadata: metadata})
+				}
+			}
+		}
+		if encoded, ok := record.Metadata["residual_json"].(string); ok {
+			var residualRecord model.ResidualRecord
+			if json.Unmarshal([]byte(encoded), &residualRecord) == nil && residualRecord.TenantID == tenantID {
+				_, keyAffected := keys[residualRecord.PosteriorKey]
+				_, eventAffected := events[residualRecord.SourceEventID]
+				if keyAffected || eventAffected {
+					residualRecord.Active = false
+					payload, _ := json.Marshal(residualRecord)
+					metadata := cloneMap(record.Metadata)
+					metadata["residual_json"] = string(payload)
+					out = append(out, snapInvalidation{id: record.ID, metadata: metadata})
+				}
+			}
+		}
+	}
+	return out, nil
+}
+
+func (s *Store) writeSnapTransaction(ctx context.Context, snap model.PredictiveSnapRecord, graph model.PredictiveGraph, snapshot model.Snapshot, invalidations []snapInvalidation) error {
+	graphJSON, _ := json.Marshal(graph)
+	snapJSON, _ := json.Marshal(snap)
+	state, err := s.stateMetadata(snapshot)
+	if err != nil {
+		return err
+	}
+	return s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Upsert(ctx, bayesianCollection, predictiveGraphRecordID(graph.TenantID), nil, map[string]interface{}{"record_type": "predictive_graph", "tenant_id": graph.TenantID, "graph_json": string(graphJSON)}); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, predictiveSnapRecordID(snap.TenantID, snap.ID), nil, map[string]interface{}{"record_type": "predictive_snap", "tenant_id": snap.TenantID, "snap_json": string(snapJSON)}); err != nil {
+			return err
+		}
+		for _, item := range invalidations {
+			if err := tx.Upsert(ctx, bayesianCollection, item.id, nil, item.metadata); err != nil {
+				return err
+			}
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
+	})
+}
+
+func (s *Store) getPredictiveGraphLocked(ctx context.Context, tenantID string) (model.PredictiveGraph, error) {
+	record, err := s.bayesian.Get(ctx, predictiveGraphRecordID(tenantID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.PredictiveGraph{TenantID: tenantID, Version: s.snapshot.GraphVersion}, nil
+	}
+	if err != nil {
+		return model.PredictiveGraph{}, fmt.Errorf("read predictive graph: %w", err)
+	}
+	graph, err := decodePredictiveGraph(record.Metadata, tenantID)
+	if err != nil {
+		return model.PredictiveGraph{}, err
+	}
+	graph.Version = s.snapshot.GraphVersion
+	return graph, nil
+}
+
+func decodePredictiveGraph(metadata map[string]interface{}, tenantID string) (model.PredictiveGraph, error) {
+	encoded, ok := metadata["graph_json"].(string)
+	if !ok {
+		return model.PredictiveGraph{}, errors.New("predictive graph is malformed")
+	}
+	var graph model.PredictiveGraph
+	if err := json.Unmarshal([]byte(encoded), &graph); err != nil {
+		return model.PredictiveGraph{}, err
+	}
+	if graph.TenantID != tenantID {
+		return model.PredictiveGraph{}, errors.New("predictive graph tenant mismatch")
+	}
+	return graph, nil
+}
+func cloneMap(input map[string]interface{}) map[string]interface{} {
+	output := make(map[string]interface{}, len(input))
+	for key, value := range input {
+		output[key] = value
+	}
+	return output
+}
+func snapInvalidatedSnapshot(snapshot model.Snapshot) model.Snapshot {
+	snapshot.RuntimeVersion++
+	snapshot.GraphVersion++
+	snapshot.AbstractionVersion++
+	snapshot.PosteriorVersion++
+	snapshot.ResidualVersion++
+	return snapshot
+}
+
 func (s *Store) getResidualRecord(ctx context.Context, tenantID string, scope model.ResidualScope, key string) (model.ResidualRecord, error) {
 	record, err := s.bayesian.Get(ctx, residualRecordID(tenantID, scope, key))
 	if errors.Is(err, libra.ErrRecordNotFound) {
@@ -877,6 +1074,13 @@ func bayesianPosteriorRecordID(tenantID, posteriorKey string) string {
 
 func residualRecordID(tenantID string, scope model.ResidualScope, key string) string {
 	return hashedBayesianRecordID("residual", tenantID+"\x00"+string(scope)+"\x00"+key)
+}
+
+func predictiveGraphRecordID(tenantID string) string {
+	return hashedBayesianRecordID("predictive_graph", tenantID)
+}
+func predictiveSnapRecordID(tenantID, snapID string) string {
+	return hashedBayesianRecordID("predictive_snap", tenantID+"\x00"+snapID)
 }
 
 func updateCalibration(posterior *model.BayesianPosterior, probability float64, useful bool, weight float64) {

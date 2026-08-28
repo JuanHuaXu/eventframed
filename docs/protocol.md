@@ -95,6 +95,32 @@ The law-only correction shifts probability between both Bernoulli branches and
 then derives the template from the corrected law. No point residual is claimed.
 Missing or failed gates return the uncorrected forecast bundle.
 
+### Predictive abstraction graph
+
+- `GET /v1/abstraction/graph?tenant_id=...` returns the currently published
+  predictive graph together with the snapshot under which it was read.
+- `POST /v1/abstraction/snaps:publish` compare-and-publishes a complete bounded
+  candidate graph after disjoint chronological design and confirmation windows.
+- `POST /v1/abstraction/snaps:rollback` republishes the named snap's previous
+  topology under a fresh monotone version. Only the currently active snap may be
+  rolled back.
+
+The publish request identifies its exact base snapshot, finite candidate family,
+unchanged candidate, externally fixed comparison obligations, net priority gain,
+resource-cost and proper-risk bounds, and simultaneous external bucket/edge
+certificates. The runtime computes the old/new dependency closure itself. A
+statistically failed candidate returns `accepted=false` without mutation; a
+stale base or concurrent publication returns HTTP 409. An accepted publication
+atomically advances graph, abstraction, posterior, residual, and runtime versions
+without changing the evidence epoch, and disables only posterior/residual records
+named by the closure.
+
+Contract version 5 supports only the predictive `retrieval-usefulness-v1` law
+space and `identity_bernoulli` comparison map. These routes implement bounded
+sheaf-inspired split/merge scaffolding, not causal-edge publication or a general
+sheaf construction. Confirmation values remain empirical claims of the named
+external audit procedure.
+
 ### Lifecycle endpoints
 
 - `POST /v1/events:delete` removes one tenant event and atomically invalidates
@@ -123,3 +149,6 @@ schema is additive. `contract_version=4` adds forecast commitments, delayed
 calibration, and durable law-residual records; the same additive marker upgrade
 applies. An explicit vector must name the exact active
 `embedding_model`; model and dimension mismatches are rejected.
+`contract_version=5` adds durable predictive graphs, snap audit records,
+server-computed dependency closure, targeted invalidation, and monotone rollback.
+It is also an additive durable-state upgrade.

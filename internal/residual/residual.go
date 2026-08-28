@@ -32,6 +32,7 @@ func Update(current model.ResidualRecord, observation model.ResidualObservation,
 			ImprovementAlpha: 1, ImprovementBeta: 1, ReferenceProbability: observation.BaseProbability,
 			MotionLimit: policy.MotionLimit, PolicyVersion: snapshot.PolicyVersion, EvidenceEpoch: snapshot.EvidenceEpoch,
 			SourceJournalID: observation.JournalID, SourceEventID: observation.EventID, CreatedAt: observation.AvailableAt, Active: true,
+			PosteriorKey: observation.PosteriorKey,
 		}
 	}
 	if current.EffectiveSupport > 0 && observation.ValidationEligible {

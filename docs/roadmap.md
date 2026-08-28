@@ -31,9 +31,9 @@
 
 - [x] Retrieval-usefulness belief-conditioned law and aligned template bundle
 - [x] Law-only residual cache with analytic posterior-motion and anytime-valid improvement certificates
-- [ ] Graph dependency closure and sheaf-inspired snapping
+- [x] Graph dependency closure and bounded sheaf-inspired predictive snapping
 - [x] Immutable outcome commitments and delayed Brier calibration
-- [ ] Split/merge confirmation audits and rollback
+- [x] External split/merge confirmation contract and monotone rollback
 
 ## Milestone 5: bounded agency
 

@@ -19,6 +19,8 @@ var ErrOutcomeConflict = errors.New("Bayesian outcome id already exists with dif
 var ErrPosteriorNotFound = errors.New("Bayesian posterior not found")
 var ErrResidualNotFound = errors.New("residual record not found")
 var ErrStaleSnapshot = errors.New("runtime snapshot changed before Bayesian journal commit")
+var ErrSnapNotFound = errors.New("predictive snap not found")
+var ErrSnapConflict = errors.New("predictive snap conflicts with current graph")
 
 type PutResult struct {
 	Duplicate bool
@@ -72,6 +74,9 @@ type EventStore interface {
 	ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (BayesianOutcomeResult, error)
 	GetBayesianPosterior(ctx context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error)
 	GetResidualCandidates(ctx context.Context, tenantID, actionKey, generalKey string) (model.ResidualCandidates, error)
+	GetPredictiveGraph(ctx context.Context, tenantID string) (model.PredictiveGraph, error)
+	PublishPredictiveSnap(ctx context.Context, record model.PredictiveSnapRecord) (model.PredictiveGraph, model.Snapshot, error)
+	RollbackPredictiveSnap(ctx context.Context, tenantID, snapID, reason string) (model.PredictiveGraph, model.Snapshot, error)
 	Stats(ctx context.Context) (Stats, error)
 	Snapshot(ctx context.Context) model.Snapshot
 	Close() error

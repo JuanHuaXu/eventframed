@@ -12,7 +12,9 @@ recall and packing budgets, quantized LibraVDB traversal, and an untrusted-conte
 boundary for OpenClaw, model-keyed embeddings, atomic durable version state,
 retention/deletion propagation, backup, compaction, guarded migration, a
 certificate-gated selective Bayesian usefulness layer, and certified law-only
-residual reuse for retrieval outcomes.
+residual reuse for retrieval outcomes. Phase 4B adds bounded predictive graph
+publication, server-computed dependency closure, targeted stale marking, and
+monotone rollback after externally confirmed split or merge proposals.
 
 ## Architecture
 
@@ -101,8 +103,13 @@ importers.
   Missing, expired, or stale certificates fall back to the baseline scored law.
 - The Bayesian outcome model currently scores retrieval usefulness, not a general
   next-world-event law. Its Phase 4 forecast bundle and residual cache are a
-  concrete Bernoulli specialization. Sheaf-inspired graph snapping remains a
-  later Phase 4 slice.
+  concrete Bernoulli specialization. The compatibility graph currently supports
+  only the declared `identity_bernoulli` comparison map. It is a sheaf-inspired
+  predictive scaffold, not a sheaf or evidence of causal structure.
+- Predictive snap candidates and their chronological confirmation statistics are
+  produced by an external slow-path auditor. The daemon independently enforces
+  graph bounds, dependency closure, certificate coverage, acceptance thresholds,
+  atomic publication, and rollback; it does not estimate those certificates.
 - No proactive action is executed. The daemon defines a data-only agency proposal
   type so a later OpenClaw authority layer can approve, reject, or schedule it.
 - TCP listening has no transport authentication in this alpha. Prefer the default

@@ -30,6 +30,7 @@ type ResidualRecord struct {
 	ResidualVersion         uint64        `json:"residual_version"`
 	SourceJournalID         string        `json:"source_journal_id"`
 	SourceEventID           string        `json:"source_event_id"`
+	PosteriorKey            string        `json:"posterior_key"`
 	CreatedAt               time.Time     `json:"created_at"`
 	UpdatedAt               time.Time     `json:"updated_at"`
 	Active                  bool          `json:"active"`
@@ -52,6 +53,7 @@ type ResidualObservation struct {
 	ValidationEligible   bool      `json:"validation_eligible"`
 	EventID              string    `json:"event_id"`
 	JournalID            string    `json:"journal_id"`
+	PosteriorKey         string    `json:"posterior_key"`
 	AvailableAt          time.Time `json:"available_at"`
 }
 

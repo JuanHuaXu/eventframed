@@ -16,6 +16,7 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
+	graphpolicy "github.com/JuanHuaXu/eventframed/internal/graph"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/store"
@@ -31,6 +32,7 @@ type Config struct {
 	BayesianScoreWeight  float64
 	BayesianChangePolicy bayes.ChangePolicy
 	ResidualPolicy       residual.Policy
+	SnapPolicy           graphpolicy.Policy
 }
 
 type Service struct {
@@ -66,6 +68,9 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	}
 	if !config.ResidualPolicy.Valid() {
 		config.ResidualPolicy = residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .10, MaxAge: 30 * 24 * time.Hour, ImprovementDelta: .001}
+	}
+	if !config.SnapPolicy.Valid() {
+		config.SnapPolicy = graphpolicy.Policy{MaxNodes: 256, MaxEdges: 512, MaxCandidateFamily: 32, ClosureRadius: 2, MinNetPriorityGain: .01, MaxProperRiskIncrease: .01, MaxUnresolvedBurden: 0, MinSimultaneousCoverage: .95, MinBucketSupport: 30}
 	}
 	policyDigest, err := bayesianPolicyDigest(config)
 	if err != nil {
@@ -525,12 +530,147 @@ func (s *Service) ObserveBayesianOutcome(ctx context.Context, request model.Baye
 		HorizonKey: decision.Forecast.HorizonKey, BaseProbability: decision.Forecast.PreResidualLaw.Useful, CommittedProbability: decision.Forecast.CorrectedLaw.Useful,
 		Useful: request.Useful, ValidationEligible: request.Source == model.OutcomeFullStream || request.Source == model.OutcomeIndependentAudit,
 		EventID: request.EventID, JournalID: request.JournalID, AvailableAt: request.AvailableAt,
+		PosteriorKey: decision.PosteriorKey,
 	}
 	result, err := s.store.ApplyBayesianOutcome(ctx, request, decision.PosteriorKey, digest, weight, s.config.BayesianChangePolicy, residualObservation, s.config.ResidualPolicy)
 	if err != nil {
 		return model.BayesianOutcomeResponse{}, err
 	}
 	return model.BayesianOutcomeResponse{ProtocolVersion: model.ProtocolVersion, Duplicate: result.Duplicate, ChangePoint: result.ChangePoint, Posterior: result.Posterior, Snapshot: result.Snapshot}, nil
+}
+
+func (s *Service) PublishPredictiveSnap(ctx context.Context, request model.PredictiveSnapRequest) (model.PredictiveSnapResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.PredictiveSnapResponse{}, err
+	}
+	if strings.TrimSpace(request.ID) == "" || strings.TrimSpace(request.TenantID) == "" || strings.TrimSpace(request.Issuer) == "" || strings.TrimSpace(request.Procedure) == "" {
+		return model.PredictiveSnapResponse{}, errors.New("snap id, tenant_id, issuer, and procedure are required")
+	}
+	if !request.ExternalAudit {
+		return model.PredictiveSnapResponse{}, errors.New("predictive snap requires an external confirmation audit")
+	}
+	currentSnapshot := s.store.Snapshot(ctx)
+	if request.BaseSnapshot != currentSnapshot {
+		return model.PredictiveSnapResponse{}, store.ErrStaleSnapshot
+	}
+	if request.Candidate.TenantID != request.TenantID {
+		return model.PredictiveSnapResponse{}, errors.New("candidate graph tenant does not match request")
+	}
+	if err := graphpolicy.ValidateCandidate(request.Candidate, s.config.SnapPolicy); err != nil {
+		return model.PredictiveSnapResponse{}, err
+	}
+	now := time.Now().UTC()
+	if request.DesignStart.IsZero() || !request.DesignStart.Before(request.DesignEnd) || !request.DesignEnd.Before(request.ConfirmationStart) || !request.ConfirmationStart.Before(request.ConfirmationEnd) || request.ConfirmationEnd.After(now) {
+		return model.PredictiveSnapResponse{}, errors.New("snap requires disjoint ordered design and confirmation windows available by the current time")
+	}
+	if request.CandidateFamilySize < 1 || request.CandidateFamilySize > s.config.SnapPolicy.MaxCandidateFamily || !request.UnchangedCandidateIncluded {
+		return model.PredictiveSnapResponse{}, errors.New("snap candidate family must be bounded and include the unchanged graph")
+	}
+	if !unitOpen(request.SimultaneousCoverage) || request.SimultaneousCoverage < s.config.SnapPolicy.MinSimultaneousCoverage {
+		return model.PredictiveSnapResponse{}, errors.New("snap simultaneous coverage is below policy")
+	}
+	currentGraph, err := s.store.GetPredictiveGraph(ctx, request.TenantID)
+	if err != nil {
+		return model.PredictiveSnapResponse{}, err
+	}
+	if currentGraph.Version != request.BaseSnapshot.GraphVersion {
+		return model.PredictiveSnapResponse{}, store.ErrStaleSnapshot
+	}
+	closure := graphpolicy.DependencyClosure(currentGraph, request.Candidate, s.config.SnapPolicy.ClosureRadius)
+	if len(closure.NodeIDs) == 0 && len(closure.EdgeIDs) == 0 {
+		return model.PredictiveSnapResponse{ProtocolVersion: model.ProtocolVersion, Reason: "candidate is identical to the published graph", Graph: currentGraph, Closure: closure, Snapshot: currentSnapshot}, nil
+	}
+	burden, err := graphpolicy.UnresolvedBurden(request.Candidate, request.Obligations)
+	if err != nil {
+		return model.PredictiveSnapResponse{}, err
+	}
+	if err := validateSnapCertificates(request, closure, s.config.SnapPolicy); err != nil {
+		return model.PredictiveSnapResponse{}, err
+	}
+	netGain := request.PriorityGainLCB - request.ResourceCostUCB
+	if !finiteNonnegative(request.ResourceCostUCB) || math.IsNaN(request.PriorityGainLCB) || math.IsInf(request.PriorityGainLCB, 0) || !finiteNonnegative(request.ProperRiskIncreaseUCB) {
+		return model.PredictiveSnapResponse{}, errors.New("snap risk, gain, and cost bounds must be finite")
+	}
+	if netGain <= s.config.SnapPolicy.MinNetPriorityGain || request.ProperRiskIncreaseUCB > s.config.SnapPolicy.MaxProperRiskIncrease || burden > s.config.SnapPolicy.MaxUnresolvedBurden {
+		return model.PredictiveSnapResponse{ProtocolVersion: model.ProtocolVersion, Reason: "candidate failed confirmation acceptance gates", Graph: currentGraph, Closure: closure, Snapshot: currentSnapshot}, nil
+	}
+	candidate := request.Candidate
+	candidate.Version = currentSnapshot.GraphVersion + 1
+	candidate.PublishedAt = now
+	candidate.SourceSnapID = request.ID
+	record := model.PredictiveSnapRecord{ID: request.ID, TenantID: request.TenantID, PreviousGraph: currentGraph, PublishedGraph: candidate, Closure: closure, UnresolvedBurden: burden, SimultaneousCoverage: request.SimultaneousCoverage, Procedure: request.Procedure, Issuer: request.Issuer, PublishedAt: now}
+	published, snapshot, err := s.store.PublishPredictiveSnap(ctx, record)
+	if err != nil {
+		return model.PredictiveSnapResponse{}, err
+	}
+	return model.PredictiveSnapResponse{ProtocolVersion: model.ProtocolVersion, Accepted: true, Reason: "confirmed predictive snap published", Graph: published, Closure: closure, Snapshot: snapshot}, nil
+}
+
+func (s *Service) GetPredictiveGraph(ctx context.Context, tenantID string) (model.PredictiveGraphResponse, error) {
+	if strings.TrimSpace(tenantID) == "" {
+		return model.PredictiveGraphResponse{}, errors.New("tenant_id is required")
+	}
+	graph, err := s.store.GetPredictiveGraph(ctx, tenantID)
+	if err != nil {
+		return model.PredictiveGraphResponse{}, err
+	}
+	snapshot := s.store.Snapshot(ctx)
+	if graph.Version != snapshot.GraphVersion {
+		return model.PredictiveGraphResponse{}, store.ErrStaleSnapshot
+	}
+	return model.PredictiveGraphResponse{ProtocolVersion: model.ProtocolVersion, Graph: graph, Snapshot: snapshot}, nil
+}
+
+func (s *Service) RollbackPredictiveSnap(ctx context.Context, request model.RollbackSnapRequest) (model.PredictiveSnapResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.PredictiveSnapResponse{}, err
+	}
+	if request.TenantID == "" || request.SnapID == "" || strings.TrimSpace(request.Reason) == "" {
+		return model.PredictiveSnapResponse{}, errors.New("tenant_id, snap_id, and reason are required")
+	}
+	graph, snapshot, err := s.store.RollbackPredictiveSnap(ctx, request.TenantID, request.SnapID, request.Reason)
+	if err != nil {
+		return model.PredictiveSnapResponse{}, err
+	}
+	return model.PredictiveSnapResponse{ProtocolVersion: model.ProtocolVersion, Accepted: true, Reason: "predictive snap rolled back; dependent state remains invalidated", Graph: graph, Snapshot: snapshot}, nil
+}
+
+func validateSnapCertificates(request model.PredictiveSnapRequest, closure model.DependencyClosure, policy graphpolicy.Policy) error {
+	nodes, edges := make(map[string]model.CompatibilityNode), make(map[string]model.CompatibilityEdge)
+	for _, node := range request.Candidate.Nodes {
+		nodes[node.ID] = node
+	}
+	for _, edge := range request.Candidate.Edges {
+		edges[edge.ID] = edge
+	}
+	buckets := make(map[string]model.SnapBucketCertificate)
+	for _, certificate := range request.BucketCertificates {
+		buckets[certificate.NodeID] = certificate
+	}
+	edgeCertificates := make(map[string]model.SnapEdgeCertificate)
+	for _, certificate := range request.EdgeCertificates {
+		edgeCertificates[certificate.EdgeID] = certificate
+	}
+	for _, id := range closure.NodeIDs {
+		node, retained := nodes[id]
+		if !retained || len(node.MemberEventIDs) == 0 {
+			continue
+		}
+		certificate, ok := buckets[id]
+		if !ok || !finiteNonnegative(certificate.FutureDiameterUCB) || !finiteNonnegative(certificate.DiameterLimit) || certificate.FutureDiameterUCB > certificate.DiameterLimit || !finiteNonnegative(certificate.EffectiveSupport) || certificate.EffectiveSupport < policy.MinBucketSupport {
+			return errors.New("every affected active bucket requires a passing external future-diameter certificate")
+		}
+	}
+	for _, id := range closure.EdgeIDs {
+		if _, retained := edges[id]; !retained {
+			continue
+		}
+		certificate, ok := edgeCertificates[id]
+		if !ok || !finiteNonnegative(certificate.DefectUCB) || !finiteNonnegative(certificate.DefectLimit) || certificate.DefectUCB > certificate.DefectLimit {
+			return errors.New("every affected retained or new edge requires a passing compatibility certificate")
+		}
+	}
+	return nil
 }
 
 func (s *Service) Close() error { return s.store.Close() }
@@ -734,7 +874,8 @@ func bayesianPolicyDigest(config Config) (string, error) {
 		ScoreWeight float64            `json:"score_weight"`
 		Change      bayes.ChangePolicy `json:"change"`
 		Residual    residual.Policy    `json:"residual"`
-	}{Frontier: config.BayesianPolicy, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Residual: config.ResidualPolicy})
+		Snap        graphpolicy.Policy `json:"snap"`
+	}{Frontier: config.BayesianPolicy, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Residual: config.ResidualPolicy, Snap: config.SnapPolicy})
 	if err != nil {
 		return "", fmt.Errorf("encode Bayesian policy: %w", err)
 	}

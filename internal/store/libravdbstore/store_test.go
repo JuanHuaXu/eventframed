@@ -205,6 +205,91 @@ func TestBayesianPosteriorUpdateSurvivesRestart(t *testing.T) {
 	}
 }
 
+func TestPredictiveSnapInvalidationRollbackAndRestart(t *testing.T) {
+	ctx := context.Background()
+	path := t.TempDir() + "/events.libravdb"
+	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	outcome := model.BayesianOutcomeRequest{IdempotencyKey: "outcome-1", TenantID: "tenant-a", Useful: true, AvailableAt: now}
+	observation := model.ResidualObservation{
+		ActionKey: "action", GeneralKey: "general", HorizonKey: model.RetrievalUsefulnessHorizon,
+		BaseProbability: .5, CommittedProbability: .5, Useful: true, ValidationEligible: true,
+		EventID: "event-a", JournalID: "journal", PosteriorKey: "posterior-a", AvailableAt: now,
+	}
+	if _, err := first.ApplyBayesianOutcome(ctx, outcome, "posterior-a", "digest", 1, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64}, observation, residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}); err != nil {
+		t.Fatal(err)
+	}
+	previous, err := first.GetPredictiveGraph(ctx, "tenant-a")
+	if err != nil {
+		t.Fatal(err)
+	}
+	published := model.PredictiveGraph{
+		TenantID: "tenant-a", SourceSnapID: "snap-1", PublishedAt: now,
+		Nodes: []model.CompatibilityNode{{ID: "bucket-a", Kind: "bucket", MemberEventIDs: []string{"event-a"}, PosteriorKeys: []string{"posterior-a"}, LawSpace: model.RetrievalUsefulnessHorizon}},
+	}
+	closure := model.DependencyClosure{NodeIDs: []string{"bucket-a"}, EventIDs: []string{"event-a"}, PosteriorKeys: []string{"posterior-a"}}
+	record := model.PredictiveSnapRecord{ID: "snap-1", TenantID: "tenant-a", PreviousGraph: previous, PublishedGraph: published, Closure: closure, SimultaneousCoverage: .95, Procedure: "test", Issuer: "external-auditor", PublishedAt: now}
+	graph, snap, err := first.PublishPredictiveSnap(ctx, record)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if graph.SourceSnapID != "snap-1" || snap.GraphVersion != previous.Version+1 {
+		t.Fatalf("published graph = %+v, snapshot = %+v", graph, snap)
+	}
+	posterior, err := first.GetBayesianPosterior(ctx, "tenant-a", "posterior-a")
+	if err != nil || posterior.Certified {
+		t.Fatalf("invalidated posterior = %+v, %v", posterior, err)
+	}
+	residuals, err := first.GetResidualCandidates(ctx, "tenant-a", "action", "general")
+	if err != nil || residuals.Exact == nil || residuals.Exact.Active || residuals.General == nil || residuals.General.Active {
+		t.Fatalf("invalidated residuals = %+v, %v", residuals, err)
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	second, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	reopened, err := second.GetPredictiveGraph(ctx, "tenant-a")
+	if err != nil || reopened.SourceSnapID != "snap-1" || reopened.Version != second.Snapshot(ctx).GraphVersion {
+		t.Fatalf("reopened graph = %+v, %v", reopened, err)
+	}
+	other, err := second.GetPredictiveGraph(ctx, "tenant-b")
+	if err != nil || other.Version != reopened.Version {
+		t.Fatalf("other tenant graph epoch = %+v, %v", other, err)
+	}
+	rolledBack, rollbackSnapshot, err := second.RollbackPredictiveSnap(ctx, "tenant-a", "snap-1", "confirmation regression")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rolledBack.Nodes) != 0 || rolledBack.SourceSnapID != "rollback:snap-1" || rollbackSnapshot.GraphVersion != reopened.Version+1 {
+		t.Fatalf("rollback graph = %+v, snapshot = %+v", rolledBack, rollbackSnapshot)
+	}
+	reusedID := record
+	reusedID.PreviousGraph = rolledBack
+	if _, _, err := second.PublishPredictiveSnap(ctx, reusedID); err == nil {
+		t.Fatal("expected reused snap id with different content to fail")
+	}
+	if err := second.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	third, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer third.Close()
+	finalGraph, err := third.GetPredictiveGraph(ctx, "tenant-a")
+	if err != nil || finalGraph.SourceSnapID != "rollback:snap-1" || finalGraph.Version != third.Snapshot(ctx).GraphVersion {
+		t.Fatalf("durable rollback graph = %+v, %v", finalGraph, err)
+	}
+}
+
 func TestBayesianPolicyDigestSurvivesRestartAndAdvancesVersionOnChange(t *testing.T) {
 	path := t.TempDir() + "/events.libravdb"
 	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))

@@ -13,3 +13,11 @@
 - Evidence: TypeScript reported no such export for the published development package; its export map provides `openclaw/plugin-sdk/plugin-entry`.
 - Lesson: Import plugin registration helpers from their documented SDK subpath and compile against the minimum and development versions before release.
 - Scope: Project-local.
+
+## 2026-08-28 - Smoke tests should use unique temporary paths
+
+- Category: workflow
+- Context: A daemon smoke-test command bundled cleanup with `rm -rf` and was rejected by the command safety filter.
+- Evidence: `exec_command` rejected the launcher before execution because removal-style commands are not permitted.
+- Lesson: Create a fresh directory with `mktemp -d` and run disposable databases and sockets inside it instead of pre-cleaning fixed paths.
+- Scope: Project-local.

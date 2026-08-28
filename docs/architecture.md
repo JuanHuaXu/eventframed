@@ -75,3 +75,30 @@ separate improvement gate uses error spending across repeated checks and counts
 only unweighted full-stream or independently audited validation trials. Delayed
 outcomes score the immutable corrected law and atomically update posterior,
 calibration, exact residual, general residual, and version state.
+
+## Predictive compatibility graph
+
+Phase 4B persists a tenant-scoped, bounded predictive compatibility graph. Nodes
+may represent buckets, predictors, resolutions, or agents, but every current node
+shares the concrete `retrieval-usefulness-v1` Bernoulli law space and every edge
+uses the declared `identity_bernoulli` comparison map. This is deliberately a
+sheaf-inspired compatibility scaffold. It neither instantiates general sheaf
+laws nor assigns causal meaning to an edge.
+
+An external slow path selects a complete candidate graph from a finite family on
+a chronological design window, then evaluates it on a later untouched
+confirmation window. The daemon does not trust a caller-supplied affected set.
+It diffs the current and candidate graphs, expands changed nodes through the
+union of old and new adjacency up to the configured radius, and derives affected
+edges, event IDs, and posterior keys itself. Fixed comparison obligations are
+evaluated against the candidate so deleting a difficult edge cannot silently
+erase its burden.
+
+Publication requires passing external future-diameter certificates for every
+affected active bucket, compatibility certificates for every affected retained
+or new edge, simultaneous coverage, proper-risk non-inferiority, bounded
+unresolved burden, and positive priority gain net of resource cost. LibraVDB
+publishes the graph, snap audit record, targeted posterior/residual stale marks,
+and monotone versions in one transaction. Rollback republishes the previous
+topology under a new version and repeats stale marking; it never reactivates old
+posterior or residual state.

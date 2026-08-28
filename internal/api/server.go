@@ -35,8 +35,60 @@ func NewServer(runtime *service.Service, logger *slog.Logger) *Server {
 	server.mux.HandleFunc("POST /v1/bayesian/certificates:publish-anti-pigeon", server.publishAntiPigeonCertificate)
 	server.mux.HandleFunc("POST /v1/bayesian/certificates:publish-omitted-influence", server.publishOmittedInfluenceCertificate)
 	server.mux.HandleFunc("POST /v1/bayesian/outcomes:observe", server.observeBayesianOutcome)
+	server.mux.HandleFunc("GET /v1/abstraction/graph", server.getPredictiveGraph)
+	server.mux.HandleFunc("POST /v1/abstraction/snaps:publish", server.publishPredictiveSnap)
+	server.mux.HandleFunc("POST /v1/abstraction/snaps:rollback", server.rollbackPredictiveSnap)
 	server.mux.HandleFunc("GET /metrics", server.metrics.handle)
 	return server
+}
+
+func (s *Server) getPredictiveGraph(writer http.ResponseWriter, request *http.Request) {
+	response, err := s.service.GetPredictiveGraph(request.Context(), request.URL.Query().Get("tenant_id"))
+	if err != nil {
+		if errors.Is(err, store.ErrStaleSnapshot) {
+			writeError(writer, http.StatusConflict, "snapshot_changed", err)
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) publishPredictiveSnap(writer http.ResponseWriter, request *http.Request) {
+	var input model.PredictiveSnapRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.PublishPredictiveSnap(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrStaleSnapshot) || errors.Is(err, store.ErrSnapConflict) {
+			writeError(writer, http.StatusConflict, "snapshot_changed", err)
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "snap_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) rollbackPredictiveSnap(writer http.ResponseWriter, request *http.Request) {
+	var input model.RollbackSnapRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.RollbackPredictiveSnap(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrSnapConflict) {
+			writeError(writer, http.StatusConflict, "snap_conflict", err)
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "rollback_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
 }
 
 func (s *Server) publishOmittedInfluenceCertificate(writer http.ResponseWriter, request *http.Request) {

@@ -184,6 +184,15 @@ func (s *fixedStore) GetBayesianPosterior(context.Context, string, string) (mode
 func (s *fixedStore) GetResidualCandidates(context.Context, string, string, string) (model.ResidualCandidates, error) {
 	return model.ResidualCandidates{}, nil
 }
+func (s *fixedStore) GetPredictiveGraph(context.Context, string) (model.PredictiveGraph, error) {
+	return model.PredictiveGraph{}, nil
+}
+func (s *fixedStore) PublishPredictiveSnap(context.Context, model.PredictiveSnapRecord) (model.PredictiveGraph, model.Snapshot, error) {
+	return model.PredictiveGraph{}, model.Snapshot{}, nil
+}
+func (s *fixedStore) RollbackPredictiveSnap(context.Context, string, string, string) (model.PredictiveGraph, model.Snapshot, error) {
+	return model.PredictiveGraph{}, model.Snapshot{}, nil
+}
 func (s *fixedStore) Stats(context.Context) (store.Stats, error) {
 	return store.Stats{Backend: "fixed"}, nil
 }
