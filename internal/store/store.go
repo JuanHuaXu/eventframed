@@ -24,6 +24,7 @@ var ErrSnapConflict = errors.New("predictive snap conflicts with current graph")
 var ErrAgencyConflict = errors.New("agency proposal id already exists with different content or resolution")
 var ErrAgencyNotFound = errors.New("agency proposal not found")
 var ErrAgencyLease = errors.New("agency proposal is not held by the resolving consumer")
+var ErrAgencyExpired = errors.New("agency proposal expired before resolution")
 var ErrAgencyChainBudget = errors.New("agency causal-chain budget is exhausted or invalid")
 var ErrAgencyEvidence = errors.New("agency proposal references missing, cross-tenant, or unavailable evidence")
 

@@ -3,6 +3,7 @@ package agency
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 
@@ -55,6 +56,15 @@ func TestProposalValidationRejectsUnsafeShapes(t *testing.T) {
 		"schedule on wake": func(value *model.AgencyProposalDraft) {
 			when := now.Add(time.Minute)
 			value.ScheduledFor = &when
+		},
+		"schedule at expiry": func(value *model.AgencyProposalDraft) {
+			value.Action = model.AgencySchedule
+			when := value.ExpiresAt
+			value.ScheduledFor = &when
+		},
+		"oversized session": func(value *model.AgencyProposalDraft) { value.SessionID = strings.Repeat("s", maxSessionIDBytes+1) },
+		"oversized evidence": func(value *model.AgencyProposalDraft) {
+			value.EvidenceIDs = []string{strings.Repeat("e", maxIdentifierBytes+1)}
 		},
 	} {
 		t.Run(name, func(t *testing.T) {
@@ -118,5 +128,39 @@ func TestIssuerTokenFileRoundTrip(t *testing.T) {
 	}
 	if info.Mode().Perm() != 0o600 {
 		t.Fatalf("issuer token mode = %v", info.Mode().Perm())
+	}
+}
+
+func TestAuthorityTokenFileRoundTrip(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "authority.token")
+	first, err := LoadOrCreateAuthorityToken(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	second, err := LoadOrCreateAuthorityToken(path)
+	if err != nil || first != second || len(first) < 32 {
+		t.Fatalf("authority token round trip = %q, %v", second, err)
+	}
+}
+
+func TestAgencySecretsRejectSymlinksAndDoNotOverwritePublicTarget(t *testing.T) {
+	root := t.TempDir()
+	target := filepath.Join(root, "target")
+	if err := os.WriteFile(target, []byte("do-not-overwrite"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	publicLink := filepath.Join(root, "agency.pub")
+	if err := os.Symlink(target, publicLink); err != nil {
+		t.Skipf("symlinks unavailable: %v", err)
+	}
+	if _, err := LoadOrCreateSigner(filepath.Join(root, "agency.key"), publicLink); err == nil {
+		t.Fatal("signer accepted a symlink public key path")
+	}
+	contents, err := os.ReadFile(target)
+	if err != nil || string(contents) != "do-not-overwrite" {
+		t.Fatalf("public-key target changed to %q, %v", contents, err)
+	}
+	if _, err := LoadOrCreateAuthorityToken(publicLink); err == nil {
+		t.Fatal("authority token accepted a symlink path")
 	}
 }

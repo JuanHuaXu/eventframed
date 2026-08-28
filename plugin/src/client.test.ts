@@ -61,9 +61,44 @@ test("agency claims reject a lease assigned to another consumer", async (t) => {
   });
   const client = new EventFrameClient({ socketPath: fixture.socketPath });
   await assert.rejects(
-    client.claimAgency({ tenantId: "tenant", consumerId: "expected-authority", limit: 1 }),
+    client.claimAgency({ authorityToken: "test-token", tenantId: "tenant", consumerId: "expected-authority", limit: 1 }),
     /malformed agency proposal record/,
   );
+});
+
+test("agency claim sends the private authority credential", async (t) => {
+  let requestBody = "";
+  const fixture = await unixServer(t, (request, response) => {
+    request.on("data", (chunk: Buffer) => { requestBody += chunk.toString("utf8"); });
+    request.on("end", () => {
+      response.setHeader("content-type", "application/json");
+      response.end(JSON.stringify({ protocol_version: "eventframe.v1alpha1", records: [], snapshot: {} }));
+    });
+  });
+  const client = new EventFrameClient({ socketPath: fixture.socketPath });
+  await client.claimAgency({ authorityToken: "authority-secret", tenantId: "tenant", consumerId: "authority", limit: 1 });
+  assert.equal(JSON.parse(requestBody).authority_token, "authority-secret");
+});
+
+test("agency resolution rejects a terminal state that differs from the request", async (t) => {
+  const fixture = await unixServer(t, (_request, response) => {
+    response.setHeader("content-type", "application/json");
+    response.end(JSON.stringify({
+      protocol_version: "eventframe.v1alpha1",
+      record: { proposal: { id: "proposal-1", tenant_id: "tenant" }, status: "expired" },
+      snapshot: {},
+    }));
+  });
+  const client = new EventFrameClient({ socketPath: fixture.socketPath });
+  await assert.rejects(client.resolveAgency({
+    authorityToken: "authority-secret",
+    tenantId: "tenant",
+    proposalId: "proposal-1",
+    consumerId: "authority",
+    decision: "approved",
+    reason: "approved",
+    executionRef: "job-1",
+  }), /malformed agency resolution/);
 });
 
 async function unixServer(

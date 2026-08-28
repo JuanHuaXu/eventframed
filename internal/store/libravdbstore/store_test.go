@@ -3,6 +3,7 @@ package libravdbstore_test
 import (
 	"context"
 	"encoding/json"
+	"strings"
 	"testing"
 	"time"
 
@@ -395,6 +396,232 @@ func TestAgencyProposalLeaseAndResolutionSurviveRestart(t *testing.T) {
 	if err != nil || len(remaining) != 0 {
 		t.Fatalf("deleted evidence left durable proposal claimable: %+v, %v", remaining, err)
 	}
+}
+
+func TestExpiredAgencyProposalDoesNotBlockDurableQueueAdmission(t *testing.T) {
+	ctx := context.Background()
+	now := time.Date(2026, 8, 28, 12, 0, 0, 0, time.UTC)
+	runtime, err := libravdbstore.Open(testConfig(t.TempDir()+"/events.libravdb", "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer runtime.Close()
+	if _, err := runtime.Put(ctx, testutil.Event("event-a", "agency evidence", now), []float32{1, 0, 0, 0}, "event-digest"); err != nil {
+		t.Fatal(err)
+	}
+	signer, err := agency.NewSignerForTest()
+	if err != nil {
+		t.Fatal(err)
+	}
+	put := func(id string, builtAt, expiresAt, availableBy time.Time) error {
+		proposal, buildErr := agency.BuildProposal(model.AgencyProposalDraft{
+			ID: id, TenantID: "tenant-a", SessionID: "openclaw:session-a", Action: model.AgencyNotify,
+			Reason: "A follow-up became timely.", EvidenceIDs: []string{"event-a"}, ExpectedUtility: .8, Priority: .7,
+			NotBefore: builtAt, ExpiresAt: expiresAt, IdempotencyKey: id, CausalChainID: "chain-" + id,
+		}, builtAt, agency.DefaultPolicy(true))
+		if buildErr != nil {
+			return buildErr
+		}
+		signed, signErr := signer.Sign(proposal)
+		if signErr != nil {
+			return signErr
+		}
+		_, putErr := runtime.PutAgencyProposal(ctx, model.AgencyProposalRecord{Proposal: proposal, Signed: signed, Status: model.AgencyPending}, "digest-"+id, 8, 1, availableBy)
+		return putErr
+	}
+	if err := put("proposal-old", now, now.Add(time.Minute), now); err != nil {
+		t.Fatal(err)
+	}
+	if err := put("proposal-new", now.Add(2*time.Minute), now.Add(time.Hour), now.Add(2*time.Minute)); err != nil {
+		t.Fatalf("expired durable proposal blocked admission: %v", err)
+	}
+}
+
+func TestAgencyClaimIgnoresCorruptTerminalArchive(t *testing.T) {
+	ctx := context.Background()
+	path := t.TempDir() + "/events.libravdb"
+	now := time.Date(2026, 8, 28, 12, 0, 0, 0, time.UTC)
+	runtime, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := runtime.Put(ctx, testutil.Event("event-a", "agency evidence", now), []float32{1, 0, 0, 0}, "event-digest"); err != nil {
+		t.Fatal(err)
+	}
+	first := durableAgencyRecord(t, now, "proposal-terminal", .9)
+	second := durableAgencyRecord(t, now, "proposal-active", .8)
+	if _, err := runtime.PutAgencyProposal(ctx, first, "digest-terminal", 8, 1000, now); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := runtime.PutAgencyProposal(ctx, second, "digest-active", 8, 1000, now); err != nil {
+		t.Fatal(err)
+	}
+	claimed, _, err := runtime.ClaimAgencyProposals(ctx, "tenant-a", "authority-a", now, 1, time.Minute)
+	if err != nil || len(claimed) != 1 || claimed[0].Proposal.ID != first.Proposal.ID {
+		t.Fatalf("first claim = %+v, %v", claimed, err)
+	}
+	if _, err := runtime.ResolveAgencyProposal(ctx, model.ResolveAgencyProposalRequest{TenantID: "tenant-a", ProposalID: first.Proposal.ID, ConsumerID: "authority-a", Decision: model.AgencyApproved, Reason: "authorized", ExecutionRef: "job-1"}, now.Add(time.Second)); err != nil {
+		t.Fatal(err)
+	}
+	if err := runtime.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	raw, err := libra.Open(libra.WithStoragePath(path))
+	if err != nil {
+		t.Fatal(err)
+	}
+	archive, err := raw.GetCollection("_eventframe_agency")
+	if err != nil {
+		t.Fatal(err)
+	}
+	archived, err := archive.ListAll(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, stored := range archived {
+		if stored.Metadata["proposal_id"] == first.Proposal.ID {
+			metadata := cloneTestMetadata(stored.Metadata)
+			metadata["agency_json"] = "{corrupt"
+			if err := archive.Upsert(ctx, stored.ID, nil, metadata); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
+	if err := raw.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	reopened, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer reopened.Close()
+	remaining, _, err := reopened.ClaimAgencyProposals(ctx, "tenant-a", "authority-b", now.Add(2*time.Second), 1, time.Minute)
+	if err != nil || len(remaining) != 1 || remaining[0].Proposal.ID != second.Proposal.ID {
+		t.Fatalf("active claim consulted corrupt archive: %+v, %v", remaining, err)
+	}
+}
+
+func TestContractSixRestartRebuildsActiveAgencyProjection(t *testing.T) {
+	ctx := context.Background()
+	path := t.TempDir() + "/events.libravdb"
+	now := time.Now().UTC()
+	runtime, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := runtime.Put(ctx, testutil.Event("event-a", "agency evidence", now), []float32{1, 0, 0, 0}, "event-digest"); err != nil {
+		t.Fatal(err)
+	}
+	record := durableAgencyRecord(t, now, "proposal-migrate", .8)
+	record.Proposal.ContractVersion = 6
+	legacySigner, err := agency.NewSignerForTest()
+	if err != nil {
+		t.Fatal(err)
+	}
+	record.Signed, err = legacySigner.Sign(record.Proposal)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := runtime.PutAgencyProposal(ctx, record, "digest-migrate", 8, 1000, now); err != nil {
+		t.Fatal(err)
+	}
+	if err := runtime.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	raw, err := libra.Open(libra.WithStoragePath(path))
+	if err != nil {
+		t.Fatal(err)
+	}
+	names, err := raw.ListCollectionsWithContext(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, name := range names {
+		if !strings.HasPrefix(name, "_eventframe_agency_active_") {
+			continue
+		}
+		active, getErr := raw.GetCollection(name)
+		if getErr != nil {
+			t.Fatal(getErr)
+		}
+		records, listErr := active.ListAll(ctx)
+		if listErr != nil {
+			t.Fatal(listErr)
+		}
+		ids := make([]string, len(records))
+		for index := range records {
+			ids[index] = records[index].ID
+		}
+		if len(ids) > 0 {
+			if err := active.DeleteBatch(ctx, ids); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
+	system, err := raw.GetCollection("_eventframe_system")
+	if err != nil {
+		t.Fatal(err)
+	}
+	stateRecord, err := system.Get(ctx, "runtime")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var state map[string]interface{}
+	if err := json.Unmarshal([]byte(stateRecord.Metadata["state_json"].(string)), &state); err != nil {
+		t.Fatal(err)
+	}
+	state["snapshot"].(map[string]interface{})["contract_version"] = float64(6)
+	encoded, _ := json.Marshal(state)
+	metadata := cloneTestMetadata(stateRecord.Metadata)
+	metadata["state_json"] = string(encoded)
+	if err := system.Upsert(ctx, "runtime", nil, metadata); err != nil {
+		t.Fatal(err)
+	}
+	if err := raw.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	reopened, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer reopened.Close()
+	claimed, _, err := reopened.ClaimAgencyProposals(ctx, "tenant-a", "authority-a", now.Add(time.Second), 1, time.Minute)
+	if err != nil || len(claimed) != 1 || claimed[0].Proposal.ID != record.Proposal.ID {
+		t.Fatalf("contract-6 projection rebuild claim = %+v, %v", claimed, err)
+	}
+}
+
+func durableAgencyRecord(t *testing.T, now time.Time, id string, priority float64) model.AgencyProposalRecord {
+	t.Helper()
+	proposal, err := agency.BuildProposal(model.AgencyProposalDraft{
+		ID: id, TenantID: "tenant-a", SessionID: "openclaw:session-a", Action: model.AgencyNotify,
+		Reason: "A follow-up became timely.", EvidenceIDs: []string{"event-a"}, ExpectedUtility: .8, Priority: priority,
+		NotBefore: now, ExpiresAt: now.Add(time.Hour), IdempotencyKey: id, CausalChainID: "chain-" + id,
+	}, now, agency.DefaultPolicy(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	signer, err := agency.NewSignerForTest()
+	if err != nil {
+		t.Fatal(err)
+	}
+	signed, err := signer.Sign(proposal)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return model.AgencyProposalRecord{Proposal: proposal, Signed: signed, Status: model.AgencyPending}
+}
+
+func cloneTestMetadata(source map[string]interface{}) map[string]interface{} {
+	copy := make(map[string]interface{}, len(source))
+	for key, value := range source {
+		copy[key] = value
+	}
+	return copy
 }
 
 func TestBayesianPolicyDigestSurvivesRestartAndAdvancesVersionOnChange(t *testing.T) {

@@ -78,10 +78,12 @@ Agency routes exist only when the daemon starts with `-agency-enabled`:
 - `POST /v1/agency/proposals:issue` authenticates with the private issuer token,
   validates a bounded draft against existing same-tenant evidence available at
   issue time, signs its exact JSON payload, and persists it idempotently.
-- `POST /v1/agency/proposals:claim` atomically leases eligible proposals to one
-  named authority consumer. Priority orders claims before `not_before` and ID.
+- `POST /v1/agency/proposals:claim` requires the separate authority token and
+  atomically leases eligible proposals to one named authority consumer. Priority
+  orders claims before `not_before` and ID.
 - `POST /v1/agency/proposals:resolve` records `approved` or `rejected` only while
-  the named consumer holds a live lease. Exact terminal retries are idempotent;
+  the named consumer holds a live lease and supplies the authority token.
+  Approval requires a scheduler execution reference. Exact terminal retries are idempotent;
   conflicting terminal decisions return HTTP 409.
 
 The only accepted actions are `wake`, `notify`, and `schedule`, bound respectively
@@ -93,8 +95,9 @@ causal levels, 8 proposals per chain, 1,000 pending or claimed proposals per
 tenant, 30 days into the future, and a 7-day validity interval. Claims use a
 30-second lease and are capped at 50 per request.
 
-The issue token and signing private key are local secrets; neither is sent to the
-OpenClaw adapter. The adapter verifies the public-key signature and applies its
+The issue token, authority token, and signing private key are distinct local
+secrets. The issue token is not sent to the OpenClaw adapter; the adapter uses
+the authority token only for claim and resolution. It verifies the public-key signature and applies its
 own consent policy before using OpenClaw's session scheduler. A signed proposal
 is not tool authority. Event deletion and retention reject pending or claimed
 proposals that cite the removed evidence in the same storage transaction.
@@ -183,3 +186,10 @@ It is also an additive durable-state upgrade.
 `contract_version=6` adds signed agency proposal records, an independent monotone
 `agency_version`, durable lease and resolution state, and evidence-lifecycle
 invalidation. The schema upgrade is additive; agency remains disabled by default.
+`contract_version=7` authenticates authority claim/resolution separately, bounds
+all proposal and consumer identifiers, and adds a tenant-scoped active queue
+projection. Version-6 databases rebuild that projection before the new marker is
+published. Agency mode requires the local Unix socket; bearer credentials are
+never accepted over the daemon's plaintext TCP listener.
+Pending contract-6 proposal payloads remain signature-valid and are accepted by
+the contract-7 authority; only newly issued proposals carry contract 7.

@@ -109,11 +109,12 @@ Agency is disabled on both sides by default. Start the daemon once with:
 ./bin/eventframed -agency-enabled
 ```
 
-This creates a mode-0600 Ed25519 private key and issuer token under
-`~/.eventframed/keys`, plus a public verification key. Give only the issuer token
-to the trusted local component allowed to submit proposals. Configure the
+This creates a mode-0600 Ed25519 private key, issuer token, and authority token
+under `~/.eventframed/keys`, plus a public verification key. Give only the issuer
+token to the trusted local component allowed to submit proposals. The OpenClaw
+adapter receives the separate authority token used to claim and resolve them. Configure the
 OpenClaw plugin with `agencyEnabled: true`, `agencyKillSwitch: false`, the public
-key path, explicit `agencyConsentActions`, matching `agencyCapabilities`, and at
+key and authority-token paths, explicit `agencyConsentActions`, matching `agencyCapabilities`, and at
 least one `agencyAllowedSessionPrefixes` entry. Empty consent, capability, or
 session scopes deny every proposal. Both UTC quiet-hour endpoints must be set or
 both omitted.
@@ -149,6 +150,10 @@ resolution are implemented end to end.
   durable resolution span two processes and therefore are not exactly-once. A
   deterministic scheduler tag, lease, and rollback path reduce duplicates, but
   crash-window behavior still requires production fault testing.
+- Agency mode is restricted to the mode-0600 Unix socket. Plaintext TCP listeners
+  remain available only when agency is disabled.
+- The kill switch prevents new and in-flight authorization. It does not revoke a
+  turn that was already scheduled and durably approved before the switch changed.
 - TCP listening has no transport authentication in this alpha. Prefer the default
   local Unix socket; do not expose a TCP listener beyond a trusted loopback test.
 

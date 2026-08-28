@@ -23,6 +23,8 @@ const (
 	CapabilityWake     = "eventframe.agency.wake"
 	CapabilityNotify   = "eventframe.agency.notify"
 	CapabilitySchedule = "eventframe.agency.schedule"
+	maxIdentifierBytes = 256
+	maxSessionIDBytes  = 1024
 )
 
 type Policy struct {
@@ -62,9 +64,9 @@ func LoadOrCreateSigner(privatePath, publicPath string) (*Signer, error) {
 	if err := os.MkdirAll(filepath.Dir(publicPath), 0o700); err != nil {
 		return nil, err
 	}
-	encoded, err := os.ReadFile(privatePath)
+	encoded, err := readRestrictedFile(privatePath, "agency private key")
 	if errors.Is(err, os.ErrNotExist) {
-		publicKey, privateKey, generateErr := ed25519.GenerateKey(rand.Reader)
+		_, privateKey, generateErr := ed25519.GenerateKey(rand.Reader)
 		if generateErr != nil {
 			return nil, generateErr
 		}
@@ -80,35 +82,16 @@ func LoadOrCreateSigner(privatePath, publicPath string) (*Signer, error) {
 		if closeErr := file.Close(); closeErr != nil {
 			return nil, closeErr
 		}
-		if writeErr := os.WriteFile(publicPath, []byte(base64.RawURLEncoding.EncodeToString(publicKey)+"\n"), 0o644); writeErr != nil {
-			return nil, writeErr
-		}
 	} else if err != nil {
 		return nil, err
-	}
-	info, err := os.Stat(privatePath)
-	if err != nil {
-		return nil, err
-	}
-	if info.Mode().Perm()&0o077 != 0 {
-		return nil, errors.New("agency private key must not be accessible by group or others")
 	}
 	privateKey, err := base64.RawURLEncoding.DecodeString(strings.TrimSpace(string(encoded)))
 	if err != nil || len(privateKey) != ed25519.PrivateKeySize {
 		return nil, errors.New("agency private key is malformed")
 	}
 	publicKey := ed25519.PrivateKey(privateKey).Public().(ed25519.PublicKey)
-	if existing, readErr := os.ReadFile(publicPath); readErr == nil {
-		decoded, decodeErr := base64.RawURLEncoding.DecodeString(strings.TrimSpace(string(existing)))
-		if decodeErr != nil || !ed25519.PublicKey(decoded).Equal(publicKey) {
-			return nil, errors.New("agency public key does not match private key")
-		}
-	} else if errors.Is(readErr, os.ErrNotExist) {
-		if writeErr := os.WriteFile(publicPath, []byte(base64.RawURLEncoding.EncodeToString(publicKey)+"\n"), 0o644); writeErr != nil {
-			return nil, writeErr
-		}
-	} else {
-		return nil, readErr
+	if err := ensurePublicKeyFile(publicPath, publicKey); err != nil {
+		return nil, err
 	}
 	digest := sha256.Sum256(publicKey)
 	return &Signer{private: ed25519.PrivateKey(privateKey), public: publicKey, keyID: hex.EncodeToString(digest[:12])}, nil
@@ -124,13 +107,21 @@ func NewSignerForTest() (*Signer, error) {
 }
 
 func LoadOrCreateIssuerToken(tokenPath string) (string, error) {
+	return loadOrCreateToken(tokenPath, "issuer")
+}
+
+func LoadOrCreateAuthorityToken(tokenPath string) (string, error) {
+	return loadOrCreateToken(tokenPath, "authority")
+}
+
+func loadOrCreateToken(tokenPath, label string) (string, error) {
 	if tokenPath == "" {
-		return "", errors.New("agency issuer token path is required")
+		return "", fmt.Errorf("agency %s token path is required", label)
 	}
 	if err := os.MkdirAll(filepath.Dir(tokenPath), 0o700); err != nil {
 		return "", err
 	}
-	encoded, err := os.ReadFile(tokenPath)
+	encoded, err := readRestrictedFile(tokenPath, "agency "+label+" token")
 	if errors.Is(err, os.ErrNotExist) {
 		raw := make([]byte, 32)
 		if _, readErr := rand.Read(raw); readErr != nil {
@@ -139,7 +130,7 @@ func LoadOrCreateIssuerToken(tokenPath string) (string, error) {
 		value := base64.RawURLEncoding.EncodeToString(raw)
 		file, openErr := os.OpenFile(tokenPath, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o600)
 		if openErr != nil {
-			return "", fmt.Errorf("create agency issuer token: %w", openErr)
+			return "", fmt.Errorf("create agency %s token: %w", label, openErr)
 		}
 		if _, writeErr := file.WriteString(value + "\n"); writeErr != nil {
 			_ = file.Close()
@@ -152,19 +143,57 @@ func LoadOrCreateIssuerToken(tokenPath string) (string, error) {
 	} else if err != nil {
 		return "", err
 	}
-	info, err := os.Stat(tokenPath)
-	if err != nil {
-		return "", err
-	}
-	if info.Mode().Perm()&0o077 != 0 {
-		return "", errors.New("agency issuer token must not be accessible by group or others")
-	}
 	value := strings.TrimSpace(string(encoded))
 	raw, err := base64.RawURLEncoding.DecodeString(value)
 	if err != nil || len(raw) != 32 {
-		return "", errors.New("agency issuer token is malformed")
+		return "", fmt.Errorf("agency %s token is malformed", label)
 	}
 	return value, nil
+}
+
+func readRestrictedFile(path, label string) ([]byte, error) {
+	info, err := os.Lstat(path)
+	if err != nil {
+		return nil, err
+	}
+	if info.Mode()&os.ModeSymlink != 0 || !info.Mode().IsRegular() {
+		return nil, fmt.Errorf("%s must be a regular non-symlink file", label)
+	}
+	if info.Mode().Perm()&0o077 != 0 {
+		return nil, fmt.Errorf("%s must not be accessible by group or others", label)
+	}
+	return os.ReadFile(path)
+}
+
+func ensurePublicKeyFile(path string, publicKey ed25519.PublicKey) error {
+	expected := base64.RawURLEncoding.EncodeToString(publicKey) + "\n"
+	info, err := os.Lstat(path)
+	if errors.Is(err, os.ErrNotExist) {
+		file, openErr := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o644)
+		if openErr != nil {
+			return fmt.Errorf("create agency public key: %w", openErr)
+		}
+		if _, writeErr := file.WriteString(expected); writeErr != nil {
+			_ = file.Close()
+			return writeErr
+		}
+		return file.Close()
+	}
+	if err != nil {
+		return err
+	}
+	if info.Mode()&os.ModeSymlink != 0 || !info.Mode().IsRegular() {
+		return errors.New("agency public key must be a regular non-symlink file")
+	}
+	existing, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+	decoded, decodeErr := base64.RawURLEncoding.DecodeString(strings.TrimSpace(string(existing)))
+	if decodeErr != nil || !ed25519.PublicKey(decoded).Equal(publicKey) {
+		return errors.New("agency public key does not match private key")
+	}
+	return nil
 }
 
 func (signer *Signer) Sign(proposal model.AgencyProposal) (model.SignedAgencyProposal, error) {
@@ -207,6 +236,10 @@ func BuildProposal(draft model.AgencyProposalDraft, now time.Time, policy Policy
 	if draft.ID == "" || draft.TenantID == "" || draft.SessionID == "" || draft.IdempotencyKey != draft.ID || draft.CausalChainID == "" {
 		return model.AgencyProposal{}, errors.New("proposal id, matching idempotency key, tenant, session, and causal chain are required")
 	}
+	if !boundedString(draft.ID, maxIdentifierBytes) || !boundedString(draft.TenantID, maxIdentifierBytes) || !boundedString(draft.SessionID, maxSessionIDBytes) ||
+		!boundedString(draft.CausalChainID, maxIdentifierBytes) || !boundedOptionalString(strings.TrimSpace(draft.ParentProposalID), maxIdentifierBytes) {
+		return model.AgencyProposal{}, errors.New("proposal identifiers exceed the authority contract")
+	}
 	capability, err := capabilityFor(draft.Action)
 	if err != nil {
 		return model.AgencyProposal{}, err
@@ -217,11 +250,11 @@ func BuildProposal(draft model.AgencyProposalDraft, now time.Time, policy Policy
 	if !finite(draft.ExpectedUtility) || draft.ExpectedUtility <= 0 || draft.ExpectedUtility > 1 || !finite(draft.Priority) || draft.Priority < 0 || draft.Priority > 1 {
 		return model.AgencyProposal{}, errors.New("expected utility must be in (0,1] and priority in [0,1]")
 	}
-	if draft.NotBefore.IsZero() || draft.NotBefore.After(now.Add(policy.MaxFuture)) || !draft.ExpiresAt.After(now) || !draft.NotBefore.Before(draft.ExpiresAt) || draft.ExpiresAt.Sub(draft.NotBefore) > policy.MaxTTL {
+	if draft.NotBefore.IsZero() || draft.NotBefore.After(now.Add(policy.MaxFuture)) || !draft.ExpiresAt.After(now) || draft.ExpiresAt.After(now.Add(policy.MaxFuture)) || !draft.NotBefore.Before(draft.ExpiresAt) || draft.ExpiresAt.Sub(draft.NotBefore) > policy.MaxTTL {
 		return model.AgencyProposal{}, errors.New("proposal availability and expiry exceed policy")
 	}
 	if draft.Action == model.AgencySchedule {
-		if draft.ScheduledFor == nil || draft.ScheduledFor.Before(draft.NotBefore) || draft.ScheduledFor.After(draft.ExpiresAt) {
+		if draft.ScheduledFor == nil || draft.ScheduledFor.Before(draft.NotBefore) || !draft.ScheduledFor.Before(draft.ExpiresAt) {
 			return model.AgencyProposal{}, errors.New("schedule proposals require scheduled_for within the validity window")
 		}
 	} else if draft.ScheduledFor != nil {
@@ -236,7 +269,7 @@ func BuildProposal(draft model.AgencyProposalDraft, now time.Time, policy Policy
 	}
 	sort.Strings(evidence)
 	for index, id := range evidence {
-		if strings.TrimSpace(id) == "" || (index > 0 && id == evidence[index-1]) {
+		if strings.TrimSpace(id) == "" || !boundedString(id, maxIdentifierBytes) || (index > 0 && id == evidence[index-1]) {
 			return model.AgencyProposal{}, errors.New("proposal evidence ids must be non-empty and unique")
 		}
 	}
@@ -247,6 +280,14 @@ func BuildProposal(draft model.AgencyProposalDraft, now time.Time, policy Policy
 		CausalChainID: draft.CausalChainID, ParentProposalID: strings.TrimSpace(draft.ParentProposalID), CausalChainDepth: draft.CausalChainDepth,
 		CreatedAt: now.UTC(), ContractVersion: model.ContractVersion,
 	}, nil
+}
+
+func boundedString(value string, maximum int) bool {
+	return value != "" && len([]byte(value)) <= maximum
+}
+
+func boundedOptionalString(value string, maximum int) bool {
+	return value == "" || len([]byte(value)) <= maximum
 }
 
 func capabilityFor(action model.AgencyAction) (string, error) {

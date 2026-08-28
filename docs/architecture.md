@@ -113,8 +113,10 @@ Ed25519. Proposal state, leases, terminal resolutions, and `agency_version` are
 durable. Deleting or retaining cited evidence atomically rejects any pending or
 claimed dependent proposal.
 
-The daemon's issuer token and private key stay mode 0600. The OpenClaw adapter
-receives only the public key. It verifies the exact signed payload and then
+The daemon's issuer token, authority token, and private key stay mode 0600. A
+trusted planner receives the issuer token; the OpenClaw adapter receives the
+separate authority token and public key. Claim and resolution fail before storage
+access when authority authentication fails. The adapter verifies the exact signed payload and then
 applies a second, independent authority policy: configured tenant, lease holder,
 session prefix, capability, explicit action consent, causal-depth cap, expiry,
 quiet hours, and kill switch. Failure at any gate rejects the proposal. The
@@ -134,3 +136,11 @@ rollback is uncertain, it leaves the lease unresolved so a retry begins by
 removing the same deterministic tag. A crash after execution but before durable
 resolution can still produce at-least-once behavior; this limitation must be
 measured in restart and duplicate-delivery fault tests.
+
+Canonical proposal records remain in the tenant-independent agency archive for
+audit and idempotency. Contract 7 also maintains a tenant-scoped active
+projection containing only pending and claimed records. Authority polling scans
+that projection, bounded by the 1,000-record tenant queue limit, rather than
+lifetime history. Issue, claim, resolution, evidence deletion, active projection,
+and version updates share LibraVDB transactions. Contract-6 databases rebuild
+the projection before publishing the contract-7 marker.

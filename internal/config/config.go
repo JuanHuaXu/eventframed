@@ -29,6 +29,7 @@ type Config struct {
 	AgencyPrivateKey        string
 	AgencyPublicKey         string
 	AgencyIssuerToken       string
+	AgencyAuthorityToken    string
 }
 
 func Parse(args []string) (Config, error) {
@@ -58,6 +59,7 @@ func Parse(args []string) (Config, error) {
 	set.StringVar(&config.AgencyPrivateKey, "agency-private-key", filepath.Join(defaultsRoot, "keys", "agency_ed25519"), "Ed25519 agency private key path")
 	set.StringVar(&config.AgencyPublicKey, "agency-public-key", filepath.Join(defaultsRoot, "keys", "agency_ed25519.pub"), "Ed25519 agency public key path")
 	set.StringVar(&config.AgencyIssuerToken, "agency-issuer-token", filepath.Join(defaultsRoot, "keys", "agency_issuer.token"), "private agency proposal issuer token path")
+	set.StringVar(&config.AgencyAuthorityToken, "agency-authority-token", filepath.Join(defaultsRoot, "keys", "agency_authority.token"), "private OpenClaw authority token path")
 	if err := set.Parse(args); err != nil {
 		return Config{}, err
 	}
@@ -87,9 +89,11 @@ func Parse(args []string) (Config, error) {
 	if config.MigrateV1 && !filepath.IsAbs(config.MigrationBackup) {
 		return Config{}, errors.New("migrate-v1 requires an absolute migration-backup path")
 	}
-	if config.AgencyEnabled && (!filepath.IsAbs(config.AgencyPrivateKey) || !filepath.IsAbs(config.AgencyPublicKey) || !filepath.IsAbs(config.AgencyIssuerToken) ||
-		config.AgencyPrivateKey == config.AgencyPublicKey || config.AgencyPrivateKey == config.AgencyIssuerToken || config.AgencyPublicKey == config.AgencyIssuerToken) {
-		return Config{}, errors.New("agency private key, public key, and issuer token paths must be distinct absolute paths")
+	if config.AgencyEnabled && !distinctAbsolutePaths(config.AgencyPrivateKey, config.AgencyPublicKey, config.AgencyIssuerToken, config.AgencyAuthorityToken) {
+		return Config{}, errors.New("agency private key, public key, issuer token, and authority token paths must be distinct absolute paths")
+	}
+	if config.AgencyEnabled && !strings.HasPrefix(config.Listen, "unix://") {
+		return Config{}, errors.New("agency mode requires a local Unix socket listener")
 	}
 	return config, nil
 }
@@ -113,6 +117,24 @@ func (c Config) EnsureDirectories() error {
 		if err := os.MkdirAll(filepath.Dir(c.AgencyIssuerToken), 0o700); err != nil {
 			return fmt.Errorf("create agency issuer-token directory: %w", err)
 		}
+		if err := os.MkdirAll(filepath.Dir(c.AgencyAuthorityToken), 0o700); err != nil {
+			return fmt.Errorf("create agency authority-token directory: %w", err)
+		}
 	}
 	return nil
+}
+
+func distinctAbsolutePaths(paths ...string) bool {
+	seen := make(map[string]struct{}, len(paths))
+	for _, path := range paths {
+		if !filepath.IsAbs(path) {
+			return false
+		}
+		clean := filepath.Clean(path)
+		if _, exists := seen[clean]; exists {
+			return false
+		}
+		seen[clean] = struct{}{}
+	}
+	return true
 }

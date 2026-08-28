@@ -83,6 +83,7 @@ type IssueAgencyProposalResponse struct {
 
 type ClaimAgencyProposalsRequest struct {
 	ProtocolVersion string `json:"protocol_version"`
+	AuthorityToken  string `json:"authority_token"`
 	TenantID        string `json:"tenant_id"`
 	ConsumerID      string `json:"consumer_id"`
 	Limit           int    `json:"limit"`
@@ -96,6 +97,7 @@ type ClaimAgencyProposalsResponse struct {
 
 type ResolveAgencyProposalRequest struct {
 	ProtocolVersion string               `json:"protocol_version"`
+	AuthorityToken  string               `json:"authority_token"`
 	TenantID        string               `json:"tenant_id"`
 	ProposalID      string               `json:"proposal_id"`
 	ConsumerID      string               `json:"consumer_id"`

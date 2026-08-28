@@ -42,6 +42,9 @@
       "agencyPublicKeyPath": {
         "type": "string"
       },
+      "agencyAuthorityTokenPath": {
+        "type": "string"
+      },
       "agencyCapabilities": {
         "type": "array",
         "maxItems": 16,
@@ -117,6 +120,9 @@
     },
     "agencyPublicKeyPath": {
       "label": "Agency public key"
+    },
+    "agencyAuthorityTokenPath": {
+      "label": "Agency authority token"
     }
   }
 }

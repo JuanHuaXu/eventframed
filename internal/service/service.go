@@ -24,6 +24,8 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/store"
 )
 
+const maxAgencyIdentifierBytes = 256
+
 type Config struct {
 	DefaultRecallK       int
 	DefaultPackK         int
@@ -38,6 +40,7 @@ type Config struct {
 	AgencyPolicy         agency.Policy
 	AgencySigner         *agency.Signer
 	AgencyIssuerToken    string
+	AgencyAuthorityToken string
 }
 
 type Service struct {
@@ -80,8 +83,8 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	if !config.AgencyPolicy.Valid() {
 		config.AgencyPolicy = agency.DefaultPolicy(config.AgencyPolicy.Enabled)
 	}
-	if config.AgencyPolicy.Enabled && (config.AgencySigner == nil || len(config.AgencyIssuerToken) < 32) {
-		return nil, errors.New("enabled agency policy requires a proposal signer and issuer token")
+	if config.AgencyPolicy.Enabled && (config.AgencySigner == nil || len(config.AgencyIssuerToken) < 32 || len(config.AgencyAuthorityToken) < 32) {
+		return nil, errors.New("enabled agency policy requires a proposal signer, issuer token, and authority token")
 	}
 	policyDigest, err := bayesianPolicyDigest(config)
 	if err != nil {
@@ -670,8 +673,11 @@ func (s *Service) ClaimAgencyProposals(ctx context.Context, request model.ClaimA
 	if !s.config.AgencyPolicy.Enabled {
 		return model.ClaimAgencyProposalsResponse{}, errors.New("agency is disabled")
 	}
+	if subtle.ConstantTimeCompare([]byte(request.AuthorityToken), []byte(s.config.AgencyAuthorityToken)) != 1 {
+		return model.ClaimAgencyProposalsResponse{}, errors.New("agency authority authentication failed")
+	}
 	request.TenantID, request.ConsumerID = strings.TrimSpace(request.TenantID), strings.TrimSpace(request.ConsumerID)
-	if request.TenantID == "" || request.ConsumerID == "" {
+	if !boundedAgencyIdentifier(request.TenantID) || !boundedAgencyIdentifier(request.ConsumerID) {
 		return model.ClaimAgencyProposalsResponse{}, errors.New("tenant_id and consumer_id are required")
 	}
 	if request.Limit == 0 {
@@ -694,19 +700,32 @@ func (s *Service) ResolveAgencyProposal(ctx context.Context, request model.Resol
 	if !s.config.AgencyPolicy.Enabled {
 		return model.ResolveAgencyProposalResponse{}, errors.New("agency is disabled")
 	}
+	if subtle.ConstantTimeCompare([]byte(request.AuthorityToken), []byte(s.config.AgencyAuthorityToken)) != 1 {
+		return model.ResolveAgencyProposalResponse{}, errors.New("agency authority authentication failed")
+	}
 	request.TenantID, request.ProposalID, request.ConsumerID = strings.TrimSpace(request.TenantID), strings.TrimSpace(request.ProposalID), strings.TrimSpace(request.ConsumerID)
 	request.Reason, request.ExecutionRef = strings.TrimSpace(request.Reason), strings.TrimSpace(request.ExecutionRef)
-	if request.TenantID == "" || request.ProposalID == "" || request.ConsumerID == "" || request.Reason == "" || len(request.Reason) > 1024 || len(request.ExecutionRef) > 512 {
+	if !boundedAgencyIdentifier(request.TenantID) || !boundedAgencyIdentifier(request.ProposalID) || !boundedAgencyIdentifier(request.ConsumerID) || request.Reason == "" || len(request.Reason) > 1024 || len(request.ExecutionRef) > 512 {
 		return model.ResolveAgencyProposalResponse{}, errors.New("bounded tenant, proposal, consumer, and resolution reason are required")
 	}
 	if request.Decision != model.AgencyApproved && request.Decision != model.AgencyRejected {
 		return model.ResolveAgencyProposalResponse{}, errors.New("agency resolution must be approved or rejected")
+	}
+	if request.Decision == model.AgencyApproved && request.ExecutionRef == "" {
+		return model.ResolveAgencyProposalResponse{}, errors.New("approved agency resolution requires an execution_ref")
+	}
+	if request.Decision == model.AgencyRejected && request.ExecutionRef != "" {
+		return model.ResolveAgencyProposalResponse{}, errors.New("rejected agency resolution cannot carry an execution_ref")
 	}
 	result, err := s.store.ResolveAgencyProposal(ctx, request, time.Now().UTC())
 	if err != nil {
 		return model.ResolveAgencyProposalResponse{}, err
 	}
 	return model.ResolveAgencyProposalResponse{ProtocolVersion: model.ProtocolVersion, Duplicate: result.Duplicate, Record: result.Record, Snapshot: result.Snapshot}, nil
+}
+
+func boundedAgencyIdentifier(value string) bool {
+	return value != "" && len([]byte(value)) <= maxAgencyIdentifierBytes
 }
 
 func (s *Service) RollbackPredictiveSnap(ctx context.Context, request model.RollbackSnapRequest) (model.PredictiveSnapResponse, error) {

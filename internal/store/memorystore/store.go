@@ -87,7 +87,7 @@ func (s *Store) PutAgencyProposal(_ context.Context, record model.AgencyProposal
 			return store.AgencyPutResult{}, store.ErrAgencyEvidence
 		}
 	}
-	if !validAgencyParent(records, record.Proposal) || countAgencyChain(records, record.Proposal.CausalChainID) >= maxPerChain || countPendingAgency(records) >= maxPending {
+	if !validAgencyParent(records, record.Proposal) || countAgencyChain(records, record.Proposal.CausalChainID) >= maxPerChain || countPendingAgency(records, evidenceAvailableBy) >= maxPending {
 		return store.AgencyPutResult{}, store.ErrAgencyChainBudget
 	}
 	records[record.Proposal.ID] = record
@@ -152,14 +152,21 @@ func (s *Store) ResolveAgencyProposal(_ context.Context, request model.ResolveAg
 		}
 		return store.AgencyResolveResult{}, store.ErrAgencyConflict
 	}
-	if record.Status != model.AgencyClaimed || record.ClaimedBy != request.ConsumerID || now.After(record.LeaseUntil) {
+	if record.Status != model.AgencyClaimed || record.ClaimedBy != request.ConsumerID {
 		return store.AgencyResolveResult{}, store.ErrAgencyLease
 	}
-	decision := request.Decision
 	if !now.Before(record.Proposal.ExpiresAt) {
-		decision = model.AgencyExpired
+		record.Status, record.ResolutionReason, record.ResolvedAt = model.AgencyExpired, "proposal expired before authorization completed", now
+		record.ClaimedBy, record.LeaseUntil, record.ExecutionRef = "", time.Time{}, ""
+		s.agencyRecords[request.TenantID][request.ProposalID] = record
+		s.snapshot.RuntimeVersion++
+		s.snapshot.AgencyVersion++
+		return store.AgencyResolveResult{Record: record, Snapshot: s.snapshot}, store.ErrAgencyExpired
 	}
-	record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = decision, request.Reason, request.ExecutionRef, now
+	if !now.Before(record.LeaseUntil) {
+		return store.AgencyResolveResult{}, store.ErrAgencyLease
+	}
+	record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = request.Decision, request.Reason, request.ExecutionRef, now
 	record.ClaimedBy, record.LeaseUntil = "", time.Time{}
 	s.agencyRecords[request.TenantID][request.ProposalID] = record
 	s.snapshot.RuntimeVersion++
@@ -185,10 +192,10 @@ func countAgencyChain(records map[string]model.AgencyProposalRecord, chainID str
 	return count
 }
 
-func countPendingAgency(records map[string]model.AgencyProposalRecord) int {
+func countPendingAgency(records map[string]model.AgencyProposalRecord, now time.Time) int {
 	count := 0
 	for _, record := range records {
-		if record.Status == model.AgencyPending || record.Status == model.AgencyClaimed {
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
 			count++
 		}
 	}

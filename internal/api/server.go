@@ -89,7 +89,7 @@ func (s *Server) resolveAgencyProposal(writer http.ResponseWriter, request *http
 	}
 	response, err := s.service.ResolveAgencyProposal(request.Context(), input)
 	if err != nil {
-		if errors.Is(err, store.ErrAgencyConflict) || errors.Is(err, store.ErrAgencyLease) {
+		if errors.Is(err, store.ErrAgencyConflict) || errors.Is(err, store.ErrAgencyLease) || errors.Is(err, store.ErrAgencyExpired) {
 			writeError(writer, http.StatusConflict, "agency_conflict", err)
 			return
 		}

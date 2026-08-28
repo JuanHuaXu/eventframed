@@ -21,7 +21,7 @@ const proposal: AgencyProposal = {
   causal_chain_id: "chain-1",
   causal_chain_depth: 0,
   created_at: "2026-08-28T20:00:00Z",
-  contract_version: 6,
+  contract_version: 7,
 };
 
 function signedRecord(value: AgencyProposal): { record: AgencyProposalRecord; publicKey: string } {
@@ -56,6 +56,7 @@ function authorityConfig(): AdapterConfig {
     agencyEnabled: true,
     agencyKillSwitch: false,
     agencyPublicKeyPath: "/tmp/agency.pub",
+    agencyAuthorityTokenPath: "/tmp/authority.token",
     agencyCapabilities: ["eventframe.agency.notify"],
     agencyConsentActions: ["notify"],
     agencyConsumerId: "test-authority",
@@ -74,6 +75,12 @@ test("verifies the exact signed proposal and rejects tampering", () => {
   assert.deepEqual(verifyAgencyProposal(fixture.record, fixture.publicKey), proposal);
   fixture.record.signed.signature = Buffer.alloc(64).toString("base64url");
   assert.throws(() => verifyAgencyProposal(fixture.record, fixture.publicKey), /signature is invalid/);
+});
+
+test("accepts a still-valid contract-6 proposal after contract-7 queue migration", () => {
+  const legacy = { ...proposal, contract_version: 6 };
+  const fixture = signedRecord(legacy);
+  assert.equal(verifyAgencyProposal(fixture.record, fixture.publicKey).contract_version, 6);
 });
 
 test("requires consent, capability, session scope, and an inactive kill switch", () => {
@@ -118,7 +125,7 @@ test("schedules an authorized proposal and records durable approval", async () =
       return fixture.record;
     },
   };
-  await processAgencyClaim(api, client, authorityConfig(), fixture.publicKey, fixture.record, new Date("2026-08-28T21:30:00Z"));
+  await processAgencyClaim(api, client, authorityConfig(), fixture.publicKey, "test-authority-token", fixture.record, new Date("2026-08-28T21:30:00Z"));
   assert.deepEqual(calls.map((call) => call.kind), ["unschedule", "schedule", "resolve"]);
   assert.match(JSON.stringify(calls[1]?.value), /not permission to execute tools/);
   assert.match(JSON.stringify(calls[2]?.value), /"decision":"approved"/);
@@ -137,8 +144,68 @@ test("rolls back a scheduled turn before rejecting a failed durable handoff", as
       return fixture.record;
     },
   };
-  await processAgencyClaim(authorityAPI(calls), client, authorityConfig(), fixture.publicKey, fixture.record, new Date("2026-08-28T21:30:00Z"));
+  await processAgencyClaim(authorityAPI(calls), client, authorityConfig(), fixture.publicKey, "test-authority-token", fixture.record, new Date("2026-08-28T21:30:00Z"));
   assert.deepEqual(calls.map((call) => call.kind), ["unschedule", "schedule", "resolve", "unschedule", "resolve"]);
+  assert.match(JSON.stringify(calls.at(-1)?.value), /"decision":"rejected"/);
+});
+
+test("rolls back an ambiguous scheduler failure before recording rejection", async () => {
+  const fixture = signedRecord(proposal);
+  const calls: Array<{ kind: string; value: unknown }> = [];
+  let unschedules = 0;
+  const api = {
+    logger: { warn(message: unknown) { calls.push({ kind: "warn", value: message }); } },
+    session: {
+      workflow: {
+        async unscheduleSessionTurnsByTag(input: unknown) {
+          unschedules++;
+          calls.push({ kind: "unschedule", value: input });
+        },
+        async scheduleSessionTurn(input: unknown) {
+          calls.push({ kind: "schedule", value: input });
+          throw new Error("scheduler response was lost");
+        },
+      },
+    },
+  } as unknown as OpenClawPluginApi;
+  const client = {
+    async claimAgency() { throw new Error("unused"); },
+    async resolveAgency(input: unknown) {
+      calls.push({ kind: "resolve", value: input });
+      return fixture.record;
+    },
+  };
+  await processAgencyClaim(api, client, authorityConfig(), fixture.publicKey, "test-authority-token", fixture.record, new Date("2026-08-28T21:30:00Z"));
+  assert.equal(unschedules, 2);
+  assert.match(JSON.stringify(calls.at(-1)?.value), /"decision":"rejected"/);
+});
+
+test("rolls back a turn when authority stops during scheduling", async () => {
+  const fixture = signedRecord(proposal);
+  const calls: Array<{ kind: string; value: unknown }> = [];
+  let active = true;
+  const api = {
+    logger: { warn(message: unknown) { calls.push({ kind: "warn", value: message }); } },
+    session: {
+      workflow: {
+        async unscheduleSessionTurnsByTag(input: unknown) { calls.push({ kind: "unschedule", value: input }); },
+        async scheduleSessionTurn(input: unknown) {
+          calls.push({ kind: "schedule", value: input });
+          active = false;
+          return { id: "job-1" };
+        },
+      },
+    },
+  } as unknown as OpenClawPluginApi;
+  const client = {
+    async claimAgency() { throw new Error("unused"); },
+    async resolveAgency(input: unknown) {
+      calls.push({ kind: "resolve", value: input });
+      return fixture.record;
+    },
+  };
+  await processAgencyClaim(api, client, authorityConfig(), fixture.publicKey, "test-authority-token", fixture.record, new Date("2026-08-28T21:30:00Z"), () => active);
+  assert.deepEqual(calls.map((call) => call.kind), ["unschedule", "schedule", "unschedule", "resolve"]);
   assert.match(JSON.stringify(calls.at(-1)?.value), /"decision":"rejected"/);
 });
 

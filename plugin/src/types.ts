@@ -90,6 +90,7 @@ export type AdapterConfig = {
   agencyEnabled: boolean;
   agencyKillSwitch: boolean;
   agencyPublicKeyPath: string;
+  agencyAuthorityTokenPath: string;
   agencyCapabilities: string[];
   agencyConsentActions: AgencyAction[];
   agencyConsumerId: string;

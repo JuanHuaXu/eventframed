@@ -63,6 +63,7 @@ func run(args []string) error {
 	}
 	var agencySigner *agency.Signer
 	var agencyIssuerToken string
+	var agencyAuthorityToken string
 	if settings.AgencyEnabled {
 		agencySigner, err = agency.LoadOrCreateSigner(settings.AgencyPrivateKey, settings.AgencyPublicKey)
 		if err != nil {
@@ -74,16 +75,22 @@ func run(args []string) error {
 			_ = eventStore.Close()
 			return fmt.Errorf("load agency issuer token: %w", err)
 		}
+		agencyAuthorityToken, err = agency.LoadOrCreateAuthorityToken(settings.AgencyAuthorityToken)
+		if err != nil {
+			_ = eventStore.Close()
+			return fmt.Errorf("load agency authority token: %w", err)
+		}
 	}
 	runtime, err := service.New(eventStore, activeEmbedder, service.Config{
-		DefaultRecallK:      settings.RecallK,
-		DefaultPackK:        settings.PackK,
-		DefaultTokenBudget:  settings.TokenBudget,
-		OverfetchMultiplier: 4,
-		Quantization:        settings.Quantization,
-		AgencyPolicy:        agency.DefaultPolicy(settings.AgencyEnabled),
-		AgencySigner:        agencySigner,
-		AgencyIssuerToken:   agencyIssuerToken,
+		DefaultRecallK:       settings.RecallK,
+		DefaultPackK:         settings.PackK,
+		DefaultTokenBudget:   settings.TokenBudget,
+		OverfetchMultiplier:  4,
+		Quantization:         settings.Quantization,
+		AgencyPolicy:         agency.DefaultPolicy(settings.AgencyEnabled),
+		AgencySigner:         agencySigner,
+		AgencyIssuerToken:    agencyIssuerToken,
+		AgencyAuthorityToken: agencyAuthorityToken,
 	})
 	if err != nil {
 		_ = eventStore.Close()

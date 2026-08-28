@@ -8,6 +8,8 @@ import type { AdapterConfig, AgencyAction, AgencyProposal, AgencyProposalRecord 
 
 const ED25519_SPKI_PREFIX = Buffer.from("302a300506032b6570032100", "hex");
 const MAX_SIGNED_PAYLOAD_BYTES = 16 << 10;
+const MAX_IDENTIFIER_BYTES = 256;
+const MAX_SESSION_ID_BYTES = 1024;
 type AgencyClient = Pick<EventFrameClient, "claimAgency" | "resolveAgency">;
 
 export function registerAgencyService(api: OpenClawPluginApi, client: AgencyClient, config: AdapterConfig): void {
@@ -16,19 +18,24 @@ export function registerAgencyService(api: OpenClawPluginApi, client: AgencyClie
   }
   let timer: NodeJS.Timeout | undefined;
   let polling = false;
+  let active = false;
+  let generation = 0;
   let publicKeyText = "";
+  let authorityToken = "";
 
   const poll = async (): Promise<void> => {
-    if (polling) return;
+    if (polling || !active) return;
     polling = true;
     try {
       const claims = await client.claimAgency({
+        authorityToken,
         tenantId: config.tenantId,
         consumerId: config.agencyConsumerId,
         limit: config.agencyMaxClaims,
       });
       for (const record of claims.records) {
-        await processAgencyClaim(api, client, config, publicKeyText, record);
+        if (!active) break;
+        await processAgencyClaim(api, client, config, publicKeyText, authorityToken, record, new Date(), () => active);
       }
     } catch (error) {
       api.logger.warn(`eventframe-memory: agency poll skipped: ${String(error)}`);
@@ -40,12 +47,18 @@ export function registerAgencyService(api: OpenClawPluginApi, client: AgencyClie
   api.registerService({
     id: "eventframe-agency-authority",
     async start() {
+      const run = ++generation;
       publicKeyText = await fs.readFile(expandHome(config.agencyPublicKeyPath), "utf8");
+      authorityToken = await readAuthorityToken(expandHome(config.agencyAuthorityTokenPath));
+      if (run !== generation) return;
+      active = true;
       await poll();
       timer = setInterval(() => void poll(), config.agencyPollIntervalMs);
       timer.unref?.();
     },
     stop() {
+      generation++;
+      active = false;
       if (timer) clearInterval(timer);
       timer = undefined;
     },
@@ -57,26 +70,30 @@ export async function processAgencyClaim(
   client: AgencyClient,
   config: AdapterConfig,
   publicKeyText: string,
+  authorityToken: string,
   record: AgencyProposalRecord,
   now = new Date(),
+  authorityActive: () => boolean = () => true,
 ): Promise<void> {
+  if (!authorityActive()) return;
   if (record.claimed_by !== config.agencyConsumerId) {
-    await rejectClaim(client, config, record, "proposal lease belongs to a different authority consumer");
+    await rejectClaim(client, config, authorityToken, record, "proposal lease belongs to a different authority consumer");
     return;
   }
   let proposal: AgencyProposal;
   try {
     proposal = verifyAgencyProposal(record, publicKeyText);
   } catch (error) {
-    await rejectClaim(client, config, record, `signature or proposal validation failed: ${String(error)}`);
+    await rejectClaim(client, config, authorityToken, record, `signature or proposal validation failed: ${String(error)}`);
     return;
   }
   const gate = evaluateAgencyProposal(proposal, config, now);
   if (!gate.allowed || !gate.deliverAt) {
-    await rejectClaim(client, config, record, gate.reason);
+    await rejectClaim(client, config, authorityToken, record, gate.reason);
     return;
   }
   const tag = `efagency-${createHash("sha256").update(proposal.id).digest("hex").slice(0, 20)}`;
+  if (!authorityActive()) return;
   let handle: { id: string };
   try {
     await api.session.workflow.unscheduleSessionTurnsByTag({ sessionKey: proposal.session_id, tag });
@@ -93,7 +110,23 @@ export async function processAgencyClaim(
     }
     handle = scheduled;
   } catch (error) {
-    await rejectClaim(client, config, record, `OpenClaw scheduling failed: ${String(error)}`);
+    try {
+      await api.session.workflow.unscheduleSessionTurnsByTag({ sessionKey: proposal.session_id, tag });
+    } catch (rollbackError) {
+      api.logger.warn(`eventframe-memory: scheduling failed and rollback is uncertain: ${String(error)}; ${String(rollbackError)}`);
+      return;
+    }
+    await rejectClaim(client, config, authorityToken, record, `OpenClaw scheduling failed; deterministic tag rolled back: ${String(error)}`);
+    return;
+  }
+  if (!authorityActive()) {
+    try {
+      await api.session.workflow.unscheduleSessionTurnsByTag({ sessionKey: proposal.session_id, tag });
+    } catch (rollbackError) {
+      api.logger.warn(`eventframe-memory: authority stopped and scheduler rollback is uncertain: ${String(rollbackError)}`);
+      return;
+    }
+    await rejectClaim(client, config, authorityToken, record, "authority stopped before durable approval; scheduled turn rolled back");
     return;
   }
   try {
@@ -101,6 +134,7 @@ export async function processAgencyClaim(
       tenantId: proposal.tenant_id,
       proposalId: proposal.id,
       consumerId: config.agencyConsumerId,
+      authorityToken,
       decision: "approved",
       reason: "authorized by the OpenClaw EventFrame authority policy",
       executionRef: handle.id,
@@ -112,13 +146,14 @@ export async function processAgencyClaim(
       api.logger.warn(`eventframe-memory: approval failed and scheduler rollback is uncertain: ${String(error)}; ${String(rollbackError)}`);
       return;
     }
-    await rejectClaim(client, config, record, `durable approval failed; scheduled turn rolled back: ${String(error)}`);
+    await rejectClaim(client, config, authorityToken, record, `durable approval failed; scheduled turn rolled back: ${String(error)}`);
   }
 }
 
 async function rejectClaim(
   client: AgencyClient,
   config: AdapterConfig,
+  authorityToken: string,
   record: AgencyProposalRecord,
   reason: string,
 ): Promise<void> {
@@ -130,6 +165,7 @@ async function rejectClaim(
       tenantId,
       proposalId,
       consumerId: config.agencyConsumerId,
+      authorityToken,
       decision: "rejected",
       reason: reason.slice(0, 1024),
     });
@@ -194,21 +230,28 @@ function validateAgencyProposal(value: unknown): asserts value is AgencyProposal
   const capability = action === "wake" ? "eventframe.agency.wake" : action === "notify" ? "eventframe.agency.notify" : action === "schedule" ? "eventframe.agency.schedule" : "";
   if (
     typeof value.id !== "string" || !value.id ||
+    Buffer.byteLength(value.id) > MAX_IDENTIFIER_BYTES ||
     typeof value.tenant_id !== "string" || !value.tenant_id ||
+    Buffer.byteLength(value.tenant_id) > MAX_IDENTIFIER_BYTES ||
     typeof value.session_id !== "string" || !value.session_id ||
+    Buffer.byteLength(value.session_id) > MAX_SESSION_ID_BYTES ||
     !capability || value.required_capability !== capability ||
     typeof value.reason !== "string" || !value.reason || Buffer.byteLength(value.reason) > 4096 ||
-    !Array.isArray(value.evidence_ids) || value.evidence_ids.length < 1 || value.evidence_ids.length > 32 || value.evidence_ids.some((id) => typeof id !== "string" || !id) ||
+    !Array.isArray(value.evidence_ids) || value.evidence_ids.length < 1 || value.evidence_ids.length > 32 || value.evidence_ids.some((id) => typeof id !== "string" || !id || Buffer.byteLength(id) > MAX_IDENTIFIER_BYTES) ||
     typeof value.expected_utility !== "number" || value.expected_utility <= 0 || value.expected_utility > 1 ||
     typeof value.priority !== "number" || value.priority < 0 || value.priority > 1 ||
-    value.idempotency_key !== value.id || typeof value.causal_chain_id !== "string" || !value.causal_chain_id ||
+    value.idempotency_key !== value.id || typeof value.causal_chain_id !== "string" || !value.causal_chain_id || Buffer.byteLength(value.causal_chain_id) > MAX_IDENTIFIER_BYTES ||
     typeof value.causal_chain_depth !== "number" || !Number.isInteger(value.causal_chain_depth) || value.causal_chain_depth < 0 ||
-    typeof value.contract_version !== "number" || value.contract_version !== 6 ||
-    typeof value.not_before !== "string" || typeof value.expires_at !== "string"
+    typeof value.contract_version !== "number" || (value.contract_version !== 6 && value.contract_version !== 7) ||
+    typeof value.not_before !== "string" || typeof value.expires_at !== "string" || typeof value.created_at !== "string"
   ) {
     throw new Error("proposal payload violates the authority contract");
   }
   if (new Set(value.evidence_ids).size !== value.evidence_ids.length) throw new Error("proposal evidence ids are not unique");
+  if (value.causal_chain_depth === 0 && value.parent_proposal_id !== undefined) throw new Error("root proposal has a parent");
+  if (value.causal_chain_depth > 0 && (typeof value.parent_proposal_id !== "string" || !value.parent_proposal_id || Buffer.byteLength(value.parent_proposal_id) > MAX_IDENTIFIER_BYTES)) {
+    throw new Error("child proposal parent is malformed");
+  }
   if ((action === "schedule") !== (typeof value.scheduled_for === "string")) throw new Error("schedule timing is malformed");
 }
 
@@ -248,6 +291,18 @@ function escapeText(value: string): string {
 function expandHome(value: string): string {
   if (value === "~") return os.homedir();
   return value.startsWith(`~${path.sep}`) ? path.join(os.homedir(), value.slice(2)) : value;
+}
+
+async function readAuthorityToken(tokenPath: string): Promise<string> {
+  const info = await fs.lstat(tokenPath);
+  if (!info.isFile() || info.isSymbolicLink() || (info.mode & 0o077) !== 0) {
+    throw new Error("agency authority token must be a mode-0600 regular non-symlink file");
+  }
+  const value = (await fs.readFile(tokenPath, "utf8")).trim();
+  if (!/^[A-Za-z0-9_-]{43}$/.test(value) || Buffer.from(value, "base64url").toString("base64url") !== value) {
+    throw new Error("agency authority token is malformed");
+  }
+  return value;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

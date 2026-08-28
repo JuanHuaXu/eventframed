@@ -3,6 +3,7 @@ package service_test
 import (
 	"context"
 	"errors"
+	"strings"
 	"testing"
 	"time"
 
@@ -15,6 +16,8 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/testutil"
 )
 
+const testAuthorityToken = "test-authority-token-that-is-at-least-32-bytes"
+
 func TestAgencyIssueClaimResolveAndCausalBudget(t *testing.T) {
 	ctx := context.Background()
 	memory := memorystore.New()
@@ -25,7 +28,7 @@ func TestAgencyIssueClaimResolveAndCausalBudget(t *testing.T) {
 	}
 	policy := agency.DefaultPolicy(true)
 	policy.MaxProposalsPerChain = 2
-	runtime, err := service.New(memory, embedder, service.Config{DefaultRecallK: 10, DefaultPackK: 10, DefaultTokenBudget: 1000, AgencyPolicy: policy, AgencySigner: signer, AgencyIssuerToken: "test-issuer-token-that-is-at-least-32-bytes"})
+	runtime, err := service.New(memory, embedder, service.Config{DefaultRecallK: 10, DefaultPackK: 10, DefaultTokenBudget: 1000, AgencyPolicy: policy, AgencySigner: signer, AgencyIssuerToken: "test-issuer-token-that-is-at-least-32-bytes", AgencyAuthorityToken: testAuthorityToken})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -46,6 +49,9 @@ func TestAgencyIssueClaimResolveAndCausalBudget(t *testing.T) {
 	if err != nil || issued.Duplicate || issued.Record.Status != model.AgencyPending || issued.Snapshot.AgencyVersion != 2 {
 		t.Fatalf("issued = %+v, %v", issued, err)
 	}
+	if _, err := runtime.ClaimAgencyProposals(ctx, model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, AuthorityToken: testAuthorityToken, TenantID: "tenant-a", ConsumerID: strings.Repeat("x", 257), Limit: 1}); err == nil {
+		t.Fatal("oversized authority consumer id was accepted")
+	}
 	duplicate, err := runtime.IssueAgencyProposal(ctx, root)
 	if err != nil || !duplicate.Duplicate || duplicate.Record.Signed != issued.Record.Signed {
 		t.Fatalf("duplicate = %+v, %v", duplicate, err)
@@ -60,19 +66,32 @@ func TestAgencyIssueClaimResolveAndCausalBudget(t *testing.T) {
 		t.Fatalf("chain budget error = %v", err)
 	}
 
-	claimed, err := runtime.ClaimAgencyProposals(ctx, model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ConsumerID: "authority-a", Limit: 1})
+	if _, err := runtime.ClaimAgencyProposals(ctx, model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ConsumerID: "authority-a", Limit: 1}); err == nil {
+		t.Fatal("claim without authority token was accepted")
+	}
+	claimed, err := runtime.ClaimAgencyProposals(ctx, model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, AuthorityToken: testAuthorityToken, TenantID: "tenant-a", ConsumerID: "authority-a", Limit: 1})
 	if err != nil || len(claimed.Records) != 1 || claimed.Records[0].Proposal.ID != "proposal-root" || claimed.Records[0].Status != model.AgencyClaimed {
 		t.Fatalf("claimed = %+v, %v", claimed, err)
 	}
-	secondClaim, err := runtime.ClaimAgencyProposals(ctx, model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ConsumerID: "authority-b", Limit: 1})
+	secondClaim, err := runtime.ClaimAgencyProposals(ctx, model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, AuthorityToken: testAuthorityToken, TenantID: "tenant-a", ConsumerID: "authority-b", Limit: 1})
 	if err != nil || len(secondClaim.Records) != 1 || secondClaim.Records[0].Proposal.ID != "proposal-child" {
 		t.Fatalf("second claim = %+v, %v", secondClaim, err)
 	}
-	resolution := model.ResolveAgencyProposalRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ProposalID: "proposal-root", ConsumerID: "authority-b", Decision: model.AgencyApproved, Reason: "authorized", ExecutionRef: "job-1"}
+	resolution := model.ResolveAgencyProposalRequest{ProtocolVersion: model.ProtocolVersion, AuthorityToken: testAuthorityToken, TenantID: "tenant-a", ProposalID: "proposal-root", ConsumerID: "authority-b", Decision: model.AgencyApproved, Reason: "authorized", ExecutionRef: "job-1"}
+	unauthenticatedResolution := resolution
+	unauthenticatedResolution.AuthorityToken = "wrong-authority-token-that-is-at-least-32-bytes"
+	if _, err := runtime.ResolveAgencyProposal(ctx, unauthenticatedResolution); err == nil {
+		t.Fatal("resolution with wrong authority token was accepted")
+	}
 	if _, err := runtime.ResolveAgencyProposal(ctx, resolution); !errors.Is(err, store.ErrAgencyLease) {
 		t.Fatalf("rival resolution error = %v", err)
 	}
 	resolution.ConsumerID = "authority-a"
+	withoutExecution := resolution
+	withoutExecution.ExecutionRef = ""
+	if _, err := runtime.ResolveAgencyProposal(ctx, withoutExecution); err == nil {
+		t.Fatal("approval without execution_ref was accepted")
+	}
 	approved, err := runtime.ResolveAgencyProposal(ctx, resolution)
 	if err != nil || approved.Record.Status != model.AgencyApproved || approved.Record.ExecutionRef != "job-1" {
 		t.Fatalf("approved = %+v, %v", approved, err)
@@ -82,6 +101,7 @@ func TestAgencyIssueClaimResolveAndCausalBudget(t *testing.T) {
 		t.Fatalf("duplicate resolution = %+v, %v", again, err)
 	}
 	resolution.Decision = model.AgencyRejected
+	resolution.ExecutionRef = ""
 	if _, err := runtime.ResolveAgencyProposal(ctx, resolution); !errors.Is(err, store.ErrAgencyConflict) {
 		t.Fatalf("terminal conflict = %v", err)
 	}
@@ -90,7 +110,7 @@ func TestAgencyIssueClaimResolveAndCausalBudget(t *testing.T) {
 	if err != nil || !deleted.Deleted || deleted.Snapshot.AgencyVersion != beforeDelete.AgencyVersion+1 {
 		t.Fatalf("agency-aware delete = %+v, %v", deleted, err)
 	}
-	afterDelete, err := runtime.ClaimAgencyProposals(ctx, model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ConsumerID: "authority-c", Limit: 10})
+	afterDelete, err := runtime.ClaimAgencyProposals(ctx, model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, AuthorityToken: testAuthorityToken, TenantID: "tenant-a", ConsumerID: "authority-c", Limit: 10})
 	if err != nil || len(afterDelete.Records) != 0 {
 		t.Fatalf("deleted evidence left claimable proposals: %+v, %v", afterDelete, err)
 	}

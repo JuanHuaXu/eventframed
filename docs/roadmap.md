@@ -40,7 +40,7 @@
 - [x] Signed data-only wake/notify/schedule proposals
 - [x] Capability and consent checks in the OpenClaw authority layer
 - [x] Expiry, idempotency, causal-chain budgets, quiet hours, and kill switch
-- [x] Durable claim leases, restart recovery, and evidence-deletion cancellation
+- [x] Authenticated durable claim leases, bounded active projection, restart recovery, and evidence-deletion cancellation
 - [x] No direct tool execution by `eventframed`
 
 ## Required evidence before production

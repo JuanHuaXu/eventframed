@@ -58,9 +58,10 @@ export class EventFrameClient {
     return parseContextPacket(value);
   }
 
-  async claimAgency(input: { tenantId: string; consumerId: string; limit: number }): Promise<AgencyClaimResponse> {
+  async claimAgency(input: { authorityToken: string; tenantId: string; consumerId: string; limit: number }): Promise<AgencyClaimResponse> {
     const value = await this.request("POST", "/v1/agency/proposals:claim", {
       protocol_version: PROTOCOL_VERSION,
+      authority_token: input.authorityToken,
       tenant_id: input.tenantId,
       consumer_id: input.consumerId,
       limit: input.limit,
@@ -72,12 +73,14 @@ export class EventFrameClient {
     tenantId: string;
     proposalId: string;
     consumerId: string;
+    authorityToken: string;
     decision: "approved" | "rejected";
     reason: string;
     executionRef?: string;
   }): Promise<AgencyProposalRecord> {
     const value = await this.request("POST", "/v1/agency/proposals:resolve", {
       protocol_version: PROTOCOL_VERSION,
+      authority_token: input.authorityToken,
       tenant_id: input.tenantId,
       proposal_id: input.proposalId,
       consumer_id: input.consumerId,
@@ -86,7 +89,14 @@ export class EventFrameClient {
       execution_ref: input.executionRef ?? "",
     });
     assertProtocol(value);
-    if (!isRecord(value.record) || !isRecord(value.record.proposal) || typeof value.record.proposal.id !== "string") {
+    if (
+      !isRecord(value.record) ||
+      !isRecord(value.record.proposal) ||
+      value.record.proposal.id !== input.proposalId ||
+      value.record.proposal.tenant_id !== input.tenantId ||
+      value.record.status !== input.decision ||
+      (input.decision === "approved" && value.record.execution_ref !== input.executionRef)
+    ) {
       throw new Error("eventframed returned a malformed agency resolution");
     }
     return value.record as AgencyProposalRecord;

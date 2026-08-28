@@ -36,6 +36,7 @@ type Store struct {
 	collections  map[string]*libra.Collection
 	bayesian     *libra.Collection
 	agency       *libra.Collection
+	agencyActive map[string]*libra.Collection
 	policyDigest string
 	snapshot     model.Snapshot
 }
@@ -71,7 +72,7 @@ func Open(config Config) (*Store, error) {
 	if err != nil {
 		return nil, fmt.Errorf("open libravdb: %w", err)
 	}
-	s := &Store{db: db, config: config, collections: make(map[string]*libra.Collection)}
+	s := &Store{db: db, config: config, collections: make(map[string]*libra.Collection), agencyActive: make(map[string]*libra.Collection)}
 	if err := s.loadOrInitializeState(context.Background()); err != nil {
 		_ = db.Close()
 		return nil, err
@@ -543,6 +544,15 @@ func (s *Store) PutAgencyProposal(ctx context.Context, agencyRecord model.Agency
 		if decodeErr != nil {
 			return store.AgencyPutResult{}, decodeErr
 		}
+		if (decoded.Status == model.AgencyPending || decoded.Status == model.AgencyClaimed) && decoded.Proposal.ExpiresAt.After(evidenceAvailableBy) {
+			active, _, activeErr := s.activeAgencyCollection(ctx, decoded.Proposal.TenantID)
+			if activeErr != nil {
+				return store.AgencyPutResult{}, activeErr
+			}
+			if repairErr := active.Upsert(ctx, recordID, nil, existing.Metadata); repairErr != nil {
+				return store.AgencyPutResult{}, fmt.Errorf("repair active agency projection: %w", repairErr)
+			}
+		}
 		return store.AgencyPutResult{Duplicate: true, Record: decoded, Snapshot: s.snapshot}, nil
 	} else if !errors.Is(err, libra.ErrRecordNotFound) {
 		return store.AgencyPutResult{}, err
@@ -570,7 +580,7 @@ func (s *Store) PutAgencyProposal(ctx context.Context, agencyRecord model.Agency
 	for _, current := range records {
 		byID[current.Proposal.ID] = current
 	}
-	if !validAgencyParentRecords(byID, agencyRecord.Proposal) || countAgencyChainRecords(records, agencyRecord.Proposal.CausalChainID) >= maxPerChain || countPendingAgencyRecords(records) >= maxPending {
+	if !validAgencyParentRecords(byID, agencyRecord.Proposal) || countAgencyChainRecords(records, agencyRecord.Proposal.CausalChainID) >= maxPerChain || countPendingAgencyRecords(records, evidenceAvailableBy) >= maxPending {
 		return store.AgencyPutResult{}, store.ErrAgencyChainBudget
 	}
 	next := agencyMutatedSnapshot(s.snapshot)
@@ -582,8 +592,15 @@ func (s *Store) PutAgencyProposal(ctx context.Context, agencyRecord model.Agency
 	if err != nil {
 		return store.AgencyPutResult{}, err
 	}
+	_, activeName, err := s.activeAgencyCollection(ctx, agencyRecord.Proposal.TenantID)
+	if err != nil {
+		return store.AgencyPutResult{}, err
+	}
 	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
 		if err := tx.Upsert(ctx, agencyCollection, recordID, nil, metadata); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, activeName, recordID, nil, metadata); err != nil {
 			return err
 		}
 		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
@@ -597,7 +614,11 @@ func (s *Store) PutAgencyProposal(ctx context.Context, agencyRecord model.Agency
 func (s *Store) ClaimAgencyProposals(ctx context.Context, tenantID, consumerID string, now time.Time, limit int, lease time.Duration) ([]model.AgencyProposalRecord, model.Snapshot, error) {
 	s.writeMu.Lock()
 	defer s.writeMu.Unlock()
-	records, err := s.listAgencyRecords(ctx, tenantID)
+	activeCollection, activeName, err := s.activeAgencyCollection(ctx, tenantID)
+	if err != nil {
+		return nil, model.Snapshot{}, err
+	}
+	records, err := listAgencyRecordsFrom(ctx, activeCollection, tenantID)
 	if err != nil {
 		return nil, model.Snapshot{}, err
 	}
@@ -658,6 +679,13 @@ func (s *Store) ClaimAgencyProposals(ctx context.Context, tenantID, consumerID s
 			if upsertErr := tx.Upsert(ctx, agencyCollection, agencyProposalRecordID(tenantID, id), nil, metadata); upsertErr != nil {
 				return upsertErr
 			}
+			if updates[id].Status == model.AgencyExpired {
+				if deleteErr := tx.Delete(ctx, activeName, agencyProposalRecordID(tenantID, id)); deleteErr != nil {
+					return deleteErr
+				}
+			} else if upsertErr := tx.Upsert(ctx, activeName, agencyProposalRecordID(tenantID, id), nil, metadata); upsertErr != nil {
+				return upsertErr
+			}
 		}
 		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
 	}); err != nil {
@@ -688,27 +716,46 @@ func (s *Store) ResolveAgencyProposal(ctx context.Context, request model.Resolve
 		}
 		return store.AgencyResolveResult{}, store.ErrAgencyConflict
 	}
-	if record.Status != model.AgencyClaimed || record.ClaimedBy != request.ConsumerID || now.After(record.LeaseUntil) {
+	if record.Status != model.AgencyClaimed || record.ClaimedBy != request.ConsumerID {
 		return store.AgencyResolveResult{}, store.ErrAgencyLease
 	}
-	decision := request.Decision
 	if !now.Before(record.Proposal.ExpiresAt) {
-		decision = model.AgencyExpired
+		record.Status, record.ResolutionReason, record.ResolvedAt = model.AgencyExpired, "proposal expired before authorization completed", now
+		record.ClaimedBy, record.LeaseUntil, record.ExecutionRef = "", time.Time{}, ""
+		result, persistErr := s.persistAgencyResolution(ctx, recordID, record, stored.Metadata["content_digest"], agencyMutatedSnapshot(s.snapshot))
+		if persistErr != nil {
+			return store.AgencyResolveResult{}, persistErr
+		}
+		return result, store.ErrAgencyExpired
 	}
-	record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = decision, request.Reason, request.ExecutionRef, now
+	if !now.Before(record.LeaseUntil) {
+		return store.AgencyResolveResult{}, store.ErrAgencyLease
+	}
+	record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = request.Decision, request.Reason, request.ExecutionRef, now
 	record.ClaimedBy, record.LeaseUntil = "", time.Time{}
 	next := agencyMutatedSnapshot(s.snapshot)
+	return s.persistAgencyResolution(ctx, recordID, record, stored.Metadata["content_digest"], next)
+}
+
+func (s *Store) persistAgencyResolution(ctx context.Context, recordID string, record model.AgencyProposalRecord, contentDigest interface{}, next model.Snapshot) (store.AgencyResolveResult, error) {
+	_, activeName, err := s.activeAgencyCollection(ctx, record.Proposal.TenantID)
+	if err != nil {
+		return store.AgencyResolveResult{}, err
+	}
 	metadata, err := encodeAgencyMetadata(record, "")
 	if err != nil {
 		return store.AgencyResolveResult{}, err
 	}
-	metadata["content_digest"] = stored.Metadata["content_digest"]
+	metadata["content_digest"] = contentDigest
 	state, err := s.stateMetadata(next)
 	if err != nil {
 		return store.AgencyResolveResult{}, err
 	}
 	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
 		if err := tx.Upsert(ctx, agencyCollection, recordID, nil, metadata); err != nil {
+			return err
+		}
+		if err := tx.Delete(ctx, activeName, recordID); err != nil {
 			return err
 		}
 		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
@@ -796,14 +843,18 @@ type snapInvalidation struct {
 	metadata map[string]interface{}
 }
 
-func (s *Store) agencyDeletionUpdates(ctx context.Context, tenantID string, eventIDs []string, now time.Time) ([]snapInvalidation, error) {
+func (s *Store) agencyDeletionUpdates(ctx context.Context, tenantID string, eventIDs []string, now time.Time) ([]snapInvalidation, string, error) {
 	deleted := make(map[string]struct{}, len(eventIDs))
 	for _, id := range eventIDs {
 		deleted[id] = struct{}{}
 	}
-	records, err := s.agency.ListAll(ctx)
+	active, activeName, err := s.activeAgencyCollection(ctx, tenantID)
 	if err != nil {
-		return nil, err
+		return nil, "", err
+	}
+	records, err := active.ListAll(ctx)
+	if err != nil {
+		return nil, "", err
 	}
 	updates := make([]snapInvalidation, 0)
 	for _, stored := range records {
@@ -812,7 +863,7 @@ func (s *Store) agencyDeletionUpdates(ctx context.Context, tenantID string, even
 		}
 		record, decodeErr := decodeAgencyRecord(stored.Metadata)
 		if decodeErr != nil {
-			return nil, decodeErr
+			return nil, "", decodeErr
 		}
 		if record.Proposal.TenantID != tenantID || record.Status != model.AgencyPending && record.Status != model.AgencyClaimed {
 			continue
@@ -831,12 +882,12 @@ func (s *Store) agencyDeletionUpdates(ctx context.Context, tenantID string, even
 		record.ResolutionReason, record.ResolvedAt = "supporting evidence was deleted", now
 		metadata, encodeErr := encodeAgencyMetadata(record, "")
 		if encodeErr != nil {
-			return nil, encodeErr
+			return nil, "", encodeErr
 		}
 		metadata["content_digest"] = stored.Metadata["content_digest"]
 		updates = append(updates, snapInvalidation{id: stored.ID, metadata: metadata})
 	}
-	return updates, nil
+	return updates, activeName, nil
 }
 
 func (s *Store) snapInvalidations(ctx context.Context, tenantID string, closure model.DependencyClosure) ([]snapInvalidation, error) {
@@ -1048,7 +1099,7 @@ func (s *Store) Delete(ctx context.Context, tenantID, eventID string) (store.Del
 	} else if err != nil {
 		return store.DeleteResult{}, err
 	}
-	agencyUpdates, err := s.agencyDeletionUpdates(ctx, tenantID, []string{eventID}, time.Now().UTC())
+	agencyUpdates, activeAgencyName, err := s.agencyDeletionUpdates(ctx, tenantID, []string{eventID}, time.Now().UTC())
 	if err != nil {
 		return store.DeleteResult{}, err
 	}
@@ -1067,6 +1118,9 @@ func (s *Store) Delete(ctx context.Context, tenantID, eventID string) (store.Del
 		}
 		for _, item := range agencyUpdates {
 			if err := tx.Upsert(ctx, agencyCollection, item.id, nil, item.metadata); err != nil {
+				return err
+			}
+			if err := tx.Delete(ctx, activeAgencyName, item.id); err != nil {
 				return err
 			}
 		}
@@ -1124,7 +1178,7 @@ func (s *Store) DeleteBefore(ctx context.Context, tenantID string, before time.T
 	if len(ids) == 0 {
 		return store.RetentionResult{Snapshot: s.snapshot}, nil
 	}
-	agencyUpdates, err := s.agencyDeletionUpdates(ctx, tenantID, ids, time.Now().UTC())
+	agencyUpdates, activeAgencyName, err := s.agencyDeletionUpdates(ctx, tenantID, ids, time.Now().UTC())
 	if err != nil {
 		return store.RetentionResult{}, err
 	}
@@ -1143,6 +1197,9 @@ func (s *Store) DeleteBefore(ctx context.Context, tenantID string, before time.T
 		}
 		for _, item := range agencyUpdates {
 			if err := tx.Upsert(ctx, agencyCollection, item.id, nil, item.metadata); err != nil {
+				return err
+			}
+			if err := tx.Delete(ctx, activeAgencyName, item.id); err != nil {
 				return err
 			}
 		}
@@ -1229,6 +1286,26 @@ func collectionName(tenantID, embeddingModel string) string {
 	return "events_v2_" + hex.EncodeToString(digest[:12])
 }
 
+func agencyActiveCollectionName(tenantID string) string {
+	digest := sha256.Sum256([]byte(tenantID))
+	return "_eventframe_agency_active_" + hex.EncodeToString(digest[:12])
+}
+
+func (s *Store) activeAgencyCollection(ctx context.Context, tenantID string) (*libra.Collection, string, error) {
+	name := agencyActiveCollectionName(tenantID)
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if collection := s.agencyActive[name]; collection != nil {
+		return collection, name, nil
+	}
+	collection, err := s.db.EnsureCollection(ctx, name, 0, libra.WithMetadataOnly())
+	if err != nil {
+		return nil, "", fmt.Errorf("ensure active agency collection: %w", err)
+	}
+	s.agencyActive[name] = collection
+	return collection, name, nil
+}
+
 func (s *Store) loadOrInitializeState(ctx context.Context) error {
 	collection, err := s.db.EnsureCollection(ctx, systemCollection, 0, libra.WithMetadataOnly())
 	if err != nil {
@@ -1263,6 +1340,11 @@ func (s *Store) loadOrInitializeState(ctx context.Context) error {
 		}
 		s.policyDigest = state.BayesianPolicyDigest
 		if state.Snapshot.ContractVersion < model.ContractVersion {
+			if state.Snapshot.ContractVersion < 7 {
+				if rebuildErr := s.rebuildActiveAgencyCollections(ctx, time.Now().UTC()); rebuildErr != nil {
+					return fmt.Errorf("rebuild active agency projection: %w", rebuildErr)
+				}
+			}
 			state.Snapshot.ContractVersion = model.ContractVersion
 			if state.Snapshot.AgencyVersion == 0 {
 				state.Snapshot.AgencyVersion = 1
@@ -1298,6 +1380,59 @@ func (s *Store) loadOrInitializeState(ctx context.Context) error {
 	}
 	if err := collection.Insert(ctx, "runtime", nil, metadata); err != nil {
 		return fmt.Errorf("initialize durable runtime state: %w", err)
+	}
+	return nil
+}
+
+func (s *Store) rebuildActiveAgencyCollections(ctx context.Context, now time.Time) error {
+	records, err := s.agency.ListAll(ctx)
+	if err != nil {
+		return err
+	}
+	byTenant := make(map[string][]libra.Record)
+	for _, stored := range records {
+		if kind, _ := stored.Metadata["record_type"].(string); kind != "agency_proposal" {
+			continue
+		}
+		record, decodeErr := decodeAgencyRecord(stored.Metadata)
+		if decodeErr != nil {
+			return decodeErr
+		}
+		if _, exists := byTenant[record.Proposal.TenantID]; !exists {
+			byTenant[record.Proposal.TenantID] = nil
+		}
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
+			byTenant[record.Proposal.TenantID] = append(byTenant[record.Proposal.TenantID], stored)
+		}
+	}
+	for tenantID, activeRecords := range byTenant {
+		active, name, ensureErr := s.activeAgencyCollection(ctx, tenantID)
+		if ensureErr != nil {
+			return ensureErr
+		}
+		existing, listErr := active.ListAll(ctx)
+		if listErr != nil {
+			return listErr
+		}
+		if txErr := s.db.WithTx(ctx, func(tx libra.Tx) error {
+			if len(existing) > 0 {
+				ids := make([]string, len(existing))
+				for index := range existing {
+					ids[index] = existing[index].ID
+				}
+				if deleteErr := tx.DeleteBatch(ctx, name, ids); deleteErr != nil {
+					return deleteErr
+				}
+			}
+			for _, stored := range activeRecords {
+				if upsertErr := tx.Upsert(ctx, name, stored.ID, nil, stored.Metadata); upsertErr != nil {
+					return upsertErr
+				}
+			}
+			return nil
+		}); txErr != nil {
+			return txErr
+		}
 	}
 	return nil
 }
@@ -1352,7 +1487,11 @@ func agencyProposalRecordID(tenantID, proposalID string) string {
 }
 
 func (s *Store) listAgencyRecords(ctx context.Context, tenantID string) ([]model.AgencyProposalRecord, error) {
-	records, err := s.agency.ListAll(ctx)
+	return listAgencyRecordsFrom(ctx, s.agency, tenantID)
+}
+
+func listAgencyRecordsFrom(ctx context.Context, collection *libra.Collection, tenantID string) ([]model.AgencyProposalRecord, error) {
+	records, err := collection.ListAll(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -1417,10 +1556,10 @@ func countAgencyChainRecords(records []model.AgencyProposalRecord, chainID strin
 	return count
 }
 
-func countPendingAgencyRecords(records []model.AgencyProposalRecord) int {
+func countPendingAgencyRecords(records []model.AgencyProposalRecord, now time.Time) int {
 	count := 0
 	for _, record := range records {
-		if record.Status == model.AgencyPending || record.Status == model.AgencyClaimed {
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
 			count++
 		}
 	}

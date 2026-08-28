@@ -124,7 +124,7 @@ func TestAgencyLifecycleOverHTTP(t *testing.T) {
 	}
 	runtime, err := service.New(memorystore.New(), embedder, service.Config{
 		DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000,
-		AgencyPolicy: agency.DefaultPolicy(true), AgencySigner: signer, AgencyIssuerToken: "test-issuer-token-that-is-at-least-32-bytes",
+		AgencyPolicy: agency.DefaultPolicy(true), AgencySigner: signer, AgencyIssuerToken: "test-issuer-token-that-is-at-least-32-bytes", AgencyAuthorityToken: "test-authority-token-that-is-at-least-32-bytes",
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -144,19 +144,36 @@ func TestAgencyLifecycleOverHTTP(t *testing.T) {
 	if issued.Record.Status != model.AgencyPending || issued.Record.Signed.Signature == "" {
 		t.Fatalf("issued = %+v", issued)
 	}
+	if status := postJSONStatus(t, server.URL+"/v1/agency/proposals:claim", model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ConsumerID: "authority-http", Limit: 10}); status != http.StatusBadRequest {
+		t.Fatalf("unauthenticated claim status = %d", status)
+	}
 	var claimed model.ClaimAgencyProposalsResponse
-	postJSON(t, server.URL+"/v1/agency/proposals:claim", model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ConsumerID: "authority-http", Limit: 10}, &claimed)
+	postJSON(t, server.URL+"/v1/agency/proposals:claim", model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, AuthorityToken: "test-authority-token-that-is-at-least-32-bytes", TenantID: "tenant-a", ConsumerID: "authority-http", Limit: 10}, &claimed)
 	if len(claimed.Records) != 1 || claimed.Records[0].Status != model.AgencyClaimed {
 		t.Fatalf("claimed = %+v", claimed)
 	}
 	var resolved model.ResolveAgencyProposalResponse
 	postJSON(t, server.URL+"/v1/agency/proposals:resolve", model.ResolveAgencyProposalRequest{
-		ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ProposalID: "proposal-http", ConsumerID: "authority-http",
+		ProtocolVersion: model.ProtocolVersion, AuthorityToken: "test-authority-token-that-is-at-least-32-bytes", TenantID: "tenant-a", ProposalID: "proposal-http", ConsumerID: "authority-http",
 		Decision: model.AgencyApproved, Reason: "authorized", ExecutionRef: "job-http",
 	}, &resolved)
 	if resolved.Record.Status != model.AgencyApproved || resolved.Record.ExecutionRef != "job-http" {
 		t.Fatalf("resolved = %+v", resolved)
 	}
+}
+
+func postJSONStatus(t *testing.T, url string, input any) int {
+	t.Helper()
+	payload, err := json.Marshal(input)
+	if err != nil {
+		t.Fatal(err)
+	}
+	response, err := http.Post(url, "application/json", bytes.NewReader(payload))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer response.Body.Close()
+	return response.StatusCode
 }
 
 func postJSON(t *testing.T, url string, input, output any) {
