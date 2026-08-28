@@ -29,10 +29,11 @@
 
 ## Milestone 4: residuals and abstraction
 
-- Belief-conditioned forecast law and template bundle
-- Residual cache with posterior-motion certificates
-- Graph dependency closure and sheaf-inspired snapping
-- Outcome commitments, delayed scoring, calibration, and split/merge audits
+- [x] Retrieval-usefulness belief-conditioned law and aligned template bundle
+- [x] Law-only residual cache with analytic posterior-motion and anytime-valid improvement certificates
+- [ ] Graph dependency closure and sheaf-inspired snapping
+- [x] Immutable outcome commitments and delayed Brier calibration
+- [ ] Split/merge confirmation audits and rollback
 
 ## Milestone 5: bounded agency
 

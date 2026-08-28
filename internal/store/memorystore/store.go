@@ -11,6 +11,7 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 )
 
@@ -30,6 +31,7 @@ type Store struct {
 	antiPigeonIndex        map[string]map[string]string
 	outcomeDigests         map[string]map[string]string
 	posteriors             map[string]map[string]model.BayesianPosterior
+	residuals              map[string]map[string]model.ResidualRecord
 	policyDigest           string
 	snapshot               model.Snapshot
 }
@@ -53,7 +55,8 @@ func New() *Store {
 		omittedCertificates:    make(map[string]model.OmittedInfluenceCertificate),
 		antiPigeonCertificates: make(map[string]model.AntiPigeonCertificate), antiPigeonIndex: make(map[string]map[string]string),
 		outcomeDigests: make(map[string]map[string]string), posteriors: make(map[string]map[string]model.BayesianPosterior),
-		snapshot: initialSnapshot(),
+		residuals: make(map[string]map[string]model.ResidualRecord),
+		snapshot:  initialSnapshot(),
 	}
 }
 
@@ -78,7 +81,7 @@ func (s *Store) GetOmittedInfluenceCertificate(_ context.Context, tenantID strin
 	return certificate, nil
 }
 
-func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy) (store.BayesianOutcomeResult, error) {
+func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (store.BayesianOutcomeResult, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	digests := s.outcomeDigests[request.TenantID]
@@ -102,6 +105,7 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 		posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: posteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
 	}
 	posterior, changePoint := bayes.ApplyOutcome(posterior, request.Useful, weight, changePolicy)
+	updateCalibration(&posterior, residualObservation.CommittedProbability, request.Useful, weight)
 	posterior.UpdatedAt = request.AvailableAt
 	if changePoint {
 		s.invalidate()
@@ -109,10 +113,50 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 	} else {
 		s.snapshot.RuntimeVersion++
 		s.snapshot.PosteriorVersion++
+		s.snapshot.ResidualVersion++
 	}
 	tenant[posteriorKey] = posterior
+	residualTenant := s.residuals[request.TenantID]
+	if residualTenant == nil {
+		residualTenant = make(map[string]model.ResidualRecord)
+		s.residuals[request.TenantID] = residualTenant
+	}
+	exactID := residualRecordMapKey(model.ResidualExact, residualObservation.ActionKey)
+	generalID := residualRecordMapKey(model.ResidualGeneral, residualObservation.GeneralKey)
+	residualTenant[exactID] = residual.Update(residualTenant[exactID], residualObservation, model.ResidualExact, residualObservation.ActionKey, request.TenantID, weight, s.snapshot, residualPolicy)
+	residualTenant[generalID] = residual.Update(residualTenant[generalID], residualObservation, model.ResidualGeneral, residualObservation.GeneralKey, request.TenantID, weight, s.snapshot, residualPolicy)
 	digests[request.IdempotencyKey] = digest
 	return store.BayesianOutcomeResult{ChangePoint: changePoint, Posterior: posterior, Snapshot: s.snapshot}, nil
+}
+
+func (s *Store) GetResidualCandidates(_ context.Context, tenantID, actionKey, generalKey string) (model.ResidualCandidates, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	var candidates model.ResidualCandidates
+	if record, ok := s.residuals[tenantID][residualRecordMapKey(model.ResidualExact, actionKey)]; ok {
+		copy := record
+		candidates.Exact = &copy
+	}
+	if record, ok := s.residuals[tenantID][residualRecordMapKey(model.ResidualGeneral, generalKey)]; ok {
+		copy := record
+		candidates.General = &copy
+	}
+	return candidates, nil
+}
+
+func residualRecordMapKey(scope model.ResidualScope, key string) string {
+	return string(scope) + "\x00" + key
+}
+
+func updateCalibration(posterior *model.BayesianPosterior, probability float64, useful bool, weight float64) {
+	target := 0.0
+	if useful {
+		target = 1
+	}
+	posterior.CalibrationWeight += weight
+	posterior.BrierLossSum += weight * (target - probability) * (target - probability)
+	posterior.ForecastUsefulSum += weight * probability
+	posterior.ObservedUsefulSum += weight * target
 }
 
 func (s *Store) GetBayesianPosterior(_ context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error) {

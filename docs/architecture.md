@@ -21,9 +21,12 @@ boundary between policy and vector storage.
 7. The service builds and durably journals a capped Bayesian activation frontier.
 8. Only current external certificates may promote a cached usefulness posterior
    into the bounded score mixture; otherwise the baseline score is unchanged.
-9. The service reranks up to `recall_k` candidates after any certified update.
-10. Packing independently admits at most `pack_k` within the token budget.
-11. The adapter escapes records and labels them untrusted history.
+9. Exact-key then general residual lookup may correct the complete Bernoulli law
+   only when fixed-reference motion and sequential improvement gates pass.
+10. The service derives the aligned template and reranks up to `recall_k`
+    candidates after any certified correction.
+11. Packing independently admits at most `pack_k` within the token budget.
+12. The adapter escapes records and labels them untrusted history.
 
 The storage adapter expands LibraVDB probes when post-ANN availability filtering
 does not yield enough valid candidates. This prevents future-dated records from
@@ -54,3 +57,21 @@ certificate; without it, each event keeps its own posterior. Feedback is
 availability checked, idempotent, inverse-propensity weighted with a hard cap,
 and monitored by a capped online changepoint detector. Any absent, expired, or
 epoch-mismatched certificate yields conservative baseline fallback.
+
+## Residual specialization
+
+Phase 4A specializes the paper's general law/template bundle to retrieval
+usefulness. `useful` and `not_useful` are explicit Bernoulli branches. The
+baseline score is a declared plug-in probability, the certified Beta posterior
+forms the optional belief mixture, and the residual cache contains law-only
+corrections. A correction moves mass between both branches and the decision
+template is derived afterward, preventing point/law semantic drift.
+
+Exact action keys bind the query digest, event ID, and horizon. General keys bind
+the Anti-Pigeon posterior bucket or event-local posterior key and horizon. Cache
+records retain their first base-law reference. Runtime motion is exact absolute
+Bernoulli distance with zero approximation error for this implementation; the
+separate improvement gate uses error spending across repeated checks and counts
+only unweighted full-stream or independently audited validation trials. Delayed
+outcomes score the immutable corrected law and atomically update posterior,
+calibration, exact residual, general residual, and version state.

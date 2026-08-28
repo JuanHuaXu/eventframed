@@ -14,6 +14,7 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 	libra "github.com/xDarkicex/libravdb/libravdb"
 )
@@ -413,7 +414,7 @@ func (s *Store) GetAntiPigeonCertificate(ctx context.Context, tenantID string, e
 	return certificate, nil
 }
 
-func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy) (store.BayesianOutcomeResult, error) {
+func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (store.BayesianOutcomeResult, error) {
 	s.writeMu.Lock()
 	defer s.writeMu.Unlock()
 	outcomeRecordID := bayesianOutcomeRecordID(request.TenantID, request.IdempotencyKey)
@@ -438,6 +439,7 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 		return store.BayesianOutcomeResult{}, err
 	}
 	posterior, changePoint := bayes.ApplyOutcome(posterior, request.Useful, weight, changePolicy)
+	updateCalibration(&posterior, residualObservation.CommittedProbability, request.Useful, weight)
 	posterior.UpdatedAt = request.AvailableAt
 	outcomeJSON, err := json.Marshal(request)
 	if err != nil {
@@ -450,16 +452,37 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 	} else {
 		next.RuntimeVersion++
 		next.PosteriorVersion++
+		next.ResidualVersion++
 	}
+	exact, err := s.getResidualRecord(ctx, request.TenantID, model.ResidualExact, residualObservation.ActionKey)
+	if err != nil && !errors.Is(err, store.ErrResidualNotFound) {
+		return store.BayesianOutcomeResult{}, err
+	}
+	general, err := s.getResidualRecord(ctx, request.TenantID, model.ResidualGeneral, residualObservation.GeneralKey)
+	if err != nil && !errors.Is(err, store.ErrResidualNotFound) {
+		return store.BayesianOutcomeResult{}, err
+	}
+	exact = residual.Update(exact, residualObservation, model.ResidualExact, residualObservation.ActionKey, request.TenantID, weight, next, residualPolicy)
+	general = residual.Update(general, residualObservation, model.ResidualGeneral, residualObservation.GeneralKey, request.TenantID, weight, next, residualPolicy)
 	posteriorJSON, err := json.Marshal(posterior)
 	if err != nil {
 		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian posterior: %w", err)
+	}
+	exactJSON, err := json.Marshal(exact)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode exact residual: %w", err)
+	}
+	generalJSON, err := json.Marshal(general)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode general residual: %w", err)
 	}
 	stateMetadata, err := s.stateMetadata(next)
 	if err != nil {
 		return store.BayesianOutcomeResult{}, err
 	}
 	posteriorMetadata := map[string]interface{}{"record_type": "posterior", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "posterior_json": string(posteriorJSON)}
+	exactMetadata := map[string]interface{}{"record_type": "residual", "tenant_id": request.TenantID, "scope": string(model.ResidualExact), "key": residualObservation.ActionKey, "residual_json": string(exactJSON)}
+	generalMetadata := map[string]interface{}{"record_type": "residual", "tenant_id": request.TenantID, "scope": string(model.ResidualGeneral), "key": residualObservation.GeneralKey, "residual_json": string(generalJSON)}
 	outcomeMetadata := map[string]interface{}{"record_type": "outcome", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "content_digest": digest, "outcome_json": string(outcomeJSON)}
 	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
 		if err := tx.Insert(ctx, bayesianCollection, outcomeRecordID, nil, outcomeMetadata); err != nil {
@@ -468,12 +491,57 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 		if err := tx.Upsert(ctx, bayesianCollection, bayesianPosteriorRecordID(request.TenantID, posteriorKey), nil, posteriorMetadata); err != nil {
 			return err
 		}
+		if err := tx.Upsert(ctx, bayesianCollection, residualRecordID(request.TenantID, model.ResidualExact, residualObservation.ActionKey), nil, exactMetadata); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, residualRecordID(request.TenantID, model.ResidualGeneral, residualObservation.GeneralKey), nil, generalMetadata); err != nil {
+			return err
+		}
 		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
 	}); err != nil {
 		return store.BayesianOutcomeResult{}, fmt.Errorf("apply Bayesian outcome: %w", err)
 	}
 	s.snapshot = next
 	return store.BayesianOutcomeResult{ChangePoint: changePoint, Posterior: posterior, Snapshot: next}, nil
+}
+
+func (s *Store) GetResidualCandidates(ctx context.Context, tenantID, actionKey, generalKey string) (model.ResidualCandidates, error) {
+	var candidates model.ResidualCandidates
+	exact, err := s.getResidualRecord(ctx, tenantID, model.ResidualExact, actionKey)
+	if err == nil {
+		candidates.Exact = &exact
+	} else if !errors.Is(err, store.ErrResidualNotFound) {
+		return model.ResidualCandidates{}, err
+	}
+	general, err := s.getResidualRecord(ctx, tenantID, model.ResidualGeneral, generalKey)
+	if err == nil {
+		candidates.General = &general
+	} else if !errors.Is(err, store.ErrResidualNotFound) {
+		return model.ResidualCandidates{}, err
+	}
+	return candidates, nil
+}
+
+func (s *Store) getResidualRecord(ctx context.Context, tenantID string, scope model.ResidualScope, key string) (model.ResidualRecord, error) {
+	record, err := s.bayesian.Get(ctx, residualRecordID(tenantID, scope, key))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.ResidualRecord{}, store.ErrResidualNotFound
+	}
+	if err != nil {
+		return model.ResidualRecord{}, fmt.Errorf("read residual record: %w", err)
+	}
+	encoded, ok := record.Metadata["residual_json"].(string)
+	if !ok {
+		return model.ResidualRecord{}, errors.New("residual record is malformed")
+	}
+	var residualRecord model.ResidualRecord
+	if err := json.Unmarshal([]byte(encoded), &residualRecord); err != nil {
+		return model.ResidualRecord{}, fmt.Errorf("decode residual record: %w", err)
+	}
+	if residualRecord.TenantID != tenantID || residualRecord.Scope != scope || residualRecord.Key != key {
+		return model.ResidualRecord{}, errors.New("residual record identity mismatch")
+	}
+	return residualRecord, nil
 }
 
 func (s *Store) GetBayesianPosterior(ctx context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error) {
@@ -805,6 +873,21 @@ func bayesianOutcomeRecordID(tenantID, idempotencyKey string) string {
 
 func bayesianPosteriorRecordID(tenantID, posteriorKey string) string {
 	return hashedBayesianRecordID("posterior", tenantID+"\x00"+posteriorKey)
+}
+
+func residualRecordID(tenantID string, scope model.ResidualScope, key string) string {
+	return hashedBayesianRecordID("residual", tenantID+"\x00"+string(scope)+"\x00"+key)
+}
+
+func updateCalibration(posterior *model.BayesianPosterior, probability float64, useful bool, weight float64) {
+	target := 0.0
+	if useful {
+		target = 1
+	}
+	posterior.CalibrationWeight += weight
+	posterior.BrierLossSum += weight * (target - probability) * (target - probability)
+	posterior.ForecastUsefulSum += weight * probability
+	posterior.ObservedUsefulSum += weight * target
 }
 
 func decodeCertificate(metadata map[string]interface{}, target any) error {

@@ -17,6 +17,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 )
 
@@ -29,6 +30,7 @@ type Config struct {
 	BayesianPolicy       bayes.Policy
 	BayesianScoreWeight  float64
 	BayesianChangePolicy bayes.ChangePolicy
+	ResidualPolicy       residual.Policy
 }
 
 type Service struct {
@@ -61,6 +63,9 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	}
 	if !config.BayesianChangePolicy.Valid() {
 		config.BayesianChangePolicy = bayes.ChangePolicy{Hazard: .05, Threshold: .30, MaxRun: 64}
+	}
+	if !config.ResidualPolicy.Valid() {
+		config.ResidualPolicy = residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .10, MaxAge: 30 * 24 * time.Hour, ImprovementDelta: .001}
 	}
 	policyDigest, err := bayesianPolicyDigest(config)
 	if err != nil {
@@ -247,6 +252,62 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	queryDigest, err := recallQueryDigest(request, vector, s.embedder.ModelKey())
 	if err != nil {
 		return model.ContextPacket{}, err
+	}
+	decisionIndexes := make(map[string]int, len(shadow.Decisions))
+	for index := range shadow.Decisions {
+		decisionIndexes[shadow.Decisions[index].EventID] = index
+	}
+	for index := range candidates {
+		candidate := &candidates[index]
+		decisionIndex, ok := decisionIndexes[candidate.Event.ID]
+		if !ok {
+			return model.ContextPacket{}, errors.New("Bayesian frontier omitted a recalled candidate")
+		}
+		decision := &shadow.Decisions[decisionIndex]
+		preResidual := bernoulliLaw(candidate.Score)
+		forecast := model.ForecastBundle{
+			ModelKind: "plugin-bernoulli-retrieval-usefulness", HorizonKey: model.RetrievalUsefulnessHorizon,
+			BaseLaw: bernoulliLaw(candidate.BaselineScore), PreResidualLaw: preResidual, CorrectedLaw: preResidual,
+			Template:     model.ForecastTemplate{EventID: candidate.Event.ID, PredictedUseful: preResidual.Useful >= .5, Confidence: math.Max(preResidual.Useful, preResidual.NotUseful)},
+			PosteriorKey: decision.PosteriorKey, PosteriorVersion: snapshot.PosteriorVersion,
+		}
+		if candidate.BayesianApplied {
+			belief := bernoulliLaw(candidate.BayesianProbability)
+			forecast.BeliefLaw = &belief
+		}
+		actionKey := residualActionKey(queryDigest, candidate.Event.ID, forecast.HorizonKey)
+		generalKey := residualGeneralKey(decision.PosteriorKey, forecast.HorizonKey)
+		cached, getErr := s.store.GetResidualCandidates(ctx, request.TenantID, actionKey, generalKey)
+		if getErr != nil {
+			return model.ContextPacket{}, getErr
+		}
+		var selected *model.ResidualRecord
+		if cached.Exact != nil && residual.Eligible(*cached.Exact, preResidual.Useful, snapshot, now, s.config.ResidualPolicy) {
+			selected = cached.Exact
+		} else if cached.General != nil && residual.Eligible(*cached.General, preResidual.Useful, snapshot, now, s.config.ResidualPolicy) {
+			selected = cached.General
+		}
+		if selected != nil {
+			forecast.CorrectedLaw = residual.Apply(preResidual, *selected, s.config.ResidualPolicy)
+			forecast.ResidualApplied = true
+			forecast.ResidualRecordID = selected.ID
+			forecast.Template = model.ForecastTemplate{EventID: candidate.Event.ID, PredictedUseful: forecast.CorrectedLaw.Useful >= .5, Confidence: math.Max(forecast.CorrectedLaw.Useful, forecast.CorrectedLaw.NotUseful)}
+			candidate.Score = forecast.CorrectedLaw.Useful
+			shadow.ResidualApplied++
+		}
+		candidate.Forecast = forecast
+		decision.Forecast = forecast
+	}
+	if shadow.ResidualApplied > 0 {
+		if shadow.Mode != "production" {
+			shadow.Mode = "residual-production"
+		}
+		sort.SliceStable(candidates, func(i, j int) bool {
+			if candidates[i].Score == candidates[j].Score {
+				return candidates[i].Event.AvailableAt.After(candidates[j].Event.AvailableAt)
+			}
+			return candidates[i].Score > candidates[j].Score
+		})
 	}
 	journal := model.BayesianJournalEntry{
 		TenantID: request.TenantID, SessionID: request.SessionID, AsOf: request.AsOf.UTC(),
@@ -455,7 +516,17 @@ func (s *Service) ObserveBayesianOutcome(ctx context.Context, request model.Baye
 	if err != nil {
 		return model.BayesianOutcomeResponse{}, err
 	}
-	result, err := s.store.ApplyBayesianOutcome(ctx, request, decision.PosteriorKey, digest, weight, s.config.BayesianChangePolicy)
+	if decision.Forecast.HorizonKey != model.RetrievalUsefulnessHorizon || decision.Forecast.ModelKind == "" {
+		return model.BayesianOutcomeResponse{}, errors.New("referenced journal lacks a Phase 4 forecast commitment")
+	}
+	residualObservation := model.ResidualObservation{
+		ActionKey:  residualActionKey(journal.QueryDigest, request.EventID, decision.Forecast.HorizonKey),
+		GeneralKey: residualGeneralKey(decision.PosteriorKey, decision.Forecast.HorizonKey),
+		HorizonKey: decision.Forecast.HorizonKey, BaseProbability: decision.Forecast.PreResidualLaw.Useful, CommittedProbability: decision.Forecast.CorrectedLaw.Useful,
+		Useful: request.Useful, ValidationEligible: request.Source == model.OutcomeFullStream || request.Source == model.OutcomeIndependentAudit,
+		EventID: request.EventID, JournalID: request.JournalID, AvailableAt: request.AvailableAt,
+	}
+	result, err := s.store.ApplyBayesianOutcome(ctx, request, decision.PosteriorKey, digest, weight, s.config.BayesianChangePolicy, residualObservation, s.config.ResidualPolicy)
 	if err != nil {
 		return model.BayesianOutcomeResponse{}, err
 	}
@@ -662,12 +733,23 @@ func bayesianPolicyDigest(config Config) (string, error) {
 		Frontier    bayes.Policy       `json:"frontier"`
 		ScoreWeight float64            `json:"score_weight"`
 		Change      bayes.ChangePolicy `json:"change"`
-	}{Frontier: config.BayesianPolicy, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy})
+		Residual    residual.Policy    `json:"residual"`
+	}{Frontier: config.BayesianPolicy, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Residual: config.ResidualPolicy})
 	if err != nil {
 		return "", fmt.Errorf("encode Bayesian policy: %w", err)
 	}
 	digest := sha256.Sum256(payload)
 	return hex.EncodeToString(digest[:]), nil
+}
+
+func residualActionKey(queryDigest, eventID, horizonKey string) string {
+	digest := sha256.Sum256([]byte(queryDigest + "\x00" + eventID + "\x00" + horizonKey))
+	return hex.EncodeToString(digest[:16])
+}
+
+func residualGeneralKey(posteriorKey, horizonKey string) string {
+	digest := sha256.Sum256([]byte(posteriorKey + "\x00" + horizonKey))
+	return hex.EncodeToString(digest[:16])
 }
 
 func scoreCandidate(candidate model.Candidate, sessionID string, asOf time.Time) float64 {
@@ -687,6 +769,11 @@ func scoreCandidate(candidate model.Candidate, sessionID string, asOf time.Time)
 func estimateTokens(content string) int {
 	count := utf8.RuneCountInString(content)
 	return max(1, (count+3)/4)
+}
+
+func bernoulliLaw(useful float64) model.BernoulliLaw {
+	useful = clamp(useful, 0, 1)
+	return model.BernoulliLaw{Useful: useful, NotUseful: 1 - useful}
 }
 
 func clamp(value, low, high float64) float64 {

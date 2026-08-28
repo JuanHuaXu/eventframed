@@ -3,12 +3,15 @@ package service_test
 import (
 	"context"
 	"errors"
+	"fmt"
+	"math"
 	"testing"
 	"time"
 
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/service"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 	"github.com/JuanHuaXu/eventframed/internal/store/memorystore"
@@ -25,6 +28,7 @@ func TestBayesianPromotionFeedbackAndEpochFallback(t *testing.T) {
 	runtime, err := service.New(memory, embedder, service.Config{
 		DefaultRecallK: 10, DefaultPackK: 10, DefaultTokenBudget: 1000, OverfetchMultiplier: 2,
 		BayesianPolicy: bayes.Policy{VectorWeight: .8, IndependenceWeight: .2, Threshold: .7, CriticalThreshold: .5, AuditProbability: 1, MaxActive: 4, AuditSeed: "test"},
+		ResidualPolicy: residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .1, ConfidenceDelta: .5, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001},
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -105,6 +109,30 @@ func TestBayesianPromotionFeedbackAndEpochFallback(t *testing.T) {
 	}
 	if packet.BayesianShadow.Mode != "production" || !hasBayesianCandidate(packet.Candidates) {
 		t.Fatalf("post-feedback packet = %+v", packet)
+	}
+	for _, candidate := range packet.Candidates {
+		law := candidate.Forecast.CorrectedLaw
+		if candidate.Forecast.HorizonKey != model.RetrievalUsefulnessHorizon || math.Abs(law.Useful+law.NotUseful-1) > 1e-12 || candidate.Forecast.Template.EventID != candidate.Event.ID {
+			t.Fatalf("misaligned forecast bundle: %+v", candidate.Forecast)
+		}
+	}
+	for index := 2; index <= 20; index++ {
+		outcomeID := fmt.Sprintf("outcome-%d", index)
+		feedbackAt := time.Now().UTC()
+		feedback := model.BayesianOutcomeRequest{
+			ProtocolVersion: model.ProtocolVersion, IdempotencyKey: outcomeID, TenantID: "tenant-a", JournalID: packet.BayesianShadow.JournalID,
+			EventID: "one", Useful: true, ObservedAt: feedbackAt, AvailableAt: feedbackAt, Source: model.OutcomeFullStream, InclusionProbability: 1,
+		}
+		if _, err := runtime.ObserveBayesianOutcome(ctx, feedback); err != nil {
+			t.Fatal(err)
+		}
+		packet, err = runtime.Recall(ctx, request)
+		if err != nil {
+			t.Fatal(err)
+		}
+	}
+	if packet.BayesianShadow.ResidualApplied == 0 || !packet.Candidates[0].Forecast.ResidualApplied {
+		t.Fatalf("certified residual was not applied: %+v", packet)
 	}
 	newEvent := testutil.Event("epoch-change", "shared topic", now.Add(-time.Second))
 	observe(t, runtime, newEvent)

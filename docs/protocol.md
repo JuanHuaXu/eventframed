@@ -71,6 +71,30 @@ certificates before another forecast can use them. These guarantees are runtime
 contracts; certificate quality remains an empirical responsibility of the named
 external audit procedure.
 
+Contract version 4 adds a retrieval-specific `forecast` bundle to every packed
+candidate and durable frontier decision. It explicitly carries useful and
+not-useful probability mass through the baseline, accepted belief mixture,
+pre-residual law, corrected law, and an aligned decision template. The baseline
+is labeled a plug-in Bernoulli forecast; this is not presented as a general
+next-world-event model.
+
+Outcome feedback is scored against the corrected law frozen in its referenced
+journal before posterior or residual updates run. The posterior record accumulates
+design-weighted Brier loss, forecast mass, observed mass, and effective
+calibration weight. The same transaction updates exact action-key and general
+posterior-key law residuals. Reuse checks exact before general and requires:
+
+- matching policy, evidence epoch, and `retrieval-usefulness-v1` horizon
+- bounded age and effective support
+- an anytime-valid improvement lower confidence bound from unweighted
+  full-stream or independently audited validation trials under repeated monitoring
+- an analytic Bernoulli law-motion bound against the frozen base reference
+- finite clipped correction and immutable source provenance
+
+The law-only correction shifts probability between both Bernoulli branches and
+then derives the template from the corrected law. No point residual is claimed.
+Missing or failed gates return the uncorrected forecast bundle.
+
 ### Lifecycle endpoints
 
 - `POST /v1/events:delete` removes one tenant event and atomically invalidates
@@ -95,5 +119,7 @@ agent. Write retries must preserve the same event ID and payload.
 Snapshot `contract_version=3` adds the durable Bayesian journal, externally
 issued promotion certificates, bounded posterior state, and changepoint
 invalidation. Version-2 durable state is upgraded in place because the LibraVDB
-schema is additive. An explicit vector must name the exact active
+schema is additive. `contract_version=4` adds forecast commitments, delayed
+calibration, and durable law-residual records; the same additive marker upgrade
+applies. An explicit vector must name the exact active
 `embedding_model`; model and dimension mismatches are rejected.

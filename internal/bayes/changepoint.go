@@ -65,6 +65,7 @@ func ApplyOutcome(posterior model.BayesianPosterior, success bool, weight float6
 	triggered := probability >= policy.Threshold && len(state.Probabilities) > 1
 	if triggered {
 		posterior.Alpha, posterior.Beta, posterior.EffectiveSupport = 1, 1, 0
+		posterior.CalibrationWeight, posterior.BrierLossSum, posterior.ForecastUsefulSum, posterior.ObservedUsefulSum = 0, 0, 0, 0
 	}
 	if success {
 		posterior.Alpha += weight

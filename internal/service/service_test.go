@@ -10,6 +10,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/service"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 	"github.com/JuanHuaXu/eventframed/internal/store/memorystore"
@@ -174,11 +175,14 @@ func (s *fixedStore) PublishOmittedInfluenceCertificate(context.Context, model.O
 func (s *fixedStore) GetOmittedInfluenceCertificate(context.Context, string) (model.OmittedInfluenceCertificate, error) {
 	return model.OmittedInfluenceCertificate{}, store.ErrCertificateNotFound
 }
-func (s *fixedStore) ApplyBayesianOutcome(context.Context, model.BayesianOutcomeRequest, string, string, float64, bayes.ChangePolicy) (store.BayesianOutcomeResult, error) {
+func (s *fixedStore) ApplyBayesianOutcome(context.Context, model.BayesianOutcomeRequest, string, string, float64, bayes.ChangePolicy, model.ResidualObservation, residual.Policy) (store.BayesianOutcomeResult, error) {
 	return store.BayesianOutcomeResult{}, nil
 }
 func (s *fixedStore) GetBayesianPosterior(context.Context, string, string) (model.BayesianPosterior, error) {
 	return model.BayesianPosterior{}, store.ErrPosteriorNotFound
+}
+func (s *fixedStore) GetResidualCandidates(context.Context, string, string, string) (model.ResidualCandidates, error) {
+	return model.ResidualCandidates{}, nil
 }
 func (s *fixedStore) Stats(context.Context) (store.Stats, error) {
 	return store.Stats{Backend: "fixed"}, nil

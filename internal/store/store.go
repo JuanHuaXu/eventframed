@@ -7,6 +7,7 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/residual"
 )
 
 var ErrIdempotencyConflict = errors.New("event id already exists with different content")
@@ -16,6 +17,7 @@ var ErrCertificateNotFound = errors.New("Bayesian certificate not found")
 var ErrCertificateConflict = errors.New("Bayesian certificate id already exists with different content")
 var ErrOutcomeConflict = errors.New("Bayesian outcome id already exists with different content")
 var ErrPosteriorNotFound = errors.New("Bayesian posterior not found")
+var ErrResidualNotFound = errors.New("residual record not found")
 var ErrStaleSnapshot = errors.New("runtime snapshot changed before Bayesian journal commit")
 
 type PutResult struct {
@@ -67,8 +69,9 @@ type EventStore interface {
 	GetAntiPigeonCertificate(ctx context.Context, tenantID string, eventIDs []string) (model.AntiPigeonCertificate, error)
 	PublishOmittedInfluenceCertificate(ctx context.Context, certificate model.OmittedInfluenceCertificate) (model.Snapshot, error)
 	GetOmittedInfluenceCertificate(ctx context.Context, tenantID string) (model.OmittedInfluenceCertificate, error)
-	ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy) (BayesianOutcomeResult, error)
+	ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (BayesianOutcomeResult, error)
 	GetBayesianPosterior(ctx context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error)
+	GetResidualCandidates(ctx context.Context, tenantID, actionKey, generalKey string) (model.ResidualCandidates, error)
 	Stats(ctx context.Context) (Stats, error)
 	Snapshot(ctx context.Context) model.Snapshot
 	Close() error

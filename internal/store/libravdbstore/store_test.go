@@ -8,6 +8,7 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/store/libravdbstore"
 	"github.com/JuanHuaXu/eventframed/internal/testutil"
 	libra "github.com/xDarkicex/libravdb/libravdb"
@@ -174,7 +175,9 @@ func TestBayesianPosteriorUpdateSurvivesRestart(t *testing.T) {
 	}
 	now := time.Now().UTC()
 	request := model.BayesianOutcomeRequest{IdempotencyKey: "outcome-1", TenantID: "tenant-a", Useful: true, AvailableAt: now}
-	result, err := first.ApplyBayesianOutcome(context.Background(), request, "event-1", "digest", 2, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64})
+	residualObservation := model.ResidualObservation{ActionKey: "action", GeneralKey: "general", HorizonKey: model.RetrievalUsefulnessHorizon, BaseProbability: .5, Useful: true, ValidationEligible: true, EventID: "event-1", JournalID: "journal", AvailableAt: now}
+	residualPolicy := residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}
+	result, err := first.ApplyBayesianOutcome(context.Background(), request, "event-1", "digest", 2, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64}, residualObservation, residualPolicy)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -195,6 +198,10 @@ func TestBayesianPosteriorUpdateSurvivesRestart(t *testing.T) {
 	}
 	if posterior.Mean() != .75 || second.Snapshot(context.Background()).PosteriorVersion != 2 {
 		t.Fatalf("posterior after restart = %+v", posterior)
+	}
+	candidates, err := second.GetResidualCandidates(context.Background(), "tenant-a", "action", "general")
+	if err != nil || candidates.Exact == nil || candidates.General == nil {
+		t.Fatalf("residuals after restart = %+v, %v", candidates, err)
 	}
 }
 

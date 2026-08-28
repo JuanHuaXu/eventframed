@@ -115,6 +115,10 @@ type BayesianPosterior struct {
 	UpdatedAt              time.Time              `json:"updated_at"`
 	ChangePointProbability float64                `json:"change_point_probability"`
 	RunLengthState         BayesianRunLengthState `json:"run_length_state"`
+	CalibrationWeight      float64                `json:"calibration_weight"`
+	BrierLossSum           float64                `json:"brier_loss_sum"`
+	ForecastUsefulSum      float64                `json:"forecast_useful_sum"`
+	ObservedUsefulSum      float64                `json:"observed_useful_sum"`
 }
 
 type BayesianRunLengthState struct {
