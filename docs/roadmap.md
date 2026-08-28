@@ -1,0 +1,47 @@
+# Implementation roadmap
+
+## Milestone 1: executable memory slice
+
+- Durable LibraVDB event storage
+- Availability-safe recall and independent packing
+- OpenClaw recall/capture adapter
+- Idempotency, provenance, and Unix-socket isolation
+- Replay, race, fault, and latency tests
+
+## Milestone 2: production embeddings and lifecycle
+
+- Pluggable embedding provider and embedding-model version keys
+- Canonical-vector persistence with measured SQ8/FSQ6/PQ traversal
+- Durable runtime, policy, graph, posterior, and contract versions
+- Deletion, retention, compaction, backup, and recovery propagation
+- Migration tooling and protocol compatibility tests
+
+## Milestone 3: selective Bayesian layer
+
+- Capped vector/graph/sheaf-inspired candidate frontier
+- Nomination and activation propensity logging
+- Anti-Pigeon posterior-sharing guard
+- Cached incremental posterior updates and changepoint invalidation
+- Shadow update-all audits and omitted-influence certificates
+
+## Milestone 4: residuals and abstraction
+
+- Belief-conditioned forecast law and template bundle
+- Residual cache with posterior-motion certificates
+- Graph dependency closure and sheaf-inspired snapping
+- Outcome commitments, delayed scoring, calibration, and split/merge audits
+
+## Milestone 5: bounded agency
+
+- Signed data-only wake/notify/schedule proposals
+- Capability and consent checks in the OpenClaw authority layer
+- Expiry, idempotency, causal-chain budgets, quiet hours, and kill switch
+- No direct tool execution by `eventframed`
+
+## Required evidence before production
+
+Benchmark p50/p95/p99 latency, resident memory, index build cost, activation rate,
+availability-filter expansion, omitted-influence coverage, false Anti-Pigeon
+merges, calibration, and task accuracy against update-all and naive-selective
+baselines. Fault tests must include duplicate delivery, crash/restart, stale
+versions, deletion races, corrupt records, and unavailable daemon behavior.

@@ -1,0 +1,13 @@
+{
+  "as_of": "2026-08-01T12:00:00Z",
+  "recall_k": 3,
+  "pack_k": 2,
+  "token_budget": 100,
+  "events": [
+    { "id": "ordinary-a", "content": "deployment notes", "available_at": "2026-08-01T11:00:00Z", "priority": 0.1 },
+    { "id": "answer", "content": "deployment key is blue", "available_at": "2026-08-01T11:01:00Z", "priority": 1.0 },
+    { "id": "ordinary-b", "content": "more deployment notes", "available_at": "2026-08-01T11:02:00Z", "priority": 0.1 },
+    { "id": "future", "content": "future deployment key", "available_at": "2026-08-01T13:00:00Z", "priority": 1.0 }
+  ],
+  "expected_packed_ids": ["answer", "ordinary-b"]
+}

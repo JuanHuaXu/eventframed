@@ -1,0 +1,94 @@
+# eventframed
+
+`eventframed` is the first executable slice of the EventFrame prediction runtime:
+a local Go daemon backed directly by LibraVDB, plus a thin TypeScript memory and
+context adapter for OpenClaw.
+
+This repository is an implementation companion to the EventFrame whitepaper. It
+is an alpha runtime, not an empirical validation of the complete mathematical
+specification. The current slice implements durable event ingestion, 5W1H field
+provenance, availability-time-safe retrieval, deterministic idempotency, distinct
+recall and packing budgets, quantized LibraVDB traversal, and an untrusted-context
+boundary for OpenClaw.
+
+## Architecture
+
+```text
+OpenClaw
+  |  before_prompt_build / agent_end
+  v
+TypeScript contract adapter
+  |  eventframe.v1alpha1 over a mode-0600 Unix socket
+  v
+eventframed (Go)
+  |  ingest -> availability gate -> recall(k=50) -> rerank -> pack(k=10)
+  v
+LibraVDB (embedded, mmap, optional SQ8/FSQ6/PQ traversal)
+```
+
+There is no separate LibraVDB daemon hop. The Go process owns the database and
+all policy-bearing calculations. The TypeScript adapter only translates OpenClaw
+hooks into the versioned protocol and injects escaped, explicitly untrusted
+historical context.
+
+## Build and test
+
+Requirements: Go 1.25 or newer and Node.js 22 or newer.
+
+```sh
+cd plugin
+npm install
+cd ..
+make check
+make build
+```
+
+Run the daemon with conservative local defaults:
+
+```sh
+./bin/eventframed
+```
+
+Defaults:
+
+- socket: `~/.eventframed/run/eventframed.sock`
+- database: `~/.eventframed/data/eventframe.libravdb`
+- vector dimension: 768
+- traversal quantization: SQ8
+- recall budget: 50 candidates
+- packing budget: 10 records / 2,000 estimated tokens
+
+Use `-quantization none` while validating small test collections. `fsq6` and
+`pq8` are available as explicit experimental choices.
+
+## OpenClaw adapter
+
+The built adapter is under `plugin/dist`. Its manifest is
+`plugin/openclaw.plugin.json`. Configure the plugin with the same socket path and
+an explicit tenant ID. Recall fails open if the daemon is unavailable; capture is
+also skipped rather than blocking an agent run.
+
+The adapter records retrieved event IDs on each generated turn. This lineage is
+required to detect self-reinforcement and must not be removed by downstream
+importers.
+
+## Important limits
+
+- The development hash embedder is deterministic but not semantic. Replace it
+  with a declared production embedding provider before evaluating recall quality.
+- Runtime snapshot counters are process-local in this alpha. Durable policy,
+  graph, posterior, and residual epochs remain roadmap work.
+- Bayesian selective updates, Anti-Pigeon audits, sheaf-inspired snapping,
+  outcome scoring, deletion propagation, and agency proposals are protocol and
+  design work, not yet active runtime behavior.
+- No proactive action is executed. The daemon defines a data-only agency proposal
+  type so a later OpenClaw authority layer can approve, reject, or schedule it.
+- TCP listening has no transport authentication in this alpha. Prefer the default
+  local Unix socket; do not expose a TCP listener beyond a trusted loopback test.
+
+See [docs/architecture.md](docs/architecture.md),
+[docs/protocol.md](docs/protocol.md), and [docs/roadmap.md](docs/roadmap.md).
+
+## License
+
+MIT. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
