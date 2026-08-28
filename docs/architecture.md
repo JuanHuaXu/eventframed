@@ -33,3 +33,18 @@ Stored content can contain arbitrary user, model, or tool text. It is data, not
 authority. Prompt envelopes are escaped and include a direct instruction not to
 execute recalled content. A production release must also apply tenant identity at
 the socket boundary and enforce deletion/retention policy through every index.
+
+## Selective Bayesian staging
+
+The current Phase 3A frontier is shadow-only. It computes the declared weighted
+activation score over bounded vector candidates, leaves typed slots for
+sheaf-inspired and as-of graph compatibility, lowers the threshold for critical
+priority, enforces an active-count cap, and chooses inactive audits through a
+score-independent deterministic Bernoulli draw. Declared hypotheses without an
+available evidence frame may be nominated but cannot activate.
+
+Because vector-nomination support is not yet estimated, every report sets
+`selection_support_certified=false`; the posterior key remains event-specific and
+the scored retrieval law is unchanged. This is intentional. Anti-Pigeon sharing
+and production posterior updates remain disabled until their external
+certificates and durable propensity journal are implemented.

@@ -19,8 +19,10 @@
 
 ## Milestone 3: selective Bayesian layer
 
-- Capped vector/graph/sheaf-inspired candidate frontier
-- Nomination and activation propensity logging
+- [x] Capped vector frontier with typed graph/sheaf score slots
+- [x] Shadow activation decisions and independent deterministic audit sampling
+- [x] Explicit uncertified-selection fallback that cannot alter the scored law
+- [ ] Durable nomination and activation propensity journal
 - Anti-Pigeon posterior-sharing guard
 - Cached incremental posterior updates and changepoint invalidation
 - Shadow update-all audits and omitted-influence certificates

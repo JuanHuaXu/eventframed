@@ -81,13 +81,32 @@ type Candidate struct {
 }
 
 type ContextPacket struct {
-	ProtocolVersion string      `json:"protocol_version"`
-	Candidates      []Candidate `json:"candidates"`
-	Recalled        int         `json:"recalled"`
-	Eligible        int         `json:"eligible"`
-	Packed          int         `json:"packed"`
-	UsedTokens      int         `json:"used_tokens"`
-	Snapshot        Snapshot    `json:"snapshot"`
+	ProtocolVersion string               `json:"protocol_version"`
+	Candidates      []Candidate          `json:"candidates"`
+	Recalled        int                  `json:"recalled"`
+	Eligible        int                  `json:"eligible"`
+	Packed          int                  `json:"packed"`
+	UsedTokens      int                  `json:"used_tokens"`
+	Snapshot        Snapshot             `json:"snapshot"`
+	BayesianShadow  BayesianShadowReport `json:"bayesian_shadow"`
+}
+
+type BayesianDecision struct {
+	EventID          string  `json:"event_id"`
+	ActivationScore  float64 `json:"activation_score"`
+	Activated        bool    `json:"activated"`
+	EvidenceReady    bool    `json:"evidence_ready"`
+	AuditSelected    bool    `json:"audit_selected"`
+	AuditProbability float64 `json:"audit_probability"`
+	PosteriorKey     string  `json:"posterior_key"`
+}
+
+type BayesianShadowReport struct {
+	Mode                      string             `json:"mode"`
+	Nominated                 int                `json:"nominated"`
+	Activated                 int                `json:"activated"`
+	SelectionSupportCertified bool               `json:"selection_support_certified"`
+	Decisions                 []BayesianDecision `json:"decisions"`
 }
 
 type AgencyAction string

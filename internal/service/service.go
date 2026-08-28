@@ -14,6 +14,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/store"
@@ -25,6 +26,7 @@ type Config struct {
 	DefaultTokenBudget  int
 	OverfetchMultiplier int
 	Quantization        string
+	BayesianPolicy      bayes.Policy
 }
 
 type Service struct {
@@ -45,6 +47,9 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	}
 	if config.OverfetchMultiplier < 1 {
 		config.OverfetchMultiplier = 3
+	}
+	if config.BayesianPolicy.MaxActive <= 0 {
+		config.BayesianPolicy = bayes.Policy{VectorWeight: .6, NeighborWeight: .15, NoveltyWeight: .15, IndependenceWeight: .1, Threshold: .72, CriticalThreshold: .55, AuditProbability: .02, MaxActive: 8, AuditSeed: "eventframe-v1"}
 	}
 	return &Service{store: eventStore, embedder: embedder, config: config}, nil
 }
@@ -146,6 +151,11 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	if len(candidates) > recallK {
 		candidates = candidates[:recallK]
 	}
+	shadowInputs := make([]bayes.Candidate, 0, len(candidates))
+	for _, candidate := range candidates {
+		shadowInputs = append(shadowInputs, bayes.Candidate{EventID: candidate.Event.ID, VectorRelevance: clamp((candidate.Similarity+1)/2, 0, 1), Novelty: 1 - candidate.Event.MeanFieldConfidence(), SourceIndependence: sourceIndependence(candidate.Event), Priority: candidate.Event.Priority, EvidenceReady: !candidate.Event.AvailableAt.After(request.AsOf)})
+	}
+	shadow := bayes.Evaluate(shadowInputs, s.store.Snapshot(ctx).EvidenceEpoch, s.config.BayesianPolicy)
 	packed := make([]model.Candidate, 0, min(packK, len(candidates)))
 	usedTokens := 0
 	for _, candidate := range candidates {
@@ -166,7 +176,18 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		Packed:          len(packed),
 		UsedTokens:      usedTokens,
 		Snapshot:        s.store.Snapshot(ctx),
+		BayesianShadow:  shadow,
 	}, nil
+}
+
+func sourceIndependence(event model.Event) float64 {
+	if len(event.Provenance.RetrievedIDs) > 0 {
+		return 0.25
+	}
+	if event.Who.Source == model.SourceObserved || event.What.Source == model.SourceObserved {
+		return 1
+	}
+	return 0.5
 }
 
 func (s *Service) Health(ctx context.Context) (model.HealthResponse, error) {

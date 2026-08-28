@@ -62,6 +62,21 @@ export type ContextPacket = {
     abstraction_version: number;
     evidence_epoch: number;
   };
+  bayesian_shadow?: {
+    mode: "shadow";
+    nominated: number;
+    activated: number;
+    selection_support_certified: false;
+    decisions: Array<{
+      event_id: string;
+      activation_score: number;
+      activated: boolean;
+      evidence_ready: boolean;
+      audit_selected: boolean;
+      audit_probability: number;
+      posterior_key: string;
+    }>;
+  };
 };
 
 export type AdapterConfig = {
