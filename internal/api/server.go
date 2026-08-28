@@ -38,8 +38,69 @@ func NewServer(runtime *service.Service, logger *slog.Logger) *Server {
 	server.mux.HandleFunc("GET /v1/abstraction/graph", server.getPredictiveGraph)
 	server.mux.HandleFunc("POST /v1/abstraction/snaps:publish", server.publishPredictiveSnap)
 	server.mux.HandleFunc("POST /v1/abstraction/snaps:rollback", server.rollbackPredictiveSnap)
+	server.mux.HandleFunc("POST /v1/agency/proposals:issue", server.issueAgencyProposal)
+	server.mux.HandleFunc("POST /v1/agency/proposals:claim", server.claimAgencyProposals)
+	server.mux.HandleFunc("POST /v1/agency/proposals:resolve", server.resolveAgencyProposal)
 	server.mux.HandleFunc("GET /metrics", server.metrics.handle)
 	return server
+}
+
+func (s *Server) issueAgencyProposal(writer http.ResponseWriter, request *http.Request) {
+	var input model.IssueAgencyProposalRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.IssueAgencyProposal(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrAgencyConflict) {
+			writeError(writer, http.StatusConflict, "idempotency_conflict", err)
+			return
+		}
+		if errors.Is(err, store.ErrAgencyChainBudget) {
+			writeError(writer, http.StatusTooManyRequests, "causal_chain_budget", err)
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "proposal_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) claimAgencyProposals(writer http.ResponseWriter, request *http.Request) {
+	var input model.ClaimAgencyProposalsRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.ClaimAgencyProposals(request.Context(), input)
+	if err != nil {
+		writeError(writer, http.StatusBadRequest, "claim_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) resolveAgencyProposal(writer http.ResponseWriter, request *http.Request) {
+	var input model.ResolveAgencyProposalRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.ResolveAgencyProposal(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrAgencyConflict) || errors.Is(err, store.ErrAgencyLease) {
+			writeError(writer, http.StatusConflict, "agency_conflict", err)
+			return
+		}
+		if errors.Is(err, store.ErrAgencyNotFound) {
+			writeError(writer, http.StatusNotFound, "proposal_not_found", err)
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "resolution_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
 }
 
 func (s *Server) getPredictiveGraph(writer http.ResponseWriter, request *http.Request) {

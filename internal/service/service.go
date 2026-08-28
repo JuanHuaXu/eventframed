@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"crypto/sha256"
+	"crypto/subtle"
 	"encoding/hex"
 	"encoding/json"
 	"errors"
@@ -14,6 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"github.com/JuanHuaXu/eventframed/internal/agency"
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	graphpolicy "github.com/JuanHuaXu/eventframed/internal/graph"
@@ -33,6 +35,9 @@ type Config struct {
 	BayesianChangePolicy bayes.ChangePolicy
 	ResidualPolicy       residual.Policy
 	SnapPolicy           graphpolicy.Policy
+	AgencyPolicy         agency.Policy
+	AgencySigner         *agency.Signer
+	AgencyIssuerToken    string
 }
 
 type Service struct {
@@ -71,6 +76,12 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	}
 	if !config.SnapPolicy.Valid() {
 		config.SnapPolicy = graphpolicy.Policy{MaxNodes: 256, MaxEdges: 512, MaxCandidateFamily: 32, ClosureRadius: 2, MinNetPriorityGain: .01, MaxProperRiskIncrease: .01, MaxUnresolvedBurden: 0, MinSimultaneousCoverage: .95, MinBucketSupport: 30}
+	}
+	if !config.AgencyPolicy.Valid() {
+		config.AgencyPolicy = agency.DefaultPolicy(config.AgencyPolicy.Enabled)
+	}
+	if config.AgencyPolicy.Enabled && (config.AgencySigner == nil || len(config.AgencyIssuerToken) < 32) {
+		return nil, errors.New("enabled agency policy requires a proposal signer and issuer token")
 	}
 	policyDigest, err := bayesianPolicyDigest(config)
 	if err != nil {
@@ -621,6 +632,83 @@ func (s *Service) GetPredictiveGraph(ctx context.Context, tenantID string) (mode
 	return model.PredictiveGraphResponse{ProtocolVersion: model.ProtocolVersion, Graph: graph, Snapshot: snapshot}, nil
 }
 
+func (s *Service) IssueAgencyProposal(ctx context.Context, request model.IssueAgencyProposalRequest) (model.IssueAgencyProposalResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.IssueAgencyProposalResponse{}, err
+	}
+	if !s.config.AgencyPolicy.Enabled || s.config.AgencySigner == nil {
+		return model.IssueAgencyProposalResponse{}, errors.New("agency is disabled")
+	}
+	if subtle.ConstantTimeCompare([]byte(request.IssuerToken), []byte(s.config.AgencyIssuerToken)) != 1 {
+		return model.IssueAgencyProposalResponse{}, errors.New("agency issuer authentication failed")
+	}
+	now := time.Now().UTC()
+	proposal, err := agency.BuildProposal(request.Proposal, now, s.config.AgencyPolicy)
+	if err != nil {
+		return model.IssueAgencyProposalResponse{}, err
+	}
+	signed, err := s.config.AgencySigner.Sign(proposal)
+	if err != nil {
+		return model.IssueAgencyProposalResponse{}, err
+	}
+	digest, err := agencyProposalDigest(proposal)
+	if err != nil {
+		return model.IssueAgencyProposalResponse{}, err
+	}
+	record := model.AgencyProposalRecord{Proposal: proposal, Signed: signed, Status: model.AgencyPending}
+	result, err := s.store.PutAgencyProposal(ctx, record, digest, s.config.AgencyPolicy.MaxProposalsPerChain, s.config.AgencyPolicy.MaxPendingPerTenant, now)
+	if err != nil {
+		return model.IssueAgencyProposalResponse{}, err
+	}
+	return model.IssueAgencyProposalResponse{ProtocolVersion: model.ProtocolVersion, Duplicate: result.Duplicate, Record: result.Record, Snapshot: result.Snapshot}, nil
+}
+
+func (s *Service) ClaimAgencyProposals(ctx context.Context, request model.ClaimAgencyProposalsRequest) (model.ClaimAgencyProposalsResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.ClaimAgencyProposalsResponse{}, err
+	}
+	if !s.config.AgencyPolicy.Enabled {
+		return model.ClaimAgencyProposalsResponse{}, errors.New("agency is disabled")
+	}
+	request.TenantID, request.ConsumerID = strings.TrimSpace(request.TenantID), strings.TrimSpace(request.ConsumerID)
+	if request.TenantID == "" || request.ConsumerID == "" {
+		return model.ClaimAgencyProposalsResponse{}, errors.New("tenant_id and consumer_id are required")
+	}
+	if request.Limit == 0 {
+		request.Limit = min(10, s.config.AgencyPolicy.MaxClaims)
+	}
+	if request.Limit < 1 || request.Limit > s.config.AgencyPolicy.MaxClaims {
+		return model.ClaimAgencyProposalsResponse{}, errors.New("agency claim limit exceeds policy")
+	}
+	records, snapshot, err := s.store.ClaimAgencyProposals(ctx, request.TenantID, request.ConsumerID, time.Now().UTC(), request.Limit, s.config.AgencyPolicy.LeaseDuration)
+	if err != nil {
+		return model.ClaimAgencyProposalsResponse{}, err
+	}
+	return model.ClaimAgencyProposalsResponse{ProtocolVersion: model.ProtocolVersion, Records: records, Snapshot: snapshot}, nil
+}
+
+func (s *Service) ResolveAgencyProposal(ctx context.Context, request model.ResolveAgencyProposalRequest) (model.ResolveAgencyProposalResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.ResolveAgencyProposalResponse{}, err
+	}
+	if !s.config.AgencyPolicy.Enabled {
+		return model.ResolveAgencyProposalResponse{}, errors.New("agency is disabled")
+	}
+	request.TenantID, request.ProposalID, request.ConsumerID = strings.TrimSpace(request.TenantID), strings.TrimSpace(request.ProposalID), strings.TrimSpace(request.ConsumerID)
+	request.Reason, request.ExecutionRef = strings.TrimSpace(request.Reason), strings.TrimSpace(request.ExecutionRef)
+	if request.TenantID == "" || request.ProposalID == "" || request.ConsumerID == "" || request.Reason == "" || len(request.Reason) > 1024 || len(request.ExecutionRef) > 512 {
+		return model.ResolveAgencyProposalResponse{}, errors.New("bounded tenant, proposal, consumer, and resolution reason are required")
+	}
+	if request.Decision != model.AgencyApproved && request.Decision != model.AgencyRejected {
+		return model.ResolveAgencyProposalResponse{}, errors.New("agency resolution must be approved or rejected")
+	}
+	result, err := s.store.ResolveAgencyProposal(ctx, request, time.Now().UTC())
+	if err != nil {
+		return model.ResolveAgencyProposalResponse{}, err
+	}
+	return model.ResolveAgencyProposalResponse{ProtocolVersion: model.ProtocolVersion, Duplicate: result.Duplicate, Record: result.Record, Snapshot: result.Snapshot}, nil
+}
+
 func (s *Service) RollbackPredictiveSnap(ctx context.Context, request model.RollbackSnapRequest) (model.PredictiveSnapResponse, error) {
 	if err := checkProtocol(request.ProtocolVersion); err != nil {
 		return model.PredictiveSnapResponse{}, err
@@ -875,9 +963,20 @@ func bayesianPolicyDigest(config Config) (string, error) {
 		Change      bayes.ChangePolicy `json:"change"`
 		Residual    residual.Policy    `json:"residual"`
 		Snap        graphpolicy.Policy `json:"snap"`
-	}{Frontier: config.BayesianPolicy, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Residual: config.ResidualPolicy, Snap: config.SnapPolicy})
+		Agency      agency.Policy      `json:"agency"`
+	}{Frontier: config.BayesianPolicy, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Residual: config.ResidualPolicy, Snap: config.SnapPolicy, Agency: config.AgencyPolicy})
 	if err != nil {
 		return "", fmt.Errorf("encode Bayesian policy: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	return hex.EncodeToString(digest[:]), nil
+}
+
+func agencyProposalDigest(proposal model.AgencyProposal) (string, error) {
+	proposal.CreatedAt = time.Time{}
+	payload, err := json.Marshal(proposal)
+	if err != nil {
+		return "", err
 	}
 	digest := sha256.Sum256(payload)
 	return hex.EncodeToString(digest[:]), nil

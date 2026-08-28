@@ -193,6 +193,15 @@ func (s *fixedStore) PublishPredictiveSnap(context.Context, model.PredictiveSnap
 func (s *fixedStore) RollbackPredictiveSnap(context.Context, string, string, string) (model.PredictiveGraph, model.Snapshot, error) {
 	return model.PredictiveGraph{}, model.Snapshot{}, nil
 }
+func (s *fixedStore) PutAgencyProposal(context.Context, model.AgencyProposalRecord, string, int, int, time.Time) (store.AgencyPutResult, error) {
+	return store.AgencyPutResult{}, nil
+}
+func (s *fixedStore) ClaimAgencyProposals(context.Context, string, string, time.Time, int, time.Duration) ([]model.AgencyProposalRecord, model.Snapshot, error) {
+	return nil, model.Snapshot{}, nil
+}
+func (s *fixedStore) ResolveAgencyProposal(context.Context, model.ResolveAgencyProposalRequest, time.Time) (store.AgencyResolveResult, error) {
+	return store.AgencyResolveResult{}, nil
+}
 func (s *fixedStore) Stats(context.Context) (store.Stats, error) {
 	return store.Stats{Backend: "fixed"}, nil
 }

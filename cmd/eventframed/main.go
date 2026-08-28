@@ -13,6 +13,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/JuanHuaXu/eventframed/internal/agency"
 	"github.com/JuanHuaXu/eventframed/internal/api"
 	"github.com/JuanHuaXu/eventframed/internal/config"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
@@ -60,12 +61,29 @@ func run(args []string) error {
 	if err != nil {
 		return err
 	}
+	var agencySigner *agency.Signer
+	var agencyIssuerToken string
+	if settings.AgencyEnabled {
+		agencySigner, err = agency.LoadOrCreateSigner(settings.AgencyPrivateKey, settings.AgencyPublicKey)
+		if err != nil {
+			_ = eventStore.Close()
+			return fmt.Errorf("load agency signing key: %w", err)
+		}
+		agencyIssuerToken, err = agency.LoadOrCreateIssuerToken(settings.AgencyIssuerToken)
+		if err != nil {
+			_ = eventStore.Close()
+			return fmt.Errorf("load agency issuer token: %w", err)
+		}
+	}
 	runtime, err := service.New(eventStore, activeEmbedder, service.Config{
 		DefaultRecallK:      settings.RecallK,
 		DefaultPackK:        settings.PackK,
 		DefaultTokenBudget:  settings.TokenBudget,
 		OverfetchMultiplier: 4,
 		Quantization:        settings.Quantization,
+		AgencyPolicy:        agency.DefaultPolicy(settings.AgencyEnabled),
+		AgencySigner:        agencySigner,
+		AgencyIssuerToken:   agencyIssuerToken,
 	})
 	if err != nil {
 		_ = eventStore.Close()

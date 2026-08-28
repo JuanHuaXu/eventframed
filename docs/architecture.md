@@ -102,3 +102,35 @@ publishes the graph, snap audit record, targeted posterior/residual stale marks,
 and monotone versions in one transaction. Rollback republishes the previous
 topology under a new version and repeats stale marking; it never reactivates old
 posterior or residual state.
+
+## Bounded agency authority
+
+Phase 5 separates proposal generation from authority. An authenticated local
+planner may submit a data-only draft to the daemon. `eventframed` validates the
+action, evidence availability, utility, priority, timing, causal ancestry, chain
+budget, and tenant queue bound before signing the exact JSON payload with
+Ed25519. Proposal state, leases, terminal resolutions, and `agency_version` are
+durable. Deleting or retaining cited evidence atomically rejects any pending or
+claimed dependent proposal.
+
+The daemon's issuer token and private key stay mode 0600. The OpenClaw adapter
+receives only the public key. It verifies the exact signed payload and then
+applies a second, independent authority policy: configured tenant, lease holder,
+session prefix, capability, explicit action consent, causal-depth cap, expiry,
+quiet hours, and kill switch. Failure at any gate rejects the proposal. The
+allowed sink is OpenClaw's session-turn scheduler, never a tool API.
+
+The authority sequence is:
+
+1. Trusted planner issues a wake, notify, or schedule draft with existing evidence.
+2. The daemon validates, signs, persists, and later leases the proposal.
+3. The adapter verifies the signature and local consent policy.
+4. The adapter schedules a normal agent turn under a deterministic proposal tag.
+5. The adapter records approval and scheduler handle in the daemon.
+
+The scheduler and LibraVDB do not share a transaction. If durable approval fails,
+the adapter first removes the scheduled tag and then records rejection. If that
+rollback is uncertain, it leaves the lease unresolved so a retry begins by
+removing the same deterministic tag. A crash after execution but before durable
+resolution can still produce at-least-once behavior; this limitation must be
+measured in restart and duplicate-delivery fault tests.

@@ -1,8 +1,9 @@
 import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
+import { isAgencyAction, registerAgencyService } from "./agency.js";
 import { EventFrameClient } from "./client.js";
 import { buildTurnEvent, extractLatestText } from "./event.js";
 import { formatContext } from "./format.js";
-import type { AdapterConfig } from "./types.js";
+import type { AdapterConfig, AgencyAction } from "./types.js";
 
 const DEFAULTS: AdapterConfig = {
   socketPath: "~/.eventframed/run/eventframed.sock",
@@ -11,6 +12,17 @@ const DEFAULTS: AdapterConfig = {
   packK: 10,
   tokenBudget: 2_000,
   capture: true,
+  agencyEnabled: false,
+  agencyKillSwitch: true,
+  agencyPublicKeyPath: "~/.eventframed/keys/agency_ed25519.pub",
+  agencyCapabilities: [],
+  agencyConsentActions: [],
+  agencyConsumerId: "openclaw-eventframe-memory",
+  agencyPollIntervalMs: 5_000,
+  agencyMaxClaims: 10,
+  agencyMaxChainDepth: 3,
+  agencyCriticalThreshold: 0.9,
+  agencyAllowedSessionPrefixes: [],
 };
 
 type RecallState = {
@@ -28,6 +40,8 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
     const config = resolveConfig(api.pluginConfig);
     const client = new EventFrameClient({ socketPath: config.socketPath });
     const recallByRun = new Map<string, RecallState>();
+
+    registerAgencyService(api, client, config);
 
     api.on("before_prompt_build", async (event, context) => {
       const prompt = normalizeText(extractLatestText(event.messages, "user") ?? event.prompt);
@@ -104,6 +118,19 @@ function resolveConfig(value: Record<string, unknown> | undefined): AdapterConfi
     packK: Math.min(recallK, readInteger(value?.packK, DEFAULTS.packK, 1, 100)),
     tokenBudget: readInteger(value?.tokenBudget, DEFAULTS.tokenBudget, 1, 1_000_000),
     capture: typeof value?.capture === "boolean" ? value.capture : DEFAULTS.capture,
+    agencyEnabled: typeof value?.agencyEnabled === "boolean" ? value.agencyEnabled : DEFAULTS.agencyEnabled,
+    agencyKillSwitch: typeof value?.agencyKillSwitch === "boolean" ? value.agencyKillSwitch : DEFAULTS.agencyKillSwitch,
+    agencyPublicKeyPath: readString(value?.agencyPublicKeyPath, DEFAULTS.agencyPublicKeyPath),
+    agencyCapabilities: readStringArray(value?.agencyCapabilities),
+    agencyConsentActions: readAgencyActions(value?.agencyConsentActions),
+    agencyConsumerId: readString(value?.agencyConsumerId, DEFAULTS.agencyConsumerId),
+    agencyPollIntervalMs: readInteger(value?.agencyPollIntervalMs, DEFAULTS.agencyPollIntervalMs, 1_000, 300_000),
+    agencyMaxClaims: readInteger(value?.agencyMaxClaims, DEFAULTS.agencyMaxClaims, 1, 50),
+    agencyMaxChainDepth: readInteger(value?.agencyMaxChainDepth, DEFAULTS.agencyMaxChainDepth, 0, 16),
+    agencyQuietHoursStartUtc: readOptionalHour(value?.agencyQuietHoursStartUtc),
+    agencyQuietHoursEndUtc: readOptionalHour(value?.agencyQuietHoursEndUtc),
+    agencyCriticalThreshold: readNumber(value?.agencyCriticalThreshold, DEFAULTS.agencyCriticalThreshold, 0, 1),
+    agencyAllowedSessionPrefixes: readStringArray(value?.agencyAllowedSessionPrefixes),
   };
 }
 
@@ -144,4 +171,21 @@ function readInteger(value: unknown, fallback: number, minimum: number, maximum:
   return typeof value === "number" && Number.isInteger(value) && value >= minimum && value <= maximum
     ? value
     : fallback;
+}
+
+function readNumber(value: unknown, fallback: number, minimum: number, maximum: number): number {
+  return typeof value === "number" && Number.isFinite(value) && value >= minimum && value <= maximum ? value : fallback;
+}
+
+function readOptionalHour(value: unknown): number | undefined {
+  return typeof value === "number" && Number.isInteger(value) && value >= 0 && value <= 23 ? value : undefined;
+}
+
+function readStringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return [...new Set(value.filter((item): item is string => typeof item === "string" && item.trim() !== "").map((item) => item.trim()))].slice(0, 64);
+}
+
+function readAgencyActions(value: unknown): AgencyAction[] {
+  return Array.isArray(value) ? [...new Set(value.filter(isAgencyAction))] : [];
 }

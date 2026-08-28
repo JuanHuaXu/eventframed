@@ -60,6 +60,7 @@ export type ContextPacket = {
     posterior_version: number;
     residual_version: number;
     abstraction_version: number;
+    agency_version: number;
     evidence_epoch: number;
   };
   bayesian_shadow?: {
@@ -86,4 +87,57 @@ export type AdapterConfig = {
   packK: number;
   tokenBudget: number;
   capture: boolean;
+  agencyEnabled: boolean;
+  agencyKillSwitch: boolean;
+  agencyPublicKeyPath: string;
+  agencyCapabilities: string[];
+  agencyConsentActions: AgencyAction[];
+  agencyConsumerId: string;
+  agencyPollIntervalMs: number;
+  agencyMaxClaims: number;
+  agencyMaxChainDepth: number;
+  agencyQuietHoursStartUtc?: number;
+  agencyQuietHoursEndUtc?: number;
+  agencyCriticalThreshold: number;
+  agencyAllowedSessionPrefixes: string[];
+};
+
+export type AgencyAction = "wake" | "notify" | "schedule";
+
+export type AgencyProposal = {
+  id: string;
+  tenant_id: string;
+  session_id: string;
+  action: AgencyAction;
+  reason: string;
+  evidence_ids: string[];
+  expected_utility: number;
+  priority: number;
+  required_capability: string;
+  not_before: string;
+  scheduled_for?: string;
+  expires_at: string;
+  idempotency_key: string;
+  causal_chain_id: string;
+  parent_proposal_id?: string;
+  causal_chain_depth: number;
+  created_at: string;
+  contract_version: number;
+};
+
+export type AgencyProposalRecord = {
+  proposal: AgencyProposal;
+  signed: { payload: string; signature: string; key_id: string };
+  status: "pending" | "claimed" | "approved" | "rejected" | "expired";
+  claimed_by?: string;
+  lease_until?: string;
+  resolution_reason?: string;
+  execution_ref?: string;
+  resolved_at?: string;
+};
+
+export type AgencyClaimResponse = {
+  protocol_version: string;
+  records: AgencyProposalRecord[];
+  snapshot: ContextPacket["snapshot"];
 };

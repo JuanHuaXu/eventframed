@@ -14,7 +14,9 @@ retention/deletion propagation, backup, compaction, guarded migration, a
 certificate-gated selective Bayesian usefulness layer, and certified law-only
 residual reuse for retrieval outcomes. Phase 4B adds bounded predictive graph
 publication, server-computed dependency closure, targeted stale marking, and
-monotone rollback after externally confirmed split or merge proposals.
+monotone rollback after externally confirmed split or merge proposals. Phase 5
+adds signed, durable wake/notify/schedule proposals and a fail-closed OpenClaw
+authority layer. It does not grant `eventframed` tool-execution authority.
 
 ## Architecture
 
@@ -30,6 +32,14 @@ eventframed (Go)
   v
 LibraVDB (embedded, mmap, optional SQ8/FSQ6/PQ traversal)
 ```
+
+The authority path runs beside recall: a trusted local planner submits a bounded
+proposal to `eventframed`; the daemon validates its evidence, signs the exact
+payload, and leases it from a durable queue. The OpenClaw adapter verifies the
+signature and independently applies tenant, session, capability, consent,
+causal-depth, expiry, quiet-hours, and kill-switch gates before scheduling a new
+agent turn. That turn remains ordinary untrusted input and receives no tool
+permission from the proposal.
 
 There is no separate LibraVDB daemon hop. The Go process owns the database and
 all policy-bearing calculations. The TypeScript adapter only translates OpenClaw
@@ -91,6 +101,28 @@ The adapter records retrieved event IDs on each generated turn. This lineage is
 required to detect self-reinforcement and must not be removed by downstream
 importers.
 
+### Bounded agency
+
+Agency is disabled on both sides by default. Start the daemon once with:
+
+```sh
+./bin/eventframed -agency-enabled
+```
+
+This creates a mode-0600 Ed25519 private key and issuer token under
+`~/.eventframed/keys`, plus a public verification key. Give only the issuer token
+to the trusted local component allowed to submit proposals. Configure the
+OpenClaw plugin with `agencyEnabled: true`, `agencyKillSwitch: false`, the public
+key path, explicit `agencyConsentActions`, matching `agencyCapabilities`, and at
+least one `agencyAllowedSessionPrefixes` entry. Empty consent, capability, or
+session scopes deny every proposal. Both UTC quiet-hour endpoints must be set or
+both omitted.
+
+The current daemon accepts proposals from an authenticated planner; it does not
+yet synthesize them from recall or Bayesian state by itself. Proposal issuance,
+leasing, signature verification, policy authorization, scheduling, and terminal
+resolution are implemented end to end.
+
 ## Important limits
 
 - The development hash embedder is deterministic but not semantic. Replace it
@@ -110,8 +142,13 @@ importers.
   produced by an external slow-path auditor. The daemon independently enforces
   graph bounds, dependency closure, certificate coverage, acceptance thresholds,
   atomic publication, and rollback; it does not estimate those certificates.
-- No proactive action is executed. The daemon defines a data-only agency proposal
-  type so a later OpenClaw authority layer can approve, reject, or schedule it.
+- Agency can only request a wake, notification, or scheduled agent turn. The
+  OpenClaw authority layer cannot execute tools through this protocol, and the
+  generated turn explicitly retains normal user and OpenClaw approval policy.
+- Proposal signing and queue mutation are atomic inside LibraVDB. Scheduling and
+  durable resolution span two processes and therefore are not exactly-once. A
+  deterministic scheduler tag, lease, and rollback path reduce duplicates, but
+  crash-window behavior still requires production fault testing.
 - TCP listening has no transport authentication in this alpha. Prefer the default
   local Unix socket; do not expose a TCP listener beyond a trusted loopback test.
 

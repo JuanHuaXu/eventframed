@@ -6,6 +6,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/JuanHuaXu/eventframed/internal/agency"
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/residual"
@@ -287,6 +288,112 @@ func TestPredictiveSnapInvalidationRollbackAndRestart(t *testing.T) {
 	finalGraph, err := third.GetPredictiveGraph(ctx, "tenant-a")
 	if err != nil || finalGraph.SourceSnapID != "rollback:snap-1" || finalGraph.Version != third.Snapshot(ctx).GraphVersion {
 		t.Fatalf("durable rollback graph = %+v, %v", finalGraph, err)
+	}
+}
+
+func TestAgencyProposalLeaseAndResolutionSurviveRestart(t *testing.T) {
+	ctx := context.Background()
+	path := t.TempDir() + "/events.libravdb"
+	signer, err := agency.NewSignerForTest()
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	proposal, err := agency.BuildProposal(model.AgencyProposalDraft{
+		ID: "proposal-1", TenantID: "tenant-a", SessionID: "openclaw:session-a", Action: model.AgencyWake,
+		Reason: "A follow-up became timely.", EvidenceIDs: []string{"event-a"}, ExpectedUtility: .8, Priority: .7,
+		NotBefore: now, ExpiresAt: now.Add(time.Hour), IdempotencyKey: "proposal-1", CausalChainID: "chain-1",
+	}, now, agency.DefaultPolicy(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	signed, err := signer.Sign(proposal)
+	if err != nil {
+		t.Fatal(err)
+	}
+	record := model.AgencyProposalRecord{Proposal: proposal, Signed: signed, Status: model.AgencyPending}
+	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	evidence := testutil.Event("event-a", "agency evidence", now.Add(-time.Second))
+	if _, err := first.Put(ctx, evidence, []float32{1, 0, 0, 0}, "event-digest"); err != nil {
+		t.Fatal(err)
+	}
+	put, err := first.PutAgencyProposal(ctx, record, "digest", 8, 1000, now)
+	if err != nil || put.Snapshot.AgencyVersion != 2 {
+		t.Fatalf("agency put = %+v, %v", put, err)
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	second, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	claimed, claimSnapshot, err := second.ClaimAgencyProposals(ctx, "tenant-a", "authority-a", now.Add(time.Second), 10, time.Minute)
+	if err != nil || len(claimed) != 1 || claimed[0].Status != model.AgencyClaimed || claimSnapshot.AgencyVersion != 3 {
+		t.Fatalf("agency claim = %+v, %+v, %v", claimed, claimSnapshot, err)
+	}
+	if err := second.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	third, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	resolve := model.ResolveAgencyProposalRequest{TenantID: "tenant-a", ProposalID: "proposal-1", ConsumerID: "authority-a", Decision: model.AgencyApproved, Reason: "authorized", ExecutionRef: "job-1"}
+	approved, err := third.ResolveAgencyProposal(ctx, resolve, now.Add(2*time.Second))
+	if err != nil || approved.Record.Status != model.AgencyApproved || approved.Snapshot.AgencyVersion != 4 {
+		t.Fatalf("agency resolution = %+v, %v", approved, err)
+	}
+	if err := third.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	fourth, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	duplicate, err := fourth.ResolveAgencyProposal(ctx, resolve, now.Add(3*time.Second))
+	if err != nil || !duplicate.Duplicate || duplicate.Record.ExecutionRef != "job-1" || fourth.Snapshot(ctx).AgencyVersion != 4 {
+		t.Fatalf("durable agency resolution = %+v, %v", duplicate, err)
+	}
+
+	secondProposal, err := agency.BuildProposal(model.AgencyProposalDraft{
+		ID: "proposal-2", TenantID: "tenant-a", SessionID: "openclaw:session-a", Action: model.AgencyNotify,
+		Reason: "A second follow-up became timely.", EvidenceIDs: []string{"event-a"}, ExpectedUtility: .7, Priority: .6,
+		NotBefore: now, ExpiresAt: now.Add(time.Hour), IdempotencyKey: "proposal-2", CausalChainID: "chain-2",
+	}, now, agency.DefaultPolicy(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	secondSigned, err := signer.Sign(secondProposal)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := fourth.PutAgencyProposal(ctx, model.AgencyProposalRecord{Proposal: secondProposal, Signed: secondSigned, Status: model.AgencyPending}, "digest-2", 8, 1000, now); err != nil {
+		t.Fatal(err)
+	}
+	beforeDelete := fourth.Snapshot(ctx)
+	deleted, err := fourth.Delete(ctx, "tenant-a", "event-a")
+	if err != nil || !deleted.Deleted || deleted.Snapshot.AgencyVersion != beforeDelete.AgencyVersion+1 {
+		t.Fatalf("agency-aware durable delete = %+v, %v", deleted, err)
+	}
+	if err := fourth.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	fifth, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer fifth.Close()
+	remaining, _, err := fifth.ClaimAgencyProposals(ctx, "tenant-a", "authority-b", now.Add(4*time.Second), 10, time.Minute)
+	if err != nil || len(remaining) != 0 {
+		t.Fatalf("deleted evidence left durable proposal claimable: %+v, %v", remaining, err)
 	}
 }
 

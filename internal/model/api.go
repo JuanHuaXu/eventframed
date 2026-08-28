@@ -3,7 +3,7 @@ package model
 import "time"
 
 const ProtocolVersion = "eventframe.v1alpha1"
-const ContractVersion uint64 = 5
+const ContractVersion uint64 = 6
 
 type Snapshot struct {
 	RuntimeVersion     uint64 `json:"runtime_version"`
@@ -13,6 +13,7 @@ type Snapshot struct {
 	PosteriorVersion   uint64 `json:"posterior_version"`
 	ResidualVersion    uint64 `json:"residual_version"`
 	AbstractionVersion uint64 `json:"abstraction_version"`
+	AgencyVersion      uint64 `json:"agency_version"`
 	EvidenceEpoch      uint64 `json:"evidence_epoch"`
 }
 
@@ -131,24 +132,6 @@ const (
 	AgencyRemember AgencyAction = "remember"
 	AgencySuppress AgencyAction = "suppress"
 )
-
-// AgencyProposal is deliberately data-only. The OpenClaw adapter remains the
-// authority that validates capabilities and executes or rejects the proposal.
-type AgencyProposal struct {
-	ID                 string       `json:"id"`
-	TenantID           string       `json:"tenant_id"`
-	SessionID          string       `json:"session_id"`
-	Action             AgencyAction `json:"action"`
-	Reason             string       `json:"reason"`
-	EvidenceIDs        []string     `json:"evidence_ids"`
-	ExpectedUtility    float64      `json:"expected_utility"`
-	Priority           float64      `json:"priority"`
-	RequiredCapability string       `json:"required_capability"`
-	ExpiresAt          time.Time    `json:"expires_at"`
-	IdempotencyKey     string       `json:"idempotency_key"`
-	CausalChainID      string       `json:"causal_chain_id"`
-	ContractVersion    uint64       `json:"contract_version"`
-}
 
 type HealthResponse struct {
 	ProtocolVersion string   `json:"protocol_version"`

@@ -32,6 +32,75 @@
       },
       "capture": {
         "type": "boolean"
+      },
+      "agencyEnabled": {
+        "type": "boolean"
+      },
+      "agencyKillSwitch": {
+        "type": "boolean"
+      },
+      "agencyPublicKeyPath": {
+        "type": "string"
+      },
+      "agencyCapabilities": {
+        "type": "array",
+        "maxItems": 16,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": ["eventframe.agency.wake", "eventframe.agency.notify", "eventframe.agency.schedule"]
+        }
+      },
+      "agencyConsentActions": {
+        "type": "array",
+        "maxItems": 3,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": ["wake", "notify", "schedule"]
+        }
+      },
+      "agencyConsumerId": {
+        "type": "string"
+      },
+      "agencyPollIntervalMs": {
+        "type": "integer",
+        "minimum": 1000,
+        "maximum": 300000
+      },
+      "agencyMaxClaims": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+      },
+      "agencyMaxChainDepth": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 16
+      },
+      "agencyQuietHoursStartUtc": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 23
+      },
+      "agencyQuietHoursEndUtc": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 23
+      },
+      "agencyCriticalThreshold": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "agencyAllowedSessionPrefixes": {
+        "type": "array",
+        "maxItems": 64,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     }
   },
@@ -42,6 +111,12 @@
     },
     "tenantId": {
       "label": "Tenant ID"
+    },
+    "agencyKillSwitch": {
+      "label": "Agency kill switch"
+    },
+    "agencyPublicKeyPath": {
+      "label": "Agency public key"
     }
   }
 }

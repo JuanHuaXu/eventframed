@@ -25,6 +25,10 @@ type Config struct {
 	EmbeddingTimeoutSeconds int
 	MigrateV1               bool
 	MigrationBackup         string
+	AgencyEnabled           bool
+	AgencyPrivateKey        string
+	AgencyPublicKey         string
+	AgencyIssuerToken       string
 }
 
 func Parse(args []string) (Config, error) {
@@ -50,6 +54,10 @@ func Parse(args []string) (Config, error) {
 	set.IntVar(&config.EmbeddingTimeoutSeconds, "embedding-timeout", 10, "embedding request timeout in seconds")
 	set.BoolVar(&config.MigrateV1, "migrate-v1", false, "migrate a Phase 1 database to the durable schema, then exit")
 	set.StringVar(&config.MigrationBackup, "migration-backup", "", "required absolute backup path for migration")
+	set.BoolVar(&config.AgencyEnabled, "agency-enabled", false, "enable signed data-only agency proposal endpoints")
+	set.StringVar(&config.AgencyPrivateKey, "agency-private-key", filepath.Join(defaultsRoot, "keys", "agency_ed25519"), "Ed25519 agency private key path")
+	set.StringVar(&config.AgencyPublicKey, "agency-public-key", filepath.Join(defaultsRoot, "keys", "agency_ed25519.pub"), "Ed25519 agency public key path")
+	set.StringVar(&config.AgencyIssuerToken, "agency-issuer-token", filepath.Join(defaultsRoot, "keys", "agency_issuer.token"), "private agency proposal issuer token path")
 	if err := set.Parse(args); err != nil {
 		return Config{}, err
 	}
@@ -79,6 +87,10 @@ func Parse(args []string) (Config, error) {
 	if config.MigrateV1 && !filepath.IsAbs(config.MigrationBackup) {
 		return Config{}, errors.New("migrate-v1 requires an absolute migration-backup path")
 	}
+	if config.AgencyEnabled && (!filepath.IsAbs(config.AgencyPrivateKey) || !filepath.IsAbs(config.AgencyPublicKey) || !filepath.IsAbs(config.AgencyIssuerToken) ||
+		config.AgencyPrivateKey == config.AgencyPublicKey || config.AgencyPrivateKey == config.AgencyIssuerToken || config.AgencyPublicKey == config.AgencyIssuerToken) {
+		return Config{}, errors.New("agency private key, public key, and issuer token paths must be distinct absolute paths")
+	}
 	return config, nil
 }
 
@@ -89,6 +101,17 @@ func (c Config) EnsureDirectories() error {
 	if strings.HasPrefix(c.Listen, "unix://") {
 		if err := os.MkdirAll(filepath.Dir(strings.TrimPrefix(c.Listen, "unix://")), 0o700); err != nil {
 			return fmt.Errorf("create socket directory: %w", err)
+		}
+	}
+	if c.AgencyEnabled {
+		if err := os.MkdirAll(filepath.Dir(c.AgencyPrivateKey), 0o700); err != nil {
+			return fmt.Errorf("create agency key directory: %w", err)
+		}
+		if err := os.MkdirAll(filepath.Dir(c.AgencyPublicKey), 0o700); err != nil {
+			return fmt.Errorf("create agency public-key directory: %w", err)
+		}
+		if err := os.MkdirAll(filepath.Dir(c.AgencyIssuerToken), 0o700); err != nil {
+			return fmt.Errorf("create agency issuer-token directory: %w", err)
 		}
 	}
 	return nil

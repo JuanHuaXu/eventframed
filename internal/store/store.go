@@ -21,6 +21,11 @@ var ErrResidualNotFound = errors.New("residual record not found")
 var ErrStaleSnapshot = errors.New("runtime snapshot changed before Bayesian journal commit")
 var ErrSnapNotFound = errors.New("predictive snap not found")
 var ErrSnapConflict = errors.New("predictive snap conflicts with current graph")
+var ErrAgencyConflict = errors.New("agency proposal id already exists with different content or resolution")
+var ErrAgencyNotFound = errors.New("agency proposal not found")
+var ErrAgencyLease = errors.New("agency proposal is not held by the resolving consumer")
+var ErrAgencyChainBudget = errors.New("agency causal-chain budget is exhausted or invalid")
+var ErrAgencyEvidence = errors.New("agency proposal references missing, cross-tenant, or unavailable evidence")
 
 type PutResult struct {
 	Duplicate bool
@@ -41,6 +46,18 @@ type BayesianOutcomeResult struct {
 	ChangePoint bool
 	Posterior   model.BayesianPosterior
 	Snapshot    model.Snapshot
+}
+
+type AgencyPutResult struct {
+	Duplicate bool
+	Record    model.AgencyProposalRecord
+	Snapshot  model.Snapshot
+}
+
+type AgencyResolveResult struct {
+	Duplicate bool
+	Record    model.AgencyProposalRecord
+	Snapshot  model.Snapshot
 }
 
 type SearchResult struct {
@@ -77,6 +94,9 @@ type EventStore interface {
 	GetPredictiveGraph(ctx context.Context, tenantID string) (model.PredictiveGraph, error)
 	PublishPredictiveSnap(ctx context.Context, record model.PredictiveSnapRecord) (model.PredictiveGraph, model.Snapshot, error)
 	RollbackPredictiveSnap(ctx context.Context, tenantID, snapID, reason string) (model.PredictiveGraph, model.Snapshot, error)
+	PutAgencyProposal(ctx context.Context, record model.AgencyProposalRecord, digest string, maxPerChain, maxPending int, evidenceAvailableBy time.Time) (AgencyPutResult, error)
+	ClaimAgencyProposals(ctx context.Context, tenantID, consumerID string, now time.Time, limit int, lease time.Duration) ([]model.AgencyProposalRecord, model.Snapshot, error)
+	ResolveAgencyProposal(ctx context.Context, request model.ResolveAgencyProposalRequest, now time.Time) (AgencyResolveResult, error)
 	Stats(ctx context.Context) (Stats, error)
 	Snapshot(ctx context.Context) model.Snapshot
 	Close() error

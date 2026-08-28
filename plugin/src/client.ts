@@ -1,7 +1,7 @@
 import http from "node:http";
 import os from "node:os";
 import path from "node:path";
-import type { ContextPacket, EventFrame } from "./types.js";
+import type { AgencyClaimResponse, AgencyProposalRecord, ContextPacket, EventFrame } from "./types.js";
 import { PROTOCOL_VERSION } from "./types.js";
 
 const MAX_RESPONSE_BYTES = 8 << 20;
@@ -56,6 +56,40 @@ export class EventFrameClient {
       token_budget: input.tokenBudget,
     });
     return parseContextPacket(value);
+  }
+
+  async claimAgency(input: { tenantId: string; consumerId: string; limit: number }): Promise<AgencyClaimResponse> {
+    const value = await this.request("POST", "/v1/agency/proposals:claim", {
+      protocol_version: PROTOCOL_VERSION,
+      tenant_id: input.tenantId,
+      consumer_id: input.consumerId,
+      limit: input.limit,
+    });
+    return parseAgencyClaims(value, input.consumerId);
+  }
+
+  async resolveAgency(input: {
+    tenantId: string;
+    proposalId: string;
+    consumerId: string;
+    decision: "approved" | "rejected";
+    reason: string;
+    executionRef?: string;
+  }): Promise<AgencyProposalRecord> {
+    const value = await this.request("POST", "/v1/agency/proposals:resolve", {
+      protocol_version: PROTOCOL_VERSION,
+      tenant_id: input.tenantId,
+      proposal_id: input.proposalId,
+      consumer_id: input.consumerId,
+      decision: input.decision,
+      reason: input.reason,
+      execution_ref: input.executionRef ?? "",
+    });
+    assertProtocol(value);
+    if (!isRecord(value.record) || !isRecord(value.record.proposal) || typeof value.record.proposal.id !== "string") {
+      throw new Error("eventframed returned a malformed agency resolution");
+    }
+    return value.record as AgencyProposalRecord;
   }
 
   private request(method: string, requestPath: string, body?: unknown): Promise<unknown> {
@@ -156,4 +190,30 @@ function parseContextPacket(value: unknown): ContextPacket {
     }
   }
   return value as ContextPacket;
+}
+
+function parseAgencyClaims(value: unknown, expectedConsumerId: string): AgencyClaimResponse {
+  assertProtocol(value);
+  if (!Array.isArray(value.records)) {
+    throw new Error("eventframed returned malformed agency claims");
+  }
+  for (const record of value.records) {
+    if (
+      !isRecord(record) ||
+      !isRecord(record.proposal) ||
+      !isRecord(record.signed) ||
+      typeof record.proposal.id !== "string" ||
+      typeof record.proposal.tenant_id !== "string" ||
+      typeof record.signed.payload !== "string" ||
+      typeof record.signed.signature !== "string" ||
+      typeof record.signed.key_id !== "string" ||
+      record.status !== "claimed" ||
+      record.claimed_by !== expectedConsumerId ||
+      typeof record.lease_until !== "string" ||
+      !Number.isFinite(new Date(record.lease_until).getTime())
+    ) {
+      throw new Error("eventframed returned a malformed agency proposal record");
+    }
+  }
+  return value as AgencyClaimResponse;
 }

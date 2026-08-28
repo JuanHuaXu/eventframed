@@ -37,10 +37,11 @@
 
 ## Milestone 5: bounded agency
 
-- Signed data-only wake/notify/schedule proposals
-- Capability and consent checks in the OpenClaw authority layer
-- Expiry, idempotency, causal-chain budgets, quiet hours, and kill switch
-- No direct tool execution by `eventframed`
+- [x] Signed data-only wake/notify/schedule proposals
+- [x] Capability and consent checks in the OpenClaw authority layer
+- [x] Expiry, idempotency, causal-chain budgets, quiet hours, and kill switch
+- [x] Durable claim leases, restart recovery, and evidence-deletion cancellation
+- [x] No direct tool execution by `eventframed`
 
 ## Required evidence before production
 

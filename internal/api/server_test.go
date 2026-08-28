@@ -11,6 +11,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/JuanHuaXu/eventframed/internal/agency"
 	"github.com/JuanHuaXu/eventframed/internal/api"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
@@ -112,6 +113,49 @@ func TestGetPredictiveGraphOverHTTP(t *testing.T) {
 	}
 	if graph.ProtocolVersion != model.ProtocolVersion || graph.Graph.TenantID != "tenant-a" || graph.Graph.Version != graph.Snapshot.GraphVersion {
 		t.Fatalf("graph response = %+v", graph)
+	}
+}
+
+func TestAgencyLifecycleOverHTTP(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	signer, err := agency.NewSignerForTest()
+	if err != nil {
+		t.Fatal(err)
+	}
+	runtime, err := service.New(memorystore.New(), embedder, service.Config{
+		DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000,
+		AgencyPolicy: agency.DefaultPolicy(true), AgencySigner: signer, AgencyIssuerToken: "test-issuer-token-that-is-at-least-32-bytes",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+	now := time.Now().UTC()
+	evidence := testutil.Event("event-a", "agency evidence", now.Add(-time.Second))
+	var observed model.ObserveResponse
+	postJSON(t, server.URL+"/v1/events:observe", model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: evidence.ID, Event: evidence}, &observed)
+	var issued model.IssueAgencyProposalResponse
+	postJSON(t, server.URL+"/v1/agency/proposals:issue", model.IssueAgencyProposalRequest{ProtocolVersion: model.ProtocolVersion, IssuerToken: "test-issuer-token-that-is-at-least-32-bytes", Proposal: model.AgencyProposalDraft{
+		ID: "proposal-http", TenantID: "tenant-a", SessionID: "openclaw:session-a", Action: model.AgencyNotify,
+		Reason: "A follow-up became timely.", EvidenceIDs: []string{"event-a"}, ExpectedUtility: .8, Priority: .7,
+		NotBefore: now, ExpiresAt: now.Add(time.Hour), IdempotencyKey: "proposal-http", CausalChainID: "chain-http",
+	}}, &issued)
+	if issued.Record.Status != model.AgencyPending || issued.Record.Signed.Signature == "" {
+		t.Fatalf("issued = %+v", issued)
+	}
+	var claimed model.ClaimAgencyProposalsResponse
+	postJSON(t, server.URL+"/v1/agency/proposals:claim", model.ClaimAgencyProposalsRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ConsumerID: "authority-http", Limit: 10}, &claimed)
+	if len(claimed.Records) != 1 || claimed.Records[0].Status != model.AgencyClaimed {
+		t.Fatalf("claimed = %+v", claimed)
+	}
+	var resolved model.ResolveAgencyProposalResponse
+	postJSON(t, server.URL+"/v1/agency/proposals:resolve", model.ResolveAgencyProposalRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", ProposalID: "proposal-http", ConsumerID: "authority-http",
+		Decision: model.AgencyApproved, Reason: "authorized", ExecutionRef: "job-http",
+	}, &resolved)
+	if resolved.Record.Status != model.AgencyApproved || resolved.Record.ExecutionRef != "job-http" {
+		t.Fatalf("resolved = %+v", resolved)
 	}
 }
 

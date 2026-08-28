@@ -71,6 +71,34 @@ certificates before another forecast can use them. These guarantees are runtime
 contracts; certificate quality remains an empirical responsibility of the named
 external audit procedure.
 
+### Bounded agency proposals
+
+Agency routes exist only when the daemon starts with `-agency-enabled`:
+
+- `POST /v1/agency/proposals:issue` authenticates with the private issuer token,
+  validates a bounded draft against existing same-tenant evidence available at
+  issue time, signs its exact JSON payload, and persists it idempotently.
+- `POST /v1/agency/proposals:claim` atomically leases eligible proposals to one
+  named authority consumer. Priority orders claims before `not_before` and ID.
+- `POST /v1/agency/proposals:resolve` records `approved` or `rejected` only while
+  the named consumer holds a live lease. Exact terminal retries are idempotent;
+  conflicting terminal decisions return HTTP 409.
+
+The only accepted actions are `wake`, `notify`, and `schedule`, bound respectively
+to `eventframe.agency.wake`, `eventframe.agency.notify`, and
+`eventframe.agency.schedule`. Every proposal carries a non-empty evidence set,
+utility, priority, not-before time, hard expiry, idempotency key, causal chain,
+and contract version. Default hard bounds are 32 evidence IDs, 4 KiB reason, 3
+causal levels, 8 proposals per chain, 1,000 pending or claimed proposals per
+tenant, 30 days into the future, and a 7-day validity interval. Claims use a
+30-second lease and are capped at 50 per request.
+
+The issue token and signing private key are local secrets; neither is sent to the
+OpenClaw adapter. The adapter verifies the public-key signature and applies its
+own consent policy before using OpenClaw's session scheduler. A signed proposal
+is not tool authority. Event deletion and retention reject pending or claimed
+proposals that cite the removed evidence in the same storage transaction.
+
 Contract version 4 adds a retrieval-specific `forecast` bundle to every packed
 candidate and durable frontier decision. It explicitly carries useful and
 not-useful probability mass through the baseline, accepted belief mixture,
@@ -152,3 +180,6 @@ applies. An explicit vector must name the exact active
 `contract_version=5` adds durable predictive graphs, snap audit records,
 server-computed dependency closure, targeted invalidation, and monotone rollback.
 It is also an additive durable-state upgrade.
+`contract_version=6` adds signed agency proposal records, an independent monotone
+`agency_version`, durable lease and resolution state, and evidence-lifecycle
+invalidation. The schema upgrade is additive; agency remains disabled by default.

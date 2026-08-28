@@ -34,6 +34,8 @@ type Store struct {
 	residuals              map[string]map[string]model.ResidualRecord
 	graphs                 map[string]model.PredictiveGraph
 	snaps                  map[string]map[string]model.PredictiveSnapRecord
+	agencyRecords          map[string]map[string]model.AgencyProposalRecord
+	agencyDigests          map[string]map[string]string
 	policyDigest           string
 	snapshot               model.Snapshot
 }
@@ -59,8 +61,138 @@ func New() *Store {
 		outcomeDigests: make(map[string]map[string]string), posteriors: make(map[string]map[string]model.BayesianPosterior),
 		residuals: make(map[string]map[string]model.ResidualRecord),
 		graphs:    make(map[string]model.PredictiveGraph), snaps: make(map[string]map[string]model.PredictiveSnapRecord),
+		agencyRecords: make(map[string]map[string]model.AgencyProposalRecord), agencyDigests: make(map[string]map[string]string),
 		snapshot: initialSnapshot(),
 	}
+}
+
+func (s *Store) PutAgencyProposal(_ context.Context, record model.AgencyProposalRecord, digest string, maxPerChain, maxPending int, evidenceAvailableBy time.Time) (store.AgencyPutResult, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	records := s.agencyRecords[record.Proposal.TenantID]
+	if records == nil {
+		records = make(map[string]model.AgencyProposalRecord)
+		s.agencyRecords[record.Proposal.TenantID] = records
+		s.agencyDigests[record.Proposal.TenantID] = make(map[string]string)
+	}
+	if existing, ok := records[record.Proposal.ID]; ok {
+		if s.agencyDigests[record.Proposal.TenantID][record.Proposal.ID] != digest {
+			return store.AgencyPutResult{}, store.ErrAgencyConflict
+		}
+		return store.AgencyPutResult{Duplicate: true, Record: existing, Snapshot: s.snapshot}, nil
+	}
+	for _, id := range record.Proposal.EvidenceIDs {
+		entry, ok := s.entries[record.Proposal.TenantID][id]
+		if !ok || entry.event.AvailableAt.After(evidenceAvailableBy) {
+			return store.AgencyPutResult{}, store.ErrAgencyEvidence
+		}
+	}
+	if !validAgencyParent(records, record.Proposal) || countAgencyChain(records, record.Proposal.CausalChainID) >= maxPerChain || countPendingAgency(records) >= maxPending {
+		return store.AgencyPutResult{}, store.ErrAgencyChainBudget
+	}
+	records[record.Proposal.ID] = record
+	s.agencyDigests[record.Proposal.TenantID][record.Proposal.ID] = digest
+	s.snapshot.RuntimeVersion++
+	s.snapshot.AgencyVersion++
+	return store.AgencyPutResult{Record: record, Snapshot: s.snapshot}, nil
+}
+
+func (s *Store) ClaimAgencyProposals(_ context.Context, tenantID, consumerID string, now time.Time, limit int, lease time.Duration) ([]model.AgencyProposalRecord, model.Snapshot, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	records := s.agencyRecords[tenantID]
+	eligible := make([]model.AgencyProposalRecord, 0)
+	changed := false
+	for id, record := range records {
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && !now.Before(record.Proposal.ExpiresAt) {
+			record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyExpired, "", time.Time{}
+			record.ResolutionReason, record.ResolvedAt = "proposal expired before authorization", now
+			records[id], changed = record, true
+			continue
+		}
+		if now.Before(record.Proposal.NotBefore) || record.Status != model.AgencyPending && (record.Status != model.AgencyClaimed || now.Before(record.LeaseUntil)) {
+			continue
+		}
+		eligible = append(eligible, record)
+	}
+	sort.Slice(eligible, func(i, j int) bool {
+		if eligible[i].Proposal.Priority != eligible[j].Proposal.Priority {
+			return eligible[i].Proposal.Priority > eligible[j].Proposal.Priority
+		}
+		if !eligible[i].Proposal.NotBefore.Equal(eligible[j].Proposal.NotBefore) {
+			return eligible[i].Proposal.NotBefore.Before(eligible[j].Proposal.NotBefore)
+		}
+		return eligible[i].Proposal.ID < eligible[j].Proposal.ID
+	})
+	if len(eligible) > limit {
+		eligible = eligible[:limit]
+	}
+	for index := range eligible {
+		record := eligible[index]
+		record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyClaimed, consumerID, now.Add(lease)
+		records[record.Proposal.ID], eligible[index], changed = record, record, true
+	}
+	if changed {
+		s.snapshot.RuntimeVersion++
+		s.snapshot.AgencyVersion++
+	}
+	return eligible, s.snapshot, nil
+}
+
+func (s *Store) ResolveAgencyProposal(_ context.Context, request model.ResolveAgencyProposalRequest, now time.Time) (store.AgencyResolveResult, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	record, ok := s.agencyRecords[request.TenantID][request.ProposalID]
+	if !ok {
+		return store.AgencyResolveResult{}, store.ErrAgencyNotFound
+	}
+	if record.Status == model.AgencyApproved || record.Status == model.AgencyRejected || record.Status == model.AgencyExpired {
+		if record.Status == request.Decision && record.ResolutionReason == request.Reason && record.ExecutionRef == request.ExecutionRef {
+			return store.AgencyResolveResult{Duplicate: true, Record: record, Snapshot: s.snapshot}, nil
+		}
+		return store.AgencyResolveResult{}, store.ErrAgencyConflict
+	}
+	if record.Status != model.AgencyClaimed || record.ClaimedBy != request.ConsumerID || now.After(record.LeaseUntil) {
+		return store.AgencyResolveResult{}, store.ErrAgencyLease
+	}
+	decision := request.Decision
+	if !now.Before(record.Proposal.ExpiresAt) {
+		decision = model.AgencyExpired
+	}
+	record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = decision, request.Reason, request.ExecutionRef, now
+	record.ClaimedBy, record.LeaseUntil = "", time.Time{}
+	s.agencyRecords[request.TenantID][request.ProposalID] = record
+	s.snapshot.RuntimeVersion++
+	s.snapshot.AgencyVersion++
+	return store.AgencyResolveResult{Record: record, Snapshot: s.snapshot}, nil
+}
+
+func validAgencyParent(records map[string]model.AgencyProposalRecord, proposal model.AgencyProposal) bool {
+	if proposal.CausalChainDepth == 0 {
+		return proposal.ParentProposalID == ""
+	}
+	parent, ok := records[proposal.ParentProposalID]
+	return ok && parent.Proposal.CausalChainID == proposal.CausalChainID && parent.Proposal.CausalChainDepth+1 == proposal.CausalChainDepth
+}
+
+func countAgencyChain(records map[string]model.AgencyProposalRecord, chainID string) int {
+	count := 0
+	for _, record := range records {
+		if record.Proposal.CausalChainID == chainID {
+			count++
+		}
+	}
+	return count
+}
+
+func countPendingAgency(records map[string]model.AgencyProposalRecord) int {
+	count := 0
+	for _, record := range records {
+		if record.Status == model.AgencyPending || record.Status == model.AgencyClaimed {
+			count++
+		}
+	}
+	return count
 }
 
 func (s *Store) GetPredictiveGraph(_ context.Context, tenantID string) (model.PredictiveGraph, error) {
@@ -411,7 +543,11 @@ func (s *Store) Delete(_ context.Context, tenantID, eventID string) (store.Delet
 		return store.DeleteResult{Snapshot: s.snapshot}, nil
 	}
 	delete(s.entries[tenantID], eventID)
+	agencyChanged := s.cancelAgencyByEvidence(tenantID, []string{eventID}, time.Now().UTC())
 	s.invalidate()
+	if agencyChanged {
+		s.snapshot.AgencyVersion++
+	}
 	return store.DeleteResult{Deleted: true, Snapshot: s.snapshot}, nil
 }
 
@@ -429,9 +565,40 @@ func (s *Store) DeleteBefore(_ context.Context, tenantID string, before time.Tim
 		delete(s.entries[tenantID], id)
 	}
 	if len(ids) > 0 {
+		agencyChanged := s.cancelAgencyByEvidence(tenantID, ids, time.Now().UTC())
 		s.invalidate()
+		if agencyChanged {
+			s.snapshot.AgencyVersion++
+		}
 	}
 	return store.RetentionResult{DeletedIDs: ids, Snapshot: s.snapshot}, nil
+}
+
+func (s *Store) cancelAgencyByEvidence(tenantID string, eventIDs []string, now time.Time) bool {
+	deleted := make(map[string]struct{}, len(eventIDs))
+	for _, id := range eventIDs {
+		deleted[id] = struct{}{}
+	}
+	changed := false
+	for id, record := range s.agencyRecords[tenantID] {
+		if record.Status != model.AgencyPending && record.Status != model.AgencyClaimed {
+			continue
+		}
+		affected := false
+		for _, evidenceID := range record.Proposal.EvidenceIDs {
+			if _, ok := deleted[evidenceID]; ok {
+				affected = true
+				break
+			}
+		}
+		if !affected {
+			continue
+		}
+		record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyRejected, "", time.Time{}
+		record.ResolutionReason, record.ResolvedAt = "supporting evidence was deleted", now
+		s.agencyRecords[tenantID][id], changed = record, true
+	}
+	return changed
 }
 
 func (s *Store) Backup(context.Context, string) error {
@@ -448,7 +615,7 @@ func (s *Store) Snapshot(_ context.Context) model.Snapshot {
 }
 
 func initialSnapshot() model.Snapshot {
-	return model.Snapshot{PolicyVersion: 1, ContractVersion: model.ContractVersion, GraphVersion: 1, PosteriorVersion: 1, ResidualVersion: 1, AbstractionVersion: 1}
+	return model.Snapshot{PolicyVersion: 1, ContractVersion: model.ContractVersion, GraphVersion: 1, PosteriorVersion: 1, ResidualVersion: 1, AbstractionVersion: 1, AgencyVersion: 1}
 }
 
 func (s *Store) invalidate() {

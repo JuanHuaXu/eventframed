@@ -44,6 +44,28 @@ test("recall rejects malformed candidates before prompt formatting", async (t) =
   );
 });
 
+test("agency claims reject a lease assigned to another consumer", async (t) => {
+  const fixture = await unixServer(t, (_request, response) => {
+    response.setHeader("content-type", "application/json");
+    response.end(JSON.stringify({
+      protocol_version: "eventframe.v1alpha1",
+      records: [{
+        proposal: { id: "proposal-1", tenant_id: "tenant" },
+        signed: { payload: "payload", signature: "signature", key_id: "key" },
+        status: "claimed",
+        claimed_by: "different-authority",
+        lease_until: "2026-08-28T22:00:00Z",
+      }],
+      snapshot: {},
+    }));
+  });
+  const client = new EventFrameClient({ socketPath: fixture.socketPath });
+  await assert.rejects(
+    client.claimAgency({ tenantId: "tenant", consumerId: "expected-authority", limit: 1 }),
+    /malformed agency proposal record/,
+  );
+});
+
 async function unixServer(
   t: test.TestContext,
   handler: http.RequestListener,
