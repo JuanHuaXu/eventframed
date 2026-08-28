@@ -3,6 +3,7 @@ package model
 import "time"
 
 const ProtocolVersion = "eventframe.v1alpha1"
+const ContractVersion uint64 = 3
 
 type Snapshot struct {
 	RuntimeVersion     uint64 `json:"runtime_version"`
@@ -74,10 +75,13 @@ type RecallRequest struct {
 }
 
 type Candidate struct {
-	Event           Event   `json:"event"`
-	Similarity      float64 `json:"similarity"`
-	Score           float64 `json:"score"`
-	EstimatedTokens int     `json:"estimated_tokens"`
+	Event               Event   `json:"event"`
+	Similarity          float64 `json:"similarity"`
+	BaselineScore       float64 `json:"baseline_score"`
+	Score               float64 `json:"score"`
+	BayesianProbability float64 `json:"bayesian_probability,omitempty"`
+	BayesianApplied     bool    `json:"bayesian_applied"`
+	EstimatedTokens     int     `json:"estimated_tokens"`
 }
 
 type ContextPacket struct {
@@ -92,20 +96,26 @@ type ContextPacket struct {
 }
 
 type BayesianDecision struct {
-	EventID          string  `json:"event_id"`
-	ActivationScore  float64 `json:"activation_score"`
-	Activated        bool    `json:"activated"`
-	EvidenceReady    bool    `json:"evidence_ready"`
-	AuditSelected    bool    `json:"audit_selected"`
-	AuditProbability float64 `json:"audit_probability"`
-	PosteriorKey     string  `json:"posterior_key"`
+	EventID                             string  `json:"event_id"`
+	ActivationScore                     float64 `json:"activation_score"`
+	Activated                           bool    `json:"activated"`
+	EvidenceReady                       bool    `json:"evidence_ready"`
+	AuditSelected                       bool    `json:"audit_selected"`
+	AuditProbability                    float64 `json:"audit_probability"`
+	NominationProbabilityLowerBound     float64 `json:"nomination_probability_lower_bound"`
+	ActivationProbability               float64 `json:"activation_probability"`
+	TotalSelectionProbabilityLowerBound float64 `json:"total_selection_probability_lower_bound"`
+	PosteriorKey                        string  `json:"posterior_key"`
 }
 
 type BayesianShadowReport struct {
 	Mode                      string             `json:"mode"`
+	JournalID                 string             `json:"journal_id"`
+	JournalDurable            bool               `json:"journal_durable"`
 	Nominated                 int                `json:"nominated"`
 	Activated                 int                `json:"activated"`
 	SelectionSupportCertified bool               `json:"selection_support_certified"`
+	OmittedInfluenceCertified bool               `json:"omitted_influence_certified"`
 	Decisions                 []BayesianDecision `json:"decisions"`
 }
 

@@ -6,6 +6,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/store/libravdbstore"
 	"github.com/JuanHuaXu/eventframed/internal/testutil"
@@ -121,6 +122,117 @@ func TestDurableStateSurvivesRestartAndPinsEmbeddingContract(t *testing.T) {
 	}
 	if _, err := libravdbstore.Open(testConfig(path, "model-b:d4")); err == nil {
 		t.Fatal("expected embedding contract mismatch")
+	}
+}
+
+func TestBayesianJournalSurvivesRestartAndRejectsConflict(t *testing.T) {
+	path := t.TempDir() + "/events.libravdb"
+	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	entry := model.BayesianJournalEntry{
+		ID: "bj_stable", TenantID: "tenant-a", SessionID: "session-a",
+		AsOf: time.Date(2026, 8, 28, 12, 0, 0, 0, time.UTC), QueryDigest: "digest",
+		Snapshot: first.Snapshot(context.Background()),
+		Report:   model.BayesianShadowReport{Mode: "shadow", JournalID: "bj_stable", JournalDurable: true, Nominated: 1},
+	}
+	if err := first.PutBayesianJournal(context.Background(), entry); err != nil {
+		t.Fatal(err)
+	}
+	if err := first.PutBayesianJournal(context.Background(), entry); err != nil {
+		t.Fatalf("idempotent journal write: %v", err)
+	}
+	conflict := entry
+	conflict.QueryDigest = "different"
+	if err := first.PutBayesianJournal(context.Background(), conflict); err == nil {
+		t.Fatal("expected conflicting journal write to fail")
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	second, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer second.Close()
+	got, err := second.GetBayesianJournal(context.Background(), entry.TenantID, entry.ID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got.QueryDigest != entry.QueryDigest || got.Report.Nominated != 1 {
+		t.Fatalf("journal after restart = %+v", got)
+	}
+}
+
+func TestBayesianPosteriorUpdateSurvivesRestart(t *testing.T) {
+	path := t.TempDir() + "/events.libravdb"
+	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	request := model.BayesianOutcomeRequest{IdempotencyKey: "outcome-1", TenantID: "tenant-a", Useful: true, AvailableAt: now}
+	result, err := first.ApplyBayesianOutcome(context.Background(), request, "event-1", "digest", 2, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.Posterior.Mean() != .75 || result.Snapshot.PosteriorVersion != 2 {
+		t.Fatalf("outcome result = %+v", result)
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+	second, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer second.Close()
+	posterior, err := second.GetBayesianPosterior(context.Background(), "tenant-a", "event-1")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if posterior.Mean() != .75 || second.Snapshot(context.Background()).PosteriorVersion != 2 {
+		t.Fatalf("posterior after restart = %+v", posterior)
+	}
+}
+
+func TestBayesianPolicyDigestSurvivesRestartAndAdvancesVersionOnChange(t *testing.T) {
+	path := t.TempDir() + "/events.libravdb"
+	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	bound, err := first.BindBayesianPolicy(context.Background(), "policy-a")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if bound.PolicyVersion != 2 {
+		t.Fatalf("first policy version = %d", bound.PolicyVersion)
+	}
+	unchanged, err := first.BindBayesianPolicy(context.Background(), "policy-a")
+	if err != nil || unchanged != bound {
+		t.Fatalf("same policy bind = %+v, %v", unchanged, err)
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+	second, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer second.Close()
+	reopened, err := second.BindBayesianPolicy(context.Background(), "policy-a")
+	if err != nil || reopened != bound {
+		t.Fatalf("reopened policy bind = %+v, %v", reopened, err)
+	}
+	changed, err := second.BindBayesianPolicy(context.Background(), "policy-b")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if changed.PolicyVersion != bound.PolicyVersion+1 || changed.RuntimeVersion != bound.RuntimeVersion+1 {
+		t.Fatalf("changed policy snapshot = %+v", changed)
 	}
 }
 

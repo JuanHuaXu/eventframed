@@ -22,10 +22,10 @@
 - [x] Capped vector frontier with typed graph/sheaf score slots
 - [x] Shadow activation decisions and independent deterministic audit sampling
 - [x] Explicit uncertified-selection fallback that cannot alter the scored law
-- [ ] Durable nomination and activation propensity journal
-- Anti-Pigeon posterior-sharing guard
-- Cached incremental posterior updates and changepoint invalidation
-- Shadow update-all audits and omitted-influence certificates
+- [x] Durable nomination and activation propensity journal
+- [x] Externally certified Anti-Pigeon posterior-sharing guard
+- [x] Cached bounded Beta posterior updates and capped changepoint invalidation
+- [x] Independent shadow-audit feedback and omitted-influence certificates
 
 ## Milestone 4: residuals and abstraction
 

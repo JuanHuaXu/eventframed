@@ -7,6 +7,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/service"
@@ -99,6 +100,9 @@ func TestRerankingRunsBeforeIndependentPackingCap(t *testing.T) {
 	if packet.Candidates[0].Event.ID != "answer" {
 		t.Fatalf("answer was dropped before reranking: %+v", packet.Candidates)
 	}
+	if packet.BayesianShadow.JournalID == "" || !packet.BayesianShadow.JournalDurable {
+		t.Fatalf("Bayesian decision was not durably journaled: %+v", packet.BayesianShadow)
+	}
 }
 
 func newMemoryService(t *testing.T) *service.Service {
@@ -128,6 +132,10 @@ func observe(t *testing.T, runtime *service.Service, event model.Event) {
 
 type fixedStore struct{ results []store.SearchResult }
 
+func (s *fixedStore) BindBayesianPolicy(context.Context, string) (model.Snapshot, error) {
+	return model.Snapshot{}, nil
+}
+
 func (s *fixedStore) Put(context.Context, model.Event, []float32, string) (store.PutResult, error) {
 	return store.PutResult{}, nil
 }
@@ -141,6 +149,36 @@ func (s *fixedStore) Backup(context.Context, string) error { return nil }
 func (s *fixedStore) Compact(context.Context) error        { return nil }
 func (s *fixedStore) Search(_ context.Context, _ string, _ []float32, _ time.Time, limit int) ([]store.SearchResult, error) {
 	return s.results[:min(limit, len(s.results))], nil
+}
+func (s *fixedStore) PutBayesianJournal(context.Context, model.BayesianJournalEntry) error {
+	return nil
+}
+func (s *fixedStore) GetBayesianJournal(context.Context, string, string) (model.BayesianJournalEntry, error) {
+	return model.BayesianJournalEntry{}, store.ErrJournalNotFound
+}
+func (s *fixedStore) PublishSelectionCertificate(context.Context, model.SelectionSupportCertificate) (model.Snapshot, error) {
+	return model.Snapshot{}, nil
+}
+func (s *fixedStore) GetSelectionCertificate(context.Context, string) (model.SelectionSupportCertificate, error) {
+	return model.SelectionSupportCertificate{}, store.ErrCertificateNotFound
+}
+func (s *fixedStore) PublishAntiPigeonCertificate(context.Context, model.AntiPigeonCertificate) (model.Snapshot, error) {
+	return model.Snapshot{}, nil
+}
+func (s *fixedStore) GetAntiPigeonCertificate(context.Context, string, []string) (model.AntiPigeonCertificate, error) {
+	return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+}
+func (s *fixedStore) PublishOmittedInfluenceCertificate(context.Context, model.OmittedInfluenceCertificate) (model.Snapshot, error) {
+	return model.Snapshot{}, nil
+}
+func (s *fixedStore) GetOmittedInfluenceCertificate(context.Context, string) (model.OmittedInfluenceCertificate, error) {
+	return model.OmittedInfluenceCertificate{}, store.ErrCertificateNotFound
+}
+func (s *fixedStore) ApplyBayesianOutcome(context.Context, model.BayesianOutcomeRequest, string, string, float64, bayes.ChangePolicy) (store.BayesianOutcomeResult, error) {
+	return store.BayesianOutcomeResult{}, nil
+}
+func (s *fixedStore) GetBayesianPosterior(context.Context, string, string) (model.BayesianPosterior, error) {
+	return model.BayesianPosterior{}, store.ErrPosteriorNotFound
 }
 func (s *fixedStore) Stats(context.Context) (store.Stats, error) {
 	return store.Stats{Backend: "fixed"}, nil

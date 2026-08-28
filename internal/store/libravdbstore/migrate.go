@@ -88,7 +88,7 @@ func MigrateLegacy(ctx context.Context, config Config, backupPath string) error 
 			count++
 		}
 	}
-	snapshot := model.Snapshot{RuntimeVersion: count, EvidenceEpoch: count, PolicyVersion: 1, ContractVersion: 2, GraphVersion: 1, PosteriorVersion: 1, ResidualVersion: 1, AbstractionVersion: 1}
+	snapshot := model.Snapshot{RuntimeVersion: count, EvidenceEpoch: count, PolicyVersion: 1, ContractVersion: model.ContractVersion, GraphVersion: 1, PosteriorVersion: 1, ResidualVersion: 1, AbstractionVersion: 1}
 	metadata, err := (&Store{config: config}).stateMetadata(snapshot)
 	if err != nil {
 		return err

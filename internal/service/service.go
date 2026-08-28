@@ -21,12 +21,14 @@ import (
 )
 
 type Config struct {
-	DefaultRecallK      int
-	DefaultPackK        int
-	DefaultTokenBudget  int
-	OverfetchMultiplier int
-	Quantization        string
-	BayesianPolicy      bayes.Policy
+	DefaultRecallK       int
+	DefaultPackK         int
+	DefaultTokenBudget   int
+	OverfetchMultiplier  int
+	Quantization         string
+	BayesianPolicy       bayes.Policy
+	BayesianScoreWeight  float64
+	BayesianChangePolicy bayes.ChangePolicy
 }
 
 type Service struct {
@@ -50,6 +52,22 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	}
 	if config.BayesianPolicy.MaxActive <= 0 {
 		config.BayesianPolicy = bayes.Policy{VectorWeight: .6, NeighborWeight: .15, NoveltyWeight: .15, IndependenceWeight: .1, Threshold: .72, CriticalThreshold: .55, AuditProbability: .02, MaxActive: 8, AuditSeed: "eventframe-v1"}
+	}
+	if config.BayesianScoreWeight == 0 {
+		config.BayesianScoreWeight = 0.10
+	}
+	if config.BayesianScoreWeight < 0 || config.BayesianScoreWeight > 0.25 {
+		return nil, errors.New("Bayesian score weight must be in [0,0.25]")
+	}
+	if !config.BayesianChangePolicy.Valid() {
+		config.BayesianChangePolicy = bayes.ChangePolicy{Hazard: .05, Threshold: .30, MaxRun: 64}
+	}
+	policyDigest, err := bayesianPolicyDigest(config)
+	if err != nil {
+		return nil, err
+	}
+	if _, err := eventStore.BindBayesianPolicy(context.Background(), policyDigest); err != nil {
+		return nil, fmt.Errorf("bind Bayesian policy: %w", err)
 	}
 	return &Service{store: eventStore, embedder: embedder, config: config}, nil
 }
@@ -139,7 +157,8 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 			Similarity:      result.Similarity,
 			EstimatedTokens: estimateTokens(result.Event.Content),
 		}
-		candidate.Score = scoreCandidate(candidate, request.SessionID, request.AsOf)
+		candidate.BaselineScore = scoreCandidate(candidate, request.SessionID, request.AsOf)
+		candidate.Score = candidate.BaselineScore
 		candidates = append(candidates, candidate)
 	}
 	sort.SliceStable(candidates, func(i, j int) bool {
@@ -155,7 +174,94 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	for _, candidate := range candidates {
 		shadowInputs = append(shadowInputs, bayes.Candidate{EventID: candidate.Event.ID, VectorRelevance: clamp((candidate.Similarity+1)/2, 0, 1), Novelty: 1 - candidate.Event.MeanFieldConfidence(), SourceIndependence: sourceIndependence(candidate.Event), Priority: candidate.Event.Priority, EvidenceReady: !candidate.Event.AvailableAt.After(request.AsOf)})
 	}
-	shadow := bayes.Evaluate(shadowInputs, s.store.Snapshot(ctx).EvidenceEpoch, s.config.BayesianPolicy)
+	snapshot := s.store.Snapshot(ctx)
+	shadow := bayes.Evaluate(shadowInputs, snapshot.EvidenceEpoch, s.config.BayesianPolicy)
+	selectionCertificate, certificateErr := s.store.GetSelectionCertificate(ctx, request.TenantID)
+	if certificateErr != nil && !errors.Is(certificateErr, store.ErrCertificateNotFound) {
+		return model.ContextPacket{}, certificateErr
+	}
+	omittedCertificate, omittedErr := s.store.GetOmittedInfluenceCertificate(ctx, request.TenantID)
+	if omittedErr != nil && !errors.Is(omittedErr, store.ErrCertificateNotFound) {
+		return model.ContextPacket{}, omittedErr
+	}
+	now := time.Now().UTC()
+	omittedCertified := omittedErr == nil && omittedInfluenceCertificateActive(omittedCertificate, snapshot, now)
+	shadow.OmittedInfluenceCertified = omittedCertified
+	if certificateErr == nil && selectionCertificateActive(selectionCertificate, snapshot, now) {
+		shadow.Mode = "selection-certified-shadow"
+		shadow.SelectionSupportCertified = true
+		if omittedCertified {
+			shadow.Mode = "certified-shadow"
+		}
+		for index := range shadow.Decisions {
+			decision := &shadow.Decisions[index]
+			decision.NominationProbabilityLowerBound = selectionCertificate.MinSelectionProbability
+			if decision.Activated {
+				decision.ActivationProbability = 1
+				decision.TotalSelectionProbabilityLowerBound = selectionCertificate.MinSelectionProbability
+				if certificate, getErr := s.store.GetAntiPigeonCertificate(ctx, request.TenantID, []string{decision.EventID}); getErr == nil && antiPigeonCertificateActive(certificate, snapshot, now) {
+					decision.PosteriorKey = "ap:" + certificate.ID
+				} else if getErr != nil && !errors.Is(getErr, store.ErrCertificateNotFound) {
+					return model.ContextPacket{}, getErr
+				}
+			}
+		}
+	}
+	if shadow.SelectionSupportCertified && shadow.OmittedInfluenceCertified {
+		decisions := make(map[string]model.BayesianDecision, len(shadow.Decisions))
+		for _, decision := range shadow.Decisions {
+			decisions[decision.EventID] = decision
+		}
+		applied := false
+		for index := range candidates {
+			decision := decisions[candidates[index].Event.ID]
+			if !decision.Activated || decision.TotalSelectionProbabilityLowerBound <= 0 {
+				continue
+			}
+			posterior, getErr := s.store.GetBayesianPosterior(ctx, request.TenantID, decision.PosteriorKey)
+			if errors.Is(getErr, store.ErrPosteriorNotFound) {
+				continue
+			}
+			if getErr != nil {
+				return model.ContextPacket{}, getErr
+			}
+			if !posterior.Certified || posterior.EvidenceEpoch != snapshot.EvidenceEpoch {
+				continue
+			}
+			probability := clamp(posterior.Mean(), 0, 1)
+			candidates[index].BayesianProbability = probability
+			candidates[index].BayesianApplied = true
+			candidates[index].Score = (1-s.config.BayesianScoreWeight)*candidates[index].BaselineScore + s.config.BayesianScoreWeight*probability
+			applied = true
+		}
+		if applied {
+			shadow.Mode = "production"
+			sort.SliceStable(candidates, func(i, j int) bool {
+				if candidates[i].Score == candidates[j].Score {
+					return candidates[i].Event.AvailableAt.After(candidates[j].Event.AvailableAt)
+				}
+				return candidates[i].Score > candidates[j].Score
+			})
+		}
+	}
+	queryDigest, err := recallQueryDigest(request, vector, s.embedder.ModelKey())
+	if err != nil {
+		return model.ContextPacket{}, err
+	}
+	journal := model.BayesianJournalEntry{
+		TenantID: request.TenantID, SessionID: request.SessionID, AsOf: request.AsOf.UTC(),
+		QueryDigest: queryDigest, Snapshot: snapshot, Report: shadow,
+	}
+	journal.ID, err = bayesianJournalID(journal)
+	if err != nil {
+		return model.ContextPacket{}, err
+	}
+	journal.Report.JournalID = journal.ID
+	journal.Report.JournalDurable = true
+	if err := s.store.PutBayesianJournal(ctx, journal); err != nil {
+		return model.ContextPacket{}, fmt.Errorf("persist Bayesian frontier journal: %w", err)
+	}
+	shadow = journal.Report
 	packed := make([]model.Candidate, 0, min(packK, len(candidates)))
 	usedTokens := 0
 	for _, candidate := range candidates {
@@ -175,7 +281,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		Eligible:        eligible,
 		Packed:          len(packed),
 		UsedTokens:      usedTokens,
-		Snapshot:        s.store.Snapshot(ctx),
+		Snapshot:        snapshot,
 		BayesianShadow:  shadow,
 	}, nil
 }
@@ -259,6 +365,103 @@ func (s *Service) Compact(ctx context.Context) (model.MaintenanceResponse, error
 	return model.MaintenanceResponse{ProtocolVersion: model.ProtocolVersion, Operation: "compact", Snapshot: s.store.Snapshot(ctx)}, nil
 }
 
+func (s *Service) PublishSelectionCertificate(ctx context.Context, request model.PublishSelectionCertificateRequest) (model.CertificateResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.CertificateResponse{}, err
+	}
+	snapshot := s.store.Snapshot(ctx)
+	if err := validateSelectionCertificate(request.Certificate, snapshot, time.Now().UTC()); err != nil {
+		return model.CertificateResponse{}, err
+	}
+	next, err := s.store.PublishSelectionCertificate(ctx, request.Certificate)
+	if err != nil {
+		return model.CertificateResponse{}, err
+	}
+	return model.CertificateResponse{ProtocolVersion: model.ProtocolVersion, CertificateID: request.Certificate.ID, Snapshot: next}, nil
+}
+
+func (s *Service) PublishAntiPigeonCertificate(ctx context.Context, request model.PublishAntiPigeonCertificateRequest) (model.CertificateResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.CertificateResponse{}, err
+	}
+	snapshot := s.store.Snapshot(ctx)
+	if err := validateAntiPigeonCertificate(request.Certificate, snapshot, time.Now().UTC()); err != nil {
+		return model.CertificateResponse{}, err
+	}
+	next, err := s.store.PublishAntiPigeonCertificate(ctx, request.Certificate)
+	if err != nil {
+		return model.CertificateResponse{}, err
+	}
+	return model.CertificateResponse{ProtocolVersion: model.ProtocolVersion, CertificateID: request.Certificate.ID, Snapshot: next}, nil
+}
+
+func (s *Service) PublishOmittedInfluenceCertificate(ctx context.Context, request model.PublishOmittedInfluenceCertificateRequest) (model.CertificateResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.CertificateResponse{}, err
+	}
+	snapshot := s.store.Snapshot(ctx)
+	if err := validateOmittedInfluenceCertificate(request.Certificate, snapshot, time.Now().UTC()); err != nil {
+		return model.CertificateResponse{}, err
+	}
+	if math.Abs(request.Certificate.AuditProbability-s.config.BayesianPolicy.AuditProbability) > 1e-9 {
+		return model.CertificateResponse{}, errors.New("omitted-influence certificate audit_probability does not match the active policy")
+	}
+	next, err := s.store.PublishOmittedInfluenceCertificate(ctx, request.Certificate)
+	if err != nil {
+		return model.CertificateResponse{}, err
+	}
+	return model.CertificateResponse{ProtocolVersion: model.ProtocolVersion, CertificateID: request.Certificate.ID, Snapshot: next}, nil
+}
+
+func (s *Service) ObserveBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest) (model.BayesianOutcomeResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.BayesianOutcomeResponse{}, err
+	}
+	if strings.TrimSpace(request.IdempotencyKey) == "" || strings.TrimSpace(request.TenantID) == "" || strings.TrimSpace(request.JournalID) == "" || strings.TrimSpace(request.EventID) == "" {
+		return model.BayesianOutcomeResponse{}, errors.New("idempotency_key, tenant_id, journal_id, and event_id are required")
+	}
+	now := time.Now().UTC()
+	if request.ObservedAt.IsZero() || request.AvailableAt.IsZero() || request.AvailableAt.Before(request.ObservedAt) || request.AvailableAt.After(now) {
+		return model.BayesianOutcomeResponse{}, errors.New("outcome times must satisfy observed_at <= available_at <= current time")
+	}
+	journal, err := s.store.GetBayesianJournal(ctx, request.TenantID, request.JournalID)
+	if err != nil {
+		return model.BayesianOutcomeResponse{}, err
+	}
+	if request.ObservedAt.Before(journal.AsOf) {
+		return model.BayesianOutcomeResponse{}, errors.New("outcome predates the recall decision")
+	}
+	var decision *model.BayesianDecision
+	for index := range journal.Report.Decisions {
+		if journal.Report.Decisions[index].EventID == request.EventID {
+			decision = &journal.Report.Decisions[index]
+			break
+		}
+	}
+	if decision == nil {
+		return model.BayesianOutcomeResponse{}, errors.New("outcome event was not nominated by the referenced journal")
+	}
+	if request.Source == model.OutcomeSelected {
+		current := s.store.Snapshot(ctx)
+		if current.PolicyVersion != journal.Snapshot.PolicyVersion || current.EvidenceEpoch != journal.Snapshot.EvidenceEpoch {
+			return model.BayesianOutcomeResponse{}, errors.New("selective outcome journal is stale for the current policy or evidence epoch")
+		}
+	}
+	weight, err := bayesianOutcomeWeight(request, *decision, journal.Report)
+	if err != nil {
+		return model.BayesianOutcomeResponse{}, err
+	}
+	digest, err := bayesianOutcomeDigest(request)
+	if err != nil {
+		return model.BayesianOutcomeResponse{}, err
+	}
+	result, err := s.store.ApplyBayesianOutcome(ctx, request, decision.PosteriorKey, digest, weight, s.config.BayesianChangePolicy)
+	if err != nil {
+		return model.BayesianOutcomeResponse{}, err
+	}
+	return model.BayesianOutcomeResponse{ProtocolVersion: model.ProtocolVersion, Duplicate: result.Duplicate, ChangePoint: result.ChangePoint, Posterior: result.Posterior, Snapshot: result.Snapshot}, nil
+}
+
 func (s *Service) Close() error { return s.store.Close() }
 
 func (s *Service) resolveBudgets(request model.RecallRequest) (int, int, int, error) {
@@ -295,6 +498,173 @@ func eventDigest(event model.Event) (string, error) {
 	payload, err := json.Marshal(event)
 	if err != nil {
 		return "", fmt.Errorf("digest event: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	return hex.EncodeToString(digest[:]), nil
+}
+
+func recallQueryDigest(request model.RecallRequest, vector []float32, activeModel string) (string, error) {
+	payload, err := json.Marshal(struct {
+		Query          string    `json:"query"`
+		Embedding      []float32 `json:"embedding"`
+		EmbeddingModel string    `json:"embedding_model"`
+	}{Query: request.Query, Embedding: vector, EmbeddingModel: activeModel})
+	if err != nil {
+		return "", fmt.Errorf("digest recall query: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	return hex.EncodeToString(digest[:]), nil
+}
+
+func bayesianJournalID(entry model.BayesianJournalEntry) (string, error) {
+	entry.ID = ""
+	entry.Report.JournalID = ""
+	entry.Report.JournalDurable = false
+	payload, err := json.Marshal(entry)
+	if err != nil {
+		return "", fmt.Errorf("digest Bayesian journal: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	return "bj_" + hex.EncodeToString(digest[:16]), nil
+}
+
+func validateSelectionCertificate(certificate model.SelectionSupportCertificate, snapshot model.Snapshot, now time.Time) error {
+	if strings.TrimSpace(certificate.ID) == "" || strings.TrimSpace(certificate.TenantID) == "" || strings.TrimSpace(certificate.Issuer) == "" || strings.TrimSpace(certificate.Procedure) == "" {
+		return errors.New("selection certificate id, tenant_id, issuer, and procedure are required")
+	}
+	if !certificate.ExternalAudit {
+		return errors.New("selection certificate must be issued by an external audit")
+	}
+	if certificate.PolicyVersion != snapshot.PolicyVersion || certificate.EvidenceEpoch != snapshot.EvidenceEpoch {
+		return errors.New("selection certificate does not bind the current policy and evidence epoch")
+	}
+	if !unitOpen(certificate.MinSelectionProbability) || !unitOpen(certificate.SimultaneousCoverage) {
+		return errors.New("selection probability and simultaneous coverage must be finite values in (0,1]")
+	}
+	if certificate.ValidFrom.IsZero() || certificate.ValidUntil.IsZero() || certificate.ValidUntil.Before(certificate.ValidFrom) || now.Before(certificate.ValidFrom) || !now.Before(certificate.ValidUntil) {
+		return errors.New("selection certificate validity window must contain the current time")
+	}
+	return nil
+}
+
+func selectionCertificateActive(certificate model.SelectionSupportCertificate, snapshot model.Snapshot, now time.Time) bool {
+	return validateSelectionCertificate(certificate, snapshot, now) == nil
+}
+
+func validateAntiPigeonCertificate(certificate model.AntiPigeonCertificate, snapshot model.Snapshot, now time.Time) error {
+	if strings.TrimSpace(certificate.ID) == "" || strings.TrimSpace(certificate.TenantID) == "" || strings.TrimSpace(certificate.HorizonKey) == "" || strings.TrimSpace(certificate.Issuer) == "" || strings.TrimSpace(certificate.Procedure) == "" {
+		return errors.New("Anti-Pigeon certificate id, tenant_id, horizon_key, issuer, and procedure are required")
+	}
+	if certificate.HorizonKey != "retrieval-usefulness-v1" {
+		return errors.New("Anti-Pigeon certificate horizon_key must be retrieval-usefulness-v1")
+	}
+	if !certificate.ExternalAudit {
+		return errors.New("Anti-Pigeon certificate must be issued by an external audit")
+	}
+	if certificate.GraphVersion != snapshot.GraphVersion || certificate.EvidenceEpoch != snapshot.EvidenceEpoch {
+		return errors.New("Anti-Pigeon certificate does not bind the current graph and evidence epoch")
+	}
+	if len(certificate.MemberEventIDs) < 2 {
+		return errors.New("Anti-Pigeon certificate requires at least two members")
+	}
+	seen := make(map[string]struct{}, len(certificate.MemberEventIDs))
+	for _, eventID := range certificate.MemberEventIDs {
+		if strings.TrimSpace(eventID) == "" {
+			return errors.New("Anti-Pigeon member event ids cannot be empty")
+		}
+		if _, duplicate := seen[eventID]; duplicate {
+			return errors.New("Anti-Pigeon member event ids must be unique")
+		}
+		seen[eventID] = struct{}{}
+	}
+	if !finiteNonnegative(certificate.TargetDiameterUCB) || !finiteNonnegative(certificate.DiameterLimit) || certificate.TargetDiameterUCB > certificate.DiameterLimit {
+		return errors.New("Anti-Pigeon target diameter UCB must be finite and within its declared limit")
+	}
+	if !finiteNonnegative(certificate.EffectiveSupport) || !finiteNonnegative(certificate.MinEffectiveSupport) || certificate.EffectiveSupport < certificate.MinEffectiveSupport || certificate.MinEffectiveSupport <= 0 {
+		return errors.New("Anti-Pigeon effective support must meet a positive declared minimum")
+	}
+	if !unitOpen(certificate.SimultaneousCoverage) || certificate.ValidUntil.IsZero() || !now.Before(certificate.ValidUntil) {
+		return errors.New("Anti-Pigeon coverage must be in (0,1] and the certificate must be unexpired")
+	}
+	return nil
+}
+
+func antiPigeonCertificateActive(certificate model.AntiPigeonCertificate, snapshot model.Snapshot, now time.Time) bool {
+	return validateAntiPigeonCertificate(certificate, snapshot, now) == nil
+}
+
+func validateOmittedInfluenceCertificate(certificate model.OmittedInfluenceCertificate, snapshot model.Snapshot, now time.Time) error {
+	if strings.TrimSpace(certificate.ID) == "" || strings.TrimSpace(certificate.TenantID) == "" || strings.TrimSpace(certificate.Issuer) == "" || strings.TrimSpace(certificate.Procedure) == "" {
+		return errors.New("omitted-influence certificate id, tenant_id, issuer, and procedure are required")
+	}
+	if !certificate.ExternalAudit {
+		return errors.New("omitted-influence certificate must be issued by an external audit")
+	}
+	if certificate.PolicyVersion != snapshot.PolicyVersion || certificate.EvidenceEpoch != snapshot.EvidenceEpoch {
+		return errors.New("omitted-influence certificate does not bind the current policy and evidence epoch")
+	}
+	if !finiteNonnegative(certificate.DivergenceUCB) || !finiteNonnegative(certificate.DivergenceLimit) || certificate.DivergenceUCB > certificate.DivergenceLimit {
+		return errors.New("omitted-influence divergence UCB must be finite and within its declared limit")
+	}
+	if !unitOpen(certificate.AuditProbability) || !unitOpen(certificate.SimultaneousCoverage) || certificate.ValidUntil.IsZero() || !now.Before(certificate.ValidUntil) {
+		return errors.New("omitted-influence audit probability and coverage must be in (0,1] and the certificate must be unexpired")
+	}
+	return nil
+}
+
+func omittedInfluenceCertificateActive(certificate model.OmittedInfluenceCertificate, snapshot model.Snapshot, now time.Time) bool {
+	return validateOmittedInfluenceCertificate(certificate, snapshot, now) == nil
+}
+
+func unitOpen(value float64) bool {
+	return value > 0 && value <= 1 && !math.IsNaN(value) && !math.IsInf(value, 0)
+}
+
+func finiteNonnegative(value float64) bool {
+	return value >= 0 && !math.IsNaN(value) && !math.IsInf(value, 0)
+}
+
+func bayesianOutcomeWeight(request model.BayesianOutcomeRequest, decision model.BayesianDecision, report model.BayesianShadowReport) (float64, error) {
+	var probability float64
+	switch request.Source {
+	case model.OutcomeFullStream:
+		probability = 1
+	case model.OutcomeIndependentAudit:
+		if !decision.AuditSelected || !unitOpen(decision.AuditProbability) {
+			return 0, errors.New("outcome is not backed by an independently selected audit")
+		}
+		probability = decision.AuditProbability
+	case model.OutcomeSelected:
+		if !report.SelectionSupportCertified || !decision.Activated || !unitOpen(decision.TotalSelectionProbabilityLowerBound) {
+			return 0, errors.New("selective outcome lacks a valid selection-support certificate")
+		}
+		probability = decision.TotalSelectionProbabilityLowerBound
+	default:
+		return 0, errors.New("outcome source must be full_stream, independent_audit, or selected")
+	}
+	if !unitOpen(request.InclusionProbability) || math.Abs(request.InclusionProbability-probability) > 1e-9 {
+		return 0, errors.New("outcome inclusion_probability does not match the durable journal")
+	}
+	return math.Min(20, 1/probability), nil
+}
+
+func bayesianOutcomeDigest(request model.BayesianOutcomeRequest) (string, error) {
+	payload, err := json.Marshal(request)
+	if err != nil {
+		return "", fmt.Errorf("digest Bayesian outcome: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	return hex.EncodeToString(digest[:]), nil
+}
+
+func bayesianPolicyDigest(config Config) (string, error) {
+	payload, err := json.Marshal(struct {
+		Frontier    bayes.Policy       `json:"frontier"`
+		ScoreWeight float64            `json:"score_weight"`
+		Change      bayes.ChangePolicy `json:"change"`
+	}{Frontier: config.BayesianPolicy, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy})
+	if err != nil {
+		return "", fmt.Errorf("encode Bayesian policy: %w", err)
 	}
 	digest := sha256.Sum256(payload)
 	return hex.EncodeToString(digest[:]), nil

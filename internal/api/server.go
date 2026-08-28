@@ -31,8 +31,72 @@ func NewServer(runtime *service.Service, logger *slog.Logger) *Server {
 	server.mux.HandleFunc("POST /v1/maintenance:retain", server.retain)
 	server.mux.HandleFunc("POST /v1/maintenance:backup", server.backup)
 	server.mux.HandleFunc("POST /v1/maintenance:compact", server.compact)
+	server.mux.HandleFunc("POST /v1/bayesian/certificates:publish-selection", server.publishSelectionCertificate)
+	server.mux.HandleFunc("POST /v1/bayesian/certificates:publish-anti-pigeon", server.publishAntiPigeonCertificate)
+	server.mux.HandleFunc("POST /v1/bayesian/certificates:publish-omitted-influence", server.publishOmittedInfluenceCertificate)
+	server.mux.HandleFunc("POST /v1/bayesian/outcomes:observe", server.observeBayesianOutcome)
 	server.mux.HandleFunc("GET /metrics", server.metrics.handle)
 	return server
+}
+
+func (s *Server) publishOmittedInfluenceCertificate(writer http.ResponseWriter, request *http.Request) {
+	var input model.PublishOmittedInfluenceCertificateRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.PublishOmittedInfluenceCertificate(request.Context(), input)
+	if err != nil {
+		writeError(writer, http.StatusBadRequest, "certificate_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) observeBayesianOutcome(writer http.ResponseWriter, request *http.Request) {
+	var input model.BayesianOutcomeRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.ObserveBayesianOutcome(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrOutcomeConflict) {
+			writeError(writer, http.StatusConflict, "idempotency_conflict", err)
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "outcome_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) publishSelectionCertificate(writer http.ResponseWriter, request *http.Request) {
+	var input model.PublishSelectionCertificateRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.PublishSelectionCertificate(request.Context(), input)
+	if err != nil {
+		writeError(writer, http.StatusBadRequest, "certificate_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) publishAntiPigeonCertificate(writer http.ResponseWriter, request *http.Request) {
+	var input model.PublishAntiPigeonCertificateRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.PublishAntiPigeonCertificate(request.Context(), input)
+	if err != nil {
+		writeError(writer, http.StatusBadRequest, "certificate_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
 }
 
 func (s *Server) delete(writer http.ResponseWriter, request *http.Request) {
@@ -136,6 +200,10 @@ func (s *Server) recall(writer http.ResponseWriter, request *http.Request) {
 	}
 	response, err := s.service.Recall(request.Context(), input)
 	if err != nil {
+		if errors.Is(err, store.ErrStaleSnapshot) {
+			writeError(writer, http.StatusConflict, "snapshot_changed", err)
+			return
+		}
 		writeError(writer, http.StatusBadRequest, "recall_rejected", err)
 		return
 	}

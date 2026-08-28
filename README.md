@@ -10,7 +10,8 @@ specification. The current runtime implements durable event ingestion, 5W1H fiel
 provenance, availability-time-safe retrieval, deterministic idempotency, distinct
 recall and packing budgets, quantized LibraVDB traversal, and an untrusted-context
 boundary for OpenClaw, model-keyed embeddings, atomic durable version state,
-retention/deletion propagation, backup, compaction, and guarded migration.
+retention/deletion propagation, backup, compaction, guarded migration, and a
+certificate-gated selective Bayesian usefulness layer.
 
 ## Architecture
 
@@ -22,7 +23,7 @@ TypeScript contract adapter
   |  eventframe.v1alpha1 over a mode-0600 Unix socket
   v
 eventframed (Go)
-  |  ingest -> availability gate -> recall(k=50) -> rerank -> pack(k=10)
+  |  ingest -> availability gate -> frontier(k=50) -> certified belief rerank -> pack(k=10)
   v
 LibraVDB (embedded, mmap, optional SQ8/FSQ6/PQ traversal)
 ```
@@ -93,9 +94,13 @@ importers.
   with a declared production embedding provider before evaluating recall quality.
 - Runtime, evidence, graph, posterior, residual, abstraction, policy, and
   contract versions survive restart and publish atomically with mutations.
-- Bayesian selective updates, Anti-Pigeon audits, sheaf-inspired snapping,
-  outcome scoring and agency proposals are protocol and
-  design work, not yet active runtime behavior.
+- Selective Bayesian usefulness updates are active only when externally issued
+  selection-support and omitted-influence certificates bind the current epoch.
+  Anti-Pigeon sharing additionally requires an external target-diameter audit.
+  Missing, expired, or stale certificates fall back to the baseline scored law.
+- The Bayesian outcome model currently scores retrieval usefulness, not a general
+  next-world-event law. Sheaf-inspired snapping and residual prediction remain
+  later milestones.
 - No proactive action is executed. The daemon defines a data-only agency proposal
   type so a later OpenClaw authority layer can approve, reject, or schedule it.
 - TCP listening has no transport authentication in this alpha. Prefer the default

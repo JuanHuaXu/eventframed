@@ -12,6 +12,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 	libra "github.com/xDarkicex/libravdb/libravdb"
@@ -26,22 +27,26 @@ type Config struct {
 }
 
 type Store struct {
-	db          *libra.Database
-	config      Config
-	mu          sync.Mutex
-	writeMu     sync.Mutex
-	collections map[string]*libra.Collection
-	snapshot    model.Snapshot
+	db           *libra.Database
+	config       Config
+	mu           sync.Mutex
+	writeMu      sync.Mutex
+	collections  map[string]*libra.Collection
+	bayesian     *libra.Collection
+	policyDigest string
+	snapshot     model.Snapshot
 }
 
 const systemCollection = "_eventframe_system"
+const bayesianCollection = "_eventframe_bayesian"
 
 type persistentState struct {
-	SchemaVersion  uint64         `json:"schema_version"`
-	EmbeddingModel string         `json:"embedding_model"`
-	Dimension      int            `json:"dimension"`
-	Quantization   string         `json:"quantization"`
-	Snapshot       model.Snapshot `json:"snapshot"`
+	SchemaVersion        uint64         `json:"schema_version"`
+	EmbeddingModel       string         `json:"embedding_model"`
+	Dimension            int            `json:"dimension"`
+	Quantization         string         `json:"quantization"`
+	Snapshot             model.Snapshot `json:"snapshot"`
+	BayesianPolicyDigest string         `json:"bayesian_policy_digest,omitempty"`
 }
 
 func Open(config Config) (*Store, error) {
@@ -127,6 +132,32 @@ func (s *Store) Put(ctx context.Context, event model.Event, vector []float32, di
 	return store.PutResult{Snapshot: next}, nil
 }
 
+func (s *Store) BindBayesianPolicy(ctx context.Context, digest string) (model.Snapshot, error) {
+	if strings.TrimSpace(digest) == "" {
+		return model.Snapshot{}, errors.New("Bayesian policy digest is required")
+	}
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	if digest == s.policyDigest {
+		return s.snapshot, nil
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.PolicyVersion++
+	metadata, err := s.stateMetadataWithPolicy(next, digest)
+	if err != nil {
+		return model.Snapshot{}, err
+	}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, metadata)
+	}); err != nil {
+		return model.Snapshot{}, fmt.Errorf("bind Bayesian policy: %w", err)
+	}
+	s.policyDigest = digest
+	s.snapshot = next
+	return next, nil
+}
+
 func (s *Store) Search(ctx context.Context, tenantID string, vector []float32, availableBy time.Time, limit int) ([]store.SearchResult, error) {
 	collection, err := s.collection(ctx, tenantID)
 	if err != nil {
@@ -149,6 +180,326 @@ func (s *Store) Search(ctx context.Context, tenantID string, vector []float32, a
 		}
 		probe = min(live, probe*2)
 	}
+}
+
+func (s *Store) PutBayesianJournal(ctx context.Context, entry model.BayesianJournalEntry) error {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	encoded, err := json.Marshal(entry)
+	if err != nil {
+		return fmt.Errorf("encode Bayesian journal: %w", err)
+	}
+	recordID := bayesianJournalRecordID(entry.TenantID, entry.ID)
+	record, err := s.bayesian.Get(ctx, recordID)
+	if err == nil {
+		current, _ := record.Metadata["journal_json"].(string)
+		if current != string(encoded) {
+			return store.ErrJournalConflict
+		}
+		return nil
+	}
+	if !errors.Is(err, libra.ErrRecordNotFound) {
+		return fmt.Errorf("check Bayesian journal: %w", err)
+	}
+	if entry.Snapshot != s.snapshot {
+		return store.ErrStaleSnapshot
+	}
+	metadata := map[string]interface{}{
+		"record_type":  "frontier_journal",
+		"tenant_id":    entry.TenantID,
+		"journal_id":   entry.ID,
+		"as_of":        entry.AsOf.UTC().Format(time.RFC3339Nano),
+		"journal_json": string(encoded),
+	}
+	if err := s.bayesian.Insert(ctx, recordID, nil, metadata); err != nil {
+		return fmt.Errorf("insert Bayesian journal: %w", err)
+	}
+	return nil
+}
+
+func (s *Store) GetBayesianJournal(ctx context.Context, tenantID, journalID string) (model.BayesianJournalEntry, error) {
+	record, err := s.bayesian.Get(ctx, bayesianJournalRecordID(tenantID, journalID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.BayesianJournalEntry{}, store.ErrJournalNotFound
+	}
+	if err != nil {
+		return model.BayesianJournalEntry{}, fmt.Errorf("read Bayesian journal: %w", err)
+	}
+	encoded, ok := record.Metadata["journal_json"].(string)
+	if !ok {
+		return model.BayesianJournalEntry{}, errors.New("Bayesian journal is malformed")
+	}
+	var entry model.BayesianJournalEntry
+	if err := json.Unmarshal([]byte(encoded), &entry); err != nil {
+		return model.BayesianJournalEntry{}, fmt.Errorf("decode Bayesian journal: %w", err)
+	}
+	if entry.TenantID != tenantID || entry.ID != journalID {
+		return model.BayesianJournalEntry{}, errors.New("Bayesian journal identity mismatch")
+	}
+	return entry, nil
+}
+
+func (s *Store) PublishSelectionCertificate(ctx context.Context, certificate model.SelectionSupportCertificate) (model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	if certificate.PolicyVersion != s.snapshot.PolicyVersion || certificate.EvidenceEpoch != s.snapshot.EvidenceEpoch {
+		return model.Snapshot{}, store.ErrStaleSnapshot
+	}
+	encoded, err := json.Marshal(certificate)
+	if err != nil {
+		return model.Snapshot{}, fmt.Errorf("encode selection certificate: %w", err)
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return model.Snapshot{}, err
+	}
+	recordID := selectionCertificateRecordID(certificate.TenantID)
+	metadata := map[string]interface{}{"record_type": "selection_certificate", "tenant_id": certificate.TenantID, "certificate_json": string(encoded)}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Upsert(ctx, bayesianCollection, recordID, nil, metadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return model.Snapshot{}, fmt.Errorf("publish selection certificate: %w", err)
+	}
+	s.snapshot = next
+	return next, nil
+}
+
+func (s *Store) GetSelectionCertificate(ctx context.Context, tenantID string) (model.SelectionSupportCertificate, error) {
+	record, err := s.bayesian.Get(ctx, selectionCertificateRecordID(tenantID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.SelectionSupportCertificate{}, store.ErrCertificateNotFound
+	}
+	if err != nil {
+		return model.SelectionSupportCertificate{}, fmt.Errorf("read selection certificate: %w", err)
+	}
+	var certificate model.SelectionSupportCertificate
+	if err := decodeCertificate(record.Metadata, &certificate); err != nil {
+		return model.SelectionSupportCertificate{}, err
+	}
+	if certificate.TenantID != tenantID {
+		return model.SelectionSupportCertificate{}, errors.New("selection certificate tenant mismatch")
+	}
+	return certificate, nil
+}
+
+func (s *Store) PublishOmittedInfluenceCertificate(ctx context.Context, certificate model.OmittedInfluenceCertificate) (model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	if certificate.PolicyVersion != s.snapshot.PolicyVersion || certificate.EvidenceEpoch != s.snapshot.EvidenceEpoch {
+		return model.Snapshot{}, store.ErrStaleSnapshot
+	}
+	encoded, err := json.Marshal(certificate)
+	if err != nil {
+		return model.Snapshot{}, fmt.Errorf("encode omitted-influence certificate: %w", err)
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return model.Snapshot{}, err
+	}
+	metadata := map[string]interface{}{"record_type": "omitted_influence_certificate", "tenant_id": certificate.TenantID, "certificate_json": string(encoded)}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Upsert(ctx, bayesianCollection, omittedInfluenceCertificateRecordID(certificate.TenantID), nil, metadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return model.Snapshot{}, fmt.Errorf("publish omitted-influence certificate: %w", err)
+	}
+	s.snapshot = next
+	return next, nil
+}
+
+func (s *Store) GetOmittedInfluenceCertificate(ctx context.Context, tenantID string) (model.OmittedInfluenceCertificate, error) {
+	record, err := s.bayesian.Get(ctx, omittedInfluenceCertificateRecordID(tenantID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.OmittedInfluenceCertificate{}, store.ErrCertificateNotFound
+	}
+	if err != nil {
+		return model.OmittedInfluenceCertificate{}, fmt.Errorf("read omitted-influence certificate: %w", err)
+	}
+	var certificate model.OmittedInfluenceCertificate
+	if err := decodeCertificate(record.Metadata, &certificate); err != nil {
+		return model.OmittedInfluenceCertificate{}, err
+	}
+	if certificate.TenantID != tenantID {
+		return model.OmittedInfluenceCertificate{}, errors.New("omitted-influence certificate tenant mismatch")
+	}
+	return certificate, nil
+}
+
+func (s *Store) PublishAntiPigeonCertificate(ctx context.Context, certificate model.AntiPigeonCertificate) (model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	if certificate.GraphVersion != s.snapshot.GraphVersion || certificate.EvidenceEpoch != s.snapshot.EvidenceEpoch {
+		return model.Snapshot{}, store.ErrStaleSnapshot
+	}
+	encoded, err := json.Marshal(certificate)
+	if err != nil {
+		return model.Snapshot{}, fmt.Errorf("encode Anti-Pigeon certificate: %w", err)
+	}
+	certificateRecordID := antiPigeonCertificateRecordID(certificate.TenantID, certificate.ID)
+	if current, getErr := s.bayesian.Get(ctx, certificateRecordID); getErr == nil {
+		currentJSON, _ := current.Metadata["certificate_json"].(string)
+		if currentJSON != string(encoded) {
+			return model.Snapshot{}, store.ErrCertificateConflict
+		}
+		return s.snapshot, nil
+	} else if !errors.Is(getErr, libra.ErrRecordNotFound) {
+		return model.Snapshot{}, fmt.Errorf("check Anti-Pigeon certificate: %w", getErr)
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.AbstractionVersion++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return model.Snapshot{}, err
+	}
+	metadata := map[string]interface{}{"record_type": "anti_pigeon_certificate", "tenant_id": certificate.TenantID, "certificate_json": string(encoded)}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Insert(ctx, bayesianCollection, certificateRecordID, nil, metadata); err != nil {
+			return err
+		}
+		for _, eventID := range certificate.MemberEventIDs {
+			index := map[string]interface{}{"record_type": "anti_pigeon_index", "tenant_id": certificate.TenantID, "certificate_id": certificate.ID}
+			if err := tx.Upsert(ctx, bayesianCollection, antiPigeonIndexRecordID(certificate.TenantID, eventID), nil, index); err != nil {
+				return err
+			}
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return model.Snapshot{}, fmt.Errorf("publish Anti-Pigeon certificate: %w", err)
+	}
+	s.snapshot = next
+	return next, nil
+}
+
+func (s *Store) GetAntiPigeonCertificate(ctx context.Context, tenantID string, eventIDs []string) (model.AntiPigeonCertificate, error) {
+	var certificateID string
+	for _, eventID := range eventIDs {
+		record, err := s.bayesian.Get(ctx, antiPigeonIndexRecordID(tenantID, eventID))
+		if errors.Is(err, libra.ErrRecordNotFound) {
+			return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+		}
+		if err != nil {
+			return model.AntiPigeonCertificate{}, fmt.Errorf("read Anti-Pigeon index: %w", err)
+		}
+		current, _ := record.Metadata["certificate_id"].(string)
+		if current == "" || (certificateID != "" && current != certificateID) {
+			return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+		}
+		certificateID = current
+	}
+	if certificateID == "" {
+		return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+	}
+	record, err := s.bayesian.Get(ctx, antiPigeonCertificateRecordID(tenantID, certificateID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+	}
+	if err != nil {
+		return model.AntiPigeonCertificate{}, fmt.Errorf("read Anti-Pigeon certificate: %w", err)
+	}
+	var certificate model.AntiPigeonCertificate
+	if err := decodeCertificate(record.Metadata, &certificate); err != nil {
+		return model.AntiPigeonCertificate{}, err
+	}
+	return certificate, nil
+}
+
+func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy) (store.BayesianOutcomeResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	outcomeRecordID := bayesianOutcomeRecordID(request.TenantID, request.IdempotencyKey)
+	if record, err := s.bayesian.Get(ctx, outcomeRecordID); err == nil {
+		currentDigest, _ := record.Metadata["content_digest"].(string)
+		currentKey, _ := record.Metadata["posterior_key"].(string)
+		if currentDigest != digest || currentKey != posteriorKey {
+			return store.BayesianOutcomeResult{}, store.ErrOutcomeConflict
+		}
+		posterior, getErr := s.getBayesianPosterior(ctx, request.TenantID, posteriorKey)
+		if getErr != nil {
+			return store.BayesianOutcomeResult{}, getErr
+		}
+		return store.BayesianOutcomeResult{Duplicate: true, Posterior: posterior, Snapshot: s.snapshot}, nil
+	} else if !errors.Is(err, libra.ErrRecordNotFound) {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("check Bayesian outcome: %w", err)
+	}
+	posterior, err := s.getBayesianPosterior(ctx, request.TenantID, posteriorKey)
+	if errors.Is(err, store.ErrPosteriorNotFound) || posterior.EvidenceEpoch != s.snapshot.EvidenceEpoch {
+		posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: posteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
+	} else if err != nil {
+		return store.BayesianOutcomeResult{}, err
+	}
+	posterior, changePoint := bayes.ApplyOutcome(posterior, request.Useful, weight, changePolicy)
+	posterior.UpdatedAt = request.AvailableAt
+	outcomeJSON, err := json.Marshal(request)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian outcome: %w", err)
+	}
+	next := s.snapshot
+	if changePoint {
+		next = invalidatedSnapshot(next)
+		posterior.EvidenceEpoch = next.EvidenceEpoch
+	} else {
+		next.RuntimeVersion++
+		next.PosteriorVersion++
+	}
+	posteriorJSON, err := json.Marshal(posterior)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian posterior: %w", err)
+	}
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, err
+	}
+	posteriorMetadata := map[string]interface{}{"record_type": "posterior", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "posterior_json": string(posteriorJSON)}
+	outcomeMetadata := map[string]interface{}{"record_type": "outcome", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "content_digest": digest, "outcome_json": string(outcomeJSON)}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Insert(ctx, bayesianCollection, outcomeRecordID, nil, outcomeMetadata); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, bayesianPosteriorRecordID(request.TenantID, posteriorKey), nil, posteriorMetadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("apply Bayesian outcome: %w", err)
+	}
+	s.snapshot = next
+	return store.BayesianOutcomeResult{ChangePoint: changePoint, Posterior: posterior, Snapshot: next}, nil
+}
+
+func (s *Store) GetBayesianPosterior(ctx context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error) {
+	return s.getBayesianPosterior(ctx, tenantID, posteriorKey)
+}
+
+func (s *Store) getBayesianPosterior(ctx context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error) {
+	record, err := s.bayesian.Get(ctx, bayesianPosteriorRecordID(tenantID, posteriorKey))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.BayesianPosterior{}, store.ErrPosteriorNotFound
+	}
+	if err != nil {
+		return model.BayesianPosterior{}, fmt.Errorf("read Bayesian posterior: %w", err)
+	}
+	encoded, ok := record.Metadata["posterior_json"].(string)
+	if !ok {
+		return model.BayesianPosterior{}, errors.New("Bayesian posterior is malformed")
+	}
+	var posterior model.BayesianPosterior
+	if err := json.Unmarshal([]byte(encoded), &posterior); err != nil {
+		return model.BayesianPosterior{}, fmt.Errorf("decode Bayesian posterior: %w", err)
+	}
+	if posterior.TenantID != tenantID || posterior.PosteriorKey != posteriorKey {
+		return model.BayesianPosterior{}, errors.New("Bayesian posterior identity mismatch")
+	}
+	return posterior, nil
 }
 
 func decodeEligible(results []*libra.SearchResult, availableBy time.Time, limit int) []store.SearchResult {
@@ -361,6 +712,10 @@ func (s *Store) loadOrInitializeState(ctx context.Context) error {
 	if err != nil {
 		return fmt.Errorf("ensure system collection: %w", err)
 	}
+	s.bayesian, err = s.db.EnsureCollection(ctx, bayesianCollection, 0, libra.WithMetadataOnly())
+	if err != nil {
+		return fmt.Errorf("ensure Bayesian collection: %w", err)
+	}
 	record, err := collection.Get(ctx, "runtime")
 	if err == nil {
 		encoded, ok := record.Metadata["state_json"].(string)
@@ -377,6 +732,21 @@ func (s *Store) loadOrInitializeState(ctx context.Context) error {
 		if state.EmbeddingModel != s.config.EmbeddingModel || state.Dimension != s.config.Dimension || state.Quantization != s.config.Quantization {
 			return fmt.Errorf("database embedding contract %q/d%d does not match active %q/d%d", state.EmbeddingModel, state.Dimension, s.config.EmbeddingModel, s.config.Dimension)
 		}
+		if state.Snapshot.ContractVersion > model.ContractVersion {
+			return fmt.Errorf("database contract version %d is newer than runtime contract %d", state.Snapshot.ContractVersion, model.ContractVersion)
+		}
+		s.policyDigest = state.BayesianPolicyDigest
+		if state.Snapshot.ContractVersion < model.ContractVersion {
+			state.Snapshot.ContractVersion = model.ContractVersion
+			state.Snapshot.RuntimeVersion++
+			metadata, metadataErr := s.stateMetadata(state.Snapshot)
+			if metadataErr != nil {
+				return metadataErr
+			}
+			if upsertErr := collection.Upsert(ctx, "runtime", nil, metadata); upsertErr != nil {
+				return fmt.Errorf("upgrade durable contract marker: %w", upsertErr)
+			}
+		}
 		s.snapshot = state.Snapshot
 		return nil
 	}
@@ -392,7 +762,7 @@ func (s *Store) loadOrInitializeState(ctx context.Context) error {
 			return errors.New("legacy Phase 1 collections detected; run with -migrate-v1 and -migration-backup before starting")
 		}
 	}
-	s.snapshot = model.Snapshot{PolicyVersion: 1, ContractVersion: 2, GraphVersion: 1, PosteriorVersion: 1, ResidualVersion: 1, AbstractionVersion: 1}
+	s.snapshot = model.Snapshot{PolicyVersion: 1, ContractVersion: model.ContractVersion, GraphVersion: 1, PosteriorVersion: 1, ResidualVersion: 1, AbstractionVersion: 1}
 	metadata, err := s.stateMetadata(s.snapshot)
 	if err != nil {
 		return err
@@ -403,12 +773,61 @@ func (s *Store) loadOrInitializeState(ctx context.Context) error {
 	return nil
 }
 
+func bayesianJournalRecordID(tenantID, journalID string) string {
+	digest := sha256.Sum256([]byte(tenantID + "\x00" + journalID))
+	return "journal_" + hex.EncodeToString(digest[:])
+}
+
+func selectionCertificateRecordID(tenantID string) string {
+	return hashedBayesianRecordID("selection", tenantID)
+}
+
+func omittedInfluenceCertificateRecordID(tenantID string) string {
+	return hashedBayesianRecordID("omitted_influence", tenantID)
+}
+
+func antiPigeonCertificateRecordID(tenantID, certificateID string) string {
+	return hashedBayesianRecordID("anti_pigeon", tenantID+"\x00"+certificateID)
+}
+
+func antiPigeonIndexRecordID(tenantID, eventID string) string {
+	return hashedBayesianRecordID("anti_pigeon_index", tenantID+"\x00"+eventID)
+}
+
+func hashedBayesianRecordID(kind, value string) string {
+	digest := sha256.Sum256([]byte(kind + "\x00" + value))
+	return kind + "_" + hex.EncodeToString(digest[:])
+}
+
+func bayesianOutcomeRecordID(tenantID, idempotencyKey string) string {
+	return hashedBayesianRecordID("outcome", tenantID+"\x00"+idempotencyKey)
+}
+
+func bayesianPosteriorRecordID(tenantID, posteriorKey string) string {
+	return hashedBayesianRecordID("posterior", tenantID+"\x00"+posteriorKey)
+}
+
+func decodeCertificate(metadata map[string]interface{}, target any) error {
+	encoded, ok := metadata["certificate_json"].(string)
+	if !ok {
+		return errors.New("Bayesian certificate is malformed")
+	}
+	if err := json.Unmarshal([]byte(encoded), target); err != nil {
+		return fmt.Errorf("decode Bayesian certificate: %w", err)
+	}
+	return nil
+}
+
 func isLegacyCollection(name string) bool {
 	return strings.HasPrefix(name, "events_") && !strings.HasPrefix(name, "events_v2_")
 }
 
 func (s *Store) stateMetadata(snapshot model.Snapshot) (map[string]interface{}, error) {
-	encoded, err := json.Marshal(persistentState{SchemaVersion: 2, EmbeddingModel: s.config.EmbeddingModel, Dimension: s.config.Dimension, Quantization: s.config.Quantization, Snapshot: snapshot})
+	return s.stateMetadataWithPolicy(snapshot, s.policyDigest)
+}
+
+func (s *Store) stateMetadataWithPolicy(snapshot model.Snapshot, policyDigest string) (map[string]interface{}, error) {
+	encoded, err := json.Marshal(persistentState{SchemaVersion: 2, EmbeddingModel: s.config.EmbeddingModel, Dimension: s.config.Dimension, Quantization: s.config.Quantization, Snapshot: snapshot, BayesianPolicyDigest: policyDigest})
 	if err != nil {
 		return nil, err
 	}

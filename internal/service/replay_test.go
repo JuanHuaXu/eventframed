@@ -56,6 +56,9 @@ func TestDeterministicAvailabilityAndPackingReplay(t *testing.T) {
 	if packet.BayesianShadow.Mode != "shadow" || packet.BayesianShadow.SelectionSupportCertified {
 		t.Fatalf("Bayesian shadow escaped certification gate: %+v", packet.BayesianShadow)
 	}
+	if packet.BayesianShadow.JournalID == "" || !packet.BayesianShadow.JournalDurable {
+		t.Fatalf("Bayesian shadow journal missing: %+v", packet.BayesianShadow)
+	}
 	for index, expected := range fixture.ExpectedPackedIDs {
 		if actual := packet.Candidates[index].Event.ID; actual != expected {
 			t.Fatalf("candidate %d = %q, want %q", index, actual, expected)
