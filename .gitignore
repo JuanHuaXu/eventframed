@@ -8,3 +8,13 @@ node_modules/
 *.libravdb
 *.libravdb.*
 *.sock
+
+# Session-derived and generated experiment corpora remain local. Commit their
+# frozen protocols, aggregate reports, and compact machine-readable evidence.
+docs/experiments/**/*-dataset.json
+docs/experiments/**/dataset.json
+docs/experiments/**/report.json
+evidence/**/*-dataset.json
+
+# Local agent workflow notes are not release artifacts.
+.learnings/LEARNINGS.md

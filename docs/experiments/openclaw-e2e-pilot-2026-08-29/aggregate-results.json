@@ -1,0 +1,74 @@
+{
+  "experiment": "contained-openclaw-e2e-pilot-2026-08-29",
+  "status": "completed_with_protocol_exclusion",
+  "model": "openai/gpt-5.6-luna",
+  "openclaw_version": "2026.7.1-2",
+  "arms": {
+    "libravdb-control": {
+      "valid_memory_queries_correct": 7,
+      "valid_memory_queries_total": 7,
+      "negative_controls_correct": 1,
+      "negative_controls_total": 1,
+      "target_ranks": [1, 1, 7, 1, 1, 1, 1],
+      "valid_query_model_duration_median_ms": 2871
+    },
+    "eventframe-pass": {
+      "valid_memory_queries_correct": 7,
+      "valid_memory_queries_total": 7,
+      "negative_controls_correct": 1,
+      "negative_controls_total": 1,
+      "target_ranks": [1, 1, 4, 1, 1, 1, 1],
+      "initial_recall_count": 21,
+      "initial_observe_count": 21,
+      "initial_errors": 0,
+      "recall_median_ms": 12.761417,
+      "recall_p95_ms": 16.658834,
+      "recall_max_ms": 29.879458,
+      "nonzero_rank_delta_candidates": 0,
+      "valid_query_model_duration_median_ms": 2804
+    },
+    "eventframe-active": {
+      "valid_memory_queries_correct": 7,
+      "valid_memory_queries_total": 7,
+      "negative_controls_correct": 1,
+      "negative_controls_total": 1,
+      "target_ranks": [1, 1, 4, 1, 1, 1, 1],
+      "initial_recall_count": 21,
+      "initial_observe_count": 21,
+      "initial_errors": 0,
+      "recall_median_ms": 12.449917,
+      "recall_p95_ms": 16.6005,
+      "recall_max_ms": 22.929375,
+      "nonzero_rank_delta_candidates": 155,
+      "rank_delta_min": 0.011440936,
+      "rank_delta_mean": 0.012265835,
+      "rank_delta_max": 0.014734604,
+      "top10_order_changes_vs_pass_on_q02_to_q07": 0,
+      "valid_query_model_duration_median_ms": 3650
+    }
+  },
+  "cross_arm": {
+    "provider_visible_memory_confirmed": true,
+    "contract_native_nomination_and_ranking_confirmed": true,
+    "stale_value_answers_correct": 3,
+    "stale_value_answers_total": 3,
+    "untrusted_instruction_answers_correct": 3,
+    "untrusted_instruction_answers_total": 3,
+    "fail_open_answer_returned": true,
+    "fail_open_recall_error_ms": 0.835333,
+    "active_daemon_rss_kib_sample": 88512,
+    "active_daemon_cpu_percent_sample": 0.7
+  },
+  "claim_status": {
+    "contained_end_to_end_operation": "validated_in_pilot",
+    "provider_visible_memory_injection": "validated_in_pilot",
+    "contract_native_libravdb_path": "validated_in_pilot",
+    "eventframe_recall_under_100_ms": "validated_for_this_pilot",
+    "daemon_unavailable_fail_open": "validated_in_pilot",
+    "active_ranking_quality_improvement": "not_observed",
+    "population_superiority": "untested"
+  },
+  "excluded": {
+    "Q01": "The original prompt disclosed the expected answer. Its corrected rerun retrieved the previously captured Q01 answer, so both Q01 observations are excluded from accuracy evidence."
+  }
+}

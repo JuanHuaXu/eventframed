@@ -3,6 +3,7 @@ package memorystore
 import (
 	"context"
 	"errors"
+	"fmt"
 	"math"
 	"reflect"
 	"sort"
@@ -30,6 +31,7 @@ type Store struct {
 	antiPigeonCertificates map[string]model.AntiPigeonCertificate
 	antiPigeonIndex        map[string]map[string]string
 	outcomeDigests         map[string]map[string]string
+	outcomeResults         map[string]map[string]store.BayesianOutcomeResult
 	posteriors             map[string]map[string]model.BayesianPosterior
 	residuals              map[string]map[string]model.ResidualRecord
 	graphs                 map[string]model.PredictiveGraph
@@ -58,7 +60,7 @@ func New() *Store {
 		selectionCertificates:  make(map[string]model.SelectionSupportCertificate),
 		omittedCertificates:    make(map[string]model.OmittedInfluenceCertificate),
 		antiPigeonCertificates: make(map[string]model.AntiPigeonCertificate), antiPigeonIndex: make(map[string]map[string]string),
-		outcomeDigests: make(map[string]map[string]string), posteriors: make(map[string]map[string]model.BayesianPosterior),
+		outcomeDigests: make(map[string]map[string]string), outcomeResults: make(map[string]map[string]store.BayesianOutcomeResult), posteriors: make(map[string]map[string]model.BayesianPosterior),
 		residuals: make(map[string]map[string]model.ResidualRecord),
 		graphs:    make(map[string]model.PredictiveGraph), snaps: make(map[string]map[string]model.PredictiveSnapRecord),
 		agencyRecords: make(map[string]map[string]model.AgencyProposalRecord), agencyDigests: make(map[string]map[string]string),
@@ -318,7 +320,7 @@ func (s *Store) GetOmittedInfluenceCertificate(_ context.Context, tenantID strin
 	return certificate, nil
 }
 
-func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (store.BayesianOutcomeResult, error) {
+func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOutcomeRequest, posteriorKey, parentPosteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, groupPolicy bayes.GroupPolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (store.BayesianOutcomeResult, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	digests := s.outcomeDigests[request.TenantID]
@@ -330,7 +332,9 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 		if current != digest {
 			return store.BayesianOutcomeResult{}, store.ErrOutcomeConflict
 		}
-		return store.BayesianOutcomeResult{Duplicate: true, Posterior: s.posteriors[request.TenantID][posteriorKey], Snapshot: s.snapshot}, nil
+		result := s.outcomeResults[request.TenantID][request.IdempotencyKey]
+		result.Duplicate, result.Snapshot = true, s.snapshot
+		return result, nil
 	}
 	tenant := s.posteriors[request.TenantID]
 	if tenant == nil {
@@ -341,18 +345,63 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 	if posterior.EvidenceEpoch != s.snapshot.EvidenceEpoch || posterior.Alpha <= 0 || posterior.Beta <= 0 {
 		posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: posteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
 	}
-	posterior, changePoint := bayes.ApplyOutcome(posterior, request.Useful, weight, changePolicy)
+	validationEligible := request.Source == model.OutcomeFullStream || request.Source == model.OutcomeIndependentAudit
+	resetAuthorized := validationEligible || len(posteriorKey) < 3 || posteriorKey[:3] != "ap:"
+	certificate, memberIDs := s.antiPigeonGroup(request.TenantID, posteriorKey)
+	pooledWeight := bayes.SharedOutcomeWeight(groupPolicy, len(memberIDs) >= 2, weight)
+	posterior, changePoint := bayes.ApplyOutcomeAuthorized(posterior, request.Useful, pooledWeight, changePolicy, resetAuthorized)
+	bayes.UpdateMemberEvidence(&posterior, request.EventID, request.Useful, weight)
 	updateCalibration(&posterior, residualObservation.CommittedProbability, request.Useful, weight)
 	posterior.UpdatedAt = request.AvailableAt
+	revision := bayes.AssessRevision(posterior, memberIDs, request.EventID, changePoint, validationEligible, groupPolicy)
 	if changePoint {
 		s.invalidate()
 		posterior.EvidenceEpoch = s.snapshot.EvidenceEpoch
+		if !bayes.RevisionSplits(revision.Action) {
+			posterior.MemberEvidence = nil
+		}
+	} else if bayes.RevisionSplits(revision.Action) {
+		s.snapshot.RuntimeVersion++
+		s.snapshot.AbstractionVersion++
+		s.snapshot.PosteriorVersion++
+		s.snapshot.ResidualVersion++
 	} else {
 		s.snapshot.RuntimeVersion++
 		s.snapshot.PosteriorVersion++
 		s.snapshot.ResidualVersion++
 	}
 	tenant[posteriorKey] = posterior
+	resultPosterior := posterior
+	if bayes.RevisionSplits(revision.Action) {
+		posterior.Certified = false
+		tenant[posteriorKey] = posterior
+		s.revokeAntiPigeon(certificate)
+		for _, eventID := range memberIDs {
+			evidence := posterior.MemberEvidence[eventID]
+			child := materializedMemberPosterior(request.TenantID, eventID, evidence, s.snapshot.EvidenceEpoch, request.AvailableAt)
+			if changePoint && eventID == request.EventID {
+				child = resetMemberPosterior(child, request.Useful, weight)
+			}
+			tenant[eventID] = child
+			if eventID == request.EventID {
+				resultPosterior = child
+			}
+		}
+	}
+	if parentPosteriorKey != "" && parentPosteriorKey != posteriorKey {
+		parent := tenant[parentPosteriorKey]
+		if parent.EvidenceEpoch != s.snapshot.EvidenceEpoch || parent.Alpha <= 0 || parent.Beta <= 0 {
+			parent = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: parentPosteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
+		}
+		if request.Useful {
+			parent.Alpha += weight
+		} else {
+			parent.Beta += weight
+		}
+		parent.EffectiveSupport += weight
+		parent.UpdatedAt = request.AvailableAt
+		tenant[parentPosteriorKey] = parent
+	}
 	residualTenant := s.residuals[request.TenantID]
 	if residualTenant == nil {
 		residualTenant = make(map[string]model.ResidualRecord)
@@ -362,8 +411,67 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 	generalID := residualRecordMapKey(model.ResidualGeneral, residualObservation.GeneralKey)
 	residualTenant[exactID] = residual.Update(residualTenant[exactID], residualObservation, model.ResidualExact, residualObservation.ActionKey, request.TenantID, weight, s.snapshot, residualPolicy)
 	residualTenant[generalID] = residual.Update(residualTenant[generalID], residualObservation, model.ResidualGeneral, residualObservation.GeneralKey, request.TenantID, weight, s.snapshot, residualPolicy)
+	if bayes.RevisionSplits(revision.Action) {
+		exact, general := residualTenant[exactID], residualTenant[generalID]
+		exact.Active, general.Active = false, false
+		residualTenant[exactID], residualTenant[generalID] = exact, general
+	}
 	digests[request.IdempotencyKey] = digest
-	return store.BayesianOutcomeResult{ChangePoint: changePoint, Posterior: posterior, Snapshot: s.snapshot}, nil
+	if s.outcomeResults[request.TenantID] == nil {
+		s.outcomeResults[request.TenantID] = make(map[string]store.BayesianOutcomeResult)
+	}
+	result := store.BayesianOutcomeResult{ChangePoint: changePoint, Revision: revision, Posterior: resultPosterior, Snapshot: s.snapshot}
+	s.outcomeResults[request.TenantID][request.IdempotencyKey] = result
+	return result, nil
+}
+
+func (s *Store) antiPigeonGroup(tenantID, posteriorKey string) (model.AntiPigeonCertificate, []string) {
+	if len(posteriorKey) <= 3 || posteriorKey[:3] != "ap:" {
+		return model.AntiPigeonCertificate{}, nil
+	}
+	certificate := s.antiPigeonCertificates[posteriorKey[3:]]
+	if certificate.TenantID != tenantID {
+		return model.AntiPigeonCertificate{}, nil
+	}
+	for _, eventID := range certificate.MemberEventIDs {
+		if s.antiPigeonIndex[tenantID][eventID] != certificate.ID {
+			return model.AntiPigeonCertificate{}, nil
+		}
+	}
+	return certificate, append([]string(nil), certificate.MemberEventIDs...)
+}
+
+func (s *Store) revokeAntiPigeon(certificate model.AntiPigeonCertificate) {
+	if certificate.ID == "" {
+		return
+	}
+	delete(s.antiPigeonCertificates, certificate.ID)
+	for _, eventID := range certificate.MemberEventIDs {
+		if s.antiPigeonIndex[certificate.TenantID][eventID] == certificate.ID {
+			delete(s.antiPigeonIndex[certificate.TenantID], eventID)
+		}
+	}
+}
+
+func materializedMemberPosterior(tenantID, eventID string, evidence model.BayesianMemberEvidence, epoch uint64, updatedAt time.Time) model.BayesianPosterior {
+	return model.BayesianPosterior{
+		TenantID: tenantID, PosteriorKey: eventID, Alpha: 1 + evidence.UsefulWeight, Beta: 1 + evidence.NotUsefulWeight,
+		EffectiveSupport: evidence.UsefulWeight + evidence.NotUsefulWeight, EvidenceEpoch: epoch, Certified: true, UpdatedAt: updatedAt,
+		MemberEvidence: map[string]model.BayesianMemberEvidence{eventID: evidence},
+	}
+}
+
+func resetMemberPosterior(posterior model.BayesianPosterior, useful bool, weight float64) model.BayesianPosterior {
+	posterior.Alpha, posterior.Beta, posterior.EffectiveSupport = 1, 1, 0
+	posterior.MemberEvidence = make(map[string]model.BayesianMemberEvidence)
+	if useful {
+		posterior.Alpha += weight
+	} else {
+		posterior.Beta += weight
+	}
+	posterior.EffectiveSupport = weight
+	bayes.UpdateMemberEvidence(&posterior, posterior.PosteriorKey, useful, weight)
+	return posterior
 }
 
 func (s *Store) GetResidualCandidates(_ context.Context, tenantID, actionKey, generalKey string) (model.ResidualCandidates, error) {
@@ -529,6 +637,24 @@ func (s *Store) Search(_ context.Context, tenantID string, vector []float32, ava
 	sort.Slice(results, func(i, j int) bool { return results[i].Similarity > results[j].Similarity })
 	if len(results) > limit {
 		results = results[:limit]
+	}
+	return results, nil
+}
+
+func (s *Store) GetEvents(_ context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	tenant := s.entries[tenantID]
+	results := make([]model.Event, 0, len(eventIDs))
+	for _, eventID := range eventIDs {
+		item, ok := tenant[eventID]
+		if !ok {
+			return nil, fmt.Errorf("%w: id=%s absent", store.ErrEventNotFound, eventID)
+		}
+		if item.event.AvailableAt.After(availableBy) {
+			return nil, fmt.Errorf("%w: id=%s is not available as of request", store.ErrEventNotFound, eventID)
+		}
+		results = append(results, item.event)
 	}
 	return results, nil
 }

@@ -13,6 +13,7 @@ type Policy struct {
 	Threshold, CriticalThreshold, AuditProbability                  float64
 	MaxActive                                                       int
 	AuditSeed                                                       string
+	CheapUpdateAll                                                  bool
 }
 
 type Candidate struct {
@@ -30,21 +31,34 @@ func Evaluate(candidates []Candidate, epoch uint64, policy Policy) model.Bayesia
 		if candidate.Priority >= 0.8 {
 			threshold = policy.CriticalThreshold
 		}
-		decisions = append(decisions, model.BayesianDecision{EventID: candidate.EventID, ActivationScore: clamp(score), Activated: candidate.EvidenceReady && score >= threshold, EvidenceReady: candidate.EvidenceReady, AuditSelected: audit(candidate.EventID, epoch, policy), AuditProbability: clamp(policy.AuditProbability), PosteriorKey: candidate.EventID})
+		deepReview := candidate.EvidenceReady && score >= threshold
+		cheapUpdate := deepReview
+		if policy.CheapUpdateAll {
+			cheapUpdate = candidate.EvidenceReady
+		}
+		decisions = append(decisions, model.BayesianDecision{EventID: candidate.EventID, ActivationScore: clamp(score), Activated: cheapUpdate, CheapUpdate: cheapUpdate, DeepReview: deepReview, EvidenceReady: candidate.EvidenceReady, AuditSelected: audit(candidate.EventID, epoch, policy), AuditProbability: clamp(policy.AuditProbability), PosteriorKey: candidate.EventID})
 	}
 	sort.SliceStable(decisions, func(i, j int) bool { return decisions[i].ActivationScore > decisions[j].ActivationScore })
-	active := 0
+	active, deep := 0, 0
 	for index := range decisions {
-		if !decisions[index].Activated {
+		if decisions[index].Activated {
+			active++
+		}
+		if !decisions[index].DeepReview {
 			continue
 		}
-		if active >= policy.MaxActive {
-			decisions[index].Activated = false
+		if deep >= policy.MaxActive {
+			decisions[index].DeepReview = false
+			if !policy.CheapUpdateAll {
+				decisions[index].Activated = false
+				decisions[index].CheapUpdate = false
+				active--
+			}
 			continue
 		}
-		active++
+		deep++
 	}
-	return model.BayesianShadowReport{Mode: "shadow", Nominated: len(candidates), Activated: active, SelectionSupportCertified: false, Decisions: decisions}
+	return model.BayesianShadowReport{Mode: "shadow", Nominated: len(candidates), Activated: active, DeepReviewed: deep, SelectionSupportCertified: false, Decisions: decisions}
 }
 
 func audit(eventID string, epoch uint64, policy Policy) bool {

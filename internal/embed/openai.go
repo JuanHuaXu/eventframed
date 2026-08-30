@@ -3,6 +3,7 @@ package embed
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -17,6 +18,8 @@ type OpenAICompatibleConfig struct {
 	URL, Model, APIKey string
 	Dimension          int
 	Timeout            time.Duration
+	DocumentPrefix     string
+	QueryPrefix        string
 }
 
 type OpenAICompatible struct {
@@ -37,10 +40,27 @@ func NewOpenAICompatible(config OpenAICompatibleConfig) (*OpenAICompatible, erro
 func (e *OpenAICompatible) Dimension() int { return e.config.Dimension }
 func (e *OpenAICompatible) Name() string   { return "openai-compatible" }
 func (e *OpenAICompatible) ModelKey() string {
-	return fmt.Sprintf("openai-compatible:%s:d%d", e.config.Model, e.config.Dimension)
+	base := fmt.Sprintf("openai-compatible:%s:d%d", e.config.Model, e.config.Dimension)
+	if e.config.DocumentPrefix == "" && e.config.QueryPrefix == "" {
+		return base
+	}
+	digest := sha256.Sum256([]byte(e.config.DocumentPrefix + "\x00" + e.config.QueryPrefix))
+	return fmt.Sprintf("%s:rp%x", base, digest[:6])
 }
 
 func (e *OpenAICompatible) Embed(text string) ([]float32, error) {
+	return e.EmbedDocument(text)
+}
+
+func (e *OpenAICompatible) EmbedDocument(text string) ([]float32, error) {
+	return e.embed(e.config.DocumentPrefix + text)
+}
+
+func (e *OpenAICompatible) EmbedQuery(text string) ([]float32, error) {
+	return e.embed(e.config.QueryPrefix + text)
+}
+
+func (e *OpenAICompatible) embed(text string) ([]float32, error) {
 	payload, _ := json.Marshal(map[string]any{"model": e.config.Model, "input": text, "encoding_format": "float"})
 	request, err := http.NewRequestWithContext(context.Background(), http.MethodPost, e.config.URL, bytes.NewReader(payload))
 	if err != nil {

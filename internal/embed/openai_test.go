@@ -44,3 +44,35 @@ func TestOpenAICompatibleRejectsWrongDimension(t *testing.T) {
 		t.Fatal("expected dimension error")
 	}
 }
+
+func TestOpenAICompatibleAppliesRolePrefixesAndPinsThemInModelKey(t *testing.T) {
+	var inputs []string
+	server := httptest.NewServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		var body struct {
+			Input string `json:"input"`
+		}
+		_ = json.NewDecoder(request.Body).Decode(&body)
+		inputs = append(inputs, body.Input)
+		_ = json.NewEncoder(writer).Encode(map[string]any{"data": []any{map[string]any{"embedding": []float32{1, 0}}}})
+	}))
+	defer server.Close()
+	embedder, err := embed.NewOpenAICompatible(embed.OpenAICompatibleConfig{
+		URL: server.URL, Model: "model-a", Dimension: 2,
+		DocumentPrefix: "search_document: ", QueryPrefix: "search_query: ",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := embed.Document(embedder, "stored"); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := embed.Query(embedder, "question"); err != nil {
+		t.Fatal(err)
+	}
+	if len(inputs) != 2 || inputs[0] != "search_document: stored" || inputs[1] != "search_query: question" {
+		t.Fatalf("role inputs = %#v", inputs)
+	}
+	if embedder.ModelKey() == "openai-compatible:model-a:d2" {
+		t.Fatal("role prefixes were absent from the embedding contract key")
+	}
+}

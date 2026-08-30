@@ -28,9 +28,10 @@ TypeScript contract adapter
   |  eventframe.v1alpha1 over a mode-0600 Unix socket
   v
 eventframed (Go)
-  |  ingest -> availability gate -> frontier(k=50) -> certified belief rerank -> pack(k=10)
+  |  structured state: embedded LibraVDB (mmap, optional SQ8/FSQ6/PQ)
+  |  candidate contracts: Insert/SearchTextCollections/RankCandidates/Delete
   v
-LibraVDB (embedded, mmap, optional SQ8/FSQ6/PQ traversal)
+LibraVDB contract endpoint (optional production nomination and ranking)
 ```
 
 The authority path runs beside recall: a trusted local planner submits a bounded
@@ -41,10 +42,13 @@ causal-depth, expiry, quiet-hours, and kill-switch gates before scheduling a new
 agent turn. That turn remains ordinary untrusted input and receives no tool
 permission from the proposal.
 
-There is no separate LibraVDB daemon hop. The Go process owns the database and
-all policy-bearing calculations. The TypeScript adapter only translates OpenClaw
-hooks into the versioned protocol and injects escaped, explicitly untrusted
-historical context.
+The Go process owns all memory lifecycle and policy-bearing calculations. Its
+embedded database is the authoritative structured EventFrame store. Production
+may additionally configure a LibraVDB daemon for the frozen public candidate
+contracts; `eventframed`, not the base `libravdb-memory` plugin, calls those RPCs
+and owns their tenant-isolated collections. The TypeScript adapter only
+translates OpenClaw hooks into the versioned protocol and injects escaped,
+explicitly untrusted historical context.
 
 ## Build and test
 
@@ -64,10 +68,39 @@ Run the daemon with conservative local defaults:
 ./bin/eventframed
 ```
 
+Enable the full external candidate contract path with:
+
+```sh
+./bin/eventframed -libravdb-contract-endpoint unix:/absolute/path/libravdb.sock
+```
+
+Remote TLS and mTLS endpoints use the matching transport contract:
+
+```bash
+./bin/eventframed -libravdb-contract-endpoint tcp:memory.example:443 \
+  -libravdb-contract-tls-mode tls \
+  -libravdb-contract-tls-ca /absolute/ca.pem \
+  -libravdb-contract-tls-client-cert /absolute/client.pem \
+  -libravdb-contract-tls-client-key /absolute/client.key
+```
+
+`auto` (the default) uses plaintext only for Unix sockets and loopback TCP,
+and TLS for remote TCP endpoints. TLS channels are pooled by gRPC rather than
+opened once per retrieval request.
+
+The deprecated `-libravdb-ranker-endpoint` flag remains an alias during
+migration, but now enables the complete contract lifecycle rather than ranking
+alone.
+
 Defaults:
 
 - socket: `~/.eventframed/run/eventframed.sock`
 - database: `~/.eventframed/data/eventframe.libravdb`
+- rank-delta sidecar: `~/.eventframed/data/rank-deltas.sqlite` with a
+  100,000-entry write-through RAM cache
+- elastic rank corrections: enabled, scaling certified raw deltas from 0.5x at
+  a certain packing boundary to 2.5x at an uncertain boundary, multiplied by
+  independent correction reliability and still subject to the hard cap
 - vector dimension: 768
 - traversal quantization: SQ8
 - embedder: deterministic development hash (`-embedder hash`)
@@ -166,7 +199,9 @@ be migrated with an absolute backup path before startup:
 ```
 
 See [docs/architecture.md](docs/architecture.md),
-[docs/protocol.md](docs/protocol.md), and [docs/roadmap.md](docs/roadmap.md).
+[docs/protocol.md](docs/protocol.md), [docs/roadmap.md](docs/roadmap.md),
+[docs/release.md](docs/release.md), and the
+[claim rescue/replacement results](evidence/claim-rescue-v1/RESULTS.md).
 
 ## License
 

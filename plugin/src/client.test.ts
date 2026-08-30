@@ -44,6 +44,20 @@ test("recall rejects malformed candidates before prompt formatting", async (t) =
   );
 });
 
+test("recall rejects a candidate without a finite rank delta", async (t) => {
+  const fixture = await unixServer(t, (_request, response) => {
+    response.setHeader("content-type", "application/json");
+    response.end(JSON.stringify({
+      protocol_version: "eventframe.v1alpha1",
+      candidates: [{ event: { id: "event", content: "text", kind: "turn", available_at: "2026-01-01T00:00:00Z", provenance: { producer: "test" } }, retrieval_score: .5, score: .5 }],
+    }));
+  });
+  const client = new EventFrameClient({ socketPath: fixture.socketPath });
+  await assert.rejects(client.recall({
+    tenantId: "tenant", sessionId: "session", query: "query", recallK: 50, packK: 10, tokenBudget: 2_000,
+  }), /malformed candidate/);
+});
+
 test("agency claims reject a lease assigned to another consumer", async (t) => {
   const fixture = await unixServer(t, (_request, response) => {
     response.setHeader("content-type", "application/json");

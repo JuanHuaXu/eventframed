@@ -1,0 +1,30 @@
+{
+  "schema_version": "eventframe.production-replay.v1",
+  "rule_frozen_at": "2026-08-29T01:37:45.548241Z",
+  "confirmation_start": "2026-08-01T00:00:00Z",
+  "data_end": "2026-08-28T00:00:00Z",
+  "agent": "main",
+  "source_mode": "read-only OpenClaw UUID session JSONL",
+  "label": "a prior message is relevant iff it shares at least one normalized explicit URL, absolute path, or code-like identifier with the current user message",
+  "anchor_classes": [
+    "url",
+    "absolute_path",
+    "code_like_identifier"
+  ],
+  "max_text_bytes": 16384,
+  "max_segment_messages": 100,
+  "minimum_prior_events": 10,
+  "embedding_model": "feature-hash-v1:d384",
+  "recall_k": 100,
+  "pack_k": 100,
+  "variants": [
+    "baseline",
+    "update_all",
+    "eventframe"
+  ],
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 26082801,
+  "raw_text_exported": false,
+  "export_time_encoding": "trajectory-relative ordinal seconds from 2000-01-01T00:00:00Z; production timestamps are not exported",
+  "trajectory_definition": "one isolated source-session segment of at most 100 chronological user/assistant text messages"
+}

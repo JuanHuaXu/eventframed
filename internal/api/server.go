@@ -34,7 +34,9 @@ func NewServer(runtime *service.Service, logger *slog.Logger) *Server {
 	server.mux.HandleFunc("POST /v1/bayesian/certificates:publish-selection", server.publishSelectionCertificate)
 	server.mux.HandleFunc("POST /v1/bayesian/certificates:publish-anti-pigeon", server.publishAntiPigeonCertificate)
 	server.mux.HandleFunc("POST /v1/bayesian/certificates:publish-omitted-influence", server.publishOmittedInfluenceCertificate)
+	server.mux.HandleFunc("POST /v1/bayesian/certificates:estimate-omitted-influence", server.estimateOmittedInfluence)
 	server.mux.HandleFunc("POST /v1/bayesian/outcomes:observe", server.observeBayesianOutcome)
+	server.mux.HandleFunc("POST /v1/bayesian/groups:compare", server.compareBayesianGroup)
 	server.mux.HandleFunc("GET /v1/abstraction/graph", server.getPredictiveGraph)
 	server.mux.HandleFunc("POST /v1/abstraction/snaps:publish", server.publishPredictiveSnap)
 	server.mux.HandleFunc("POST /v1/abstraction/snaps:rollback", server.rollbackPredictiveSnap)
@@ -166,6 +168,20 @@ func (s *Server) publishOmittedInfluenceCertificate(writer http.ResponseWriter, 
 	writeJSON(writer, http.StatusOK, response)
 }
 
+func (s *Server) estimateOmittedInfluence(writer http.ResponseWriter, request *http.Request) {
+	var input model.EstimateOmittedInfluenceRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.EstimateOmittedInfluence(request.Context(), input)
+	if err != nil {
+		writeError(writer, http.StatusBadRequest, "audit_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
 func (s *Server) observeBayesianOutcome(writer http.ResponseWriter, request *http.Request) {
 	var input model.BayesianOutcomeRequest
 	if err := decodeJSON(writer, request, &input); err != nil {
@@ -179,6 +195,24 @@ func (s *Server) observeBayesianOutcome(writer http.ResponseWriter, request *htt
 			return
 		}
 		writeError(writer, http.StatusBadRequest, "outcome_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) compareBayesianGroup(writer http.ResponseWriter, request *http.Request) {
+	var input model.BayesianGroupComparisonRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.CompareBayesianGroup(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrStaleSnapshot) {
+			writeError(writer, http.StatusConflict, "snapshot_changed", err)
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "comparison_rejected", err)
 		return
 	}
 	writeJSON(writer, http.StatusOK, response)

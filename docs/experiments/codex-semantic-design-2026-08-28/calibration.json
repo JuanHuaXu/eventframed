@@ -1,0 +1,15 @@
+{
+  "schema_version": "eventframe.calibration.v1",
+  "fit_at": "2026-08-29T02:23:42.796707Z",
+  "dataset_sha256": "936a3a0fded805deb426d9154cb0fb836ad2fa7c823f537d583f63c1f0ba3b63",
+  "cases": 1286,
+  "pairs": 67035,
+  "variant": "baseline",
+  "before_brier": 0.4854531026128811,
+  "after_brier": 0.20178635520242377,
+  "calibration": {
+    "scale": 2.7372846009279144,
+    "bias": -5.620078884327766,
+    "floor": 0.000001
+  }
+}

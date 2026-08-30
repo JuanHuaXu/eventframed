@@ -8,17 +8,20 @@ import (
 )
 
 type Policy struct {
-	Clip             float64
-	MinSupport       float64
-	MinConfidence    float64
-	ConfidenceDelta  float64
-	MotionLimit      float64
-	MaxAge           time.Duration
-	ImprovementDelta float64
+	Clip               float64
+	MinSupport         float64
+	MinConfidence      float64
+	ConfidenceDelta    float64
+	MotionLimit        float64
+	MaxAge             time.Duration
+	ImprovementDelta   float64
+	MinMeanGain        float64
+	MaxConsecutiveHarm int
+	ShrinkByConfidence bool
 }
 
 func (policy Policy) Valid() bool {
-	return finite(policy.Clip) && policy.Clip > 0 && policy.Clip <= .5 && finite(policy.MinSupport) && policy.MinSupport > 0 && finite(policy.MinConfidence) && policy.MinConfidence >= 0 && policy.MinConfidence <= 1 && finite(policy.ConfidenceDelta) && policy.ConfidenceDelta > 0 && policy.ConfidenceDelta < 1 && finite(policy.MotionLimit) && policy.MotionLimit >= 0 && policy.MotionLimit <= 1 && policy.MaxAge > 0 && finite(policy.ImprovementDelta) && policy.ImprovementDelta >= 0
+	return finite(policy.Clip) && policy.Clip > 0 && policy.Clip <= .5 && finite(policy.MinSupport) && policy.MinSupport > 0 && finite(policy.MinConfidence) && policy.MinConfidence >= 0 && policy.MinConfidence <= 1 && finite(policy.ConfidenceDelta) && policy.ConfidenceDelta > 0 && policy.ConfidenceDelta < 1 && finite(policy.MotionLimit) && policy.MotionLimit >= 0 && policy.MotionLimit <= 1 && policy.MaxAge > 0 && finite(policy.ImprovementDelta) && policy.ImprovementDelta >= 0 && finite(policy.MinMeanGain) && policy.MinMeanGain >= 0 && policy.MaxConsecutiveHarm >= 0
 }
 
 func Update(current model.ResidualRecord, observation model.ResidualObservation, scope model.ResidualScope, key, tenantID string, weight float64, snapshot model.Snapshot, policy Policy) model.ResidualRecord {
@@ -39,10 +42,17 @@ func Update(current model.ResidualRecord, observation model.ResidualObservation,
 		baseLoss := square(target - observation.BaseProbability)
 		corrected := clamp(observation.BaseProbability+current.Correction, 0, 1)
 		correctedLoss := square(target - corrected)
-		if correctedLoss+policy.ImprovementDelta < baseLoss {
+		gain := baseLoss - correctedLoss
+		current.GainSum += gain
+		current.GainCount++
+		if gain > policy.ImprovementDelta {
 			current.ImprovementAlpha++
+			current.ConsecutiveHarm = 0
 		} else {
 			current.ImprovementBeta++
+			if gain < -policy.ImprovementDelta {
+				current.ConsecutiveHarm++
+			}
 		}
 	}
 	observedResidual := target - observation.BaseProbability
@@ -54,7 +64,10 @@ func Update(current model.ResidualRecord, observation model.ResidualObservation,
 }
 
 func Eligible(record model.ResidualRecord, baseProbability float64, snapshot model.Snapshot, now time.Time, policy Policy) bool {
-	if !record.Active || record.ID == "" || record.TenantID == "" || record.Key == "" || record.SourceJournalID == "" || record.SourceEventID == "" || record.HorizonKey != model.RetrievalUsefulnessHorizon || record.PolicyVersion != snapshot.PolicyVersion || record.EvidenceEpoch != snapshot.EvidenceEpoch || record.EffectiveSupport < policy.MinSupport || AnytimeImprovementLCB(record, policy.ConfidenceDelta) < policy.MinConfidence {
+	if !record.Active || record.ID == "" || record.TenantID == "" || record.Key == "" || record.SourceJournalID == "" || record.SourceEventID == "" || record.HorizonKey != model.RetrievalUsefulnessHorizon || record.PolicyVersion != snapshot.PolicyVersion || record.EvidenceEpoch != snapshot.EvidenceEpoch || record.EffectiveSupport < policy.MinSupport || record.MeanGain() < policy.MinMeanGain || AnytimeImprovementLCB(record, policy.ConfidenceDelta) < policy.MinConfidence {
+		return false
+	}
+	if policy.MaxConsecutiveHarm > 0 && record.ConsecutiveHarm >= policy.MaxConsecutiveHarm {
 		return false
 	}
 	if record.UpdatedAt.IsZero() || now.Before(record.UpdatedAt) || now.Sub(record.UpdatedAt) > policy.MaxAge {
@@ -80,7 +93,11 @@ func AnytimeImprovementLCB(record model.ResidualRecord, delta float64) float64 {
 
 func Apply(law model.BernoulliLaw, record model.ResidualRecord, policy Policy) model.BernoulliLaw {
 	useful := clamp(law.Useful, 0, 1)
-	useful = clamp(useful+clamp(record.Correction, -policy.Clip, policy.Clip), 0, 1)
+	weight := 1.0
+	if policy.ShrinkByConfidence {
+		weight = AnytimeImprovementLCB(record, policy.ConfidenceDelta)
+	}
+	useful = clamp(useful+weight*clamp(record.Correction, -policy.Clip, policy.Clip), 0, 1)
 	return model.BernoulliLaw{Useful: useful, NotUseful: 1 - useful}
 }
 

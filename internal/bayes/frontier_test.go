@@ -23,6 +23,22 @@ func TestEvaluateIsBoundedShadowOnlyAndPrioritySensitive(t *testing.T) {
 	}
 }
 
+func TestEvaluateSeparatesFrontierAllCheapUpdatesFromDeepReview(t *testing.T) {
+	policy := bayes.Policy{VectorWeight: 1, Threshold: .8, CriticalThreshold: .8, MaxActive: 1, CheapUpdateAll: true}
+	report := bayes.Evaluate([]bayes.Candidate{
+		{EventID: "high", VectorRelevance: .9, EvidenceReady: true},
+		{EventID: "low", VectorRelevance: .1, EvidenceReady: true},
+	}, 1, policy)
+	if report.Activated != 2 || report.DeepReviewed != 1 {
+		t.Fatalf("report = %+v", report)
+	}
+	for _, decision := range report.Decisions {
+		if !decision.CheapUpdate {
+			t.Fatalf("bounded frontier member lost cheap update: %+v", decision)
+		}
+	}
+}
+
 func TestAuditSelectionIsDeterministic(t *testing.T) {
 	policy := bayes.Policy{AuditProbability: .5, MaxActive: 1, AuditSeed: "fixed"}
 	candidates := []bayes.Candidate{{EventID: "a"}, {EventID: "b"}}

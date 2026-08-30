@@ -10,10 +10,12 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/ranking"
 	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/service"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 	"github.com/JuanHuaXu/eventframed/internal/store/memorystore"
+	"github.com/JuanHuaXu/eventframed/internal/testutil"
 )
 
 func TestPredictiveSnapPublishesInvalidatesRejectsStaleAndRollsBack(t *testing.T) {
@@ -34,7 +36,7 @@ func TestPredictiveSnapPublishesInvalidatesRejectsStaleAndRollsBack(t *testing.T
 		BaseProbability: .5, CommittedProbability: .5, Useful: true, ValidationEligible: true,
 		EventID: "event-a", JournalID: "journal", PosteriorKey: "posterior-a", AvailableAt: now,
 	}
-	if _, err := memory.ApplyBayesianOutcome(ctx, outcome, "posterior-a", "digest", 1, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64}, observation, residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}); err != nil {
+	if _, err := memory.ApplyBayesianOutcome(ctx, outcome, "posterior-a", "", "digest", 1, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64}, bayes.GroupPolicy{}, observation, residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}); err != nil {
 		t.Fatal(err)
 	}
 
@@ -91,6 +93,131 @@ func TestPredictiveSnapPublishesInvalidatesRejectsStaleAndRollsBack(t *testing.T
 	if _, err := runtime.RollbackPredictiveSnap(ctx, model.RollbackSnapRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SnapID: request.ID, Reason: "duplicate"}); !errors.Is(err, store.ErrSnapConflict) {
 		t.Fatalf("duplicate rollback error = %v", err)
 	}
+}
+
+func TestPredictiveSnapDoesNotYetChangeRecallLaw(t *testing.T) {
+	ctx := context.Background()
+	memory := memorystore.New()
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, err := service.New(memory, embedder, service.Config{DefaultRecallK: 1, DefaultPackK: 1, DefaultTokenBudget: 100})
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	event := testutil.Event("event-a", "predictive snapping target", now.Add(-time.Hour))
+	event.TenantID, event.SessionID = "tenant-a", "session-a"
+	if _, err := runtime.Observe(ctx, model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: event.ID, Event: event}); err != nil {
+		t.Fatal(err)
+	}
+	recall := func() model.Candidate {
+		packet, recallErr := runtime.Recall(ctx, model.RecallRequest{
+			ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SessionID: "session-a",
+			Query: "predictive snapping target", AsOf: now, RecallK: 1, PackK: 1, TokenBudget: 100,
+		})
+		if recallErr != nil {
+			t.Fatal(recallErr)
+		}
+		return packet.Candidates[0]
+	}
+	before := recall()
+	request := validSnapRequest(memory.Snapshot(ctx), now)
+	published, err := runtime.PublishPredictiveSnap(ctx, request)
+	if err != nil || !published.Accepted {
+		t.Fatalf("publish = %+v, %v", published, err)
+	}
+	after := recall()
+	if !sameOperationalRecall(before, after) {
+		t.Fatalf("scaffold-only snap changed recall: before=%+v after=%+v", before, after)
+	}
+	if _, err := runtime.RollbackPredictiveSnap(ctx, model.RollbackSnapRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SnapID: request.ID, Reason: "scaffold audit"}); err != nil {
+		t.Fatal(err)
+	}
+	rolledBack := recall()
+	if !sameOperationalRecall(after, rolledBack) {
+		t.Fatalf("rollback changed an unconnected recall law: after=%+v rollback=%+v", after, rolledBack)
+	}
+}
+
+func TestPredictiveSnapFeedsNominatedCandidateRankDeltasAndRollbackRemovesThem(t *testing.T) {
+	ctx := context.Background()
+	memory := memorystore.New()
+	embedder, _ := embed.NewHashEmbedder(8)
+	rankingPolicy := ranking.DefaultPolicy()
+	rankingPolicy.GraphWeight = .25
+	runtime, err := service.New(memory, embedder, service.Config{DefaultRecallK: 2, DefaultPackK: 2, DefaultTokenBudget: 200, RankingPolicy: rankingPolicy})
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	for _, event := range []model.Event{
+		testutil.Event("event-a", "predictive snapping target alpha", now.Add(-2*time.Hour)),
+		testutil.Event("event-b", "predictive snapping target beta", now.Add(-time.Hour)),
+	} {
+		event.TenantID, event.SessionID = "tenant-a", "session-a"
+		if _, err := runtime.Observe(ctx, model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: event.ID, Event: event}); err != nil {
+			t.Fatal(err)
+		}
+	}
+	recall := func() map[string]model.Candidate {
+		packet, recallErr := runtime.Recall(ctx, model.RecallRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SessionID: "session-a", Query: "predictive snapping target", AsOf: now, RecallK: 2, PackK: 2, TokenBudget: 200})
+		if recallErr != nil {
+			t.Fatal(recallErr)
+		}
+		result := make(map[string]model.Candidate, len(packet.Candidates))
+		for _, candidate := range packet.Candidates {
+			result[candidate.Event.ID] = candidate
+		}
+		return result
+	}
+	before := recall()
+	request := validSnapRequest(memory.Snapshot(ctx), now)
+	request.Candidate.Nodes = []model.CompatibilityNode{
+		{ID: "bucket-a", Kind: "bucket", MemberEventIDs: []string{"event-a"}, LawSpace: model.RetrievalUsefulnessHorizon},
+		{ID: "bucket-b", Kind: "bucket", MemberEventIDs: []string{"event-b"}, LawSpace: model.RetrievalUsefulnessHorizon},
+	}
+	request.Candidate.Edges = []model.CompatibilityEdge{{ID: "edge-ab", From: "bucket-a", To: "bucket-b", ComparisonMap: "identity_bernoulli", Weight: 1}}
+	request.Obligations = []model.ComparisonObligation{{From: "bucket-a", To: "bucket-b", Weight: 1}}
+	request.BucketCertificates = []model.SnapBucketCertificate{
+		{NodeID: "bucket-a", FutureDiameterUCB: .03, DiameterLimit: .05, EffectiveSupport: 50},
+		{NodeID: "bucket-b", FutureDiameterUCB: .03, DiameterLimit: .05, EffectiveSupport: 50},
+	}
+	request.EdgeCertificates = []model.SnapEdgeCertificate{{EdgeID: "edge-ab", DefectUCB: .01, DefectLimit: .05}}
+	if published, err := runtime.PublishPredictiveSnap(ctx, request); err != nil || !published.Accepted {
+		t.Fatalf("publish = %+v, %v", published, err)
+	}
+	after := recall()
+	changed := false
+	for eventID, candidate := range after {
+		if candidate.GraphCompatibility <= 0 {
+			t.Fatalf("candidate %s did not consume graph state: %+v", eventID, candidate)
+		}
+		if candidate.RankDelta != before[eventID].RankDelta {
+			changed = true
+		}
+	}
+	if !changed {
+		t.Fatal("published graph left every nominated rank delta invariant")
+	}
+	if _, err := runtime.RollbackPredictiveSnap(ctx, model.RollbackSnapRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SnapID: request.ID, Reason: "integration control"}); err != nil {
+		t.Fatal(err)
+	}
+	rolledBack := recall()
+	for eventID, candidate := range rolledBack {
+		if candidate.GraphCompatibility != 0 || candidate.RankDelta != before[eventID].RankDelta {
+			t.Fatalf("rollback did not restore candidate %s: before=%+v after=%+v", eventID, before[eventID], candidate)
+		}
+	}
+}
+
+func sameOperationalRecall(left, right model.Candidate) bool {
+	return left.Score == right.Score &&
+		left.RankDelta == right.RankDelta &&
+		left.Forecast.RankScore == right.Forecast.RankScore &&
+		left.Forecast.BaseLaw == right.Forecast.BaseLaw &&
+		left.Forecast.PreResidualLaw == right.Forecast.PreResidualLaw &&
+		left.Forecast.CorrectedLaw == right.Forecast.CorrectedLaw &&
+		left.Forecast.Template == right.Forecast.Template &&
+		left.Forecast.ResidualApplied == right.Forecast.ResidualApplied
 }
 
 func validSnapRequest(base model.Snapshot, now time.Time) model.PredictiveSnapRequest {

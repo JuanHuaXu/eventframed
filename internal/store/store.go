@@ -18,6 +18,7 @@ var ErrCertificateConflict = errors.New("Bayesian certificate id already exists 
 var ErrOutcomeConflict = errors.New("Bayesian outcome id already exists with different content")
 var ErrPosteriorNotFound = errors.New("Bayesian posterior not found")
 var ErrResidualNotFound = errors.New("residual record not found")
+var ErrEventNotFound = errors.New("event not found")
 var ErrStaleSnapshot = errors.New("runtime snapshot changed before Bayesian journal commit")
 var ErrSnapNotFound = errors.New("predictive snap not found")
 var ErrSnapConflict = errors.New("predictive snap conflicts with current graph")
@@ -45,6 +46,7 @@ type RetentionResult struct {
 type BayesianOutcomeResult struct {
 	Duplicate   bool
 	ChangePoint bool
+	Revision    model.BayesianRevision
 	Posterior   model.BayesianPosterior
 	Snapshot    model.Snapshot
 }
@@ -62,8 +64,9 @@ type AgencyResolveResult struct {
 }
 
 type SearchResult struct {
-	Event      model.Event
-	Similarity float64
+	Event             model.Event
+	Similarity        float64
+	RetrievalMetadata []byte
 }
 
 type Stats struct {
@@ -81,6 +84,7 @@ type EventStore interface {
 	Backup(ctx context.Context, destination string) error
 	Compact(ctx context.Context) error
 	Search(ctx context.Context, tenantID string, vector []float32, availableBy time.Time, limit int) ([]SearchResult, error)
+	GetEvents(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error)
 	PutBayesianJournal(ctx context.Context, entry model.BayesianJournalEntry) error
 	GetBayesianJournal(ctx context.Context, tenantID, journalID string) (model.BayesianJournalEntry, error)
 	PublishSelectionCertificate(ctx context.Context, certificate model.SelectionSupportCertificate) (model.Snapshot, error)
@@ -89,7 +93,7 @@ type EventStore interface {
 	GetAntiPigeonCertificate(ctx context.Context, tenantID string, eventIDs []string) (model.AntiPigeonCertificate, error)
 	PublishOmittedInfluenceCertificate(ctx context.Context, certificate model.OmittedInfluenceCertificate) (model.Snapshot, error)
 	GetOmittedInfluenceCertificate(ctx context.Context, tenantID string) (model.OmittedInfluenceCertificate, error)
-	ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (BayesianOutcomeResult, error)
+	ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, parentPosteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, groupPolicy bayes.GroupPolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (BayesianOutcomeResult, error)
 	GetBayesianPosterior(ctx context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error)
 	GetResidualCandidates(ctx context.Context, tenantID, actionKey, generalKey string) (model.ResidualCandidates, error)
 	GetPredictiveGraph(ctx context.Context, tenantID string) (model.PredictiveGraph, error)

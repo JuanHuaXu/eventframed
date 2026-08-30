@@ -3,6 +3,7 @@ import { isAgencyAction, registerAgencyService } from "./agency.js";
 import { EventFrameClient } from "./client.js";
 import { buildTurnEvent, extractLatestText } from "./event.js";
 import { formatContext } from "./format.js";
+import { TraceWriter } from "./trace.js";
 import type { AdapterConfig, AgencyAction } from "./types.js";
 
 const DEFAULTS: AdapterConfig = {
@@ -40,6 +41,7 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
   register(api) {
     const config = resolveConfig(api.pluginConfig);
     const client = new EventFrameClient({ socketPath: config.socketPath });
+    const trace = new TraceWriter(config.tracePath);
     const recallByRun = new Map<string, RecallState>();
 
     registerAgencyService(api, client, config);
@@ -49,6 +51,7 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
       if (!prompt) {
         return undefined;
       }
+      const startedAt = performance.now();
       try {
         const packet = await client.recall({
           tenantId: config.tenantId,
@@ -58,6 +61,15 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
           packK: config.packK,
           tokenBudget: config.tokenBudget,
         });
+        await trace.write({
+          type: "recall",
+          run_id: context.runId,
+          session_id: sessionId(context),
+          query: prompt,
+          duration_ms: performance.now() - startedAt,
+          request: { recall_k: config.recallK, pack_k: config.packK, token_budget: config.tokenBudget },
+          packet,
+        }).catch((error) => api.logger.warn(`eventframe-memory: trace skipped: ${String(error)}`));
         const key = runKey(context);
         if (key) {
           recallByRun.set(key, {
@@ -73,6 +85,14 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
         const prependContext = formatContext(packet);
         return prependContext ? { prependContext } : undefined;
       } catch (error) {
+        await trace.write({
+          type: "recall_error",
+          run_id: context.runId,
+          session_id: sessionId(context),
+          query: prompt,
+          duration_ms: performance.now() - startedAt,
+          error: String(error),
+        }).catch((traceError) => api.logger.warn(`eventframe-memory: trace skipped: ${String(traceError)}`));
         api.logger.warn(`eventframe-memory: recall skipped: ${String(error)}`);
         return undefined;
       }
@@ -89,8 +109,7 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
         return;
       }
       try {
-        await client.observe(
-          buildTurnEvent({
+        const turnEvent = buildTurnEvent({
             tenantId: config.tenantId,
             sessionId: sessionId(context),
             runId: event.runId ?? context.runId,
@@ -99,9 +118,24 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
             assistantText,
             retrievedIds: state?.recalledIds ?? [],
             occurredAt: state?.occurredAt,
-          }),
-        );
+          });
+        await client.observe(turnEvent);
+        await trace.write({
+          type: "observe",
+          run_id: event.runId ?? context.runId,
+          session_id: sessionId(context),
+          event_id: turnEvent.id,
+          recalled_ids: state?.recalledIds ?? [],
+          user_text: userText,
+          assistant_text: assistantText,
+        }).catch((error) => api.logger.warn(`eventframe-memory: trace skipped: ${String(error)}`));
       } catch (error) {
+        await trace.write({
+          type: "observe_error",
+          run_id: event.runId ?? context.runId,
+          session_id: sessionId(context),
+          error: String(error),
+        }).catch((traceError) => api.logger.warn(`eventframe-memory: trace skipped: ${String(traceError)}`));
         api.logger.warn(`eventframe-memory: capture skipped: ${String(error)}`);
       }
     });
@@ -119,6 +153,7 @@ function resolveConfig(value: Record<string, unknown> | undefined): AdapterConfi
     packK: Math.min(recallK, readInteger(value?.packK, DEFAULTS.packK, 1, 100)),
     tokenBudget: readInteger(value?.tokenBudget, DEFAULTS.tokenBudget, 1, 1_000_000),
     capture: typeof value?.capture === "boolean" ? value.capture : DEFAULTS.capture,
+    tracePath: readOptionalString(value?.tracePath),
     agencyEnabled: typeof value?.agencyEnabled === "boolean" ? value.agencyEnabled : DEFAULTS.agencyEnabled,
     agencyKillSwitch: typeof value?.agencyKillSwitch === "boolean" ? value.agencyKillSwitch : DEFAULTS.agencyKillSwitch,
     agencyPublicKeyPath: readString(value?.agencyPublicKeyPath, DEFAULTS.agencyPublicKeyPath),
@@ -167,6 +202,10 @@ function normalizeText(value: string): string {
 
 function readString(value: unknown, fallback: string): string {
   return typeof value === "string" && value.trim() ? value : fallback;
+}
+
+function readOptionalString(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim() ? value : undefined;
 }
 
 function readInteger(value: unknown, fallback: number, minimum: number, maximum: number): number {

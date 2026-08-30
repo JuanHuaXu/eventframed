@@ -184,7 +184,30 @@ function parseContextPacket(value: unknown): ContextPacket {
     throw new Error("eventframed returned a malformed context packet");
   }
   for (const candidate of value.candidates) {
-    if (!isRecord(candidate) || !isRecord(candidate.event)) {
+    if (
+      !isRecord(candidate) ||
+      !isRecord(candidate.event) ||
+      typeof candidate.retrieval_score !== "number" ||
+      !Number.isFinite(candidate.retrieval_score) ||
+      typeof candidate.rank_delta !== "number" ||
+      !Number.isFinite(candidate.rank_delta) ||
+      (candidate.rank_delta_scale !== undefined &&
+        (typeof candidate.rank_delta_scale !== "number" || !Number.isFinite(candidate.rank_delta_scale))) ||
+      (candidate.rank_delta_confidence !== undefined &&
+        (typeof candidate.rank_delta_confidence !== "number" || !Number.isFinite(candidate.rank_delta_confidence))) ||
+      (candidate.rank_delta_answer_certainty !== undefined &&
+        (typeof candidate.rank_delta_answer_certainty !== "number" ||
+          !Number.isFinite(candidate.rank_delta_answer_certainty) ||
+          candidate.rank_delta_answer_certainty < 0 ||
+          candidate.rank_delta_answer_certainty > 1)) ||
+      (candidate.rank_delta_correction_reliability !== undefined &&
+        (typeof candidate.rank_delta_correction_reliability !== "number" ||
+          !Number.isFinite(candidate.rank_delta_correction_reliability) ||
+          candidate.rank_delta_correction_reliability < 0 ||
+          candidate.rank_delta_correction_reliability > 1)) ||
+      typeof candidate.score !== "number" ||
+      !Number.isFinite(candidate.score)
+    ) {
       throw new Error("eventframed returned a malformed candidate");
     }
     const event = candidate.event;
@@ -198,6 +221,21 @@ function parseContextPacket(value: unknown): ContextPacket {
     ) {
       throw new Error("eventframed returned a malformed event");
     }
+  }
+  if (
+    value.packet_confidence !== undefined &&
+    (typeof value.packet_confidence !== "number" || !Number.isFinite(value.packet_confidence))
+  ) {
+    throw new Error("eventframed returned malformed packet confidence");
+  }
+  if (
+    value.packet_answer_certainty !== undefined &&
+    (typeof value.packet_answer_certainty !== "number" ||
+      !Number.isFinite(value.packet_answer_certainty) ||
+      value.packet_answer_certainty < 0 ||
+      value.packet_answer_certainty > 1)
+  ) {
+    throw new Error("eventframed returned malformed packet answer certainty");
   }
   return value as ContextPacket;
 }

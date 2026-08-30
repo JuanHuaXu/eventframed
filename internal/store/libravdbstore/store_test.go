@@ -3,6 +3,8 @@ package libravdbstore_test
 import (
 	"context"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"strings"
 	"testing"
 	"time"
@@ -11,6 +13,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/residual"
+	storecontract "github.com/JuanHuaXu/eventframed/internal/store"
 	"github.com/JuanHuaXu/eventframed/internal/store/libravdbstore"
 	"github.com/JuanHuaXu/eventframed/internal/testutil"
 	libra "github.com/xDarkicex/libravdb/libravdb"
@@ -176,10 +179,10 @@ func TestBayesianPosteriorUpdateSurvivesRestart(t *testing.T) {
 		t.Fatal(err)
 	}
 	now := time.Now().UTC()
-	request := model.BayesianOutcomeRequest{IdempotencyKey: "outcome-1", TenantID: "tenant-a", Useful: true, AvailableAt: now}
+	request := model.BayesianOutcomeRequest{IdempotencyKey: "outcome-1", TenantID: "tenant-a", EventID: "event-1", Useful: true, AvailableAt: now}
 	residualObservation := model.ResidualObservation{ActionKey: "action", GeneralKey: "general", HorizonKey: model.RetrievalUsefulnessHorizon, BaseProbability: .5, Useful: true, ValidationEligible: true, EventID: "event-1", JournalID: "journal", AvailableAt: now}
 	residualPolicy := residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}
-	result, err := first.ApplyBayesianOutcome(context.Background(), request, "event-1", "digest", 2, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64}, residualObservation, residualPolicy)
+	result, err := first.ApplyBayesianOutcome(context.Background(), request, "event-1", "global:retrieval-usefulness-v1", "digest", 2, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64}, bayes.GroupPolicy{}, residualObservation, residualPolicy)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -198,12 +201,112 @@ func TestBayesianPosteriorUpdateSurvivesRestart(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if posterior.Mean() != .75 || second.Snapshot(context.Background()).PosteriorVersion != 2 {
+	evidence := posterior.MemberEvidence["event-1"]
+	if posterior.Mean() != .75 || evidence.UsefulWeight != 2 || evidence.NotUsefulWeight != 0 || second.Snapshot(context.Background()).PosteriorVersion != 2 {
 		t.Fatalf("posterior after restart = %+v", posterior)
+	}
+	parent, err := second.GetBayesianPosterior(context.Background(), "tenant-a", "global:retrieval-usefulness-v1")
+	if err != nil || parent.Mean() != .75 || parent.EffectiveSupport != 2 || len(parent.MemberEvidence) != 0 {
+		t.Fatalf("parent posterior after restart = %+v, %v", parent, err)
 	}
 	candidates, err := second.GetResidualCandidates(context.Background(), "tenant-a", "action", "general")
 	if err != nil || candidates.Exact == nil || candidates.General == nil {
 		t.Fatalf("residuals after restart = %+v, %v", candidates, err)
+	}
+}
+
+func TestAntiPigeonRevisionSurvivesRestart(t *testing.T) {
+	ctx := context.Background()
+	path := t.TempDir() + "/events.libravdb"
+	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	snapshot := first.Snapshot(ctx)
+	certificate := model.AntiPigeonCertificate{ID: "bucket-a", TenantID: "tenant-a", MemberEventIDs: []string{"a", "b"}, GraphVersion: snapshot.GraphVersion, EvidenceEpoch: snapshot.EvidenceEpoch}
+	if _, err := first.PublishAntiPigeonCertificate(ctx, certificate); err != nil {
+		t.Fatal(err)
+	}
+	changePolicy := bayes.ChangePolicy{Hazard: .000001, Threshold: 1, MaxRun: 64}
+	groupPolicy := bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 8, MaxMembers: 16}
+	residualPolicy := residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}
+	var result storecontract.BayesianOutcomeResult
+	for index := 0; index < 20; index++ {
+		eventID, useful := "a", true
+		if index%2 == 1 {
+			eventID, useful = "b", false
+		}
+		request := model.BayesianOutcomeRequest{IdempotencyKey: fmt.Sprintf("revision-%d", index), TenantID: "tenant-a", EventID: eventID, Useful: useful, AvailableAt: now.Add(time.Duration(index) * time.Second), Source: model.OutcomeIndependentAudit}
+		observation := model.ResidualObservation{ActionKey: request.IdempotencyKey, GeneralKey: "revision-general", PosteriorKey: "ap:bucket-a", CommittedProbability: .5, Useful: useful, AvailableAt: request.AvailableAt}
+		result, err = first.ApplyBayesianOutcome(ctx, request, "ap:bucket-a", "", request.IdempotencyKey, 1, changePolicy, groupPolicy, observation, residualPolicy)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if bayes.RevisionSplits(result.Revision.Action) {
+			break
+		}
+	}
+	if result.Revision.Action != model.BayesianRevisionSplit {
+		t.Fatalf("revision = %+v", result.Revision)
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	second, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer second.Close()
+	if _, err := second.GetAntiPigeonCertificate(ctx, "tenant-a", []string{"a"}); !errors.Is(err, storecontract.ErrCertificateNotFound) {
+		t.Fatalf("sharing certificate survived restart: %v", err)
+	}
+	left, leftErr := second.GetBayesianPosterior(ctx, "tenant-a", "a")
+	right, rightErr := second.GetBayesianPosterior(ctx, "tenant-a", "b")
+	shared, sharedErr := second.GetBayesianPosterior(ctx, "tenant-a", "ap:bucket-a")
+	if leftErr != nil || rightErr != nil || sharedErr != nil || left.Mean() <= .5 || right.Mean() >= .5 || shared.Certified {
+		t.Fatalf("durable revision left=%+v/%v right=%+v/%v shared=%+v/%v", left, leftErr, right, rightErr, shared, sharedErr)
+	}
+}
+
+func TestSharedEvidenceDiscountSurvivesRestart(t *testing.T) {
+	ctx := context.Background()
+	path := t.TempDir() + "/events.libravdb"
+	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	snapshot := first.Snapshot(ctx)
+	certificate := model.AntiPigeonCertificate{ID: "compatible", TenantID: "tenant-a", MemberEventIDs: []string{"a", "b"}, GraphVersion: snapshot.GraphVersion, EvidenceEpoch: snapshot.EvidenceEpoch}
+	if _, err := first.PublishAntiPigeonCertificate(ctx, certificate); err != nil {
+		t.Fatal(err)
+	}
+	changePolicy := bayes.ChangePolicy{Hazard: .000001, Threshold: 1, MaxRun: 64}
+	groupPolicy := bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 100, MaxMembers: 16, SharedEvidenceWeight: .25}
+	residualPolicy := residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}
+	for index, eventID := range []string{"a", "b", "a", "b"} {
+		request := model.BayesianOutcomeRequest{IdempotencyKey: fmt.Sprintf("shared-%d", index), TenantID: "tenant-a", EventID: eventID, Useful: true, AvailableAt: now.Add(time.Duration(index) * time.Second), Source: model.OutcomeIndependentAudit}
+		observation := model.ResidualObservation{ActionKey: request.IdempotencyKey, GeneralKey: "shared", PosteriorKey: "ap:compatible", CommittedProbability: .5, Useful: true, AvailableAt: request.AvailableAt}
+		if _, err := first.ApplyBayesianOutcome(ctx, request, "ap:compatible", "", request.IdempotencyKey, 1, changePolicy, groupPolicy, observation, residualPolicy); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+	second, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer second.Close()
+	posterior, err := second.GetBayesianPosterior(ctx, "tenant-a", "ap:compatible")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if posterior.EffectiveSupport != 1 || posterior.Mean() != 2.0/3.0 || posterior.MemberEvidence["a"].UsefulWeight != 2 {
+		t.Fatalf("durable discounted posterior = %+v", posterior)
 	}
 }
 
@@ -221,7 +324,7 @@ func TestPredictiveSnapInvalidationRollbackAndRestart(t *testing.T) {
 		BaseProbability: .5, CommittedProbability: .5, Useful: true, ValidationEligible: true,
 		EventID: "event-a", JournalID: "journal", PosteriorKey: "posterior-a", AvailableAt: now,
 	}
-	if _, err := first.ApplyBayesianOutcome(ctx, outcome, "posterior-a", "digest", 1, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64}, observation, residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}); err != nil {
+	if _, err := first.ApplyBayesianOutcome(ctx, outcome, "posterior-a", "", "digest", 1, bayes.ChangePolicy{Hazard: .05, Threshold: .3, MaxRun: 64}, bayes.GroupPolicy{}, observation, residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .1, MaxAge: time.Hour, ImprovementDelta: .001}); err != nil {
 		t.Fatal(err)
 	}
 	previous, err := first.GetPredictiveGraph(ctx, "tenant-a")

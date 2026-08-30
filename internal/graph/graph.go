@@ -153,6 +153,53 @@ func UnresolvedBurden(candidate model.PredictiveGraph, obligations []model.Compa
 	return burden, nil
 }
 
+// CandidateCompatibility propagates scores one declared edge over candidates
+// already nominated by retrieval. It never creates candidates or traverses
+// beyond the finite published edge set.
+func CandidateCompatibility(candidate model.PredictiveGraph, candidateScores map[string]float64) map[string]float64 {
+	nodes := nodeMap(candidate)
+	nodeScores := make(map[string]float64, len(nodes))
+	for nodeID, node := range nodes {
+		total, count := 0.0, 0.0
+		for _, eventID := range node.MemberEventIDs {
+			if score, ok := candidateScores[eventID]; ok && finite(score) {
+				total += math.Max(0, math.Min(1, score))
+				count++
+			}
+		}
+		if count > 0 {
+			nodeScores[nodeID] = total / count
+		}
+	}
+	totals, weights := make(map[string]float64), make(map[string]float64)
+	for _, edge := range candidate.Edges {
+		fromScore, fromOK := nodeScores[edge.From]
+		toScore, toOK := nodeScores[edge.To]
+		if !fromOK || !toOK {
+			continue
+		}
+		for _, eventID := range nodes[edge.From].MemberEventIDs {
+			if _, nominated := candidateScores[eventID]; nominated {
+				totals[eventID] += edge.Weight * toScore
+				weights[eventID] += edge.Weight
+			}
+		}
+		for _, eventID := range nodes[edge.To].MemberEventIDs {
+			if _, nominated := candidateScores[eventID]; nominated {
+				totals[eventID] += edge.Weight * fromScore
+				weights[eventID] += edge.Weight
+			}
+		}
+	}
+	result := make(map[string]float64, len(totals))
+	for eventID, total := range totals {
+		if weights[eventID] > 0 {
+			result[eventID] = math.Max(0, math.Min(1, total/weights[eventID]))
+		}
+	}
+	return result
+}
+
 func reachable(adjacency map[string][]string, from, to string) bool {
 	seen, queue := map[string]struct{}{from: {}}, []string{from}
 	for len(queue) > 0 {

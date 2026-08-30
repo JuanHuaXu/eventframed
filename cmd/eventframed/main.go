@@ -15,8 +15,13 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/agency"
 	"github.com/JuanHuaXu/eventframed/internal/api"
+	"github.com/JuanHuaXu/eventframed/internal/bayes"
+	"github.com/JuanHuaXu/eventframed/internal/calibration"
 	"github.com/JuanHuaXu/eventframed/internal/config"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
+	"github.com/JuanHuaXu/eventframed/internal/rankdelta"
+	"github.com/JuanHuaXu/eventframed/internal/ranking"
+	"github.com/JuanHuaXu/eventframed/internal/retrieval"
 	"github.com/JuanHuaXu/eventframed/internal/service"
 	"github.com/JuanHuaXu/eventframed/internal/store/libravdbstore"
 )
@@ -61,38 +66,87 @@ func run(args []string) error {
 	if err != nil {
 		return err
 	}
+	rankDeltaStore, err := rankdelta.Open(settings.RankDeltaSQLitePath, settings.RankDeltaCacheEntries)
+	if err != nil {
+		_ = eventStore.Close()
+		return err
+	}
 	var agencySigner *agency.Signer
 	var agencyIssuerToken string
 	var agencyAuthorityToken string
 	if settings.AgencyEnabled {
 		agencySigner, err = agency.LoadOrCreateSigner(settings.AgencyPrivateKey, settings.AgencyPublicKey)
 		if err != nil {
+			_ = rankDeltaStore.Close()
 			_ = eventStore.Close()
 			return fmt.Errorf("load agency signing key: %w", err)
 		}
 		agencyIssuerToken, err = agency.LoadOrCreateIssuerToken(settings.AgencyIssuerToken)
 		if err != nil {
+			_ = rankDeltaStore.Close()
 			_ = eventStore.Close()
 			return fmt.Errorf("load agency issuer token: %w", err)
 		}
 		agencyAuthorityToken, err = agency.LoadOrCreateAuthorityToken(settings.AgencyAuthorityToken)
 		if err != nil {
+			_ = rankDeltaStore.Close()
 			_ = eventStore.Close()
 			return fmt.Errorf("load agency authority token: %w", err)
 		}
 	}
+	baselineCalibration := calibration.Logit{Scale: settings.CalibrationScale, Bias: settings.CalibrationBias, Floor: settings.CalibrationFloor}
+	predictiveCalibration := calibration.Logit{Scale: settings.PredictiveCalibrationScale, Bias: settings.PredictiveCalibrationBias, Floor: settings.PredictiveCalibrationFloor}
+	if !predictiveCalibration.Valid() {
+		predictiveCalibration = baselineCalibration
+	}
+	rankingPolicy := ranking.DefaultPolicy()
+	rankingPolicy.ContextualEnabled = settings.ContextualScoring
+	rankingPolicy.HierarchicalEnabled = settings.HierarchicalPosterior
+	var candidateRanker retrieval.CandidateRanker = retrieval.PassthroughRanker{}
+	var candidateRetriever retrieval.CandidateRetriever
+	var candidateIndex retrieval.CandidateIndex
+	var closeContracts func() error
+	if settings.LibraVDBContractEndpoint != "" {
+		libraContracts, openErr := retrieval.OpenLibraVDBContractsWithConfig(retrieval.ContractClientConfig{
+			Endpoint: settings.LibraVDBContractEndpoint, TLSMode: settings.LibraVDBContractTLSMode,
+			CAFile: settings.LibraVDBContractTLSCA, ClientCertFile: settings.LibraVDBContractTLSCert,
+			ClientKeyFile: settings.LibraVDBContractTLSKey,
+		})
+		if openErr != nil {
+			_ = rankDeltaStore.Close()
+			_ = eventStore.Close()
+			return openErr
+		}
+		candidateRanker = libraContracts
+		candidateRetriever = libraContracts
+		candidateIndex = libraContracts
+		closeContracts = libraContracts.Close
+		defer closeContracts()
+	}
 	runtime, err := service.New(eventStore, activeEmbedder, service.Config{
-		DefaultRecallK:       settings.RecallK,
-		DefaultPackK:         settings.PackK,
-		DefaultTokenBudget:   settings.TokenBudget,
-		OverfetchMultiplier:  4,
-		Quantization:         settings.Quantization,
+		DefaultRecallK:      settings.RecallK,
+		DefaultPackK:        settings.PackK,
+		DefaultTokenBudget:  settings.TokenBudget,
+		OverfetchMultiplier: 4,
+		Quantization:        settings.Quantization,
+		BaselineCalibration: baselineCalibration, PredictiveCalibration: predictiveCalibration,
+		BayesianGroupPolicy: bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 8, MaxMembers: 64, EquivalenceMargin: .15, EquivalenceThreshold: .80, MaxUncertainBorrowing: .10, SharedEvidenceWeight: settings.SharedEvidenceWeight},
+		RankingPolicy:       rankingPolicy, CandidateRanker: candidateRanker,
+		CandidateRankerRequired: settings.LibraVDBContractEndpoint != "",
+		CandidateRetriever:      candidateRetriever, CandidateRetrieverRequired: settings.LibraVDBContractEndpoint != "",
+		CandidateIndex: candidateIndex, CandidateCollectionPrefix: "eventframe-",
+		RankDeltaStore: rankDeltaStore, RankDeltaStoreRequired: true,
+		ElasticRankDelta: ranking.ElasticDeltaPolicy{
+			Enabled: settings.ElasticRankDelta, MinScale: settings.ElasticRankDeltaMinScale, MaxScale: settings.ElasticRankDeltaMaxScale,
+		},
+		ResidualMode:         settings.ResidualMode,
 		AgencyPolicy:         agency.DefaultPolicy(settings.AgencyEnabled),
 		AgencySigner:         agencySigner,
 		AgencyIssuerToken:    agencyIssuerToken,
 		AgencyAuthorityToken: agencyAuthorityToken,
 	})
 	if err != nil {
+		_ = rankDeltaStore.Close()
 		_ = eventStore.Close()
 		return err
 	}
@@ -137,7 +191,11 @@ func buildEmbedder(settings config.Config) (embed.Embedder, error) {
 	if settings.Embedder == "hash" {
 		return embed.NewHashEmbedder(settings.Dimension)
 	}
-	return embed.NewOpenAICompatible(embed.OpenAICompatibleConfig{URL: settings.EmbeddingURL, Model: settings.EmbeddingModel, APIKey: os.Getenv(settings.EmbeddingAPIKeyEnv), Dimension: settings.Dimension, Timeout: time.Duration(settings.EmbeddingTimeoutSeconds) * time.Second})
+	return embed.NewOpenAICompatible(embed.OpenAICompatibleConfig{
+		URL: settings.EmbeddingURL, Model: settings.EmbeddingModel, APIKey: os.Getenv(settings.EmbeddingAPIKeyEnv),
+		Dimension: settings.Dimension, Timeout: time.Duration(settings.EmbeddingTimeoutSeconds) * time.Second,
+		DocumentPrefix: settings.EmbeddingDocumentPrefix, QueryPrefix: settings.EmbeddingQueryPrefix,
+	})
 }
 
 func listen(endpoint string) (net.Listener, func(), error) {

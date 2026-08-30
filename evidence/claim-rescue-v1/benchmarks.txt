@@ -1,0 +1,80 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/benchmark
+cpu: Apple M4
+BenchmarkRecall/backend=memory/events=100-10         	    1628	    720961 ns/op	    618125 p50-ns/op	   1349625 p95-ns/op	   2068334 p99-ns/op	 1254975 B/op	    6370 allocs/op
+BenchmarkRecall/backend=memory/events=100-10         	    1574	    668961 ns/op	    598125 p50-ns/op	   1142333 p95-ns/op	   1899292 p99-ns/op	 1254980 B/op	    6370 allocs/op
+BenchmarkRecall/backend=memory/events=100-10         	    1784	    661269 ns/op	    597500 p50-ns/op	   1064125 p95-ns/op	   1940833 p99-ns/op	 1254961 B/op	    6370 allocs/op
+BenchmarkRecall/backend=memory/events=100-10         	    1698	    704108 ns/op	    603125 p50-ns/op	   1350833 p95-ns/op	   2272458 p99-ns/op	 1255193 B/op	    6370 allocs/op
+BenchmarkRecall/backend=memory/events=100-10         	    1610	    676921 ns/op	    606417 p50-ns/op	   1144833 p95-ns/op	   1810958 p99-ns/op	 1254247 B/op	    6370 allocs/op
+BenchmarkRecall/backend=memory/events=1000-10        	     717	   1651240 ns/op	   1520250 p50-ns/op	   2357375 p95-ns/op	   3132792 p99-ns/op	 3179846 B/op	   12675 allocs/op
+BenchmarkRecall/backend=memory/events=1000-10        	     728	   1665446 ns/op	   1520834 p50-ns/op	   2456417 p95-ns/op	   3348542 p99-ns/op	 3179829 B/op	   12675 allocs/op
+BenchmarkRecall/backend=memory/events=1000-10        	     728	   1658013 ns/op	   1524208 p50-ns/op	   2462000 p95-ns/op	   3359250 p99-ns/op	 3178569 B/op	   12675 allocs/op
+BenchmarkRecall/backend=memory/events=1000-10        	     730	   1662710 ns/op	   1532166 p50-ns/op	   2464708 p95-ns/op	   3349458 p99-ns/op	 3179837 B/op	   12675 allocs/op
+BenchmarkRecall/backend=memory/events=1000-10        	     726	   1662083 ns/op	   1533541 p50-ns/op	   2356333 p95-ns/op	   3252958 p99-ns/op	 3179822 B/op	   12675 allocs/op
+BenchmarkRecall/backend=memory/events=10000-10       	     170	   7046738 ns/op	   6824084 p50-ns/op	   7947541 p95-ns/op	   8776000 p99-ns/op	 9520947 B/op	   12677 allocs/op
+BenchmarkRecall/backend=memory/events=10000-10       	     172	   6941230 ns/op	   6737375 p50-ns/op	   7827583 p95-ns/op	   7983500 p99-ns/op	 9521001 B/op	   12678 allocs/op
+BenchmarkRecall/backend=memory/events=10000-10       	     171	   6994501 ns/op	   6777583 p50-ns/op	   7826584 p95-ns/op	   8136042 p99-ns/op	 9520985 B/op	   12677 allocs/op
+BenchmarkRecall/backend=memory/events=10000-10       	     168	   7059613 ns/op	   6933750 p50-ns/op	   7861500 p95-ns/op	   8202709 p99-ns/op	 9520898 B/op	   12677 allocs/op
+BenchmarkRecall/backend=memory/events=10000-10       	     171	   6945606 ns/op	   6733917 p50-ns/op	   7736000 p95-ns/op	   7898542 p99-ns/op	 9520949 B/op	   12677 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=100-10   	     159	   7552851 ns/op	   7934791 p50-ns/op	   8147125 p95-ns/op	   9032458 p99-ns/op	 2177638 B/op	   10489 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=100-10   	     190	   6056710 ns/op	   6010084 p50-ns/op	   7050541 p95-ns/op	   8243708 p99-ns/op	 2170762 B/op	   10476 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=100-10   	     153	   7853767 ns/op	   7984000 p50-ns/op	   8999792 p95-ns/op	   9210000 p99-ns/op	 2170352 B/op	   10486 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=100-10   	     164	   7352260 ns/op	   7058166 p50-ns/op	   8104250 p95-ns/op	   8986458 p99-ns/op	 2177188 B/op	   10487 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=100-10   	     160	   7598105 ns/op	   7962167 p50-ns/op	   8961458 p95-ns/op	   9006500 p99-ns/op	 2175292 B/op	   10490 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=1000-10  	     151	   7965096 ns/op	   7999208 p50-ns/op	   8996583 p95-ns/op	   9030917 p99-ns/op	 4420105 B/op	   20835 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=1000-10  	     148	   8146966 ns/op	   8023042 p50-ns/op	   9058250 p95-ns/op	   9086375 p99-ns/op	 4419856 B/op	   20829 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=1000-10  	     142	   8463604 ns/op	   8157708 p50-ns/op	   9081875 p95-ns/op	  10015458 p99-ns/op	 4433612 B/op	   20836 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=1000-10  	     145	   8314301 ns/op	   8079875 p50-ns/op	   9076584 p95-ns/op	   9108875 p99-ns/op	 4451061 B/op	   20828 allocs/op
+BenchmarkRecall/backend=libravdb-sq8/events=1000-10  	     146	   8197270 ns/op	   8035875 p50-ns/op	   9062125 p95-ns/op	   9136250 p99-ns/op	 4420604 B/op	   20835 allocs/op
+BenchmarkAvailabilityExpansion/future=0%-10          	     141	   8339018 ns/op	   8047416 p50-ns/op	   9140458 p95-ns/op	  10967875 p99-ns/op	 4427156 B/op	   20835 allocs/op
+BenchmarkAvailabilityExpansion/future=0%-10          	     147	   8205679 ns/op	   8041709 p50-ns/op	   9071334 p95-ns/op	  10001959 p99-ns/op	 4419936 B/op	   20829 allocs/op
+BenchmarkAvailabilityExpansion/future=0%-10          	     141	   8466174 ns/op	   8866584 p50-ns/op	   9111375 p95-ns/op	   9970250 p99-ns/op	 4420558 B/op	   20834 allocs/op
+BenchmarkAvailabilityExpansion/future=0%-10          	     151	   8032217 ns/op	   8021583 p50-ns/op	   9025750 p95-ns/op	   9126542 p99-ns/op	 4414206 B/op	   20836 allocs/op
+BenchmarkAvailabilityExpansion/future=0%-10          	     147	   8283562 ns/op	   8109125 p50-ns/op	   9048500 p95-ns/op	   9116042 p99-ns/op	 4426135 B/op	   20830 allocs/op
+BenchmarkAvailabilityExpansion/future=50%-10         	      93	  12092806 ns/op	  12000208 p50-ns/op	  13031000 p95-ns/op	  13098709 p99-ns/op	 9752968 B/op	   41600 allocs/op
+BenchmarkAvailabilityExpansion/future=50%-10         	      93	  11503664 ns/op	  11953209 p50-ns/op	  12053500 p95-ns/op	  12933250 p99-ns/op	 9732905 B/op	   41592 allocs/op
+BenchmarkAvailabilityExpansion/future=50%-10         	     100	  11877760 ns/op	  11982584 p50-ns/op	  13002750 p95-ns/op	  13018041 p99-ns/op	 9770409 B/op	   41593 allocs/op
+BenchmarkAvailabilityExpansion/future=50%-10         	      93	  11901466 ns/op	  11979459 p50-ns/op	  13004209 p95-ns/op	  13112000 p99-ns/op	 9762417 B/op	   41595 allocs/op
+BenchmarkAvailabilityExpansion/future=50%-10         	      93	  13818059 ns/op	  12005834 p50-ns/op	  24744042 p95-ns/op	  27628250 p99-ns/op	 9763092 B/op	   41607 allocs/op
+BenchmarkAvailabilityExpansion/future=95%-10         	      80	  15122220 ns/op	  14966542 p50-ns/op	  15931000 p95-ns/op	  22053084 p99-ns/op	11943011 B/op	   48072 allocs/op
+BenchmarkAvailabilityExpansion/future=95%-10         	      86	  14880979 ns/op	  14977917 p50-ns/op	  15174375 p95-ns/op	  16049416 p99-ns/op	11941905 B/op	   48066 allocs/op
+BenchmarkAvailabilityExpansion/future=95%-10         	      81	  15440474 ns/op	  15004750 p50-ns/op	  16207792 p95-ns/op	  21965042 p99-ns/op	11944607 B/op	   48064 allocs/op
+BenchmarkAvailabilityExpansion/future=95%-10         	      80	  15072168 ns/op	  14989625 p50-ns/op	  17873125 p95-ns/op	  18095500 p99-ns/op	11942089 B/op	   48067 allocs/op
+BenchmarkAvailabilityExpansion/future=95%-10         	      79	  14872757 ns/op	  14984792 p50-ns/op	  15178750 p95-ns/op	  15978292 p99-ns/op	11941874 B/op	   48067 allocs/op
+BenchmarkAgencyClaim/active=1-10                     	     260	   4622924 ns/op	   4844625 p50-ns/op	   5838209 p95-ns/op	   6081458 p99-ns/op	   90422 B/op	     623 allocs/op
+BenchmarkAgencyClaim/active=1-10                     	     262	   4572000 ns/op	   4865000 p50-ns/op	   5342583 p95-ns/op	   5885125 p99-ns/op	   90534 B/op	     623 allocs/op
+BenchmarkAgencyClaim/active=1-10                     	     250	   4758835 ns/op	   4961041 p50-ns/op	   5872291 p95-ns/op	   6048250 p99-ns/op	   90478 B/op	     623 allocs/op
+BenchmarkAgencyClaim/active=1-10                     	     264	   4582167 ns/op	   4887208 p50-ns/op	   5398125 p95-ns/op	   6031083 p99-ns/op	   90360 B/op	     622 allocs/op
+BenchmarkAgencyClaim/active=1-10                     	     250	   4817769 ns/op	   4967708 p50-ns/op	   5834459 p95-ns/op	   6049250 p99-ns/op	   90435 B/op	     623 allocs/op
+BenchmarkAgencyClaim/active=100-10                   	     204	   5515869 ns/op	   5127208 p50-ns/op	   6787792 p95-ns/op	   7062334 p99-ns/op	  979988 B/op	    3709 allocs/op
+BenchmarkAgencyClaim/active=100-10                   	     242	   4769855 ns/op	   4973417 p50-ns/op	   5964166 p95-ns/op	   6051958 p99-ns/op	  978795 B/op	    3704 allocs/op
+BenchmarkAgencyClaim/active=100-10                   	     243	   5664348 ns/op	   5955375 p50-ns/op	   7045500 p95-ns/op	  10748000 p99-ns/op	  979153 B/op	    3708 allocs/op
+BenchmarkAgencyClaim/active=100-10                   	     207	   5864399 ns/op	   5990667 p50-ns/op	   7013000 p95-ns/op	   7061250 p99-ns/op	  979611 B/op	    3704 allocs/op
+BenchmarkAgencyClaim/active=100-10                   	     210	   5498225 ns/op	   5231708 p50-ns/op	   6600833 p95-ns/op	   6992750 p99-ns/op	  980297 B/op	    3713 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/benchmark	480.748s
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/ranking
+cpu: Apple M4
+BenchmarkContextualScore-10    	183444400	         6.320 ns/op	       0 B/op	       0 allocs/op
+BenchmarkContextualScore-10    	194693914	         6.176 ns/op	       0 B/op	       0 allocs/op
+BenchmarkContextualScore-10    	193253894	         6.199 ns/op	       0 B/op	       0 allocs/op
+BenchmarkContextualScore-10    	194607795	         6.184 ns/op	       0 B/op	       0 allocs/op
+BenchmarkContextualScore-10    	194300229	         6.163 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/ranking	6.182s
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/packing
+cpu: Apple M4
+BenchmarkAdaptiveDiversityPacking100-10    	     723	   1515005 ns/op	  269865 B/op	     307 allocs/op
+BenchmarkAdaptiveDiversityPacking100-10    	     804	   1492831 ns/op	  269865 B/op	     307 allocs/op
+BenchmarkAdaptiveDiversityPacking100-10    	     801	   1492097 ns/op	  269866 B/op	     307 allocs/op
+BenchmarkAdaptiveDiversityPacking100-10    	     804	   1498913 ns/op	  269865 B/op	     307 allocs/op
+BenchmarkAdaptiveDiversityPacking100-10    	     801	   1497812 ns/op	  269872 B/op	     307 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/packing	6.084s
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/graph	0.189s

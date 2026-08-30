@@ -21,15 +21,17 @@ type ForecastTemplate struct {
 // posterior predictive was accepted. PreResidualLaw is the law presented to
 // residual selection, and CorrectedLaw is the complete law returned afterward.
 type ForecastBundle struct {
-	ModelKind        string           `json:"model_kind"`
-	HorizonKey       string           `json:"horizon_key"`
-	BaseLaw          BernoulliLaw     `json:"base_law"`
-	BeliefLaw        *BernoulliLaw    `json:"belief_law,omitempty"`
-	PreResidualLaw   BernoulliLaw     `json:"pre_residual_law"`
-	CorrectedLaw     BernoulliLaw     `json:"corrected_law"`
-	Template         ForecastTemplate `json:"template"`
-	PosteriorKey     string           `json:"posterior_key,omitempty"`
-	PosteriorVersion uint64           `json:"posterior_version"`
-	ResidualApplied  bool             `json:"residual_applied"`
-	ResidualRecordID string           `json:"residual_record_id,omitempty"`
+	ModelKind              string           `json:"model_kind"`
+	RankScore              float64          `json:"rank_score"`
+	HorizonKey             string           `json:"horizon_key"`
+	BaseLaw                BernoulliLaw     `json:"base_law"`
+	BeliefLaw              *BernoulliLaw    `json:"belief_law,omitempty"`
+	PreResidualLaw         BernoulliLaw     `json:"pre_residual_law"`
+	CorrectedLaw           BernoulliLaw     `json:"corrected_law"`
+	Template               ForecastTemplate `json:"template"`
+	PosteriorKey           string           `json:"posterior_key,omitempty"`
+	PosteriorVersion       uint64           `json:"posterior_version"`
+	ResidualApplied        bool             `json:"residual_applied"`
+	ResidualShadowEligible bool             `json:"residual_shadow_eligible"`
+	ResidualRecordID       string           `json:"residual_record_id,omitempty"`
 }

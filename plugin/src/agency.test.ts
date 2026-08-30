@@ -21,7 +21,7 @@ const proposal: AgencyProposal = {
   causal_chain_id: "chain-1",
   causal_chain_depth: 0,
   created_at: "2026-08-28T20:00:00Z",
-  contract_version: 7,
+  contract_version: 9,
 };
 
 function signedRecord(value: AgencyProposal): { record: AgencyProposalRecord; publicKey: string } {

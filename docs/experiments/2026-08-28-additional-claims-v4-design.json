@@ -1,0 +1,139 @@
+{
+  "schema_version": "eventframe.claims-experiment.v4",
+  "residual_utility": {
+    "training_cases": 60,
+    "evaluation_cases": 40,
+    "baseline_brier": 0.8550286789040618,
+    "residual_brier": 0.6001253965919753,
+    "absolute_gain": 0.2549032823120865,
+    "relative_reduction": 0.2981224941352965,
+    "residual_applied_cases": 40,
+    "residual_applied_rate": 1,
+    "systematic_outcome_rate": 0
+  },
+  "anti_pigeon_granularity": {
+    "training_turns": 30,
+    "evaluation_turns": 20,
+    "variants": {
+      "naive_shared": {
+        "brier": 0.363789812936199,
+        "false_merge_rate": 1,
+        "posterior_keys": 1
+      },
+      "oracle_ap": {
+        "brier": 0.2567884784521941,
+        "false_merge_rate": 0,
+        "posterior_keys": 2
+      },
+      "separate": {
+        "brier": 0.2590617831202505,
+        "false_merge_rate": 0,
+        "posterior_keys": 4
+      }
+    }
+  },
+  "bayesian_group_comparison": {
+    "trajectories": 64,
+    "samples_per_member": 100,
+    "seed_base": 984451656,
+    "scenarios": {
+      "shared_0.8_0.8": {
+        "expected": "share",
+        "share_rate": 0,
+        "split_rate": 0.015625,
+        "uncertain_rate": 0.984375,
+        "wrong_rate": 0.015625
+      },
+      "split_0.65_0.35": {
+        "expected": "split",
+        "share_rate": 0,
+        "split_rate": 0.890625,
+        "uncertain_rate": 0.109375,
+        "wrong_rate": 0
+      },
+      "split_0.9_0.1": {
+        "expected": "split",
+        "share_rate": 0,
+        "split_rate": 1,
+        "uncertain_rate": 0,
+        "wrong_rate": 0
+      }
+    }
+  },
+  "changepoint_adaptation": {
+    "trajectories": 64,
+    "seed_base": 982451653,
+    "detection_window": 20,
+    "policy": {
+      "hazard": 0.05,
+      "threshold": 0.3,
+      "max_run": 32,
+      "recent_window": 0,
+      "recent_threshold": 0,
+      "fast_rate": 0.25,
+      "slow_rate": 0.025,
+      "drift_threshold": 0.3,
+      "drift_persistence": 12,
+      "min_samples": 20,
+      "cusum_slack": 0.1,
+      "cusum_threshold": 8,
+      "cooldown_samples": 20
+    },
+    "scenarios": {
+      "abrupt": {
+        "detection_window": 20,
+        "expected_changes": 64,
+        "detected_changes": 58,
+        "false_alarms": 7,
+        "mean_delay": 12.5,
+        "max_delay": 20,
+        "miss_rate": 0.09375
+      },
+      "abrupt_noiseless": {
+        "detection_window": 20,
+        "expected_changes": 64,
+        "detected_changes": 64,
+        "false_alarms": 0,
+        "mean_delay": 0,
+        "max_delay": 0,
+        "miss_rate": 0
+      },
+      "gradual": {
+        "detection_window": 60,
+        "expected_changes": 64,
+        "detected_changes": 60,
+        "false_alarms": 20,
+        "mean_delay": 43.61666666666667,
+        "max_delay": 59,
+        "miss_rate": 0.0625
+      },
+      "recurring": {
+        "detection_window": 20,
+        "expected_changes": 128,
+        "detected_changes": 102,
+        "false_alarms": 21,
+        "mean_delay": 13.5,
+        "max_delay": 20,
+        "miss_rate": 0.203125
+      },
+      "recurring_noiseless": {
+        "detection_window": 20,
+        "expected_changes": 128,
+        "detected_changes": 128,
+        "false_alarms": 0,
+        "mean_delay": 0,
+        "max_delay": 0,
+        "miss_rate": 0
+      },
+      "stable": {
+        "detection_window": 20,
+        "expected_changes": 0,
+        "detected_changes": 0,
+        "false_alarms": 0,
+        "mean_delay": 0,
+        "max_delay": 0,
+        "miss_rate": 0
+      }
+    }
+  }
+}

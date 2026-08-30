@@ -16,37 +16,71 @@ import (
 	"unicode/utf8"
 
 	"github.com/JuanHuaXu/eventframed/internal/agency"
+	"github.com/JuanHuaXu/eventframed/internal/audit"
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
+	"github.com/JuanHuaXu/eventframed/internal/calibration"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	graphpolicy "github.com/JuanHuaXu/eventframed/internal/graph"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/packing"
+	"github.com/JuanHuaXu/eventframed/internal/rankdelta"
+	"github.com/JuanHuaXu/eventframed/internal/ranking"
 	"github.com/JuanHuaXu/eventframed/internal/residual"
+	"github.com/JuanHuaXu/eventframed/internal/retrieval"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 )
 
-const maxAgencyIdentifierBytes = 256
+const (
+	maxAgencyIdentifierBytes = 256
+	maxRecallK               = 1000
+	maxPackK                 = 100
+	ResidualModeApply        = "apply"
+	ResidualModeShadow       = "shadow"
+	ResidualModeDisabled     = "disabled"
+)
 
 type Config struct {
-	DefaultRecallK       int
-	DefaultPackK         int
-	DefaultTokenBudget   int
-	OverfetchMultiplier  int
-	Quantization         string
-	BayesianPolicy       bayes.Policy
-	BayesianScoreWeight  float64
-	BayesianChangePolicy bayes.ChangePolicy
-	ResidualPolicy       residual.Policy
-	SnapPolicy           graphpolicy.Policy
-	AgencyPolicy         agency.Policy
-	AgencySigner         *agency.Signer
-	AgencyIssuerToken    string
-	AgencyAuthorityToken string
+	DefaultRecallK             int
+	DefaultPackK               int
+	DefaultTokenBudget         int
+	OverfetchMultiplier        int
+	Quantization               string
+	BayesianPolicy             bayes.Policy
+	BaselineCalibration        calibration.Logit
+	PredictiveCalibration      calibration.Logit
+	BayesianScoreWeight        float64
+	BayesianChangePolicy       bayes.ChangePolicy
+	BayesianGroupPolicy        bayes.GroupPolicy
+	RankingPolicy              ranking.Policy
+	PackingPolicy              packing.Policy
+	CandidateRanker            retrieval.CandidateRanker
+	CandidateRankerRequired    bool
+	CandidateRetriever         retrieval.CandidateRetriever
+	CandidateRetrieverRequired bool
+	CandidateIndex             retrieval.CandidateIndex
+	CandidateCollectionPrefix  string
+	RankDeltaStore             rankdelta.Store
+	RankDeltaStoreRequired     bool
+	RankDeltaTTL               time.Duration
+	MaxRankDelta               float64
+	ElasticRankDelta           ranking.ElasticDeltaPolicy
+	ResidualPolicy             residual.Policy
+	ResidualMode               string
+	SnapPolicy                 graphpolicy.Policy
+	AgencyPolicy               agency.Policy
+	AgencySigner               *agency.Signer
+	AgencyIssuerToken          string
+	AgencyAuthorityToken       string
 }
 
 type Service struct {
-	store    store.EventStore
-	embedder embed.Embedder
-	config   Config
+	store     store.EventStore
+	embedder  embed.Embedder
+	config    Config
+	ranker    retrieval.CandidateRanker
+	retriever retrieval.CandidateRetriever
+	index     retrieval.CandidateIndex
+	rankDelta rankdelta.Store
 }
 
 func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*Service, error) {
@@ -63,7 +97,16 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 		config.OverfetchMultiplier = 3
 	}
 	if config.BayesianPolicy.MaxActive <= 0 {
-		config.BayesianPolicy = bayes.Policy{VectorWeight: .6, NeighborWeight: .15, NoveltyWeight: .15, IndependenceWeight: .1, Threshold: .72, CriticalThreshold: .55, AuditProbability: .02, MaxActive: 8, AuditSeed: "eventframe-v1"}
+		// Retrieval already bounds the frontier by recall_k. Update every
+		// evidence-ready frontier member by default; explicit BayesianPolicy
+		// values retain selective activation for ablations or tighter budgets.
+		config.BayesianPolicy = bayes.Policy{VectorWeight: .6, NeighborWeight: .15, NoveltyWeight: .15, IndependenceWeight: .1, Threshold: .65, CriticalThreshold: .45, AuditProbability: .02, MaxActive: 32, AuditSeed: "eventframe-frontier-all-v1", CheapUpdateAll: true}
+	}
+	if !config.BaselineCalibration.Valid() {
+		config.BaselineCalibration = calibration.Identity()
+	}
+	if !config.PredictiveCalibration.Valid() {
+		config.PredictiveCalibration = config.BaselineCalibration
 	}
 	if config.BayesianScoreWeight == 0 {
 		config.BayesianScoreWeight = 0.10
@@ -72,10 +115,59 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 		return nil, errors.New("Bayesian score weight must be in [0,0.25]")
 	}
 	if !config.BayesianChangePolicy.Valid() {
-		config.BayesianChangePolicy = bayes.ChangePolicy{Hazard: .05, Threshold: .30, MaxRun: 64}
+		config.BayesianChangePolicy = bayes.ChangePolicy{
+			Hazard: .05, Threshold: .30, MaxRun: 64,
+			FastRate: .25, SlowRate: .025, DriftThreshold: .30, DriftPersistence: 12, MinSamples: 20,
+			CUSUMSlack: .10, CUSUMThreshold: 8,
+			CooldownSamples: 20,
+		}
+	}
+	if !config.BayesianGroupPolicy.Valid() {
+		config.BayesianGroupPolicy = bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 8, MaxMembers: 64, EquivalenceMargin: .15, EquivalenceThreshold: .80, MaxUncertainBorrowing: .10, SharedEvidenceWeight: .5}
+	}
+	if config.PackingPolicy.MaxPack <= 0 {
+		defaults := packing.DefaultPolicy()
+		defaults.AdaptiveEnabled = config.PackingPolicy.AdaptiveEnabled
+		defaults.DiversityEnabled = config.PackingPolicy.DiversityEnabled
+		config.PackingPolicy = defaults
+	}
+	if config.CandidateRanker == nil {
+		config.CandidateRanker = retrieval.PassthroughRanker{}
+	}
+	if config.CandidateIndex != nil {
+		if config.CandidateRetriever == nil {
+			return nil, errors.New("candidate index requires a candidate retriever")
+		}
+		if strings.TrimSpace(config.CandidateCollectionPrefix) == "" {
+			return nil, errors.New("candidate index requires a collection prefix")
+		}
+	}
+	if config.RankDeltaStoreRequired && config.RankDeltaStore == nil {
+		return nil, errors.New("required rank-delta store is unavailable")
+	}
+	if config.RankDeltaTTL <= 0 {
+		config.RankDeltaTTL = 5 * time.Minute
+	}
+	if config.MaxRankDelta == 0 {
+		config.MaxRankDelta = .25
+	}
+	if config.MaxRankDelta < 0 || config.MaxRankDelta > 1 {
+		return nil, errors.New("maximum rank delta must be in (0,1]")
+	}
+	if config.ElasticRankDelta.MinScale == 0 && config.ElasticRankDelta.MaxScale == 0 {
+		config.ElasticRankDelta = ranking.DefaultElasticDeltaPolicy()
+	}
+	if !config.ElasticRankDelta.Valid() {
+		return nil, errors.New("elastic rank-delta scales must satisfy 0 <= min <= max <= 10")
 	}
 	if !config.ResidualPolicy.Valid() {
-		config.ResidualPolicy = residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .10, MaxAge: 30 * 24 * time.Hour, ImprovementDelta: .001}
+		config.ResidualPolicy = residual.Policy{Clip: .15, MinSupport: 3, MinConfidence: .55, ConfidenceDelta: .05, MotionLimit: .10, MaxAge: 30 * 24 * time.Hour, ImprovementDelta: .001, MinMeanGain: .001, MaxConsecutiveHarm: 1, ShrinkByConfidence: true}
+	}
+	if config.ResidualMode == "" {
+		config.ResidualMode = ResidualModeApply
+	}
+	if config.ResidualMode != ResidualModeApply && config.ResidualMode != ResidualModeShadow && config.ResidualMode != ResidualModeDisabled {
+		return nil, errors.New("residual mode must be apply, shadow, or disabled")
 	}
 	if !config.SnapPolicy.Valid() {
 		config.SnapPolicy = graphpolicy.Policy{MaxNodes: 256, MaxEdges: 512, MaxCandidateFamily: 32, ClosureRadius: 2, MinNetPriorityGain: .01, MaxProperRiskIncrease: .01, MaxUnresolvedBurden: 0, MinSimultaneousCoverage: .95, MinBucketSupport: 30}
@@ -93,7 +185,7 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	if _, err := eventStore.BindBayesianPolicy(context.Background(), policyDigest); err != nil {
 		return nil, fmt.Errorf("bind Bayesian policy: %w", err)
 	}
-	return &Service{store: eventStore, embedder: embedder, config: config}, nil
+	return &Service{store: eventStore, embedder: embedder, config: config, ranker: config.CandidateRanker, retriever: config.CandidateRetriever, index: config.CandidateIndex, rankDelta: config.RankDeltaStore}, nil
 }
 
 func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (model.ObserveResponse, error) {
@@ -112,7 +204,7 @@ func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (mo
 	vector := request.Event.Embedding
 	if len(vector) == 0 {
 		var err error
-		vector, err = s.embedder.Embed(request.Event.EmbeddingText())
+		vector, err = embed.Document(s.embedder, request.Event.EmbeddingText())
 		if err != nil {
 			return model.ObserveResponse{}, fmt.Errorf("embed event: %w", err)
 		}
@@ -127,6 +219,17 @@ func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (mo
 	result, err := s.store.Put(ctx, request.Event, vector, digest)
 	if err != nil {
 		return model.ObserveResponse{}, err
+	}
+	if s.index != nil {
+		collection := s.candidateCollection(request.Event.TenantID)
+		metadata, metadataErr := eventIndexMetadata(request.Event, collection, digest)
+		if metadataErr != nil {
+			return model.ObserveResponse{}, metadataErr
+		}
+		candidate := retrieval.Candidate{ID: request.Event.ID, Text: request.Event.Content, Metadata: metadata}
+		if indexErr := s.index.EnsureText(ctx, collection, candidate, "eventframe_digest", digest); indexErr != nil {
+			return model.ObserveResponse{}, fmt.Errorf("index event through LibraVDB contract: %w", indexErr)
+		}
 	}
 	return model.ObserveResponse{
 		ProtocolVersion: model.ProtocolVersion,
@@ -155,7 +258,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	}
 	vector := request.Embedding
 	if len(vector) == 0 {
-		vector, err = s.embedder.Embed(request.Query)
+		vector, err = embed.Query(s.embedder, request.Query)
 		if err != nil {
 			return model.ContextPacket{}, fmt.Errorf("embed query: %w", err)
 		}
@@ -165,11 +268,11 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		return model.ContextPacket{}, errors.New("query embedding_model does not match active model")
 	}
 	searchLimit := recallK * s.config.OverfetchMultiplier
-	results, err := s.store.Search(ctx, request.TenantID, vector, request.AsOf, searchLimit)
+	results, nominationContract, err := s.nominateCandidates(ctx, request, vector, searchLimit)
 	if err != nil {
 		return model.ContextPacket{}, err
 	}
-	candidates := make([]model.Candidate, 0, min(recallK, len(results)))
+	candidates := make([]model.Candidate, 0, len(results))
 	eligible := 0
 	for _, result := range results {
 		if result.Event.AvailableAt.After(request.AsOf) {
@@ -177,13 +280,32 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		}
 		eligible++
 		candidate := model.Candidate{
-			Event:           result.Event,
-			Similarity:      result.Similarity,
-			EstimatedTokens: estimateTokens(result.Event.Content),
+			Event:             result.Event,
+			Similarity:        result.Similarity,
+			RetrievalMetadata: append([]byte(nil), result.RetrievalMetadata...),
+			RecencyScore:      candidateRecency(result.Event, request.AsOf),
+			EstimatedTokens:   estimateTokens(result.Event.Content),
 		}
 		candidate.BaselineScore = scoreCandidate(candidate, request.SessionID, request.AsOf)
-		candidate.Score = candidate.BaselineScore
+		candidate.PredictiveScore = ranking.Score(ranking.Features{Baseline: candidate.BaselineScore, Recency: candidate.RecencyScore}, s.config.RankingPolicy)
+		candidate.Score = candidate.PredictiveScore
 		candidates = append(candidates, candidate)
+	}
+	predictiveGraph, graphErr := s.store.GetPredictiveGraph(ctx, request.TenantID)
+	if graphErr != nil {
+		return model.ContextPacket{}, graphErr
+	}
+	baseScores := make(map[string]float64, len(candidates))
+	for _, candidate := range candidates {
+		baseScores[candidate.Event.ID] = candidate.BaselineScore
+	}
+	graphScores := graphpolicy.CandidateCompatibility(predictiveGraph, baseScores)
+	for index := range candidates {
+		graphScore, hasGraph := graphScores[candidates[index].Event.ID]
+		candidates[index].GraphCompatibility = graphScore
+		candidates[index].GraphApplied = hasGraph
+		candidates[index].PredictiveScore = ranking.Score(ranking.Features{Baseline: candidates[index].BaselineScore, Recency: candidates[index].RecencyScore, Graph: graphScore, HasGraph: hasGraph}, s.config.RankingPolicy)
+		candidates[index].Score = candidates[index].PredictiveScore
 	}
 	sort.SliceStable(candidates, func(i, j int) bool {
 		if candidates[i].Score == candidates[j].Score {
@@ -191,15 +313,16 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		}
 		return candidates[i].Score > candidates[j].Score
 	})
-	if len(candidates) > recallK {
-		candidates = candidates[:recallK]
-	}
 	shadowInputs := make([]bayes.Candidate, 0, len(candidates))
 	for _, candidate := range candidates {
-		shadowInputs = append(shadowInputs, bayes.Candidate{EventID: candidate.Event.ID, VectorRelevance: clamp((candidate.Similarity+1)/2, 0, 1), Novelty: 1 - candidate.Event.MeanFieldConfidence(), SourceIndependence: sourceIndependence(candidate.Event), Priority: candidate.Event.Priority, EvidenceReady: !candidate.Event.AvailableAt.After(request.AsOf)})
+		shadowInputs = append(shadowInputs, bayes.Candidate{EventID: candidate.Event.ID, VectorRelevance: clamp((candidate.Similarity+1)/2, 0, 1), NeighborCompatibility: candidate.GraphCompatibility, Novelty: 1 - candidate.Event.MeanFieldConfidence(), SourceIndependence: sourceIndependence(candidate.Event), Priority: candidate.Event.Priority, EvidenceReady: !candidate.Event.AvailableAt.After(request.AsOf)})
 	}
 	snapshot := s.store.Snapshot(ctx)
 	shadow := bayes.Evaluate(shadowInputs, snapshot.EvidenceEpoch, s.config.BayesianPolicy)
+	queryDigest, err := recallQueryDigest(request, vector, s.embedder.ModelKey())
+	if err != nil {
+		return model.ContextPacket{}, err
+	}
 	selectionCertificate, certificateErr := s.store.GetSelectionCertificate(ctx, request.TenantID)
 	if certificateErr != nil && !errors.Is(certificateErr, store.ErrCertificateNotFound) {
 		return model.ContextPacket{}, certificateErr
@@ -209,7 +332,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		return model.ContextPacket{}, omittedErr
 	}
 	now := time.Now().UTC()
-	omittedCertified := omittedErr == nil && omittedInfluenceCertificateActive(omittedCertificate, snapshot, now)
+	omittedCertified := omittedErr == nil && omittedInfluenceCertificateActive(omittedCertificate, snapshot, now, queryDigest)
 	shadow.OmittedInfluenceCertified = omittedCertified
 	if certificateErr == nil && selectionCertificateActive(selectionCertificate, snapshot, now) {
 		shadow.Mode = "selection-certified-shadow"
@@ -232,30 +355,50 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		}
 	}
 	if shadow.SelectionSupportCertified && shadow.OmittedInfluenceCertified {
-		decisions := make(map[string]model.BayesianDecision, len(shadow.Decisions))
-		for _, decision := range shadow.Decisions {
-			decisions[decision.EventID] = decision
+		decisions := make(map[string]int, len(shadow.Decisions))
+		for index := range shadow.Decisions {
+			decisions[shadow.Decisions[index].EventID] = index
 		}
 		applied := false
 		for index := range candidates {
-			decision := decisions[candidates[index].Event.ID]
+			decision := &shadow.Decisions[decisions[candidates[index].Event.ID]]
 			if !decision.Activated || decision.TotalSelectionProbabilityLowerBound <= 0 {
 				continue
 			}
 			posterior, getErr := s.store.GetBayesianPosterior(ctx, request.TenantID, decision.PosteriorKey)
-			if errors.Is(getErr, store.ErrPosteriorNotFound) {
+			if errors.Is(getErr, store.ErrPosteriorNotFound) && s.config.RankingPolicy.HierarchicalEnabled {
+				posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: decision.PosteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: snapshot.EvidenceEpoch, Certified: true}
+				getErr = nil
+			} else if errors.Is(getErr, store.ErrPosteriorNotFound) {
 				continue
 			}
 			if getErr != nil {
 				return model.ContextPacket{}, getErr
 			}
-			if !posterior.Certified || posterior.EvidenceEpoch != snapshot.EvidenceEpoch {
+			if !posterior.Certified || posterior.EvidenceEpoch != snapshot.EvidenceEpoch || posterior.UpdatedAt.After(request.AsOf) {
 				continue
 			}
 			probability := clamp(posterior.Mean(), 0, 1)
+			if s.config.RankingPolicy.HierarchicalEnabled {
+				decision.ParentPosteriorKey = parentPosteriorKey()
+				parent, parentErr := s.store.GetBayesianPosterior(ctx, request.TenantID, decision.ParentPosteriorKey)
+				if parentErr == nil && parent.Certified && parent.EvidenceEpoch == snapshot.EvidenceEpoch && !parent.UpdatedAt.After(request.AsOf) {
+					probability = ranking.HierarchicalMean(posterior, parent, s.config.RankingPolicy)
+				} else if parentErr != nil && !errors.Is(parentErr, store.ErrPosteriorNotFound) {
+					return model.ContextPacket{}, parentErr
+				}
+			}
 			candidates[index].BayesianProbability = probability
 			candidates[index].BayesianApplied = true
-			candidates[index].Score = (1-s.config.BayesianScoreWeight)*candidates[index].BaselineScore + s.config.BayesianScoreWeight*probability
+			if s.config.RankingPolicy.ContextualEnabled || s.config.RankingPolicy.HierarchicalEnabled {
+				_, hasGraph := graphScores[candidates[index].Event.ID]
+				features := ranking.Features{Baseline: candidates[index].BaselineScore, Posterior: probability, Recency: candidates[index].RecencyScore, Graph: candidates[index].GraphCompatibility, HasPosterior: true, HasGraph: hasGraph}
+				candidates[index].PredictiveScore = ranking.Score(features, s.config.RankingPolicy)
+				candidates[index].Score = candidates[index].PredictiveScore
+			} else {
+				candidates[index].PredictiveScore = (1-s.config.BayesianScoreWeight)*candidates[index].BaselineScore + s.config.BayesianScoreWeight*probability
+				candidates[index].Score = candidates[index].PredictiveScore
+			}
 			applied = true
 		}
 		if applied {
@@ -268,10 +411,6 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 			})
 		}
 	}
-	queryDigest, err := recallQueryDigest(request, vector, s.embedder.ModelKey())
-	if err != nil {
-		return model.ContextPacket{}, err
-	}
 	decisionIndexes := make(map[string]int, len(shadow.Decisions))
 	for index := range shadow.Decisions {
 		decisionIndexes[shadow.Decisions[index].EventID] = index
@@ -283,10 +422,15 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 			return model.ContextPacket{}, errors.New("Bayesian frontier omitted a recalled candidate")
 		}
 		decision := &shadow.Decisions[decisionIndex]
-		preResidual := bernoulliLaw(candidate.Score)
+		baseProbability := s.config.BaselineCalibration.Apply(candidate.BaselineScore)
+		preResidualProbability := baseProbability
+		if candidate.BayesianApplied {
+			preResidualProbability = s.config.PredictiveCalibration.Apply(candidate.PredictiveScore)
+		}
+		preResidual := bernoulliLaw(preResidualProbability)
 		forecast := model.ForecastBundle{
-			ModelKind: "plugin-bernoulli-retrieval-usefulness", HorizonKey: model.RetrievalUsefulnessHorizon,
-			BaseLaw: bernoulliLaw(candidate.BaselineScore), PreResidualLaw: preResidual, CorrectedLaw: preResidual,
+			ModelKind: "plugin-bernoulli-retrieval-usefulness", RankScore: candidate.Score, HorizonKey: model.RetrievalUsefulnessHorizon,
+			BaseLaw: bernoulliLaw(baseProbability), PreResidualLaw: preResidual, CorrectedLaw: preResidual,
 			Template:     model.ForecastTemplate{EventID: candidate.Event.ID, PredictedUseful: preResidual.Useful >= .5, Confidence: math.Max(preResidual.Useful, preResidual.NotUseful)},
 			PosteriorKey: decision.PosteriorKey, PosteriorVersion: snapshot.PosteriorVersion,
 		}
@@ -296,23 +440,32 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		}
 		actionKey := residualActionKey(queryDigest, candidate.Event.ID, forecast.HorizonKey)
 		generalKey := residualGeneralKey(decision.PosteriorKey, forecast.HorizonKey)
-		cached, getErr := s.store.GetResidualCandidates(ctx, request.TenantID, actionKey, generalKey)
-		if getErr != nil {
-			return model.ContextPacket{}, getErr
+		var cached model.ResidualCandidates
+		var getErr error
+		if s.config.ResidualMode != ResidualModeDisabled {
+			cached, getErr = s.store.GetResidualCandidates(ctx, request.TenantID, actionKey, generalKey)
+			if getErr != nil {
+				return model.ContextPacket{}, getErr
+			}
 		}
 		var selected *model.ResidualRecord
-		if cached.Exact != nil && residual.Eligible(*cached.Exact, preResidual.Useful, snapshot, now, s.config.ResidualPolicy) {
+		if cached.Exact != nil && residual.Eligible(*cached.Exact, preResidual.Useful, snapshot, request.AsOf.UTC(), s.config.ResidualPolicy) {
 			selected = cached.Exact
-		} else if cached.General != nil && residual.Eligible(*cached.General, preResidual.Useful, snapshot, now, s.config.ResidualPolicy) {
+		} else if cached.General != nil && residual.Eligible(*cached.General, preResidual.Useful, snapshot, request.AsOf.UTC(), s.config.ResidualPolicy) {
 			selected = cached.General
 		}
 		if selected != nil {
-			forecast.CorrectedLaw = residual.Apply(preResidual, *selected, s.config.ResidualPolicy)
-			forecast.ResidualApplied = true
+			forecast.ResidualShadowEligible = true
 			forecast.ResidualRecordID = selected.ID
-			forecast.Template = model.ForecastTemplate{EventID: candidate.Event.ID, PredictedUseful: forecast.CorrectedLaw.Useful >= .5, Confidence: math.Max(forecast.CorrectedLaw.Useful, forecast.CorrectedLaw.NotUseful)}
-			candidate.Score = forecast.CorrectedLaw.Useful
-			shadow.ResidualApplied++
+			shadow.ResidualShadowEligible++
+			if s.config.ResidualMode == ResidualModeApply {
+				forecast.CorrectedLaw = residual.Apply(preResidual, *selected, s.config.ResidualPolicy)
+				forecast.ResidualApplied = true
+				forecast.Template = model.ForecastTemplate{EventID: candidate.Event.ID, PredictedUseful: forecast.CorrectedLaw.Useful >= .5, Confidence: math.Max(forecast.CorrectedLaw.Useful, forecast.CorrectedLaw.NotUseful)}
+				candidate.Score = clamp(candidate.Score+forecast.CorrectedLaw.Useful-preResidual.Useful, 0, 1)
+				forecast.RankScore = candidate.Score
+				shadow.ResidualApplied++
+			}
 		}
 		candidate.Forecast = forecast
 		decision.Forecast = forecast
@@ -328,6 +481,36 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 			return candidates[i].Score > candidates[j].Score
 		})
 	}
+	deltas, deltaErr := s.materializeRankDeltas(ctx, request, queryDigest, snapshot, candidates)
+	if deltaErr != nil {
+		if s.config.RankDeltaStoreRequired {
+			return model.ContextPacket{}, deltaErr
+		}
+		deltas = liveRankDeltas(request, queryDigest, snapshot, candidates, s.config)
+	}
+	rankedCandidates, rankErr := s.rankCandidates(ctx, request, candidates, recallK)
+	if rankErr != nil {
+		if s.config.CandidateRankerRequired {
+			return model.ContextPacket{}, rankErr
+		}
+		for index := range candidates {
+			candidates[index].RetrievalScore = contractBaseScore(candidates[index])
+			candidates[index].Score = candidates[index].RetrievalScore
+		}
+	} else {
+		candidates = rankedCandidates
+	}
+	packetAnswerCertainty := s.applyRankDeltas(candidates, deltas, queryDigest, packK)
+	for index := range candidates {
+		candidates[index].RetrievalContract = s.ranker.ContractName()
+		candidates[index].Forecast.RankScore = candidates[index].Score
+		if decisionIndex, ok := decisionIndexes[candidates[index].Event.ID]; ok {
+			shadow.Decisions[decisionIndex].Forecast = candidates[index].Forecast
+		}
+	}
+	if len(candidates) > recallK {
+		candidates = candidates[:recallK]
+	}
 	journal := model.BayesianJournalEntry{
 		TenantID: request.TenantID, SessionID: request.SessionID, AsOf: request.AsOf.UTC(),
 		QueryDigest: queryDigest, Snapshot: snapshot, Report: shadow,
@@ -342,28 +525,143 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		return model.ContextPacket{}, fmt.Errorf("persist Bayesian frontier journal: %w", err)
 	}
 	shadow = journal.Report
-	packed := make([]model.Candidate, 0, min(packK, len(candidates)))
-	usedTokens := 0
-	for _, candidate := range candidates {
-		if len(packed) >= packK {
-			break
+	posteriorKeys := make(map[string]string, len(shadow.Decisions))
+	for _, decision := range shadow.Decisions {
+		posteriorKeys[decision.EventID] = decision.PosteriorKey
+	}
+	packingResult := packing.Select(candidates, posteriorKeys, packK, recallK, tokenBudget, s.config.PackingPolicy)
+	return model.ContextPacket{
+		ProtocolVersion:       model.ProtocolVersion,
+		Candidates:            packingResult.Candidates,
+		Recalled:              len(results),
+		Eligible:              eligible,
+		Packed:                len(packingResult.Candidates),
+		UsedTokens:            packingResult.UsedTokens,
+		AdaptiveExpanded:      packingResult.Expanded,
+		PacketConfidence:      packetAnswerCertainty,
+		PacketAnswerCertainty: packetAnswerCertainty,
+		RetrievalContract:     s.ranker.ContractName(),
+		NominationContract:    nominationContract,
+		Snapshot:              snapshot,
+		BayesianShadow:        shadow,
+	}, nil
+}
+
+func (s *Service) nominateCandidates(ctx context.Context, request model.RecallRequest, vector []float32, limit int) ([]store.SearchResult, string, error) {
+	if s.retriever == nil {
+		results, err := s.store.Search(ctx, request.TenantID, vector, request.AsOf, limit)
+		return results, "embedded-vector-search", err
+	}
+	collections := append([]string(nil), request.RetrievalCollections...)
+	exclusions := request.RetrievalExcludeByCollection
+	if s.config.CandidateCollectionPrefix != "" {
+		reserved := s.candidateCollection(request.TenantID)
+		if len(collections) == 0 {
+			collections = []string{reserved}
+		} else if len(collections) != 1 || collections[0] != reserved {
+			return nil, "", errors.New("retrieval collections cannot override the tenant-isolated EventFrame collection")
 		}
-		if usedTokens+candidate.EstimatedTokens > tokenBudget {
+		for collection := range exclusions {
+			if collection != reserved {
+				return nil, "", errors.New("retrieval exclusions cannot reference another EventFrame collection")
+			}
+		}
+	}
+	if len(collections) == 0 {
+		if s.config.CandidateRetrieverRequired {
+			return nil, "", errors.New("retrieval_collections are required for contract-native nomination")
+		}
+		results, err := s.store.Search(ctx, request.TenantID, vector, request.AsOf, limit)
+		return results, "embedded-vector-search", err
+	}
+	if len(collections) > 16 {
+		return nil, "", errors.New("retrieval collection count exceeds safety cap")
+	}
+	excluded := 0
+	for collection, ids := range exclusions {
+		if strings.TrimSpace(collection) == "" || len(ids) > maxRecallK*4 {
+			return nil, "", errors.New("retrieval exclusions exceed safety caps")
+		}
+		excluded += len(ids)
+	}
+	if excluded > maxRecallK*8 {
+		return nil, "", errors.New("total retrieval exclusions exceed safety cap")
+	}
+	contractResults, err := s.retriever.SearchTextCollections(ctx, retrieval.SearchRequest{
+		Collections: collections, QueryText: request.Query, K: limit,
+		ExcludeByCollection: exclusions,
+	})
+	if err != nil {
+		return nil, "", err
+	}
+	ids := make([]string, 0, len(contractResults))
+	scores := make(map[string]float64, len(contractResults))
+	metadataByID := make(map[string][]byte, len(contractResults))
+	allowedCollections := make(map[string]struct{}, len(collections))
+	for _, collection := range collections {
+		allowedCollections[collection] = struct{}{}
+	}
+	for _, candidate := range contractResults {
+		if _, duplicate := scores[candidate.ID]; duplicate {
+			return nil, "", fmt.Errorf("nomination contract returned duplicate candidate %q", candidate.ID)
+		}
+		var metadata struct {
+			Collection string `json:"collection"`
+		}
+		if err := json.Unmarshal(candidate.Metadata, &metadata); err != nil || metadata.Collection == "" {
+			return nil, "", fmt.Errorf("nomination contract returned candidate %q without valid collection metadata", candidate.ID)
+		}
+		if _, ok := allowedCollections[metadata.Collection]; !ok {
+			return nil, "", fmt.Errorf("nomination contract returned candidate %q from undeclared collection %q", candidate.ID, metadata.Collection)
+		}
+		ids = append(ids, candidate.ID)
+		scores[candidate.ID] = candidate.Score
+		metadataByID[candidate.ID] = append([]byte(nil), candidate.Metadata...)
+	}
+	events, err := s.store.GetEvents(ctx, request.TenantID, ids, request.AsOf)
+	if err != nil {
+		if !errors.Is(err, store.ErrEventNotFound) || s.index == nil {
+			return nil, "", fmt.Errorf("resolve nominated events: %w", err)
+		}
+		events, err = s.resolveAndRepairNominations(ctx, request, ids, collections[0])
+		if err != nil {
+			return nil, "", err
+		}
+	}
+	results := make([]store.SearchResult, 0, len(events))
+	for _, event := range events {
+		results = append(results, store.SearchResult{Event: event, Similarity: scores[event.ID], RetrievalMetadata: metadataByID[event.ID]})
+	}
+	return results, s.retriever.RetrievalContractName(), nil
+}
+
+func (s *Service) resolveAndRepairNominations(ctx context.Context, request model.RecallRequest, ids []string, collection string) ([]model.Event, error) {
+	events := make([]model.Event, 0, len(ids))
+	stale := make([]string, 0)
+	for _, id := range ids {
+		resolved, err := s.store.GetEvents(ctx, request.TenantID, []string{id}, request.AsOf)
+		if err == nil {
+			events = append(events, resolved[0])
 			continue
 		}
-		packed = append(packed, candidate)
-		usedTokens += candidate.EstimatedTokens
+		if !errors.Is(err, store.ErrEventNotFound) {
+			return nil, fmt.Errorf("resolve nominated event %q: %w", id, err)
+		}
+		future, futureErr := s.store.GetEvents(ctx, request.TenantID, []string{id}, time.Date(9999, 12, 31, 23, 59, 59, 0, time.UTC))
+		if futureErr == nil && len(future) == 1 {
+			continue
+		}
+		if futureErr != nil && !errors.Is(futureErr, store.ErrEventNotFound) {
+			return nil, fmt.Errorf("check stale nominated event %q: %w", id, futureErr)
+		}
+		stale = append(stale, id)
 	}
-	return model.ContextPacket{
-		ProtocolVersion: model.ProtocolVersion,
-		Candidates:      packed,
-		Recalled:        len(results),
-		Eligible:        eligible,
-		Packed:          len(packed),
-		UsedTokens:      usedTokens,
-		Snapshot:        snapshot,
-		BayesianShadow:  shadow,
-	}, nil
+	if len(stale) > 0 {
+		if err := s.index.DeleteTextBatch(ctx, collection, stale); err != nil {
+			return nil, fmt.Errorf("repair stale LibraVDB nominations: %w", err)
+		}
+	}
+	return events, nil
 }
 
 func sourceIndependence(event model.Event) float64 {
@@ -376,18 +674,283 @@ func sourceIndependence(event model.Event) float64 {
 	return 0.5
 }
 
+func (s *Service) rankCandidates(ctx context.Context, request model.RecallRequest, candidates []model.Candidate, recallK int) ([]model.Candidate, error) {
+	if len(candidates) == 0 {
+		return nil, nil
+	}
+	contractCandidates := make([]retrieval.Candidate, 0, len(candidates))
+	byID := make(map[string]model.Candidate, len(candidates))
+	for _, candidate := range candidates {
+		metadata, err := retrievalMetadata(candidate, request)
+		if err != nil {
+			return nil, err
+		}
+		contractCandidates = append(contractCandidates, retrieval.Candidate{
+			ID: candidate.Event.ID, Text: candidate.Event.Content, Score: contractBaseScore(candidate), Metadata: metadata,
+		})
+		byID[candidate.Event.ID] = candidate
+	}
+	k2 := min(recallK, len(contractCandidates))
+	ranked, err := s.ranker.RankCandidates(ctx, retrieval.RankRequest{
+		Candidates: contractCandidates, QueryText: request.Query, SessionID: request.SessionID,
+		UserID: request.TenantID, K1: len(contractCandidates), K2: k2,
+	})
+	if err != nil {
+		return nil, err
+	}
+	if len(ranked) > k2 {
+		return nil, fmt.Errorf("retrieval contract returned %d candidates; maximum is %d", len(ranked), k2)
+	}
+	result := make([]model.Candidate, 0, len(candidates))
+	seen := make(map[string]struct{}, len(ranked))
+	for _, rankedCandidate := range ranked {
+		candidate, ok := byID[rankedCandidate.ID]
+		if !ok {
+			return nil, fmt.Errorf("retrieval contract returned unknown candidate %q", rankedCandidate.ID)
+		}
+		if _, duplicate := seen[rankedCandidate.ID]; duplicate {
+			return nil, fmt.Errorf("retrieval contract returned duplicate candidate %q", rankedCandidate.ID)
+		}
+		seen[rankedCandidate.ID] = struct{}{}
+		candidate.RetrievalScore = clamp(rankedCandidate.Score, 0, 1)
+		candidate.Score = candidate.RetrievalScore
+		result = append(result, candidate)
+	}
+	// RankCandidates is a second-pass selector and may omit its low-scored tail.
+	// Preserve that bounded nominated frontier so EventFrame deltas can still
+	// recover a candidate that LibraVDB did not return from the second pass.
+	for _, candidate := range candidates {
+		if _, ok := seen[candidate.Event.ID]; ok {
+			continue
+		}
+		candidate.RetrievalScore = contractBaseScore(candidate)
+		candidate.Score = candidate.RetrievalScore
+		result = append(result, candidate)
+	}
+	return result, nil
+}
+
+func contractBaseScore(candidate model.Candidate) float64 {
+	if len(candidate.RetrievalMetadata) > 0 {
+		return clamp(candidate.Similarity, 0, 1)
+	}
+	return clamp(candidate.BaselineScore, 0, 1)
+}
+
+func (s *Service) materializeRankDeltas(ctx context.Context, request model.RecallRequest, queryDigest string, snapshot model.Snapshot, candidates []model.Candidate) (map[string]rankdelta.Record, error) {
+	records := liveRankDeltaRecords(request, queryDigest, snapshot, candidates, s.config)
+	if s.rankDelta == nil {
+		return indexRankDeltas(records), nil
+	}
+	keys := make([]string, 0, len(records))
+	for _, record := range records {
+		keys = append(keys, record.Key)
+	}
+	loaded, err := s.rankDelta.GetBatch(ctx, request.TenantID, keys, snapshot, request.AsOf.UTC())
+	if err != nil {
+		return nil, fmt.Errorf("load EventFrame rank deltas: %w", err)
+	}
+	pending := make([]rankdelta.Record, 0, len(records))
+	for _, record := range records {
+		if cached, ok := loaded[record.Key]; ok && sameRankDelta(cached, record) {
+			continue
+		}
+		pending = append(pending, record)
+		loaded[record.Key] = record
+	}
+	if err := s.rankDelta.PutBatch(ctx, pending); err != nil {
+		return nil, fmt.Errorf("persist EventFrame rank deltas: %w", err)
+	}
+	return loaded, nil
+}
+
+func liveRankDeltas(request model.RecallRequest, queryDigest string, snapshot model.Snapshot, candidates []model.Candidate, config Config) map[string]rankdelta.Record {
+	return indexRankDeltas(liveRankDeltaRecords(request, queryDigest, snapshot, candidates, config))
+}
+
+func liveRankDeltaRecords(request model.RecallRequest, queryDigest string, snapshot model.Snapshot, candidates []model.Candidate, config Config) []rankdelta.Record {
+	records := make([]rankdelta.Record, 0, len(candidates))
+	expiresAt := request.AsOf.UTC().Add(config.RankDeltaTTL)
+	for _, candidate := range candidates {
+		// Delta is the EventFrame correction only. LibraVDB's returned score is
+		// the base to which this correction is applied after the contract call.
+		delta := clamp(candidate.Score-candidate.BaselineScore, -config.MaxRankDelta, config.MaxRankDelta)
+		if math.Abs(delta) <= 1e-12 {
+			continue
+		}
+		records = append(records, rankdelta.Record{
+			TenantID: request.TenantID, Key: rankDeltaKey(queryDigest, candidate.Event.ID), EventID: candidate.Event.ID,
+			Delta: delta, Reliability: correctionReliability(candidate),
+			PolicyVersion: snapshot.PolicyVersion, EvidenceEpoch: snapshot.EvidenceEpoch, GraphVersion: snapshot.GraphVersion,
+			PosteriorVersion: snapshot.PosteriorVersion, ResidualVersion: snapshot.ResidualVersion, AbstractionVersion: snapshot.AbstractionVersion,
+			UpdatedAt: request.AsOf.UTC(), ExpiresAt: expiresAt,
+		})
+	}
+	return records
+}
+
+func sameRankDelta(left, right rankdelta.Record) bool {
+	return left.TenantID == right.TenantID && left.Key == right.Key && left.EventID == right.EventID &&
+		left.Delta == right.Delta && left.Reliability == right.Reliability &&
+		left.PolicyVersion == right.PolicyVersion && left.EvidenceEpoch == right.EvidenceEpoch &&
+		left.GraphVersion == right.GraphVersion && left.PosteriorVersion == right.PosteriorVersion &&
+		left.ResidualVersion == right.ResidualVersion && left.AbstractionVersion == right.AbstractionVersion
+}
+
+func indexRankDeltas(records []rankdelta.Record) map[string]rankdelta.Record {
+	indexed := make(map[string]rankdelta.Record, len(records))
+	for _, record := range records {
+		indexed[record.Key] = record
+	}
+	return indexed
+}
+
+func (s *Service) applyRankDeltas(candidates []model.Candidate, deltas map[string]rankdelta.Record, queryDigest string, packK int) float64 {
+	answerCertainty := rankBoundaryCertainty(candidates, packK)
+	for index := range candidates {
+		record, ok := deltas[rankDeltaKey(queryDigest, candidates[index].Event.ID)]
+		if !ok {
+			continue
+		}
+		scale := s.config.ElasticRankDelta.Scale(answerCertainty, record.Reliability)
+		candidates[index].RankDeltaScale = scale
+		candidates[index].RankDeltaAnswerCertainty = answerCertainty
+		candidates[index].RankDeltaCorrectionReliability = record.Reliability
+		candidates[index].RankDeltaConfidence = answerCertainty
+		candidates[index].RankDeltaBasis = "rank-boundary+correction-reliability"
+		candidates[index].RankDelta = clamp(record.Delta*scale, -s.config.MaxRankDelta, s.config.MaxRankDelta)
+		candidates[index].Score = clamp(candidates[index].RetrievalScore+candidates[index].RankDelta, 0, 1)
+	}
+	sort.SliceStable(candidates, func(i, j int) bool {
+		return candidates[i].Score > candidates[j].Score
+	})
+	return answerCertainty
+}
+
+func rankBoundaryCertainty(candidates []model.Candidate, packK int) float64 {
+	if len(candidates) == 0 || packK <= 0 {
+		return 0
+	}
+	if packK >= len(candidates) {
+		return 1
+	}
+	inside := candidates[packK-1].RetrievalScore
+	outside := candidates[packK].RetrievalScore
+	scale := math.Max(math.Max(math.Abs(inside), math.Abs(outside)), 1e-12)
+	return clamp((inside-outside)/scale, 0, 1)
+}
+
+func correctionReliability(candidate model.Candidate) float64 {
+	if candidate.BayesianApplied || candidate.Forecast.ResidualApplied || candidate.GraphApplied {
+		return 1
+	}
+	return 0
+}
+
+func rankDeltaKey(queryDigest, eventID string) string {
+	digest := sha256.Sum256([]byte("eventframe-rank-delta-v2\x00" + queryDigest + "\x00" + eventID))
+	return hex.EncodeToString(digest[:])
+}
+
+func retrievalMetadata(candidate model.Candidate, request model.RecallRequest) ([]byte, error) {
+	attributes := candidate.Event.Attributes
+	collection := "user:" + request.TenantID
+	if candidate.Event.SessionID == request.SessionID {
+		collection = "session:" + request.SessionID
+	}
+	metadata := make(map[string]any)
+	if len(candidate.RetrievalMetadata) > 0 {
+		if err := json.Unmarshal(candidate.RetrievalMetadata, &metadata); err != nil {
+			return nil, fmt.Errorf("decode LibraVDB nomination metadata: %w", err)
+		}
+		if storedCollection, _ := metadata["collection"].(string); storedCollection == "" {
+			return nil, errors.New("LibraVDB nomination metadata has no collection")
+		}
+	} else {
+		metadata["collection"] = collection
+	}
+	defaults := map[string]any{
+		"ts":         candidate.Event.AvailableAt.UnixMilli(),
+		"session_id": candidate.Event.SessionID, "user_id": request.TenantID,
+		"node_kind": candidate.Event.Kind, "token_estimate": candidate.EstimatedTokens,
+		"priority": candidate.Event.Priority, "role": attributes["role"],
+		"authored": false, "access_count": 0,
+		"authority": candidate.Event.Priority, "salience": candidate.Event.Priority,
+		"compaction_confidence": 1.0,
+	}
+	for key, value := range defaults {
+		if _, exists := metadata[key]; !exists {
+			metadata[key] = value
+		}
+	}
+	for _, key := range []string{"authored", "authority", "salience", "access_count", "compaction_confidence", "summary_confidence", "tier"} {
+		if value, ok := attributes[key]; ok {
+			metadata[key] = parseRetrievalAttribute(value)
+		}
+	}
+	encoded, err := json.Marshal(metadata)
+	if err != nil {
+		return nil, fmt.Errorf("encode LibraVDB retrieval metadata: %w", err)
+	}
+	return encoded, nil
+}
+
+func eventIndexMetadata(event model.Event, collection, digest string) ([]byte, error) {
+	metadata := map[string]any{
+		"collection": collection, "ts": event.AvailableAt.UnixMilli(),
+		"session_id": event.SessionID, "user_id": event.TenantID,
+		"node_kind": event.Kind, "priority": event.Priority,
+		"role": event.Attributes["role"], "authored": false, "access_count": 0,
+		"authority": event.Priority, "salience": event.Priority,
+		"compaction_confidence": 1.0, "eventframe_digest": digest,
+		"eventframe_available_at": event.AvailableAt.UTC().Format(time.RFC3339Nano),
+	}
+	for _, key := range []string{"authored", "authority", "salience", "access_count", "compaction_confidence", "summary_confidence", "tier"} {
+		if value, ok := event.Attributes[key]; ok {
+			metadata[key] = parseRetrievalAttribute(value)
+		}
+	}
+	encoded, err := json.Marshal(metadata)
+	if err != nil {
+		return nil, fmt.Errorf("encode LibraVDB index metadata: %w", err)
+	}
+	return encoded, nil
+}
+
+func (s *Service) candidateCollection(tenantID string) string {
+	digest := sha256.Sum256([]byte(tenantID))
+	return s.config.CandidateCollectionPrefix + hex.EncodeToString(digest[:12])
+}
+
+func parseRetrievalAttribute(value string) any {
+	if value == "true" {
+		return true
+	}
+	if value == "false" {
+		return false
+	}
+	var number float64
+	if _, err := fmt.Sscan(value, &number); err == nil {
+		return number
+	}
+	return value
+}
+
 func (s *Service) Health(ctx context.Context) (model.HealthResponse, error) {
 	stats, err := s.store.Stats(ctx)
 	if err != nil {
 		return model.HealthResponse{}, err
 	}
 	return model.HealthResponse{
-		ProtocolVersion: model.ProtocolVersion,
-		Status:          "ok",
-		Store:           stats.Backend,
-		Dimension:       s.embedder.Dimension(),
-		Quantization:    s.config.Quantization,
-		Snapshot:        s.store.Snapshot(ctx),
+		ProtocolVersion:        model.ProtocolVersion,
+		Status:                 "ok",
+		Store:                  stats.Backend,
+		Dimension:              s.embedder.Dimension(),
+		Quantization:           s.config.Quantization,
+		NominationContract:     nominationContractName(s.retriever),
+		RetrievalContract:      s.ranker.ContractName(),
+		ExternalCandidateIndex: s.index != nil,
+		Snapshot:               s.store.Snapshot(ctx),
 	}, nil
 }
 
@@ -401,6 +964,11 @@ func (s *Service) Delete(ctx context.Context, request model.DeleteRequest) (mode
 	result, err := s.store.Delete(ctx, request.TenantID, request.EventID)
 	if err != nil {
 		return model.DeleteResponse{}, err
+	}
+	if s.index != nil {
+		if indexErr := s.index.DeleteText(ctx, s.candidateCollection(request.TenantID), request.EventID); indexErr != nil {
+			return model.DeleteResponse{}, fmt.Errorf("delete event through LibraVDB contract: %w", indexErr)
+		}
 	}
 	return model.DeleteResponse{ProtocolVersion: model.ProtocolVersion, EventID: request.EventID, Deleted: result.Deleted, Snapshot: result.Snapshot}, nil
 }
@@ -421,6 +989,11 @@ func (s *Service) Retain(ctx context.Context, request model.RetentionRequest) (m
 	result, err := s.store.DeleteBefore(ctx, request.TenantID, request.Before, request.Limit)
 	if err != nil {
 		return model.RetentionResponse{}, err
+	}
+	if s.index != nil && len(result.DeletedIDs) > 0 {
+		if indexErr := s.index.DeleteTextBatch(ctx, s.candidateCollection(request.TenantID), result.DeletedIDs); indexErr != nil {
+			return model.RetentionResponse{}, fmt.Errorf("retain events through LibraVDB contract: %w", indexErr)
+		}
 	}
 	return model.RetentionResponse{ProtocolVersion: model.ProtocolVersion, DeletedIDs: result.DeletedIDs, Snapshot: result.Snapshot}, nil
 }
@@ -493,6 +1066,63 @@ func (s *Service) PublishOmittedInfluenceCertificate(ctx context.Context, reques
 	return model.CertificateResponse{ProtocolVersion: model.ProtocolVersion, CertificateID: request.Certificate.ID, Snapshot: next}, nil
 }
 
+func (s *Service) EstimateOmittedInfluence(ctx context.Context, request model.EstimateOmittedInfluenceRequest) (model.CertificateResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.CertificateResponse{}, err
+	}
+	if strings.TrimSpace(request.ID) == "" || strings.TrimSpace(request.TenantID) == "" || strings.TrimSpace(request.JournalID) == "" || len(request.PopulationEventIDs) == 0 || len(request.PopulationEventIDs) > 10_000 {
+		return model.CertificateResponse{}, errors.New("audit id, tenant, journal, and a population of at most 10000 events are required")
+	}
+	journal, err := s.store.GetBayesianJournal(ctx, request.TenantID, request.JournalID)
+	if err != nil {
+		return model.CertificateResponse{}, err
+	}
+	nominated := make(map[string]struct{}, len(journal.Report.Decisions))
+	for _, decision := range journal.Report.Decisions {
+		nominated[decision.EventID] = struct{}{}
+	}
+	for _, eventID := range request.PopulationEventIDs {
+		if _, present := nominated[eventID]; present {
+			return model.CertificateResponse{}, errors.New("runtime omitted-influence population contains a nominated event")
+		}
+	}
+	expanded := make(map[string]model.BernoulliLaw, len(request.Observations))
+	for _, observation := range request.Observations {
+		if _, duplicate := expanded[observation.EventID]; duplicate {
+			return model.CertificateResponse{}, errors.New("audit observations must be unique")
+		}
+		expanded[observation.EventID] = observation.ExpandedLaw
+	}
+	snapshot := s.store.Snapshot(ctx)
+	if journal.Snapshot.PolicyVersion != snapshot.PolicyVersion || journal.Snapshot.EvidenceEpoch != snapshot.EvidenceEpoch {
+		return model.CertificateResponse{}, errors.New("runtime audit journal is stale")
+	}
+	estimate, err := audit.EstimateInfluence(request.PopulationEventIDs, request.LocalLaw, expanded, s.config.BayesianPolicy.AuditSeed, snapshot.EvidenceEpoch, request.AuditSequence, s.config.BayesianPolicy.AuditProbability, request.ConfidenceDelta)
+	if err != nil {
+		return model.CertificateResponse{}, err
+	}
+	populationPayload, err := json.Marshal(request.PopulationEventIDs)
+	if err != nil {
+		return model.CertificateResponse{}, err
+	}
+	populationHash := sha256.Sum256(populationPayload)
+	certificate := model.OmittedInfluenceCertificate{
+		ID: request.ID, TenantID: request.TenantID, PolicyVersion: snapshot.PolicyVersion, EvidenceEpoch: snapshot.EvidenceEpoch,
+		DivergenceUCB: estimate.UpperBound, DivergenceLimit: request.DivergenceLimit,
+		AuditProbability: s.config.BayesianPolicy.AuditProbability, SimultaneousCoverage: 1 - request.ConfidenceDelta,
+		Procedure: "runtime-horvitz-thompson-js-anytime-v1", Issuer: "eventframed", RuntimeEstimated: true,
+		QueryDigest: journal.QueryDigest, PopulationDigest: hex.EncodeToString(populationHash[:]), ValidUntil: request.ValidUntil,
+	}
+	if err := validateOmittedInfluenceCertificate(certificate, snapshot, time.Now().UTC()); err != nil {
+		return model.CertificateResponse{}, err
+	}
+	next, err := s.store.PublishOmittedInfluenceCertificate(ctx, certificate)
+	if err != nil {
+		return model.CertificateResponse{}, err
+	}
+	return model.CertificateResponse{ProtocolVersion: model.ProtocolVersion, CertificateID: certificate.ID, Snapshot: next}, nil
+}
+
 func (s *Service) ObserveBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest) (model.BayesianOutcomeResponse, error) {
 	if err := checkProtocol(request.ProtocolVersion); err != nil {
 		return model.BayesianOutcomeResponse{}, err
@@ -500,6 +1130,11 @@ func (s *Service) ObserveBayesianOutcome(ctx context.Context, request model.Baye
 	if strings.TrimSpace(request.IdempotencyKey) == "" || strings.TrimSpace(request.TenantID) == "" || strings.TrimSpace(request.JournalID) == "" || strings.TrimSpace(request.EventID) == "" {
 		return model.BayesianOutcomeResponse{}, errors.New("idempotency_key, tenant_id, journal_id, and event_id are required")
 	}
+	resolvedUseful, evidence := request.Signals.Resolve(request.Useful)
+	if !evidence {
+		return model.BayesianOutcomeResponse{}, errors.New("packed-only exposure is not usefulness evidence")
+	}
+	request.Useful = resolvedUseful
 	now := time.Now().UTC()
 	if request.ObservedAt.IsZero() || request.AvailableAt.IsZero() || request.AvailableAt.Before(request.ObservedAt) || request.AvailableAt.After(now) {
 		return model.BayesianOutcomeResponse{}, errors.New("outcome times must satisfy observed_at <= available_at <= current time")
@@ -546,11 +1181,59 @@ func (s *Service) ObserveBayesianOutcome(ctx context.Context, request model.Baye
 		EventID: request.EventID, JournalID: request.JournalID, AvailableAt: request.AvailableAt,
 		PosteriorKey: decision.PosteriorKey,
 	}
-	result, err := s.store.ApplyBayesianOutcome(ctx, request, decision.PosteriorKey, digest, weight, s.config.BayesianChangePolicy, residualObservation, s.config.ResidualPolicy)
+	result, err := s.store.ApplyBayesianOutcome(ctx, request, decision.PosteriorKey, decision.ParentPosteriorKey, digest, weight, s.config.BayesianChangePolicy, s.config.BayesianGroupPolicy, residualObservation, s.config.ResidualPolicy)
 	if err != nil {
 		return model.BayesianOutcomeResponse{}, err
 	}
-	return model.BayesianOutcomeResponse{ProtocolVersion: model.ProtocolVersion, Duplicate: result.Duplicate, ChangePoint: result.ChangePoint, Posterior: result.Posterior, Snapshot: result.Snapshot}, nil
+	return model.BayesianOutcomeResponse{ProtocolVersion: model.ProtocolVersion, Duplicate: result.Duplicate, ChangePoint: result.ChangePoint, Revision: result.Revision, Posterior: result.Posterior, Snapshot: result.Snapshot}, nil
+}
+
+// CompareBayesianGroup is a proposal-only slow-path operation. It never
+// publishes an Anti-Pigeon certificate or changes the active posterior keys.
+func (s *Service) CompareBayesianGroup(ctx context.Context, request model.BayesianGroupComparisonRequest) (model.BayesianGroupComparison, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.BayesianGroupComparison{}, err
+	}
+	if strings.TrimSpace(request.TenantID) == "" || len(request.MemberEventIDs) < 2 || len(request.MemberEventIDs) > s.config.BayesianGroupPolicy.MaxMembers {
+		return model.BayesianGroupComparison{}, errors.New("tenant_id and between two and the configured maximum member_event_ids are required")
+	}
+	ids := append([]string(nil), request.MemberEventIDs...)
+	sort.Strings(ids)
+	for index, id := range ids {
+		if strings.TrimSpace(id) == "" || (index > 0 && id == ids[index-1]) {
+			return model.BayesianGroupComparison{}, errors.New("member_event_ids must be non-empty and unique")
+		}
+	}
+	snapshot := s.store.Snapshot(ctx)
+	now := time.Now().UTC()
+	members := make([]model.BayesianGroupMember, 0, len(ids))
+	for _, eventID := range ids {
+		posteriorKey := eventID
+		certificate, certificateErr := s.store.GetAntiPigeonCertificate(ctx, request.TenantID, []string{eventID})
+		if certificateErr == nil && antiPigeonCertificateActive(certificate, snapshot, now) {
+			posteriorKey = "ap:" + certificate.ID
+		} else if certificateErr != nil && !errors.Is(certificateErr, store.ErrCertificateNotFound) {
+			return model.BayesianGroupComparison{}, certificateErr
+		}
+		member := model.BayesianGroupMember{EventID: eventID, CurrentPosteriorKey: posteriorKey}
+		posterior, posteriorErr := s.store.GetBayesianPosterior(ctx, request.TenantID, posteriorKey)
+		if posteriorErr == nil && posterior.Certified && posterior.EvidenceEpoch == snapshot.EvidenceEpoch {
+			evidence := posterior.MemberEvidence[eventID]
+			member.UsefulWeight, member.NotUsefulWeight = evidence.UsefulWeight, evidence.NotUsefulWeight
+		} else if posteriorErr != nil && !errors.Is(posteriorErr, store.ErrPosteriorNotFound) {
+			return model.BayesianGroupComparison{}, posteriorErr
+		}
+		members = append(members, member)
+	}
+	if current := s.store.Snapshot(ctx); current != snapshot {
+		return model.BayesianGroupComparison{}, store.ErrStaleSnapshot
+	}
+	comparison := bayes.CompareGroup(members, s.config.BayesianGroupPolicy)
+	comparison.ProtocolVersion = model.ProtocolVersion
+	comparison.TenantID = request.TenantID
+	comparison.HorizonKey = model.RetrievalUsefulnessHorizon
+	comparison.Snapshot = snapshot
+	return comparison, nil
 }
 
 func (s *Service) PublishPredictiveSnap(ctx context.Context, request model.PredictiveSnapRequest) (model.PredictiveSnapResponse, error) {
@@ -780,7 +1463,13 @@ func validateSnapCertificates(request model.PredictiveSnapRequest, closure model
 	return nil
 }
 
-func (s *Service) Close() error { return s.store.Close() }
+func (s *Service) Close() error {
+	var rankDeltaErr error
+	if s.rankDelta != nil {
+		rankDeltaErr = s.rankDelta.Close()
+	}
+	return errors.Join(rankDeltaErr, s.store.Close())
+}
 
 func (s *Service) resolveBudgets(request model.RecallRequest) (int, int, int, error) {
 	recallK, packK, tokenBudget := request.RecallK, request.PackK, request.TokenBudget
@@ -796,7 +1485,7 @@ func (s *Service) resolveBudgets(request model.RecallRequest) (int, int, int, er
 	if recallK <= 0 || packK <= 0 || tokenBudget <= 0 {
 		return 0, 0, 0, errors.New("recall_k, pack_k, and token_budget must be positive")
 	}
-	if recallK > 1000 || packK > 100 {
+	if recallK > maxRecallK || packK > maxPackK {
 		return 0, 0, 0, errors.New("requested budgets exceed v1alpha1 safety caps")
 	}
 	if packK > recallK {
@@ -915,8 +1604,11 @@ func validateOmittedInfluenceCertificate(certificate model.OmittedInfluenceCerti
 	if strings.TrimSpace(certificate.ID) == "" || strings.TrimSpace(certificate.TenantID) == "" || strings.TrimSpace(certificate.Issuer) == "" || strings.TrimSpace(certificate.Procedure) == "" {
 		return errors.New("omitted-influence certificate id, tenant_id, issuer, and procedure are required")
 	}
-	if !certificate.ExternalAudit {
-		return errors.New("omitted-influence certificate must be issued by an external audit")
+	if certificate.ExternalAudit == certificate.RuntimeEstimated {
+		return errors.New("omitted-influence certificate requires exactly one external or runtime estimator provenance")
+	}
+	if certificate.RuntimeEstimated && (strings.TrimSpace(certificate.QueryDigest) == "" || strings.TrimSpace(certificate.PopulationDigest) == "") {
+		return errors.New("runtime omitted-influence certificate requires query and population bindings")
 	}
 	if certificate.PolicyVersion != snapshot.PolicyVersion || certificate.EvidenceEpoch != snapshot.EvidenceEpoch {
 		return errors.New("omitted-influence certificate does not bind the current policy and evidence epoch")
@@ -930,8 +1622,11 @@ func validateOmittedInfluenceCertificate(certificate model.OmittedInfluenceCerti
 	return nil
 }
 
-func omittedInfluenceCertificateActive(certificate model.OmittedInfluenceCertificate, snapshot model.Snapshot, now time.Time) bool {
-	return validateOmittedInfluenceCertificate(certificate, snapshot, now) == nil
+func omittedInfluenceCertificateActive(certificate model.OmittedInfluenceCertificate, snapshot model.Snapshot, now time.Time, queryDigest string) bool {
+	if validateOmittedInfluenceCertificate(certificate, snapshot, now) != nil {
+		return false
+	}
+	return !certificate.RuntimeEstimated || subtle.ConstantTimeCompare([]byte(certificate.QueryDigest), []byte(queryDigest)) == 1
 }
 
 func unitOpen(value float64) bool {
@@ -977,18 +1672,35 @@ func bayesianOutcomeDigest(request model.BayesianOutcomeRequest) (string, error)
 
 func bayesianPolicyDigest(config Config) (string, error) {
 	payload, err := json.Marshal(struct {
-		Frontier    bayes.Policy       `json:"frontier"`
-		ScoreWeight float64            `json:"score_weight"`
-		Change      bayes.ChangePolicy `json:"change"`
-		Residual    residual.Policy    `json:"residual"`
-		Snap        graphpolicy.Policy `json:"snap"`
-		Agency      agency.Policy      `json:"agency"`
-	}{Frontier: config.BayesianPolicy, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Residual: config.ResidualPolicy, Snap: config.SnapPolicy, Agency: config.AgencyPolicy})
+		Frontier              bayes.Policy               `json:"frontier"`
+		BaselineCalibration   calibration.Logit          `json:"baseline_calibration"`
+		PredictiveCalibration calibration.Logit          `json:"predictive_calibration"`
+		ScoreWeight           float64                    `json:"score_weight"`
+		Change                bayes.ChangePolicy         `json:"change"`
+		Group                 bayes.GroupPolicy          `json:"group"`
+		Ranking               ranking.Policy             `json:"ranking"`
+		MaxRankDelta          float64                    `json:"max_rank_delta"`
+		ElasticRankDelta      ranking.ElasticDeltaPolicy `json:"elastic_rank_delta"`
+		Packing               packing.Policy             `json:"packing"`
+		NominationContract    string                     `json:"nomination_contract"`
+		RetrievalContract     string                     `json:"retrieval_contract"`
+		Residual              residual.Policy            `json:"residual"`
+		ResidualMode          string                     `json:"residual_mode"`
+		Snap                  graphpolicy.Policy         `json:"snap"`
+		Agency                agency.Policy              `json:"agency"`
+	}{Frontier: config.BayesianPolicy, BaselineCalibration: config.BaselineCalibration, PredictiveCalibration: config.PredictiveCalibration, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Group: config.BayesianGroupPolicy, Ranking: config.RankingPolicy, MaxRankDelta: config.MaxRankDelta, ElasticRankDelta: config.ElasticRankDelta, Packing: config.PackingPolicy, NominationContract: nominationContractName(config.CandidateRetriever), RetrievalContract: config.CandidateRanker.ContractName(), Residual: config.ResidualPolicy, ResidualMode: config.ResidualMode, Snap: config.SnapPolicy, Agency: config.AgencyPolicy})
 	if err != nil {
 		return "", fmt.Errorf("encode Bayesian policy: %w", err)
 	}
 	digest := sha256.Sum256(payload)
 	return hex.EncodeToString(digest[:]), nil
+}
+
+func nominationContractName(retriever retrieval.CandidateRetriever) string {
+	if retriever == nil {
+		return "embedded-vector-search"
+	}
+	return retriever.RetrievalContractName()
 }
 
 func agencyProposalDigest(proposal model.AgencyProposal) (string, error) {
@@ -1013,16 +1725,24 @@ func residualGeneralKey(posteriorKey, horizonKey string) string {
 
 func scoreCandidate(candidate model.Candidate, sessionID string, asOf time.Time) float64 {
 	similarity := clamp((candidate.Similarity+1)/2, 0, 1)
-	age := asOf.Sub(candidate.Event.AvailableAt)
-	if age < 0 {
-		age = 0
-	}
-	recency := math.Exp(-age.Hours() / (24 * 30))
+	recency := candidateRecency(candidate.Event, asOf)
 	session := 0.0
 	if candidate.Event.SessionID == sessionID {
 		session = 1
 	}
 	return 0.65*similarity + 0.15*candidate.Event.MeanFieldConfidence() + 0.10*recency + 0.05*candidate.Event.Priority + 0.05*session
+}
+
+func candidateRecency(event model.Event, asOf time.Time) float64 {
+	age := asOf.Sub(event.AvailableAt)
+	if age < 0 {
+		age = 0
+	}
+	return math.Exp(-age.Hours() / (24 * 30))
+}
+
+func parentPosteriorKey() string {
+	return "global:" + model.RetrievalUsefulnessHorizon
 }
 
 func estimateTokens(content string) int {

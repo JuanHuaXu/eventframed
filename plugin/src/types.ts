@@ -41,6 +41,16 @@ export type EventFrame = {
 export type ContextCandidate = {
   event: EventFrame;
   similarity: number;
+  graph_compatibility: number;
+  graph_applied: boolean;
+  retrieval_score: number;
+  rank_delta: number;
+  rank_delta_scale?: number;
+  rank_delta_answer_certainty?: number;
+  rank_delta_correction_reliability?: number;
+  rank_delta_confidence?: number;
+  rank_delta_basis?: "rank-boundary+correction-reliability";
+  retrieval_contract: string;
   score: number;
   estimated_tokens: number;
 };
@@ -52,6 +62,10 @@ export type ContextPacket = {
   eligible: number;
   packed: number;
   used_tokens: number;
+  packet_confidence?: number;
+  packet_answer_certainty?: number;
+  nomination_contract: string;
+  retrieval_contract: string;
   snapshot: {
     runtime_version: number;
     policy_version: number;
@@ -67,11 +81,14 @@ export type ContextPacket = {
     mode: "shadow";
     nominated: number;
     activated: number;
+    deep_reviewed: number;
     selection_support_certified: false;
     decisions: Array<{
       event_id: string;
       activation_score: number;
       activated: boolean;
+      cheap_update: boolean;
+      deep_review: boolean;
       evidence_ready: boolean;
       audit_selected: boolean;
       audit_probability: number;
@@ -87,6 +104,7 @@ export type AdapterConfig = {
   packK: number;
   tokenBudget: number;
   capture: boolean;
+  tracePath?: string;
   agencyEnabled: boolean;
   agencyKillSwitch: boolean;
   agencyPublicKeyPath: string;

@@ -42,11 +42,13 @@ test("formatContext escapes records so they cannot close the trust envelope", ()
   });
   const packet: ContextPacket = {
     protocol_version: "eventframe.v1alpha1",
-    candidates: [{ event, similarity: 1, score: 1, estimated_tokens: 3 }],
+    candidates: [{ event, similarity: 1, graph_compatibility: 0, graph_applied: false, retrieval_score: 1, rank_delta: 0, retrieval_contract: "test/RankCandidates", score: 1, estimated_tokens: 3 }],
     recalled: 1,
     eligible: 1,
     packed: 1,
     used_tokens: 3,
+    nomination_contract: "test/SearchTextCollections",
+    retrieval_contract: "test/RankCandidates",
     snapshot: { runtime_version: 1, policy_version: 1, contract_version: 2, graph_version: 1, posterior_version: 1, residual_version: 1, abstraction_version: 1, agency_version: 1, evidence_epoch: 1 },
   };
   const output = formatContext(packet);

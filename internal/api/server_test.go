@@ -116,6 +116,25 @@ func TestGetPredictiveGraphOverHTTP(t *testing.T) {
 	}
 }
 
+func TestBayesianGroupComparisonOverHTTPIsProposalOnly(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, _ := service.New(memorystore.New(), embedder, service.Config{
+		DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000,
+	})
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+
+	var comparison model.BayesianGroupComparison
+	postJSON(t, server.URL+"/v1/bayesian/groups:compare", model.BayesianGroupComparisonRequest{
+		ProtocolVersion: model.ProtocolVersion,
+		TenantID:        "tenant-a",
+		MemberEventIDs:  []string{"event-b", "event-a"},
+	}, &comparison)
+	if comparison.Recommendation != "uncertain" || !comparison.RequiresAntiPigeonCertification || comparison.Members[0].EventID != "event-a" {
+		t.Fatalf("comparison = %+v", comparison)
+	}
+}
+
 func TestAgencyLifecycleOverHTTP(t *testing.T) {
 	embedder, _ := embed.NewHashEmbedder(8)
 	signer, err := agency.NewSignerForTest()

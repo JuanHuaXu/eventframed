@@ -1,0 +1,11 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/graph
+cpu: Apple M4
+BenchmarkCandidateCompatibility200Nodes400Edges-10    	   14308	     84850 ns/op	  103353 B/op	      40 allocs/op
+BenchmarkCandidateCompatibility200Nodes400Edges-10    	   12676	     92074 ns/op	  103352 B/op	      40 allocs/op
+BenchmarkCandidateCompatibility200Nodes400Edges-10    	   13912	     85288 ns/op	  103352 B/op	      40 allocs/op
+BenchmarkCandidateCompatibility200Nodes400Edges-10    	   12966	     91944 ns/op	  103352 B/op	      40 allocs/op
+BenchmarkCandidateCompatibility200Nodes400Edges-10    	   14011	     84881 ns/op	  103352 B/op	      40 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/graph	6.128s

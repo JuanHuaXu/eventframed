@@ -1,0 +1,66 @@
+{
+  "schema_version": "eventframe.evaluation.v1",
+  "evaluation_block": "confirmation",
+  "cases": 138,
+  "trajectories": 3,
+  "variants": {
+    "elastic": {
+      "brier": 0.2323694201719367,
+      "expected_calibration_error": 0.2622432449772132,
+      "recall_at_10": 0.4518734373894131,
+      "recall_at_50": 0.9684135605625277,
+      "mean_reciprocal_rank": 0.9144127544489863,
+      "priority_weighted_brier": 0.23163889247684694,
+      "priority_weighted_recall_at_10": 0.45397633087863265,
+      "high_priority_miss_rate_at_10": 0.007936507936507936,
+      "high_priority_cases": 126,
+      "nomination_recall": 1,
+      "activation_rate": 1,
+      "packed_recall": 0.35627608155127377,
+      "mean_packed_count": 7.746376811594203,
+      "mean_used_tokens": 1923.2826086956522,
+      "adaptive_expansion_rate": 0
+    },
+    "fixed": {
+      "brier": 0.2323694201719367,
+      "expected_calibration_error": 0.2622432449772132,
+      "recall_at_10": 0.4328451246451408,
+      "recall_at_50": 0.9584021752555477,
+      "mean_reciprocal_rank": 0.9120688555825605,
+      "priority_weighted_brier": 0.23163889247684694,
+      "priority_weighted_recall_at_10": 0.43519409070995035,
+      "high_priority_miss_rate_at_10": 0.007936507936507936,
+      "high_priority_cases": 126,
+      "nomination_recall": 1,
+      "activation_rate": 1,
+      "packed_recall": 0.3452526734597883,
+      "mean_packed_count": 7.717391304347826,
+      "mean_used_tokens": 1922.9202898550725,
+      "adaptive_expansion_rate": 0
+    }
+  },
+  "comparisons": {
+    "elastic": {
+      "baseline": "fixed",
+      "candidate": "elastic",
+      "cluster_inference_valid": true,
+      "brier_gain": 0,
+      "priority_weighted_brier_gain": 0,
+      "cluster_bootstrap_lower_95": -7.990241465105291e-18,
+      "cluster_bootstrap_upper_95": -1.559302000878029e-19,
+      "recall_at_10_gain": 0.019028312744272302,
+      "recall_at_10_cluster_lower_95": 0.013593880008502278,
+      "recall_at_10_cluster_upper_95": 0.06593406593406592,
+      "packed_recall_gain": 0.011023408091485498,
+      "packed_recall_cluster_lower_95": 0.0034858672633294664,
+      "packed_recall_cluster_upper_95": 0.05934065934065934,
+      "mean_used_tokens_delta": 0.3623188405797464,
+      "high_priority_miss_increase": 0,
+      "high_priority_miss_increase_upper_95": 0,
+      "priority_constraint_evaluated": false,
+      "priority_constraint_passed": false
+    }
+  },
+  "representation_ablation_ready": false,
+  "interpretability_ready": false
+}

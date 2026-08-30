@@ -10,26 +10,49 @@ import (
 )
 
 type Config struct {
-	Listen                  string
-	DatabasePath            string
-	Dimension               int
-	Quantization            string
-	RecallK                 int
-	PackK                   int
-	TokenBudget             int
-	LogLevel                string
-	Embedder                string
-	EmbeddingURL            string
-	EmbeddingModel          string
-	EmbeddingAPIKeyEnv      string
-	EmbeddingTimeoutSeconds int
-	MigrateV1               bool
-	MigrationBackup         string
-	AgencyEnabled           bool
-	AgencyPrivateKey        string
-	AgencyPublicKey         string
-	AgencyIssuerToken       string
-	AgencyAuthorityToken    string
+	Listen                     string
+	DatabasePath               string
+	Dimension                  int
+	Quantization               string
+	RecallK                    int
+	PackK                      int
+	TokenBudget                int
+	LogLevel                   string
+	Embedder                   string
+	EmbeddingURL               string
+	EmbeddingModel             string
+	EmbeddingAPIKeyEnv         string
+	EmbeddingTimeoutSeconds    int
+	EmbeddingDocumentPrefix    string
+	EmbeddingQueryPrefix       string
+	CalibrationScale           float64
+	CalibrationBias            float64
+	CalibrationFloor           float64
+	PredictiveCalibrationScale float64
+	PredictiveCalibrationBias  float64
+	PredictiveCalibrationFloor float64
+	ContextualScoring          bool
+	HierarchicalPosterior      bool
+	SharedEvidenceWeight       float64
+	LibraVDBContractEndpoint   string
+	LibraVDBContractTLSMode    string
+	LibraVDBContractTLSCA      string
+	LibraVDBContractTLSCert    string
+	LibraVDBContractTLSKey     string
+	LibraVDBRankerEndpoint     string
+	RankDeltaSQLitePath        string
+	RankDeltaCacheEntries      int
+	ElasticRankDelta           bool
+	ElasticRankDeltaMinScale   float64
+	ElasticRankDeltaMaxScale   float64
+	ResidualMode               string
+	MigrateV1                  bool
+	MigrationBackup            string
+	AgencyEnabled              bool
+	AgencyPrivateKey           string
+	AgencyPublicKey            string
+	AgencyIssuerToken          string
+	AgencyAuthorityToken       string
 }
 
 func Parse(args []string) (Config, error) {
@@ -53,6 +76,29 @@ func Parse(args []string) (Config, error) {
 	set.StringVar(&config.EmbeddingModel, "embedding-model", "", "embedding model name")
 	set.StringVar(&config.EmbeddingAPIKeyEnv, "embedding-api-key-env", "EVENTFRAMED_EMBEDDING_API_KEY", "environment variable containing the embedding API key")
 	set.IntVar(&config.EmbeddingTimeoutSeconds, "embedding-timeout", 10, "embedding request timeout in seconds")
+	set.StringVar(&config.EmbeddingDocumentPrefix, "embedding-document-prefix", "", "optional embedding-model document prefix")
+	set.StringVar(&config.EmbeddingQueryPrefix, "embedding-query-prefix", "", "optional embedding-model query prefix")
+	set.Float64Var(&config.CalibrationScale, "calibration-scale", 1, "monotonic baseline logit calibration scale")
+	set.Float64Var(&config.CalibrationBias, "calibration-bias", 0, "baseline logit calibration bias")
+	set.Float64Var(&config.CalibrationFloor, "calibration-floor", 1e-6, "probability floor used by baseline calibration")
+	set.Float64Var(&config.PredictiveCalibrationScale, "predictive-calibration-scale", 0, "belief-conditioned score calibration scale; defaults to baseline calibration")
+	set.Float64Var(&config.PredictiveCalibrationBias, "predictive-calibration-bias", 0, "belief-conditioned score calibration bias")
+	set.Float64Var(&config.PredictiveCalibrationFloor, "predictive-calibration-floor", 0, "belief-conditioned calibration floor; defaults to baseline calibration")
+	set.BoolVar(&config.ContextualScoring, "contextual-scoring", false, "enable frozen contextual Bayesian score composition")
+	set.BoolVar(&config.HierarchicalPosterior, "hierarchical-posterior", false, "enable weak tenant/horizon posterior shrinkage")
+	set.Float64Var(&config.SharedEvidenceWeight, "shared-evidence-weight", .5, "effective weight of each outcome in a certified shared Anti-Pigeon posterior")
+	set.StringVar(&config.LibraVDBContractEndpoint, "libravdb-contract-endpoint", "", "optional LibraVDB gRPC endpoint for contract-native indexing, nomination, and ranking (unix:/path or tcp:host:port)")
+	set.StringVar(&config.LibraVDBContractTLSMode, "libravdb-contract-tls-mode", "auto", "LibraVDB contract transport: auto, tls, or insecure")
+	set.StringVar(&config.LibraVDBContractTLSCA, "libravdb-contract-tls-ca", "", "optional CA certificate for the LibraVDB contract endpoint")
+	set.StringVar(&config.LibraVDBContractTLSCert, "libravdb-contract-tls-client-cert", "", "optional mTLS client certificate for the LibraVDB contract endpoint")
+	set.StringVar(&config.LibraVDBContractTLSKey, "libravdb-contract-tls-client-key", "", "optional mTLS client key for the LibraVDB contract endpoint")
+	set.StringVar(&config.LibraVDBRankerEndpoint, "libravdb-ranker-endpoint", "", "deprecated alias for libravdb-contract-endpoint")
+	set.StringVar(&config.RankDeltaSQLitePath, "rank-delta-sqlite", filepath.Join(defaultsRoot, "data", "rank-deltas.sqlite"), "SQLite path for durable EventFrame post-retrieval rank deltas")
+	set.IntVar(&config.RankDeltaCacheEntries, "rank-delta-cache-entries", 100_000, "maximum in-memory rank-delta cache entries")
+	set.BoolVar(&config.ElasticRankDelta, "elastic-rank-delta", true, "modulate bounded rank corrections by answer certainty and correction reliability")
+	set.Float64Var(&config.ElasticRankDeltaMinScale, "elastic-rank-delta-min-scale", .5, "rank-delta scale at a certain packing boundary")
+	set.Float64Var(&config.ElasticRankDeltaMaxScale, "elastic-rank-delta-max-scale", 2.5, "rank-delta scale at an uncertain packing boundary")
+	set.StringVar(&config.ResidualMode, "residual-mode", "apply", "residual output mode: apply, shadow, or disabled")
 	set.BoolVar(&config.MigrateV1, "migrate-v1", false, "migrate a Phase 1 database to the durable schema, then exit")
 	set.StringVar(&config.MigrationBackup, "migration-backup", "", "required absolute backup path for migration")
 	set.BoolVar(&config.AgencyEnabled, "agency-enabled", false, "enable signed data-only agency proposal endpoints")
@@ -86,6 +132,45 @@ func Parse(args []string) (Config, error) {
 	if config.EmbeddingTimeoutSeconds <= 0 {
 		return Config{}, errors.New("embedding-timeout must be positive")
 	}
+	if config.CalibrationScale <= 0 || config.CalibrationFloor <= 0 || config.CalibrationFloor >= .5 {
+		return Config{}, errors.New("calibration scale must be positive and floor must be in (0,0.5)")
+	}
+	if config.PredictiveCalibrationScale != 0 && (config.PredictiveCalibrationScale <= 0 || config.PredictiveCalibrationFloor <= 0 || config.PredictiveCalibrationFloor >= .5) {
+		return Config{}, errors.New("predictive calibration scale must be positive and floor must be in (0,0.5)")
+	}
+	if config.SharedEvidenceWeight <= 0 || config.SharedEvidenceWeight > 1 {
+		return Config{}, errors.New("shared-evidence-weight must be in (0,1]")
+	}
+	if config.ResidualMode != "apply" && config.ResidualMode != "shadow" && config.ResidualMode != "disabled" {
+		return Config{}, errors.New("residual-mode must be apply, shadow, or disabled")
+	}
+	if !filepath.IsAbs(config.RankDeltaSQLitePath) || config.RankDeltaCacheEntries <= 0 {
+		return Config{}, errors.New("rank-delta-sqlite must be absolute and rank-delta-cache-entries must be positive")
+	}
+	if config.ElasticRankDeltaMinScale < 0 || config.ElasticRankDeltaMaxScale < config.ElasticRankDeltaMinScale || config.ElasticRankDeltaMaxScale > 10 {
+		return Config{}, errors.New("elastic rank-delta scales must satisfy 0 <= min <= max <= 10")
+	}
+	if filepath.Clean(config.RankDeltaSQLitePath) == filepath.Clean(config.DatabasePath) {
+		return Config{}, errors.New("rank-delta SQLite and LibraVDB database paths must differ")
+	}
+	if config.LibraVDBContractEndpoint != "" && config.LibraVDBRankerEndpoint != "" && config.LibraVDBContractEndpoint != config.LibraVDBRankerEndpoint {
+		return Config{}, errors.New("libravdb contract and deprecated ranker endpoints disagree")
+	}
+	if config.LibraVDBContractEndpoint == "" {
+		config.LibraVDBContractEndpoint = config.LibraVDBRankerEndpoint
+	}
+	if config.LibraVDBContractEndpoint != "" && !strings.HasPrefix(config.LibraVDBContractEndpoint, "unix:") && !strings.HasPrefix(config.LibraVDBContractEndpoint, "tcp:") {
+		return Config{}, errors.New("libravdb-contract-endpoint must begin with unix: or tcp:")
+	}
+	if config.LibraVDBContractTLSMode != "auto" && config.LibraVDBContractTLSMode != "tls" && config.LibraVDBContractTLSMode != "insecure" {
+		return Config{}, errors.New("libravdb-contract-tls-mode must be auto, tls, or insecure")
+	}
+	if (config.LibraVDBContractTLSCert == "") != (config.LibraVDBContractTLSKey == "") {
+		return Config{}, errors.New("LibraVDB contract TLS client certificate and key must be configured together")
+	}
+	if config.LibraVDBContractTLSMode == "insecure" && (config.LibraVDBContractTLSCA != "" || config.LibraVDBContractTLSCert != "") {
+		return Config{}, errors.New("LibraVDB contract TLS files cannot be used in insecure mode")
+	}
 	if config.MigrateV1 && !filepath.IsAbs(config.MigrationBackup) {
 		return Config{}, errors.New("migrate-v1 requires an absolute migration-backup path")
 	}
@@ -101,6 +186,9 @@ func Parse(args []string) (Config, error) {
 func (c Config) EnsureDirectories() error {
 	if err := os.MkdirAll(filepath.Dir(c.DatabasePath), 0o700); err != nil {
 		return fmt.Errorf("create database directory: %w", err)
+	}
+	if err := os.MkdirAll(filepath.Dir(c.RankDeltaSQLitePath), 0o700); err != nil {
+		return fmt.Errorf("create rank-delta directory: %w", err)
 	}
 	if strings.HasPrefix(c.Listen, "unix://") {
 		if err := os.MkdirAll(filepath.Dir(strings.TrimPrefix(c.Listen, "unix://")), 0o700); err != nil {

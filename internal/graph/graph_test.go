@@ -92,3 +92,20 @@ func TestSplitClosureCarriesOldAndNewPosteriorDependencies(t *testing.T) {
 		t.Fatalf("split posterior closure = %v", closure.PosteriorKeys)
 	}
 }
+
+func TestCandidateCompatibilityPropagatesOnlyWithinNominatedFrontier(t *testing.T) {
+	predictive := model.PredictiveGraph{
+		Nodes: []model.CompatibilityNode{
+			{ID: "a", Kind: "bucket", MemberEventIDs: []string{"event-a", "not-nominated"}, LawSpace: model.RetrievalUsefulnessHorizon},
+			{ID: "b", Kind: "bucket", MemberEventIDs: []string{"event-b"}, LawSpace: model.RetrievalUsefulnessHorizon},
+		},
+		Edges: []model.CompatibilityEdge{{ID: "ab", From: "a", To: "b", ComparisonMap: "identity_bernoulli", Weight: 1}},
+	}
+	scores := CandidateCompatibility(predictive, map[string]float64{"event-a": .2, "event-b": .9})
+	if scores["event-a"] != .9 || scores["event-b"] != .2 {
+		t.Fatalf("propagated scores = %v", scores)
+	}
+	if _, exists := scores["not-nominated"]; exists {
+		t.Fatal("graph propagation introduced a non-nominated event")
+	}
+}

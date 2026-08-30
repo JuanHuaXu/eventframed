@@ -1,0 +1,32 @@
+{
+  "schema_version": "eventframe.codex-replay.v1",
+  "rule_frozen_at": "2026-08-29T02:17:09.429542Z",
+  "data_end": "2026-08-28T00:00:00Z",
+  "source_mode": "read-only local Codex JSONL session records",
+  "split": "chronological session-level 80/20 design/confirmation split after eligibility filtering and before outcome scoring",
+  "design_fraction": 0.8,
+  "candidate_unit": "one completed prior Codex user/assistant turn",
+  "outcome_unit": "anchors in a current-turn tool input whose call produced a matching output, plus anchors in a successful patch_apply_end record",
+  "label": "a prior completed turn is relevant iff its normalized explicit anchors intersect the current turn's completed downstream tool-use anchors",
+  "anchor_classes": [
+    "url",
+    "absolute_path",
+    "code_like_identifier"
+  ],
+  "max_text_bytes_per_turn_field": 16384,
+  "max_tool_input_bytes": 65536,
+  "max_segment_turns": 100,
+  "minimum_prior_turns": 10,
+  "embedding_model": "openai-compatible:nomic-embed-text:d768:rp85230b608c3f",
+  "variants": [
+    "baseline",
+    "update_all",
+    "eventframe",
+    "shuffled_feedback"
+  ],
+  "raw_data_exported": false,
+  "export_time_encoding": "trajectory-relative ordinal seconds from 2000-01-01T00:00:00Z; production timestamps are not exported",
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 26082801,
+  "evaluation_scope": "design only; prior confirmation remains sealed"
+}

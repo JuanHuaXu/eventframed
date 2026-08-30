@@ -16,6 +16,25 @@ type Embedder interface {
 	ModelKey() string
 }
 
+type RoleAware interface {
+	EmbedDocument(text string) ([]float32, error)
+	EmbedQuery(text string) ([]float32, error)
+}
+
+func Document(embedder Embedder, text string) ([]float32, error) {
+	if roleAware, ok := embedder.(RoleAware); ok {
+		return roleAware.EmbedDocument(text)
+	}
+	return embedder.Embed(text)
+}
+
+func Query(embedder Embedder, text string) ([]float32, error) {
+	if roleAware, ok := embedder.(RoleAware); ok {
+		return roleAware.EmbedQuery(text)
+	}
+	return embedder.Embed(text)
+}
+
 // HashEmbedder is a deterministic, dependency-free development fallback. It
 // preserves exact-token signal but is not a semantic embedding model.
 type HashEmbedder struct {

@@ -1,0 +1,130 @@
+{
+  "schema_version": "eventframe.claims-experiment.v2",
+  "residual_utility": {
+    "training_cases": 60,
+    "evaluation_cases": 40,
+    "baseline_brier": 0.8550286789040618,
+    "residual_brier": 0.6001253965919753,
+    "absolute_gain": 0.2549032823120865,
+    "relative_reduction": 0.2981224941352965,
+    "residual_applied_cases": 40,
+    "residual_applied_rate": 1,
+    "systematic_outcome_rate": 0
+  },
+  "anti_pigeon_granularity": {
+    "training_turns": 30,
+    "evaluation_turns": 20,
+    "variants": {
+      "naive_shared": {
+        "brier": 0.363789812936199,
+        "false_merge_rate": 1,
+        "posterior_keys": 1
+      },
+      "oracle_ap": {
+        "brier": 0.2567884784521941,
+        "false_merge_rate": 0,
+        "posterior_keys": 2
+      },
+      "separate": {
+        "brier": 0.2590617831202505,
+        "false_merge_rate": 0,
+        "posterior_keys": 4
+      }
+    }
+  },
+  "bayesian_group_comparison": {
+    "trajectories": 64,
+    "samples_per_member": 100,
+    "seed_base": 984451656,
+    "scenarios": {
+      "shared_0.8_0.8": {
+        "expected": "share",
+        "share_rate": 0,
+        "split_rate": 0.015625,
+        "uncertain_rate": 0.984375,
+        "wrong_rate": 0.015625
+      },
+      "split_0.65_0.35": {
+        "expected": "split",
+        "share_rate": 0,
+        "split_rate": 0.890625,
+        "uncertain_rate": 0.109375,
+        "wrong_rate": 0
+      },
+      "split_0.9_0.1": {
+        "expected": "split",
+        "share_rate": 0,
+        "split_rate": 1,
+        "uncertain_rate": 0,
+        "wrong_rate": 0
+      }
+    }
+  },
+  "changepoint_adaptation": {
+    "trajectories": 64,
+    "seed_base": 982451653,
+    "detection_window": 15,
+    "policy": {
+      "hazard": 0.05,
+      "threshold": 0.3,
+      "max_run": 32,
+      "recent_window": 0,
+      "recent_threshold": 0,
+      "fast_rate": 0.25,
+      "slow_rate": 0.025,
+      "drift_threshold": 0.35,
+      "drift_persistence": 8,
+      "min_samples": 20
+    },
+    "scenarios": {
+      "abrupt": {
+        "expected_changes": 64,
+        "detected_changes": 54,
+        "false_alarms": 18,
+        "mean_delay": 9.222222222222221,
+        "max_delay": 15,
+        "miss_rate": 0.15625
+      },
+      "abrupt_noiseless": {
+        "expected_changes": 64,
+        "detected_changes": 64,
+        "false_alarms": 0,
+        "mean_delay": 0,
+        "max_delay": 0,
+        "miss_rate": 0
+      },
+      "gradual": {
+        "expected_changes": 64,
+        "detected_changes": 4,
+        "false_alarms": 24,
+        "mean_delay": 10.25,
+        "max_delay": 13,
+        "miss_rate": 0.9375
+      },
+      "recurring": {
+        "expected_changes": 128,
+        "detected_changes": 107,
+        "false_alarms": 19,
+        "mean_delay": 8.74766355140187,
+        "max_delay": 15,
+        "miss_rate": 0.1640625
+      },
+      "recurring_noiseless": {
+        "expected_changes": 128,
+        "detected_changes": 128,
+        "false_alarms": 0,
+        "mean_delay": 0,
+        "max_delay": 0,
+        "miss_rate": 0
+      },
+      "stable": {
+        "expected_changes": 0,
+        "detected_changes": 0,
+        "false_alarms": 5,
+        "mean_delay": 0,
+        "max_delay": 0,
+        "miss_rate": 0
+      }
+    }
+  }
+}

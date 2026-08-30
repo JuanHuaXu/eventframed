@@ -3,7 +3,7 @@ package model
 import "time"
 
 const ProtocolVersion = "eventframe.v1alpha1"
-const ContractVersion uint64 = 7
+const ContractVersion uint64 = 10
 
 type Snapshot struct {
 	RuntimeVersion     uint64 `json:"runtime_version"`
@@ -63,22 +63,38 @@ type MaintenanceResponse struct {
 }
 
 type RecallRequest struct {
-	ProtocolVersion string    `json:"protocol_version"`
-	TenantID        string    `json:"tenant_id"`
-	SessionID       string    `json:"session_id"`
-	Query           string    `json:"query"`
-	Embedding       []float32 `json:"embedding,omitempty"`
-	EmbeddingModel  string    `json:"embedding_model,omitempty"`
-	AsOf            time.Time `json:"as_of"`
-	RecallK         int       `json:"recall_k"`
-	PackK           int       `json:"pack_k"`
-	TokenBudget     int       `json:"token_budget"`
+	ProtocolVersion              string              `json:"protocol_version"`
+	TenantID                     string              `json:"tenant_id"`
+	SessionID                    string              `json:"session_id"`
+	Query                        string              `json:"query"`
+	Embedding                    []float32           `json:"embedding,omitempty"`
+	EmbeddingModel               string              `json:"embedding_model,omitempty"`
+	AsOf                         time.Time           `json:"as_of"`
+	RecallK                      int                 `json:"recall_k"`
+	PackK                        int                 `json:"pack_k"`
+	TokenBudget                  int                 `json:"token_budget"`
+	RetrievalCollections         []string            `json:"retrieval_collections,omitempty"`
+	RetrievalExcludeByCollection map[string][]string `json:"retrieval_exclude_by_collection,omitempty"`
 }
 
 type Candidate struct {
-	Event               Event          `json:"event"`
-	Similarity          float64        `json:"similarity"`
-	BaselineScore       float64        `json:"baseline_score"`
+	Event                          Event   `json:"event"`
+	Similarity                     float64 `json:"similarity"`
+	RecencyScore                   float64 `json:"recency_score"`
+	GraphCompatibility             float64 `json:"graph_compatibility"`
+	GraphApplied                   bool    `json:"graph_applied"`
+	BaselineScore                  float64 `json:"baseline_score"`
+	PredictiveScore                float64 `json:"predictive_score"`
+	RetrievalScore                 float64 `json:"retrieval_score"`
+	RankDelta                      float64 `json:"rank_delta"`
+	RankDeltaScale                 float64 `json:"rank_delta_scale,omitempty"`
+	RankDeltaAnswerCertainty       float64 `json:"rank_delta_answer_certainty,omitempty"`
+	RankDeltaCorrectionReliability float64 `json:"rank_delta_correction_reliability,omitempty"`
+	// RankDeltaConfidence is a deprecated alias for answer certainty.
+	RankDeltaConfidence float64        `json:"rank_delta_confidence,omitempty"`
+	RankDeltaBasis      string         `json:"rank_delta_basis,omitempty"`
+	RetrievalContract   string         `json:"retrieval_contract"`
+	RetrievalMetadata   []byte         `json:"-"`
 	Score               float64        `json:"score"`
 	BayesianProbability float64        `json:"bayesian_probability,omitempty"`
 	BayesianApplied     bool           `json:"bayesian_applied"`
@@ -87,20 +103,27 @@ type Candidate struct {
 }
 
 type ContextPacket struct {
-	ProtocolVersion string               `json:"protocol_version"`
-	Candidates      []Candidate          `json:"candidates"`
-	Recalled        int                  `json:"recalled"`
-	Eligible        int                  `json:"eligible"`
-	Packed          int                  `json:"packed"`
-	UsedTokens      int                  `json:"used_tokens"`
-	Snapshot        Snapshot             `json:"snapshot"`
-	BayesianShadow  BayesianShadowReport `json:"bayesian_shadow"`
+	ProtocolVersion       string               `json:"protocol_version"`
+	Candidates            []Candidate          `json:"candidates"`
+	Recalled              int                  `json:"recalled"`
+	Eligible              int                  `json:"eligible"`
+	Packed                int                  `json:"packed"`
+	UsedTokens            int                  `json:"used_tokens"`
+	AdaptiveExpanded      bool                 `json:"adaptive_expanded"`
+	PacketConfidence      float64              `json:"packet_confidence"`
+	PacketAnswerCertainty float64              `json:"packet_answer_certainty"`
+	RetrievalContract     string               `json:"retrieval_contract"`
+	NominationContract    string               `json:"nomination_contract"`
+	Snapshot              Snapshot             `json:"snapshot"`
+	BayesianShadow        BayesianShadowReport `json:"bayesian_shadow"`
 }
 
 type BayesianDecision struct {
 	EventID                             string         `json:"event_id"`
 	ActivationScore                     float64        `json:"activation_score"`
 	Activated                           bool           `json:"activated"`
+	CheapUpdate                         bool           `json:"cheap_update"`
+	DeepReview                          bool           `json:"deep_review"`
 	EvidenceReady                       bool           `json:"evidence_ready"`
 	AuditSelected                       bool           `json:"audit_selected"`
 	AuditProbability                    float64        `json:"audit_probability"`
@@ -108,6 +131,7 @@ type BayesianDecision struct {
 	ActivationProbability               float64        `json:"activation_probability"`
 	TotalSelectionProbabilityLowerBound float64        `json:"total_selection_probability_lower_bound"`
 	PosteriorKey                        string         `json:"posterior_key"`
+	ParentPosteriorKey                  string         `json:"parent_posterior_key,omitempty"`
 	Forecast                            ForecastBundle `json:"forecast"`
 }
 
@@ -117,9 +141,11 @@ type BayesianShadowReport struct {
 	JournalDurable            bool               `json:"journal_durable"`
 	Nominated                 int                `json:"nominated"`
 	Activated                 int                `json:"activated"`
+	DeepReviewed              int                `json:"deep_reviewed"`
 	SelectionSupportCertified bool               `json:"selection_support_certified"`
 	OmittedInfluenceCertified bool               `json:"omitted_influence_certified"`
 	ResidualApplied           int                `json:"residual_applied"`
+	ResidualShadowEligible    int                `json:"residual_shadow_eligible"`
 	Decisions                 []BayesianDecision `json:"decisions"`
 }
 
@@ -134,12 +160,15 @@ const (
 )
 
 type HealthResponse struct {
-	ProtocolVersion string   `json:"protocol_version"`
-	Status          string   `json:"status"`
-	Store           string   `json:"store"`
-	Dimension       int      `json:"dimension"`
-	Quantization    string   `json:"quantization"`
-	Snapshot        Snapshot `json:"snapshot"`
+	ProtocolVersion        string   `json:"protocol_version"`
+	Status                 string   `json:"status"`
+	Store                  string   `json:"store"`
+	Dimension              int      `json:"dimension"`
+	Quantization           string   `json:"quantization"`
+	NominationContract     string   `json:"nomination_contract"`
+	RetrievalContract      string   `json:"retrieval_contract"`
+	ExternalCandidateIndex bool     `json:"external_candidate_index"`
+	Snapshot               Snapshot `json:"snapshot"`
 }
 
 type ErrorResponse struct {

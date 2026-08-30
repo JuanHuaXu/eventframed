@@ -22,6 +22,9 @@ type ResidualRecord struct {
 	EffectiveSupport        float64       `json:"effective_support"`
 	ImprovementAlpha        float64       `json:"improvement_alpha"`
 	ImprovementBeta         float64       `json:"improvement_beta"`
+	GainSum                 float64       `json:"gain_sum"`
+	GainCount               float64       `json:"gain_count"`
+	ConsecutiveHarm         int           `json:"consecutive_harm"`
 	ReferenceProbability    float64       `json:"reference_probability"`
 	MotionLimit             float64       `json:"motion_limit"`
 	ApproximationErrorBound float64       `json:"approximation_error_bound"`
@@ -41,6 +44,13 @@ func (record ResidualRecord) ImprovementConfidence() float64 {
 		return 0
 	}
 	return record.ImprovementAlpha / (record.ImprovementAlpha + record.ImprovementBeta)
+}
+
+func (record ResidualRecord) MeanGain() float64 {
+	if record.GainCount <= 0 {
+		return 0
+	}
+	return record.GainSum / record.GainCount
 }
 
 type ResidualObservation struct {

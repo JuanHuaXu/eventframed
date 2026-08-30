@@ -45,6 +45,45 @@ posterior may alter the score only when both selection support and omitted
 influence are certified; the default Bayesian mixture weight is 0.10 and the
 runtime rejects configurations above 0.25.
 
+Optional EventFrame output policies are policy-digested and independently
+switchable. Contextual and hierarchical evidence may change the committed
+predictive law. With `-libravdb-contract-endpoint`, EventFrame owns the external
+candidate lifecycle and invokes LibraVDB `SearchTextCollections` for nomination
+and `RankCandidates(k1,k2)` for base retrieval order. Returned rank scores cannot
+alter the already committed probability law. Each candidate reports that value
+as `retrieval_score`, a bounded EventFrame Bayesian/residual correction as
+`rank_delta`, and their clipped sum as final `score`. The correction is applied
+and sorted after the LibraVDB contract returns and before the bounded packer.
+By default, `packet_answer_certainty` is the normalized retrieval-score gap at
+the initial `pack_k` boundary. It is rank-domain certainty, not a calibrated
+probability of answer correctness. An independent
+`rank_delta_correction_reliability` authorizes each correction; the current
+runtime assigns nonzero reliability only to an accepted Bayesian, residual, or
+graph-compatibility path. For certainty `c` and reliability `r`, the elastic
+multiplier is `[min_scale + (max_scale - min_scale)(1 - c)]r`. Candidates expose
+that pair, `rank_delta_scale`, and the
+`rank-boundary+correction-reliability` basis. `packet_confidence` and
+`rank_delta_confidence` remain deprecated aliases for answer certainty during
+migration. The elastic result remains inside the absolute rank-delta cap and
+can be disabled for ablation; disabling it preserves the unscaled certified
+delta.
+Rank deltas are materialized in a bounded RAM cache plus SQLite and are accepted
+only under their exact query/event key, validity interval, and complete semantic
+version tuple. The embedded search and pass-through ranker are standalone
+fallbacks, not substitutes in contract-native claim tests.
+
+The production collection is `eventframe-` plus a truncated SHA-256 tenant
+digest. Recall requests may omit `retrieval_collections`; when the external
+contract is enabled, EventFrame supplies the reserved collection. Any request
+that attempts to override that collection or name exclusions from another
+collection is rejected. Observation retries use `eventframe_digest` with
+`ListByMeta` to reconcile a successful external insert after a lost response.
+
+The default daemon policy activates every evidence-ready member of the bounded
+`recall_k` frontier. "Update all" therefore means frontier-update-all, never a
+scan or posterior update over the complete LibraVDB corpus. Explicit selective
+policies remain supported for evaluation and constrained deployments.
+
 The journal commit compares the captured version snapshot under the durable
 write lock. A concurrent semantic mutation returns HTTP 409 `snapshot_changed`;
 clients may retry the recall with the same request and `as_of` value.
@@ -63,13 +102,34 @@ clients may retry the recall with the same request and `as_of` value.
   feedback bound to a durable recall journal. Accepted sources are full-stream,
   independent audit, and selection-certified feedback. Inclusion probabilities
   must match the journal and inverse-propensity weight is capped at 20.
+- `POST /v1/bayesian/groups:compare` is a side-effect-free slow-path comparison
+  of one shared Bernoulli model against independent member models. It returns a
+  `share`, `split`, or `uncertain` proposal and the current posterior keys. Every
+  result states that Anti-Pigeon certification is still required; this endpoint
+  cannot create a group or publish a certificate.
 
-Outcomes update a bounded Beta posterior. A capped Bayesian online changepoint
-detector resets a shifted posterior and atomically advances evidence, graph,
-posterior, residual, and abstraction versions. This invalidates stale
+Outcomes update a bounded Beta posterior and member-level sufficient statistics.
+A certified shared posterior applies the configured `shared-evidence-weight`
+(default `0.5`) to pooled Alpha/Beta support only. Member-level sufficient
+statistics retain the full inclusion weight, preserving Anti-Pigeon comparison
+and split authority. Event-local posteriors are never discounted by this rule.
+A capped Bayesian online changepoint detector combines exact BOCPD evidence with
+a warm-started, two-sided CUSUM and post-reset cooldown. A detected shift resets
+the posterior and atomically advances evidence, graph, posterior, residual, and
+abstraction versions. This invalidates stale
 certificates before another forecast can use them. These guarantees are runtime
 contracts; certificate quality remains an empirical responsibility of the named
 external audit procedure.
+
+Contract 10 joins that temporal detector to an Anti-Pigeon revision gate. After
+each outcome commit, a bounded shared-versus-split comparison returns one of
+`retain`, `individual_reset`, `shared_reset`, `split`, or `split_reset` in the
+outcome response. A split requires sufficient member support, the predeclared
+posterior threshold, and full-stream or independent-audit evidence. It atomically
+revokes the old sharing certificate, disables the shared posterior and its
+residual, and materializes event-keyed posteriors from the member sufficient
+statistics. Revocation is fail-closed: it does not certify any replacement group.
+Selected-only evidence may update beliefs but cannot revoke a sharing certificate.
 
 ### Bounded agency proposals
 
@@ -104,8 +164,12 @@ proposals that cite the removed evidence in the same storage transaction.
 
 Contract version 4 adds a retrieval-specific `forecast` bundle to every packed
 candidate and durable frontier decision. It explicitly carries useful and
-not-useful probability mass through the baseline, accepted belief mixture,
-pre-residual law, corrected law, and an aligned decision template. The baseline
+not-useful probability mass through the calibrated baseline, accepted
+belief-conditioned score, calibrated pre-residual law, corrected law, and an
+aligned decision template. A frozen baseline map applies when no certified
+belief is accepted; a separately frozen predictive map applies after the bounded
+baseline-posterior score is formed. Each map is monotone within its branch, and
+their identities and fit artifacts are part of the policy contract. The baseline
 is labeled a plug-in Bernoulli forecast; this is not presented as a general
 next-world-event model.
 
@@ -118,7 +182,13 @@ posterior-key law residuals. Reuse checks exact before general and requires:
 - matching policy, evidence epoch, and `retrieval-usefulness-v1` horizon
 - bounded age and effective support
 - an anytime-valid improvement lower confidence bound from unweighted
-  full-stream or independently audited validation trials under repeated monitoring
+full-stream or independently audited validation trials under repeated monitoring
+
+Outcome feedback may additionally carry boolean-only evidence signals for
+packing exposure, citation, successful downstream use, correction, rejection,
+and explicit usefulness. Rejection or correction dominates positive evidence;
+packed-only exposure is not accepted as a usefulness observation. Free-form
+feedback content is outside the contract.
 - an analytic Bernoulli law-motion bound against the frozen base reference
 - finite clipped correction and immutable source provenance
 
@@ -186,10 +256,25 @@ It is also an additive durable-state upgrade.
 `contract_version=6` adds signed agency proposal records, an independent monotone
 `agency_version`, durable lease and resolution state, and evidence-lifecycle
 invalidation. The schema upgrade is additive; agency remains disabled by default.
-`contract_version=7` authenticates authority claim/resolution separately, bounds
+`contract_version=8` adds separate contract-native nomination and ranking identities while preserving
+the version-7 authority split. It authenticates authority claim/resolution separately, bounds
 all proposal and consumer identifiers, and adds a tenant-scoped active queue
 projection. Version-6 databases rebuild that projection before the new marker is
 published. Agency mode requires the local Unix socket; bearer credentials are
 never accepted over the daemon's plaintext TCP listener.
 Pending contract-6 proposal payloads remain signature-valid and are accepted by
 the contract-7 authority; only newly issued proposals carry contract 7.
+
+`contract_version=9` separates bounded frontier-all cheap updates from selective
+deep review, adds practical-equivalence and partial-pooling diagnostics, exposes
+graph compatibility in recalled candidates, and permits runtime-estimated
+omitted-influence certificates through
+`POST /v1/bayesian/certificates:estimate-omitted-influence`. Runtime estimates
+are confined to an explicit finite event-id population selected with the active
+nonzero audit probability and bound to the exact durable recall-journal query
+digest. The runtime rejects nominated members, stale journals, and cross-query
+reuse; these are not corpus-wide certificates.
+
+`contract_version=10` adds the atomic Anti-Pigeon revision transition and durable
+revision result described above. Existing version-9 stores upgrade additively;
+no prior certificate is silently reinterpreted as evidence for a new group.

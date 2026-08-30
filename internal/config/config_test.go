@@ -44,3 +44,90 @@ func TestAgencyModeRejectsPlaintextTCPListener(t *testing.T) {
 		t.Fatalf("non-agency TCP test listener was rejected: %v", err)
 	}
 }
+
+func TestResidualModeRejectsUnknownBehavior(t *testing.T) {
+	if _, err := Parse([]string{"-residual-mode", "sometimes"}); err == nil {
+		t.Fatal("unknown residual mode was accepted")
+	}
+}
+
+func TestLibraVDBContractEndpointAndDeprecatedAlias(t *testing.T) {
+	config, err := Parse([]string{"-libravdb-contract-endpoint", "unix:/tmp/contracts.sock"})
+	if err != nil || config.LibraVDBContractEndpoint != "unix:/tmp/contracts.sock" {
+		t.Fatalf("contract endpoint = %q, %v", config.LibraVDBContractEndpoint, err)
+	}
+	legacy, err := Parse([]string{"-libravdb-ranker-endpoint", "tcp:127.0.0.1:50051"})
+	if err != nil || legacy.LibraVDBContractEndpoint != "tcp:127.0.0.1:50051" {
+		t.Fatalf("legacy endpoint = %q, %v", legacy.LibraVDBContractEndpoint, err)
+	}
+	if _, err := Parse([]string{
+		"-libravdb-contract-endpoint", "unix:/tmp/contracts.sock",
+		"-libravdb-ranker-endpoint", "unix:/tmp/other.sock",
+	}); err == nil {
+		t.Fatal("conflicting contract endpoints were accepted")
+	}
+}
+
+func TestLibraVDBContractTLSConfiguration(t *testing.T) {
+	config, err := Parse([]string{
+		"-libravdb-contract-endpoint", "tcp:memory.example:443",
+		"-libravdb-contract-tls-mode", "tls",
+		"-libravdb-contract-tls-ca", "/tmp/ca.pem",
+		"-libravdb-contract-tls-client-cert", "/tmp/client.pem",
+		"-libravdb-contract-tls-client-key", "/tmp/client.key",
+	})
+	if err != nil || config.LibraVDBContractTLSMode != "tls" || config.LibraVDBContractTLSCA != "/tmp/ca.pem" {
+		t.Fatalf("TLS configuration = %#v, %v", config, err)
+	}
+	if _, err := Parse([]string{"-libravdb-contract-tls-mode", "opportunistic"}); err == nil {
+		t.Fatal("unknown TLS mode was accepted")
+	}
+	if _, err := Parse([]string{"-libravdb-contract-tls-client-cert", "/tmp/client.pem"}); err == nil {
+		t.Fatal("client certificate without a key was accepted")
+	}
+	if _, err := Parse([]string{"-libravdb-contract-tls-mode", "insecure", "-libravdb-contract-tls-ca", "/tmp/ca.pem"}); err == nil {
+		t.Fatal("TLS CA was accepted in insecure mode")
+	}
+}
+
+func TestRankDeltaStoreRequiresDistinctAbsolutePathAndPositiveCache(t *testing.T) {
+	root := t.TempDir()
+	database := filepath.Join(root, "events.libravdb")
+	if _, err := Parse([]string{"-database", database, "-rank-delta-sqlite", "relative.sqlite"}); err == nil {
+		t.Fatal("relative rank-delta SQLite path was accepted")
+	}
+	if _, err := Parse([]string{"-database", database, "-rank-delta-sqlite", database}); err == nil {
+		t.Fatal("rank-delta SQLite path aliased the LibraVDB database")
+	}
+	if _, err := Parse([]string{"-rank-delta-cache-entries", "0"}); err == nil {
+		t.Fatal("zero rank-delta cache capacity was accepted")
+	}
+}
+
+func TestElasticRankDeltaConfiguration(t *testing.T) {
+	config, err := Parse([]string{"-elastic-rank-delta-min-scale", "0.25", "-elastic-rank-delta-max-scale", "3"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !config.ElasticRankDelta || config.ElasticRankDeltaMinScale != .25 || config.ElasticRankDeltaMaxScale != 3 {
+		t.Fatalf("elastic rank-delta config = %#v", config)
+	}
+	if _, err := Parse([]string{"-elastic-rank-delta-min-scale", "2", "-elastic-rank-delta-max-scale", "1"}); err == nil {
+		t.Fatal("inverted elastic rank-delta scales were accepted")
+	}
+	if _, err := Parse([]string{"-elastic-rank-delta-max-scale", "11"}); err == nil {
+		t.Fatal("unbounded elastic rank-delta scale was accepted")
+	}
+}
+
+func TestSharedEvidenceWeightIsBounded(t *testing.T) {
+	configured, err := Parse([]string{"-shared-evidence-weight", "0.25"})
+	if err != nil || configured.SharedEvidenceWeight != .25 {
+		t.Fatalf("shared evidence weight = %v, %v", configured.SharedEvidenceWeight, err)
+	}
+	for _, value := range []string{"0", "1.1"} {
+		if _, err := Parse([]string{"-shared-evidence-weight", value}); err == nil {
+			t.Fatalf("invalid shared evidence weight %s was accepted", value)
+		}
+	}
+}

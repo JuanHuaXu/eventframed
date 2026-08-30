@@ -187,6 +187,37 @@ func (s *Store) Search(ctx context.Context, tenantID string, vector []float32, a
 	}
 }
 
+func (s *Store) GetEvents(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	collection, err := s.collection(ctx, tenantID)
+	if err != nil {
+		return nil, err
+	}
+	results := make([]model.Event, 0, len(eventIDs))
+	for _, eventID := range eventIDs {
+		record, getErr := collection.Get(ctx, eventID)
+		if errors.Is(getErr, libra.ErrRecordNotFound) {
+			return nil, fmt.Errorf("%w: id=%s absent", store.ErrEventNotFound, eventID)
+		}
+		if getErr != nil {
+			return nil, fmt.Errorf("read event %q: %w", eventID, getErr)
+		}
+		payload, ok := record.Metadata["event_json"].(string)
+		if !ok {
+			return nil, fmt.Errorf("%w: id=%s has no event payload", store.ErrEventNotFound, eventID)
+		}
+		var event model.Event
+		if err := json.Unmarshal([]byte(payload), &event); err != nil {
+			return nil, fmt.Errorf("decode event %q: %w", eventID, err)
+		}
+		if event.ID != eventID || event.TenantID != tenantID || event.AvailableAt.After(availableBy) {
+			return nil, fmt.Errorf("%w: id=%s failed identity or availability validation", store.ErrEventNotFound, eventID)
+		}
+		event.Embedding = nil
+		results = append(results, event)
+	}
+	return results, nil
+}
+
 func (s *Store) PutBayesianJournal(ctx context.Context, entry model.BayesianJournalEntry) error {
 	s.writeMu.Lock()
 	defer s.writeMu.Unlock()
@@ -418,21 +449,30 @@ func (s *Store) GetAntiPigeonCertificate(ctx context.Context, tenantID string, e
 	return certificate, nil
 }
 
-func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (store.BayesianOutcomeResult, error) {
+func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, parentPosteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, groupPolicy bayes.GroupPolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (store.BayesianOutcomeResult, error) {
 	s.writeMu.Lock()
 	defer s.writeMu.Unlock()
 	outcomeRecordID := bayesianOutcomeRecordID(request.TenantID, request.IdempotencyKey)
 	if record, err := s.bayesian.Get(ctx, outcomeRecordID); err == nil {
 		currentDigest, _ := record.Metadata["content_digest"].(string)
 		currentKey, _ := record.Metadata["posterior_key"].(string)
-		if currentDigest != digest || currentKey != posteriorKey {
+		currentParentKey, _ := record.Metadata["parent_posterior_key"].(string)
+		if currentDigest != digest || currentKey != posteriorKey || currentParentKey != parentPosteriorKey {
 			return store.BayesianOutcomeResult{}, store.ErrOutcomeConflict
 		}
-		posterior, getErr := s.getBayesianPosterior(ctx, request.TenantID, posteriorKey)
+		resultKey, _ := record.Metadata["result_posterior_key"].(string)
+		if resultKey == "" {
+			resultKey = posteriorKey
+		}
+		posterior, getErr := s.getBayesianPosterior(ctx, request.TenantID, resultKey)
 		if getErr != nil {
 			return store.BayesianOutcomeResult{}, getErr
 		}
-		return store.BayesianOutcomeResult{Duplicate: true, Posterior: posterior, Snapshot: s.snapshot}, nil
+		var revision model.BayesianRevision
+		if encoded, ok := record.Metadata["revision_json"].(string); ok {
+			_ = json.Unmarshal([]byte(encoded), &revision)
+		}
+		return store.BayesianOutcomeResult{Duplicate: true, Revision: revision, Posterior: posterior, Snapshot: s.snapshot}, nil
 	} else if !errors.Is(err, libra.ErrRecordNotFound) {
 		return store.BayesianOutcomeResult{}, fmt.Errorf("check Bayesian outcome: %w", err)
 	}
@@ -442,9 +482,18 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 	} else if err != nil {
 		return store.BayesianOutcomeResult{}, err
 	}
-	posterior, changePoint := bayes.ApplyOutcome(posterior, request.Useful, weight, changePolicy)
+	validationEligible := request.Source == model.OutcomeFullStream || request.Source == model.OutcomeIndependentAudit
+	resetAuthorized := validationEligible || !strings.HasPrefix(posteriorKey, "ap:")
+	certificate, memberIDs, err := s.antiPigeonGroup(ctx, request.TenantID, posteriorKey)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, err
+	}
+	pooledWeight := bayes.SharedOutcomeWeight(groupPolicy, len(memberIDs) >= 2, weight)
+	posterior, changePoint := bayes.ApplyOutcomeAuthorized(posterior, request.Useful, pooledWeight, changePolicy, resetAuthorized)
+	bayes.UpdateMemberEvidence(&posterior, request.EventID, request.Useful, weight)
 	updateCalibration(&posterior, residualObservation.CommittedProbability, request.Useful, weight)
 	posterior.UpdatedAt = request.AvailableAt
+	revision := bayes.AssessRevision(posterior, memberIDs, request.EventID, changePoint, validationEligible, groupPolicy)
 	outcomeJSON, err := json.Marshal(request)
 	if err != nil {
 		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian outcome: %w", err)
@@ -453,6 +502,14 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 	if changePoint {
 		next = invalidatedSnapshot(next)
 		posterior.EvidenceEpoch = next.EvidenceEpoch
+		if !bayes.RevisionSplits(revision.Action) {
+			posterior.MemberEvidence = nil
+		}
+	} else if bayes.RevisionSplits(revision.Action) {
+		next.RuntimeVersion++
+		next.AbstractionVersion++
+		next.PosteriorVersion++
+		next.ResidualVersion++
 	} else {
 		next.RuntimeVersion++
 		next.PosteriorVersion++
@@ -468,6 +525,41 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 	}
 	exact = residual.Update(exact, residualObservation, model.ResidualExact, residualObservation.ActionKey, request.TenantID, weight, next, residualPolicy)
 	general = residual.Update(general, residualObservation, model.ResidualGeneral, residualObservation.GeneralKey, request.TenantID, weight, next, residualPolicy)
+	if bayes.RevisionSplits(revision.Action) {
+		exact.Active, general.Active = false, false
+	}
+	var parent model.BayesianPosterior
+	if parentPosteriorKey != "" && parentPosteriorKey != posteriorKey {
+		parent, err = s.getBayesianPosterior(ctx, request.TenantID, parentPosteriorKey)
+		if errors.Is(err, store.ErrPosteriorNotFound) || parent.EvidenceEpoch != next.EvidenceEpoch {
+			parent = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: parentPosteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: next.EvidenceEpoch, Certified: true}
+		} else if err != nil {
+			return store.BayesianOutcomeResult{}, err
+		}
+		if request.Useful {
+			parent.Alpha += weight
+		} else {
+			parent.Beta += weight
+		}
+		parent.EffectiveSupport += weight
+		parent.UpdatedAt = request.AvailableAt
+	}
+	resultPosterior := posterior
+	children := make(map[string]model.BayesianPosterior)
+	if bayes.RevisionSplits(revision.Action) {
+		posterior.Certified = false
+		for _, eventID := range memberIDs {
+			evidence := posterior.MemberEvidence[eventID]
+			child := materializedMemberPosterior(request.TenantID, eventID, evidence, next.EvidenceEpoch, request.AvailableAt)
+			if changePoint && eventID == request.EventID {
+				child = resetMemberPosterior(child, request.Useful, weight)
+			}
+			children[eventID] = child
+			if eventID == request.EventID {
+				resultPosterior = child
+			}
+		}
+	}
 	posteriorJSON, err := json.Marshal(posterior)
 	if err != nil {
 		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian posterior: %w", err)
@@ -485,15 +577,52 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 		return store.BayesianOutcomeResult{}, err
 	}
 	posteriorMetadata := map[string]interface{}{"record_type": "posterior", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "posterior_json": string(posteriorJSON)}
+	var parentMetadata map[string]interface{}
+	if parentPosteriorKey != "" && parentPosteriorKey != posteriorKey {
+		parentJSON, marshalErr := json.Marshal(parent)
+		if marshalErr != nil {
+			return store.BayesianOutcomeResult{}, fmt.Errorf("encode parent Bayesian posterior: %w", marshalErr)
+		}
+		parentMetadata = map[string]interface{}{"record_type": "posterior", "tenant_id": request.TenantID, "posterior_key": parentPosteriorKey, "posterior_json": string(parentJSON)}
+	}
 	exactMetadata := map[string]interface{}{"record_type": "residual", "tenant_id": request.TenantID, "scope": string(model.ResidualExact), "key": residualObservation.ActionKey, "residual_json": string(exactJSON)}
 	generalMetadata := map[string]interface{}{"record_type": "residual", "tenant_id": request.TenantID, "scope": string(model.ResidualGeneral), "key": residualObservation.GeneralKey, "residual_json": string(generalJSON)}
-	outcomeMetadata := map[string]interface{}{"record_type": "outcome", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "content_digest": digest, "outcome_json": string(outcomeJSON)}
+	revisionJSON, err := json.Marshal(revision)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian revision: %w", err)
+	}
+	outcomeMetadata := map[string]interface{}{"record_type": "outcome", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "result_posterior_key": resultPosterior.PosteriorKey, "parent_posterior_key": parentPosteriorKey, "content_digest": digest, "outcome_json": string(outcomeJSON), "revision_json": string(revisionJSON)}
 	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
 		if err := tx.Insert(ctx, bayesianCollection, outcomeRecordID, nil, outcomeMetadata); err != nil {
 			return err
 		}
 		if err := tx.Upsert(ctx, bayesianCollection, bayesianPosteriorRecordID(request.TenantID, posteriorKey), nil, posteriorMetadata); err != nil {
 			return err
+		}
+		for eventID, child := range children {
+			payload, marshalErr := json.Marshal(child)
+			if marshalErr != nil {
+				return marshalErr
+			}
+			metadata := map[string]interface{}{"record_type": "posterior", "tenant_id": request.TenantID, "posterior_key": eventID, "posterior_json": string(payload)}
+			if err := tx.Upsert(ctx, bayesianCollection, bayesianPosteriorRecordID(request.TenantID, eventID), nil, metadata); err != nil {
+				return err
+			}
+		}
+		if bayes.RevisionSplits(revision.Action) && certificate.ID != "" {
+			if err := tx.Delete(ctx, bayesianCollection, antiPigeonCertificateRecordID(certificate.TenantID, certificate.ID)); err != nil {
+				return err
+			}
+			for _, eventID := range certificate.MemberEventIDs {
+				if err := tx.Delete(ctx, bayesianCollection, antiPigeonIndexRecordID(certificate.TenantID, eventID)); err != nil {
+					return err
+				}
+			}
+		}
+		if parentMetadata != nil {
+			if err := tx.Upsert(ctx, bayesianCollection, bayesianPosteriorRecordID(request.TenantID, parentPosteriorKey), nil, parentMetadata); err != nil {
+				return err
+			}
 		}
 		if err := tx.Upsert(ctx, bayesianCollection, residualRecordID(request.TenantID, model.ResidualExact, residualObservation.ActionKey), nil, exactMetadata); err != nil {
 			return err
@@ -506,7 +635,63 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 		return store.BayesianOutcomeResult{}, fmt.Errorf("apply Bayesian outcome: %w", err)
 	}
 	s.snapshot = next
-	return store.BayesianOutcomeResult{ChangePoint: changePoint, Posterior: posterior, Snapshot: next}, nil
+	return store.BayesianOutcomeResult{ChangePoint: changePoint, Revision: revision, Posterior: resultPosterior, Snapshot: next}, nil
+}
+
+func (s *Store) antiPigeonGroup(ctx context.Context, tenantID, posteriorKey string) (model.AntiPigeonCertificate, []string, error) {
+	if !strings.HasPrefix(posteriorKey, "ap:") {
+		return model.AntiPigeonCertificate{}, nil, nil
+	}
+	certificateID := strings.TrimPrefix(posteriorKey, "ap:")
+	record, err := s.bayesian.Get(ctx, antiPigeonCertificateRecordID(tenantID, certificateID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.AntiPigeonCertificate{}, nil, nil
+	}
+	if err != nil {
+		return model.AntiPigeonCertificate{}, nil, fmt.Errorf("read Anti-Pigeon certificate for revision: %w", err)
+	}
+	var certificate model.AntiPigeonCertificate
+	if err := decodeCertificate(record.Metadata, &certificate); err != nil {
+		return model.AntiPigeonCertificate{}, nil, err
+	}
+	if certificate.TenantID != tenantID || certificate.ID != certificateID {
+		return model.AntiPigeonCertificate{}, nil, errors.New("Anti-Pigeon certificate identity mismatch")
+	}
+	for _, eventID := range certificate.MemberEventIDs {
+		index, indexErr := s.bayesian.Get(ctx, antiPigeonIndexRecordID(tenantID, eventID))
+		if errors.Is(indexErr, libra.ErrRecordNotFound) {
+			return model.AntiPigeonCertificate{}, nil, nil
+		}
+		if indexErr != nil {
+			return model.AntiPigeonCertificate{}, nil, fmt.Errorf("read Anti-Pigeon revision index: %w", indexErr)
+		}
+		indexedID, _ := index.Metadata["certificate_id"].(string)
+		if indexedID != certificateID {
+			return model.AntiPigeonCertificate{}, nil, nil
+		}
+	}
+	return certificate, append([]string(nil), certificate.MemberEventIDs...), nil
+}
+
+func materializedMemberPosterior(tenantID, eventID string, evidence model.BayesianMemberEvidence, epoch uint64, updatedAt time.Time) model.BayesianPosterior {
+	return model.BayesianPosterior{
+		TenantID: tenantID, PosteriorKey: eventID, Alpha: 1 + evidence.UsefulWeight, Beta: 1 + evidence.NotUsefulWeight,
+		EffectiveSupport: evidence.UsefulWeight + evidence.NotUsefulWeight, EvidenceEpoch: epoch, Certified: true, UpdatedAt: updatedAt,
+		MemberEvidence: map[string]model.BayesianMemberEvidence{eventID: evidence},
+	}
+}
+
+func resetMemberPosterior(posterior model.BayesianPosterior, useful bool, weight float64) model.BayesianPosterior {
+	posterior.Alpha, posterior.Beta, posterior.EffectiveSupport = 1, 1, 0
+	posterior.MemberEvidence = make(map[string]model.BayesianMemberEvidence)
+	if useful {
+		posterior.Alpha += weight
+	} else {
+		posterior.Beta += weight
+	}
+	posterior.EffectiveSupport = weight
+	bayes.UpdateMemberEvidence(&posterior, posterior.PosteriorKey, useful, weight)
+	return posterior
 }
 
 func (s *Store) GetResidualCandidates(ctx context.Context, tenantID, actionKey, generalKey string) (model.ResidualCandidates, error) {
