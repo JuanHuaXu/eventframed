@@ -205,4 +205,5 @@ See [docs/architecture.md](docs/architecture.md),
 
 ## License
 
-MIT. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Apache License 2.0. See [LICENSE](LICENSE), [NOTICE](NOTICE), and
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
