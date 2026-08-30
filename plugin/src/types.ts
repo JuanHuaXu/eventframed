@@ -50,6 +50,7 @@ export type ContextCandidate = {
   rank_delta_correction_reliability?: number;
   rank_delta_confidence?: number;
   rank_delta_basis?: "rank-boundary+correction-reliability";
+  resolution_rank_delta?: number;
   retrieval_contract: string;
   score: number;
   estimated_tokens: number;

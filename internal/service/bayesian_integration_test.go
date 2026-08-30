@@ -98,6 +98,38 @@ func TestEventFrameDeltaReranksAfterRetrievalContract(t *testing.T) {
 	}
 }
 
+func TestRecallDoesNotPersistUnreliableRankDeltas(t *testing.T) {
+	ctx := context.Background()
+	memory := memorystore.New()
+	embedder, err := embed.NewHashEmbedder(8)
+	if err != nil {
+		t.Fatal(err)
+	}
+	deltaStore := &recordingRankDeltaStore{}
+	runtime, err := service.New(memory, embedder, service.Config{
+		DefaultRecallK: 10, DefaultPackK: 2, DefaultTokenBudget: 1000, OverfetchMultiplier: 2,
+		RankDeltaStore: deltaStore, RankDeltaStoreRequired: true,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer runtime.Close()
+	now := time.Now().UTC()
+	event := testutil.Event("uncertified", "uncertified ranking candidate", now.Add(-time.Minute))
+	if _, err := runtime.Observe(ctx, model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: event.ID, Event: event}); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := runtime.Recall(ctx, model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: event.TenantID, SessionID: "query",
+		Query: "uncertified ranking candidate", AsOf: now, RecallK: 10, PackK: 2, TokenBudget: 1000,
+	}); err != nil {
+		t.Fatal(err)
+	}
+	if len(deltaStore.records) != 0 {
+		t.Fatalf("uncertified rank deltas were persisted: %+v", deltaStore.records)
+	}
+}
+
 type fixedBaseRanker struct{ lastInput map[string]float64 }
 
 func (r *fixedBaseRanker) ContractName() string { return "test/LibraVDBBaseRank" }

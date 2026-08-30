@@ -3,7 +3,7 @@ package model
 import "time"
 
 const ProtocolVersion = "eventframe.v1alpha1"
-const ContractVersion uint64 = 12
+const ContractVersion uint64 = 14
 
 type Snapshot struct {
 	RuntimeVersion     uint64 `json:"runtime_version"`
@@ -75,6 +75,7 @@ type RecallRequest struct {
 	TokenBudget                  int                 `json:"token_budget"`
 	RetrievalCollections         []string            `json:"retrieval_collections,omitempty"`
 	RetrievalExcludeByCollection map[string][]string `json:"retrieval_exclude_by_collection,omitempty"`
+	Resolution                   RecallResolution    `json:"resolution,omitempty"`
 }
 
 type Candidate struct {
@@ -93,6 +94,7 @@ type Candidate struct {
 	// RankDeltaConfidence is a deprecated alias for answer certainty.
 	RankDeltaConfidence float64        `json:"rank_delta_confidence,omitempty"`
 	RankDeltaBasis      string         `json:"rank_delta_basis,omitempty"`
+	ResolutionRankDelta float64        `json:"resolution_rank_delta,omitempty"`
 	RetrievalContract   string         `json:"retrieval_contract"`
 	RetrievalMetadata   []byte         `json:"-"`
 	Score               float64        `json:"score"`

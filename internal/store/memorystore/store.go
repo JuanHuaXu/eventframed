@@ -38,6 +38,7 @@ type Store struct {
 	snaps                  map[string]map[string]model.PredictiveSnapRecord
 	agencyRecords          map[string]map[string]model.AgencyProposalRecord
 	agencyDigests          map[string]map[string]string
+	compositionTombstones  map[string]map[string]model.CompositionTombstone
 	policyDigest           string
 	snapshot               model.Snapshot
 	ingestMotion           map[uint64]time.Time
@@ -65,8 +66,9 @@ func New() *Store {
 		residuals: make(map[string]map[string]model.ResidualRecord),
 		graphs:    make(map[string]model.PredictiveGraph), snaps: make(map[string]map[string]model.PredictiveSnapRecord),
 		agencyRecords: make(map[string]map[string]model.AgencyProposalRecord), agencyDigests: make(map[string]map[string]string),
-		snapshot:     initialSnapshot(),
-		ingestMotion: make(map[uint64]time.Time),
+		compositionTombstones: make(map[string]map[string]model.CompositionTombstone),
+		snapshot:              initialSnapshot(),
+		ingestMotion:          make(map[uint64]time.Time),
 	}
 }
 
@@ -627,6 +629,42 @@ func (s *Store) Put(_ context.Context, event model.Event, vector []float32, dige
 	return store.PutResult{Snapshot: s.snapshot}, nil
 }
 
+func (s *Store) PutComposition(_ context.Context, event model.Event, vector []float32, digest string, base model.Snapshot) (store.PutResult, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.snapshot != base {
+		return store.PutResult{}, store.ErrStaleSnapshot
+	}
+	if event.Composition == nil {
+		return store.PutResult{}, store.ErrCompositionAuthority
+	}
+	certificate, members := s.antiPigeonGroup(event.TenantID, "ap:"+event.Composition.AntiPigeonCertificateID)
+	if certificate.ID != event.Composition.AntiPigeonCertificateID || !sameIDSet(members, event.Composition.MemberEventIDs) {
+		return store.PutResult{}, store.ErrCompositionAuthority
+	}
+	tenant := s.entries[event.TenantID]
+	if tenant == nil {
+		return store.PutResult{}, store.ErrCompositionAuthority
+	}
+	for _, memberID := range event.Composition.MemberEventIDs {
+		member, ok := tenant[memberID]
+		if !ok || member.event.AvailableAt.After(event.AvailableAt) {
+			return store.PutResult{}, store.ErrCompositionAuthority
+		}
+	}
+	if current, ok := tenant[event.ID]; ok {
+		if current.digest != digest {
+			return store.PutResult{}, store.ErrIdempotencyConflict
+		}
+		return store.PutResult{Duplicate: true, Snapshot: s.snapshot}, nil
+	}
+	tenant[event.ID] = entry{event: event, vector: append([]float32(nil), vector...), digest: digest}
+	s.snapshot.RuntimeVersion++
+	s.snapshot.AbstractionVersion++
+	recordIngestMotion(s.ingestMotion, s.snapshot.RuntimeVersion, event.AvailableAt)
+	return store.PutResult{Snapshot: s.snapshot}, nil
+}
+
 func recordIngestMotion(motion map[uint64]time.Time, version uint64, availableAt time.Time) {
 	motion[version] = availableAt
 	const retainedVersions = uint64(4096)
@@ -693,6 +731,55 @@ func (s *Store) Delete(_ context.Context, tenantID, eventID string) (store.Delet
 		s.snapshot.AgencyVersion++
 	}
 	return store.DeleteResult{Deleted: true, Snapshot: s.snapshot}, nil
+}
+
+func (s *Store) DeleteComposition(_ context.Context, tenantID, eventID, reason string, decomposedAt time.Time) (store.CompositionDeleteResult, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	item, ok := s.entries[tenantID][eventID]
+	if !ok {
+		return store.CompositionDeleteResult{Snapshot: s.snapshot}, nil
+	}
+	if item.event.Composition == nil {
+		return store.CompositionDeleteResult{}, store.ErrCompositionAuthority
+	}
+	members := append([]string(nil), item.event.Composition.MemberEventIDs...)
+	tombstones := s.compositionTombstones[tenantID]
+	if tombstones == nil {
+		tombstones = make(map[string]model.CompositionTombstone)
+		s.compositionTombstones[tenantID] = tombstones
+	}
+	tombstones[eventID] = model.CompositionTombstone{TenantID: tenantID, EventID: eventID, MemberEventIDs: members, AntiPigeonCertificateID: item.event.Composition.AntiPigeonCertificateID, Reason: reason, DecomposedAt: decomposedAt.UTC()}
+	delete(s.entries[tenantID], eventID)
+	s.snapshot.RuntimeVersion++
+	s.snapshot.AbstractionVersion++
+	return store.CompositionDeleteResult{Deleted: true, MemberEventIDs: members, Snapshot: s.snapshot}, nil
+}
+
+func (s *Store) GetCompositionTombstone(_ context.Context, tenantID, eventID string) (model.CompositionTombstone, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	tombstone, ok := s.compositionTombstones[tenantID][eventID]
+	if !ok {
+		return model.CompositionTombstone{}, store.ErrEventNotFound
+	}
+	return tombstone, nil
+}
+
+func sameIDSet(left, right []string) bool {
+	if len(left) != len(right) {
+		return false
+	}
+	seen := make(map[string]struct{}, len(left))
+	for _, id := range left {
+		seen[id] = struct{}{}
+	}
+	for _, id := range right {
+		if _, ok := seen[id]; !ok {
+			return false
+		}
+	}
+	return true
 }
 
 func (s *Store) DeleteBefore(_ context.Context, tenantID string, before time.Time, limit int) (store.RetentionResult, error) {

@@ -28,6 +28,7 @@ var ErrAgencyLease = errors.New("agency proposal is not held by the resolving co
 var ErrAgencyExpired = errors.New("agency proposal expired before resolution")
 var ErrAgencyChainBudget = errors.New("agency causal-chain budget is exhausted or invalid")
 var ErrAgencyEvidence = errors.New("agency proposal references missing, cross-tenant, or unavailable evidence")
+var ErrCompositionAuthority = errors.New("higher-order composition lacks current Anti-Pigeon authority")
 
 // JournalSnapshotCompatible permits only fully-accounted future-available
 // ingestion after a recall's fixed as_of. Unclassified runtime motion remains
@@ -60,6 +61,12 @@ type PutResult struct {
 type DeleteResult struct {
 	Deleted  bool
 	Snapshot model.Snapshot
+}
+
+type CompositionDeleteResult struct {
+	Deleted        bool
+	MemberEventIDs []string
+	Snapshot       model.Snapshot
 }
 type RetentionResult struct {
 	DeletedIDs []string
@@ -102,7 +109,10 @@ type Stats struct {
 type EventStore interface {
 	BindBayesianPolicy(ctx context.Context, digest string) (model.Snapshot, error)
 	Put(ctx context.Context, event model.Event, vector []float32, digest string) (PutResult, error)
+	PutComposition(ctx context.Context, event model.Event, vector []float32, digest string, base model.Snapshot) (PutResult, error)
 	Delete(ctx context.Context, tenantID, eventID string) (DeleteResult, error)
+	DeleteComposition(ctx context.Context, tenantID, eventID, reason string, decomposedAt time.Time) (CompositionDeleteResult, error)
+	GetCompositionTombstone(ctx context.Context, tenantID, eventID string) (model.CompositionTombstone, error)
 	DeleteBefore(ctx context.Context, tenantID string, before time.Time, limit int) (RetentionResult, error)
 	Backup(ctx context.Context, destination string) error
 	Compact(ctx context.Context) error

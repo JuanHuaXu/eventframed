@@ -244,6 +244,8 @@ function parseContextPacket(value: unknown): ContextPacket {
       !Number.isFinite(candidate.rank_delta) ||
       (candidate.rank_delta_scale !== undefined &&
         (typeof candidate.rank_delta_scale !== "number" || !Number.isFinite(candidate.rank_delta_scale))) ||
+      (candidate.resolution_rank_delta !== undefined &&
+        (typeof candidate.resolution_rank_delta !== "number" || !Number.isFinite(candidate.resolution_rank_delta))) ||
       (candidate.rank_delta_confidence !== undefined &&
         (typeof candidate.rank_delta_confidence !== "number" || !Number.isFinite(candidate.rank_delta_confidence))) ||
       (candidate.rank_delta_answer_certainty !== undefined &&

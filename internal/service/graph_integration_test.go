@@ -209,6 +209,77 @@ func TestPredictiveSnapFeedsNominatedCandidateRankDeltasAndRollbackRemovesThem(t
 	}
 }
 
+func TestPredictiveSnapSupersessionProducesDirectionalNegativeRankDelta(t *testing.T) {
+	ctx := context.Background()
+	memory := memorystore.New()
+	embedder, _ := embed.NewHashEmbedder(32)
+	rankingPolicy := ranking.DefaultPolicy()
+	runtime, err := service.New(memory, embedder, service.Config{
+		DefaultRecallK: 2, DefaultPackK: 2, DefaultTokenBudget: 200,
+		RankingPolicy: rankingPolicy, ResidualMode: service.ResidualModeDisabled,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	for _, event := range []model.Event{
+		testutil.Event("verified", "verified correction target", now.Add(-2*time.Hour)),
+		testutil.Event("obsolete", "obsolete target claim", now.Add(-time.Hour)),
+	} {
+		event.TenantID, event.SessionID = "tenant-a", "session-a"
+		if _, err := runtime.Observe(ctx, model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: event.ID, Event: event}); err != nil {
+			t.Fatal(err)
+		}
+	}
+	recall := func() map[string]model.Candidate {
+		packet, recallErr := runtime.Recall(ctx, model.RecallRequest{
+			ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SessionID: "session-a",
+			Query: "verified correction target", AsOf: now, RecallK: 2, PackK: 2, TokenBudget: 200,
+		})
+		if recallErr != nil {
+			t.Fatal(recallErr)
+		}
+		result := make(map[string]model.Candidate, len(packet.Candidates))
+		for _, candidate := range packet.Candidates {
+			result[candidate.Event.ID] = candidate
+		}
+		return result
+	}
+	before := recall()
+	request := validSnapRequest(memory.Snapshot(ctx), now)
+	request.Candidate.Nodes = []model.CompatibilityNode{
+		{ID: "verified-bucket", Kind: "bucket", MemberEventIDs: []string{"verified"}, LawSpace: model.RetrievalUsefulnessHorizon},
+		{ID: "obsolete-bucket", Kind: "bucket", MemberEventIDs: []string{"obsolete"}, LawSpace: model.RetrievalUsefulnessHorizon},
+	}
+	request.Candidate.Edges = []model.CompatibilityEdge{{
+		ID: "verified-supersedes-obsolete", From: "verified-bucket", To: "obsolete-bucket",
+		ComparisonMap: "identity_bernoulli", Effect: model.CompatibilityEffectSupersedes, Weight: 1,
+	}}
+	request.Obligations = []model.ComparisonObligation{{From: "verified-bucket", To: "obsolete-bucket", Weight: 1}}
+	request.BucketCertificates = []model.SnapBucketCertificate{
+		{NodeID: "verified-bucket", FutureDiameterUCB: .03, DiameterLimit: .05, EffectiveSupport: 50},
+		{NodeID: "obsolete-bucket", FutureDiameterUCB: .03, DiameterLimit: .05, EffectiveSupport: 50},
+	}
+	request.EdgeCertificates = []model.SnapEdgeCertificate{{EdgeID: "verified-supersedes-obsolete", DefectUCB: .01, DefectLimit: .05}}
+	if published, err := runtime.PublishPredictiveSnap(ctx, request); err != nil || !published.Accepted {
+		t.Fatalf("publish = %+v, %v", published, err)
+	}
+	after := recall()
+	if after["obsolete"].RankDelta >= 0 || !after["obsolete"].GraphApplied {
+		t.Fatalf("obsolete candidate was not directionally demoted: before=%+v after=%+v", before["obsolete"], after["obsolete"])
+	}
+	if after["verified"].GraphApplied || after["verified"].RankDelta != before["verified"].RankDelta {
+		t.Fatalf("supersession fed target state back into source: before=%+v after=%+v", before["verified"], after["verified"])
+	}
+	if _, err := runtime.RollbackPredictiveSnap(ctx, model.RollbackSnapRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SnapID: request.ID, Reason: "supersession control"}); err != nil {
+		t.Fatal(err)
+	}
+	rolledBack := recall()
+	if rolledBack["obsolete"].GraphApplied || rolledBack["obsolete"].RankDelta != before["obsolete"].RankDelta {
+		t.Fatalf("rollback retained supersession delta: before=%+v after=%+v", before["obsolete"], rolledBack["obsolete"])
+	}
+}
+
 func sameOperationalRecall(left, right model.Candidate) bool {
 	return left.Score == right.Score &&
 		left.RankDelta == right.RankDelta &&

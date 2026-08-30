@@ -1,0 +1,80 @@
+{
+  "schema_version": "eventframe.public-fact-sheaf-snap.v1",
+  "generator": "go run ./cmd/eventframe-synthetic-snap",
+  "cases": 32,
+  "candidate_graphs": 128,
+  "topics": 10,
+  "split_cases": {
+    "confirmation": 8,
+    "design": 24
+  },
+  "cases_sha256": "cc843e5003bdd3cfc71a2966ea6597a8d67b3fe76535fe73d81988fcbdd2585b",
+  "text_corpus_sha256": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7",
+  "contains_private_text": false,
+  "contains_pii": false,
+  "identifier_scope": "Deterministic dataset-local labels only. Graph references have no meaning outside this benchmark.",
+  "grounding": "Node membership and expected compatibility are derived from the cited public-fact text corpus. The malformed graph topologies are deliberate benchmark perturbations, not factual assertions.",
+  "scope": "Bounded sheaf-inspired compatibility snapping over retrieval-usefulness-v1 with identity_bernoulli comparison maps and predictive compatible/supports/supersedes effects; not a general sheaf or causal graph benchmark.",
+  "sources": [
+    {
+      "publisher": "NASA",
+      "title": "Venus: Facts",
+      "url": "https://science.nasa.gov/venus/venus-facts/",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "NOAA",
+      "title": "What's the Difference Between Weather and Climate?",
+      "url": "https://www.ncei.noaa.gov/news/weather-vs-climate",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "USGS",
+      "title": "What is the difference between earthquake magnitude and earthquake intensity?",
+      "url": "https://www.usgs.gov/faqs/what-difference-between-earthquake-magnitude-and-earthquake-intensity-what-modified-mercalli",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "NIST",
+      "title": "SI Units - Mass",
+      "url": "https://www.nist.gov/pml/owm/si-units-mass",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "NOAA",
+      "title": "Polar Opposites: the Arctic and Antarctic",
+      "url": "https://prod-01-asg-www-climate.woc.noaa.gov/news-features/understanding-climate/polar-opposites-arctic-and-antarctic",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "NASA JPL",
+      "title": "Asteroid Watch: Fast Facts",
+      "url": "https://www.jpl.nasa.gov/asteroid-watch/fast-facts/",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "NASA",
+      "title": "What Causes the Seasons?",
+      "url": "https://spaceplace.nasa.gov/seasons/en/",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "NASA",
+      "title": "Great Wall",
+      "url": "https://www.nasa.gov/image-article/great-wall/",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "Smithsonian Institution",
+      "title": "Bat Facts",
+      "url": "https://www.si.edu/spotlight/bats/batfacts",
+      "accessed": "2026-08-30"
+    },
+    {
+      "publisher": "NOAA NSSL",
+      "title": "Severe Weather 101: Lightning FAQ",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/lightning/faq/",
+      "accessed": "2026-08-30"
+    }
+  ]
+}

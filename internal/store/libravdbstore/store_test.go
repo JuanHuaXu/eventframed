@@ -82,6 +82,60 @@ func TestEmbeddedMixedSearchAndPutCompletes(t *testing.T) {
 	}
 }
 
+func TestHigherOrderCompositionSurvivesRestartAndDecomposesWithoutMembers(t *testing.T) {
+	ctx := context.Background()
+	path := t.TempDir() + "/composition.libravdb"
+	config := testConfig(path, "model-a:d4")
+	first, err := libravdbstore.Open(config)
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	for _, id := range []string{"a", "b"} {
+		event := testutil.Event(id, "stage", now.Add(-time.Minute))
+		if _, err := first.Put(ctx, event, []float32{1, 0, 0, 0}, id); err != nil {
+			t.Fatal(err)
+		}
+	}
+	certificateBase := first.Snapshot(ctx)
+	certificate := model.AntiPigeonCertificate{ID: "ap", TenantID: "tenant-a", MemberEventIDs: []string{"a", "b"}, GraphVersion: certificateBase.GraphVersion, EvidenceEpoch: certificateBase.EvidenceEpoch}
+	base, err := first.PublishAntiPigeonCertificate(ctx, certificate)
+	if err != nil {
+		t.Fatal(err)
+	}
+	composite := testutil.Event("macro", "mission", now)
+	composite.Kind = model.HigherOrderEventKind
+	composite.Provenance.SourceEventIDs = []string{"a", "b"}
+	composite.Composition = &model.Composition{MemberEventIDs: []string{"a", "b"}, RepresentativeEventID: "a", RuleID: "stages", Resolution: "mission", Confidence: .9, AntiPigeonCertificateID: "ap", EvidenceEpoch: base.EvidenceEpoch}
+	if _, err := first.PutComposition(ctx, composite, []float32{1, 0, 0, 0}, "macro", base); err != nil {
+		t.Fatal(err)
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+	second, err := libravdbstore.Open(config)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer second.Close()
+	loaded, err := second.GetEvents(ctx, "tenant-a", []string{"macro"}, now.Add(time.Minute))
+	if err != nil || loaded[0].Composition == nil || loaded[0].Composition.RepresentativeEventID != "a" {
+		t.Fatalf("reloaded composition = %+v, %v", loaded, err)
+	}
+	decomposedAt := now.Add(time.Second)
+	deleted, err := second.DeleteComposition(ctx, "tenant-a", "macro", "invariant failed", decomposedAt)
+	if err != nil || !deleted.Deleted || len(deleted.MemberEventIDs) != 2 {
+		t.Fatalf("decomposition = %+v, %v", deleted, err)
+	}
+	if _, err := second.GetEvents(ctx, "tenant-a", []string{"a", "b"}, now.Add(time.Minute)); err != nil {
+		t.Fatalf("constituents were lost: %v", err)
+	}
+	tombstone, err := second.GetCompositionTombstone(ctx, "tenant-a", "macro")
+	if err != nil || tombstone.Reason != "invariant failed" || !tombstone.DecomposedAt.Equal(decomposedAt) {
+		t.Fatalf("composition tombstone = %+v, %v", tombstone, err)
+	}
+}
+
 func TestLegacyMigrationRequiresBackupAndRecoversRecords(t *testing.T) {
 	root := t.TempDir()
 	path := root + "/legacy.libravdb"
@@ -328,6 +382,53 @@ func TestBayesianJournalSurvivesRestartAndRejectsConflict(t *testing.T) {
 	}
 }
 
+func TestConcurrentBayesianJournalsRemainDurable(t *testing.T) {
+	path := t.TempDir() + "/events.libravdb"
+	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	snapshot := first.Snapshot(context.Background())
+	asOf := time.Now().UTC()
+	const journalCount = 32
+	errorsByJournal := make(chan error, journalCount)
+	var group sync.WaitGroup
+	for index := range journalCount {
+		group.Add(1)
+		go func() {
+			defer group.Done()
+			id := fmt.Sprintf("concurrent-%02d", index)
+			errorsByJournal <- first.PutBayesianJournal(context.Background(), model.BayesianJournalEntry{
+				ID: id, TenantID: "tenant-a", SessionID: id, AsOf: asOf,
+				QueryDigest: id, Snapshot: snapshot,
+				Report: model.BayesianShadowReport{Mode: "shadow", JournalID: id, JournalDurable: true, Nominated: 1},
+			})
+		}()
+	}
+	group.Wait()
+	close(errorsByJournal)
+	for writeErr := range errorsByJournal {
+		if writeErr != nil {
+			t.Fatalf("concurrent journal write: %v", writeErr)
+		}
+	}
+	if err := first.Close(); err != nil {
+		t.Fatal(err)
+	}
+	second, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer second.Close()
+	for index := range journalCount {
+		id := fmt.Sprintf("concurrent-%02d", index)
+		entry, getErr := second.GetBayesianJournal(context.Background(), "tenant-a", id)
+		if getErr != nil || entry.QueryDigest != id {
+			t.Fatalf("journal %s after restart = %+v, %v", id, entry, getErr)
+		}
+	}
+}
+
 func TestBayesianPosteriorUpdateSurvivesRestart(t *testing.T) {
 	path := t.TempDir() + "/events.libravdb"
 	first, err := libravdbstore.Open(testConfig(path, "model-a:d4"))
@@ -489,9 +590,16 @@ func TestPredictiveSnapInvalidationRollbackAndRestart(t *testing.T) {
 	}
 	published := model.PredictiveGraph{
 		TenantID: "tenant-a", SourceSnapID: "snap-1", PublishedAt: now,
-		Nodes: []model.CompatibilityNode{{ID: "bucket-a", Kind: "bucket", MemberEventIDs: []string{"event-a"}, PosteriorKeys: []string{"posterior-a"}, LawSpace: model.RetrievalUsefulnessHorizon}},
+		Nodes: []model.CompatibilityNode{
+			{ID: "bucket-a", Kind: "bucket", MemberEventIDs: []string{"event-a"}, PosteriorKeys: []string{"posterior-a"}, LawSpace: model.RetrievalUsefulnessHorizon},
+			{ID: "bucket-obsolete", Kind: "bucket", LawSpace: model.RetrievalUsefulnessHorizon},
+		},
+		Edges: []model.CompatibilityEdge{{
+			ID: "edge-supersedes", From: "bucket-a", To: "bucket-obsolete",
+			ComparisonMap: "identity_bernoulli", Effect: model.CompatibilityEffectSupersedes, Weight: 1,
+		}},
 	}
-	closure := model.DependencyClosure{NodeIDs: []string{"bucket-a"}, EventIDs: []string{"event-a"}, PosteriorKeys: []string{"posterior-a"}}
+	closure := model.DependencyClosure{NodeIDs: []string{"bucket-a", "bucket-obsolete"}, EdgeIDs: []string{"edge-supersedes"}, EventIDs: []string{"event-a"}, PosteriorKeys: []string{"posterior-a"}}
 	record := model.PredictiveSnapRecord{ID: "snap-1", TenantID: "tenant-a", PreviousGraph: previous, PublishedGraph: published, Closure: closure, SimultaneousCoverage: .95, Procedure: "test", Issuer: "external-auditor", PublishedAt: now}
 	graph, snap, err := first.PublishPredictiveSnap(ctx, record)
 	if err != nil {
@@ -517,7 +625,7 @@ func TestPredictiveSnapInvalidationRollbackAndRestart(t *testing.T) {
 		t.Fatal(err)
 	}
 	reopened, err := second.GetPredictiveGraph(ctx, "tenant-a")
-	if err != nil || reopened.SourceSnapID != "snap-1" || reopened.Version != second.Snapshot(ctx).GraphVersion {
+	if err != nil || reopened.SourceSnapID != "snap-1" || reopened.Version != second.Snapshot(ctx).GraphVersion || len(reopened.Edges) != 1 || reopened.Edges[0].Effect != model.CompatibilityEffectSupersedes {
 		t.Fatalf("reopened graph = %+v, %v", reopened, err)
 	}
 	other, err := second.GetPredictiveGraph(ctx, "tenant-b")

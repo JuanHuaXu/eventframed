@@ -75,6 +75,38 @@ posterior may alter the score only when both selection support and omitted
 influence are certified; the default Bayesian mixture weight is 0.10 and the
 runtime rejects configurations above 0.25.
 
+The optional `resolution` is `auto`, `coarse`, or `fine`. `auto` leaves the
+contract-native order unchanged. When a nominated higher-order frame and any of
+its constituents share the frontier, `coarse` applies a bounded rank-only
+preference to the macro frame while leaving its representative unpenalized;
+`fine` favors constituents and demotes the macro. The preference never changes
+the scored forecast law or removes a frontier member before ranking and packing.
+
+### `POST /v1/invariants:compose`
+
+Publishes one higher-order EventFrame from 2 to 64 existing, same-tenant members.
+The request binds a frozen base snapshot, exact member IDs, one representative,
+a human-readable invariant label, rule ID, resolution, confidence, publication
+time, and the exact Anti-Pigeon certificate ID. Under the store write lock the
+daemon rechecks the snapshot, certificate membership, and member availability.
+It derives the time envelope and fields shared by every member, stores exact
+provenance, embeds the canonical 5W1H macro frame, and advances runtime and
+abstraction versions without advancing the independent-evidence epoch.
+
+Ordinary `/v1/events:observe` rejects higher-order composition metadata. This
+prevents callers from bypassing Anti-Pigeon authority. Constituent events are
+never deleted or hidden by composition, and the representative remains directly
+retrievable. If the authorizing certificate is revoked or replaced, the macro
+fails closed out of recall.
+
+### `POST /v1/invariants:decompose`
+
+Requires tenant, higher-order event ID, and a non-empty reason. It removes only
+the composite record, returns the restored member IDs, advances runtime and
+abstraction versions, persists the reason and member set in a durable tombstone,
+and preserves every constituent. The operation rejects an
+ordinary event ID rather than becoming a second general deletion API.
+
 ### `POST /v1/openclaw/context:recall`
 
 Runs the same internal recall operation and scoring contracts, then returns the
@@ -272,6 +304,15 @@ sheaf-inspired split/merge scaffolding, not causal-edge publication or a general
 sheaf construction. Confirmation values remain empirical claims of the named
 external audit procedure.
 
+Each edge may declare one predictive effect. `compatible` propagates bounded
+node scores symmetrically. `supports` propagates the source score to the target
+only. `supersedes` propagates one minus the source score to the target only, so
+a strongly supported correction can demote an obsolete target without feeding
+the target back into the correction. Missing effects retain legacy `compatible`
+behavior. All effects remain inside the existing graph-weight, rank-delta,
+reliability, and clipping controls and never nominate outside the retrieved
+frontier.
+
 ### Lifecycle endpoints
 
 - `POST /v1/events:delete` removes one tenant event and atomically invalidates
@@ -339,3 +380,11 @@ and packing diversity. Raw transcript remains metadata and final payload.
 Embedding keys and remote candidate collection names bind the representation.
 Predecessor databases require backup-first re-embedding and configured remote
 candidate stores require the separate reindex maintenance operation.
+
+`contract_version=13` adds persisted predictive edge effects: symmetric
+`compatible`, directional `supports`, and directional `supersedes`. Graphs from
+earlier contracts omit the field and retain symmetric compatibility behavior.
+
+`contract_version=14` adds typed higher-order composition metadata, exact
+Anti-Pigeon-authorized atomic publication, reversible decomposition, and the
+`auto`/`coarse`/`fine` retrieval-resolution contract.

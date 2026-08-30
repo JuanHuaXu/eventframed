@@ -48,6 +48,11 @@ func ValidateCandidate(candidate model.PredictiveGraph, policy Policy) error {
 		if strings.TrimSpace(edge.ID) == "" || edge.From == edge.To || edge.ComparisonMap != "identity_bernoulli" || !finite(edge.Weight) || edge.Weight <= 0 {
 			return errors.New("edges require distinct endpoints, positive weight, and identity_bernoulli comparison")
 		}
+		switch edgeEffect(edge) {
+		case model.CompatibilityEffectCompatible, model.CompatibilityEffectSupports, model.CompatibilityEffectSupersedes:
+		default:
+			return errors.New("edges require compatible, supports, or supersedes effect")
+		}
 		if _, ok := nodes[edge.From]; !ok {
 			return errors.New("edge source is absent from candidate graph")
 		}
@@ -172,23 +177,28 @@ func CandidateCompatibility(candidate model.PredictiveGraph, candidateScores map
 		}
 	}
 	totals, weights := make(map[string]float64), make(map[string]float64)
+	add := func(node model.CompatibilityNode, score, weight float64) {
+		for _, eventID := range node.MemberEventIDs {
+			if _, nominated := candidateScores[eventID]; nominated {
+				totals[eventID] += weight * score
+				weights[eventID] += weight
+			}
+		}
+	}
 	for _, edge := range candidate.Edges {
 		fromScore, fromOK := nodeScores[edge.From]
 		toScore, toOK := nodeScores[edge.To]
 		if !fromOK || !toOK {
 			continue
 		}
-		for _, eventID := range nodes[edge.From].MemberEventIDs {
-			if _, nominated := candidateScores[eventID]; nominated {
-				totals[eventID] += edge.Weight * toScore
-				weights[eventID] += edge.Weight
-			}
-		}
-		for _, eventID := range nodes[edge.To].MemberEventIDs {
-			if _, nominated := candidateScores[eventID]; nominated {
-				totals[eventID] += edge.Weight * fromScore
-				weights[eventID] += edge.Weight
-			}
+		switch edgeEffect(edge) {
+		case model.CompatibilityEffectCompatible:
+			add(nodes[edge.From], toScore, edge.Weight)
+			add(nodes[edge.To], fromScore, edge.Weight)
+		case model.CompatibilityEffectSupports:
+			add(nodes[edge.To], fromScore, edge.Weight)
+		case model.CompatibilityEffectSupersedes:
+			add(nodes[edge.To], 1-fromScore, edge.Weight)
 		}
 	}
 	result := make(map[string]float64, len(totals))
@@ -198,6 +208,13 @@ func CandidateCompatibility(candidate model.PredictiveGraph, candidateScores map
 		}
 	}
 	return result
+}
+
+func edgeEffect(edge model.CompatibilityEdge) string {
+	if edge.Effect == "" {
+		return model.CompatibilityEffectCompatible
+	}
+	return edge.Effect
 }
 
 func reachable(adjacency map[string][]string, from, to string) bool {

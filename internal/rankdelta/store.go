@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"math"
+	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
@@ -50,8 +51,9 @@ type Store interface {
 }
 
 type SQLiteStore struct {
-	db    *sql.DB
-	cache *lruCache
+	db      *sql.DB
+	cache   *lruCache
+	writeMu sync.Mutex
 }
 
 func Open(path string, cacheEntries int) (*SQLiteStore, error) {
@@ -64,16 +66,21 @@ func Open(path string, cacheEntries int) (*SQLiteStore, error) {
 	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
 		return nil, fmt.Errorf("create rank-delta directory: %w", err)
 	}
-	db, err := sql.Open("sqlite", path)
+	dsn := &url.URL{Scheme: "file", Path: path}
+	parameters := url.Values{}
+	parameters.Set("_busy_timeout", "5000")
+	parameters.Set("_journal_mode", "WAL")
+	parameters.Set("_synchronous", "NORMAL")
+	dsn.RawQuery = parameters.Encode()
+	db, err := sql.Open("sqlite", dsn.String())
 	if err != nil {
 		return nil, fmt.Errorf("open rank-delta SQLite: %w", err)
 	}
-	db.SetMaxOpenConns(1)
-	db.SetMaxIdleConns(1)
+	// WAL permits concurrent readers while the explicit writer mutex preserves
+	// the single-writer transaction order required by rank-delta durability.
+	db.SetMaxOpenConns(8)
+	db.SetMaxIdleConns(8)
 	for _, statement := range []string{
-		`PRAGMA journal_mode=WAL`,
-		`PRAGMA synchronous=NORMAL`,
-		`PRAGMA busy_timeout=5000`,
 		`CREATE TABLE IF NOT EXISTS rank_deltas (
 			tenant_id TEXT NOT NULL,
 			delta_key TEXT NOT NULL,
@@ -169,6 +176,20 @@ func (s *SQLiteStore) PutBatch(ctx context.Context, records []Record) error {
 		}
 		pending = append(pending, record)
 	}
+	if len(pending) == 0 {
+		return nil
+	}
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	// Another writer may have populated the cache while this caller waited.
+	ready := pending[:0]
+	for _, record := range pending {
+		if cached, ok := s.cache.get(cacheKey(record.TenantID, record.Key)); ok && materiallyEqual(cached, record) {
+			continue
+		}
+		ready = append(ready, record)
+	}
+	pending = ready
 	if len(pending) == 0 {
 		return nil
 	}

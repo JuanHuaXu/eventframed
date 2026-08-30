@@ -2,7 +2,9 @@ package rankdelta
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
+	"sync"
 	"testing"
 	"time"
 
@@ -72,5 +74,51 @@ func TestSQLiteStoreRejectsExpiredAndInvalidDeltas(t *testing.T) {
 	}
 	if len(got) != 0 {
 		t.Fatalf("expired delta returned: %#v", got)
+	}
+}
+
+func TestSQLiteStoreHandlesConcurrentReadersAndWriters(t *testing.T) {
+	store, err := Open(filepath.Join(t.TempDir(), "rank-deltas.sqlite"), 256)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer store.Close()
+	now := time.Now().UTC()
+	errorsByWorker := make(chan error, 16)
+	var workers sync.WaitGroup
+	for worker := range 8 {
+		workers.Add(1)
+		go func() {
+			defer workers.Done()
+			for index := range 25 {
+				key := fmt.Sprintf("writer-%d-%d", worker, index)
+				err := store.PutBatch(context.Background(), []Record{{
+					TenantID: "tenant", Key: key, EventID: key, Delta: .1, Reliability: .8,
+					UpdatedAt: now, ExpiresAt: now.Add(time.Hour),
+				}})
+				if err != nil {
+					errorsByWorker <- err
+					return
+				}
+			}
+		}()
+	}
+	for worker := range 8 {
+		workers.Add(1)
+		go func() {
+			defer workers.Done()
+			for index := range 25 {
+				key := fmt.Sprintf("writer-%d-%d", worker, index)
+				if _, err := store.GetBatch(context.Background(), "tenant", []string{key}, model.Snapshot{}, now); err != nil {
+					errorsByWorker <- err
+					return
+				}
+			}
+		}()
+	}
+	workers.Wait()
+	close(errorsByWorker)
+	for workerErr := range errorsByWorker {
+		t.Fatal(workerErr)
 	}
 }

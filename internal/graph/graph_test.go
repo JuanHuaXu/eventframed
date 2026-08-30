@@ -1,6 +1,7 @@
 package graph
 
 import (
+	"math"
 	"reflect"
 	"testing"
 
@@ -107,5 +108,42 @@ func TestCandidateCompatibilityPropagatesOnlyWithinNominatedFrontier(t *testing.
 	}
 	if _, exists := scores["not-nominated"]; exists {
 		t.Fatal("graph propagation introduced a non-nominated event")
+	}
+}
+
+func TestCandidateCompatibilityAppliesDirectionalSupportAndSupersession(t *testing.T) {
+	predictive := model.PredictiveGraph{
+		Nodes: []model.CompatibilityNode{
+			{ID: "verified", Kind: "bucket", MemberEventIDs: []string{"correction"}, LawSpace: model.RetrievalUsefulnessHorizon},
+			{ID: "related", Kind: "bucket", MemberEventIDs: []string{"distinction"}, LawSpace: model.RetrievalUsefulnessHorizon},
+			{ID: "obsolete", Kind: "bucket", MemberEventIDs: []string{"misconception"}, LawSpace: model.RetrievalUsefulnessHorizon},
+		},
+		Edges: []model.CompatibilityEdge{
+			{ID: "support", From: "verified", To: "related", ComparisonMap: "identity_bernoulli", Effect: model.CompatibilityEffectSupports, Weight: 1},
+			{ID: "supersede", From: "verified", To: "obsolete", ComparisonMap: "identity_bernoulli", Effect: model.CompatibilityEffectSupersedes, Weight: 1},
+		},
+	}
+	scores := CandidateCompatibility(predictive, map[string]float64{"correction": .9, "distinction": .4, "misconception": .8})
+	if scores["distinction"] != .9 {
+		t.Fatalf("support score = %v", scores["distinction"])
+	}
+	if math.Abs(scores["misconception"]-.1) > 1e-12 {
+		t.Fatalf("supersession score = %v", scores["misconception"])
+	}
+	if _, exists := scores["correction"]; exists {
+		t.Fatal("directional effects fed target state back into the source")
+	}
+}
+
+func TestCandidateValidationRejectsUnknownEdgeEffect(t *testing.T) {
+	candidate := model.PredictiveGraph{
+		Nodes: []model.CompatibilityNode{
+			{ID: "a", Kind: "bucket", LawSpace: model.RetrievalUsefulnessHorizon},
+			{ID: "b", Kind: "bucket", LawSpace: model.RetrievalUsefulnessHorizon},
+		},
+		Edges: []model.CompatibilityEdge{{ID: "ab", From: "a", To: "b", ComparisonMap: "identity_bernoulli", Effect: "causal", Weight: 1}},
+	}
+	if err := ValidateCandidate(candidate, testPolicy()); err == nil {
+		t.Fatal("expected undeclared edge effect rejection")
 	}
 }

@@ -38,6 +38,7 @@ type openClawCandidate struct {
 	RankDeltaCorrectionReliability float64              `json:"rank_delta_correction_reliability,omitempty"`
 	RankDeltaConfidence            float64              `json:"rank_delta_confidence,omitempty"`
 	RankDeltaBasis                 string               `json:"rank_delta_basis,omitempty"`
+	ResolutionRankDelta            float64              `json:"resolution_rank_delta,omitempty"`
 	RetrievalContract              string               `json:"retrieval_contract"`
 	Score                          float64              `json:"score"`
 	BayesianProbability            float64              `json:"bayesian_probability,omitempty"`
@@ -79,7 +80,8 @@ func projectOpenClawPacket(packet model.ContextPacket) openClawContextPacket {
 			RankDeltaAnswerCertainty:       candidate.RankDeltaAnswerCertainty,
 			RankDeltaCorrectionReliability: candidate.RankDeltaCorrectionReliability,
 			RankDeltaConfidence:            candidate.RankDeltaConfidence, RankDeltaBasis: candidate.RankDeltaBasis,
-			RetrievalContract: candidate.RetrievalContract, Score: candidate.Score,
+			ResolutionRankDelta: candidate.ResolutionRankDelta,
+			RetrievalContract:   candidate.RetrievalContract, Score: candidate.Score,
 			BayesianProbability: candidate.BayesianProbability, BayesianApplied: candidate.BayesianApplied,
 			Forecast: candidate.Forecast, EstimatedTokens: candidate.EstimatedTokens,
 		})

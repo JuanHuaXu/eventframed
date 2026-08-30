@@ -2,6 +2,12 @@ package model
 
 import "time"
 
+const (
+	CompatibilityEffectCompatible = "compatible"
+	CompatibilityEffectSupports   = "supports"
+	CompatibilityEffectSupersedes = "supersedes"
+)
+
 type CompatibilityNode struct {
 	ID             string   `json:"id"`
 	Kind           string   `json:"kind"`
@@ -15,6 +21,7 @@ type CompatibilityEdge struct {
 	From          string  `json:"from"`
 	To            string  `json:"to"`
 	ComparisonMap string  `json:"comparison_map"`
+	Effect        string  `json:"effect,omitempty"`
 	Weight        float64 `json:"weight"`
 }
 

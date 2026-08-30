@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"sync"
 	"time"
 	"unicode/utf8"
 
@@ -22,6 +23,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/frame"
 	graphpolicy "github.com/JuanHuaXu/eventframed/internal/graph"
+	"github.com/JuanHuaXu/eventframed/internal/invariant"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/packing"
 	"github.com/JuanHuaXu/eventframed/internal/rankdelta"
@@ -201,10 +203,117 @@ func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (mo
 	if request.IdempotencyKey != request.Event.ID {
 		return model.ObserveResponse{}, errors.New("idempotency_key must equal event id in v1alpha1")
 	}
+	if request.Event.Composition != nil || request.Event.Kind == model.HigherOrderEventKind {
+		return model.ObserveResponse{}, errors.New("higher-order events must use the invariant composition contract")
+	}
 	if err := request.Event.Validate(s.embedder.Dimension()); err != nil {
 		return model.ObserveResponse{}, err
 	}
 	return s.observeEvent(ctx, request.Event, "")
+}
+
+func (s *Service) ComposeInvariant(ctx context.Context, request model.ComposeInvariantRequest) (model.ComposeInvariantResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.ComposeInvariantResponse{}, err
+	}
+	if strings.TrimSpace(request.ID) == "" || strings.TrimSpace(request.TenantID) == "" || strings.TrimSpace(request.SessionID) == "" || strings.TrimSpace(request.Label) == "" || strings.TrimSpace(request.RuleID) == "" || strings.TrimSpace(request.Resolution) == "" || strings.TrimSpace(request.RepresentativeEventID) == "" || strings.TrimSpace(request.AntiPigeonCertificateID) == "" {
+		return model.ComposeInvariantResponse{}, errors.New("composition id, tenant_id, session_id, label, rule_id, resolution, representative_event_id, and anti_pigeon_certificate_id are required")
+	}
+	if len(request.MemberEventIDs) < 2 || len(request.MemberEventIDs) > s.config.BayesianGroupPolicy.MaxMembers {
+		return model.ComposeInvariantResponse{}, errors.New("composition member count exceeds the configured Anti-Pigeon group bounds")
+	}
+	if math.IsNaN(request.Confidence) || math.IsInf(request.Confidence, 0) || request.Confidence < 0 || request.Confidence > 1 || request.PublishedAt.IsZero() || request.PublishedAt.After(time.Now().UTC()) {
+		return model.ComposeInvariantResponse{}, errors.New("composition confidence must be in [0,1] and published_at must be present-time or earlier")
+	}
+	if existing, getErr := s.store.GetEvents(ctx, request.TenantID, []string{request.ID}, time.Date(9999, 12, 31, 23, 59, 59, 0, time.UTC)); getErr == nil {
+		if !compositionMatchesRequest(existing[0], request) {
+			return model.ComposeInvariantResponse{}, store.ErrIdempotencyConflict
+		}
+		return model.ComposeInvariantResponse{ProtocolVersion: model.ProtocolVersion, Event: existing[0], Duplicate: true, Snapshot: s.store.Snapshot(ctx)}, nil
+	} else if !errors.Is(getErr, store.ErrEventNotFound) {
+		return model.ComposeInvariantResponse{}, getErr
+	}
+	snapshot := s.store.Snapshot(ctx)
+	if snapshot != request.BaseSnapshot {
+		return model.ComposeInvariantResponse{}, store.ErrStaleSnapshot
+	}
+	members, err := s.store.GetEvents(ctx, request.TenantID, request.MemberEventIDs, request.PublishedAt.UTC())
+	if err != nil {
+		return model.ComposeInvariantResponse{}, fmt.Errorf("resolve composition members: %w", err)
+	}
+	certificate, err := s.store.GetAntiPigeonCertificate(ctx, request.TenantID, request.MemberEventIDs)
+	if err != nil || certificate.ID != request.AntiPigeonCertificateID || !antiPigeonCertificateActive(certificate, snapshot, time.Now().UTC()) {
+		return model.ComposeInvariantResponse{}, store.ErrCompositionAuthority
+	}
+	event := invariant.Compose(request, members)
+	if err := event.Validate(s.embedder.Dimension()); err != nil {
+		return model.ComposeInvariantResponse{}, err
+	}
+	vector, err := embed.Document(s.embedder, event.FrameText())
+	if err != nil {
+		return model.ComposeInvariantResponse{}, fmt.Errorf("embed composition: %w", err)
+	}
+	event.EmbeddingModel = s.embedder.ModelKey()
+	digest, err := eventDigest(event)
+	if err != nil {
+		return model.ComposeInvariantResponse{}, err
+	}
+	result, err := s.store.PutComposition(ctx, event, vector, digest, request.BaseSnapshot)
+	if err != nil {
+		return model.ComposeInvariantResponse{}, err
+	}
+	if s.index != nil {
+		if err := IndexEventFrame(ctx, s.index, s.config.CandidateCollectionPrefix, event); err != nil {
+			return model.ComposeInvariantResponse{}, fmt.Errorf("index composition through LibraVDB contract: %w", err)
+		}
+	}
+	return model.ComposeInvariantResponse{ProtocolVersion: model.ProtocolVersion, Event: event, Duplicate: result.Duplicate, Snapshot: result.Snapshot}, nil
+}
+
+func compositionMatchesRequest(event model.Event, request model.ComposeInvariantRequest) bool {
+	composition := event.Composition
+	if composition == nil || event.TenantID != request.TenantID || event.SessionID != request.SessionID || event.What.Value != request.Label || !event.AvailableAt.Equal(request.PublishedAt.UTC()) || composition.RepresentativeEventID != request.RepresentativeEventID || composition.RuleID != request.RuleID || composition.Resolution != request.Resolution || composition.Confidence != request.Confidence || composition.AntiPigeonCertificateID != request.AntiPigeonCertificateID {
+		return false
+	}
+	return sameStringSet(composition.MemberEventIDs, request.MemberEventIDs)
+}
+
+func sameStringSet(left, right []string) bool {
+	if len(left) != len(right) {
+		return false
+	}
+	seen := make(map[string]struct{}, len(left))
+	for _, value := range left {
+		if _, duplicate := seen[value]; duplicate {
+			return false
+		}
+		seen[value] = struct{}{}
+	}
+	for _, value := range right {
+		if _, ok := seen[value]; !ok {
+			return false
+		}
+	}
+	return true
+}
+
+func (s *Service) DecomposeInvariant(ctx context.Context, request model.DecomposeInvariantRequest) (model.DecomposeInvariantResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.DecomposeInvariantResponse{}, err
+	}
+	if strings.TrimSpace(request.TenantID) == "" || strings.TrimSpace(request.EventID) == "" || strings.TrimSpace(request.Reason) == "" {
+		return model.DecomposeInvariantResponse{}, errors.New("tenant_id, event_id, and reason are required")
+	}
+	result, err := s.store.DeleteComposition(ctx, request.TenantID, request.EventID, request.Reason, time.Now().UTC())
+	if err != nil {
+		return model.DecomposeInvariantResponse{}, err
+	}
+	if s.index != nil && result.Deleted {
+		if err := s.index.DeleteText(ctx, s.candidateCollection(request.TenantID), request.EventID); err != nil {
+			return model.DecomposeInvariantResponse{}, fmt.Errorf("delete composition through LibraVDB contract: %w", err)
+		}
+	}
+	return model.DecomposeInvariantResponse{ProtocolVersion: model.ProtocolVersion, EventID: request.EventID, Deleted: result.Deleted, RestoredMemberEventIDs: result.MemberEventIDs, Snapshot: result.Snapshot}, nil
 }
 
 func (s *Service) CaptureTurn(ctx context.Context, request model.CaptureTurnRequest) (model.ObserveResponse, error) {
@@ -268,6 +377,30 @@ func (s *Service) observeEvent(ctx context.Context, event model.Event, digest st
 }
 
 func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (model.ContextPacket, error) {
+	const snapshotAttempts = 5
+	for attempt := 0; attempt < snapshotAttempts; attempt++ {
+		packet, err := s.recallOnce(ctx, request)
+		if !errors.Is(err, store.ErrStaleSnapshot) {
+			return packet, err
+		}
+		if attempt+1 == snapshotAttempts {
+			return model.ContextPacket{}, err
+		}
+		delay := time.Duration(1<<attempt) * time.Millisecond
+		timer := time.NewTimer(delay)
+		select {
+		case <-timer.C:
+		case <-ctx.Done():
+			if !timer.Stop() {
+				<-timer.C
+			}
+			return model.ContextPacket{}, ctx.Err()
+		}
+	}
+	return model.ContextPacket{}, store.ErrStaleSnapshot
+}
+
+func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (model.ContextPacket, error) {
 	if err := checkProtocol(request.ProtocolVersion); err != nil {
 		return model.ContextPacket{}, err
 	}
@@ -279,6 +412,9 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	}
 	if strings.TrimSpace(request.Query) == "" && s.retriever != nil {
 		return model.ContextPacket{}, errors.New("query text is required with contract-native nomination and ranking")
+	}
+	if !request.Resolution.Valid() {
+		return model.ContextPacket{}, errors.New("resolution must be auto, coarse, or fine")
 	}
 	if request.AsOf.IsZero() {
 		return model.ContextPacket{}, errors.New("as_of is required to enforce availability-time filtering")
@@ -309,6 +445,15 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	for _, result := range results {
 		if result.Event.AvailableAt.After(request.AsOf) {
 			continue
+		}
+		if composition := result.Event.Composition; composition != nil {
+			certificate, certificateErr := s.store.GetAntiPigeonCertificate(ctx, request.TenantID, composition.MemberEventIDs)
+			if errors.Is(certificateErr, store.ErrCertificateNotFound) || (certificateErr == nil && (certificate.ID != composition.AntiPigeonCertificateID || certificate.ValidUntil.IsZero() || !time.Now().UTC().Before(certificate.ValidUntil))) {
+				continue
+			}
+			if certificateErr != nil {
+				return model.ContextPacket{}, fmt.Errorf("validate composition authority: %w", certificateErr)
+			}
 		}
 		eligible++
 		candidate := model.Candidate{
@@ -447,6 +592,10 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	for index := range shadow.Decisions {
 		decisionIndexes[shadow.Decisions[index].EventID] = index
 	}
+	cachedResiduals, err := s.loadResidualCandidates(ctx, request, queryDigest, candidates, shadow.Decisions, decisionIndexes)
+	if err != nil {
+		return model.ContextPacket{}, err
+	}
 	for index := range candidates {
 		candidate := &candidates[index]
 		decisionIndex, ok := decisionIndexes[candidate.Event.ID]
@@ -470,16 +619,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 			belief := bernoulliLaw(candidate.BayesianProbability)
 			forecast.BeliefLaw = &belief
 		}
-		actionKey := residualActionKey(queryDigest, candidate.Event.ID, forecast.HorizonKey)
-		generalKey := residualGeneralKey(decision.PosteriorKey, forecast.HorizonKey)
-		var cached model.ResidualCandidates
-		var getErr error
-		if s.config.ResidualMode != ResidualModeDisabled {
-			cached, getErr = s.store.GetResidualCandidates(ctx, request.TenantID, actionKey, generalKey)
-			if getErr != nil {
-				return model.ContextPacket{}, getErr
-			}
-		}
+		cached := cachedResiduals[index]
 		var selected *model.ResidualRecord
 		if cached.Exact != nil && residual.Eligible(*cached.Exact, preResidual.Useful, snapshot, request.AsOf.UTC(), s.config.ResidualPolicy) {
 			selected = cached.Exact
@@ -533,6 +673,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		candidates = rankedCandidates
 	}
 	packetAnswerCertainty := s.applyRankDeltas(candidates, deltas, queryDigest, packK)
+	applyResolutionPreference(candidates, request.Resolution)
 	for index := range candidates {
 		candidates[index].RetrievalContract = s.ranker.ContractName()
 		candidates[index].Forecast.RankScore = candidates[index].Score
@@ -577,6 +718,104 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		Snapshot:              snapshot,
 		BayesianShadow:        shadow,
 	}, nil
+}
+
+func (s *Service) loadResidualCandidates(ctx context.Context, request model.RecallRequest, queryDigest string, candidates []model.Candidate, decisions []model.BayesianDecision, decisionIndexes map[string]int) ([]model.ResidualCandidates, error) {
+	loaded := make([]model.ResidualCandidates, len(candidates))
+	if s.config.ResidualMode == ResidualModeDisabled || len(candidates) == 0 {
+		return loaded, nil
+	}
+	for _, candidate := range candidates {
+		if _, ok := decisionIndexes[candidate.Event.ID]; !ok {
+			return nil, errors.New("Bayesian frontier omitted a recalled candidate")
+		}
+	}
+
+	workerCount := min(8, len(candidates))
+	work := make(chan int)
+	workCtx, cancel := context.WithCancel(ctx)
+	defer cancel()
+	var workers sync.WaitGroup
+	var firstErr error
+	var errOnce sync.Once
+	for range workerCount {
+		workers.Add(1)
+		go func() {
+			defer workers.Done()
+			for index := range work {
+				candidate := candidates[index]
+				decision := decisions[decisionIndexes[candidate.Event.ID]]
+				actionKey := residualActionKey(queryDigest, candidate.Event.ID, model.RetrievalUsefulnessHorizon)
+				generalKey := residualGeneralKey(decision.PosteriorKey, model.RetrievalUsefulnessHorizon)
+				residuals, err := s.store.GetResidualCandidates(workCtx, request.TenantID, actionKey, generalKey)
+				if err != nil {
+					errOnce.Do(func() {
+						firstErr = err
+						cancel()
+					})
+					continue
+				}
+				loaded[index] = residuals
+			}
+		}()
+	}
+	for index := range candidates {
+		select {
+		case work <- index:
+		case <-workCtx.Done():
+			break
+		}
+		if workCtx.Err() != nil {
+			break
+		}
+	}
+	close(work)
+	workers.Wait()
+	if firstErr != nil {
+		return nil, firstErr
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	return loaded, nil
+}
+
+func applyResolutionPreference(candidates []model.Candidate, resolution model.RecallResolution) {
+	if resolution == "" || resolution == model.RecallResolutionAuto {
+		return
+	}
+	const preference = 0.05
+	adjustments := make(map[string]float64, len(candidates))
+	for _, candidate := range candidates {
+		composition := candidate.Event.Composition
+		if composition == nil {
+			continue
+		}
+		if resolution == model.RecallResolutionCoarse {
+			adjustments[candidate.Event.ID] += preference
+			for _, memberID := range composition.MemberEventIDs {
+				if memberID != composition.RepresentativeEventID {
+					adjustments[memberID] -= preference / 2
+				}
+			}
+		} else {
+			adjustments[candidate.Event.ID] -= preference
+			for _, memberID := range composition.MemberEventIDs {
+				adjustments[memberID] += preference / 2
+			}
+		}
+	}
+	for index := range candidates {
+		adjustment := clamp(adjustments[candidates[index].Event.ID], -preference, preference)
+		candidates[index].ResolutionRankDelta = adjustment
+		candidates[index].Score = clamp(candidates[index].Score+adjustment, 0, 1)
+	}
+	sort.SliceStable(candidates, func(i, j int) bool {
+		if candidates[i].Score == candidates[j].Score {
+			return candidates[i].Event.AvailableAt.After(candidates[j].Event.AvailableAt)
+		}
+		return candidates[i].Score > candidates[j].Score
+	})
 }
 
 func (s *Service) nominateCandidates(ctx context.Context, request model.RecallRequest, queryText string, vector []float32, limit int) ([]store.SearchResult, string, error) {
@@ -805,6 +1044,10 @@ func liveRankDeltaRecords(request model.RecallRequest, queryDigest string, snaps
 	records := make([]rankdelta.Record, 0, len(candidates))
 	expiresAt := request.AsOf.UTC().Add(config.RankDeltaTTL)
 	for _, candidate := range candidates {
+		reliability := correctionReliability(candidate)
+		if reliability <= 0 {
+			continue
+		}
 		// Delta is the EventFrame correction only. LibraVDB's returned score is
 		// the base to which this correction is applied after the contract call.
 		delta := clamp(candidate.Score-candidate.BaselineScore, -config.MaxRankDelta, config.MaxRankDelta)
@@ -813,7 +1056,7 @@ func liveRankDeltaRecords(request model.RecallRequest, queryDigest string, snaps
 		}
 		records = append(records, rankdelta.Record{
 			TenantID: request.TenantID, Key: rankDeltaKey(queryDigest, candidate.Event.ID), EventID: candidate.Event.ID,
-			Delta: delta, Reliability: correctionReliability(candidate),
+			Delta: delta, Reliability: reliability,
 			PolicyVersion: snapshot.PolicyVersion, EvidenceEpoch: snapshot.EvidenceEpoch, GraphVersion: snapshot.GraphVersion,
 			PosteriorVersion: snapshot.PosteriorVersion, ResidualVersion: snapshot.ResidualVersion, AbstractionVersion: snapshot.AbstractionVersion,
 			UpdatedAt: request.AsOf.UTC(), ExpiresAt: expiresAt,

@@ -32,8 +32,9 @@ type Store struct {
 	db           *libra.Database
 	config       Config
 	mu           sync.Mutex
-	writeMu      sync.Mutex
+	writeMu      sync.RWMutex
 	eventMu      sync.RWMutex
+	journalMu    [64]sync.Mutex
 	collections  map[string]*libra.Collection
 	bayesian     *libra.Collection
 	agency       *libra.Collection
@@ -74,7 +75,10 @@ func Open(config Config) (*Store, error) {
 	if err != nil {
 		return nil, fmt.Errorf("open libravdb: %w", err)
 	}
-	s := &Store{db: db, config: config, collections: make(map[string]*libra.Collection), agencyActive: make(map[string]*libra.Collection), ingestMotion: make(map[uint64]time.Time)}
+	s := &Store{
+		db: db, config: config, collections: make(map[string]*libra.Collection),
+		agencyActive: make(map[string]*libra.Collection), ingestMotion: make(map[uint64]time.Time),
+	}
 	if err := s.loadOrInitializeState(context.Background()); err != nil {
 		_ = db.Close()
 		return nil, err
@@ -138,6 +142,73 @@ func (s *Store) Put(ctx context.Context, event model.Event, vector []float32, di
 			return store.PutResult{}, store.ErrIdempotencyConflict
 		}
 		return store.PutResult{}, fmt.Errorf("insert event: %w", err)
+	}
+	s.snapshot = next
+	recordIngestMotion(s.ingestMotion, next.RuntimeVersion, event.AvailableAt)
+	return store.PutResult{Snapshot: next}, nil
+}
+
+func (s *Store) PutComposition(ctx context.Context, event model.Event, vector []float32, digest string, base model.Snapshot) (store.PutResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
+	if s.snapshot != base {
+		return store.PutResult{}, store.ErrStaleSnapshot
+	}
+	if event.Composition == nil {
+		return store.PutResult{}, store.ErrCompositionAuthority
+	}
+	certificate, err := s.GetAntiPigeonCertificate(ctx, event.TenantID, event.Composition.MemberEventIDs)
+	if err != nil || certificate.ID != event.Composition.AntiPigeonCertificateID || !sameIDSet(certificate.MemberEventIDs, event.Composition.MemberEventIDs) {
+		return store.PutResult{}, store.ErrCompositionAuthority
+	}
+	collectionKey := collectionName(event.TenantID, s.config.EmbeddingModel)
+	collection, err := s.collection(ctx, event.TenantID)
+	if err != nil {
+		return store.PutResult{}, err
+	}
+	for _, memberID := range event.Composition.MemberEventIDs {
+		record, getErr := collection.Get(ctx, memberID)
+		if getErr != nil {
+			return store.PutResult{}, store.ErrCompositionAuthority
+		}
+		member, decodeErr := decodeStoredEvent(record.Metadata, true)
+		if decodeErr != nil || member.AvailableAt.After(event.AvailableAt) {
+			return store.PutResult{}, store.ErrCompositionAuthority
+		}
+	}
+	if record, getErr := collection.Get(ctx, event.ID); getErr == nil {
+		if current, _ := record.Metadata["content_digest"].(string); current != digest {
+			return store.PutResult{}, store.ErrIdempotencyConflict
+		}
+		return store.PutResult{Duplicate: true, Snapshot: s.snapshot}, nil
+	} else if !errors.Is(getErr, libra.ErrRecordNotFound) {
+		return store.PutResult{}, fmt.Errorf("check existing composition: %w", getErr)
+	}
+	payload, err := encodeStoredEvent(event)
+	if err != nil {
+		return store.PutResult{}, fmt.Errorf("encode composition: %w", err)
+	}
+	metadata := map[string]interface{}{
+		"event_json": string(payload), "corpus_text": event.FrameText(), "raw_content": event.Content,
+		"content_digest": digest, "session_id": event.SessionID, "kind": event.Kind,
+		"available_at": event.AvailableAt.UTC().Format("2006-01-02T15:04:05.999999999Z07:00"), "priority": event.Priority,
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.AbstractionVersion++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.PutResult{}, err
+	}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Insert(ctx, collectionKey, event.ID, vector, metadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return store.PutResult{}, fmt.Errorf("insert composition: %w", err)
 	}
 	s.snapshot = next
 	recordIngestMotion(s.ingestMotion, next.RuntimeVersion, event.AvailableAt)
@@ -260,13 +331,16 @@ func (s *Store) ListAllEvents(ctx context.Context) ([]model.Event, error) {
 }
 
 func (s *Store) PutBayesianJournal(ctx context.Context, entry model.BayesianJournalEntry) error {
-	s.writeMu.Lock()
-	defer s.writeMu.Unlock()
 	encoded, err := json.Marshal(entry)
 	if err != nil {
 		return fmt.Errorf("encode Bayesian journal: %w", err)
 	}
 	recordID := bayesianJournalRecordID(entry.TenantID, entry.ID)
+	stripe := &s.journalMu[journalStripe(recordID)]
+	stripe.Lock()
+	defer stripe.Unlock()
+	s.writeMu.RLock()
+	defer s.writeMu.RUnlock()
 	record, err := s.bayesian.Get(ctx, recordID)
 	if err == nil {
 		current, _ := record.Metadata["journal_json"].(string)
@@ -282,16 +356,19 @@ func (s *Store) PutBayesianJournal(ctx context.Context, entry model.BayesianJour
 		return store.ErrStaleSnapshot
 	}
 	metadata := map[string]interface{}{
-		"record_type":  "frontier_journal",
-		"tenant_id":    entry.TenantID,
-		"journal_id":   entry.ID,
-		"as_of":        entry.AsOf.UTC().Format(time.RFC3339Nano),
+		"record_type": "frontier_journal", "tenant_id": entry.TenantID,
+		"journal_id": entry.ID, "as_of": entry.AsOf.UTC().Format(time.RFC3339Nano),
 		"journal_json": string(encoded),
 	}
 	if err := s.bayesian.Insert(ctx, recordID, nil, metadata); err != nil {
 		return fmt.Errorf("insert Bayesian journal: %w", err)
 	}
 	return nil
+}
+
+func journalStripe(recordID string) int {
+	digest := sha256.Sum256([]byte(recordID))
+	return int(digest[0]) % 64
 }
 
 func recordIngestMotion(motion map[uint64]time.Time, version uint64, availableAt time.Time) {
@@ -761,8 +838,8 @@ func (s *Store) GetResidualCandidates(ctx context.Context, tenantID, actionKey, 
 }
 
 func (s *Store) GetPredictiveGraph(ctx context.Context, tenantID string) (model.PredictiveGraph, error) {
-	s.writeMu.Lock()
-	defer s.writeMu.Unlock()
+	s.writeMu.RLock()
+	defer s.writeMu.RUnlock()
 	return s.getPredictiveGraphLocked(ctx, tenantID)
 }
 
@@ -1366,6 +1443,86 @@ func (s *Store) Delete(ctx context.Context, tenantID, eventID string) (store.Del
 	return store.DeleteResult{Deleted: true, Snapshot: next}, nil
 }
 
+func (s *Store) DeleteComposition(ctx context.Context, tenantID, eventID, reason string, decomposedAt time.Time) (store.CompositionDeleteResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
+	collection, err := s.collection(ctx, tenantID)
+	if err != nil {
+		return store.CompositionDeleteResult{}, err
+	}
+	record, err := collection.Get(ctx, eventID)
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return store.CompositionDeleteResult{Snapshot: s.snapshot}, nil
+	}
+	if err != nil {
+		return store.CompositionDeleteResult{}, err
+	}
+	event, err := decodeStoredEvent(record.Metadata, true)
+	if err != nil || event.Composition == nil {
+		return store.CompositionDeleteResult{}, store.ErrCompositionAuthority
+	}
+	tombstone := model.CompositionTombstone{TenantID: tenantID, EventID: eventID, MemberEventIDs: append([]string(nil), event.Composition.MemberEventIDs...), AntiPigeonCertificateID: event.Composition.AntiPigeonCertificateID, Reason: reason, DecomposedAt: decomposedAt.UTC()}
+	tombstoneJSON, err := json.Marshal(tombstone)
+	if err != nil {
+		return store.CompositionDeleteResult{}, fmt.Errorf("encode composition tombstone: %w", err)
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.AbstractionVersion++
+	metadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.CompositionDeleteResult{}, err
+	}
+	key := collectionName(tenantID, s.config.EmbeddingModel)
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Delete(ctx, key, eventID); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, compositionTombstoneRecordID(tenantID, eventID), nil, map[string]interface{}{"record_type": "composition_tombstone", "tenant_id": tenantID, "tombstone_json": string(tombstoneJSON)}); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, metadata)
+	}); err != nil {
+		return store.CompositionDeleteResult{}, fmt.Errorf("delete composition: %w", err)
+	}
+	s.snapshot = next
+	return store.CompositionDeleteResult{Deleted: true, MemberEventIDs: append([]string(nil), event.Composition.MemberEventIDs...), Snapshot: next}, nil
+}
+
+func (s *Store) GetCompositionTombstone(ctx context.Context, tenantID, eventID string) (model.CompositionTombstone, error) {
+	record, err := s.bayesian.Get(ctx, compositionTombstoneRecordID(tenantID, eventID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.CompositionTombstone{}, store.ErrEventNotFound
+	}
+	if err != nil {
+		return model.CompositionTombstone{}, fmt.Errorf("read composition tombstone: %w", err)
+	}
+	encoded, _ := record.Metadata["tombstone_json"].(string)
+	var tombstone model.CompositionTombstone
+	if encoded == "" || json.Unmarshal([]byte(encoded), &tombstone) != nil || tombstone.TenantID != tenantID || tombstone.EventID != eventID {
+		return model.CompositionTombstone{}, errors.New("invalid composition tombstone")
+	}
+	return tombstone, nil
+}
+
+func sameIDSet(left, right []string) bool {
+	if len(left) != len(right) {
+		return false
+	}
+	seen := make(map[string]struct{}, len(left))
+	for _, id := range left {
+		seen[id] = struct{}{}
+	}
+	for _, id := range right {
+		if _, ok := seen[id]; !ok {
+			return false
+		}
+	}
+	return true
+}
+
 func (s *Store) DeleteBefore(ctx context.Context, tenantID string, before time.Time, limit int) (store.RetentionResult, error) {
 	s.writeMu.Lock()
 	defer s.writeMu.Unlock()
@@ -1484,11 +1641,13 @@ func (s *Store) Compact(ctx context.Context) error {
 	return s.db.Vacuum(ctx)
 }
 
-func (s *Store) Close() error { return s.db.Close() }
+func (s *Store) Close() error {
+	return s.db.Close()
+}
 
 func (s *Store) Snapshot(_ context.Context) model.Snapshot {
-	s.writeMu.Lock()
-	defer s.writeMu.Unlock()
+	s.writeMu.RLock()
+	defer s.writeMu.RUnlock()
 	return s.snapshot
 }
 
@@ -1716,6 +1875,10 @@ func antiPigeonCertificateRecordID(tenantID, certificateID string) string {
 
 func antiPigeonIndexRecordID(tenantID, eventID string) string {
 	return hashedBayesianRecordID("anti_pigeon_index", tenantID+"\x00"+eventID)
+}
+
+func compositionTombstoneRecordID(tenantID, eventID string) string {
+	return hashedBayesianRecordID("composition_tombstone", tenantID+"\x00"+eventID)
 }
 
 func hashedBayesianRecordID(kind, value string) string {

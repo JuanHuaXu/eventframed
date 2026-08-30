@@ -187,6 +187,32 @@ func TestRerankingRunsBeforeIndependentPackingCap(t *testing.T) {
 	}
 }
 
+func TestRecallRetriesAStaleSnapshotInternally(t *testing.T) {
+	now := time.Now().UTC()
+	event := testutil.Event("candidate", "candidate", now.Add(-time.Minute))
+	backend := &fixedStore{
+		results:         []store.SearchResult{{Event: event, Similarity: .8}},
+		journalFailures: 2,
+	}
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, err := service.New(backend, embedder, service.Config{
+		DefaultRecallK: 1, DefaultPackK: 1, DefaultTokenBudget: 100, OverfetchMultiplier: 1,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	packet, err := runtime.Recall(context.Background(), model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SessionID: "session-a",
+		Query: "query", AsOf: now, RecallK: 1, PackK: 1, TokenBudget: 100,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(packet.Candidates) != 1 || backend.journalWrites != 3 {
+		t.Fatalf("packet candidates=%d journal writes=%d", len(packet.Candidates), backend.journalWrites)
+	}
+}
+
 func TestCalibrationChangesForecastLawWithoutChangingRetrievalScore(t *testing.T) {
 	now := time.Now().UTC()
 	event := testutil.Event("candidate", "candidate", now.Add(-time.Minute))
@@ -594,7 +620,11 @@ func observe(t *testing.T, runtime *service.Service, event model.Event) {
 	}
 }
 
-type fixedStore struct{ results []store.SearchResult }
+type fixedStore struct {
+	results         []store.SearchResult
+	journalFailures int
+	journalWrites   int
+}
 
 type exactFirstRanker struct{}
 
@@ -704,8 +734,17 @@ func (s *fixedStore) BindBayesianPolicy(context.Context, string) (model.Snapshot
 func (s *fixedStore) Put(context.Context, model.Event, []float32, string) (store.PutResult, error) {
 	return store.PutResult{}, nil
 }
+func (s *fixedStore) PutComposition(context.Context, model.Event, []float32, string, model.Snapshot) (store.PutResult, error) {
+	return store.PutResult{}, nil
+}
 func (s *fixedStore) Delete(context.Context, string, string) (store.DeleteResult, error) {
 	return store.DeleteResult{}, nil
+}
+func (s *fixedStore) DeleteComposition(context.Context, string, string, string, time.Time) (store.CompositionDeleteResult, error) {
+	return store.CompositionDeleteResult{}, nil
+}
+func (s *fixedStore) GetCompositionTombstone(context.Context, string, string) (model.CompositionTombstone, error) {
+	return model.CompositionTombstone{}, store.ErrEventNotFound
 }
 func (s *fixedStore) DeleteBefore(context.Context, string, time.Time, int) (store.RetentionResult, error) {
 	return store.RetentionResult{}, nil
@@ -730,7 +769,13 @@ func (s *fixedStore) GetEvents(_ context.Context, _ string, eventIDs []string, a
 	}
 	return events, nil
 }
+
 func (s *fixedStore) PutBayesianJournal(context.Context, model.BayesianJournalEntry) error {
+	s.journalWrites++
+	if s.journalFailures > 0 {
+		s.journalFailures--
+		return store.ErrStaleSnapshot
+	}
 	return nil
 }
 func (s *fixedStore) GetBayesianJournal(context.Context, string, string) (model.BayesianJournalEntry, error) {

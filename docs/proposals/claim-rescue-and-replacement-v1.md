@@ -79,6 +79,12 @@ feature over already nominated candidates. The feature enters the activation
 record and the post-contract rank delta. The graph never nominates an event
 that the retrieval contract omitted. Publication and rollback remain atomic.
 
+Contract 13 additionally types graph effects as symmetric `compatible`,
+directional `supports`, or directional `supersedes`. Supersession can produce a
+negative rank delta only for its target. It is predictive demotion, not causal
+orientation, and remains subject to graph weighting, elastic modulation,
+clipping, publication evidence, and rollback.
+
 Falsifier: a graph change leaves all graph features and deltas invariant in a
 fixture with nonzero connected scores, or rollback fails to restore the prior
 ordering and version behavior.

@@ -111,6 +111,31 @@ does not yield enough valid candidates. This prevents future-dated records from
 crowding valid history out before reranking. The expansion is bounded by live
 collection cardinality and must be included in tail-latency benchmarks.
 
+## Higher-order invariant composition
+
+Join discovery remains an asynchronous invariant-seeker task. A proposed join is
+not trusted structure: the daemon resolves every constituent at the declared
+publication time, requires one current Anti-Pigeon certificate for the exact
+member set, and compares the frozen snapshot again under the storage write lock.
+Only then does it materialize a normal EventFrame with kind `higher_order`.
+
+The macro frame carries the exact member IDs, one directly retrievable
+representative, rule and resolution identifiers, confidence, certificate ID,
+and evidence epoch. Its 5W1H projection keeps only fields invariant across all
+members, plus a declared higher-order `what` label and the constituent time
+envelope. Source frames remain authoritative and are neither rewritten nor
+deleted. LibraVDB persists the macro in the same tenant collection, so restart,
+backup, and normal nomination use the existing lifecycle.
+
+Recall checks that the certificate still owns the exact member set. Revocation
+or replacement therefore excludes a stale macro without waiting for maintenance.
+Explicit decomposition physically removes only the macro and advances the
+abstraction version while atomically retaining a reasoned tombstone. `coarse`
+and `fine` recall modes add bounded rank-only
+preferences after the frozen candidate contract and before packing; `auto`
+changes nothing. This gives broad queries a macro view and detailed queries the
+constituents without pretending the abstraction replaced its evidence.
+
 ## Trust boundary
 
 Stored content can contain arbitrary user, model, or tool text. It is data, not
@@ -195,6 +220,14 @@ shares the concrete `retrieval-usefulness-v1` Bernoulli law space and every edge
 uses the declared `identity_bernoulli` comparison map. This is deliberately a
 sheaf-inspired compatibility scaffold. It neither instantiates general sheaf
 laws nor assigns causal meaning to an edge.
+
+An edge effect is either symmetric `compatible`, directional `supports`, or
+directional `supersedes`. Supersession maps strong source support to a low target
+graph feature, creating a bounded negative target rank correction without
+changing the scored Bernoulli law or feeding target state back into the source.
+Legacy edges with no effect remain symmetric. Split publication invalidates the
+complete reverse dependency closure; it does not suppress the retrieved
+frontier.
 
 An external slow path selects a complete candidate graph from a finite family on
 a chronological design window, then evaluates it on a later untouched

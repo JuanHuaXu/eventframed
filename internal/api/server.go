@@ -41,6 +41,8 @@ func NewServer(runtime *service.Service, logger *slog.Logger) *Server {
 	server.mux.HandleFunc("POST /v1/bayesian/certificates:estimate-omitted-influence", server.estimateOmittedInfluence)
 	server.mux.HandleFunc("POST /v1/bayesian/outcomes:observe", server.observeBayesianOutcome)
 	server.mux.HandleFunc("POST /v1/bayesian/groups:compare", server.compareBayesianGroup)
+	server.mux.HandleFunc("POST /v1/invariants:compose", server.composeInvariant)
+	server.mux.HandleFunc("POST /v1/invariants:decompose", server.decomposeInvariant)
 	server.mux.HandleFunc("GET /v1/abstraction/graph", server.getPredictiveGraph)
 	server.mux.HandleFunc("POST /v1/abstraction/snaps:publish", server.publishPredictiveSnap)
 	server.mux.HandleFunc("POST /v1/abstraction/snaps:rollback", server.rollbackPredictiveSnap)
@@ -49,6 +51,38 @@ func NewServer(runtime *service.Service, logger *slog.Logger) *Server {
 	server.mux.HandleFunc("POST /v1/agency/proposals:resolve", server.resolveAgencyProposal)
 	server.mux.HandleFunc("GET /metrics", server.metrics.handle)
 	return server
+}
+
+func (s *Server) composeInvariant(writer http.ResponseWriter, request *http.Request) {
+	var input model.ComposeInvariantRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.ComposeInvariant(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrStaleSnapshot) || errors.Is(err, store.ErrIdempotencyConflict) {
+			writeError(writer, http.StatusConflict, "composition_conflict", err)
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "composition_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) decomposeInvariant(writer http.ResponseWriter, request *http.Request) {
+	var input model.DecomposeInvariantRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.DecomposeInvariant(request.Context(), input)
+	if err != nil {
+		writeError(writer, http.StatusBadRequest, "decomposition_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
 }
 
 func (s *Server) issueAgencyProposal(writer http.ResponseWriter, request *http.Request) {

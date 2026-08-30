@@ -17,6 +17,9 @@ publication, server-computed dependency closure, targeted stale marking, and
 monotone rollback after externally confirmed split or merge proposals. Phase 5
 adds signed, durable wake/notify/schedule proposals and a fail-closed OpenClaw
 authority layer. It does not grant `eventframed` tool-execution authority.
+Contract 14 adds reversible higher-order EventFrames: a slow-path invariant
+seeker may propose a join, while the daemon requires exact Anti-Pigeon authority,
+preserves every constituent, and applies explicit coarse/fine retrieval preference.
 
 ## Architecture
 
@@ -191,12 +194,21 @@ resolution are implemented end to end.
 - The Bayesian outcome model currently scores retrieval usefulness, not a general
   next-world-event law. Its Phase 4 forecast bundle and residual cache are a
   concrete Bernoulli specialization. The compatibility graph currently supports
-  only the declared `identity_bernoulli` comparison map. It is a sheaf-inspired
-  predictive scaffold, not a sheaf or evidence of causal structure.
+  only the declared `identity_bernoulli` comparison map. Edges may be symmetric
+  `compatible` relations or directional `supports` and `supersedes` rank
+  relations; an omitted effect retains legacy `compatible` behavior. These are
+  predictive controls, not causal edges. The graph remains a sheaf-inspired
+  scaffold, not a sheaf or evidence of causal structure.
 - Predictive snap candidates and their chronological confirmation statistics are
   produced by an external slow-path auditor. The daemon independently enforces
   graph bounds, dependency closure, certificate coverage, acceptance thresholds,
   atomic publication, and rollback; it does not estimate those certificates.
+- Higher-order composition is a derived abstraction, not destructive compaction.
+  `POST /v1/invariants:compose` retains an exact member set and representative;
+  `POST /v1/invariants:decompose` deletes only the macro frame. Replaced or
+  revoked Anti-Pigeon authority immediately removes the macro from recall even
+  before physical decomposition. The daemon validates proposals but does not yet
+  discover candidate joins autonomously.
 - Agency can only request a wake, notification, or scheduled agent turn. The
   OpenClaw authority layer cannot execute tools through this protocol, and the
   generated turn explicitly retains normal user and OpenClaw approval policy.

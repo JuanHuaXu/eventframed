@@ -280,6 +280,42 @@ func TestBayesianGroupComparisonOverHTTPIsProposalOnly(t *testing.T) {
 	}
 }
 
+func TestInvariantCompositionLifecycleOverHTTP(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, _ := service.New(memorystore.New(), embedder, service.Config{DefaultRecallK: 10, DefaultPackK: 10, DefaultTokenBudget: 1000})
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+	now := time.Now().UTC()
+	var observed model.ObserveResponse
+	for _, id := range []string{"http-a", "http-b"} {
+		event := testutil.Event(id, "public mission stage", now.Add(-time.Minute))
+		postJSON(t, server.URL+"/v1/events:observe", model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: id, Event: event}, &observed)
+	}
+	certificate := model.AntiPigeonCertificate{
+		ID: "http-ap", TenantID: "tenant-a", MemberEventIDs: []string{"http-a", "http-b"}, HorizonKey: model.RetrievalUsefulnessHorizon,
+		GraphVersion: observed.Snapshot.GraphVersion, EvidenceEpoch: observed.Snapshot.EvidenceEpoch,
+		TargetDiameterUCB: .01, DiameterLimit: .05, EffectiveSupport: 40, MinEffectiveSupport: 30,
+		SimultaneousCoverage: .95, Procedure: "external HTTP fixture audit", Issuer: "test-auditor", ExternalAudit: true, ValidUntil: now.Add(time.Hour),
+	}
+	var certified model.CertificateResponse
+	postJSON(t, server.URL+"/v1/bayesian/certificates:publish-anti-pigeon", model.PublishAntiPigeonCertificateRequest{ProtocolVersion: model.ProtocolVersion, Certificate: certificate}, &certified)
+	var composed model.ComposeInvariantResponse
+	postJSON(t, server.URL+"/v1/invariants:compose", model.ComposeInvariantRequest{
+		ProtocolVersion: model.ProtocolVersion, ID: "http-macro", TenantID: "tenant-a", SessionID: "session-a",
+		MemberEventIDs: certificate.MemberEventIDs, RepresentativeEventID: "http-a", Label: "public mission",
+		RuleID: "mission-stages", Resolution: "mission", Confidence: .9, AntiPigeonCertificateID: certificate.ID,
+		PublishedAt: now, BaseSnapshot: certified.Snapshot,
+	}, &composed)
+	if composed.Event.Composition == nil || composed.Event.Composition.AntiPigeonCertificateID != certificate.ID {
+		t.Fatalf("composed = %+v", composed)
+	}
+	var decomposed model.DecomposeInvariantResponse
+	postJSON(t, server.URL+"/v1/invariants:decompose", model.DecomposeInvariantRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", EventID: composed.Event.ID, Reason: "HTTP lifecycle test"}, &decomposed)
+	if !decomposed.Deleted || len(decomposed.RestoredMemberEventIDs) != 2 {
+		t.Fatalf("decomposed = %+v", decomposed)
+	}
+}
+
 func TestAgencyLifecycleOverHTTP(t *testing.T) {
 	embedder, _ := embed.NewHashEmbedder(8)
 	signer, err := agency.NewSignerForTest()

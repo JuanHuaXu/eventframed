@@ -3,6 +3,7 @@ package model
 import (
 	"errors"
 	"fmt"
+	"math"
 	"strings"
 	"time"
 )
@@ -37,6 +38,20 @@ type Provenance struct {
 	RunID          string   `json:"run_id,omitempty"`
 }
 
+const HigherOrderEventKind = "higher_order"
+
+// Composition binds a derived higher-order EventFrame to the constituent
+// evidence that remains independently retrievable.
+type Composition struct {
+	MemberEventIDs          []string `json:"member_event_ids"`
+	RepresentativeEventID   string   `json:"representative_event_id"`
+	RuleID                  string   `json:"rule_id"`
+	Resolution              string   `json:"resolution"`
+	Confidence              float64  `json:"confidence"`
+	AntiPigeonCertificateID string   `json:"anti_pigeon_certificate_id"`
+	EvidenceEpoch           uint64   `json:"evidence_epoch"`
+}
+
 // Event is the durable, availability-time-aware envelope exchanged across the
 // plugin/daemon boundary. Content is untrusted historical data, never an instruction.
 type Event struct {
@@ -61,6 +76,7 @@ type Event struct {
 	Attributes     map[string]string `json:"attributes,omitempty"`
 	Embedding      []float32         `json:"embedding,omitempty"`
 	EmbeddingModel string            `json:"embedding_model"`
+	Composition    *Composition      `json:"composition,omitempty"`
 }
 
 func (e Event) Validate(dimension int) error {
@@ -110,6 +126,59 @@ func (e Event) Validate(dimension int) error {
 	}
 	if strings.TrimSpace(e.What.Value) == "" {
 		return errors.New("what is required for an EventFrame")
+	}
+	if e.Composition == nil && e.Kind == HigherOrderEventKind {
+		return errors.New("higher-order event requires composition metadata")
+	}
+	if e.Composition != nil {
+		if e.Kind != HigherOrderEventKind {
+			return errors.New("composition metadata is reserved for higher-order events")
+		}
+		if err := e.Composition.Validate(e.ID, e.Provenance.SourceEventIDs); err != nil {
+			return fmt.Errorf("composition: %w", err)
+		}
+	}
+	return nil
+}
+
+func (composition Composition) Validate(eventID string, sourceEventIDs []string) error {
+	if len(composition.MemberEventIDs) < 2 || len(composition.MemberEventIDs) > 64 {
+		return errors.New("member_event_ids must contain between 2 and 64 events")
+	}
+	if strings.TrimSpace(composition.RepresentativeEventID) == "" ||
+		strings.TrimSpace(composition.RuleID) == "" ||
+		strings.TrimSpace(composition.Resolution) == "" ||
+		strings.TrimSpace(composition.AntiPigeonCertificateID) == "" {
+		return errors.New("representative_event_id, rule_id, resolution, and anti_pigeon_certificate_id are required")
+	}
+	if math.IsNaN(composition.Confidence) || math.IsInf(composition.Confidence, 0) || composition.Confidence < 0 || composition.Confidence > 1 {
+		return errors.New("confidence must be in [0,1]")
+	}
+	members := make(map[string]struct{}, len(composition.MemberEventIDs))
+	for _, memberID := range composition.MemberEventIDs {
+		if strings.TrimSpace(memberID) == "" || memberID == eventID {
+			return errors.New("member event ids must be non-empty and cannot contain the composite event")
+		}
+		if _, duplicate := members[memberID]; duplicate {
+			return errors.New("member event ids must be unique")
+		}
+		members[memberID] = struct{}{}
+	}
+	if _, ok := members[composition.RepresentativeEventID]; !ok {
+		return errors.New("representative event must be a composition member")
+	}
+	if len(sourceEventIDs) != len(members) {
+		return errors.New("provenance source_event_ids must equal the composition members")
+	}
+	sources := make(map[string]struct{}, len(sourceEventIDs))
+	for _, sourceID := range sourceEventIDs {
+		if _, ok := members[sourceID]; !ok {
+			return errors.New("provenance source_event_ids must equal the composition members")
+		}
+		if _, duplicate := sources[sourceID]; duplicate {
+			return errors.New("provenance source_event_ids must be unique")
+		}
+		sources[sourceID] = struct{}{}
 	}
 	return nil
 }

@@ -1,8 +1,10 @@
 package model_test
 
 import (
+	"math"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/JuanHuaXu/eventframed/internal/model"
 )
@@ -24,6 +26,39 @@ func TestFrameTextExcludesRawContentAndIsCanonical(t *testing.T) {
 	}
 	if strings.Contains(event.FrameText(), event.Content) {
 		t.Fatal("FrameText leaked raw content")
+	}
+}
+
+func TestCompositionValidationBindsRepresentativeAndExactProvenance(t *testing.T) {
+	now := time.Now().UTC()
+	event := model.Event{
+		ID: "macro", TenantID: "tenant", SessionID: "session", Kind: model.HigherOrderEventKind, Content: "macro",
+		OccurredAt: now, ObservedAt: now, AvailableAt: now,
+		What:        model.Field{Value: "macro", Source: model.SourceInferred, Confidence: .8},
+		Provenance:  model.Provenance{Producer: "invariant", SourceEventIDs: []string{"a", "b"}},
+		Composition: &model.Composition{MemberEventIDs: []string{"a", "b"}, RepresentativeEventID: "a", RuleID: "rule", Resolution: "episode", Confidence: .8, AntiPigeonCertificateID: "certificate"},
+	}
+	if err := event.Validate(8); err != nil {
+		t.Fatal(err)
+	}
+	event.Provenance.SourceEventIDs = []string{"a", "c"}
+	if err := event.Validate(8); err == nil {
+		t.Fatal("composition accepted provenance outside its member set")
+	}
+	event.Provenance.SourceEventIDs = []string{"a", "b"}
+	event.Composition.RepresentativeEventID = "c"
+	if err := event.Validate(8); err == nil {
+		t.Fatal("composition accepted a representative outside its member set")
+	}
+	event.Composition.RepresentativeEventID = "a"
+	event.Provenance.SourceEventIDs = []string{"a", "a"}
+	if err := event.Validate(8); err == nil {
+		t.Fatal("composition accepted duplicate provenance in place of one member")
+	}
+	event.Provenance.SourceEventIDs = []string{"a", "b"}
+	event.Composition.Confidence = math.NaN()
+	if err := event.Validate(8); err == nil {
+		t.Fatal("composition accepted non-finite confidence")
 	}
 }
 
