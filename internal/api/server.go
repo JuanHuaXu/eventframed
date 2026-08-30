@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/retrieval"
 	"github.com/JuanHuaXu/eventframed/internal/service"
 	"github.com/JuanHuaXu/eventframed/internal/store"
 )
@@ -25,8 +26,11 @@ type Server struct {
 func NewServer(runtime *service.Service, logger *slog.Logger) *Server {
 	server := &Server{service: runtime, logger: logger, mux: http.NewServeMux(), metrics: newRuntimeMetrics()}
 	server.mux.HandleFunc("GET /v1/health", server.health)
+	server.mux.HandleFunc("GET /v1/ready", server.ready)
+	server.mux.HandleFunc("POST /v1/turns:capture", server.captureTurn)
 	server.mux.HandleFunc("POST /v1/events:observe", server.observe)
 	server.mux.HandleFunc("POST /v1/context:recall", server.recall)
+	server.mux.HandleFunc("POST /v1/openclaw/context:recall", server.recallOpenClaw)
 	server.mux.HandleFunc("POST /v1/events:delete", server.delete)
 	server.mux.HandleFunc("POST /v1/maintenance:retain", server.retain)
 	server.mux.HandleFunc("POST /v1/maintenance:backup", server.backup)
@@ -254,6 +258,9 @@ func (s *Server) delete(writer http.ResponseWriter, request *http.Request) {
 	}
 	response, err := s.service.Delete(request.Context(), input)
 	if err != nil {
+		if writeDependencyUnavailable(writer, err) {
+			return
+		}
 		writeError(writer, http.StatusBadRequest, "delete_rejected", err)
 		return
 	}
@@ -268,6 +275,9 @@ func (s *Server) retain(writer http.ResponseWriter, request *http.Request) {
 	}
 	response, err := s.service.Retain(request.Context(), input)
 	if err != nil {
+		if writeDependencyUnavailable(writer, err) {
+			return
+		}
 		writeError(writer, http.StatusBadRequest, "retention_rejected", err)
 		return
 	}
@@ -321,6 +331,15 @@ func (s *Server) health(writer http.ResponseWriter, request *http.Request) {
 	writeJSON(writer, http.StatusOK, response)
 }
 
+func (s *Server) ready(writer http.ResponseWriter, request *http.Request) {
+	response, err := s.service.Ready(request.Context())
+	if err != nil {
+		writeJSON(writer, http.StatusServiceUnavailable, response)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
 func (s *Server) observe(writer http.ResponseWriter, request *http.Request) {
 	var input model.ObserveRequest
 	if err := decodeJSON(writer, request, &input); err != nil {
@@ -333,7 +352,31 @@ func (s *Server) observe(writer http.ResponseWriter, request *http.Request) {
 			writeError(writer, http.StatusConflict, "idempotency_conflict", err)
 			return
 		}
+		if writeDependencyUnavailable(writer, err) {
+			return
+		}
 		writeError(writer, http.StatusBadRequest, "observe_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) captureTurn(writer http.ResponseWriter, request *http.Request) {
+	var input model.CaptureTurnRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.CaptureTurn(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrIdempotencyConflict) {
+			writeError(writer, http.StatusConflict, "idempotency_conflict", err)
+			return
+		}
+		if writeDependencyUnavailable(writer, err) {
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "capture_rejected", err)
 		return
 	}
 	writeJSON(writer, http.StatusOK, response)
@@ -351,10 +394,34 @@ func (s *Server) recall(writer http.ResponseWriter, request *http.Request) {
 			writeError(writer, http.StatusConflict, "snapshot_changed", err)
 			return
 		}
+		if writeDependencyUnavailable(writer, err) {
+			return
+		}
 		writeError(writer, http.StatusBadRequest, "recall_rejected", err)
 		return
 	}
 	writeJSON(writer, http.StatusOK, response)
+}
+
+func (s *Server) recallOpenClaw(writer http.ResponseWriter, request *http.Request) {
+	var input model.RecallRequest
+	if err := decodeJSON(writer, request, &input); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid_request", err)
+		return
+	}
+	response, err := s.service.Recall(request.Context(), input)
+	if err != nil {
+		if errors.Is(err, store.ErrStaleSnapshot) {
+			writeError(writer, http.StatusConflict, "snapshot_changed", err)
+			return
+		}
+		if writeDependencyUnavailable(writer, err) {
+			return
+		}
+		writeError(writer, http.StatusBadRequest, "recall_rejected", err)
+		return
+	}
+	writeJSON(writer, http.StatusOK, projectOpenClawPacket(response))
 }
 
 func decodeJSON(writer http.ResponseWriter, request *http.Request, target any) error {
@@ -378,6 +445,15 @@ func writeJSON(writer http.ResponseWriter, status int, value any) {
 
 func writeError(writer http.ResponseWriter, status int, code string, err error) {
 	writeJSON(writer, status, model.ErrorResponse{ProtocolVersion: model.ProtocolVersion, Code: code, Message: err.Error()})
+}
+
+func writeDependencyUnavailable(writer http.ResponseWriter, err error) bool {
+	if !errors.Is(err, retrieval.ErrContractCircuitOpen) {
+		return false
+	}
+	writer.Header().Set("Retry-After", "5")
+	writeError(writer, http.StatusServiceUnavailable, "dependency_unavailable", err)
+	return true
 }
 
 func requestLog(logger *slog.Logger, metrics *runtimeMetrics, next http.Handler) http.Handler {

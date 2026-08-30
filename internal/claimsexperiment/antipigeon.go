@@ -34,7 +34,7 @@ func runAntiPigeonVariant(ctx context.Context, runner antiPigeonRunner, training
 	var last model.ContextPacket
 	for turn := 0; turn < training+evaluation; turn++ {
 		asOf := experimentAnchor.Add(time.Duration(turn) * time.Minute)
-		packet, err := runner.runtime.Recall(ctx, model.RecallRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "anti-pigeon-experiment", SessionID: "trajectory", Embedding: []float32{1, 0, 0, 0, 0, 0, 0, 0}, EmbeddingModel: "feature-hash-v1:d8", AsOf: asOf, RecallK: 4, PackK: 4, TokenBudget: 400})
+		packet, err := runner.runtime.Recall(ctx, model.RecallRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "anti-pigeon-experiment", SessionID: "trajectory", Embedding: []float32{1, 0, 0, 0, 0, 0, 0, 0}, EmbeddingModel: "feature-hash-v1:d8:repr=eventframe-5w1h-v1", AsOf: asOf, RecallK: 4, PackK: 4, TokenBudget: 400})
 		if err != nil {
 			return AntiPigeonVariant{}, err
 		}

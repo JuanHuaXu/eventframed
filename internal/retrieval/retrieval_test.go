@@ -2,7 +2,9 @@ package retrieval
 
 import (
 	"context"
+	"errors"
 	"testing"
+	"time"
 )
 
 func TestPassthroughRankerHonorsSecondPassLimit(t *testing.T) {
@@ -15,6 +17,38 @@ func TestPassthroughRankerHonorsSecondPassLimit(t *testing.T) {
 	if len(ranked) != 2 || ranked[0].ID != "a" || ranked[1].ID != "b" {
 		t.Fatalf("unexpected pass-through rank: %+v", ranked)
 	}
+}
+
+func TestContractGuardOpensAndRecoversAfterCooldown(t *testing.T) {
+	guard := newContractGuard(ContractClientConfig{MaxConcurrent: 1, FailureThreshold: 2, OpenDuration: 20 * time.Millisecond})
+	guard.failure()
+	if guard.isOpen() {
+		t.Fatal("circuit opened before the threshold")
+	}
+	guard.failure()
+	if !guard.isOpen() {
+		t.Fatal("circuit did not open at the threshold")
+	}
+	if err := guard.acquire(context.Background()); !errors.Is(err, ErrContractCircuitOpen) {
+		t.Fatalf("open circuit acquire = %v", err)
+	}
+	time.Sleep(25 * time.Millisecond)
+	if guard.isOpen() {
+		t.Fatal("circuit did not enter half-open state after cooldown")
+	}
+}
+
+func TestContractGuardBoundsConcurrentCalls(t *testing.T) {
+	guard := newContractGuard(ContractClientConfig{MaxConcurrent: 1})
+	if err := guard.acquire(context.Background()); err != nil {
+		t.Fatal(err)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Millisecond)
+	defer cancel()
+	if err := guard.acquire(ctx); !errors.Is(err, context.DeadlineExceeded) {
+		t.Fatalf("second acquire = %v", err)
+	}
+	guard.release()
 }
 
 func TestLibraVDBRankerRejectsInvalidEndpoint(t *testing.T) {

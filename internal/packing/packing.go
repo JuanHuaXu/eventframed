@@ -71,7 +71,7 @@ func diversify(candidates []model.Candidate, posteriorKeys map[string]string, li
 	selected := make([]model.Candidate, 0, min(limit, len(candidates)))
 	tokenSets := make(map[string]map[string]struct{}, len(candidates))
 	for _, candidate := range candidates {
-		tokenSets[candidate.Event.ID] = tokens(candidate.Event.Content)
+		tokenSets[candidate.Event.ID] = tokens(candidate.Event.FrameText())
 	}
 	for len(remaining) > 0 && len(selected) < limit {
 		bestIndex := 0

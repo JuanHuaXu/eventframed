@@ -29,6 +29,29 @@ var ErrAgencyExpired = errors.New("agency proposal expired before resolution")
 var ErrAgencyChainBudget = errors.New("agency causal-chain budget is exhausted or invalid")
 var ErrAgencyEvidence = errors.New("agency proposal references missing, cross-tenant, or unavailable evidence")
 
+// JournalSnapshotCompatible permits only fully-accounted future-available
+// ingestion after a recall's fixed as_of. Unclassified runtime motion remains
+// decision-relevant and therefore fails closed.
+func JournalSnapshotCompatible(captured, current model.Snapshot, asOf time.Time, ingestMotion map[uint64]time.Time) bool {
+	semanticVersionsMatch := captured.PolicyVersion == current.PolicyVersion &&
+		captured.ContractVersion == current.ContractVersion &&
+		captured.GraphVersion == current.GraphVersion &&
+		captured.PosteriorVersion == current.PosteriorVersion &&
+		captured.ResidualVersion == current.ResidualVersion &&
+		captured.AbstractionVersion == current.AbstractionVersion &&
+		captured.AgencyVersion == current.AgencyVersion
+	if !semanticVersionsMatch || current.RuntimeVersion < captured.RuntimeVersion {
+		return false
+	}
+	for version := captured.RuntimeVersion + 1; version <= current.RuntimeVersion; version++ {
+		availableAt, ok := ingestMotion[version]
+		if !ok || !availableAt.After(asOf) {
+			return false
+		}
+	}
+	return true
+}
+
 type PutResult struct {
 	Duplicate bool
 	Snapshot  model.Snapshot

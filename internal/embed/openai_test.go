@@ -29,7 +29,7 @@ func TestOpenAICompatibleValidatesAndNormalizesVector(t *testing.T) {
 	if math.Abs(float64(vector[0]-0.6)) > 1e-6 || math.Abs(float64(vector[1]-0.8)) > 1e-6 {
 		t.Fatalf("vector = %v", vector)
 	}
-	if embedder.ModelKey() != "openai-compatible:model-a:d2" {
+	if embedder.ModelKey() != "openai-compatible:model-a:d2:repr=eventframe-5w1h-v1" {
 		t.Fatalf("model key = %s", embedder.ModelKey())
 	}
 }
@@ -72,7 +72,7 @@ func TestOpenAICompatibleAppliesRolePrefixesAndPinsThemInModelKey(t *testing.T) 
 	if len(inputs) != 2 || inputs[0] != "search_document: stored" || inputs[1] != "search_query: question" {
 		t.Fatalf("role inputs = %#v", inputs)
 	}
-	if embedder.ModelKey() == "openai-compatible:model-a:d2" {
+	if embedder.ModelKey() == "openai-compatible:model-a:d2:repr=eventframe-5w1h-v1" {
 		t.Fatal("role prefixes were absent from the embedding contract key")
 	}
 }

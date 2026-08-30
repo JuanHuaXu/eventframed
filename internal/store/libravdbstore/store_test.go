@@ -6,11 +6,13 @@ import (
 	"errors"
 	"fmt"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
 	"github.com/JuanHuaXu/eventframed/internal/agency"
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
+	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/residual"
 	storecontract "github.com/JuanHuaXu/eventframed/internal/store"
@@ -21,6 +23,63 @@ import (
 
 func testConfig(path, modelKey string) libravdbstore.Config {
 	return libravdbstore.Config{Path: path, Dimension: 4, Quantization: "none", MemoryMapping: true, EmbeddingModel: modelKey}
+}
+
+func TestEmbeddedMixedSearchAndPutCompletes(t *testing.T) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	runtime, err := libravdbstore.Open(testConfig(t.TempDir()+"/mixed.libravdb", "model-a:d4"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer runtime.Close()
+	seed := testutil.Event("mixed-seed", "seed event", time.Now().UTC())
+	if _, err := runtime.Put(ctx, seed, []float32{1, 0, 0, 0}, "seed"); err != nil {
+		t.Fatal(err)
+	}
+
+	errorsOut := make(chan error, 6)
+	var group sync.WaitGroup
+	for worker := 0; worker < 2; worker++ {
+		group.Add(1)
+		go func(worker int) {
+			defer group.Done()
+			for index := 0; index < 40; index++ {
+				event := testutil.Event(fmt.Sprintf("mixed-%d-%d", worker, index), "mixed event", time.Now().UTC())
+				if _, putErr := runtime.Put(ctx, event, []float32{1, 0, 0, 0}, event.ID); putErr != nil {
+					errorsOut <- putErr
+					return
+				}
+			}
+		}(worker)
+	}
+	for worker := 0; worker < 4; worker++ {
+		group.Add(1)
+		go func() {
+			defer group.Done()
+			for index := 0; index < 80; index++ {
+				if _, searchErr := runtime.Search(ctx, "tenant-a", []float32{1, 0, 0, 0}, time.Now().Add(time.Hour), 10); searchErr != nil {
+					errorsOut <- searchErr
+					return
+				}
+				if _, statsErr := runtime.Stats(ctx); statsErr != nil {
+					errorsOut <- statsErr
+					return
+				}
+			}
+		}()
+	}
+	done := make(chan struct{})
+	go func() { group.Wait(); close(done) }()
+	select {
+	case <-done:
+	case <-ctx.Done():
+		t.Fatal("mixed embedded operations did not complete")
+	}
+	close(errorsOut)
+	for operationErr := range errorsOut {
+		t.Fatal(operationErr)
+	}
 }
 
 func TestLegacyMigrationRequiresBackupAndRecoversRecords(t *testing.T) {
@@ -42,12 +101,16 @@ func TestLegacyMigrationRequiresBackupAndRecoversRecords(t *testing.T) {
 	if err := raw.Close(); err != nil {
 		t.Fatal(err)
 	}
-	config := testConfig(path, "model-a:d4")
+	embedder, err := embed.NewHashEmbedder(4)
+	if err != nil {
+		t.Fatal(err)
+	}
+	config := testConfig(path, embedder.ModelKey())
 	if _, err := libravdbstore.Open(config); err == nil {
 		t.Fatal("expected legacy migration requirement")
 	}
 	backup := root + "/legacy-backup.libravdb"
-	if err := libravdbstore.MigrateLegacy(context.Background(), config, backup); err != nil {
+	if err := libravdbstore.MigrateLegacy(context.Background(), config, embedder, backup); err != nil {
 		t.Fatal(err)
 	}
 	migrated, err := libravdbstore.Open(config)
@@ -59,21 +122,74 @@ func TestLegacyMigrationRequiresBackupAndRecoversRecords(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(results) != 1 || results[0].Event.EmbeddingModel != "model-a:d4" {
+	if len(results) != 1 || results[0].Event.EmbeddingModel != embedder.ModelKey() {
 		t.Fatalf("migrated results = %+v", results)
 	}
 }
 
+func TestEventFrameCorpusMigrationReembedsAndPreservesRawMetadata(t *testing.T) {
+	ctx := context.Background()
+	root := t.TempDir()
+	path := root + "/durable.libravdb"
+	active, err := embed.NewHashEmbedder(4)
+	if err != nil {
+		t.Fatal(err)
+	}
+	legacyKey := embed.UnbindRepresentation(active.ModelKey())
+	legacy, err := libravdbstore.Open(testConfig(path, legacyKey))
+	if err != nil {
+		t.Fatal(err)
+	}
+	event := testutil.Event("pre-frame", "RAW_MIGRATION_SENTINEL", time.Now().UTC())
+	event.What = model.Field{Value: "migrated semantic event", Source: model.SourceObserved, Confidence: 1}
+	if _, err := legacy.Put(ctx, event, []float32{1, 0, 0, 0}, "raw-digest"); err != nil {
+		t.Fatal(err)
+	}
+	legacySnapshot := legacy.Snapshot(ctx)
+	if err := legacy.Close(); err != nil {
+		t.Fatal(err)
+	}
+	activeConfig := testConfig(path, active.ModelKey())
+	if _, err := libravdbstore.Open(activeConfig); err == nil {
+		t.Fatal("old full-text embedding contract opened as EventFrame corpus")
+	}
+	backup := root + "/pre-eventframe.libravdb"
+	if err := libravdbstore.MigrateEventFrameCorpus(ctx, activeConfig, active, backup); err != nil {
+		t.Fatal(err)
+	}
+	migrated, err := libravdbstore.Open(activeConfig)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer migrated.Close()
+	query, err := embed.Query(active, event.FrameText())
+	if err != nil {
+		t.Fatal(err)
+	}
+	results, err := migrated.Search(ctx, event.TenantID, query, time.Now().Add(time.Hour), 1)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(results) != 1 || results[0].Event.Content != event.Content || results[0].Event.EmbeddingModel != active.ModelKey() {
+		t.Fatalf("migrated event = %+v", results)
+	}
+	migratedSnapshot := migrated.Snapshot(ctx)
+	if migratedSnapshot.PolicyVersion <= legacySnapshot.PolicyVersion || migratedSnapshot.AbstractionVersion <= legacySnapshot.AbstractionVersion {
+		t.Fatalf("migration did not invalidate representation-dependent certificates: before=%+v after=%+v", legacySnapshot, migratedSnapshot)
+	}
+}
+
 func TestStoreRoundTripAndAvailabilityGate(t *testing.T) {
+	path := t.TempDir() + "/events.libravdb"
 	store, err := libravdbstore.Open(libravdbstore.Config{
-		Path: t.TempDir() + "/events.libravdb", Dimension: 4, Quantization: "none", MemoryMapping: true, EmbeddingModel: "test:d4",
+		Path: path, Dimension: 4, Quantization: "none", MemoryMapping: true, EmbeddingModel: "test:d4",
 	})
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { _ = store.Close() })
 	now := time.Now().UTC()
-	past := testutil.Event("past", "remember this", now.Add(-time.Minute))
+	past := testutil.Event("past", "RAW_STORED_TRANSCRIPT_SENTINEL", now.Add(-time.Minute))
+	past.What = model.Field{Value: "remember this", Source: model.SourceObserved, Confidence: 1}
 	future := testutil.Event("future", "remember this", now.Add(time.Hour))
 	vector := []float32{1, 0, 0, 0}
 	if _, err := store.Put(context.Background(), past, vector, "past-digest"); err != nil {
@@ -95,6 +211,46 @@ func TestStoreRoundTripAndAvailabilityGate(t *testing.T) {
 	}
 	if stats.Tenants != 1 || stats.Events != 2 {
 		t.Fatalf("stats = %+v", stats)
+	}
+	if results[0].Event.Content != past.Content {
+		t.Fatalf("raw payload was not hydrated after retrieval: %q", results[0].Event.Content)
+	}
+	if err := store.Close(); err != nil {
+		t.Fatal(err)
+	}
+	raw, err := libra.Open(libra.WithStoragePath(path))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer raw.Close()
+	names, err := raw.ListCollectionsWithContext(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	found := false
+	for _, name := range names {
+		collection, getErr := raw.GetCollection(name)
+		if getErr != nil {
+			continue
+		}
+		record, getErr := collection.Get(context.Background(), past.ID)
+		if getErr != nil {
+			continue
+		}
+		found = true
+		corpus, _ := record.Metadata["corpus_text"].(string)
+		eventJSON, _ := record.Metadata["event_json"].(string)
+		rawContent, _ := record.Metadata["raw_content"].(string)
+		var metadataEvent model.Event
+		if err := json.Unmarshal([]byte(eventJSON), &metadataEvent); err != nil {
+			t.Fatal(err)
+		}
+		if strings.Contains(corpus, "RAW_STORED_TRANSCRIPT_SENTINEL") || metadataEvent.Content != "" || !strings.Contains(corpus, model.SemanticRepresentationVersion) || rawContent != past.Content {
+			t.Fatalf("stored layout corpus=%q event_json=%q raw_content=%q", corpus, eventJSON, rawContent)
+		}
+	}
+	if !found {
+		t.Fatal("persisted event record not found")
 	}
 }
 

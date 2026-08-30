@@ -3,7 +3,7 @@ package model
 import "time"
 
 const ProtocolVersion = "eventframe.v1alpha1"
-const ContractVersion uint64 = 10
+const ContractVersion uint64 = 12
 
 type Snapshot struct {
 	RuntimeVersion     uint64 `json:"runtime_version"`
@@ -168,6 +168,15 @@ type HealthResponse struct {
 	NominationContract     string   `json:"nomination_contract"`
 	RetrievalContract      string   `json:"retrieval_contract"`
 	ExternalCandidateIndex bool     `json:"external_candidate_index"`
+	Snapshot               Snapshot `json:"snapshot"`
+}
+
+type ReadinessResponse struct {
+	ProtocolVersion        string   `json:"protocol_version"`
+	Status                 string   `json:"status"`
+	StoreReady             bool     `json:"store_ready"`
+	ExternalContractsReady bool     `json:"external_contracts_ready"`
+	ExternalError          string   `json:"external_error,omitempty"`
 	Snapshot               Snapshot `json:"snapshot"`
 }
 

@@ -48,7 +48,14 @@ may additionally configure a LibraVDB daemon for the frozen public candidate
 contracts; `eventframed`, not the base `libravdb-memory` plugin, calls those RPCs
 and owns their tenant-isolated collections. The TypeScript adapter only
 translates OpenClaw hooks into the versioned protocol and injects escaped,
-explicitly untrusted historical context.
+explicitly untrusted historical context. It submits successful conversations as
+raw turn envelopes with no 5W1H fields. After that contract boundary,
+`eventframed` performs bounded deterministic 5W1H enrichment before validation,
+embedding, and durable indexing. At the API boundary the raw turn remains the
+event payload; in the durable corpus it is retained as opaque metadata and the final recalled
+payload. Canonical 5W1H text is the only corpus used for embedding, nomination,
+reranking, and diversity. The derived fields remain predictive scaffolding
+rather than causal evidence.
 
 ## Build and test
 
@@ -88,6 +95,15 @@ Remote TLS and mTLS endpoints use the matching transport contract:
 and TLS for remote TCP endpoints. TLS channels are pooled by gRPC rather than
 opened once per retrieval request.
 
+Remote contract traffic defaults to 16 concurrent RPCs, a 2-second per-attempt
+deadline, at most two attempts for retryable transport failures, and a circuit
+that opens after five consecutive failures for five seconds. Reads may proceed
+concurrently, while insert/delete RPCs use a single-writer lane. Configure these bounds with
+`-libravdb-contract-concurrency`, `-libravdb-contract-timeout-ms`,
+`-libravdb-contract-attempts`, `-libravdb-circuit-failures`, and
+`-libravdb-circuit-cooldown-ms`. Use `/v1/health` for liveness and `/v1/ready`
+for serving readiness.
+
 The deprecated `-libravdb-ranker-endpoint` flag remains an alias during
 migration, but now enables the complete contract lifecycle rather than ranking
 alone.
@@ -106,6 +122,11 @@ Defaults:
 - embedder: deterministic development hash (`-embedder hash`)
 - recall budget: 50 candidates
 - packing budget: 10 records / 2,000 estimated tokens
+
+OpenClaw usefulness learning is explicit. The plugin exposes the
+operator-scoped gateway method `eventframe.outcome.observe`, bound to one durable
+recall journal and one nominated event. Packing or an otherwise successful turn
+does not silently train the posterior.
 
 Use `-quantization none` while validating small test collections. `fsq6` and
 `pq8` are available as explicit experimental choices.
@@ -196,6 +217,24 @@ be migrated with an absolute backup path before startup:
 ```sh
 ./bin/eventframed -database /absolute/events.libravdb \
   -migrate-v1 -migration-backup /absolute/events.pre-v2.libravdb
+```
+
+Version 12 changes the semantic corpus from raw-plus-fields to canonical 5W1H.
+Existing durable databases must be re-embedded with a separate backup:
+
+```sh
+./bin/eventframed -database /absolute/events.libravdb \
+  -migrate-eventframe-corpus \
+  -migration-backup /absolute/events.pre-eventframe.libravdb
+```
+
+When the external LibraVDB contract is enabled, rebuild its versioned candidate
+collection after the local migration:
+
+```sh
+./bin/eventframed -database /absolute/events.libravdb \
+  -libravdb-contract-endpoint tcp:127.0.0.1:50051 \
+  -reindex-eventframe-contract
 ```
 
 See [docs/architecture.md](docs/architecture.md),

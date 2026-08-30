@@ -16,5 +16,8 @@ docs/experiments/**/dataset.json
 docs/experiments/**/report.json
 evidence/**/*-dataset.json
 
+# Publication-reviewed deterministic Contract-12 synthetic corpus.
+!docs/experiments/contract12-synthetic-2026-08-30/rerank-dataset.json
+
 # Local agent workflow notes are not release artifacts.
 .learnings/LEARNINGS.md

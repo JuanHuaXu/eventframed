@@ -20,6 +20,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/calibration"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/evaluation"
+	"github.com/JuanHuaXu/eventframed/internal/frame"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/ranking"
 	"github.com/JuanHuaXu/eventframed/internal/residual"
@@ -216,7 +217,7 @@ func FrozenProtocol(config Config) Protocol {
 		Label:         "a prior message is relevant iff it shares at least one normalized explicit URL, absolute path, or code-like identifier with the current user message",
 		AnchorClasses: []string{"url", "absolute_path", "code_like_identifier"},
 		MaxTextBytes:  maxTextBytes, MaxSegmentMessages: maxSegmentMessages, MinimumPriorEvents: minimumPriorEvents,
-		EmbeddingModel: fmt.Sprintf("feature-hash-v1:d%d", embeddingDimension), RecallK: maxSegmentMessages, PackK: maxSegmentMessages,
+		EmbeddingModel: embed.BindRepresentation(fmt.Sprintf("feature-hash-v1:d%d", embeddingDimension)), RecallK: maxSegmentMessages, PackK: maxSegmentMessages,
 		Variants: []string{"baseline", "update_all", "eventframe"}, BootstrapSamples: bootstrapSamples, BootstrapSeed: bootstrapSeed,
 		RawTextExported: false, ExportTimeEncoding: "trajectory-relative ordinal seconds from 2000-01-01T00:00:00Z; production timestamps are not exported",
 		TrajectoryDefinition: "one isolated source-session segment of at most 100 chronological user/assistant text messages",
@@ -482,11 +483,11 @@ func replaySegment(ctx context.Context, block, trajectoryID string, messages []m
 			if marshalErr != nil {
 				return nil, fmt.Errorf("encode replay retrieval metadata: %w", marshalErr)
 			}
-			if insertErr := textIndexer.InsertText(ctx, collection, retrieval.Candidate{ID: event.ID, Text: event.Content, Metadata: metadata}); insertErr != nil {
+			if insertErr := textIndexer.InsertText(ctx, collection, retrieval.Candidate{ID: event.ID, Text: event.FrameText(), Metadata: metadata}); insertErr != nil {
 				return nil, fmt.Errorf("seed LibraVDB retrieval contract: %w", insertErr)
 			}
 		}
-		vector, embedErr := embed.Document(activeEmbedder, event.EmbeddingText())
+		vector, embedErr := embed.Document(activeEmbedder, event.FrameText())
 		if embedErr != nil {
 			return nil, fmt.Errorf("embed stored turn: %w", embedErr)
 		}
@@ -517,7 +518,8 @@ func replaySegment(ctx context.Context, block, trajectoryID string, messages []m
 		}
 		runtimeAsOf := query.queryAt.Add(-time.Nanosecond)
 		exportedPredictedAt := exportedTime(index)
-		queryVector, embedErr := embed.Query(activeEmbedder, query.query)
+		queryText := frame.QueryText(query.query)
+		queryVector, embedErr := embed.Query(activeEmbedder, queryText)
 		if embedErr != nil {
 			return nil, fmt.Errorf("embed replay query: %w", embedErr)
 		}
@@ -730,16 +732,13 @@ func forecastFromPacket(packet model.ContextPacket, universe []message) (evaluat
 }
 
 func eventFromMessage(sessionID string, sequence int, item message) model.Event {
-	observed := func(value string) model.Field {
-		return model.Field{Value: value, Source: model.SourceObserved, Confidence: 1}
-	}
-	return model.Event{
-		ID: item.id, TenantID: defaultTenant, SessionID: sessionID, Sequence: uint64(sequence + 1), Kind: "conversation_message", Content: item.text,
-		OccurredAt: item.available, ObservedAt: item.available, AvailableAt: item.available,
-		Who: observed(item.role), When: observed(item.available.Format(time.RFC3339Nano)), Priority: priorityFor(item.anchors),
-		Provenance: model.Provenance{Producer: "openclaw-production-session-read-only-replay"},
-		Attributes: map[string]string{"role": item.role, "content_truncated": fmt.Sprint(len(item.text) == maxTextBytes)},
-	}
+	event := frame.FromText(item.text, item.role, sessionID, item.available, model.SourceObserved)
+	event.ID, event.TenantID, event.SessionID, event.Sequence, event.Kind = item.id, defaultTenant, sessionID, uint64(sequence+1), "conversation_message"
+	event.OccurredAt, event.ObservedAt, event.AvailableAt = item.available, item.available, item.available
+	event.Priority = priorityFor(item.anchors)
+	event.Provenance = model.Provenance{Producer: "openclaw-production-session-read-only-replay"}
+	event.Attributes = map[string]string{"role": item.role, "content_truncated": fmt.Sprint(len(item.text) == maxTextBytes), "semantic_extractor": "fivew1h-deterministic-v1"}
+	return event
 }
 
 func evaluateArtifact(artifact Artifact) (evaluation.Report, error) {

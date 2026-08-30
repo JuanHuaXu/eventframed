@@ -1,14 +1,5 @@
 export const PROTOCOL_VERSION = "eventframe.v1alpha1" as const;
 
-export type FieldSource = "observed" | "inferred" | "synthetic";
-
-export type EventField = {
-  value: string;
-  source: FieldSource;
-  confidence: number;
-  evidence?: string;
-};
-
 export type EventFrame = {
   id: string;
   tenant_id: string;
@@ -19,12 +10,6 @@ export type EventFrame = {
   occurred_at: string;
   observed_at: string;
   available_at: string;
-  who: EventField;
-  what: EventField;
-  where: EventField;
-  when: EventField;
-  why: EventField;
-  how: EventField;
   priority: number;
   tags?: string[];
   provenance: {
@@ -34,8 +19,23 @@ export type EventFrame = {
     tool_call_id?: string;
     run_id?: string;
   };
-  attributes?: Record<string, string>;
-  embedding_model?: string;
+};
+
+// CapturedTurn is the OpenClaw transport envelope. It intentionally contains no
+// 5W1H fields; eventframed performs semantic enrichment after contract receipt.
+export type CapturedTurn = {
+  id: string;
+  tenant_id: string;
+  session_id: string;
+  sequence: number;
+  run_id?: string;
+  agent_id?: string;
+  user_text: string;
+  assistant_text: string;
+  retrieved_ids?: string[];
+  occurred_at: string;
+  observed_at: string;
+  available_at: string;
 };
 
 export type ContextCandidate = {
@@ -79,6 +79,8 @@ export type ContextPacket = {
   };
   bayesian_shadow?: {
     mode: "shadow";
+    journal_id: string;
+    journal_durable: boolean;
     nominated: number;
     activated: number;
     deep_reviewed: number;
@@ -95,6 +97,18 @@ export type ContextPacket = {
       posterior_key: string;
     }>;
   };
+};
+
+export type OutcomeSignal = "useful" | "not_useful" | "cited" | "successful_downstream" | "correction" | "rejected";
+
+export type OutcomeObservation = {
+  tenant_id: string;
+  journal_id: string;
+  event_id: string;
+  idempotency_key: string;
+  signal: OutcomeSignal;
+  observed_at?: string;
+  available_at?: string;
 };
 
 export type AdapterConfig = {

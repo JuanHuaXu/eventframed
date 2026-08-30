@@ -6,8 +6,36 @@ import path from "node:path";
 import test from "node:test";
 import { EventFrameClient } from "./client.js";
 
+test("capture sends only the raw turn contract to eventframed", async (t) => {
+  let requestPath = "";
+  let requestBody = "";
+  const fixture = await unixServer(t, (request, response) => {
+    requestPath = request.url ?? "";
+    request.on("data", (chunk: Buffer) => { requestBody += chunk.toString("utf8"); });
+    request.on("end", () => {
+      response.setHeader("content-type", "application/json");
+      response.end(JSON.stringify({ protocol_version: "eventframe.v1alpha1", event_id: "turn-1" }));
+    });
+  });
+  const client = new EventFrameClient({ socketPath: fixture.socketPath });
+  await client.captureTurn({
+    id: "turn-1", tenant_id: "tenant", session_id: "session", sequence: 1,
+    user_text: "question", assistant_text: "answer",
+    occurred_at: "2026-01-01T00:00:00Z", observed_at: "2026-01-01T00:00:01Z", available_at: "2026-01-01T00:00:01Z",
+  });
+
+  assert.equal(requestPath, "/v1/turns:capture");
+  const payload = JSON.parse(requestBody) as Record<string, unknown>;
+  const turn = payload.turn as Record<string, unknown>;
+  for (const field of ["who", "what", "where", "when", "why", "how"]) {
+    assert.equal(field in turn, false);
+  }
+});
+
 test("recall rejects a daemon response with the wrong protocol", async (t) => {
-  const fixture = await unixServer(t, (_request, response) => {
+  let requestPath = "";
+  const fixture = await unixServer(t, (request, response) => {
+    requestPath = request.url ?? "";
     response.setHeader("content-type", "application/json");
     response.end(JSON.stringify({ protocol_version: "eventframe.v0", candidates: [] }));
   });
@@ -23,6 +51,31 @@ test("recall rejects a daemon response with the wrong protocol", async (t) => {
     }),
     /unsupported or missing protocol_version/,
   );
+  assert.equal(requestPath, "/v1/openclaw/context:recall");
+});
+
+test("recall retries a bounded snapshot conflict with the identical as_of", async (t) => {
+  let calls = 0;
+  const asOfValues: string[] = [];
+  const fixture = await unixServer(t, (request, response) => {
+    let body = "";
+    request.on("data", (chunk: Buffer) => { body += chunk.toString("utf8"); });
+    request.on("end", () => {
+      calls++;
+      asOfValues.push((JSON.parse(body) as { as_of: string }).as_of);
+      response.setHeader("content-type", "application/json");
+      if (calls === 1) {
+        response.statusCode = 409;
+        response.end(JSON.stringify({ protocol_version: "eventframe.v1alpha1", code: "snapshot_changed", message: "retry" }));
+        return;
+      }
+      response.end(JSON.stringify({ protocol_version: "eventframe.v1alpha1", candidates: [] }));
+    });
+  });
+  const client = new EventFrameClient({ socketPath: fixture.socketPath });
+  await client.recall({ tenantId: "tenant", sessionId: "session", query: "query", recallK: 50, packK: 10, tokenBudget: 2000 });
+  assert.equal(calls, 2);
+  assert.equal(asOfValues[0], asOfValues[1]);
 });
 
 test("recall rejects malformed candidates before prompt formatting", async (t) => {
@@ -56,6 +109,33 @@ test("recall rejects a candidate without a finite rank delta", async (t) => {
   await assert.rejects(client.recall({
     tenantId: "tenant", sessionId: "session", query: "query", recallK: 50, packK: 10, tokenBudget: 2_000,
   }), /malformed candidate/);
+});
+
+test("explicit outcome feedback preserves the recall journal and trusted signal", async (t) => {
+  let requestPath = "";
+  let requestBody = "";
+  const fixture = await unixServer(t, (request, response) => {
+    requestPath = request.url ?? "";
+    request.on("data", (chunk: Buffer) => { requestBody += chunk.toString("utf8"); });
+    request.on("end", () => {
+      response.setHeader("content-type", "application/json");
+      response.end(JSON.stringify({ protocol_version: "eventframe.v1alpha1", posterior: {} }));
+    });
+  });
+  const client = new EventFrameClient({ socketPath: fixture.socketPath });
+  await client.observeOutcome({
+    tenant_id: "tenant", journal_id: "journal-1", event_id: "event-1",
+    idempotency_key: "feedback-1", signal: "correction",
+    observed_at: "2026-01-01T00:00:00Z", available_at: "2026-01-01T00:00:01Z",
+  });
+
+  assert.equal(requestPath, "/v1/bayesian/outcomes:observe");
+  const payload = JSON.parse(requestBody) as Record<string, unknown>;
+  assert.equal(payload.journal_id, "journal-1");
+  assert.equal(payload.event_id, "event-1");
+  assert.equal(payload.source, "full_stream");
+  assert.equal(payload.inclusion_probability, 1);
+  assert.deepEqual(payload.signals, { correction: true });
 });
 
 test("agency claims reject a lease assigned to another consumer", async (t) => {

@@ -42,10 +42,10 @@ func (e *OpenAICompatible) Name() string   { return "openai-compatible" }
 func (e *OpenAICompatible) ModelKey() string {
 	base := fmt.Sprintf("openai-compatible:%s:d%d", e.config.Model, e.config.Dimension)
 	if e.config.DocumentPrefix == "" && e.config.QueryPrefix == "" {
-		return base
+		return BindRepresentation(base)
 	}
 	digest := sha256.Sum256([]byte(e.config.DocumentPrefix + "\x00" + e.config.QueryPrefix))
-	return fmt.Sprintf("%s:rp%x", base, digest[:6])
+	return BindRepresentation(fmt.Sprintf("%s:rp%x", base, digest[:6]))
 }
 
 func (e *OpenAICompatible) Embed(text string) ([]float32, error) {

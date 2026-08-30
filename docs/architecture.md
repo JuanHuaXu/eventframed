@@ -16,6 +16,13 @@ endpoint. It assigns each tenant a deterministic hashed `eventframe-*`
 collection; callers cannot override that scope. The embedded LibraVDB database
 remains the authoritative structured EventFrame and policy store.
 
+The remote boundary has one shared concurrency limiter, per-attempt deadlines,
+bounded retry backoff, and a consecutive-failure circuit breaker. Remote index
+mutations use a single-writer lane while bounded reads may continue. The local EventFrame
+commit happens first and remains the durable reconciliation source when a remote
+index response is lost. `/v1/health` reports daemon liveness, while `/v1/ready`
+also requires the configured external contract connection.
+
 The embedded LibraVDB store, pass-through ranker, and bounded packer remain for
 standalone operation and deterministic tests. They are degraded-mode fallbacks
 and cannot be used as evidence for contract-native OpenClaw retrieval claims.
@@ -23,35 +30,51 @@ and cannot be used as evidence for contract-native OpenClaw retrieval claims.
 ## Current data path
 
 1. The adapter observes a successful user/assistant turn.
-2. It derives a deterministic event ID and sends an idempotent observation.
-3. The daemon validates field provenance and `occurred <= observed <= available`.
-4. EventFrame commits the structured event, then idempotently indexes its text
-   and typed metadata through `InsertText`, reconciling retries by digest.
-5. Recall supplies an explicit `as_of`; EventFrame derives the tenant's reserved
+2. It derives a deterministic capture ID and sends an idempotent raw-turn
+   envelope through `POST /v1/turns:capture`. The adapter contract contains text
+   and transport metadata, but no Who, What, Where, When, Why, or How fields.
+3. After decoding that contract, `eventframed` performs bounded deterministic
+   5W1H enrichment. Explicit user spans are `observed`, assistant spans are
+   `synthetic`, and compositions or metadata fallbacks are `inferred`. No model
+   or network call is made on this enrichment path.
+4. The daemon validates field provenance and `occurred <= observed <= available`.
+   The unmodified turn remains opaque payload metadata; enrichment does not establish
+   causality. Direct callers of `/v1/events:observe` may still submit deliberately
+   authored structured frames, which the daemon validates without rewriting.
+5. EventFrame commits canonical `eventframe-5w1h-v1` text as the semantic corpus
+   and retains the raw transcript in metadata for final delivery. Local vectors
+   and remote `InsertText` use only that canonical text and reconcile retries by
+   a representation-bound digest.
+6. Recall supplies an explicit `as_of`; EventFrame derives the tenant's reserved
    collection and applies bounded exclusions internally.
-6. `SearchTextCollections` nominates candidates. EventFrame resolves every
+7. `SearchTextCollections` nominates candidates. EventFrame resolves every
    returned ID against its tenant and availability view; unknown, cross-tenant,
    or future records fail closed.
-7. The service builds and durably journals a capped Bayesian frontier. The
+8. The service builds and durably journals a capped Bayesian frontier. The
    default policy updates every evidence-ready member of that frontier, never
    the full corpus.
-8. Only current external certificates may promote a cached usefulness posterior
+9. Only current external certificates may promote a cached usefulness posterior
    into the bounded score mixture; otherwise the baseline score is unchanged.
-9. Exact-key then general residual lookup may correct the complete Bernoulli law
+10. Exact-key then general residual lookup may correct the complete Bernoulli law
    only when fixed-reference motion and sequential improvement gates pass.
-10. The service derives an EventFrame correction relative to its frozen local
+11. The service derives an EventFrame correction relative to its frozen local
     baseline and stores that bounded, version-bound rank delta in a write-through
     RAM cache backed by SQLite.
-11. EventFrame sends LibraVDB's nomination/base signal and preserved metadata to
-    `RankCandidates(k1,k2)`. It preserves the returned value as `retrieval_score`.
-12. EventFrame measures answer certainty from the normalized retrieval-score gap
+12. EventFrame sends canonical 5W1H candidate text, a canonical partial query
+    frame, LibraVDB's nomination/base signal, and preserved typed metadata to
+    `RankCandidates(k1,k2)`. Raw transcripts do not cross this boundary. The
+    returned value is preserved as `retrieval_score`.
+13. EventFrame measures answer certainty from the normalized retrieval-score gap
     at the initial top-`pack_k` boundary. Independently, only an accepted
     Bayesian, residual, or graph-compatibility path supplies correction
     reliability. Both promotions and demotions use those two signals under the
     global hard cap.
-13. EventFrame adds the resulting `rank_delta`, sorts by the final `score`, and
+14. EventFrame adds the resulting `rank_delta`, sorts by the final `score`, and
     only then applies `pack_k` and the token budget.
-14. The adapter escapes records and labels them untrusted history.
+15. Only after final ranking and packing does the daemon hydrate raw transcript
+    metadata. The adapter recalls through `/v1/openclaw/context:recall`, whose daemon-side
+    projection omits 5W1H fields and embeddings. It escapes the remaining raw
+    records and labels them untrusted history.
 
 The SQLite sidecar is a durable materialization and restart cache, not a new
 authorization source. Every row is keyed by query and event, expires quickly,
@@ -114,6 +137,11 @@ posterior can affect ranking. Anti-Pigeon sharing is a third, independent
 certificate; without it, each event keeps its own posterior. Feedback is
 availability checked, idempotent, inverse-propensity weighted with a hard cap,
 and preserves per-event evidence even inside a certified shared posterior.
+
+OpenClaw does not infer usefulness from successful generation or packing. An
+operator-write control-plane method submits an explicit signal tied to the exact
+durable recall journal and nominated event. The daemon's journal membership,
+availability, and idempotency checks remain the authority at the sink.
 Certified sharing discounts only the pooled posterior's effective outcome weight
 (default `0.5`). Direct member sufficient statistics retain full audit weight so
 the group comparison and any later split do not lose divergence evidence.

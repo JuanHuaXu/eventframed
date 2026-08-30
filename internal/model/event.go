@@ -9,6 +9,13 @@ import (
 
 type FieldSource string
 
+const SemanticRepresentationVersion = "eventframe-5w1h-v1"
+
+const (
+	maxSemanticFieldBytes = 2048
+	maxFieldEvidenceBytes = 1024
+)
+
 const (
 	SourceObserved  FieldSource = "observed"
 	SourceInferred  FieldSource = "inferred"
@@ -101,6 +108,9 @@ func (e Event) Validate(dimension int) error {
 			return fmt.Errorf("%s: %w", name, err)
 		}
 	}
+	if strings.TrimSpace(e.What.Value) == "" {
+		return errors.New("what is required for an EventFrame")
+	}
 	return nil
 }
 
@@ -114,11 +124,28 @@ func (f Field) Validate() error {
 	if strings.TrimSpace(f.Value) != "" && f.Source == "" {
 		return errors.New("non-empty field requires a source")
 	}
+	if len(f.Value) > maxSemanticFieldBytes || len(f.Evidence) > maxFieldEvidenceBytes {
+		return errors.New("field value or evidence exceeds the semantic bound")
+	}
 	return nil
 }
 
-func (e Event) EmbeddingText() string {
-	parts := []string{e.Content, e.Who.Value, e.What.Value, e.Where.Value, e.When.Value, e.Why.Value, e.How.Value}
+// FrameText is the canonical semantic representation used by retrieval,
+// ranking, and correction machinery. Raw Content is deliberately excluded.
+func (e Event) FrameText() string {
+	fields := [...]struct {
+		name  string
+		value string
+	}{
+		{"who", e.Who.Value}, {"what", e.What.Value}, {"where", e.Where.Value},
+		{"when", e.When.Value}, {"why", e.Why.Value}, {"how", e.How.Value},
+	}
+	parts := []string{"representation: " + SemanticRepresentationVersion}
+	for _, field := range fields {
+		if value := strings.Join(strings.Fields(field.value), " "); value != "" {
+			parts = append(parts, field.name+": "+value)
+		}
+	}
 	return strings.Join(parts, "\n")
 }
 

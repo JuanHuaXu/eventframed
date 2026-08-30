@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"io"
 	"log/slog"
 	"net/http"
@@ -15,6 +16,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/api"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/retrieval"
 	"github.com/JuanHuaXu/eventframed/internal/service"
 	"github.com/JuanHuaXu/eventframed/internal/store/memorystore"
 	"github.com/JuanHuaXu/eventframed/internal/testutil"
@@ -73,6 +75,133 @@ func TestObserveThenRecallOverHTTP(t *testing.T) {
 	}
 }
 
+type failingReadinessProbe struct{}
+
+func (failingReadinessProbe) Ready(context.Context) error { return errors.New("sidecar unavailable") }
+
+type openCircuitRetriever struct{}
+
+func (openCircuitRetriever) SearchTextCollections(context.Context, retrieval.SearchRequest) ([]retrieval.Candidate, error) {
+	return nil, retrieval.ErrContractCircuitOpen
+}
+func (openCircuitRetriever) RetrievalContractName() string { return "test-open-circuit" }
+
+func TestReadinessIncludesRequiredExternalContracts(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, err := service.New(memorystore.New(), embedder, service.Config{
+		DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000, ExternalReadiness: failingReadinessProbe{},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+
+	health, err := http.Get(server.URL + "/v1/health")
+	if err != nil {
+		t.Fatal(err)
+	}
+	health.Body.Close()
+	if health.StatusCode != http.StatusOK {
+		t.Fatalf("liveness status = %d", health.StatusCode)
+	}
+	ready, err := http.Get(server.URL + "/v1/ready")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer ready.Body.Close()
+	if ready.StatusCode != http.StatusServiceUnavailable {
+		t.Fatalf("readiness status = %d", ready.StatusCode)
+	}
+	var response model.ReadinessResponse
+	if err := json.NewDecoder(ready.Body).Decode(&response); err != nil {
+		t.Fatal(err)
+	}
+	if response.Status != "not_ready" || response.ExternalContractsReady || response.ExternalError == "" {
+		t.Fatalf("readiness response = %+v", response)
+	}
+}
+
+func TestRecallReturnsRetryableDependencyStatusForOpenCircuit(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, err := service.New(memorystore.New(), embedder, service.Config{
+		DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000,
+		CandidateRetriever: openCircuitRetriever{}, CandidateRetrieverRequired: true,
+		CandidateCollectionPrefix: "eventframe-",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+	payload, _ := json.Marshal(model.RecallRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "tenant", SessionID: "session", Query: "query", AsOf: time.Now().UTC(), RecallK: 10, PackK: 10, TokenBudget: 1000})
+	response, err := http.Post(server.URL+"/v1/openclaw/context:recall", "application/json", bytes.NewReader(payload))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer response.Body.Close()
+	if response.StatusCode != http.StatusServiceUnavailable || response.Header.Get("Retry-After") != "5" {
+		t.Fatalf("status=%d retry-after=%q", response.StatusCode, response.Header.Get("Retry-After"))
+	}
+}
+
+func TestCaptureTurnEnrichesAfterHTTPContract(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, err := service.New(memorystore.New(), embedder, service.Config{DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000, OverfetchMultiplier: 4})
+	if err != nil {
+		t.Fatal(err)
+	}
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+	now := time.Now().UTC().Add(-time.Minute)
+	turn := model.TurnCapture{
+		ID: "http-turn", TenantID: "tenant-a", SessionID: "session-a", Sequence: uint64(now.UnixMilli()),
+		UserText:      "Example Operator will deploy EventFrame in Toronto tomorrow because retrieval is stale using the OpenClaw plugin.",
+		AssistantText: "I prepared the release.", OccurredAt: now, ObservedAt: now.Add(time.Second), AvailableAt: now.Add(time.Second),
+	}
+	var observed model.ObserveResponse
+	postJSON(t, server.URL+"/v1/turns:capture", model.CaptureTurnRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: turn.ID, Turn: turn}, &observed)
+	if observed.EventID != turn.ID {
+		t.Fatalf("capture response = %+v", observed)
+	}
+	var packet model.ContextPacket
+	postJSON(t, server.URL+"/v1/context:recall", model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: turn.TenantID, SessionID: turn.SessionID,
+		Query: "retrieval stale", AsOf: now.Add(2 * time.Second), RecallK: 10, PackK: 10, TokenBudget: 1000,
+	}, &packet)
+	if len(packet.Candidates) != 1 || packet.Candidates[0].Event.Where.Value != "Toronto" {
+		t.Fatalf("captured frame = %+v", packet.Candidates)
+	}
+	raw, err := json.Marshal(model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: turn.TenantID, SessionID: turn.SessionID,
+		Query: "retrieval stale", AsOf: now.Add(2 * time.Second), RecallK: 10, PackK: 10, TokenBudget: 1000,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	response, err := http.Post(server.URL+"/v1/openclaw/context:recall", "application/json", bytes.NewReader(raw))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer response.Body.Close()
+	var adapterPacket struct {
+		Candidates []struct {
+			Event map[string]any `json:"event"`
+		} `json:"candidates"`
+	}
+	if err := json.NewDecoder(response.Body).Decode(&adapterPacket); err != nil {
+		t.Fatal(err)
+	}
+	if len(adapterPacket.Candidates) != 1 {
+		t.Fatalf("adapter candidates = %+v", adapterPacket.Candidates)
+	}
+	for _, field := range []string{"who", "what", "where", "when", "why", "how", "embedding", "embedding_model", "attributes"} {
+		if _, exposed := adapterPacket.Candidates[0].Event[field]; exposed {
+			t.Fatalf("OpenClaw projection exposed internal field %q", field)
+		}
+	}
+}
+
 func TestRejectsUnknownJSONFields(t *testing.T) {
 	embedder, _ := embed.NewHashEmbedder(8)
 	runtime, _ := service.New(memorystore.New(), embedder, service.Config{
@@ -81,6 +210,22 @@ func TestRejectsUnknownJSONFields(t *testing.T) {
 	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
 	t.Cleanup(server.Close)
 	response, err := http.Post(server.URL+"/v1/context:recall", "application/json", bytes.NewBufferString(`{"unknown":true}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer response.Body.Close()
+	if response.StatusCode != http.StatusBadRequest {
+		t.Fatalf("status = %d", response.StatusCode)
+	}
+}
+
+func TestRawTurnContractRejectsAdapterSuppliedSemanticFields(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, _ := service.New(memorystore.New(), embedder, service.Config{DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000, OverfetchMultiplier: 4})
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+	body := `{"protocol_version":"eventframe.v1alpha1","idempotency_key":"turn","turn":{"id":"turn","tenant_id":"tenant","session_id":"session","sequence":1,"user_text":"question","assistant_text":"answer","occurred_at":"2026-01-01T00:00:00Z","observed_at":"2026-01-01T00:00:01Z","available_at":"2026-01-01T00:00:01Z","who":{"value":"adapter-authored"}}}`
+	response, err := http.Post(server.URL+"/v1/turns:capture", "application/json", bytes.NewBufferString(body))
 	if err != nil {
 		t.Fatal(err)
 	}

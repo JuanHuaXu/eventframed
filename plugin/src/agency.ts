@@ -242,7 +242,7 @@ function validateAgencyProposal(value: unknown): asserts value is AgencyProposal
     typeof value.priority !== "number" || value.priority < 0 || value.priority > 1 ||
     value.idempotency_key !== value.id || typeof value.causal_chain_id !== "string" || !value.causal_chain_id || Buffer.byteLength(value.causal_chain_id) > MAX_IDENTIFIER_BYTES ||
     typeof value.causal_chain_depth !== "number" || !Number.isInteger(value.causal_chain_depth) || value.causal_chain_depth < 0 ||
-    typeof value.contract_version !== "number" || ![6, 7, 8, 9, 10].includes(value.contract_version) ||
+    typeof value.contract_version !== "number" || ![6, 7, 8, 9, 10, 11].includes(value.contract_version) ||
     typeof value.not_before !== "string" || typeof value.expires_at !== "string" || typeof value.created_at !== "string"
   ) {
     throw new Error("proposal payload violates the authority contract");

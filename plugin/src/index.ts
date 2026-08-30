@@ -1,10 +1,10 @@
 import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
 import { isAgencyAction, registerAgencyService } from "./agency.js";
 import { EventFrameClient } from "./client.js";
-import { buildTurnEvent, extractLatestText } from "./event.js";
+import { buildTurnCapture, extractLatestText } from "./event.js";
 import { formatContext } from "./format.js";
 import { TraceWriter } from "./trace.js";
-import type { AdapterConfig, AgencyAction } from "./types.js";
+import type { AdapterConfig, AgencyAction, OutcomeObservation, OutcomeSignal } from "./types.js";
 
 const DEFAULTS: AdapterConfig = {
   socketPath: "~/.eventframed/run/eventframed.sock",
@@ -45,6 +45,14 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
     const recallByRun = new Map<string, RecallState>();
 
     registerAgencyService(api, client, config);
+    api.registerGatewayMethod("eventframe.outcome.observe", async ({ params, respond }) => {
+      try {
+        const outcome = parseOutcomeObservation(params, config.tenantId);
+        respond(true, await client.observeOutcome(outcome));
+      } catch (error) {
+        respond(false, undefined, { code: "EVENTFRAME_OUTCOME_REJECTED", message: String(error) });
+      }
+    }, { scope: "operator.write" });
 
     api.on("before_prompt_build", async (event, context) => {
       const prompt = normalizeText(extractLatestText(event.messages, "user") ?? event.prompt);
@@ -109,22 +117,22 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
         return;
       }
       try {
-        const turnEvent = buildTurnEvent({
-            tenantId: config.tenantId,
-            sessionId: sessionId(context),
-            runId: event.runId ?? context.runId,
-            agentId: context.agentId,
-            userText,
-            assistantText,
-            retrievedIds: state?.recalledIds ?? [],
-            occurredAt: state?.occurredAt,
-          });
-        await client.observe(turnEvent);
+        const turnCapture = buildTurnCapture({
+          tenantId: config.tenantId,
+          sessionId: sessionId(context),
+          runId: event.runId ?? context.runId,
+          agentId: context.agentId,
+          userText,
+          assistantText,
+          retrievedIds: state?.recalledIds ?? [],
+          occurredAt: state?.occurredAt,
+        });
+        await client.captureTurn(turnCapture);
         await trace.write({
           type: "observe",
           run_id: event.runId ?? context.runId,
           session_id: sessionId(context),
-          event_id: turnEvent.id,
+          event_id: turnCapture.id,
           recalled_ids: state?.recalledIds ?? [],
           user_text: userText,
           assistant_text: assistantText,
@@ -229,4 +237,33 @@ function readStringArray(value: unknown): string[] {
 
 function readAgencyActions(value: unknown): AgencyAction[] {
   return Array.isArray(value) ? [...new Set(value.filter(isAgencyAction))] : [];
+}
+
+function parseOutcomeObservation(value: Record<string, unknown>, configuredTenant: string): OutcomeObservation {
+  const tenant = readRequiredString(value.tenant_id ?? configuredTenant, "tenant_id");
+  if (tenant !== configuredTenant) {
+    throw new Error("tenant_id does not match the configured EventFrame tenant");
+  }
+  const signal = value.signal;
+  if (!isOutcomeSignal(signal)) {
+    throw new Error("signal must be useful, not_useful, cited, successful_downstream, correction, or rejected");
+  }
+  return {
+    tenant_id: tenant,
+    journal_id: readRequiredString(value.journal_id, "journal_id"),
+    event_id: readRequiredString(value.event_id, "event_id"),
+    idempotency_key: readRequiredString(value.idempotency_key, "idempotency_key"),
+    signal,
+    observed_at: readOptionalString(value.observed_at),
+    available_at: readOptionalString(value.available_at),
+  };
+}
+
+function readRequiredString(value: unknown, field: string): string {
+  if (typeof value !== "string" || value.trim() === "") throw new Error(`${field} is required`);
+  return value.trim();
+}
+
+function isOutcomeSignal(value: unknown): value is OutcomeSignal {
+  return value === "useful" || value === "not_useful" || value === "cited" || value === "successful_downstream" || value === "correction" || value === "rejected";
 }

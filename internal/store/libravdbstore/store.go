@@ -33,12 +33,14 @@ type Store struct {
 	config       Config
 	mu           sync.Mutex
 	writeMu      sync.Mutex
+	eventMu      sync.RWMutex
 	collections  map[string]*libra.Collection
 	bayesian     *libra.Collection
 	agency       *libra.Collection
 	agencyActive map[string]*libra.Collection
 	policyDigest string
 	snapshot     model.Snapshot
+	ingestMotion map[uint64]time.Time
 }
 
 const systemCollection = "_eventframe_system"
@@ -72,7 +74,7 @@ func Open(config Config) (*Store, error) {
 	if err != nil {
 		return nil, fmt.Errorf("open libravdb: %w", err)
 	}
-	s := &Store{db: db, config: config, collections: make(map[string]*libra.Collection), agencyActive: make(map[string]*libra.Collection)}
+	s := &Store{db: db, config: config, collections: make(map[string]*libra.Collection), agencyActive: make(map[string]*libra.Collection), ingestMotion: make(map[uint64]time.Time)}
 	if err := s.loadOrInitializeState(context.Background()); err != nil {
 		_ = db.Close()
 		return nil, err
@@ -83,6 +85,8 @@ func Open(config Config) (*Store, error) {
 func (s *Store) Put(ctx context.Context, event model.Event, vector []float32, digest string) (store.PutResult, error) {
 	s.writeMu.Lock()
 	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
 	collectionKey := collectionName(event.TenantID, s.config.EmbeddingModel)
 	collection, err := s.collection(ctx, event.TenantID)
 	if err != nil {
@@ -98,12 +102,14 @@ func (s *Store) Put(ctx context.Context, event model.Event, vector []float32, di
 	if !errors.Is(err, libra.ErrRecordNotFound) {
 		return store.PutResult{}, fmt.Errorf("check existing event: %w", err)
 	}
-	payload, err := json.Marshal(event)
+	payload, err := encodeStoredEvent(event)
 	if err != nil {
 		return store.PutResult{}, fmt.Errorf("encode event: %w", err)
 	}
 	metadata := map[string]interface{}{
 		"event_json":     string(payload),
+		"corpus_text":    event.FrameText(),
+		"raw_content":    event.Content,
 		"content_digest": digest,
 		"session_id":     event.SessionID,
 		"kind":           event.Kind,
@@ -134,6 +140,7 @@ func (s *Store) Put(ctx context.Context, event model.Event, vector []float32, di
 		return store.PutResult{}, fmt.Errorf("insert event: %w", err)
 	}
 	s.snapshot = next
+	recordIngestMotion(s.ingestMotion, next.RuntimeVersion, event.AvailableAt)
 	return store.PutResult{Snapshot: next}, nil
 }
 
@@ -164,6 +171,8 @@ func (s *Store) BindBayesianPolicy(ctx context.Context, digest string) (model.Sn
 }
 
 func (s *Store) Search(ctx context.Context, tenantID string, vector []float32, availableBy time.Time, limit int) ([]store.SearchResult, error) {
+	s.eventMu.RLock()
+	defer s.eventMu.RUnlock()
 	collection, err := s.collection(ctx, tenantID)
 	if err != nil {
 		return nil, err
@@ -188,6 +197,8 @@ func (s *Store) Search(ctx context.Context, tenantID string, vector []float32, a
 }
 
 func (s *Store) GetEvents(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	s.eventMu.RLock()
+	defer s.eventMu.RUnlock()
 	collection, err := s.collection(ctx, tenantID)
 	if err != nil {
 		return nil, err
@@ -201,13 +212,9 @@ func (s *Store) GetEvents(ctx context.Context, tenantID string, eventIDs []strin
 		if getErr != nil {
 			return nil, fmt.Errorf("read event %q: %w", eventID, getErr)
 		}
-		payload, ok := record.Metadata["event_json"].(string)
-		if !ok {
+		event, decodeErr := decodeStoredEvent(record.Metadata, true)
+		if decodeErr != nil {
 			return nil, fmt.Errorf("%w: id=%s has no event payload", store.ErrEventNotFound, eventID)
-		}
-		var event model.Event
-		if err := json.Unmarshal([]byte(payload), &event); err != nil {
-			return nil, fmt.Errorf("decode event %q: %w", eventID, err)
 		}
 		if event.ID != eventID || event.TenantID != tenantID || event.AvailableAt.After(availableBy) {
 			return nil, fmt.Errorf("%w: id=%s failed identity or availability validation", store.ErrEventNotFound, eventID)
@@ -216,6 +223,40 @@ func (s *Store) GetEvents(ctx context.Context, tenantID string, eventIDs []strin
 		results = append(results, event)
 	}
 	return results, nil
+}
+
+// ListAllEvents returns only records in collections bound to the active
+// embedding representation. It is intended for explicit maintenance jobs.
+func (s *Store) ListAllEvents(ctx context.Context) ([]model.Event, error) {
+	names, err := s.db.ListCollectionsWithContext(ctx)
+	if err != nil {
+		return nil, err
+	}
+	result := make([]model.Event, 0)
+	for _, name := range names {
+		collection, getErr := s.db.GetCollection(name)
+		if getErr != nil {
+			continue
+		}
+		records, listErr := collection.ListAll(ctx)
+		if listErr != nil {
+			return nil, listErr
+		}
+		for _, record := range records {
+			event, decodeErr := decodeStoredEvent(record.Metadata, true)
+			if decodeErr != nil || collectionName(event.TenantID, s.config.EmbeddingModel) != name {
+				continue
+			}
+			result = append(result, event)
+		}
+	}
+	sort.Slice(result, func(i, j int) bool {
+		if result[i].TenantID == result[j].TenantID {
+			return result[i].ID < result[j].ID
+		}
+		return result[i].TenantID < result[j].TenantID
+	})
+	return result, nil
 }
 
 func (s *Store) PutBayesianJournal(ctx context.Context, entry model.BayesianJournalEntry) error {
@@ -237,7 +278,7 @@ func (s *Store) PutBayesianJournal(ctx context.Context, entry model.BayesianJour
 	if !errors.Is(err, libra.ErrRecordNotFound) {
 		return fmt.Errorf("check Bayesian journal: %w", err)
 	}
-	if entry.Snapshot != s.snapshot {
+	if !store.JournalSnapshotCompatible(entry.Snapshot, s.snapshot, entry.AsOf, s.ingestMotion) {
 		return store.ErrStaleSnapshot
 	}
 	metadata := map[string]interface{}{
@@ -251,6 +292,14 @@ func (s *Store) PutBayesianJournal(ctx context.Context, entry model.BayesianJour
 		return fmt.Errorf("insert Bayesian journal: %w", err)
 	}
 	return nil
+}
+
+func recordIngestMotion(motion map[uint64]time.Time, version uint64, availableAt time.Time) {
+	motion[version] = availableAt
+	const retainedVersions = uint64(4096)
+	if version > retainedVersions {
+		delete(motion, version-retainedVersions)
+	}
 }
 
 func (s *Store) GetBayesianJournal(ctx context.Context, tenantID, journalID string) (model.BayesianJournalEntry, error) {
@@ -751,9 +800,8 @@ func (s *Store) PutAgencyProposal(ctx context.Context, agencyRecord model.Agency
 		if getErr != nil {
 			return store.AgencyPutResult{}, store.ErrAgencyEvidence
 		}
-		encoded, ok := evidence.Metadata["event_json"].(string)
-		var event model.Event
-		if !ok || json.Unmarshal([]byte(encoded), &event) != nil || event.TenantID != agencyRecord.Proposal.TenantID || event.AvailableAt.After(evidenceAvailableBy) {
+		event, decodeErr := decodeStoredEvent(evidence.Metadata, false)
+		if decodeErr != nil || event.TenantID != agencyRecord.Proposal.TenantID || event.AvailableAt.After(evidenceAvailableBy) {
 			return store.AgencyPutResult{}, store.ErrAgencyEvidence
 		}
 	}
@@ -1239,12 +1287,8 @@ func (s *Store) getBayesianPosterior(ctx context.Context, tenantID, posteriorKey
 func decodeEligible(results []*libra.SearchResult, availableBy time.Time, limit int) []store.SearchResult {
 	out := make([]store.SearchResult, 0, min(limit, len(results)))
 	for _, result := range results {
-		payload, ok := result.Metadata["event_json"].(string)
-		if !ok {
-			continue
-		}
-		var event model.Event
-		if err := json.Unmarshal([]byte(payload), &event); err != nil {
+		event, err := decodeStoredEvent(result.Metadata, true)
+		if err != nil {
 			continue
 		}
 		event.Embedding = nil
@@ -1260,6 +1304,8 @@ func decodeEligible(results []*libra.SearchResult, availableBy time.Time, limit 
 }
 
 func (s *Store) Stats(ctx context.Context) (store.Stats, error) {
+	s.eventMu.RLock()
+	defer s.eventMu.RUnlock()
 	databaseStats := s.db.Stats(ctx)
 	stats := store.Stats{Backend: "libravdb", MemoryBytes: databaseStats.MemoryUsage}
 	for name, collection := range databaseStats.Collections {
@@ -1275,6 +1321,8 @@ func (s *Store) Stats(ctx context.Context) (store.Stats, error) {
 func (s *Store) Delete(ctx context.Context, tenantID, eventID string) (store.DeleteResult, error) {
 	s.writeMu.Lock()
 	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
 	collection, err := s.collection(ctx, tenantID)
 	if err != nil {
 		return store.DeleteResult{}, err
@@ -1321,6 +1369,8 @@ func (s *Store) Delete(ctx context.Context, tenantID, eventID string) (store.Del
 func (s *Store) DeleteBefore(ctx context.Context, tenantID string, before time.Time, limit int) (store.RetentionResult, error) {
 	s.writeMu.Lock()
 	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
 	collection, err := s.collection(ctx, tenantID)
 	if err != nil {
 		return store.RetentionResult{}, err
@@ -1335,12 +1385,8 @@ func (s *Store) DeleteBefore(ctx context.Context, tenantID string, before time.T
 	}
 	eligible := make([]datedID, 0)
 	for _, record := range records {
-		payload, ok := record.Metadata["event_json"].(string)
-		if !ok {
-			continue
-		}
-		var event model.Event
-		if json.Unmarshal([]byte(payload), &event) != nil {
+		event, err := decodeStoredEvent(record.Metadata, false)
+		if err != nil {
 			continue
 		}
 		if event.AvailableAt.Before(before) {
@@ -1395,6 +1441,35 @@ func (s *Store) DeleteBefore(ctx context.Context, tenantID string, before time.T
 	}
 	s.snapshot = next
 	return store.RetentionResult{DeletedIDs: ids, Snapshot: next}, nil
+}
+
+func decodeStoredEvent(metadata map[string]interface{}, hydrateRaw bool) (model.Event, error) {
+	payload, ok := metadata["event_json"].(string)
+	if !ok {
+		return model.Event{}, errors.New("event payload is absent")
+	}
+	var event model.Event
+	if err := json.Unmarshal([]byte(payload), &event); err != nil {
+		return model.Event{}, err
+	}
+	corpus, ok := metadata["corpus_text"].(string)
+	if !ok || corpus != event.FrameText() {
+		return model.Event{}, errors.New("event corpus does not match canonical EventFrame")
+	}
+	if hydrateRaw {
+		if raw, ok := metadata["raw_content"].(string); ok && raw != "" {
+			event.Content = raw
+		}
+	}
+	event.Embedding = nil
+	return event, nil
+}
+
+func encodeStoredEvent(event model.Event) ([]byte, error) {
+	metadataEvent := event
+	metadataEvent.Content = ""
+	metadataEvent.Embedding = nil
+	return json.Marshal(metadataEvent)
 }
 
 func (s *Store) Backup(ctx context.Context, destination string) error {

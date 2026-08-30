@@ -139,7 +139,7 @@ func runExperiment() (evaluation.Dataset, error) {
 			current := &runners[runnerIndex]
 			packet, err := current.runtime.Recall(ctx, model.RecallRequest{
 				ProtocolVersion: model.ProtocolVersion, TenantID: tenant, SessionID: item.TrajectoryID,
-				Embedding: queryVector(queryGroup), EmbeddingModel: "feature-hash-v1:d24", AsOf: predicted,
+				Embedding: queryVector(queryGroup), EmbeddingModel: "feature-hash-v1:d24:repr=eventframe-5w1h-v1", AsOf: predicted,
 				RecallK: 20, PackK: 20, TokenBudget: 4_000,
 			})
 			if err != nil {

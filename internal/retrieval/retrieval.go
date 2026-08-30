@@ -2,6 +2,10 @@ package retrieval
 
 import "context"
 
+type ReadinessProbe interface {
+	Ready(context.Context) error
+}
+
 // Candidate mirrors the fields consumed and returned by LibraVDB's
 // RankCandidates contract. Score is LibraVDB's upstream/base ranking signal;
 // EventFrame adjustments are applied after this contract returns. Metadata

@@ -1,7 +1,7 @@
 import http from "node:http";
 import os from "node:os";
 import path from "node:path";
-import type { AgencyClaimResponse, AgencyProposalRecord, ContextPacket, EventFrame } from "./types.js";
+import type { AgencyClaimResponse, AgencyProposalRecord, CapturedTurn, ContextPacket, OutcomeObservation } from "./types.js";
 import { PROTOCOL_VERSION } from "./types.js";
 
 const MAX_RESPONSE_BYTES = 8 << 20;
@@ -26,11 +26,11 @@ export class EventFrameClient {
     return value;
   }
 
-  async observe(event: EventFrame): Promise<unknown> {
-    const value = await this.request("POST", "/v1/events:observe", {
+  async captureTurn(turn: CapturedTurn): Promise<unknown> {
+    const value = await this.request("POST", "/v1/turns:capture", {
       protocol_version: PROTOCOL_VERSION,
-      idempotency_key: event.id,
-      event,
+      idempotency_key: turn.id,
+      turn,
     });
     assertProtocol(value);
     return value;
@@ -45,7 +45,7 @@ export class EventFrameClient {
     tokenBudget: number;
     asOf?: Date;
   }): Promise<ContextPacket> {
-    const value = await this.request("POST", "/v1/context:recall", {
+    const payload = {
       protocol_version: PROTOCOL_VERSION,
       tenant_id: input.tenantId,
       session_id: input.sessionId,
@@ -54,8 +54,37 @@ export class EventFrameClient {
       recall_k: input.recallK,
       pack_k: input.packK,
       token_budget: input.tokenBudget,
+    };
+    for (let attempt = 0; ; attempt++) {
+      try {
+        return parseContextPacket(await this.request("POST", "/v1/openclaw/context:recall", payload));
+      } catch (error) {
+        if (attempt >= 2 || !(error instanceof EventFrameHTTPError) || error.status !== 409 || error.code !== "snapshot_changed") {
+          throw error;
+        }
+        await sleep(5 * (attempt + 1));
+      }
+    }
+  }
+
+  async observeOutcome(input: OutcomeObservation): Promise<unknown> {
+    const observedAt = input.observed_at ?? new Date().toISOString();
+    const signals = outcomeSignals(input.signal);
+    const value = await this.request("POST", "/v1/bayesian/outcomes:observe", {
+      protocol_version: PROTOCOL_VERSION,
+      idempotency_key: input.idempotency_key,
+      tenant_id: input.tenant_id,
+      journal_id: input.journal_id,
+      event_id: input.event_id,
+      useful: input.signal === "useful" || input.signal === "cited" || input.signal === "successful_downstream",
+      signals,
+      observed_at: observedAt,
+      available_at: input.available_at ?? observedAt,
+      source: "full_stream",
+      inclusion_probability: 1,
     });
-    return parseContextPacket(value);
+    assertProtocol(value);
+    return value;
   }
 
   async claimAgency(input: { authorityToken: string; tenantId: string; consumerId: string; limit: number }): Promise<AgencyClaimResponse> {
@@ -141,7 +170,8 @@ export class EventFrameClient {
             }
             if ((response.statusCode ?? 500) >= 400) {
               const message = isRecord(value) && typeof value.message === "string" ? value.message : text;
-              reject(new Error(`eventframed ${response.statusCode}: ${message}`));
+              const code = isRecord(value) && typeof value.code === "string" ? value.code : "http_error";
+              reject(new EventFrameHTTPError(response.statusCode ?? 500, code, message));
               return;
             }
             resolve(value);
@@ -155,6 +185,27 @@ export class EventFrameClient {
       }
       request.end();
     });
+  }
+}
+
+class EventFrameHTTPError extends Error {
+  constructor(readonly status: number, readonly code: string, message: string) {
+    super(`eventframed ${status}: ${message}`);
+  }
+}
+
+function sleep(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+function outcomeSignals(signal: OutcomeObservation["signal"]): Record<string, boolean> {
+  switch (signal) {
+    case "useful": return { explicit_useful: true };
+    case "not_useful": return { explicit_useful: false };
+    case "cited": return { cited: true };
+    case "successful_downstream": return { successful_downstream: true };
+    case "correction": return { correction: true };
+    case "rejected": return { rejected: true };
   }
 }
 

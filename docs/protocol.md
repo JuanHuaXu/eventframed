@@ -8,12 +8,39 @@ Unknown fields are rejected. Request bodies are capped at 4 MiB.
 ### `GET /v1/health`
 
 Returns backend, vector dimension, quantization mode, and the current version
-snapshot.
+snapshot. This is a liveness endpoint; it intentionally remains available while
+an external candidate contract is down.
+
+### `GET /v1/ready`
+
+Returns HTTP 200 only when the durable store and every configured required
+external candidate contract are ready. A required LibraVDB connection in
+transient failure, shutdown, or an open circuit returns HTTP 503 with
+`status: not_ready`. Load balancers should gate serving on this endpoint.
+
+### `POST /v1/turns:capture`
+
+The OpenClaw adapter submits a raw successful turn containing:
+
+- capture, tenant, session, run, and optional agent identity
+- user and assistant text
+- occurred, observed, and available timestamps
+- recalled event identifiers used by that turn
+
+The turn object deliberately has no 5W1H fields. After JSON contract decoding,
+`eventframed` constructs the immutable conversational event and performs bounded
+deterministic 5W1H enrichment. Text-derived evidence records byte spans such as
+`user[bytes:start:end]`; metadata fallbacks name their basis. Explicit user
+values are `observed`, assistant values are `synthetic`, and compositions or
+fallbacks are `inferred`. These fields support retrieval and do not constitute
+causal evidence without the separate SCM-backed path.
 
 ### `POST /v1/events:observe`
 
 Requires `idempotency_key` to equal `event.id`. Repeating an identical event is a
 successful duplicate. Reusing the ID for different content returns HTTP 409.
+This endpoint accepts intentionally authored structured EventFrames from direct
+clients. It does not run raw-turn enrichment or overwrite supplied fields.
 
 Every event carries:
 
@@ -25,6 +52,9 @@ Every event carries:
 - an optional canonical vector of the configured dimension
 
 If no vector is supplied, the daemon uses its configured embedder.
+Generated and caller-supplied vectors are bound to
+`eventframe-5w1h-v1` in the embedding model key. A predecessor key is rejected;
+the raw `content` field is never included in the canonical embedding text.
 
 ### `POST /v1/context:recall`
 
@@ -44,6 +74,13 @@ is `shadow` unless current external certificates support promotion. A cached
 posterior may alter the score only when both selection support and omitted
 influence are certified; the default Bayesian mixture weight is 0.10 and the
 runtime rejects configurations above 0.25.
+
+### `POST /v1/openclaw/context:recall`
+
+Runs the same internal recall operation and scoring contracts, then returns the
+OpenClaw projection. Candidate events contain raw content, lifecycle metadata,
+provenance, and ranking outputs; daemon-internal 5W1H fields and embeddings are
+omitted. The OpenClaw adapter uses this endpoint exclusively.
 
 Optional EventFrame output policies are policy-digested and independently
 switchable. Contextual and hierarchical evidence may change the committed
@@ -84,11 +121,24 @@ The default daemon policy activates every evidence-ready member of the bounded
 scan or posterior update over the complete LibraVDB corpus. Explicit selective
 policies remain supported for evaluation and constrained deployments.
 
-The journal commit compares the captured version snapshot under the durable
-write lock. A concurrent semantic mutation returns HTTP 409 `snapshot_changed`;
-clients may retry the recall with the same request and `as_of` value.
+The journal commit compares the captured semantic version snapshot under the
+durable write lock. Runtime/evidence counters advanced only by events becoming
+available after the request's fixed `as_of` do not invalidate that historical
+decision. Concurrent policy, graph, posterior, residual, abstraction, agency,
+or contract motion returns HTTP 409 `snapshot_changed`; clients retry at most
+twice with the identical request and `as_of` value.
 
 ### Bayesian evidence and certificates
+
+The OpenClaw plugin registers the operator-write gateway method
+`eventframe.outcome.observe`. It accepts an exact `tenant_id`, `journal_id`,
+`event_id`, `idempotency_key`, and one of `useful`, `not_useful`, `cited`,
+`successful_downstream`, `correction`, or `rejected`. The method maps that
+explicit control-plane signal to `POST /v1/bayesian/outcomes:observe` with
+full-stream inclusion probability one. The daemon rejects events that were not
+nominated by the referenced durable recall journal. Successful turn completion
+and packed exposure alone remain neutral; the agent cannot certify its own
+answer through an agent-callable tool.
 
 - `POST /v1/bayesian/certificates:publish-selection` publishes an externally
   audited simultaneous lower bound on nomination and activation support.
@@ -278,3 +328,14 @@ reuse; these are not corpus-wide certificates.
 `contract_version=10` adds the atomic Anti-Pigeon revision transition and durable
 revision result described above. Existing version-9 stores upgrade additively;
 no prior certificate is silently reinterpreted as evidence for a new group.
+
+`contract_version=11` adds the raw-turn capture contract and moves OpenClaw 5W1H
+enrichment entirely behind the daemon boundary. The durable EventFrame schema is
+unchanged, so existing version-10 stores upgrade additively.
+
+`contract_version=12` makes canonical `eventframe-5w1h-v1` text the exclusive
+semantic corpus for local vectors, remote nomination/reranking, query digests,
+and packing diversity. Raw transcript remains metadata and final payload.
+Embedding keys and remote candidate collection names bind the representation.
+Predecessor databases require backup-first re-embedding and configured remote
+candidate stores require the separate reindex maintenance operation.

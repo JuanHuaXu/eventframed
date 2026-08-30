@@ -11,6 +11,7 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
+	"github.com/JuanHuaXu/eventframed/internal/frame"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/packing"
 	"github.com/JuanHuaXu/eventframed/internal/ranking"
@@ -181,8 +182,8 @@ func Run(ctx context.Context, dataset Dataset) (Report, error) {
 		if pair == nil {
 			return Report{}, fmt.Errorf("case %q has unknown kind %q", plan.ID, plan.Kind)
 		}
-		pair.ranker.put(plan.ID, plan.ContractOrder, plan.ContractScores)
 		asOf := base.Add(8*time.Hour + time.Duration(index)*time.Minute)
+		pair.ranker.put(frame.QueryText(plan.ID), plan.ContractOrder, plan.ContractScores)
 		request := recallRequest(pair.tenant, plan.ID, asOf)
 		passPacket, err := pair.pass.Recall(ctx, request)
 		if err != nil {
@@ -303,8 +304,8 @@ func (p *runtimePair) train(ctx context.Context, base time.Time) error {
 	scores := contractScores(false)
 	for round := 0; round < trainingRounds; round++ {
 		query := fmt.Sprintf("train-%s-%02d", p.kind, round)
-		p.ranker.put(query, order, scores)
 		asOf := base.Add(2*time.Hour + time.Duration(round)*time.Minute)
+		p.ranker.put(frame.QueryText(query), order, scores)
 		packet, err := p.active.Recall(ctx, recallRequest(p.tenant, query, asOf))
 		if err != nil {
 			return err
@@ -325,7 +326,7 @@ func (p *runtimePair) train(ctx context.Context, base time.Time) error {
 }
 
 func recallRequest(tenant, query string, asOf time.Time) model.RecallRequest {
-	return model.RecallRequest{ProtocolVersion: model.ProtocolVersion, TenantID: tenant, SessionID: "evaluation", Query: query, Embedding: []float32{1, 0}, EmbeddingModel: "feature-hash-v1:d2", AsOf: asOf, RecallK: recallK, PackK: packK, TokenBudget: 100_000}
+	return model.RecallRequest{ProtocolVersion: model.ProtocolVersion, TenantID: tenant, SessionID: "evaluation", Query: query, Embedding: []float32{1, 0}, EmbeddingModel: "feature-hash-v1:d2:repr=eventframe-5w1h-v1", AsOf: asOf, RecallK: recallK, PackK: packK, TokenBudget: 100_000}
 }
 
 func controlledOrder(rng *rand.Rand, kind string, targetRank, harmfulRank, retainRank int) []string {

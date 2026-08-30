@@ -56,15 +56,45 @@ func run(args []string) error {
 		EmbeddingModel: activeEmbedder.ModelKey(),
 	}
 	if settings.MigrateV1 {
-		if err := libravdbstore.MigrateLegacy(context.Background(), storeConfig, settings.MigrationBackup); err != nil {
+		if err := libravdbstore.MigrateLegacy(context.Background(), storeConfig, activeEmbedder, settings.MigrationBackup); err != nil {
 			return err
 		}
 		fmt.Println("eventframed: migration completed; backup:", settings.MigrationBackup)
 		return nil
 	}
+	if settings.MigrateEventFrameCorpus {
+		if err := libravdbstore.MigrateEventFrameCorpus(context.Background(), storeConfig, activeEmbedder, settings.MigrationBackup); err != nil {
+			return err
+		}
+		fmt.Println("eventframed: EventFrame corpus migration completed; backup:", settings.MigrationBackup)
+		return nil
+	}
 	eventStore, err := libravdbstore.Open(storeConfig)
 	if err != nil {
 		return err
+	}
+	if settings.ReindexEventFrameContract {
+		defer eventStore.Close()
+		contracts, openErr := retrieval.OpenLibraVDBContractsWithConfig(retrieval.ContractClientConfig{
+			Endpoint: settings.LibraVDBContractEndpoint, TLSMode: settings.LibraVDBContractTLSMode,
+			CAFile: settings.LibraVDBContractTLSCA, ClientCertFile: settings.LibraVDBContractTLSCert,
+			ClientKeyFile: settings.LibraVDBContractTLSKey,
+		})
+		if openErr != nil {
+			return openErr
+		}
+		defer contracts.Close()
+		events, listErr := eventStore.ListAllEvents(context.Background())
+		if listErr != nil {
+			return listErr
+		}
+		for _, event := range events {
+			if indexErr := service.IndexEventFrame(context.Background(), contracts, "eventframe-", event); indexErr != nil {
+				return fmt.Errorf("reindex EventFrame %q: %w", event.ID, indexErr)
+			}
+		}
+		fmt.Println("eventframed: remote EventFrame corpus rebuilt; events:", len(events))
+		return nil
 	}
 	rankDeltaStore, err := rankdelta.Open(settings.RankDeltaSQLitePath, settings.RankDeltaCacheEntries)
 	if err != nil {
@@ -105,12 +135,17 @@ func run(args []string) error {
 	var candidateRanker retrieval.CandidateRanker = retrieval.PassthroughRanker{}
 	var candidateRetriever retrieval.CandidateRetriever
 	var candidateIndex retrieval.CandidateIndex
+	var externalReadiness retrieval.ReadinessProbe
 	var closeContracts func() error
 	if settings.LibraVDBContractEndpoint != "" {
 		libraContracts, openErr := retrieval.OpenLibraVDBContractsWithConfig(retrieval.ContractClientConfig{
 			Endpoint: settings.LibraVDBContractEndpoint, TLSMode: settings.LibraVDBContractTLSMode,
 			CAFile: settings.LibraVDBContractTLSCA, ClientCertFile: settings.LibraVDBContractTLSCert,
-			ClientKeyFile: settings.LibraVDBContractTLSKey,
+			ClientKeyFile:  settings.LibraVDBContractTLSKey,
+			MaxConcurrent:  settings.LibraVDBContractConcurrency,
+			RequestTimeout: time.Duration(settings.LibraVDBContractTimeoutMS) * time.Millisecond,
+			MaxAttempts:    settings.LibraVDBContractAttempts, FailureThreshold: settings.LibraVDBCircuitFailures,
+			OpenDuration: time.Duration(settings.LibraVDBCircuitCooldownMS) * time.Millisecond,
 		})
 		if openErr != nil {
 			_ = rankDeltaStore.Close()
@@ -120,6 +155,7 @@ func run(args []string) error {
 		candidateRanker = libraContracts
 		candidateRetriever = libraContracts
 		candidateIndex = libraContracts
+		externalReadiness = libraContracts
 		closeContracts = libraContracts.Close
 		defer closeContracts()
 	}
@@ -135,7 +171,8 @@ func run(args []string) error {
 		CandidateRankerRequired: settings.LibraVDBContractEndpoint != "",
 		CandidateRetriever:      candidateRetriever, CandidateRetrieverRequired: settings.LibraVDBContractEndpoint != "",
 		CandidateIndex: candidateIndex, CandidateCollectionPrefix: "eventframe-",
-		RankDeltaStore: rankDeltaStore, RankDeltaStoreRequired: true,
+		ExternalReadiness: externalReadiness,
+		RankDeltaStore:    rankDeltaStore, RankDeltaStoreRequired: true,
 		ElasticRankDelta: ranking.ElasticDeltaPolicy{
 			Enabled: settings.ElasticRankDelta, MinScale: settings.ElasticRankDeltaMinScale, MaxScale: settings.ElasticRankDeltaMaxScale,
 		},

@@ -39,12 +39,12 @@ func TestDeterministicAvailabilityAndPackingReplay(t *testing.T) {
 		event := testutil.Event(input.ID, input.Content, input.AvailableAt)
 		event.Priority = input.Priority
 		event.Embedding = []float32{1, 0, 0, 0, 0, 0, 0, 0}
-		event.EmbeddingModel = "feature-hash-v1:d8"
+		event.EmbeddingModel = "feature-hash-v1:d8:repr=eventframe-5w1h-v1"
 		observe(t, runtime, event)
 	}
 	packet, err := runtime.Recall(context.Background(), model.RecallRequest{
 		ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SessionID: "session-a",
-		Embedding: []float32{1, 0, 0, 0, 0, 0, 0, 0}, EmbeddingModel: "feature-hash-v1:d8", AsOf: fixture.AsOf,
+		Embedding: []float32{1, 0, 0, 0, 0, 0, 0, 0}, EmbeddingModel: "feature-hash-v1:d8:repr=eventframe-5w1h-v1", AsOf: fixture.AsOf,
 		RecallK: fixture.RecallK, PackK: fixture.PackK, TokenBudget: fixture.TokenBudget,
 	})
 	if err != nil {

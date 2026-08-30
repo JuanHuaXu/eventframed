@@ -10,49 +10,56 @@ import (
 )
 
 type Config struct {
-	Listen                     string
-	DatabasePath               string
-	Dimension                  int
-	Quantization               string
-	RecallK                    int
-	PackK                      int
-	TokenBudget                int
-	LogLevel                   string
-	Embedder                   string
-	EmbeddingURL               string
-	EmbeddingModel             string
-	EmbeddingAPIKeyEnv         string
-	EmbeddingTimeoutSeconds    int
-	EmbeddingDocumentPrefix    string
-	EmbeddingQueryPrefix       string
-	CalibrationScale           float64
-	CalibrationBias            float64
-	CalibrationFloor           float64
-	PredictiveCalibrationScale float64
-	PredictiveCalibrationBias  float64
-	PredictiveCalibrationFloor float64
-	ContextualScoring          bool
-	HierarchicalPosterior      bool
-	SharedEvidenceWeight       float64
-	LibraVDBContractEndpoint   string
-	LibraVDBContractTLSMode    string
-	LibraVDBContractTLSCA      string
-	LibraVDBContractTLSCert    string
-	LibraVDBContractTLSKey     string
-	LibraVDBRankerEndpoint     string
-	RankDeltaSQLitePath        string
-	RankDeltaCacheEntries      int
-	ElasticRankDelta           bool
-	ElasticRankDeltaMinScale   float64
-	ElasticRankDeltaMaxScale   float64
-	ResidualMode               string
-	MigrateV1                  bool
-	MigrationBackup            string
-	AgencyEnabled              bool
-	AgencyPrivateKey           string
-	AgencyPublicKey            string
-	AgencyIssuerToken          string
-	AgencyAuthorityToken       string
+	Listen                      string
+	DatabasePath                string
+	Dimension                   int
+	Quantization                string
+	RecallK                     int
+	PackK                       int
+	TokenBudget                 int
+	LogLevel                    string
+	Embedder                    string
+	EmbeddingURL                string
+	EmbeddingModel              string
+	EmbeddingAPIKeyEnv          string
+	EmbeddingTimeoutSeconds     int
+	EmbeddingDocumentPrefix     string
+	EmbeddingQueryPrefix        string
+	CalibrationScale            float64
+	CalibrationBias             float64
+	CalibrationFloor            float64
+	PredictiveCalibrationScale  float64
+	PredictiveCalibrationBias   float64
+	PredictiveCalibrationFloor  float64
+	ContextualScoring           bool
+	HierarchicalPosterior       bool
+	SharedEvidenceWeight        float64
+	LibraVDBContractEndpoint    string
+	LibraVDBContractTLSMode     string
+	LibraVDBContractTLSCA       string
+	LibraVDBContractTLSCert     string
+	LibraVDBContractTLSKey      string
+	LibraVDBContractConcurrency int
+	LibraVDBContractTimeoutMS   int
+	LibraVDBContractAttempts    int
+	LibraVDBCircuitFailures     int
+	LibraVDBCircuitCooldownMS   int
+	LibraVDBRankerEndpoint      string
+	RankDeltaSQLitePath         string
+	RankDeltaCacheEntries       int
+	ElasticRankDelta            bool
+	ElasticRankDeltaMinScale    float64
+	ElasticRankDeltaMaxScale    float64
+	ResidualMode                string
+	MigrateV1                   bool
+	MigrateEventFrameCorpus     bool
+	ReindexEventFrameContract   bool
+	MigrationBackup             string
+	AgencyEnabled               bool
+	AgencyPrivateKey            string
+	AgencyPublicKey             string
+	AgencyIssuerToken           string
+	AgencyAuthorityToken        string
 }
 
 func Parse(args []string) (Config, error) {
@@ -92,6 +99,11 @@ func Parse(args []string) (Config, error) {
 	set.StringVar(&config.LibraVDBContractTLSCA, "libravdb-contract-tls-ca", "", "optional CA certificate for the LibraVDB contract endpoint")
 	set.StringVar(&config.LibraVDBContractTLSCert, "libravdb-contract-tls-client-cert", "", "optional mTLS client certificate for the LibraVDB contract endpoint")
 	set.StringVar(&config.LibraVDBContractTLSKey, "libravdb-contract-tls-client-key", "", "optional mTLS client key for the LibraVDB contract endpoint")
+	set.IntVar(&config.LibraVDBContractConcurrency, "libravdb-contract-concurrency", 16, "maximum concurrent LibraVDB contract RPCs")
+	set.IntVar(&config.LibraVDBContractTimeoutMS, "libravdb-contract-timeout-ms", 2000, "per-attempt LibraVDB contract timeout in milliseconds")
+	set.IntVar(&config.LibraVDBContractAttempts, "libravdb-contract-attempts", 2, "maximum attempts for retryable LibraVDB contract RPCs")
+	set.IntVar(&config.LibraVDBCircuitFailures, "libravdb-circuit-failures", 5, "consecutive retryable failures before opening the LibraVDB circuit")
+	set.IntVar(&config.LibraVDBCircuitCooldownMS, "libravdb-circuit-cooldown-ms", 5000, "LibraVDB circuit-open cooldown in milliseconds")
 	set.StringVar(&config.LibraVDBRankerEndpoint, "libravdb-ranker-endpoint", "", "deprecated alias for libravdb-contract-endpoint")
 	set.StringVar(&config.RankDeltaSQLitePath, "rank-delta-sqlite", filepath.Join(defaultsRoot, "data", "rank-deltas.sqlite"), "SQLite path for durable EventFrame post-retrieval rank deltas")
 	set.IntVar(&config.RankDeltaCacheEntries, "rank-delta-cache-entries", 100_000, "maximum in-memory rank-delta cache entries")
@@ -100,6 +112,8 @@ func Parse(args []string) (Config, error) {
 	set.Float64Var(&config.ElasticRankDeltaMaxScale, "elastic-rank-delta-max-scale", 2.5, "rank-delta scale at an uncertain packing boundary")
 	set.StringVar(&config.ResidualMode, "residual-mode", "apply", "residual output mode: apply, shadow, or disabled")
 	set.BoolVar(&config.MigrateV1, "migrate-v1", false, "migrate a Phase 1 database to the durable schema, then exit")
+	set.BoolVar(&config.MigrateEventFrameCorpus, "migrate-eventframe-corpus", false, "re-embed a durable full-text corpus as canonical 5W1H EventFrames, then exit")
+	set.BoolVar(&config.ReindexEventFrameContract, "reindex-eventframe-contract", false, "rebuild the remote LibraVDB candidate corpus from active local EventFrames, then exit")
 	set.StringVar(&config.MigrationBackup, "migration-backup", "", "required absolute backup path for migration")
 	set.BoolVar(&config.AgencyEnabled, "agency-enabled", false, "enable signed data-only agency proposal endpoints")
 	set.StringVar(&config.AgencyPrivateKey, "agency-private-key", filepath.Join(defaultsRoot, "keys", "agency_ed25519"), "Ed25519 agency private key path")
@@ -171,8 +185,23 @@ func Parse(args []string) (Config, error) {
 	if config.LibraVDBContractTLSMode == "insecure" && (config.LibraVDBContractTLSCA != "" || config.LibraVDBContractTLSCert != "") {
 		return Config{}, errors.New("LibraVDB contract TLS files cannot be used in insecure mode")
 	}
-	if config.MigrateV1 && !filepath.IsAbs(config.MigrationBackup) {
-		return Config{}, errors.New("migrate-v1 requires an absolute migration-backup path")
+	if config.LibraVDBContractConcurrency <= 0 || config.LibraVDBContractConcurrency > 1024 {
+		return Config{}, errors.New("libravdb-contract-concurrency must be in [1,1024]")
+	}
+	if config.LibraVDBContractTimeoutMS <= 0 || config.LibraVDBContractAttempts <= 0 || config.LibraVDBContractAttempts > 4 || config.LibraVDBCircuitFailures <= 0 || config.LibraVDBCircuitCooldownMS <= 0 {
+		return Config{}, errors.New("LibraVDB resilience controls must be positive and attempts must not exceed 4")
+	}
+	if config.MigrateV1 && config.MigrateEventFrameCorpus {
+		return Config{}, errors.New("migrate-v1 and migrate-eventframe-corpus are mutually exclusive")
+	}
+	if config.ReindexEventFrameContract && (config.MigrateV1 || config.MigrateEventFrameCorpus) {
+		return Config{}, errors.New("reindex-eventframe-contract must run separately after migration")
+	}
+	if config.ReindexEventFrameContract && config.LibraVDBContractEndpoint == "" {
+		return Config{}, errors.New("reindex-eventframe-contract requires libravdb-contract-endpoint")
+	}
+	if (config.MigrateV1 || config.MigrateEventFrameCorpus) && !filepath.IsAbs(config.MigrationBackup) {
+		return Config{}, errors.New("migration requires an absolute migration-backup path")
 	}
 	if config.AgencyEnabled && !distinctAbsolutePaths(config.AgencyPrivateKey, config.AgencyPublicKey, config.AgencyIssuerToken, config.AgencyAuthorityToken) {
 		return Config{}, errors.New("agency private key, public key, issuer token, and authority token paths must be distinct absolute paths")

@@ -90,6 +90,27 @@ func TestLibraVDBContractTLSConfiguration(t *testing.T) {
 	}
 }
 
+func TestLibraVDBResilienceControlsAreBounded(t *testing.T) {
+	config, err := Parse([]string{
+		"-libravdb-contract-concurrency", "8", "-libravdb-contract-timeout-ms", "750",
+		"-libravdb-contract-attempts", "2", "-libravdb-circuit-failures", "3", "-libravdb-circuit-cooldown-ms", "1500",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if config.LibraVDBContractConcurrency != 8 || config.LibraVDBContractTimeoutMS != 750 || config.LibraVDBCircuitFailures != 3 {
+		t.Fatalf("unexpected resilience config: %#v", config)
+	}
+	for _, args := range [][]string{
+		{"-libravdb-contract-concurrency", "0"}, {"-libravdb-contract-timeout-ms", "0"},
+		{"-libravdb-contract-attempts", "5"}, {"-libravdb-circuit-failures", "0"}, {"-libravdb-circuit-cooldown-ms", "0"},
+	} {
+		if _, parseErr := Parse(args); parseErr == nil {
+			t.Fatalf("invalid resilience controls accepted: %v", args)
+		}
+	}
+}
+
 func TestRankDeltaStoreRequiresDistinctAbsolutePathAndPositiveCache(t *testing.T) {
 	root := t.TempDir()
 	database := filepath.Join(root, "events.libravdb")

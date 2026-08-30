@@ -20,6 +20,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/calibration"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
+	"github.com/JuanHuaXu/eventframed/internal/frame"
 	graphpolicy "github.com/JuanHuaXu/eventframed/internal/graph"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/packing"
@@ -58,6 +59,7 @@ type Config struct {
 	CandidateRetriever         retrieval.CandidateRetriever
 	CandidateRetrieverRequired bool
 	CandidateIndex             retrieval.CandidateIndex
+	ExternalReadiness          retrieval.ReadinessProbe
 	CandidateCollectionPrefix  string
 	RankDeltaStore             rankdelta.Store
 	RankDeltaStoreRequired     bool
@@ -80,6 +82,7 @@ type Service struct {
 	ranker    retrieval.CandidateRanker
 	retriever retrieval.CandidateRetriever
 	index     retrieval.CandidateIndex
+	readiness retrieval.ReadinessProbe
 	rankDelta rankdelta.Store
 }
 
@@ -185,7 +188,7 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	if _, err := eventStore.BindBayesianPolicy(context.Background(), policyDigest); err != nil {
 		return nil, fmt.Errorf("bind Bayesian policy: %w", err)
 	}
-	return &Service{store: eventStore, embedder: embedder, config: config, ranker: config.CandidateRanker, retriever: config.CandidateRetriever, index: config.CandidateIndex, rankDelta: config.RankDeltaStore}, nil
+	return &Service{store: eventStore, embedder: embedder, config: config, ranker: config.CandidateRanker, retriever: config.CandidateRetriever, index: config.CandidateIndex, readiness: config.ExternalReadiness, rankDelta: config.RankDeltaStore}, nil
 }
 
 func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (model.ObserveResponse, error) {
@@ -201,39 +204,64 @@ func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (mo
 	if err := request.Event.Validate(s.embedder.Dimension()); err != nil {
 		return model.ObserveResponse{}, err
 	}
-	vector := request.Event.Embedding
-	if len(vector) == 0 {
-		var err error
-		vector, err = embed.Document(s.embedder, request.Event.EmbeddingText())
-		if err != nil {
-			return model.ObserveResponse{}, fmt.Errorf("embed event: %w", err)
-		}
-		request.Event.EmbeddingModel = s.embedder.ModelKey()
-	} else if request.Event.EmbeddingModel != s.embedder.ModelKey() {
-		return model.ObserveResponse{}, fmt.Errorf("embedding_model %q does not match active model %q", request.Event.EmbeddingModel, s.embedder.ModelKey())
+	return s.observeEvent(ctx, request.Event, "")
+}
+
+func (s *Service) CaptureTurn(ctx context.Context, request model.CaptureTurnRequest) (model.ObserveResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.ObserveResponse{}, err
 	}
-	digest, err := eventDigest(request.Event)
+	if request.IdempotencyKey == "" {
+		return model.ObserveResponse{}, errors.New("idempotency_key is required")
+	}
+	if request.IdempotencyKey != request.Turn.ID {
+		return model.ObserveResponse{}, errors.New("idempotency_key must equal turn id in v1alpha1")
+	}
+	if err := request.Turn.Validate(); err != nil {
+		return model.ObserveResponse{}, err
+	}
+	event := frame.FromTurn(request.Turn)
+	if err := event.Validate(s.embedder.Dimension()); err != nil {
+		return model.ObserveResponse{}, fmt.Errorf("enrich captured turn: %w", err)
+	}
+	digest, err := captureDigest(request.Turn)
 	if err != nil {
 		return model.ObserveResponse{}, err
 	}
-	result, err := s.store.Put(ctx, request.Event, vector, digest)
+	return s.observeEvent(ctx, event, digest)
+}
+
+func (s *Service) observeEvent(ctx context.Context, event model.Event, digest string) (model.ObserveResponse, error) {
+	vector := event.Embedding
+	if len(vector) == 0 {
+		var err error
+		vector, err = embed.Document(s.embedder, event.FrameText())
+		if err != nil {
+			return model.ObserveResponse{}, fmt.Errorf("embed event: %w", err)
+		}
+		event.EmbeddingModel = s.embedder.ModelKey()
+	} else if event.EmbeddingModel != s.embedder.ModelKey() {
+		return model.ObserveResponse{}, fmt.Errorf("embedding_model %q does not match active model %q", event.EmbeddingModel, s.embedder.ModelKey())
+	}
+	if digest == "" {
+		var err error
+		digest, err = eventDigest(event)
+		if err != nil {
+			return model.ObserveResponse{}, err
+		}
+	}
+	result, err := s.store.Put(ctx, event, vector, digest)
 	if err != nil {
 		return model.ObserveResponse{}, err
 	}
 	if s.index != nil {
-		collection := s.candidateCollection(request.Event.TenantID)
-		metadata, metadataErr := eventIndexMetadata(request.Event, collection, digest)
-		if metadataErr != nil {
-			return model.ObserveResponse{}, metadataErr
-		}
-		candidate := retrieval.Candidate{ID: request.Event.ID, Text: request.Event.Content, Metadata: metadata}
-		if indexErr := s.index.EnsureText(ctx, collection, candidate, "eventframe_digest", digest); indexErr != nil {
+		if indexErr := IndexEventFrame(ctx, s.index, s.config.CandidateCollectionPrefix, event); indexErr != nil {
 			return model.ObserveResponse{}, fmt.Errorf("index event through LibraVDB contract: %w", indexErr)
 		}
 	}
 	return model.ObserveResponse{
 		ProtocolVersion: model.ProtocolVersion,
-		EventID:         request.Event.ID,
+		EventID:         event.ID,
 		Duplicate:       result.Duplicate,
 		Snapshot:        result.Snapshot,
 	}, nil
@@ -249,6 +277,9 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	if strings.TrimSpace(request.Query) == "" && len(request.Embedding) == 0 {
 		return model.ContextPacket{}, errors.New("query or embedding is required")
 	}
+	if strings.TrimSpace(request.Query) == "" && s.retriever != nil {
+		return model.ContextPacket{}, errors.New("query text is required with contract-native nomination and ranking")
+	}
 	if request.AsOf.IsZero() {
 		return model.ContextPacket{}, errors.New("as_of is required to enforce availability-time filtering")
 	}
@@ -256,9 +287,10 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	if err != nil {
 		return model.ContextPacket{}, err
 	}
+	queryText := frame.QueryText(request.Query)
 	vector := request.Embedding
 	if len(vector) == 0 {
-		vector, err = embed.Query(s.embedder, request.Query)
+		vector, err = embed.Query(s.embedder, queryText)
 		if err != nil {
 			return model.ContextPacket{}, fmt.Errorf("embed query: %w", err)
 		}
@@ -268,7 +300,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 		return model.ContextPacket{}, errors.New("query embedding_model does not match active model")
 	}
 	searchLimit := recallK * s.config.OverfetchMultiplier
-	results, nominationContract, err := s.nominateCandidates(ctx, request, vector, searchLimit)
+	results, nominationContract, err := s.nominateCandidates(ctx, request, queryText, vector, searchLimit)
 	if err != nil {
 		return model.ContextPacket{}, err
 	}
@@ -319,7 +351,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	}
 	snapshot := s.store.Snapshot(ctx)
 	shadow := bayes.Evaluate(shadowInputs, snapshot.EvidenceEpoch, s.config.BayesianPolicy)
-	queryDigest, err := recallQueryDigest(request, vector, s.embedder.ModelKey())
+	queryDigest, err := recallQueryDigest(queryText, vector, s.embedder.ModelKey())
 	if err != nil {
 		return model.ContextPacket{}, err
 	}
@@ -547,7 +579,7 @@ func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (mode
 	}, nil
 }
 
-func (s *Service) nominateCandidates(ctx context.Context, request model.RecallRequest, vector []float32, limit int) ([]store.SearchResult, string, error) {
+func (s *Service) nominateCandidates(ctx context.Context, request model.RecallRequest, queryText string, vector []float32, limit int) ([]store.SearchResult, string, error) {
 	if s.retriever == nil {
 		results, err := s.store.Search(ctx, request.TenantID, vector, request.AsOf, limit)
 		return results, "embedded-vector-search", err
@@ -588,7 +620,7 @@ func (s *Service) nominateCandidates(ctx context.Context, request model.RecallRe
 		return nil, "", errors.New("total retrieval exclusions exceed safety cap")
 	}
 	contractResults, err := s.retriever.SearchTextCollections(ctx, retrieval.SearchRequest{
-		Collections: collections, QueryText: request.Query, K: limit,
+		Collections: collections, QueryText: queryText, K: limit,
 		ExcludeByCollection: exclusions,
 	})
 	if err != nil {
@@ -686,13 +718,14 @@ func (s *Service) rankCandidates(ctx context.Context, request model.RecallReques
 			return nil, err
 		}
 		contractCandidates = append(contractCandidates, retrieval.Candidate{
-			ID: candidate.Event.ID, Text: candidate.Event.Content, Score: contractBaseScore(candidate), Metadata: metadata,
+			ID: candidate.Event.ID, Text: candidate.Event.FrameText(), Score: contractBaseScore(candidate), Metadata: metadata,
 		})
 		byID[candidate.Event.ID] = candidate
 	}
 	k2 := min(recallK, len(contractCandidates))
+	queryText := frame.QueryText(request.Query)
 	ranked, err := s.ranker.RankCandidates(ctx, retrieval.RankRequest{
-		Candidates: contractCandidates, QueryText: request.Query, SessionID: request.SessionID,
+		Candidates: contractCandidates, QueryText: queryText, SessionID: request.SessionID,
 		UserID: request.TenantID, K1: len(contractCandidates), K2: k2,
 	})
 	if err != nil {
@@ -876,7 +909,7 @@ func retrievalMetadata(candidate model.Candidate, request model.RecallRequest) (
 		"priority": candidate.Event.Priority, "role": attributes["role"],
 		"authored": false, "access_count": 0,
 		"authority": candidate.Event.Priority, "salience": candidate.Event.Priority,
-		"compaction_confidence": 1.0,
+		"compaction_confidence": 1.0, "semantic_representation": model.SemanticRepresentationVersion,
 	}
 	for key, value := range defaults {
 		if _, exists := metadata[key]; !exists {
@@ -903,6 +936,7 @@ func eventIndexMetadata(event model.Event, collection, digest string) ([]byte, e
 		"role": event.Attributes["role"], "authored": false, "access_count": 0,
 		"authority": event.Priority, "salience": event.Priority,
 		"compaction_confidence": 1.0, "eventframe_digest": digest,
+		"semantic_representation": model.SemanticRepresentationVersion,
 		"eventframe_available_at": event.AvailableAt.UTC().Format(time.RFC3339Nano),
 	}
 	for _, key := range []string{"authored", "authority", "salience", "access_count", "compaction_confidence", "summary_confidence", "tier"} {
@@ -918,8 +952,27 @@ func eventIndexMetadata(event model.Event, collection, digest string) ([]byte, e
 }
 
 func (s *Service) candidateCollection(tenantID string) string {
-	digest := sha256.Sum256([]byte(tenantID))
-	return s.config.CandidateCollectionPrefix + hex.EncodeToString(digest[:12])
+	return CandidateCollectionName(s.config.CandidateCollectionPrefix, tenantID)
+}
+
+func CandidateCollectionName(prefix, tenantID string) string {
+	digest := sha256.Sum256([]byte(model.SemanticRepresentationVersion + "\x00" + tenantID))
+	return prefix + hex.EncodeToString(digest[:12])
+}
+
+func IndexEventFrame(ctx context.Context, index retrieval.CandidateIndex, prefix string, event model.Event) error {
+	if index == nil {
+		return errors.New("candidate index is required")
+	}
+	collection := CandidateCollectionName(prefix, event.TenantID)
+	digestBytes := sha256.Sum256([]byte(model.SemanticRepresentationVersion + "\x00" + event.FrameText()))
+	digest := hex.EncodeToString(digestBytes[:])
+	metadata, err := eventIndexMetadata(event, collection, digest)
+	if err != nil {
+		return err
+	}
+	candidate := retrieval.Candidate{ID: event.ID, Text: event.FrameText(), Metadata: metadata}
+	return index.EnsureText(ctx, collection, candidate, "eventframe_digest", digest)
 }
 
 func parseRetrievalAttribute(value string) any {
@@ -952,6 +1005,26 @@ func (s *Service) Health(ctx context.Context) (model.HealthResponse, error) {
 		ExternalCandidateIndex: s.index != nil,
 		Snapshot:               s.store.Snapshot(ctx),
 	}, nil
+}
+
+func (s *Service) Ready(ctx context.Context) (model.ReadinessResponse, error) {
+	health, err := s.Health(ctx)
+	if err != nil {
+		return model.ReadinessResponse{ProtocolVersion: model.ProtocolVersion, Status: "not_ready"}, err
+	}
+	response := model.ReadinessResponse{
+		ProtocolVersion: model.ProtocolVersion, Status: "ready", StoreReady: true,
+		ExternalContractsReady: s.readiness == nil, Snapshot: health.Snapshot,
+	}
+	if s.readiness != nil {
+		if err := s.readiness.Ready(ctx); err != nil {
+			response.Status = "not_ready"
+			response.ExternalError = err.Error()
+			return response, err
+		}
+		response.ExternalContractsReady = true
+	}
+	return response, nil
 }
 
 func (s *Service) Delete(ctx context.Context, request model.DeleteRequest) (model.DeleteResponse, error) {
@@ -1510,12 +1583,24 @@ func eventDigest(event model.Event) (string, error) {
 	return hex.EncodeToString(digest[:]), nil
 }
 
-func recallQueryDigest(request model.RecallRequest, vector []float32, activeModel string) (string, error) {
+func captureDigest(turn model.TurnCapture) (string, error) {
+	payload, err := json.Marshal(struct {
+		Contract string            `json:"contract"`
+		Turn     model.TurnCapture `json:"turn"`
+	}{Contract: "eventframe-raw-turn-v1", Turn: turn})
+	if err != nil {
+		return "", fmt.Errorf("digest captured turn: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	return hex.EncodeToString(digest[:]), nil
+}
+
+func recallQueryDigest(queryText string, vector []float32, activeModel string) (string, error) {
 	payload, err := json.Marshal(struct {
 		Query          string    `json:"query"`
 		Embedding      []float32 `json:"embedding"`
 		EmbeddingModel string    `json:"embedding_model"`
-	}{Query: request.Query, Embedding: vector, EmbeddingModel: activeModel})
+	}{Query: queryText, Embedding: vector, EmbeddingModel: activeModel})
 	if err != nil {
 		return "", fmt.Errorf("digest recall query: %w", err)
 	}

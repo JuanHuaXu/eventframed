@@ -19,9 +19,9 @@ func TestAdaptivePackingExpandsOnSmallBoundaryMargin(t *testing.T) {
 
 func TestDiversityDoesNotSuppressDistinctAntiPigeonBuckets(t *testing.T) {
 	candidates := fixtureCandidates(3)
-	candidates[0].Event.Content = "same repeated content"
-	candidates[1].Event.Content = "same repeated content"
-	candidates[2].Event.Content = "different material"
+	candidates[0].Event.What.Value = "same repeated event"
+	candidates[1].Event.What.Value = "same repeated event"
+	candidates[2].Event.What.Value = "different material"
 	candidates[0].Score, candidates[1].Score, candidates[2].Score = .9, .89, .88
 	policy := DefaultPolicy()
 	policy.DiversityEnabled = true
@@ -32,12 +32,29 @@ func TestDiversityDoesNotSuppressDistinctAntiPigeonBuckets(t *testing.T) {
 	}
 }
 
+func TestDiversityIgnoresRawContent(t *testing.T) {
+	candidates := fixtureCandidates(3)
+	candidates[0].Event.Content = "RAW_ALPHA"
+	candidates[1].Event.Content = "RAW_BETA"
+	candidates[0].Event.What.Value = "same event frame"
+	candidates[1].Event.What.Value = "same event frame"
+	candidates[2].Event.What.Value = "different event frame"
+	candidates[0].Score, candidates[1].Score, candidates[2].Score = .9, .89, .88
+	policy := DefaultPolicy()
+	policy.DiversityEnabled = true
+	policy.DiversityPenalty = .2
+	result := Select(candidates, nil, 2, 3, 1000, policy)
+	if result.Candidates[1].Event.ID != candidates[2].Event.ID {
+		t.Fatalf("raw payload affected diversity ordering: %+v", result.Candidates)
+	}
+}
+
 func fixtureCandidates(count int) []model.Candidate {
 	result := make([]model.Candidate, count)
 	for index := range result {
 		probability := .7 - float64(index)*.001
 		result[index] = model.Candidate{
-			Event: model.Event{ID: fmt.Sprintf("event-%d", index), Content: fmt.Sprintf("content %d", index)},
+			Event: model.Event{ID: fmt.Sprintf("event-%d", index), Content: fmt.Sprintf("content %d", index), What: model.Field{Value: fmt.Sprintf("event %d", index)}},
 			Score: probability, EstimatedTokens: 1,
 			Forecast: model.ForecastBundle{CorrectedLaw: model.BernoulliLaw{Useful: probability, NotUseful: 1 - probability}},
 		}

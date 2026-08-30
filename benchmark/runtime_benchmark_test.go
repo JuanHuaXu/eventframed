@@ -11,6 +11,7 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/agency"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
+	"github.com/JuanHuaXu/eventframed/internal/frame"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/rankdelta"
 	"github.com/JuanHuaXu/eventframed/internal/retrieval"
@@ -28,6 +29,63 @@ const (
 )
 
 var benchmarkPacket model.ContextPacket
+var benchmarkEvent model.Event
+
+func BenchmarkPostContractFrameExtraction(b *testing.B) {
+	now := time.Date(2026, 8, 30, 12, 0, 0, 0, time.UTC)
+	turn := model.TurnCapture{
+		ID: "benchmark-turn", TenantID: benchmarkTenant, SessionID: benchmarkSession, Sequence: uint64(now.UnixMilli()),
+		AgentID:       "benchmark-agent",
+		UserText:      "Example Operator will deploy EventFrame in Toronto tomorrow because retrieval is stale using the OpenClaw plugin.",
+		AssistantText: "I prepared the release configuration and validation tests using the verified migration tool.",
+		OccurredAt:    now, ObservedAt: now.Add(time.Millisecond), AvailableAt: now.Add(time.Millisecond),
+	}
+	b.ReportAllocs()
+	b.ReportMetric(float64(len(turn.UserText)+len(turn.AssistantText)), "input_bytes")
+	for b.Loop() {
+		benchmarkEvent = frame.FromTurn(turn)
+	}
+}
+
+func BenchmarkCaptureTurnMemory(b *testing.B) {
+	ctx := context.Background()
+	embedder, err := embed.NewHashEmbedder(benchmarkDimension)
+	if err != nil {
+		b.Fatal(err)
+	}
+	backend := memorystore.New()
+	runtime, err := service.New(backend, embedder, service.Config{
+		DefaultRecallK: 50, DefaultPackK: 10, DefaultTokenBudget: 2_000, OverfetchMultiplier: 4,
+	})
+	if err != nil {
+		b.Fatal(err)
+	}
+	b.Cleanup(func() { _ = runtime.Close() })
+	base := time.Date(2026, 8, 30, 12, 0, 0, 0, time.UTC)
+	var sequence uint64
+	latency := newLatencyRecorder()
+	b.ReportAllocs()
+	b.ResetTimer()
+	for b.Loop() {
+		sequence++
+		now := base.Add(time.Duration(sequence) * time.Nanosecond)
+		id := fmt.Sprintf("capture-%08d", sequence)
+		turn := model.TurnCapture{
+			ID: id, TenantID: benchmarkTenant, SessionID: benchmarkSession, Sequence: sequence,
+			AgentID:       "benchmark-agent",
+			UserText:      "Example Operator will deploy EventFrame in Toronto tomorrow because retrieval is stale using the OpenClaw plugin.",
+			AssistantText: "I prepared the release configuration and validation tests using the verified migration tool.",
+			OccurredAt:    now, ObservedAt: now.Add(time.Millisecond), AvailableAt: now.Add(time.Millisecond),
+		}
+		started := time.Now()
+		_, captureErr := runtime.CaptureTurn(ctx, model.CaptureTurnRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: id, Turn: turn})
+		latency.Observe(time.Since(started))
+		if captureErr != nil {
+			b.Fatal(captureErr)
+		}
+	}
+	latency.Report(b)
+}
 
 func BenchmarkRecall(b *testing.B) {
 	for _, backend := range []string{"memory", "libravdb-sq8"} {

@@ -44,7 +44,7 @@ func RunResidualUtility(ctx context.Context) (ResidualReport, error) {
 	for turn := 0; turn < training+evaluation; turn++ {
 		asOf := experimentAnchor.Add(time.Duration(turn) * time.Minute)
 		for index, runtime := range runtimes {
-			packet, err := runtime.Recall(ctx, model.RecallRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "residual-experiment", SessionID: "trajectory", Embedding: []float32{1, 0, 0, 0, 0, 0, 0, 0}, EmbeddingModel: "feature-hash-v1:d8", AsOf: asOf, RecallK: 1, PackK: 1, TokenBudget: 100})
+			packet, err := runtime.Recall(ctx, model.RecallRequest{ProtocolVersion: model.ProtocolVersion, TenantID: "residual-experiment", SessionID: "trajectory", Embedding: []float32{1, 0, 0, 0, 0, 0, 0, 0}, EmbeddingModel: "feature-hash-v1:d8:repr=eventframe-5w1h-v1", AsOf: asOf, RecallK: 1, PackK: 1, TokenBudget: 100})
 			if err != nil {
 				return ResidualReport{}, err
 			}

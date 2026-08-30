@@ -9,11 +9,16 @@ import (
 	"net"
 	"os"
 	"strings"
+	"sync"
+	"time"
 
 	oldproto "github.com/golang/protobuf/proto"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/connectivity"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -27,14 +32,21 @@ const (
 
 type LibraVDBRanker struct {
 	connection *grpc.ClientConn
+	guard      *contractGuard
+	writeMu    sync.Mutex
 }
 
 type ContractClientConfig struct {
-	Endpoint       string
-	TLSMode        string
-	CAFile         string
-	ClientCertFile string
-	ClientKeyFile  string
+	Endpoint         string
+	TLSMode          string
+	CAFile           string
+	ClientCertFile   string
+	ClientKeyFile    string
+	MaxConcurrent    int
+	RequestTimeout   time.Duration
+	MaxAttempts      int
+	FailureThreshold int
+	OpenDuration     time.Duration
 }
 
 func OpenLibraVDBContracts(endpoint string) (*LibraVDBRanker, error) {
@@ -68,7 +80,163 @@ func OpenLibraVDBContractsWithConfig(config ContractClientConfig) (*LibraVDBRank
 	if err != nil {
 		return nil, fmt.Errorf("connect LibraVDB contracts: %w", err)
 	}
-	return &LibraVDBRanker{connection: connection}, nil
+	return &LibraVDBRanker{connection: connection, guard: newContractGuard(config)}, nil
+}
+
+var ErrContractCircuitOpen = errors.New("LibraVDB contract circuit is open")
+
+type contractGuard struct {
+	permits             chan struct{}
+	timeout             time.Duration
+	attempts            int
+	failureThreshold    int
+	openDuration        time.Duration
+	mu                  sync.Mutex
+	consecutiveFailures int
+	openUntil           time.Time
+}
+
+func newContractGuard(config ContractClientConfig) *contractGuard {
+	concurrency := config.MaxConcurrent
+	if concurrency <= 0 {
+		concurrency = 16
+	}
+	timeout := config.RequestTimeout
+	if timeout <= 0 {
+		timeout = 2 * time.Second
+	}
+	attempts := config.MaxAttempts
+	if attempts <= 0 {
+		attempts = 2
+	}
+	threshold := config.FailureThreshold
+	if threshold <= 0 {
+		threshold = 5
+	}
+	openDuration := config.OpenDuration
+	if openDuration <= 0 {
+		openDuration = 5 * time.Second
+	}
+	return &contractGuard{permits: make(chan struct{}, concurrency), timeout: timeout, attempts: attempts, failureThreshold: threshold, openDuration: openDuration}
+}
+
+func (r *LibraVDBRanker) invoke(ctx context.Context, method string, request, response oldproto.Message, write bool) error {
+	if write {
+		r.writeMu.Lock()
+		defer r.writeMu.Unlock()
+	}
+	if err := r.guard.acquire(ctx); err != nil {
+		return err
+	}
+	defer r.guard.release()
+	var err error
+	for attempt := 0; attempt < r.guard.attempts; attempt++ {
+		if attempt > 0 {
+			delay := time.Duration(25*(1<<(attempt-1))) * time.Millisecond
+			timer := time.NewTimer(delay)
+			select {
+			case <-ctx.Done():
+				timer.Stop()
+				return ctx.Err()
+			case <-timer.C:
+			}
+		}
+		attemptCtx, cancel := context.WithTimeout(ctx, r.guard.timeout)
+		err = r.connection.Invoke(attemptCtx, method, request, response)
+		cancel()
+		if err == nil {
+			r.guard.success()
+			return nil
+		}
+		if !retryableContractError(err) {
+			return err
+		}
+		r.guard.failure()
+		if r.guard.isOpen() {
+			return fmt.Errorf("%w: %v", ErrContractCircuitOpen, err)
+		}
+	}
+	return err
+}
+
+func (g *contractGuard) acquire(ctx context.Context) error {
+	if g.isOpen() {
+		return ErrContractCircuitOpen
+	}
+	select {
+	case g.permits <- struct{}{}:
+		if g.isOpen() {
+			<-g.permits
+			return ErrContractCircuitOpen
+		}
+		return nil
+	case <-ctx.Done():
+		return ctx.Err()
+	}
+}
+
+func (g *contractGuard) release() { <-g.permits }
+func (g *contractGuard) isOpen() bool {
+	g.mu.Lock()
+	defer g.mu.Unlock()
+	if g.openUntil.IsZero() {
+		return false
+	}
+	if time.Now().Before(g.openUntil) {
+		return true
+	}
+	g.openUntil = time.Time{}
+	g.consecutiveFailures = 0
+	return false
+}
+func (g *contractGuard) failure() {
+	g.mu.Lock()
+	defer g.mu.Unlock()
+	g.consecutiveFailures++
+	if g.consecutiveFailures >= g.failureThreshold {
+		g.openUntil = time.Now().Add(g.openDuration)
+	}
+}
+func (g *contractGuard) success() {
+	g.mu.Lock()
+	defer g.mu.Unlock()
+	g.consecutiveFailures = 0
+	g.openUntil = time.Time{}
+}
+
+func retryableContractError(err error) bool {
+	switch status.Code(err) {
+	case codes.Unavailable, codes.DeadlineExceeded, codes.ResourceExhausted, codes.Aborted:
+		return true
+	default:
+		return false
+	}
+}
+
+func (r *LibraVDBRanker) Ready(ctx context.Context) error {
+	if r.guard.isOpen() {
+		return ErrContractCircuitOpen
+	}
+	state := r.connection.GetState()
+	if state == connectivity.Ready {
+		return nil
+	}
+	if state == connectivity.Shutdown {
+		return errors.New("LibraVDB contract connection is shut down")
+	}
+	r.connection.Connect()
+	for {
+		if !r.connection.WaitForStateChange(ctx, state) {
+			return ctx.Err()
+		}
+		state = r.connection.GetState()
+		if state == connectivity.Ready {
+			return nil
+		}
+		if state == connectivity.TransientFailure || state == connectivity.Shutdown {
+			return fmt.Errorf("LibraVDB contract connection is %s", state)
+		}
+	}
 }
 
 func contractTransportCredentials(config ContractClientConfig, endpoint string) (credentials.TransportCredentials, error) {
@@ -150,7 +318,7 @@ func (r *LibraVDBRanker) SearchTextCollections(ctx context.Context, request Sear
 		wireRequest.ExcludeByCollection[collection] = &stringList{Values: ids}
 	}
 	wireResponse := &searchTextResponse{}
-	if err := r.connection.Invoke(ctx, searchTextCollectionsMethod, wireRequest, wireResponse); err != nil {
+	if err := r.invoke(ctx, searchTextCollectionsMethod, wireRequest, wireResponse, false); err != nil {
 		return nil, fmt.Errorf("LibraVDB SearchTextCollections: %w", err)
 	}
 	results := make([]Candidate, 0, len(wireResponse.Results))
@@ -168,12 +336,12 @@ func (r *LibraVDBRanker) InsertText(ctx context.Context, collection string, cand
 		return errors.New("InsertText requires collection, candidate ID, and text")
 	}
 	wireResponse := &insertTextResponse{}
-	if err := r.connection.Invoke(ctx, insertTextMethod, &insertTextRequest{
+	if err := r.invoke(ctx, insertTextMethod, &insertTextRequest{
 		Collection:   collection,
 		ID:           candidate.ID,
 		Text:         candidate.Text,
 		MetadataJSON: candidate.Metadata,
-	}, wireResponse); err != nil {
+	}, wireResponse, true); err != nil {
 		return fmt.Errorf("LibraVDB InsertText: %w", err)
 	}
 	if !wireResponse.OK {
@@ -191,9 +359,9 @@ func (r *LibraVDBRanker) EnsureText(ctx context.Context, collection string, cand
 		return err
 	}
 	wireResponse := &listByMetaResponse{}
-	if lookupErr := r.connection.Invoke(ctx, listByMetaMethod, &listByMetaRequest{
+	if lookupErr := r.invoke(ctx, listByMetaMethod, &listByMetaRequest{
 		Collection: collection, Key: identityKey, Value: identityValue,
-	}, wireResponse); lookupErr != nil {
+	}, wireResponse, false); lookupErr != nil {
 		return fmt.Errorf("%v; LibraVDB ListByMeta reconciliation: %w", err, lookupErr)
 	}
 	for _, result := range wireResponse.Results {
@@ -209,7 +377,7 @@ func (r *LibraVDBRanker) DeleteText(ctx context.Context, collection, id string) 
 		return errors.New("Delete requires collection and ID")
 	}
 	wireResponse := &deleteTextResponse{}
-	if err := r.connection.Invoke(ctx, deleteTextMethod, &deleteTextRequest{Collection: collection, ID: id}, wireResponse); err != nil {
+	if err := r.invoke(ctx, deleteTextMethod, &deleteTextRequest{Collection: collection, ID: id}, wireResponse, true); err != nil {
 		return fmt.Errorf("LibraVDB Delete: %w", err)
 	}
 	if !wireResponse.OK {
@@ -223,7 +391,7 @@ func (r *LibraVDBRanker) DeleteTextBatch(ctx context.Context, collection string,
 		return errors.New("DeleteBatch requires collection and IDs")
 	}
 	wireResponse := &deleteTextBatchResponse{}
-	if err := r.connection.Invoke(ctx, deleteTextBatchMethod, &deleteTextBatchRequest{Collection: collection, IDs: ids}, wireResponse); err != nil {
+	if err := r.invoke(ctx, deleteTextBatchMethod, &deleteTextBatchRequest{Collection: collection, IDs: ids}, wireResponse, true); err != nil {
 		return fmt.Errorf("LibraVDB DeleteBatch: %w", err)
 	}
 	if !wireResponse.OK {
@@ -246,7 +414,7 @@ func (r *LibraVDBRanker) RankCandidates(ctx context.Context, request RankRequest
 		})
 	}
 	wireResponse := &rankCandidatesResponse{}
-	if err := r.connection.Invoke(ctx, rankCandidatesMethod, wireRequest, wireResponse); err != nil {
+	if err := r.invoke(ctx, rankCandidatesMethod, wireRequest, wireResponse, false); err != nil {
 		return nil, fmt.Errorf("LibraVDB RankCandidates: %w", err)
 	}
 	ranked := make([]Candidate, 0, len(wireResponse.Ranked))

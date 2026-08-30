@@ -95,11 +95,12 @@ either constraint.
 
 ## R8: structured frames as a matched multi-view ablation
 
-Structured 5W1H fields supplement the raw event text. They do not replace it.
-The empirical comparison holds source content, model, embedding budget,
-candidate universe, and ranking contract fixed across raw-text, structured,
-combined, and shuffled-field variants. Interpretability requires independent
-blinded ratings.
+Canonical structured 5W1H replaces raw event text as the operational retrieval
+corpus in contract version 12; raw text remains opaque metadata and final
+payload. The proposed ablation still holds source content, model, embedding
+budget, candidate universe, and ranking contract fixed across raw-text,
+structured, combined, and shuffled-field variants. Interpretability requires
+independent blinded ratings.
 
 Falsifier: the combined representation fails its frozen predictive criterion or
 independent interpretability criterion. Fewer than three independent

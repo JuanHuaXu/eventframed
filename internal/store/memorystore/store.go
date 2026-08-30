@@ -40,6 +40,7 @@ type Store struct {
 	agencyDigests          map[string]map[string]string
 	policyDigest           string
 	snapshot               model.Snapshot
+	ingestMotion           map[uint64]time.Time
 }
 
 func (s *Store) BindBayesianPolicy(_ context.Context, digest string) (model.Snapshot, error) {
@@ -64,7 +65,8 @@ func New() *Store {
 		residuals: make(map[string]map[string]model.ResidualRecord),
 		graphs:    make(map[string]model.PredictiveGraph), snaps: make(map[string]map[string]model.PredictiveSnapRecord),
 		agencyRecords: make(map[string]map[string]model.AgencyProposalRecord), agencyDigests: make(map[string]map[string]string),
-		snapshot: initialSnapshot(),
+		snapshot:     initialSnapshot(),
+		ingestMotion: make(map[uint64]time.Time),
 	}
 }
 
@@ -587,7 +589,7 @@ func (s *Store) PutBayesianJournal(_ context.Context, entry model.BayesianJourna
 		}
 		return nil
 	}
-	if entry.Snapshot != s.snapshot {
+	if !store.JournalSnapshotCompatible(entry.Snapshot, s.snapshot, entry.AsOf, s.ingestMotion) {
 		return store.ErrStaleSnapshot
 	}
 	tenant[entry.ID] = entry
@@ -621,7 +623,16 @@ func (s *Store) Put(_ context.Context, event model.Event, vector []float32, dige
 	tenant[event.ID] = entry{event: event, vector: append([]float32(nil), vector...), digest: digest}
 	s.snapshot.RuntimeVersion++
 	s.snapshot.EvidenceEpoch++
+	recordIngestMotion(s.ingestMotion, s.snapshot.RuntimeVersion, event.AvailableAt)
 	return store.PutResult{Snapshot: s.snapshot}, nil
+}
+
+func recordIngestMotion(motion map[uint64]time.Time, version uint64, availableAt time.Time) {
+	motion[version] = availableAt
+	const retainedVersions = uint64(4096)
+	if version > retainedVersions {
+		delete(motion, version-retainedVersions)
+	}
 }
 
 func (s *Store) Search(_ context.Context, tenantID string, vector []float32, availableBy time.Time, limit int) ([]store.SearchResult, error) {

@@ -7,7 +7,22 @@ import (
 	"math"
 	"strings"
 	"unicode"
+
+	"github.com/JuanHuaXu/eventframed/internal/model"
 )
+
+const representationMarker = ":repr=" + model.SemanticRepresentationVersion
+
+func BindRepresentation(modelKey string) string {
+	if strings.HasSuffix(modelKey, representationMarker) {
+		return modelKey
+	}
+	return modelKey + representationMarker
+}
+
+func UnbindRepresentation(modelKey string) string {
+	return strings.TrimSuffix(modelKey, representationMarker)
+}
 
 type Embedder interface {
 	Embed(text string) ([]float32, error)
@@ -48,9 +63,11 @@ func NewHashEmbedder(dimension int) (*HashEmbedder, error) {
 	return &HashEmbedder{dimension: dimension}, nil
 }
 
-func (h *HashEmbedder) Dimension() int   { return h.dimension }
-func (h *HashEmbedder) Name() string     { return "feature-hash-v1" }
-func (h *HashEmbedder) ModelKey() string { return fmt.Sprintf("feature-hash-v1:d%d", h.dimension) }
+func (h *HashEmbedder) Dimension() int { return h.dimension }
+func (h *HashEmbedder) Name() string   { return "feature-hash-v1" }
+func (h *HashEmbedder) ModelKey() string {
+	return BindRepresentation(fmt.Sprintf("feature-hash-v1:d%d", h.dimension))
+}
 
 func (h *HashEmbedder) Embed(text string) ([]float32, error) {
 	vector := make([]float32, h.dimension)

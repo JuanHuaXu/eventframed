@@ -45,7 +45,7 @@ func TestObserveRejectsSameIDWithDifferentExplicitVector(t *testing.T) {
 	runtime := newMemoryService(t)
 	event := testutil.Event("vector-id", "same", time.Now().UTC())
 	event.Embedding = []float32{1, 0, 0, 0, 0, 0, 0, 0}
-	event.EmbeddingModel = "feature-hash-v1:d8"
+	event.EmbeddingModel = "feature-hash-v1:d8:repr=eventframe-5w1h-v1"
 	request := model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: event.ID, Event: event}
 	if _, err := runtime.Observe(context.Background(), request); err != nil {
 		t.Fatal(err)
@@ -53,6 +53,82 @@ func TestObserveRejectsSameIDWithDifferentExplicitVector(t *testing.T) {
 	request.Event.Embedding = []float32{0, 1, 0, 0, 0, 0, 0, 0}
 	if _, err := runtime.Observe(context.Background(), request); !errors.Is(err, store.ErrIdempotencyConflict) {
 		t.Fatalf("error = %v", err)
+	}
+}
+
+func TestExplicitVectorsRequireEventFrameRepresentationBinding(t *testing.T) {
+	runtime := newMemoryService(t)
+	now := time.Now().UTC()
+	event := testutil.Event("legacy-vector", "raw text", now.Add(-time.Minute))
+	event.Embedding = []float32{1, 0, 0, 0, 0, 0, 0, 0}
+	event.EmbeddingModel = "feature-hash-v1:d8"
+	if _, err := runtime.Observe(context.Background(), model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: event.ID, Event: event}); err == nil || !strings.Contains(err.Error(), "does not match active") {
+		t.Fatalf("legacy event vector error = %v", err)
+	}
+	if _, err := runtime.Recall(context.Background(), model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: event.TenantID, SessionID: event.SessionID,
+		Query: "query", Embedding: event.Embedding, EmbeddingModel: "feature-hash-v1:d8",
+		AsOf: now, RecallK: 1, PackK: 1, TokenBudget: 100,
+	}); err == nil || !strings.Contains(err.Error(), "embedding_model does not match") {
+		t.Fatalf("legacy query vector error = %v", err)
+	}
+}
+
+func TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields(t *testing.T) {
+	runtime := newMemoryService(t)
+	now := time.Now().UTC().Add(-time.Minute)
+	turn := model.TurnCapture{
+		ID: "captured-turn", TenantID: "tenant-a", SessionID: "session-a", Sequence: uint64(now.UnixMilli()),
+		UserText:      "Example Operator will deploy EventFrame in Toronto tomorrow because retrieval is stale using the OpenClaw plugin.",
+		AssistantText: "I prepared the release.", OccurredAt: now, ObservedAt: now.Add(time.Second), AvailableAt: now.Add(time.Second),
+	}
+	request := model.CaptureTurnRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: turn.ID, Turn: turn}
+	if first, err := runtime.CaptureTurn(context.Background(), request); err != nil || first.Duplicate {
+		t.Fatal(err)
+	}
+	if duplicate, err := runtime.CaptureTurn(context.Background(), request); err != nil || !duplicate.Duplicate {
+		t.Fatalf("duplicate capture = %+v, %v", duplicate, err)
+	}
+	conflict := request
+	conflict.Turn.UserText = "different raw turn"
+	if _, err := runtime.CaptureTurn(context.Background(), conflict); !errors.Is(err, store.ErrIdempotencyConflict) {
+		t.Fatalf("conflicting capture error = %v", err)
+	}
+	packet, err := runtime.Recall(context.Background(), model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: turn.TenantID, SessionID: turn.SessionID,
+		Query: "retrieval stale", AsOf: now.Add(2 * time.Second), RecallK: 10, PackK: 10, TokenBudget: 1000,
+	})
+	if err != nil || len(packet.Candidates) != 1 {
+		t.Fatalf("recall = %+v, %v", packet, err)
+	}
+	captured := packet.Candidates[0].Event
+	if captured.Who.Value != "Example Operator" || captured.Where.Value != "Toronto" || captured.Attributes["semantic_extractor"] == "" {
+		t.Fatalf("captured event was not enriched: %+v", captured)
+	}
+
+	authored := testutil.Event("authored", "structured", now)
+	authored.Who = model.Field{Value: "author-declared", Source: model.SourceObserved, Confidence: 1, Evidence: "external contract"}
+	if _, err := runtime.Observe(context.Background(), model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: authored.ID, Event: authored}); err != nil {
+		t.Fatal(err)
+	}
+	packet, err = runtime.Recall(context.Background(), model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: authored.TenantID, SessionID: authored.SessionID,
+		Query: "structured", AsOf: now.Add(time.Second), RecallK: 10, PackK: 10, TokenBudget: 1000,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	foundAuthored := false
+	for _, candidate := range packet.Candidates {
+		if candidate.Event.ID == authored.ID && candidate.Event.Who.Value != "author-declared" {
+			t.Fatalf("structured event was overwritten: %+v", candidate.Event.Who)
+		}
+		if candidate.Event.ID == authored.ID {
+			foundAuthored = true
+		}
+	}
+	if !foundAuthored {
+		t.Fatal("structured event was not recalled for negative control")
 	}
 }
 
@@ -199,6 +275,33 @@ func TestLibraVDBContractRerankingPromotesBackendChoiceWithoutChangingLaw(t *tes
 	}
 }
 
+func TestRerankingReceivesOnlyEventFrameCorpus(t *testing.T) {
+	now := time.Now().UTC()
+	event := testutil.Event("framed", "RAW_RERANK_EVENT_SENTINEL", now.Add(-time.Minute))
+	event.What = model.Field{Value: "bounded candidate retrieval", Source: model.SourceObserved, Confidence: 1}
+	ranker := &recordingRanker{}
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, err := service.New(&fixedStore{results: []store.SearchResult{{Event: event, Similarity: .8}}}, embedder, service.Config{
+		DefaultRecallK: 1, DefaultPackK: 1, DefaultTokenBudget: 100, OverfetchMultiplier: 1,
+		CandidateRanker: ranker, CandidateRankerRequired: true,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = runtime.Recall(context.Background(), model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: event.TenantID, SessionID: event.SessionID,
+		Query: "bounded candidate retrieval. RAW_RERANK_QUERY_SENTINEL", AsOf: now, RecallK: 1, PackK: 1, TokenBudget: 100,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(ranker.request.Candidates) != 1 || ranker.request.Candidates[0].Text != event.FrameText() ||
+		strings.Contains(ranker.request.Candidates[0].Text, "RAW_RERANK_EVENT_SENTINEL") ||
+		strings.Contains(ranker.request.QueryText, "RAW_RERANK_QUERY_SENTINEL") {
+		t.Fatalf("rerank boundary leaked raw text: %+v", ranker.request)
+	}
+}
+
 func TestPartialContractRankingPreservesNominatedFrontier(t *testing.T) {
 	now := time.Now().UTC()
 	first := testutil.Event("first", "first nominated event", now.Add(-time.Minute))
@@ -308,7 +411,8 @@ func TestProductionContractsOwnIndexNominationAndDeleteLifecycle(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	event := testutil.Event("contract-owned", "contract owned retrieval", now.Add(-time.Minute))
+	event := testutil.Event("contract-owned", "RAW_EVENT_SENTINEL. contract owned retrieval", now.Add(-time.Minute))
+	event.What = model.Field{Value: "contract owned retrieval", Source: model.SourceObserved, Confidence: 1}
 	observe(t, runtime, event)
 	if index.ensured.ID != event.ID || !strings.HasPrefix(index.collection, "eventframe-") || len(index.collection) != len("eventframe-")+24 {
 		t.Fatalf("indexed candidate = %#v collection=%q", index.ensured, index.collection)
@@ -320,16 +424,22 @@ func TestProductionContractsOwnIndexNominationAndDeleteLifecycle(t *testing.T) {
 	if metadata["collection"] != index.collection || metadata["eventframe_digest"] == "" || index.identityKey != "eventframe_digest" {
 		t.Fatalf("index metadata=%#v identity=%s/%s", metadata, index.identityKey, index.identityValue)
 	}
+	if index.ensured.Text != event.FrameText() || strings.Contains(index.ensured.Text, "RAW_EVENT_SENTINEL") || metadata["semantic_representation"] != model.SemanticRepresentationVersion {
+		t.Fatalf("index received non-frame corpus text: candidate=%#v metadata=%#v", index.ensured, metadata)
+	}
 	retriever.results = []retrieval.Candidate{{ID: event.ID, Score: .9, Metadata: index.ensured.Metadata}}
 	packet, err := runtime.Recall(context.Background(), model.RecallRequest{
 		ProtocolVersion: model.ProtocolVersion, TenantID: event.TenantID, SessionID: event.SessionID,
-		Query: event.Content, AsOf: now, RecallK: 2, PackK: 1, TokenBudget: 100,
+		Query: "contract owned retrieval. RAW_QUERY_SENTINEL", AsOf: now, RecallK: 2, PackK: 1, TokenBudget: 100,
 	})
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(retriever.request.Collections) != 1 || retriever.request.Collections[0] != index.collection || packet.NominationContract != retriever.RetrievalContractName() {
 		t.Fatalf("nomination request=%#v packet=%#v", retriever.request, packet)
+	}
+	if strings.Contains(retriever.request.QueryText, "RAW_QUERY_SENTINEL") || !strings.Contains(retriever.request.QueryText, "what: request: contract owned retrieval.") {
+		t.Fatalf("nomination received non-frame query: %q", retriever.request.QueryText)
 	}
 	if _, err := runtime.Recall(context.Background(), model.RecallRequest{
 		ProtocolVersion: model.ProtocolVersion, TenantID: event.TenantID, SessionID: event.SessionID,
@@ -343,6 +453,25 @@ func TestProductionContractsOwnIndexNominationAndDeleteLifecycle(t *testing.T) {
 	}
 	if index.deletedCollection != index.collection || index.deletedID != event.ID {
 		t.Fatalf("delete = %q/%q", index.deletedCollection, index.deletedID)
+	}
+}
+
+func TestContractNativeRecallRejectsVectorOnlyQuery(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, err := service.New(&fixedStore{}, embedder, service.Config{
+		DefaultRecallK: 1, DefaultPackK: 1, DefaultTokenBudget: 100,
+		CandidateRetriever: &fixedRetriever{}, CandidateRetrieverRequired: true,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = runtime.Recall(context.Background(), model.RecallRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", SessionID: "session-a",
+		Embedding: make([]float32, 8), EmbeddingModel: embedder.ModelKey(), AsOf: time.Now(),
+		RecallK: 1, PackK: 1, TokenBudget: 100,
+	})
+	if err == nil || !strings.Contains(err.Error(), "query text is required") {
+		t.Fatalf("vector-only contract recall error = %v", err)
 	}
 }
 
@@ -469,6 +598,8 @@ type fixedStore struct{ results []store.SearchResult }
 
 type exactFirstRanker struct{}
 
+type recordingRanker struct{ request retrieval.RankRequest }
+
 type partialRanker struct{}
 
 type malformedRanker struct{ mode string }
@@ -519,6 +650,13 @@ func (r *fixedRetriever) SearchTextCollections(_ context.Context, request retrie
 }
 
 func (exactFirstRanker) ContractName() string { return "test/RankCandidates" }
+
+func (r *recordingRanker) ContractName() string { return "test/recording-RankCandidates" }
+
+func (r *recordingRanker) RankCandidates(_ context.Context, request retrieval.RankRequest) ([]retrieval.Candidate, error) {
+	r.request = request
+	return append([]retrieval.Candidate(nil), request.Candidates...), nil
+}
 
 func (exactFirstRanker) RankCandidates(_ context.Context, request retrieval.RankRequest) ([]retrieval.Candidate, error) {
 	if request.K1 != 2 || request.K2 != 2 || len(request.Candidates) != 2 {

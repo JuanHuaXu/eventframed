@@ -16,6 +16,7 @@ test("before_prompt_build fails open when eventframed is unavailable", async () 
       agencyKillSwitch: true,
     },
     logger: { warn: (message: string) => warnings.push(message) },
+    registerGatewayMethod() {},
     on(name: string, handler: (event: unknown, context: unknown) => Promise<unknown>) {
       if (name === "before_prompt_build") beforePrompt = handler;
     },
@@ -30,4 +31,29 @@ test("before_prompt_build fails open when eventframed is unavailable", async () 
 
   assert.equal(result, undefined);
   assert.ok(warnings.some((message) => message.includes("recall skipped")));
+});
+
+test("registers operator-scoped exact-journal outcome feedback", async () => {
+  type Handler = (input: { params: Record<string, unknown>; respond: (...args: unknown[]) => void }) => Promise<void>;
+  let registered: { handler: Handler; scope?: string } | undefined;
+  const api = {
+    registrationMode: "full",
+    pluginConfig: { tenantId: "tenant", capture: false, agencyEnabled: false, agencyKillSwitch: true },
+    logger: { warn() {} },
+    on() {},
+    registerGatewayMethod(_name: string, handler: Handler, options: { scope?: string }) {
+      registered = { handler, scope: options.scope };
+    },
+  };
+  plugin.register(api as never);
+  assert.ok(registered);
+  assert.equal(registered.scope, "operator.write");
+
+  const responses: unknown[][] = [];
+  await registered.handler({
+    params: { journal_id: "journal", event_id: "event", idempotency_key: "feedback", signal: "useful" },
+    respond: (...args: unknown[]) => { responses.push(args); },
+  });
+  assert.equal(responses[0]?.[0], false);
+  assert.match(String((responses[0]?.[2] as { message?: string })?.message), /eventframed/);
 });

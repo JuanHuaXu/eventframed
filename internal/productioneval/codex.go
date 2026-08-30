@@ -121,7 +121,7 @@ type codexEnvelope struct {
 }
 
 func FrozenCodexProtocol(config CodexConfig) CodexProtocol {
-	embeddingModel := fmt.Sprintf("feature-hash-v1:d%d", embeddingDimension)
+	embeddingModel := embed.BindRepresentation(fmt.Sprintf("feature-hash-v1:d%d", embeddingDimension))
 	if config.Embedder != nil {
 		embeddingModel = config.Embedder.ModelKey()
 	}

@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import type { EventField, EventFrame } from "./types.js";
+import type { CapturedTurn } from "./types.js";
 
 export type TurnCapture = {
   tenantId: string;
@@ -13,7 +13,7 @@ export type TurnCapture = {
   observedAt?: Date;
 };
 
-export function buildTurnEvent(input: TurnCapture): EventFrame {
+export function buildTurnCapture(input: TurnCapture): CapturedTurn {
   const occurredAt = input.occurredAt ?? input.observedAt ?? new Date();
   const observedAt = input.observedAt ?? new Date();
   const content = [`User: ${input.userText}`, `Assistant: ${input.assistantText}`].join("\n\n");
@@ -25,33 +25,15 @@ export function buildTurnEvent(input: TurnCapture): EventFrame {
     tenant_id: input.tenantId,
     session_id: input.sessionId,
     sequence: Math.max(0, Math.floor(occurredAt.getTime())),
-    kind: "agent_turn",
-    content,
+    run_id: input.runId,
+    agent_id: input.agentId,
+    user_text: input.userText,
+    assistant_text: input.assistantText,
+    retrieved_ids: [...new Set(input.retrievedIds)],
     occurred_at: occurredAt.toISOString(),
     observed_at: observedAt.toISOString(),
     available_at: observedAt.toISOString(),
-    who: field(input.agentId ? `user and agent:${input.agentId}` : "user and agent", "inferred", 0.8),
-    what: field("completed conversational turn", "synthetic", 1),
-    where: field(`session:${input.sessionId}`, "observed", 1),
-    when: field(occurredAt.toISOString(), "observed", 1),
-    why: field("agent response to the current user turn", "inferred", 0.9),
-    how: field("OpenClaw agent run", "observed", 1),
-    priority: 0.5,
-    tags: ["conversation", "agent-turn"],
-    provenance: {
-      producer: "openclaw-eventframe-memory",
-      retrieved_ids: [...new Set(input.retrievedIds)],
-      run_id: input.runId,
-    },
-    attributes: {
-      user_source: "observed",
-      assistant_source: "synthetic",
-    },
   };
-}
-
-function field(value: string, source: EventField["source"], confidence: number): EventField {
-  return { value, source, confidence };
 }
 
 export function extractLatestText(messages: unknown[], role: "user" | "assistant"): string | undefined {
