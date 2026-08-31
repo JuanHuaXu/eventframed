@@ -181,6 +181,13 @@ func run(args []string) error {
 		AgencySigner:         agencySigner,
 		AgencyIssuerToken:    agencyIssuerToken,
 		AgencyAuthorityToken: agencyAuthorityToken,
+		BackgroundFuzz: service.BackgroundFuzzPolicy{
+			Enabled: settings.BackgroundFuzz, AnswerCertaintyThreshold: settings.BackgroundFuzzCertainty,
+			QueueCapacity: settings.BackgroundFuzzQueue, WorkerInterval: time.Duration(settings.BackgroundFuzzIntervalMS) * time.Millisecond,
+			JobTimeout: time.Duration(settings.BackgroundFuzzTimeoutMS) * time.Millisecond,
+			Cooldown:   time.Duration(settings.BackgroundFuzzCooldownSec) * time.Second,
+			MaxEvents:  settings.BackgroundFuzzMaxEvents, MaxPerturbations: settings.BackgroundFuzzMaxTrials,
+		},
 	})
 	if err != nil {
 		_ = rankDeltaStore.Close()

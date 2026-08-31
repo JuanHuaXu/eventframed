@@ -691,6 +691,14 @@ func (s *Store) Search(_ context.Context, tenantID string, vector []float32, ava
 }
 
 func (s *Store) GetEvents(_ context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	return s.getEvents(tenantID, eventIDs, availableBy, false)
+}
+
+func (s *Store) GetEventsWithVectors(_ context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	return s.getEvents(tenantID, eventIDs, availableBy, true)
+}
+
+func (s *Store) getEvents(tenantID string, eventIDs []string, availableBy time.Time, hydrateVectors bool) ([]model.Event, error) {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 	tenant := s.entries[tenantID]
@@ -703,7 +711,13 @@ func (s *Store) GetEvents(_ context.Context, tenantID string, eventIDs []string,
 		if item.event.AvailableAt.After(availableBy) {
 			return nil, fmt.Errorf("%w: id=%s is not available as of request", store.ErrEventNotFound, eventID)
 		}
-		results = append(results, item.event)
+		event := item.event
+		if hydrateVectors {
+			event.Embedding = append([]float32(nil), item.vector...)
+		} else {
+			event.Embedding = nil
+		}
+		results = append(results, event)
 	}
 	return results, nil
 }

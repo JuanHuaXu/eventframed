@@ -139,3 +139,10 @@ type EventStore interface {
 	Snapshot(ctx context.Context) model.Snapshot
 	Close() error
 }
+
+// VectorEventStore is an optional capability for bounded analytical paths that
+// need durable semantic vectors. Keeping it outside EventStore preserves the
+// ordinary retrieval contract and third-party store compatibility.
+type VectorEventStore interface {
+	GetEventsWithVectors(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error)
+}

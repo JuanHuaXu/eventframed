@@ -34,6 +34,7 @@ func TestEventFrameDeltaReranksAfterRetrievalContract(t *testing.T) {
 		DefaultRecallK: 10, DefaultPackK: 2, DefaultTokenBudget: 1000, OverfetchMultiplier: 2,
 		CandidateRanker: ranker, CandidateRankerRequired: true,
 		RankDeltaStore: deltaStore, RankDeltaStoreRequired: true,
+		BaselineCalibration: calibration.Logit{Scale: 1, Bias: -1, Floor: 1e-6},
 	})
 	if err != nil {
 		t.Fatal(err)

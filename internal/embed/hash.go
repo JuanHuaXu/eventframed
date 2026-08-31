@@ -1,6 +1,7 @@
 package embed
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"hash/fnv"
@@ -36,6 +37,11 @@ type RoleAware interface {
 	EmbedQuery(text string) ([]float32, error)
 }
 
+type ContextRoleAware interface {
+	EmbedDocumentContext(ctx context.Context, text string) ([]float32, error)
+	EmbedQueryContext(ctx context.Context, text string) ([]float32, error)
+}
+
 func Document(embedder Embedder, text string) ([]float32, error) {
 	if roleAware, ok := embedder.(RoleAware); ok {
 		return roleAware.EmbedDocument(text)
@@ -48,6 +54,26 @@ func Query(embedder Embedder, text string) ([]float32, error) {
 		return roleAware.EmbedQuery(text)
 	}
 	return embedder.Embed(text)
+}
+
+func DocumentContext(ctx context.Context, embedder Embedder, text string) ([]float32, error) {
+	if contextual, ok := embedder.(ContextRoleAware); ok {
+		return contextual.EmbedDocumentContext(ctx, text)
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	return Document(embedder, text)
+}
+
+func QueryContext(ctx context.Context, embedder Embedder, text string) ([]float32, error) {
+	if contextual, ok := embedder.(ContextRoleAware); ok {
+		return contextual.EmbedQueryContext(ctx, text)
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	return Query(embedder, text)
 }
 
 // HashEmbedder is a deterministic, dependency-free development fallback. It

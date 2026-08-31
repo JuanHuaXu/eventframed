@@ -268,6 +268,14 @@ func (s *Store) Search(ctx context.Context, tenantID string, vector []float32, a
 }
 
 func (s *Store) GetEvents(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	return s.getEvents(ctx, tenantID, eventIDs, availableBy, false)
+}
+
+func (s *Store) GetEventsWithVectors(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	return s.getEvents(ctx, tenantID, eventIDs, availableBy, true)
+}
+
+func (s *Store) getEvents(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time, hydrateVectors bool) ([]model.Event, error) {
 	s.eventMu.RLock()
 	defer s.eventMu.RUnlock()
 	collection, err := s.collection(ctx, tenantID)
@@ -290,7 +298,15 @@ func (s *Store) GetEvents(ctx context.Context, tenantID string, eventIDs []strin
 		if event.ID != eventID || event.TenantID != tenantID || event.AvailableAt.After(availableBy) {
 			return nil, fmt.Errorf("%w: id=%s failed identity or availability validation", store.ErrEventNotFound, eventID)
 		}
-		event.Embedding = nil
+		if hydrateVectors {
+			if len(record.Vector) != s.config.Dimension {
+				return nil, fmt.Errorf("%w: id=%s has an invalid durable vector", store.ErrEventNotFound, eventID)
+			}
+			event.Embedding = append([]float32(nil), record.Vector...)
+			event.EmbeddingModel = s.config.EmbeddingModel
+		} else {
+			event.Embedding = nil
+		}
 		results = append(results, event)
 	}
 	return results, nil

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"reflect"
 	"strings"
 	"sync"
 	"testing"
@@ -23,6 +24,29 @@ import (
 
 func testConfig(path, modelKey string) libravdbstore.Config {
 	return libravdbstore.Config{Path: path, Dimension: 4, Quantization: "none", MemoryMapping: true, EmbeddingModel: modelKey}
+}
+
+func TestVectorHydrationIsExplicit(t *testing.T) {
+	ctx := context.Background()
+	config := testConfig(t.TempDir()+"/vectors.libravdb", "model-a:d4")
+	runtime, err := libravdbstore.Open(config)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer runtime.Close()
+	event := testutil.Event("vector", "stored vector", time.Now().UTC())
+	want := []float32{1, 2, 3, 4}
+	if _, err := runtime.Put(ctx, event, want, "digest"); err != nil {
+		t.Fatal(err)
+	}
+	ordinary, err := runtime.GetEvents(ctx, event.TenantID, []string{event.ID}, time.Now().Add(time.Minute))
+	if err != nil || len(ordinary[0].Embedding) != 0 {
+		t.Fatalf("ordinary event leaked vector: %+v, %v", ordinary, err)
+	}
+	hydrated, err := runtime.GetEventsWithVectors(ctx, event.TenantID, []string{event.ID}, time.Now().Add(time.Minute))
+	if err != nil || !reflect.DeepEqual(hydrated[0].Embedding, want) || hydrated[0].EmbeddingModel != config.EmbeddingModel {
+		t.Fatalf("hydrated vector = %v model=%q, %v", hydrated[0].Embedding, hydrated[0].EmbeddingModel, err)
+	}
 }
 
 func TestEmbeddedMixedSearchAndPutCompletes(t *testing.T) {

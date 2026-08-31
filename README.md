@@ -20,6 +20,21 @@ authority layer. It does not grant `eventframed` tool-execution authority.
 Contract 14 adds reversible higher-order EventFrames: a slow-path invariant
 seeker may propose a join, while the daemon requires exact Anti-Pigeon authority,
 preserves every constituent, and applies explicit coarse/fine retrieval preference.
+Contract 15 adds validity-constrained property fuzzing as a read-only slow-path
+audit. Declared field bundles are perturbed over an as-of context, the local
+embedding-nomination law is recomputed, and total-variation sensitivity plus a
+one-sided stability bound is reported. The audit cannot publish an invariant or
+make a causal claim. Low packing-boundary certainty can also nominate the bounded
+context for an in-process background fuzz queue. Nomination is nonblocking;
+one idle-gated worker executes snapshot-bound source-EventFrame bundle audits.
+Contract 16 adds a separate chain-translation audit. It compares two aligned
+baseline/revealed trajectory pairs, enforces exact stage maps and
+unchanged-coordinate locality, and classifies higher-order invariant,
+predictive-translation, or divergence candidates. It is read-only and never
+turns a declared correspondence into a causal edge or accepted graph snap.
+Structurally impossible candidates stop before prediction. Eligible audits use
+version-matched stored EventFrame vectors and a bounded exact-score cache; the
+response states whether prediction was evaluated.
 
 ## Architecture
 
@@ -70,6 +85,24 @@ npm install
 cd ..
 make check
 make build
+```
+
+Run the checked-in public-fact fuzzing confirmation with:
+
+```sh
+go run ./cmd/eventframe-fuzz-eval -split confirmation
+```
+
+Background fuzz nomination is enabled in the daemon by default. Inspect its
+bounded in-memory queue at `GET /v1/invariants:fuzz-queue`; disable it with
+`-background-fuzz=false` or tune its certainty, capacity, interval, timeout,
+cooldown, event, and trial bounds with the corresponding `-background-fuzz-*`
+flags.
+
+Run the checked-in public-grounded chain-translation controls with:
+
+```sh
+go run ./cmd/eventframe-translation-eval -split confirmation
 ```
 
 Run the daemon with conservative local defaults:
@@ -209,6 +242,12 @@ resolution are implemented end to end.
   revoked Anti-Pigeon authority immediately removes the macro from recall even
   before physical decomposition. The daemon validates proposals but does not yet
   discover candidate joins autonomously.
+- Background fuzz jobs contain a query vector, snapshot, bounded EventFrame IDs,
+  and synthetic 5W1H replacement bundles, not raw query or transcript text. The
+  current queue is bounded and in-process: pending work is lost on restart. It
+  executes only while no recall is active, drops stale snapshots without retry,
+  and can produce audit summaries only; it cannot publish an invariant, graph,
+  posterior, residual, composition, or rank delta.
 - Agency can only request a wake, notification, or scheduled agent turn. The
   OpenClaw authority layer cannot execute tools through this protocol, and the
   generated turn explicitly retains normal user and OpenClaw approval policy.

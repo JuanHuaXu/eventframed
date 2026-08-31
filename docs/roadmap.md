@@ -60,6 +60,15 @@
 - [ ] Untouched OpenClaw confirmation trajectories
 - [ ] Full marked next-event/no-event proper-score evaluator
 
+## Milestone 7: background invariant incubation
+
+- [x] Low-certainty recall nomination using the existing packing-boundary signal
+- [x] Nonblocking bounded queue with set-based cooldown deduplication
+- [x] Single idle-gated worker with timeout and stale-snapshot rejection
+- [x] Vector-only query payload and aggregate queue-status API
+- [ ] Durable pending-job recovery and independent randomized coverage stream
+- [ ] Mixed-load p99 and trigger-yield confirmation benchmark
+
 The production policy defaults to updating the complete bounded retrieval
 frontier. Selective activation remains an ablation until fresh confirmation
 shows that it retains enough frontier-update-all quality to justify suppression.

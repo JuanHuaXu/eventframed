@@ -40,3 +40,20 @@ go run ./cmd/eventframe-synthetic-text
 
 The generator is deterministic. `manifest.json` records counts, source URLs,
 and the SHA-256 digest of `corpus.jsonl`.
+
+Run the validity-constrained property-fuzzing audit on the untouched
+confirmation split with:
+
+```sh
+go run ./cmd/eventframe-fuzz-eval \
+  -input testdata/text-public-facts/corpus.jsonl \
+  -split confirmation
+```
+
+This audit perturbs only canonical 5W1H fields and reports model sensitivity of
+the local embedding-nomination law. It does not treat a perturbation as a causal
+intervention or automatically publish an invariant.
+
+Checked-in outputs and their interpretation are in
+`fuzz-design-results.json`, `fuzz-confirmation-results.json`, and
+`FUZZ_RESULTS.md`.

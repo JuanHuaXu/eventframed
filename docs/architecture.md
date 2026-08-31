@@ -136,6 +136,88 @@ preferences after the frozen candidate contract and before packing; `auto`
 changes nothing. This gives broad queries a macro view and detailed queries the
 constituents without pretending the abstraction replaced its evidence.
 
+## Validity-constrained property fuzzing
+
+Property fuzzing is an explicit read-only slow path. A caller binds an exact
+runtime snapshot, an as-of context of 2 to 64 EventFrames, a query, a stability
+threshold, a one-sided confidence contract, and at most 512 declared
+perturbations. Each perturbation names its target event, property family,
+validity rule, validation kind, and one atomic synthetic replacement bundle over
+5W1H fields. A declared context relocation may change only `who`, `where`, or
+`when`. A semantic perturbation must copy `what`, `why`, and `how` atomically
+from a distinct as-of source EventFrame in the same context; the daemon verifies
+each value against that source. Missing validity provenance, unknown fields,
+no-op replacements, future evidence,
+cross-tenant evidence, duplicate identifiers, and stale snapshots fail closed.
+
+The current runtime output functional is a normalized nomination law over the
+bounded context. It embeds the query and each canonical EventFrame, transforms
+cosine similarity into nonnegative mass, normalizes across the fixed context,
+and measures total-variation movement after each valid perturbation. A property
+is reported as a conditional model invariant only when the minimum trial count
+is met and the Bonferroni-simultaneous one-sided Wilson lower bound on the
+stable-trial probability reaches the declared requirement. Point estimates or
+unadjusted per-property intervals alone cannot certify it. Every property chosen
+under one audit design must be evaluated in the same request; request splitting
+does not preserve family-wise coverage.
+
+The operation does not alter stored events, vectors, posteriors, residuals,
+rank deltas, graph state, or composition state. It does not use raw transcript
+content. Unchanged canonical frames are embedded once per request, so its cost
+is `O((N+P)D + PN)` for `P` perturbations, `N` bounded context events, and
+embedding dimension `D`, so it is never called by
+the recall hot path. Results are sensitivity fingerprints for ontology review
+and small-scale transfer hypotheses. They are not interventions or causal
+effects, and they cannot authorize a join without separate Anti-Pigeon evidence.
+
+Low packing-boundary certainty may nominate this audit after a successful
+recall. Nomination copies only the existing query vector, query digest, exact
+snapshot, bounded candidate IDs, and source-EventFrame semantic bundles into a
+nonblocking bounded queue. The request path never runs perturbation predictions.
+A single worker checks at a configured interval and starts at most one job only
+when no recall is active. Queue saturation drops the nomination rather than
+blocking recall; cooldown deduplication is set-based over the bounded candidate
+IDs so tied retrieval order cannot duplicate work.
+
+The worker fails closed when the snapshot has moved, uses the captured query
+vector without retaining raw query text, and records only an aggregate result
+summary. Its jobs are adaptively selected model-sensitivity audits, not an
+unbiased sample of all EventFrames. Population claims therefore require an
+independent randomized audit stream or valid inclusion-probability correction.
+The current queue is in-process and non-durable, so restart discards pending
+jobs. That limitation affects audit coverage, not serving correctness.
+
+## Predictive chain translation
+
+Chain translation is a separate snapshot-bound, read-only slow path. It
+resolves four observed trajectories: baseline and revealed chains in each of
+two domains. Frozen stage maps bind the compared coordinate and exact
+before/after correspondence. Every trajectory is occurrence-ordered, every
+non-target 5W1H coordinate must remain unchanged, and a strict translation
+candidate must commute at every aligned stage and preserve the signed
+nomination-law effect within tolerance.
+
+An erased terminal distinction with small law movement in both domains is an
+invariant candidate. Mapped propagation through every stage with bounded
+cross-domain effect defect is a predictive-translation candidate. Any local
+mismatch, incomplete propagation, terminal disagreement, or excessive defect
+is divergence. These are diagnostic labels over declared maps; graph
+publication, Anti-Pigeon grouping, autonomous map discovery, and SCM-backed
+causal acceptance remain separate transitions.
+
+The evaluator orders work from cheapest to most expensive. It first validates
+chronology, exact stage correspondence, and unchanged-coordinate locality. A
+candidate that cannot satisfy either predictive branch returns divergence with
+`prediction_evaluated=false` and never constructs the predictor. Otherwise the
+service hydrates vectors through the optional audit-only store capability;
+ordinary `GetEvents` remains vector-free so recall packets cannot grow silently.
+Only vectors whose model key and semantic-representation marker match the active
+embedder are reused. A bounded concurrent cache reuses canonical query vectors
+and immutable-event raw nomination scores, with fixed-size digests for query and
+generated-frame keys plus single-flight miss collapse.
+Changed or mismatched EventFrames are embedded normally. Cache eviction changes
+cost only and cannot change the normalized law or classification.
+
 ## Trust boundary
 
 Stored content can contain arbitrary user, model, or tool text. It is data, not

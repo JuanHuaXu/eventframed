@@ -53,16 +53,24 @@ func (e *OpenAICompatible) Embed(text string) ([]float32, error) {
 }
 
 func (e *OpenAICompatible) EmbedDocument(text string) ([]float32, error) {
-	return e.embed(e.config.DocumentPrefix + text)
+	return e.embed(context.Background(), e.config.DocumentPrefix+text)
 }
 
 func (e *OpenAICompatible) EmbedQuery(text string) ([]float32, error) {
-	return e.embed(e.config.QueryPrefix + text)
+	return e.embed(context.Background(), e.config.QueryPrefix+text)
 }
 
-func (e *OpenAICompatible) embed(text string) ([]float32, error) {
+func (e *OpenAICompatible) EmbedDocumentContext(ctx context.Context, text string) ([]float32, error) {
+	return e.embed(ctx, e.config.DocumentPrefix+text)
+}
+
+func (e *OpenAICompatible) EmbedQueryContext(ctx context.Context, text string) ([]float32, error) {
+	return e.embed(ctx, e.config.QueryPrefix+text)
+}
+
+func (e *OpenAICompatible) embed(ctx context.Context, text string) ([]float32, error) {
 	payload, _ := json.Marshal(map[string]any{"model": e.config.Model, "input": text, "encoding_format": "float"})
-	request, err := http.NewRequestWithContext(context.Background(), http.MethodPost, e.config.URL, bytes.NewReader(payload))
+	request, err := http.NewRequestWithContext(ctx, http.MethodPost, e.config.URL, bytes.NewReader(payload))
 	if err != nil {
 		return nil, err
 	}

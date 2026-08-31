@@ -75,6 +75,108 @@ func TestObserveThenRecallOverHTTP(t *testing.T) {
 	}
 }
 
+func TestFuzzSensitivityOverHTTP(t *testing.T) {
+	memory := memorystore.New()
+	embedder, _ := embed.NewHashEmbedder(32)
+	runtime, err := service.New(memory, embedder, service.Config{DefaultRecallK: 10, DefaultPackK: 10, DefaultTokenBudget: 1000})
+	if err != nil {
+		t.Fatal(err)
+	}
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+	now := time.Now().UTC()
+	for _, event := range []model.Event{
+		testutil.Event("one", "Venus is hottest", now.Add(-2*time.Minute)),
+		testutil.Event("two", "Antarctica is a continent", now.Add(-time.Minute)),
+	} {
+		var observed model.ObserveResponse
+		postJSON(t, server.URL+"/v1/events:observe", model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: event.ID, Event: event}, &observed)
+	}
+	request := model.FuzzSensitivityRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", Query: "hottest planet", AsOf: now,
+		BaseSnapshot: memory.Snapshot(context.Background()), EventIDs: []string{"one", "two"},
+		StabilityThreshold: .05, RequiredStableProbability: .9, ConfidenceLevel: .9, MinTrials: 1,
+		Perturbations: []model.FuzzPerturbation{{
+			ID: "relocation", PropertyID: "context-envelope", EventID: "one", ValidityRuleID: "public-relocation-v1",
+			ValidationKind: model.FuzzValidationDeclaredRelocation,
+			Replacements: map[model.FuzzField]model.Field{
+				model.FuzzWho: {Value: "another public evaluator", Source: model.SourceSynthetic, Confidence: 1, Evidence: "declared context relocation"},
+			},
+		}},
+	}
+	var response model.FuzzSensitivityResponse
+	postJSON(t, server.URL+"/v1/invariants:fuzz", request, &response)
+	if len(response.Trials) != 1 || response.PredictorKind == "" || response.CausalClaim {
+		t.Fatalf("fuzz response = %+v", response)
+	}
+}
+
+func TestBackgroundFuzzQueueStatusOverHTTP(t *testing.T) {
+	embedder, _ := embed.NewHashEmbedder(8)
+	runtime, err := service.New(memorystore.New(), embedder, service.Config{
+		DefaultRecallK: 10, DefaultPackK: 10, DefaultTokenBudget: 1000,
+		BackgroundFuzz: service.BackgroundFuzzPolicy{Enabled: true, QueueCapacity: 4, WorkerInterval: time.Hour, JobTimeout: time.Second, MaxEvents: 4, MaxPerturbations: 4, MinTrials: 1},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = runtime.Close() })
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+	response, err := http.Get(server.URL + "/v1/invariants:fuzz-queue")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer response.Body.Close()
+	var status model.BackgroundFuzzQueueStatus
+	if err := json.NewDecoder(response.Body).Decode(&status); err != nil {
+		t.Fatal(err)
+	}
+	if response.StatusCode != http.StatusOK || !status.Enabled || status.Capacity != 4 {
+		t.Fatalf("background fuzz queue status = %+v, HTTP %d", status, response.StatusCode)
+	}
+}
+
+func TestChainTranslationOverHTTP(t *testing.T) {
+	memory := memorystore.New()
+	embedder, _ := embed.NewHashEmbedder(32)
+	runtime, err := service.New(memory, embedder, service.Config{DefaultRecallK: 10, DefaultPackK: 10, DefaultTokenBudget: 1000})
+	if err != nil {
+		t.Fatal(err)
+	}
+	server := httptest.NewServer(api.NewServer(runtime, slog.New(slog.NewTextHandler(io.Discard, nil))).Handler())
+	t.Cleanup(server.Close)
+	now := time.Now().UTC()
+	values := map[string]string{
+		"ta0-0": "low input", "ta0-1": "same outcome", "ta1-0": "high input", "ta1-1": "same outcome",
+		"tb0-0": "cold input", "tb0-1": "same result", "tb1-0": "hot input", "tb1-1": "same result",
+	}
+	for id, value := range values {
+		availableAt := now.Add(-2 * time.Minute)
+		if id[len(id)-1] == '1' {
+			availableAt = availableAt.Add(time.Minute)
+		}
+		event := testutil.Event(id, value, availableAt)
+		var observed model.ObserveResponse
+		postJSON(t, server.URL+"/v1/events:observe", model.ObserveRequest{ProtocolVersion: model.ProtocolVersion, IdempotencyKey: id, Event: event}, &observed)
+	}
+	request := model.ChainTranslationRequest{
+		ProtocolVersion: model.ProtocolVersion, TenantID: "tenant-a", Query: "outcome", AsOf: now, BaseSnapshot: memory.Snapshot(context.Background()),
+		DomainA:            model.ChainTrajectory{BaselineEventIDs: []string{"ta0-0", "ta0-1"}, RevealedEventIDs: []string{"ta1-0", "ta1-1"}},
+		DomainB:            model.ChainTrajectory{BaselineEventIDs: []string{"tb0-0", "tb0-1"}, RevealedEventIDs: []string{"tb1-0", "tb1-1"}},
+		InvariantThreshold: 1, TranslationThreshold: 1,
+		StageMaps: []model.ChainStageMap{
+			{Stage: 0, DomainAField: model.FuzzWhat, DomainBField: model.FuzzWhat, DomainABefore: "low input", DomainAAfter: "high input", DomainBBefore: "cold input", DomainBAfter: "hot input", CorrespondenceID: "http-input", ValidityEvidence: "HTTP fixture"},
+			{Stage: 1, DomainAField: model.FuzzWhat, DomainBField: model.FuzzWhat, DomainABefore: "same outcome", DomainAAfter: "same outcome", DomainBBefore: "same result", DomainBAfter: "same result", CorrespondenceID: "http-output", ValidityEvidence: "HTTP fixture"},
+		},
+	}
+	var response model.ChainTranslationResponse
+	postJSON(t, server.URL+"/v1/invariants:translate", request, &response)
+	if response.Classification != model.ChainHigherOrderInvariant || !response.PredictionEvaluated || response.ClaimScope != "predictive" || response.CausalClaim || response.PublishesGraphOrGrouping {
+		t.Fatalf("translation response = %+v", response)
+	}
+}
+
 type failingReadinessProbe struct{}
 
 func (failingReadinessProbe) Ready(context.Context) error { return errors.New("sidecar unavailable") }

@@ -107,6 +107,82 @@ abstraction versions, persists the reason and member set in a durable tombstone,
 and preserves every constituent. The operation rejects an
 ordinary event ID rather than becoming a second general deletion API.
 
+### `POST /v1/invariants:fuzz`
+
+Runs a snapshot-bound, read-only property-sensitivity audit over 2 to 64 named
+EventFrames. The request includes an as-of time, exact base snapshot, query,
+stability threshold, required stable probability, confidence level (`0.90`,
+`0.95`, or `0.99`), minimum trial count, and at most 512 perturbations. Each
+perturbation must name a unique ID, property ID, target event, validity-rule ID,
+validation kind, and an atomic map of one or more 5W1H replacements. Replacement
+fields must be marked `synthetic` and carry validity evidence. The
+`declared_context_relocation` kind may change only `who`, `where`, or `when`.
+The `source_event_semantic_bundle` kind must name a distinct source event in the
+same as-of context and copy its `what`, `why`, and `how` values exactly and
+atomically. A replacement changes the audit copy only; durable events and their
+embeddings remain untouched.
+
+The response reports the baseline normalized embedding-nomination law, each
+trial's total-variation distance and largest event-mass movement, and per-property
+stable fractions, Bonferroni-simultaneous one-sided Wilson lower bounds,
+the confidence level used for each bound, mean/max movement, and
+conditional-invariant decisions. `causal_claim` is always `false`. A stale or
+concurrently moving snapshot returns HTTP 409. All other malformed, no-op,
+cross-tenant, future-evidence, or invalid perturbations return HTTP 400. The
+endpoint cannot publish a composition, graph snap, posterior, residual, or rank
+delta. Every property selected or compared under one audit design must appear in
+the same request; splitting a family across requests invalidates the reported
+simultaneous interpretation.
+
+### `GET /v1/invariants:fuzz-queue`
+
+Returns aggregate state for the bounded in-process background fuzz queue:
+capacity, current depth, running count, cumulative enqueue, completion, failure,
+stale, drop, and deduplication counts, plus the latest aggregate result summary.
+It never returns query text, query vectors, EventFrame IDs, perturbation values,
+or transcript content.
+
+After a successful recall, packing-boundary answer certainty at or below the
+configured threshold may nominate a source-EventFrame semantic-bundle audit.
+The enqueue is nonblocking and duplicate work is suppressed by tenant, query
+digest, exact snapshot, and canonical candidate set. The single worker runs only
+when no recall is active. A changed snapshot marks the job stale and the worker
+does not reinterpret it against current evidence. Pending jobs are not durable
+across daemon restart. Automatic results remain proposal-only and have the same
+non-causal, non-publication semantics as explicit fuzz responses.
+
+### `POST /v1/invariants:translate`
+
+Runs a snapshot-bound, read-only comparison of four equal-length observed
+trajectories: baseline and revealed chains in domain A and domain B. Chains must
+contain 2 to 32 distinct, same-tenant, as-of EventFrames in strict occurrence
+order with nondecreasing availability. A stage map is required for every
+position and declares the domain-specific 5W1H coordinate, exact before/after
+values, a correspondence ID, and validity evidence. Stage zero must change in
+both domains. Later stages must either change in both domains or remain
+unchanged in both.
+
+At each stage, all undeclared 5W1H coordinates must remain exactly unchanged.
+The response reports per-stage locality and correspondence checks, domain-wise
+total-variation movement, the total-variation defect between aligned signed
+nomination effects, terminal agreement, and one classification:
+`higher_order_invariant_candidate`, `predictive_translation_candidate`, or
+`divergence`. Invariance additionally requires an unchanged terminal stage and
+bounded movement in both domains. Translation requires mapped change at every
+stage, edgewise commutation, terminal agreement, and bounded effect defect.
+`prediction_evaluated=false` means structural checks already forced divergence;
+movement and defect fields are then non-measurements and must not be interpreted
+as observed zeros. When it is true, the predictor kind and output functional name
+the law used by those numeric fields.
+
+The endpoint always returns `claim_scope=predictive`, `causal_claim=false`, and
+`publishes_graph_or_grouping=false`. A correspondence and its validity text are
+audit inputs, not learned truth or publication authority. SCM-backed causal
+acceptance, Anti-Pigeon grouping, and predictive-snap publication require their
+separate contracts. Snapshot motion returns HTTP 409; malformed, shuffled,
+cross-tenant, future-evidence, duplicate-evidence, or invalid-map requests
+return HTTP 400.
+
 ### `POST /v1/openclaw/context:recall`
 
 Runs the same internal recall operation and scoring contracts, then returns the
@@ -388,3 +464,14 @@ earlier contracts omit the field and retain symmetric compatibility behavior.
 `contract_version=14` adds typed higher-order composition metadata, exact
 Anti-Pigeon-authorized atomic publication, reversible decomposition, and the
 `auto`/`coarse`/`fine` retrieval-resolution contract.
+
+`contract_version=15` adds the read-only, snapshot-bound property-fuzzing
+contract and context-aware cancellation for its embedding work. It adds no
+durable records or migration fields; the marker prevents older clients from
+assuming the audit surface is absent.
+
+`contract_version=16` adds the read-only chain-translation audit. It adds no
+durable records or migration fields and remains outside recall, Bayesian
+update, rank-delta, composition, and predictive-snap publication paths. The
+additive `prediction_evaluated` response field distinguishes structural
+short-circuiting from an evaluated zero movement.

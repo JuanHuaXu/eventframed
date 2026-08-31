@@ -1,0 +1,54 @@
+{
+  "schema_version": "eventframe.fuzz-public-facts.v1",
+  "dataset": "testdata/text-public-facts/corpus.jsonl",
+  "split": "design",
+  "predictor_kind": "embedding-nomination/feature-hash-v1:d256:repr=eventframe-5w1h-v1",
+  "output_functional": "normalized-context-embedding-nomination-law",
+  "distance_kind": "total-variation",
+  "stability_threshold": 0.05,
+  "required_stable_probability": 0.9,
+  "confidence_level": 0.95,
+  "queries": 96,
+  "trials": 264,
+  "properties": [
+    {
+      "property_id": "context-envelope",
+      "trials": 96,
+      "stable_trials": 96,
+      "stable_fraction": 1,
+      "stable_probability_lcb": 0.9549523461332078,
+      "bound_confidence_level": 0.9833333333333333,
+      "mean_total_variation": 0.0016271460618258833,
+      "max_total_variation": 0.004730076821977208,
+      "conditional_invariant": true
+    },
+    {
+      "property_id": "cross-domain-semantic-bundle",
+      "trials": 96,
+      "stable_trials": 90,
+      "stable_fraction": 0.9375,
+      "stable_probability_lcb": 0.8627650217710434,
+      "bound_confidence_level": 0.9833333333333333,
+      "mean_total_variation": 0.02367286456556392,
+      "max_total_variation": 0.08683850819899755,
+      "conditional_invariant": false
+    },
+    {
+      "property_id": "same-answer-paraphrase-bundle",
+      "trials": 72,
+      "stable_trials": 72,
+      "stable_fraction": 1,
+      "stable_probability_lcb": 0.9408250260916764,
+      "bound_confidence_level": 0.9833333333333333,
+      "mean_total_variation": 0.008228481045190302,
+      "max_total_variation": 0.023786474930791612,
+      "conditional_invariant": true
+    }
+  ],
+  "interpretation": [
+    "The experiment measures local model sensitivity, not real-world causal effects.",
+    "A cross-domain bundle is a complete 5W1H semantic bundle copied from a different sourced public-fact EventFrame.",
+    "Conditional-invariant status requires Bonferroni-simultaneous one-sided Wilson lower bounds and the frozen minimum trial count.",
+    "Evaluation-oracle links construct the valid paraphrase family; this does not demonstrate autonomous discovery of a domain translation."
+  ]
+}

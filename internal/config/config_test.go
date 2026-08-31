@@ -152,3 +152,23 @@ func TestSharedEvidenceWeightIsBounded(t *testing.T) {
 		}
 	}
 }
+
+func TestBackgroundFuzzConfigurationIsBoundedAndCanBeDisabled(t *testing.T) {
+	configured, err := Parse([]string{"-background-fuzz-certainty", "0.3", "-background-fuzz-queue", "16", "-background-fuzz-interval-ms", "500"})
+	if err != nil || !configured.BackgroundFuzz || configured.BackgroundFuzzCertainty != .3 || configured.BackgroundFuzzQueue != 16 || configured.BackgroundFuzzIntervalMS != 500 {
+		t.Fatalf("background fuzz config = %#v, %v", configured, err)
+	}
+	disabled, err := Parse([]string{"-background-fuzz=false", "-background-fuzz-queue", "0"})
+	if err != nil || disabled.BackgroundFuzz {
+		t.Fatalf("disabled background fuzz config = %#v, %v", disabled, err)
+	}
+	for _, args := range [][]string{
+		{"-background-fuzz-certainty", "0"}, {"-background-fuzz-queue", "0"},
+		{"-background-fuzz-interval-ms", "0"}, {"-background-fuzz-max-events", "1"},
+		{"-background-fuzz-max-trials", "513"},
+	} {
+		if _, parseErr := Parse(args); parseErr == nil {
+			t.Fatalf("invalid background fuzz controls accepted: %v", args)
+		}
+	}
+}

@@ -1,11 +1,13 @@
 package embed_test
 
 import (
+	"context"
 	"encoding/json"
 	"math"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 )
@@ -31,6 +33,34 @@ func TestOpenAICompatibleValidatesAndNormalizesVector(t *testing.T) {
 	}
 	if embedder.ModelKey() != "openai-compatible:model-a:d2:repr=eventframe-5w1h-v1" {
 		t.Fatalf("model key = %s", embedder.ModelKey())
+	}
+}
+
+func TestOpenAICompatibleContextEmbeddingCancelsRequest(t *testing.T) {
+	started := make(chan struct{})
+	release := make(chan struct{})
+	server := httptest.NewServer(http.HandlerFunc(func(_ http.ResponseWriter, _ *http.Request) {
+		close(started)
+		<-release
+	}))
+	defer server.Close()
+	defer close(release)
+	embedder, _ := embed.NewOpenAICompatible(embed.OpenAICompatibleConfig{URL: server.URL, Model: "model-a", Dimension: 2, Timeout: time.Minute})
+	ctx, cancel := context.WithCancel(context.Background())
+	done := make(chan error, 1)
+	go func() {
+		_, err := embed.QueryContext(ctx, embedder, "question")
+		done <- err
+	}()
+	<-started
+	cancel()
+	select {
+	case err := <-done:
+		if err == nil {
+			t.Fatal("canceled embedding request returned no error")
+		}
+	case <-time.After(time.Second):
+		t.Fatal("canceled embedding request did not stop")
 	}
 }
 

@@ -13,6 +13,7 @@ import (
 	"sort"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"time"
 	"unicode/utf8"
 
@@ -22,6 +23,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/calibration"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
 	"github.com/JuanHuaXu/eventframed/internal/frame"
+	"github.com/JuanHuaXu/eventframed/internal/fuzzing"
 	graphpolicy "github.com/JuanHuaXu/eventframed/internal/graph"
 	"github.com/JuanHuaXu/eventframed/internal/invariant"
 	"github.com/JuanHuaXu/eventframed/internal/model"
@@ -31,6 +33,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/residual"
 	"github.com/JuanHuaXu/eventframed/internal/retrieval"
 	"github.com/JuanHuaXu/eventframed/internal/store"
+	"github.com/JuanHuaXu/eventframed/internal/translation"
 )
 
 const (
@@ -75,17 +78,21 @@ type Config struct {
 	AgencySigner               *agency.Signer
 	AgencyIssuerToken          string
 	AgencyAuthorityToken       string
+	BackgroundFuzz             BackgroundFuzzPolicy
 }
 
 type Service struct {
-	store     store.EventStore
-	embedder  embed.Embedder
-	config    Config
-	ranker    retrieval.CandidateRanker
-	retriever retrieval.CandidateRetriever
-	index     retrieval.CandidateIndex
-	readiness retrieval.ReadinessProbe
-	rankDelta rankdelta.Store
+	store           store.EventStore
+	embedder        embed.Embedder
+	config          Config
+	ranker          retrieval.CandidateRanker
+	retriever       retrieval.CandidateRetriever
+	index           retrieval.CandidateIndex
+	readiness       retrieval.ReadinessProbe
+	rankDelta       rankdelta.Store
+	nominationCache *fuzzing.NominationCache
+	backgroundFuzz  *backgroundFuzzQueue
+	activeRecalls   atomic.Int64
 }
 
 func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*Service, error) {
@@ -190,7 +197,18 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	if _, err := eventStore.BindBayesianPolicy(context.Background(), policyDigest); err != nil {
 		return nil, fmt.Errorf("bind Bayesian policy: %w", err)
 	}
-	return &Service{store: eventStore, embedder: embedder, config: config, ranker: config.CandidateRanker, retriever: config.CandidateRetriever, index: config.CandidateIndex, readiness: config.ExternalReadiness, rankDelta: config.RankDeltaStore}, nil
+	if config.BackgroundFuzz.Enabled {
+		config.BackgroundFuzz = config.BackgroundFuzz.withDefaults()
+		if err := config.BackgroundFuzz.validate(); err != nil {
+			return nil, err
+		}
+	}
+	service := &Service{store: eventStore, embedder: embedder, config: config, ranker: config.CandidateRanker, retriever: config.CandidateRetriever, index: config.CandidateIndex, readiness: config.ExternalReadiness, rankDelta: config.RankDeltaStore,
+		nominationCache: fuzzing.NewNominationCache(128, 8192)}
+	if config.BackgroundFuzz.Enabled {
+		service.backgroundFuzz = newBackgroundFuzzQueue(service, config.BackgroundFuzz)
+	}
+	return service, nil
 }
 
 func (s *Service) Observe(ctx context.Context, request model.ObserveRequest) (model.ObserveResponse, error) {
@@ -268,6 +286,96 @@ func (s *Service) ComposeInvariant(ctx context.Context, request model.ComposeInv
 		}
 	}
 	return model.ComposeInvariantResponse{ProtocolVersion: model.ProtocolVersion, Event: event, Duplicate: result.Duplicate, Snapshot: result.Snapshot}, nil
+}
+
+// FuzzSensitivity is an explicit slow-path audit. It never mutates stored
+// events, posterior state, residuals, or the predictive graph.
+func (s *Service) FuzzSensitivity(ctx context.Context, request model.FuzzSensitivityRequest) (model.FuzzSensitivityResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.FuzzSensitivityResponse{}, err
+	}
+	if request.AsOf.IsZero() || request.AsOf.After(time.Now().UTC()) {
+		return model.FuzzSensitivityResponse{}, errors.New("as_of must be present-time or earlier")
+	}
+	before := s.store.Snapshot(ctx)
+	if before != request.BaseSnapshot {
+		return model.FuzzSensitivityResponse{}, store.ErrStaleSnapshot
+	}
+	events, err := s.getEventsForAnalysis(ctx, request.TenantID, request.EventIDs, request.AsOf.UTC())
+	if err != nil {
+		return model.FuzzSensitivityResponse{}, fmt.Errorf("resolve fuzz context: %w", err)
+	}
+	predictor, err := fuzzing.NewEmbeddingNominationPredictorWithCacheNamespace(ctx, s.embedder, request.Query, snapshotCacheNamespace(before), s.nominationCache)
+	if err != nil {
+		return model.FuzzSensitivityResponse{}, err
+	}
+	response, err := fuzzing.Evaluate(ctx, request, events, predictor)
+	if err != nil {
+		return model.FuzzSensitivityResponse{}, err
+	}
+	after := s.store.Snapshot(ctx)
+	if after != before {
+		return model.FuzzSensitivityResponse{}, store.ErrStaleSnapshot
+	}
+	response.Snapshot = after
+	return response, nil
+}
+
+// AuditChainTranslation compares observed baseline/revealed trajectories in two
+// domains. It is a read-only predictive audit and cannot publish causal edges,
+// graph snaps, groupings, or learned correspondences.
+func (s *Service) AuditChainTranslation(ctx context.Context, request model.ChainTranslationRequest) (model.ChainTranslationResponse, error) {
+	if err := checkProtocol(request.ProtocolVersion); err != nil {
+		return model.ChainTranslationResponse{}, err
+	}
+	if request.AsOf.IsZero() || request.AsOf.After(time.Now().UTC()) {
+		return model.ChainTranslationResponse{}, errors.New("as_of must be present-time or earlier")
+	}
+	before := s.store.Snapshot(ctx)
+	if before != request.BaseSnapshot {
+		return model.ChainTranslationResponse{}, store.ErrStaleSnapshot
+	}
+	ids := make([]string, 0, 4*len(request.StageMaps))
+	ids = append(ids, request.DomainA.BaselineEventIDs...)
+	ids = append(ids, request.DomainA.RevealedEventIDs...)
+	ids = append(ids, request.DomainB.BaselineEventIDs...)
+	ids = append(ids, request.DomainB.RevealedEventIDs...)
+	events, err := s.getEventsForAnalysis(ctx, request.TenantID, ids, request.AsOf.UTC())
+	if err != nil {
+		return model.ChainTranslationResponse{}, fmt.Errorf("resolve chain translation evidence: %w", err)
+	}
+	n := len(request.StageMaps)
+	if len(events) != 4*n {
+		return model.ChainTranslationResponse{}, errors.New("resolved chain translation evidence is incomplete")
+	}
+	chains := translation.Chains{
+		DomainABaseline: events[:n], DomainARevealed: events[n : 2*n],
+		DomainBBaseline: events[2*n : 3*n], DomainBRevealed: events[3*n:],
+	}
+	response, err := translation.EvaluateWithFactory(ctx, request, chains, func(ctx context.Context) (translation.Predictor, error) {
+		return fuzzing.NewEmbeddingNominationPredictorWithCacheNamespace(ctx, s.embedder, request.Query, snapshotCacheNamespace(before), s.nominationCache)
+	})
+	if err != nil {
+		return model.ChainTranslationResponse{}, err
+	}
+	after := s.store.Snapshot(ctx)
+	if after != before {
+		return model.ChainTranslationResponse{}, store.ErrStaleSnapshot
+	}
+	response.Snapshot = after
+	return response, nil
+}
+
+func (s *Service) getEventsForAnalysis(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	if vectorStore, ok := s.store.(store.VectorEventStore); ok {
+		return vectorStore.GetEventsWithVectors(ctx, tenantID, eventIDs, availableBy)
+	}
+	return s.store.GetEvents(ctx, tenantID, eventIDs, availableBy)
+}
+
+func snapshotCacheNamespace(snapshot model.Snapshot) string {
+	return fmt.Sprintf("%d:%d:%d:%d:%d:%d:%d:%d:%d", snapshot.RuntimeVersion, snapshot.PolicyVersion, snapshot.ContractVersion,
+		snapshot.GraphVersion, snapshot.PosteriorVersion, snapshot.ResidualVersion, snapshot.AbstractionVersion, snapshot.AgencyVersion, snapshot.EvidenceEpoch)
 }
 
 func compositionMatchesRequest(event model.Event, request model.ComposeInvariantRequest) bool {
@@ -377,6 +485,8 @@ func (s *Service) observeEvent(ctx context.Context, event model.Event, digest st
 }
 
 func (s *Service) Recall(ctx context.Context, request model.RecallRequest) (model.ContextPacket, error) {
+	s.activeRecalls.Add(1)
+	defer s.activeRecalls.Add(-1)
 	const snapshotAttempts = 5
 	for attempt := 0; attempt < snapshotAttempts; attempt++ {
 		packet, err := s.recallOnce(ctx, request)
@@ -703,7 +813,7 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 		posteriorKeys[decision.EventID] = decision.PosteriorKey
 	}
 	packingResult := packing.Select(candidates, posteriorKeys, packK, recallK, tokenBudget, s.config.PackingPolicy)
-	return model.ContextPacket{
+	packet := model.ContextPacket{
 		ProtocolVersion:       model.ProtocolVersion,
 		Candidates:            packingResult.Candidates,
 		Recalled:              len(results),
@@ -717,7 +827,9 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 		NominationContract:    nominationContract,
 		Snapshot:              snapshot,
 		BayesianShadow:        shadow,
-	}, nil
+	}
+	s.nominateBackgroundFuzz(request, queryDigest, vector, candidates, packet)
+	return packet, nil
 }
 
 func (s *Service) loadResidualCandidates(ctx context.Context, request model.RecallRequest, queryDigest string, candidates []model.Candidate, decisions []model.BayesianDecision, decisionIndexes map[string]int) ([]model.ResidualCandidates, error) {
@@ -1780,11 +1892,15 @@ func validateSnapCertificates(request model.PredictiveSnapRequest, closure model
 }
 
 func (s *Service) Close() error {
+	var fuzzErr error
+	if s.backgroundFuzz != nil {
+		fuzzErr = s.backgroundFuzz.Close()
+	}
 	var rankDeltaErr error
 	if s.rankDelta != nil {
 		rankDeltaErr = s.rankDelta.Close()
 	}
-	return errors.Join(rankDeltaErr, s.store.Close())
+	return errors.Join(fuzzErr, rankDeltaErr, s.store.Close())
 }
 
 func (s *Service) resolveBudgets(request model.RecallRequest) (int, int, int, error) {

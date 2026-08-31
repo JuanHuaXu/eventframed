@@ -60,6 +60,14 @@ type Config struct {
 	AgencyPublicKey             string
 	AgencyIssuerToken           string
 	AgencyAuthorityToken        string
+	BackgroundFuzz              bool
+	BackgroundFuzzCertainty     float64
+	BackgroundFuzzQueue         int
+	BackgroundFuzzIntervalMS    int
+	BackgroundFuzzTimeoutMS     int
+	BackgroundFuzzCooldownSec   int
+	BackgroundFuzzMaxEvents     int
+	BackgroundFuzzMaxTrials     int
 }
 
 func Parse(args []string) (Config, error) {
@@ -120,6 +128,14 @@ func Parse(args []string) (Config, error) {
 	set.StringVar(&config.AgencyPublicKey, "agency-public-key", filepath.Join(defaultsRoot, "keys", "agency_ed25519.pub"), "Ed25519 agency public key path")
 	set.StringVar(&config.AgencyIssuerToken, "agency-issuer-token", filepath.Join(defaultsRoot, "keys", "agency_issuer.token"), "private agency proposal issuer token path")
 	set.StringVar(&config.AgencyAuthorityToken, "agency-authority-token", filepath.Join(defaultsRoot, "keys", "agency_authority.token"), "private OpenClaw authority token path")
+	set.BoolVar(&config.BackgroundFuzz, "background-fuzz", true, "enqueue low-certainty recall fuzz audits for an idle background worker")
+	set.Float64Var(&config.BackgroundFuzzCertainty, "background-fuzz-certainty", .20, "maximum packing-boundary answer certainty that nominates a background fuzz audit")
+	set.IntVar(&config.BackgroundFuzzQueue, "background-fuzz-queue", 128, "maximum in-memory background fuzz jobs")
+	set.IntVar(&config.BackgroundFuzzIntervalMS, "background-fuzz-interval-ms", 30_000, "minimum interval between idle background fuzz job starts")
+	set.IntVar(&config.BackgroundFuzzTimeoutMS, "background-fuzz-timeout-ms", 30_000, "timeout for one background fuzz job")
+	set.IntVar(&config.BackgroundFuzzCooldownSec, "background-fuzz-cooldown-seconds", 900, "deduplication cooldown after a background fuzz job")
+	set.IntVar(&config.BackgroundFuzzMaxEvents, "background-fuzz-max-events", 8, "maximum bounded frontier events in one background fuzz job")
+	set.IntVar(&config.BackgroundFuzzMaxTrials, "background-fuzz-max-trials", 8, "maximum source-bundle perturbations in one background fuzz job")
 	if err := set.Parse(args); err != nil {
 		return Config{}, err
 	}
@@ -208,6 +224,9 @@ func Parse(args []string) (Config, error) {
 	}
 	if config.AgencyEnabled && !strings.HasPrefix(config.Listen, "unix://") {
 		return Config{}, errors.New("agency mode requires a local Unix socket listener")
+	}
+	if config.BackgroundFuzz && (config.BackgroundFuzzCertainty <= 0 || config.BackgroundFuzzCertainty > 1 || config.BackgroundFuzzQueue <= 0 || config.BackgroundFuzzQueue > 4096 || config.BackgroundFuzzIntervalMS <= 0 || config.BackgroundFuzzTimeoutMS <= 0 || config.BackgroundFuzzCooldownSec < 0 || config.BackgroundFuzzMaxEvents < 2 || config.BackgroundFuzzMaxEvents > 64 || config.BackgroundFuzzMaxTrials <= 0 || config.BackgroundFuzzMaxTrials > 512) {
+		return Config{}, errors.New("background fuzz trigger, queue, timing, and audit bounds are invalid")
 	}
 	return config, nil
 }
