@@ -289,7 +289,9 @@ collection after the local migration:
 ```
 
 See [docs/architecture.md](docs/architecture.md),
-[docs/protocol.md](docs/protocol.md), [docs/roadmap.md](docs/roadmap.md),
+[docs/protocol.md](docs/protocol.md),
+[docs/design-vocabulary.md](docs/design-vocabulary.md),
+[docs/roadmap.md](docs/roadmap.md),
 [docs/release.md](docs/release.md), and the
 [claim rescue/replacement results](evidence/claim-rescue-v1/RESULTS.md).
 

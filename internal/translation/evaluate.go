@@ -10,6 +10,8 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/model"
 )
 
+// The formal chain is bounded; the runtime freezes that bound at 32 stages to
+// keep structural validation and four predictive evaluations resource-bounded.
 const maxChainStages = 32
 
 type Predictor interface {
@@ -38,6 +40,9 @@ func Evaluate(ctx context.Context, request model.ChainTranslationRequest, chains
 // EvaluateWithFactory defers predictor construction until structural checks
 // establish that a prediction can affect the classification.
 func EvaluateWithFactory(ctx context.Context, request model.ChainTranslationRequest, chains Chains, factory PredictorFactory) (model.ChainTranslationResponse, error) {
+	// Translation is a whole-chain condition: the mapped upstream change must
+	// commute through every aligned stage while non-target 5W1H fields stay fixed.
+	// Matching only the terminal outcome is insufficient.
 	if err := validate(request, chains); err != nil {
 		return model.ChainTranslationResponse{}, err
 	}
@@ -90,6 +95,8 @@ func EvaluateWithFactory(ctx context.Context, request model.ChainTranslationRequ
 		return model.ChainTranslationResponse{}, err
 	}
 	aMovement, bMovement, defect := predictionMetrics(a0, a1, b0, b1)
+	// Keep terminal agreement explicit because an aggregate effect defect can
+	// hide a large final-stage mismatch behind agreement at earlier stages.
 	terminalAgreement := math.Abs((a1[len(a1)-1]-a0[len(a0)-1])-(b1[len(b1)-1]-b0[len(b0)-1])) <= request.TranslationThreshold
 
 	classification := model.ChainDivergence

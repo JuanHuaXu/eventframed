@@ -22,6 +22,9 @@ type Predictor interface {
 }
 
 func Evaluate(ctx context.Context, request model.FuzzSensitivityRequest, events []model.Event, predictor Predictor) (model.FuzzSensitivityResponse, error) {
+	// Fuzzing measures predictive sensitivity on cloned synthetic EventFrames.
+	// It does not mutate stored memory, publish an abstraction, or establish a
+	// causal intervention claim.
 	if predictor == nil {
 		return model.FuzzSensitivityResponse{}, errors.New("fuzz predictor is required")
 	}
@@ -78,6 +81,9 @@ func Evaluate(ctx context.Context, request model.FuzzSensitivityRequest, events 
 }
 
 func Summarize(trials []model.FuzzTrialResult, requiredStableProbability, confidenceLevel float64, minTrials int) []model.FuzzPropertyReport {
+	// A stable point fraction is only descriptive. The invariant nomination uses
+	// simultaneous Wilson lower bounds and a minimum trial count so one noisy or
+	// under-sampled property cannot certify itself.
 	groups := make(map[string][]model.FuzzTrialResult)
 	for _, trial := range trials {
 		groups[trial.PropertyID] = append(groups[trial.PropertyID], trial)
@@ -223,6 +229,8 @@ func validatePerturbationAuthority(perturbation model.FuzzPerturbation, events [
 }
 
 func apply(events []model.Event, index int, perturbation model.FuzzPerturbation) ([]model.Event, []model.FuzzField, error) {
+	// Work on a clone: perturbations are counterfactual audit inputs, never writes
+	// to the observed EventFrame corpus.
 	result := append([]model.Event(nil), events...)
 	event := result[index]
 	fields := make([]model.FuzzField, 0, len(perturbation.Replacements))

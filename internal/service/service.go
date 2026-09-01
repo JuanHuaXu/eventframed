@@ -1194,6 +1194,8 @@ func indexRankDeltas(records []rankdelta.Record) map[string]rankdelta.Record {
 }
 
 func (s *Service) applyRankDeltas(candidates []model.Candidate, deltas map[string]rankdelta.Record, queryDigest string, packK int) float64 {
+	// Deltas reaching this point are cached correction records. Skepticism only
+	// modulates their rank effect; it neither creates nor validates a correction.
 	answerCertainty := rankBoundaryCertainty(candidates, packK)
 	for index := range candidates {
 		record, ok := deltas[rankDeltaKey(queryDigest, candidates[index].Event.ID)]
@@ -1216,6 +1218,8 @@ func (s *Service) applyRankDeltas(candidates []model.Candidate, deltas map[strin
 }
 
 func rankBoundaryCertainty(candidates []model.Candidate, packK int) float64 {
+	// This is the normalized retrieval-score gap at the packing boundary. It
+	// measures ranking decisiveness, not factual correctness or forecast belief.
 	if len(candidates) == 0 || packK <= 0 {
 		return 0
 	}

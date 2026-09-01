@@ -136,6 +136,9 @@ func newBackgroundFuzzQueue(service *Service, policy BackgroundFuzzPolicy) *back
 }
 
 func (s *Service) nominateBackgroundFuzz(request model.RecallRequest, queryDigest string, queryVector []float32, candidates []model.Candidate, packet model.ContextPacket) {
+	// Low boundary certainty nominates "curiosity" work; it is not evidence of
+	// an invariant. Copy only the bounded, already-retrieved frontier so recall
+	// returns without waiting for fuzz evaluation or another corpus search.
 	queue := s.backgroundFuzz
 	if queue == nil || packet.PacketAnswerCertainty > queue.policy.AnswerCertaintyThreshold || len(candidates) < 2 {
 		return
@@ -162,6 +165,8 @@ func (s *Service) nominateBackgroundFuzz(request model.RecallRequest, queryDiges
 }
 
 func backgroundSemanticBundles(events []model.Event, maximum int) []model.FuzzPerturbation {
+	// What, why, and how move as one semantic bundle. Splitting that bundle would
+	// test malformed contexts rather than substitutability between real frames.
 	perturbations := make([]model.FuzzPerturbation, 0, min(len(events), maximum))
 	for targetIndex := 0; targetIndex < len(events) && len(perturbations) < maximum; targetIndex++ {
 		target := events[targetIndex]
@@ -231,6 +236,8 @@ func (queue *backgroundFuzzQueue) Enqueue(job backgroundFuzzJob) bool {
 		queue.mu.Unlock()
 		return true
 	default:
+		// Backpressure is deliberate: exploratory work is dropped before it can
+		// consume recall latency or create an unbounded memory backlog.
 		queue.mu.Lock()
 		delete(queue.dedup, job.dedupKey)
 		queue.droppedTotal++
@@ -240,6 +247,9 @@ func (queue *backgroundFuzzQueue) Enqueue(job backgroundFuzzJob) bool {
 }
 
 func (queue *backgroundFuzzQueue) run() {
+	// One worker plus start-time idle admission keeps curiosity out of the recall
+	// call graph. A recall arriving after admission may overlap this worker, so
+	// latency validation must include that bounded background contention.
 	defer queue.wait.Done()
 	ticker := time.NewTicker(queue.policy.WorkerInterval)
 	defer ticker.Stop()
@@ -309,6 +319,8 @@ func (queue *backgroundFuzzQueue) execute(job backgroundFuzzJob) {
 }
 
 func (s *Service) executeBackgroundFuzz(ctx context.Context, job backgroundFuzzJob, policy BackgroundFuzzPolicy) (model.FuzzSensitivityResponse, error) {
+	// Snapshot checks on both sides prevent a deferred audit from interpreting
+	// candidates under a corpus state different from the one that nominated it.
 	if s.store.Snapshot(ctx) != job.snapshot {
 		return model.FuzzSensitivityResponse{}, store.ErrStaleSnapshot
 	}

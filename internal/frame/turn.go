@@ -63,6 +63,10 @@ var (
 )
 
 // FromTurn performs deterministic post-contract enrichment inside eventframed.
+// The 5W1H frame is an internal retrieval corpus; full turn text remains
+// metadata. Pattern matches are bounded evidence-backed extractions, while
+// fallbacks are explicitly marked inferred or synthetic rather than treated as
+// ground truth.
 func FromTurn(turn model.TurnCapture) model.Event {
 	user := sourceText{name: "user", text: turn.UserText, source: model.SourceObserved}
 	assistant := sourceText{name: "assistant", text: turn.AssistantText, source: model.SourceSynthetic}

@@ -11,6 +11,10 @@ import (
 // evidence may revoke a sharing certificate; selected evidence may update the
 // posterior but cannot make the structural decision self-certifying.
 func AssessRevision(posterior model.BayesianPosterior, memberEventIDs []string, triggerEventID string, changePoint, validationEligible bool, policy GroupPolicy) model.BayesianRevision {
+	// A "shock" is the fast-revocation case: a changepoint and independently
+	// validation-eligible group divergence split stale shared confidence and
+	// reset the revealing member. A changepoint alone may reset an existing
+	// posterior, but it cannot manufacture a split certificate.
 	revision := model.BayesianRevision{Action: model.BayesianRevisionRetain, TriggerEventID: triggerEventID}
 	if !strings.HasPrefix(posterior.PosteriorKey, "ap:") || len(memberEventIDs) < 2 {
 		if changePoint {

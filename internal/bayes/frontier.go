@@ -24,6 +24,9 @@ type Candidate struct {
 }
 
 func Evaluate(candidates []Candidate, epoch uint64, policy Policy) model.BayesianShadowReport {
+	// The activation score is the bounded "curiosity" budget for deep review.
+	// With CheapUpdateAll, every evidence-ready frontier member still receives
+	// its cheap update; novelty and compatibility only prioritize deeper work.
 	decisions := make([]model.BayesianDecision, 0, len(candidates))
 	for _, candidate := range candidates {
 		score := policy.VectorWeight*clamp(candidate.VectorRelevance) + policy.NeighborWeight*clamp(candidate.NeighborCompatibility) + policy.NoveltyWeight*clamp(candidate.Novelty) + policy.IndependenceWeight*clamp(candidate.SourceIndependence)
@@ -62,6 +65,8 @@ func Evaluate(candidates []Candidate, epoch uint64, policy Policy) model.Bayesia
 }
 
 func audit(eventID string, epoch uint64, policy Policy) bool {
+	// Frozen hash sampling keeps audit selection independent of score magnitude
+	// and reproducible for a given event, epoch, policy seed, and probability.
 	probability := clamp(policy.AuditProbability)
 	if probability <= 0 {
 		return false

@@ -34,6 +34,8 @@ func (policy GroupPolicy) Valid() bool {
 }
 
 func SharedOutcomeWeight(policy GroupPolicy, certifiedShared bool, weight float64) float64 {
+	// Discounting produces a tempered working posterior for responsiveness; it
+	// is not the ordinary posterior under an unweighted common-parameter model.
 	if !certifiedShared || policy.SharedEvidenceWeight == 0 {
 		return weight
 	}
@@ -41,6 +43,9 @@ func SharedOutcomeWeight(policy GroupPolicy, certifiedShared bool, weight float6
 }
 
 func CompareGroup(members []model.BayesianGroupMember, policy GroupPolicy) model.BayesianGroupComparison {
+	// "Anti-Pigeon" means anti-pigeonholing: this comparison may recommend
+	// sharing or splitting, but it cannot certify either from its own selected
+	// evidence. External Anti-Pigeon validation retains final authority.
 	comparison := model.BayesianGroupComparison{Members: members, Recommendation: GroupUncertain, RequiresAntiPigeonCertification: true}
 	if !policy.Valid() || len(members) < 2 || len(members) > policy.MaxMembers {
 		return comparison

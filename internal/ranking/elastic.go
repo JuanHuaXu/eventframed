@@ -21,6 +21,10 @@ func (policy ElasticDeltaPolicy) Valid() bool {
 }
 
 func (policy ElasticDeltaPolicy) Scale(answerCertainty, correctionReliability float64) float64 {
+	// The design sessions called this "skepticism": a clear packing boundary
+	// resists rank motion, while an uncertain boundary permits faster learning.
+	// Certainty is not a truth probability and cannot authorize a correction;
+	// the independent reliability gate still scales the movement, possibly to 0.
 	correctionReliability = clamp(correctionReliability)
 	if !policy.Enabled {
 		return correctionReliability

@@ -74,6 +74,9 @@ func NewEmbeddingNominationPredictorWithCacheNamespace(ctx context.Context, embe
 }
 
 func NewEmbeddingNominationPredictorFromVector(embedder embed.Embedder, queryVector []float32, queryKey, namespace string, cache *NominationCache) (*EmbeddingNominationPredictor, error) {
+	// Background curiosity reuses the serving-time query vector. This avoids
+	// retaining raw query text or paying a second embedding cost; the snapshot
+	// namespace keeps cached nomination semantics tied to the captured corpus.
 	if embedder == nil {
 		return nil, errors.New("embedder is required")
 	}
