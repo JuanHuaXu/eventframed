@@ -22,6 +22,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/calibration"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
+	"github.com/JuanHuaXu/eventframed/internal/epistemic"
 	"github.com/JuanHuaXu/eventframed/internal/frame"
 	"github.com/JuanHuaXu/eventframed/internal/fuzzing"
 	graphpolicy "github.com/JuanHuaXu/eventframed/internal/graph"
@@ -141,7 +142,25 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 		defaults := packing.DefaultPolicy()
 		defaults.AdaptiveEnabled = config.PackingPolicy.AdaptiveEnabled
 		defaults.DiversityEnabled = config.PackingPolicy.DiversityEnabled
+		if config.PackingPolicy.EvidenceOccupancyLimit != 0 {
+			defaults.EvidenceOccupancyLimit = config.PackingPolicy.EvidenceOccupancyLimit
+		}
+		if config.PackingPolicy.EvidenceSimilarity != 0 {
+			defaults.EvidenceSimilarity = config.PackingPolicy.EvidenceSimilarity
+		}
 		config.PackingPolicy = defaults
+	}
+	if config.PackingPolicy.EvidenceOccupancyLimit == 0 {
+		config.PackingPolicy.EvidenceOccupancyLimit = 1
+	}
+	if config.PackingPolicy.EvidenceOccupancyLimit < 1 || config.PackingPolicy.EvidenceOccupancyLimit > maxPackK {
+		return nil, errors.New("evidence occupancy limit must be in [1,100]")
+	}
+	if config.PackingPolicy.EvidenceSimilarity == 0 {
+		config.PackingPolicy.EvidenceSimilarity = .85
+	}
+	if math.IsNaN(config.PackingPolicy.EvidenceSimilarity) || math.IsInf(config.PackingPolicy.EvidenceSimilarity, 0) || config.PackingPolicy.EvidenceSimilarity < 0 || config.PackingPolicy.EvidenceSimilarity > 1 {
+		return nil, errors.New("evidence similarity must be in [0,1]")
 	}
 	if config.CandidateRanker == nil {
 		config.CandidateRanker = retrieval.PassthroughRanker{}
@@ -573,6 +592,7 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 			RecencyScore:      candidateRecency(result.Event, request.AsOf),
 			EstimatedTokens:   estimateTokens(result.Event.Content),
 		}
+		candidate.EvidenceGroupKey = epistemic.Describe(result.Event).EvidenceGroupKey
 		candidate.BaselineScore = scoreCandidate(candidate, request.SessionID, request.AsOf)
 		candidate.PredictiveScore = ranking.Score(ranking.Features{Baseline: candidate.BaselineScore, Recency: candidate.RecencyScore}, s.config.RankingPolicy)
 		candidate.Score = candidate.PredictiveScore
@@ -602,7 +622,7 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 	})
 	shadowInputs := make([]bayes.Candidate, 0, len(candidates))
 	for _, candidate := range candidates {
-		shadowInputs = append(shadowInputs, bayes.Candidate{EventID: candidate.Event.ID, VectorRelevance: clamp((candidate.Similarity+1)/2, 0, 1), NeighborCompatibility: candidate.GraphCompatibility, Novelty: 1 - candidate.Event.MeanFieldConfidence(), SourceIndependence: sourceIndependence(candidate.Event), Priority: candidate.Event.Priority, EvidenceReady: !candidate.Event.AvailableAt.After(request.AsOf)})
+		shadowInputs = append(shadowInputs, bayes.Candidate{EventID: candidate.Event.ID, EvidenceGroupKey: candidate.EvidenceGroupKey, VectorRelevance: clamp((candidate.Similarity+1)/2, 0, 1), NeighborCompatibility: candidate.GraphCompatibility, Novelty: 1 - candidate.Event.MeanFieldConfidence(), SourceIndependence: sourceIndependence(candidate.Event), Priority: candidate.Event.Priority, EvidenceReady: !candidate.Event.AvailableAt.After(request.AsOf)})
 	}
 	snapshot := s.store.Snapshot(ctx)
 	shadow := bayes.Evaluate(shadowInputs, snapshot.EvidenceEpoch, s.config.BayesianPolicy)
@@ -641,6 +661,10 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 			}
 		}
 	}
+	// Retrieval-usefulness posteriors may still consume exhaustive outcomes, but
+	// repeated records cannot present themselves as independent selected evidence.
+	// Certified Anti-Pigeon buckets remain independent predictive units.
+	markCorrelatedBayesianDecisions(&shadow)
 	if shadow.SelectionSupportCertified && shadow.OmittedInfluenceCertified {
 		decisions := make(map[string]int, len(shadow.Decisions))
 		for index := range shadow.Decisions {
@@ -821,6 +845,7 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 		Packed:                len(packingResult.Candidates),
 		UsedTokens:            packingResult.UsedTokens,
 		AdaptiveExpanded:      packingResult.Expanded,
+		CorrelatedSuppressed:  packingResult.CorrelatedSuppressed,
 		PacketConfidence:      packetAnswerCertainty,
 		PacketAnswerCertainty: packetAnswerCertainty,
 		RetrievalContract:     s.ranker.ContractName(),
@@ -830,6 +855,30 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 	}
 	s.nominateBackgroundFuzz(request, queryDigest, vector, candidates, packet)
 	return packet, nil
+}
+
+func markCorrelatedBayesianDecisions(report *model.BayesianShadowReport) {
+	type representative struct {
+		posteriorKey string
+	}
+	seen := make(map[string]representative, len(report.Decisions))
+	for index := range report.Decisions {
+		decision := &report.Decisions[index]
+		if decision.EvidenceGroupKey == "" {
+			continue
+		}
+		prior, duplicate := seen[decision.EvidenceGroupKey]
+		if !duplicate {
+			seen[decision.EvidenceGroupKey] = representative{posteriorKey: decision.PosteriorKey}
+			continue
+		}
+		if strings.HasPrefix(prior.posteriorKey, "ap:") && strings.HasPrefix(decision.PosteriorKey, "ap:") && prior.posteriorKey != decision.PosteriorKey {
+			// Anti-Pigeon certified the records as behaviorally divergent, so their
+			// predictive updates remain separate despite common evidence lineage.
+			continue
+		}
+		decision.CorrelatedSuppressed = true
+	}
 }
 
 func (s *Service) loadResidualCandidates(ctx context.Context, request model.RecallRequest, queryDigest string, candidates []model.Candidate, decisions []model.BayesianDecision, decisionIndexes map[string]int) ([]model.ResidualCandidates, error) {
@@ -2096,6 +2145,9 @@ func bayesianOutcomeWeight(request model.BayesianOutcomeRequest, decision model.
 		}
 		probability = decision.AuditProbability
 	case model.OutcomeSelected:
+		if decision.CorrelatedSuppressed {
+			return 0, errors.New("correlated record cannot supply independent selective evidence")
+		}
 		if !report.SelectionSupportCertified || !decision.Activated || !unitOpen(decision.TotalSelectionProbabilityLowerBound) {
 			return 0, errors.New("selective outcome lacks a valid selection-support certificate")
 		}

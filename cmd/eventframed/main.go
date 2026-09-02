@@ -19,6 +19,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/calibration"
 	"github.com/JuanHuaXu/eventframed/internal/config"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
+	"github.com/JuanHuaXu/eventframed/internal/packing"
 	"github.com/JuanHuaXu/eventframed/internal/rankdelta"
 	"github.com/JuanHuaXu/eventframed/internal/ranking"
 	"github.com/JuanHuaXu/eventframed/internal/retrieval"
@@ -167,6 +168,7 @@ func run(args []string) error {
 		Quantization:        settings.Quantization,
 		BaselineCalibration: baselineCalibration, PredictiveCalibration: predictiveCalibration,
 		BayesianGroupPolicy: bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 8, MaxMembers: 64, EquivalenceMargin: .15, EquivalenceThreshold: .80, MaxUncertainBorrowing: .10, SharedEvidenceWeight: settings.SharedEvidenceWeight},
+		PackingPolicy:       packing.Policy{EvidenceOccupancyLimit: settings.EvidenceOccupancyLimit, EvidenceSimilarity: settings.EvidenceSimilarity},
 		RankingPolicy:       rankingPolicy, CandidateRanker: candidateRanker,
 		CandidateRankerRequired: settings.LibraVDBContractEndpoint != "",
 		CandidateRetriever:      candidateRetriever, CandidateRetrieverRequired: settings.LibraVDBContractEndpoint != "",

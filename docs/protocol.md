@@ -67,6 +67,17 @@ behavior.
 smaller number admitted to the context packet after scoring. Implementations must
 not apply the packing cap before the scoring algorithm.
 
+After ranking, the daemon applies an evidence-independence occupancy guard over
+the bounded frontier. It hashes normalized 5W1H claims and recorded provenance,
+ignores run/session identifiers as sources of independence, and admits at most
+the configured number of exact or same-lineage near-duplicate records. All raw
+EventFrames remain stored and auditable. Distinct externally certified
+Anti-Pigeon buckets retain separate occupancy budgets. A genuinely recurring
+observation requires observed `what` and `when` fields plus the explicit
+`epistemic_distinct_occurrence=true` producer declaration; ordinary chat
+timestamps do not qualify. The response reports `correlated_suppressed` without
+exposing source text through the derived keys.
+
 Every recall also durably records its bounded frontier, activation decisions,
 audit inclusion probability, posterior-sharing key, query digest, as-of time, and
 version snapshot. Query text is not copied into the Bayesian journal. The report
@@ -74,6 +85,11 @@ is `shadow` unless current external certificates support promotion. A cached
 posterior may alter the score only when both selection support and omitted
 influence are certified; the default Bayesian mixture weight is 0.10 and the
 runtime rejects configurations above 0.25.
+
+The same claim/lineage key marks repeated frontier decisions. Such a record
+cannot submit an `OutcomeSelected` update as independent selective evidence.
+Exhaustive full-stream and independently sampled audit outcomes remain valid
+because this posterior measures retrieval usefulness rather than factual truth.
 
 The optional `resolution` is `auto`, `coarse`, or `fine`. `auto` leaves the
 contract-native order unchanged. When a nominated higher-order frame and any of

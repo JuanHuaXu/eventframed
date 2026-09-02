@@ -55,6 +55,7 @@ type openClawContextPacket struct {
 	Packed                int                        `json:"packed"`
 	UsedTokens            int                        `json:"used_tokens"`
 	AdaptiveExpanded      bool                       `json:"adaptive_expanded"`
+	CorrelatedSuppressed  int                        `json:"correlated_suppressed"`
 	PacketConfidence      float64                    `json:"packet_confidence"`
 	PacketAnswerCertainty float64                    `json:"packet_answer_certainty"`
 	RetrievalContract     string                     `json:"retrieval_contract"`
@@ -88,7 +89,7 @@ func projectOpenClawPacket(packet model.ContextPacket) openClawContextPacket {
 	}
 	return openClawContextPacket{
 		ProtocolVersion: packet.ProtocolVersion, Candidates: candidates, Recalled: packet.Recalled, Eligible: packet.Eligible,
-		Packed: packet.Packed, UsedTokens: packet.UsedTokens, AdaptiveExpanded: packet.AdaptiveExpanded,
+		Packed: packet.Packed, UsedTokens: packet.UsedTokens, AdaptiveExpanded: packet.AdaptiveExpanded, CorrelatedSuppressed: packet.CorrelatedSuppressed,
 		PacketConfidence: packet.PacketConfidence, PacketAnswerCertainty: packet.PacketAnswerCertainty,
 		RetrievalContract: packet.RetrievalContract, NominationContract: packet.NominationContract,
 		Snapshot: packet.Snapshot, BayesianShadow: packet.BayesianShadow,

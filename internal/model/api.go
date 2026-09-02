@@ -92,16 +92,20 @@ type Candidate struct {
 	RankDeltaAnswerCertainty       float64 `json:"rank_delta_answer_certainty,omitempty"`
 	RankDeltaCorrectionReliability float64 `json:"rank_delta_correction_reliability,omitempty"`
 	// RankDeltaConfidence is a deprecated alias for answer certainty.
-	RankDeltaConfidence float64        `json:"rank_delta_confidence,omitempty"`
-	RankDeltaBasis      string         `json:"rank_delta_basis,omitempty"`
-	ResolutionRankDelta float64        `json:"resolution_rank_delta,omitempty"`
-	RetrievalContract   string         `json:"retrieval_contract"`
-	RetrievalMetadata   []byte         `json:"-"`
-	Score               float64        `json:"score"`
-	BayesianProbability float64        `json:"bayesian_probability,omitempty"`
-	BayesianApplied     bool           `json:"bayesian_applied"`
-	Forecast            ForecastBundle `json:"forecast"`
-	EstimatedTokens     int            `json:"estimated_tokens"`
+	RankDeltaConfidence float64 `json:"rank_delta_confidence,omitempty"`
+	RankDeltaBasis      string  `json:"rank_delta_basis,omitempty"`
+	ResolutionRankDelta float64 `json:"resolution_rank_delta,omitempty"`
+	RetrievalContract   string  `json:"retrieval_contract"`
+	RetrievalMetadata   []byte  `json:"-"`
+	Score               float64 `json:"score"`
+	BayesianProbability float64 `json:"bayesian_probability,omitempty"`
+	BayesianApplied     bool    `json:"bayesian_applied"`
+	// EvidenceGroupKey is an opaque daemon-derived claim/lineage identifier.
+	// It exposes no source text and prevents repeated records from monopolizing
+	// a context packet while preserving every durable EventFrame.
+	EvidenceGroupKey string         `json:"-"`
+	Forecast         ForecastBundle `json:"forecast"`
+	EstimatedTokens  int            `json:"estimated_tokens"`
 }
 
 type ContextPacket struct {
@@ -112,6 +116,7 @@ type ContextPacket struct {
 	Packed                int                  `json:"packed"`
 	UsedTokens            int                  `json:"used_tokens"`
 	AdaptiveExpanded      bool                 `json:"adaptive_expanded"`
+	CorrelatedSuppressed  int                  `json:"correlated_suppressed"`
 	PacketConfidence      float64              `json:"packet_confidence"`
 	PacketAnswerCertainty float64              `json:"packet_answer_certainty"`
 	RetrievalContract     string               `json:"retrieval_contract"`
@@ -134,6 +139,8 @@ type BayesianDecision struct {
 	TotalSelectionProbabilityLowerBound float64        `json:"total_selection_probability_lower_bound"`
 	PosteriorKey                        string         `json:"posterior_key"`
 	ParentPosteriorKey                  string         `json:"parent_posterior_key,omitempty"`
+	EvidenceGroupKey                    string         `json:"-"`
+	CorrelatedSuppressed                bool           `json:"correlated_suppressed"`
 	Forecast                            ForecastBundle `json:"forecast"`
 }
 

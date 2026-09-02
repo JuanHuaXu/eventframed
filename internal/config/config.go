@@ -4,6 +4,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"math"
 	"os"
 	"path/filepath"
 	"strings"
@@ -17,6 +18,8 @@ type Config struct {
 	RecallK                     int
 	PackK                       int
 	TokenBudget                 int
+	EvidenceOccupancyLimit      int
+	EvidenceSimilarity          float64
 	LogLevel                    string
 	Embedder                    string
 	EmbeddingURL                string
@@ -85,6 +88,8 @@ func Parse(args []string) (Config, error) {
 	set.IntVar(&config.RecallK, "recall-k", 50, "default candidate recall budget")
 	set.IntVar(&config.PackK, "pack-k", 10, "default final packing budget")
 	set.IntVar(&config.TokenBudget, "token-budget", 2000, "default memory token budget")
+	set.IntVar(&config.EvidenceOccupancyLimit, "evidence-occupancy-limit", 1, "maximum correlated claim/lineage records in one context packet")
+	set.Float64Var(&config.EvidenceSimilarity, "evidence-similarity", .85, "same-lineage 5W1H similarity threshold for correlated evidence")
 	set.StringVar(&config.LogLevel, "log-level", "info", "log level: debug, info, warn, or error")
 	set.StringVar(&config.Embedder, "embedder", "hash", "embedding provider: hash or openai-compatible")
 	set.StringVar(&config.EmbeddingURL, "embedding-url", "", "OpenAI-compatible embeddings endpoint")
@@ -144,6 +149,12 @@ func Parse(args []string) (Config, error) {
 	}
 	if config.PackK > config.RecallK {
 		return Config{}, errors.New("pack-k cannot exceed recall-k")
+	}
+	if config.EvidenceOccupancyLimit <= 0 || config.EvidenceOccupancyLimit > config.PackK {
+		return Config{}, errors.New("evidence-occupancy-limit must be in [1,pack-k]")
+	}
+	if math.IsNaN(config.EvidenceSimilarity) || math.IsInf(config.EvidenceSimilarity, 0) || config.EvidenceSimilarity <= 0 || config.EvidenceSimilarity > 1 {
+		return Config{}, errors.New("evidence-similarity must be in (0,1]")
 	}
 	switch config.Quantization {
 	case "none", "sq8", "fsq6", "pq8":

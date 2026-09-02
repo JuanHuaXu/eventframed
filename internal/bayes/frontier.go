@@ -18,6 +18,7 @@ type Policy struct {
 
 type Candidate struct {
 	EventID                                                             string
+	EvidenceGroupKey                                                    string
 	VectorRelevance, NeighborCompatibility, Novelty, SourceIndependence float64
 	Priority                                                            float64
 	EvidenceReady                                                       bool
@@ -39,7 +40,7 @@ func Evaluate(candidates []Candidate, epoch uint64, policy Policy) model.Bayesia
 		if policy.CheapUpdateAll {
 			cheapUpdate = candidate.EvidenceReady
 		}
-		decisions = append(decisions, model.BayesianDecision{EventID: candidate.EventID, ActivationScore: clamp(score), Activated: cheapUpdate, CheapUpdate: cheapUpdate, DeepReview: deepReview, EvidenceReady: candidate.EvidenceReady, AuditSelected: audit(candidate.EventID, epoch, policy), AuditProbability: clamp(policy.AuditProbability), PosteriorKey: candidate.EventID})
+		decisions = append(decisions, model.BayesianDecision{EventID: candidate.EventID, EvidenceGroupKey: candidate.EvidenceGroupKey, ActivationScore: clamp(score), Activated: cheapUpdate, CheapUpdate: cheapUpdate, DeepReview: deepReview, EvidenceReady: candidate.EvidenceReady, AuditSelected: audit(candidate.EventID, epoch, policy), AuditProbability: clamp(policy.AuditProbability), PosteriorKey: candidate.EventID})
 	}
 	sort.SliceStable(decisions, func(i, j int) bool { return decisions[i].ActivationScore > decisions[j].ActivationScore })
 	active, deep := 0, 0

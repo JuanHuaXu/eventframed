@@ -158,6 +158,8 @@ Defaults:
 - embedder: deterministic development hash (`-embedder hash`)
 - recall budget: 50 candidates
 - packing budget: 10 records / 2,000 estimated tokens
+- evidence occupancy: at most one correlated claim/lineage record per packet;
+  same-lineage 5W1H near-duplicates use a frozen 0.85 similarity threshold
 
 OpenClaw usefulness learning is explicit. The plugin exposes the
 operator-scoped gateway method `eventframe.outcome.observe`, bound to one durable

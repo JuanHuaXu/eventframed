@@ -49,6 +49,31 @@ func TestDiversityIgnoresRawContent(t *testing.T) {
 	}
 }
 
+func TestEvidenceOccupancySuppressesRepeatedClaimAndLineage(t *testing.T) {
+	candidates := fixtureCandidates(3)
+	candidates[0].EvidenceGroupKey = "repeated"
+	candidates[1].EvidenceGroupKey = "repeated"
+	candidates[2].EvidenceGroupKey = "independent"
+	result := Select(candidates, nil, 2, 3, 1000, DefaultPolicy())
+	if len(result.Candidates) != 2 || result.Candidates[0].Event.ID != "event-0" || result.Candidates[1].Event.ID != "event-2" {
+		t.Fatalf("packed correlated records: %+v", result.Candidates)
+	}
+	if result.CorrelatedSuppressed != 1 {
+		t.Fatalf("correlated suppressed = %d", result.CorrelatedSuppressed)
+	}
+}
+
+func TestEvidenceOccupancyRespectsDistinctAntiPigeonBuckets(t *testing.T) {
+	candidates := fixtureCandidates(2)
+	candidates[0].EvidenceGroupKey = "shared-lineage"
+	candidates[1].EvidenceGroupKey = "shared-lineage"
+	keys := map[string]string{candidates[0].Event.ID: "ap:left", candidates[1].Event.ID: "ap:right"}
+	result := Select(candidates, keys, 2, 2, 1000, DefaultPolicy())
+	if len(result.Candidates) != 2 || result.CorrelatedSuppressed != 0 {
+		t.Fatalf("Anti-Pigeon buckets were collapsed: %+v", result)
+	}
+}
+
 func fixtureCandidates(count int) []model.Candidate {
 	result := make([]model.Candidate, count)
 	for index := range result {

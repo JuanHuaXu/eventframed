@@ -70,7 +70,11 @@ and cannot be used as evidence for contract-native OpenClaw retrieval claims.
     reliability. Both promotions and demotions use those two signals under the
     global hard cap.
 14. EventFrame adds the resulting `rank_delta`, sorts by the final `score`, and
-    only then applies `pack_k` and the token budget.
+    then applies claim/lineage occupancy, `pack_k`, and the token budget.
+    Repeated or near-duplicate claims from one provenance lineage share a hard
+    occupancy budget. Different externally certified Anti-Pigeon buckets remain
+    separate predictive units, and an ordinary chat timestamp cannot create an
+    independent evidence lineage.
 15. Only after final ranking and packing does the daemon hydrate raw transcript
     metadata. The adapter recalls through `/v1/openclaw/context:recall`, whose daemon-side
     projection omits 5W1H fields and embeddings. It escapes the remaining raw

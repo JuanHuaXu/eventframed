@@ -5,6 +5,7 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/JuanHuaXu/eventframed/internal/epistemic"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 )
 
@@ -17,16 +18,21 @@ type Policy struct {
 	DiversityPenalty float64
 	PriorityFloor    float64
 	PriorityPenalty  float64
+	// EvidenceOccupancyLimit is a hard per-claim/per-lineage packet cap. It is
+	// independent of the softer lexical diversity reranker.
+	EvidenceOccupancyLimit int
+	EvidenceSimilarity     float64
 }
 
 type Result struct {
-	Candidates []model.Candidate
-	UsedTokens int
-	Expanded   bool
+	Candidates           []model.Candidate
+	UsedTokens           int
+	Expanded             bool
+	CorrelatedSuppressed int
 }
 
 func DefaultPolicy() Policy {
-	return Policy{MaxPack: 20, MarginThreshold: .03, EntropyThreshold: .65, DiversityPenalty: .08, PriorityFloor: .8, PriorityPenalty: .02}
+	return Policy{MaxPack: 20, MarginThreshold: .03, EntropyThreshold: .65, DiversityPenalty: .08, PriorityFloor: .8, PriorityPenalty: .02, EvidenceOccupancyLimit: 1, EvidenceSimilarity: .85}
 }
 
 func Select(candidates []model.Candidate, posteriorKeys map[string]string, packK, recallK, tokenBudget int, policy Policy) Result {
@@ -43,6 +49,16 @@ func Select(candidates []model.Candidate, posteriorKeys map[string]string, packK
 	}
 	packed := make([]model.Candidate, 0, limit)
 	usedTokens := 0
+	descriptors := make(map[string]epistemic.Descriptor, len(ordered))
+	descriptor := func(candidate model.Candidate) epistemic.Descriptor {
+		if existing, ok := descriptors[candidate.Event.ID]; ok {
+			return existing
+		}
+		created := epistemic.Describe(candidate.Event)
+		descriptors[candidate.Event.ID] = created
+		return created
+	}
+	suppressed := 0
 	for _, candidate := range ordered {
 		if len(packed) >= limit {
 			break
@@ -50,10 +66,24 @@ func Select(candidates []model.Candidate, posteriorKeys map[string]string, packK
 		if usedTokens+candidate.EstimatedTokens > tokenBudget {
 			continue
 		}
+		correlated := 0
+		for _, prior := range packed {
+			if distinctCertifiedBuckets(candidate, prior, posteriorKeys) {
+				continue
+			}
+			sameDeclaredGroup := candidate.EvidenceGroupKey != "" && candidate.EvidenceGroupKey == prior.EvidenceGroupKey
+			if sameDeclaredGroup || epistemic.Correlated(descriptor(candidate), descriptor(prior), policy.EvidenceSimilarity) {
+				correlated++
+			}
+		}
+		if policy.EvidenceOccupancyLimit > 0 && correlated >= policy.EvidenceOccupancyLimit {
+			suppressed++
+			continue
+		}
 		packed = append(packed, candidate)
 		usedTokens += candidate.EstimatedTokens
 	}
-	return Result{Candidates: packed, UsedTokens: usedTokens, Expanded: expanded}
+	return Result{Candidates: packed, UsedTokens: usedTokens, Expanded: expanded, CorrelatedSuppressed: suppressed}
 }
 
 func shouldExpand(candidates []model.Candidate, packK int, policy Policy) bool {
