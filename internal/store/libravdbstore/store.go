@@ -619,10 +619,11 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 		return store.BayesianOutcomeResult{}, fmt.Errorf("check Bayesian outcome: %w", err)
 	}
 	posterior, err := s.getBayesianPosterior(ctx, request.TenantID, posteriorKey)
-	if errors.Is(err, store.ErrPosteriorNotFound) || posterior.EvidenceEpoch != s.snapshot.EvidenceEpoch {
-		posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: posteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
-	} else if err != nil {
+	if err != nil && !errors.Is(err, store.ErrPosteriorNotFound) {
 		return store.BayesianOutcomeResult{}, err
+	}
+	if errors.Is(err, store.ErrPosteriorNotFound) || posterior.EvidenceEpoch != s.snapshot.EvidenceEpoch || (changePolicy.EvidenceTrust != "" && posterior.EvidenceTrust != changePolicy.EvidenceTrust) {
+		posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: posteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
 	}
 	validationEligible := request.Source == model.OutcomeFullStream || request.Source == model.OutcomeIndependentAudit
 	resetAuthorized := validationEligible || !strings.HasPrefix(posteriorKey, "ap:")
@@ -673,10 +674,11 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 	var parent model.BayesianPosterior
 	if parentPosteriorKey != "" && parentPosteriorKey != posteriorKey {
 		parent, err = s.getBayesianPosterior(ctx, request.TenantID, parentPosteriorKey)
-		if errors.Is(err, store.ErrPosteriorNotFound) || parent.EvidenceEpoch != next.EvidenceEpoch {
-			parent = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: parentPosteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: next.EvidenceEpoch, Certified: true}
-		} else if err != nil {
+		if err != nil && !errors.Is(err, store.ErrPosteriorNotFound) {
 			return store.BayesianOutcomeResult{}, err
+		}
+		if errors.Is(err, store.ErrPosteriorNotFound) || parent.EvidenceEpoch != next.EvidenceEpoch || (changePolicy.EvidenceTrust != "" && parent.EvidenceTrust != changePolicy.EvidenceTrust) {
+			parent = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: parentPosteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: next.EvidenceEpoch, Certified: true}
 		}
 		if request.Useful {
 			parent.Alpha += weight
@@ -684,6 +686,7 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 			parent.Beta += weight
 		}
 		parent.EffectiveSupport += weight
+		parent.EvidenceTrust = changePolicy.EvidenceTrust
 		parent.UpdatedAt = request.AvailableAt
 	}
 	resultPosterior := posterior
@@ -693,8 +696,10 @@ func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.Bayesian
 		for _, eventID := range memberIDs {
 			evidence := posterior.MemberEvidence[eventID]
 			child := materializedMemberPosterior(request.TenantID, eventID, evidence, next.EvidenceEpoch, request.AvailableAt)
+			child.EvidenceTrust = changePolicy.EvidenceTrust
 			if changePoint && eventID == request.EventID {
 				child = resetMemberPosterior(child, request.Useful, weight)
+				child.WorkingBelief = bayes.UpdateWorking(nil, request.Useful, weight, true, changePolicy.Working)
 			}
 			children[eventID] = child
 			if eventID == request.EventID {

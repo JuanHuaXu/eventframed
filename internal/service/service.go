@@ -47,6 +47,8 @@ const (
 )
 
 type Config struct {
+	EvidenceVerifier           *epistemic.Verifier
+	WorkingBelief              bayes.WorkingPolicy
 	DefaultRecallK             int
 	DefaultPackK               int
 	DefaultTokenBudget         int
@@ -97,6 +99,9 @@ type Service struct {
 }
 
 func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*Service, error) {
+	if !config.WorkingBelief.Valid() || (config.WorkingBelief.Enabled && (config.EvidenceVerifier == nil || config.RankingPolicy.HierarchicalEnabled)) {
+		return nil, errors.New("working belief requires valid policy, authenticated evidence, and non-hierarchical prediction")
+	}
 	if eventStore == nil || embedder == nil {
 		return nil, errors.New("store and embedder are required")
 	}
@@ -134,6 +139,11 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 			CUSUMSlack: .10, CUSUMThreshold: 8,
 			CooldownSamples: 20,
 		}
+	}
+	config.BayesianChangePolicy.Working = config.WorkingBelief
+	config.BayesianChangePolicy.EvidenceTrust = ""
+	if config.EvidenceVerifier != nil {
+		config.BayesianChangePolicy.EvidenceTrust = config.EvidenceVerifier.Fingerprint()
 	}
 	if !config.BayesianGroupPolicy.Valid() {
 		config.BayesianGroupPolicy = bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 8, MaxMembers: 64, EquivalenceMargin: .15, EquivalenceThreshold: .80, MaxUncertainBorrowing: .10, SharedEvidenceWeight: .5}
@@ -689,11 +699,14 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 			if !posterior.Certified || posterior.EvidenceEpoch != snapshot.EvidenceEpoch || posterior.UpdatedAt.After(request.AsOf) {
 				continue
 			}
-			probability := clamp(posterior.Mean(), 0, 1)
+			if s.config.EvidenceVerifier != nil && posterior.EvidenceTrust != s.config.EvidenceVerifier.Fingerprint() {
+				continue
+			}
+			probability := clamp(bayes.PredictiveMean(posterior, s.config.WorkingBelief), 0, 1)
 			if s.config.RankingPolicy.HierarchicalEnabled {
 				decision.ParentPosteriorKey = parentPosteriorKey()
 				parent, parentErr := s.store.GetBayesianPosterior(ctx, request.TenantID, decision.ParentPosteriorKey)
-				if parentErr == nil && parent.Certified && parent.EvidenceEpoch == snapshot.EvidenceEpoch && !parent.UpdatedAt.After(request.AsOf) {
+				if parentErr == nil && parent.Certified && parent.EvidenceEpoch == snapshot.EvidenceEpoch && !parent.UpdatedAt.After(request.AsOf) && (s.config.EvidenceVerifier == nil || parent.EvidenceTrust == s.config.EvidenceVerifier.Fingerprint()) {
 					probability = ranking.HierarchicalMean(posterior, parent, s.config.RankingPolicy)
 				} else if parentErr != nil && !errors.Is(parentErr, store.ErrPosteriorNotFound) {
 					return model.ContextPacket{}, parentErr
@@ -752,6 +765,9 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 		if candidate.BayesianApplied {
 			belief := bernoulliLaw(candidate.BayesianProbability)
 			forecast.BeliefLaw = &belief
+			if s.config.WorkingBelief.Enabled {
+				forecast.ModelKind = "working-two-hypothesis-bernoulli-retrieval-usefulness"
+			}
 		}
 		cached := cachedResiduals[index]
 		var selected *model.ResidualRecord
@@ -1611,6 +1627,15 @@ func (s *Service) ObserveBayesianOutcome(ctx context.Context, request model.Baye
 	if strings.TrimSpace(request.IdempotencyKey) == "" || strings.TrimSpace(request.TenantID) == "" || strings.TrimSpace(request.JournalID) == "" || strings.TrimSpace(request.EventID) == "" {
 		return model.BayesianOutcomeResponse{}, errors.New("idempotency_key, tenant_id, journal_id, and event_id are required")
 	}
+	if s.config.EvidenceVerifier != nil {
+		key, err := s.config.EvidenceVerifier.Verify(request, time.Now().UTC())
+		if err != nil {
+			return model.BayesianOutcomeResponse{}, err
+		}
+		request.IdempotencyKey = key
+	} else if request.Attestation != nil || strings.HasPrefix(request.IdempotencyKey, epistemic.AuthenticatedOutcomePrefix) {
+		return model.BayesianOutcomeResponse{}, errors.New("authenticated outcomes require a configured evidence verifier")
+	}
 	resolvedUseful, evidence := request.Signals.Resolve(request.Useful)
 	if !evidence {
 		return model.BayesianOutcomeResponse{}, errors.New("packed-only exposure is not usefulness evidence")
@@ -1698,7 +1723,7 @@ func (s *Service) CompareBayesianGroup(ctx context.Context, request model.Bayesi
 		}
 		member := model.BayesianGroupMember{EventID: eventID, CurrentPosteriorKey: posteriorKey}
 		posterior, posteriorErr := s.store.GetBayesianPosterior(ctx, request.TenantID, posteriorKey)
-		if posteriorErr == nil && posterior.Certified && posterior.EvidenceEpoch == snapshot.EvidenceEpoch {
+		if posteriorErr == nil && posterior.Certified && posterior.EvidenceEpoch == snapshot.EvidenceEpoch && (s.config.EvidenceVerifier == nil || posterior.EvidenceTrust == s.config.EvidenceVerifier.Fingerprint()) {
 			evidence := posterior.MemberEvidence[eventID]
 			member.UsefulWeight, member.NotUsefulWeight = evidence.UsefulWeight, evidence.NotUsefulWeight
 		} else if posteriorErr != nil && !errors.Is(posteriorErr, store.ErrPosteriorNotFound) {
@@ -2172,6 +2197,7 @@ func bayesianOutcomeDigest(request model.BayesianOutcomeRequest) (string, error)
 
 func bayesianPolicyDigest(config Config) (string, error) {
 	payload, err := json.Marshal(struct {
+		EvidenceTrust         string                     `json:"evidence_trust,omitempty"`
 		Frontier              bayes.Policy               `json:"frontier"`
 		BaselineCalibration   calibration.Logit          `json:"baseline_calibration"`
 		PredictiveCalibration calibration.Logit          `json:"predictive_calibration"`
@@ -2188,7 +2214,7 @@ func bayesianPolicyDigest(config Config) (string, error) {
 		ResidualMode          string                     `json:"residual_mode"`
 		Snap                  graphpolicy.Policy         `json:"snap"`
 		Agency                agency.Policy              `json:"agency"`
-	}{Frontier: config.BayesianPolicy, BaselineCalibration: config.BaselineCalibration, PredictiveCalibration: config.PredictiveCalibration, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Group: config.BayesianGroupPolicy, Ranking: config.RankingPolicy, MaxRankDelta: config.MaxRankDelta, ElasticRankDelta: config.ElasticRankDelta, Packing: config.PackingPolicy, NominationContract: nominationContractName(config.CandidateRetriever), RetrievalContract: config.CandidateRanker.ContractName(), Residual: config.ResidualPolicy, ResidualMode: config.ResidualMode, Snap: config.SnapPolicy, Agency: config.AgencyPolicy})
+	}{EvidenceTrust: config.EvidenceVerifier.Fingerprint(), Frontier: config.BayesianPolicy, BaselineCalibration: config.BaselineCalibration, PredictiveCalibration: config.PredictiveCalibration, ScoreWeight: config.BayesianScoreWeight, Change: config.BayesianChangePolicy, Group: config.BayesianGroupPolicy, Ranking: config.RankingPolicy, MaxRankDelta: config.MaxRankDelta, ElasticRankDelta: config.ElasticRankDelta, Packing: config.PackingPolicy, NominationContract: nominationContractName(config.CandidateRetriever), RetrievalContract: config.CandidateRanker.ContractName(), Residual: config.ResidualPolicy, ResidualMode: config.ResidualMode, Snap: config.SnapPolicy, Agency: config.AgencyPolicy})
 	if err != nil {
 		return "", fmt.Errorf("encode Bayesian policy: %w", err)
 	}

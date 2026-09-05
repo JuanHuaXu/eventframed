@@ -7,6 +7,8 @@ import (
 )
 
 type ChangePolicy struct {
+	EvidenceTrust    string
+	Working          WorkingPolicy
 	Hazard           float64
 	Threshold        float64
 	MaxRun           int
@@ -110,6 +112,8 @@ func ApplyOutcomeAuthorized(posterior model.BayesianPosterior, success bool, wei
 		posterior.Beta += weight
 	}
 	posterior.EffectiveSupport += weight
+	posterior.EvidenceTrust = policy.EvidenceTrust
+	posterior.WorkingBelief = UpdateWorking(posterior.WorkingBelief, success, weight, triggered, policy.Working)
 	return posterior, triggered
 }
 

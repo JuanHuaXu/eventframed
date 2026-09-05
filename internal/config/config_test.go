@@ -5,6 +5,18 @@ import (
 	"testing"
 )
 
+func TestWorkingBeliefRequiresExplicitTrustAndComposition(t *testing.T) {
+	for _, args := range [][]string{{"--working-belief"}, {"--working-belief", "--evidence-trust-file", "keys.json", "--hierarchical-posterior"}} {
+		if _, err := Parse(args); err == nil {
+			t.Fatalf("accepted %v", args)
+		}
+	}
+	c, err := Parse([]string{"--working-belief", "--evidence-trust-file", "keys.json"})
+	if err != nil || !c.WorkingBelief || c.EvidenceTrustFile != "keys.json" {
+		t.Fatalf("valid config: %+v %v", c, err)
+	}
+}
+
 func TestAgencySecretPathsMustBePairwiseDistinct(t *testing.T) {
 	root := t.TempDir()
 	privateKey := filepath.Join(root, "agency.key")

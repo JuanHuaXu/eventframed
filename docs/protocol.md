@@ -272,6 +272,10 @@ answer through an agent-callable tool.
 - `POST /v1/bayesian/certificates:publish-anti-pigeon` permits listed EventFrames
   to share a posterior only when target-law diameter, support, horizon, graph,
   epoch, validity, and simultaneous-coverage checks pass.
+- Optional [authenticated evidence admission](authenticated-evidence.md) adds a
+  signed `attestation` envelope to outcome requests. With an enrolled registry,
+  unsigned outcomes are rejected; the ordinary OpenClaw chat-capture contract
+  does not change. The signature authenticates attribution, not factual truth.
 - `POST /v1/bayesian/outcomes:observe` records availability-safe usefulness
   feedback bound to a durable recall journal. Accepted sources are full-stream,
   independent audit, and selection-certified feedback. Inclusion probabilities

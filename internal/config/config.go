@@ -63,6 +63,8 @@ type Config struct {
 	AgencyPublicKey             string
 	AgencyIssuerToken           string
 	AgencyAuthorityToken        string
+	EvidenceTrustFile           string
+	WorkingBelief               bool
 	BackgroundFuzz              bool
 	BackgroundFuzzCertainty     float64
 	BackgroundFuzzQueue         int
@@ -133,6 +135,8 @@ func Parse(args []string) (Config, error) {
 	set.StringVar(&config.AgencyPublicKey, "agency-public-key", filepath.Join(defaultsRoot, "keys", "agency_ed25519.pub"), "Ed25519 agency public key path")
 	set.StringVar(&config.AgencyIssuerToken, "agency-issuer-token", filepath.Join(defaultsRoot, "keys", "agency_issuer.token"), "private agency proposal issuer token path")
 	set.StringVar(&config.AgencyAuthorityToken, "agency-authority-token", filepath.Join(defaultsRoot, "keys", "agency_authority.token"), "private OpenClaw authority token path")
+	set.StringVar(&config.EvidenceTrustFile, "evidence-trust-file", "", "operator-enrolled public evidence keys; require signed learning outcomes when configured")
+	set.BoolVar(&config.WorkingBelief, "working-belief", false, "use bounded reversible usefulness filter (requires evidence trust file; no hierarchical mode)")
 	set.BoolVar(&config.BackgroundFuzz, "background-fuzz", true, "enqueue low-certainty recall fuzz audits for an idle background worker")
 	set.Float64Var(&config.BackgroundFuzzCertainty, "background-fuzz-certainty", .20, "maximum packing-boundary answer certainty that nominates a background fuzz audit")
 	set.IntVar(&config.BackgroundFuzzQueue, "background-fuzz-queue", 128, "maximum in-memory background fuzz jobs")
@@ -143,6 +147,9 @@ func Parse(args []string) (Config, error) {
 	set.IntVar(&config.BackgroundFuzzMaxTrials, "background-fuzz-max-trials", 8, "maximum source-bundle perturbations in one background fuzz job")
 	if err := set.Parse(args); err != nil {
 		return Config{}, err
+	}
+	if config.WorkingBelief && (strings.TrimSpace(config.EvidenceTrustFile) == "" || config.HierarchicalPosterior) {
+		return Config{}, errors.New("working-belief requires evidence-trust-file and cannot use hierarchical-posterior")
 	}
 	if config.Dimension <= 0 || config.RecallK <= 0 || config.PackK <= 0 || config.TokenBudget <= 0 {
 		return Config{}, errors.New("dimension and budgets must be positive")

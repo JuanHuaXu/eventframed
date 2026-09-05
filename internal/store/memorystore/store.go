@@ -338,6 +338,7 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 		}
 		result := s.outcomeResults[request.TenantID][request.IdempotencyKey]
 		result.Duplicate, result.Snapshot = true, s.snapshot
+		result.Posterior = copyWorkingBelief(result.Posterior)
 		return result, nil
 	}
 	tenant := s.posteriors[request.TenantID]
@@ -346,7 +347,7 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 		s.posteriors[request.TenantID] = tenant
 	}
 	posterior := tenant[posteriorKey]
-	if posterior.EvidenceEpoch != s.snapshot.EvidenceEpoch || posterior.Alpha <= 0 || posterior.Beta <= 0 {
+	if posterior.EvidenceEpoch != s.snapshot.EvidenceEpoch || posterior.Alpha <= 0 || posterior.Beta <= 0 || (changePolicy.EvidenceTrust != "" && posterior.EvidenceTrust != changePolicy.EvidenceTrust) {
 		posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: posteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
 	}
 	validationEligible := request.Source == model.OutcomeFullStream || request.Source == model.OutcomeIndependentAudit
@@ -383,8 +384,10 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 		for _, eventID := range memberIDs {
 			evidence := posterior.MemberEvidence[eventID]
 			child := materializedMemberPosterior(request.TenantID, eventID, evidence, s.snapshot.EvidenceEpoch, request.AvailableAt)
+			child.EvidenceTrust = changePolicy.EvidenceTrust
 			if changePoint && eventID == request.EventID {
 				child = resetMemberPosterior(child, request.Useful, weight)
+				child.WorkingBelief = bayes.UpdateWorking(nil, request.Useful, weight, true, changePolicy.Working)
 			}
 			tenant[eventID] = child
 			if eventID == request.EventID {
@@ -394,7 +397,7 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 	}
 	if parentPosteriorKey != "" && parentPosteriorKey != posteriorKey {
 		parent := tenant[parentPosteriorKey]
-		if parent.EvidenceEpoch != s.snapshot.EvidenceEpoch || parent.Alpha <= 0 || parent.Beta <= 0 {
+		if parent.EvidenceEpoch != s.snapshot.EvidenceEpoch || parent.Alpha <= 0 || parent.Beta <= 0 || (changePolicy.EvidenceTrust != "" && parent.EvidenceTrust != changePolicy.EvidenceTrust) {
 			parent = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: parentPosteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
 		}
 		if request.Useful {
@@ -403,6 +406,7 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 			parent.Beta += weight
 		}
 		parent.EffectiveSupport += weight
+		parent.EvidenceTrust = changePolicy.EvidenceTrust
 		parent.UpdatedAt = request.AvailableAt
 		tenant[parentPosteriorKey] = parent
 	}
@@ -426,6 +430,7 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 	}
 	result := store.BayesianOutcomeResult{ChangePoint: changePoint, Revision: revision, Posterior: resultPosterior, Snapshot: s.snapshot}
 	s.outcomeResults[request.TenantID][request.IdempotencyKey] = result
+	result.Posterior = copyWorkingBelief(result.Posterior)
 	return result, nil
 }
 
@@ -515,7 +520,16 @@ func (s *Store) GetBayesianPosterior(_ context.Context, tenantID, posteriorKey s
 	if !ok {
 		return model.BayesianPosterior{}, store.ErrPosteriorNotFound
 	}
-	return posterior, nil
+	return copyWorkingBelief(posterior), nil
+}
+
+// Keep the externally returned working state from aliasing durable memory.
+func copyWorkingBelief(p model.BayesianPosterior) model.BayesianPosterior {
+	if p.WorkingBelief != nil {
+		state := *p.WorkingBelief
+		p.WorkingBelief = &state
+	}
+	return p
 }
 
 func (s *Store) PublishSelectionCertificate(_ context.Context, certificate model.SelectionSupportCertificate) (model.Snapshot, error) {

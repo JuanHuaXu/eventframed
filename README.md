@@ -38,6 +38,11 @@ response states whether prediction was evaluated.
 
 ## Architecture
 
+Optional [authenticated evidence admission and reversible working beliefs](docs/authenticated-evidence.md)
+add scoped Ed25519 outcome envelopes, durable observation replay protection,
+and a bounded usefulness filter. These authenticate attributable observations,
+not objective truth; legacy unsigned learning remains the compatibility default.
+
 ```text
 OpenClaw
   |  before_prompt_build / agent_end

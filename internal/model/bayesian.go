@@ -114,6 +114,7 @@ const (
 )
 
 type BayesianOutcomeRequest struct {
+	Attestation          *EvidenceAttestation  `json:"attestation,omitempty"`
 	ProtocolVersion      string                `json:"protocol_version"`
 	IdempotencyKey       string                `json:"idempotency_key"`
 	TenantID             string                `json:"tenant_id"`
@@ -153,6 +154,8 @@ func (signals OutcomeSignals) Resolve(fallback bool) (useful, evidence bool) {
 }
 
 type BayesianPosterior struct {
+	EvidenceTrust           string                            `json:"evidence_trust,omitempty"`
+	WorkingBelief           *WorkingBelief                    `json:"working_belief,omitempty"`
 	TenantID                string                            `json:"tenant_id"`
 	PosteriorKey            string                            `json:"posterior_key"`
 	Alpha                   float64                           `json:"alpha"`
@@ -170,6 +173,24 @@ type BayesianPosterior struct {
 	ForecastUsefulSum       float64                           `json:"forecast_useful_sum"`
 	ObservedUsefulSum       float64                           `json:"observed_useful_sum"`
 	MemberEvidence          map[string]BayesianMemberEvidence `json:"member_evidence,omitempty"`
+}
+
+// EvidenceAttestation authenticates an issuer's outcome assertion, not its truth.
+// Parent-bearing assertions are derived evidence, not new independent trials.
+type EvidenceAttestation struct {
+	Issuer        string   `json:"issuer"`
+	KeyID         string   `json:"key_id"`
+	ObservationID string   `json:"observation_id"`
+	Parents       []string `json:"parents,omitempty"`
+	Signature     []byte   `json:"signature"`
+}
+
+// WorkingBelief is a bounded two-hypothesis filter, separate from the retained
+// Beta/member sufficient statistics used by the Anti-Pigeon diagnostic.
+type WorkingBelief struct {
+	PolicyID         string  `json:"policy_id"`
+	LogOdds          float64 `json:"log_odds"`
+	PredictiveUseful float64 `json:"predictive_useful"`
 }
 
 type BayesianMemberEvidence struct {

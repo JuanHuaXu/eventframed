@@ -19,6 +19,7 @@ import (
 	"github.com/JuanHuaXu/eventframed/internal/calibration"
 	"github.com/JuanHuaXu/eventframed/internal/config"
 	"github.com/JuanHuaXu/eventframed/internal/embed"
+	"github.com/JuanHuaXu/eventframed/internal/epistemic"
 	"github.com/JuanHuaXu/eventframed/internal/packing"
 	"github.com/JuanHuaXu/eventframed/internal/rankdelta"
 	"github.com/JuanHuaXu/eventframed/internal/ranking"
@@ -40,6 +41,13 @@ func run(args []string) error {
 	settings, err := config.Parse(args)
 	if err != nil {
 		return err
+	}
+	var evidenceVerifier *epistemic.Verifier
+	if settings.EvidenceTrustFile != "" {
+		evidenceVerifier, err = epistemic.LoadVerifier(settings.EvidenceTrustFile)
+		if err != nil {
+			return fmt.Errorf("load evidence trust: %w", err)
+		}
 	}
 	if err := settings.EnsureDirectories(); err != nil {
 		return err
@@ -160,7 +168,12 @@ func run(args []string) error {
 		closeContracts = libraContracts.Close
 		defer closeContracts()
 	}
+	workingPolicy := bayes.WorkingPolicy{}
+	if settings.WorkingBelief {
+		workingPolicy = bayes.DefaultWorkingPolicy()
+	}
 	runtime, err := service.New(eventStore, activeEmbedder, service.Config{
+		EvidenceVerifier: evidenceVerifier, WorkingBelief: workingPolicy,
 		DefaultRecallK:      settings.RecallK,
 		DefaultPackK:        settings.PackK,
 		DefaultTokenBudget:  settings.TokenBudget,
