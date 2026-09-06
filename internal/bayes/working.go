@@ -14,15 +14,26 @@ import (
 type WorkingPolicy struct {
 	Enabled                                                    bool
 	Retention, MaxLogOdds, MaxLogFactor, LowUseful, HighUseful float64
+	Grid                                                       bool `json:",omitempty"`
 }
 
 func DefaultWorkingPolicy() WorkingPolicy {
-	return WorkingPolicy{true, .98, 6, 2, .2, .8}
+	return WorkingPolicy{Enabled: true, Retention: .98, MaxLogOdds: 6, MaxLogFactor: 2, LowUseful: .2, HighUseful: .8}
+}
+
+// GridWorkingPolicy preserves the legacy default; grid v1 has frozen constants.
+func GridWorkingPolicy() WorkingPolicy {
+	p := DefaultWorkingPolicy()
+	p.Grid = true
+	return p
 }
 
 func (p WorkingPolicy) Valid() bool {
 	if !p.Enabled {
 		return p == (WorkingPolicy{})
+	}
+	if p.Grid {
+		return p == GridWorkingPolicy()
 	}
 	for _, v := range []float64{p.Retention, p.MaxLogOdds, p.MaxLogFactor, p.LowUseful, p.HighUseful} {
 		if math.IsNaN(v) || math.IsInf(v, 0) {
@@ -41,6 +52,9 @@ func (p WorkingPolicy) ID() string {
 func UpdateWorking(previous *model.WorkingBelief, success bool, weight float64, reset bool, p WorkingPolicy) *model.WorkingBelief {
 	if !p.Enabled || !p.Valid() {
 		return nil
+	}
+	if p.Grid {
+		return updateGrid(previous, success, weight, reset, p)
 	}
 	id := p.ID()
 	odds := 0.0 // Equal prior odds; no imported Beta certainty after a split.
@@ -68,6 +82,10 @@ func workingPredictive(odds float64, p WorkingPolicy) float64 {
 func PredictiveMean(posterior model.BayesianPosterior, p WorkingPolicy) float64 {
 	if !p.Enabled {
 		return posterior.Mean()
+	}
+	if p.Grid {
+		weights := gridPrior(posterior.WorkingBelief, false, p)
+		return gridMean(weights)
 	}
 	state := posterior.WorkingBelief
 	if state == nil || state.PolicyID != p.ID() || math.IsNaN(state.LogOdds) || math.IsInf(state.LogOdds, 0) {

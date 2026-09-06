@@ -43,6 +43,10 @@ add scoped Ed25519 outcome envelopes, durable observation replay protection,
 and a bounded usefulness filter. These authenticate attributable observations,
 not objective truth; legacy unsigned learning remains the compatibility default.
 
+The optional `--grid-belief` extension replaces two usefulness hypotheses with
+a fixed 21-state reset mixture. It requires authenticated working mode and is
+not a universal accuracy upgrade. See the [frozen tests and tradeoffs](docs/grid-belief-results.md).
+
 ```text
 OpenClaw
   |  before_prompt_build / agent_end

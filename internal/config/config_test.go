@@ -6,6 +6,12 @@ import (
 )
 
 func TestWorkingBeliefRequiresExplicitTrustAndComposition(t *testing.T) {
+	if _, err := Parse([]string{"--grid-belief"}); err == nil {
+		t.Fatal("grid enabled without working mode")
+	}
+	if c, err := Parse([]string{"--grid-belief", "--working-belief", "--evidence-trust-file", "keys.json"}); err != nil || !c.GridBelief {
+		t.Fatal("grid config", err)
+	}
 	for _, args := range [][]string{{"--working-belief"}, {"--working-belief", "--evidence-trust-file", "keys.json", "--hierarchical-posterior"}} {
 		if _, err := Parse(args); err == nil {
 			t.Fatalf("accepted %v", args)

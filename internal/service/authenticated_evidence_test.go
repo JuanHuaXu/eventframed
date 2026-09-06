@@ -238,49 +238,53 @@ func TestAuthenticatedOutcomeReplayAndRestart(t *testing.T) {
 }
 
 func TestWorkingSplitResetMaterialization(t *testing.T) {
-	for _, disk := range []bool{false, true} {
-		t.Run(fmt.Sprint(disk), func(t *testing.T) {
-			var backend store.EventStore = memorystore.New()
-			if disk {
-				db, err := libravdbstore.Open(libravdbstore.Config{Path: t.TempDir() + "/split.libravdb", Dimension: 32, EmbeddingModel: "test-hash:d32", Quantization: "none", MemoryMapping: true})
-				if err != nil {
-					t.Fatal(err)
-				}
-				backend = db
-			}
-			defer backend.Close()
-			ctx := context.Background()
-			snapshot := backend.Snapshot(ctx)
-			cert := model.AntiPigeonCertificate{ID: "working-group", TenantID: "tenant-a", MemberEventIDs: []string{"a", "b"}, GraphVersion: snapshot.GraphVersion, EvidenceEpoch: snapshot.EvidenceEpoch}
-			if _, err := backend.PublishAntiPigeonCertificate(ctx, cert); err != nil {
-				t.Fatal(err)
-			}
-			change := bayes.ChangePolicy{Hazard: .000001, Threshold: 1, MaxRun: 64, Working: bayes.DefaultWorkingPolicy(), EvidenceTrust: "fixture"}
-			group := bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 8, MaxMembers: 16, DisableAutoRevision: true}
-			var result store.BayesianOutcomeResult
-			for i := 0; i < 25; i++ {
-				event, useful := "a", true
-				if i%2 == 1 || i == 24 {
-					event, useful = "b", false
-				}
-				if i == 24 {
-					group.DisableAutoRevision = false
-					change.Threshold = 1e-12
-				}
-				r := model.BayesianOutcomeRequest{IdempotencyKey: fmt.Sprint(i), TenantID: "tenant-a", EventID: event, Useful: useful, AvailableAt: time.Now().UTC(), Source: model.OutcomeFullStream}
-				var err error
-				result, err = backend.ApplyBayesianOutcome(ctx, r, "ap:working-group", "", r.IdempotencyKey, 1, change, group, model.ResidualObservation{ActionKey: r.IdempotencyKey, GeneralKey: "working", CommittedProbability: .5, Useful: useful, AvailableAt: r.AvailableAt}, residual.Policy{})
-				if err != nil {
-					t.Fatal(err)
-				}
-			}
-			expected := bayes.UpdateWorking(nil, false, 1, true, change.Working)
-			if result.Revision.Action != model.BayesianRevisionSplitReset || result.Posterior.WorkingBelief == nil || *result.Posterior.WorkingBelief != *expected || result.Posterior.EffectiveSupport != 1 {
-				t.Fatalf("split reset lost or duplicated revealing outcome: %+v", result)
-			}
-			sibling, err := backend.GetBayesianPosterior(ctx, "tenant-a", "a")
-			if err != nil || sibling.WorkingBelief != nil || sibling.EvidenceTrust != "fixture" || sibling.EffectiveSupport != 12 {
-				t.Fatalf("sibling incorrectly inherited/reset evidence: %+v %v", sibling, err)
+	for _, policy := range []bayes.WorkingPolicy{bayes.DefaultWorkingPolicy(), bayes.GridWorkingPolicy()} {
+		t.Run(fmt.Sprintf("grid=%t", policy.Grid), func(t *testing.T) {
+			for _, disk := range []bool{false, true} {
+				t.Run(fmt.Sprint(disk), func(t *testing.T) {
+					var backend store.EventStore = memorystore.New()
+					if disk {
+						db, err := libravdbstore.Open(libravdbstore.Config{Path: t.TempDir() + "/split.libravdb", Dimension: 32, EmbeddingModel: "test-hash:d32", Quantization: "none", MemoryMapping: true})
+						if err != nil {
+							t.Fatal(err)
+						}
+						backend = db
+					}
+					defer backend.Close()
+					ctx := context.Background()
+					snapshot := backend.Snapshot(ctx)
+					cert := model.AntiPigeonCertificate{ID: "working-group", TenantID: "tenant-a", MemberEventIDs: []string{"a", "b"}, GraphVersion: snapshot.GraphVersion, EvidenceEpoch: snapshot.EvidenceEpoch}
+					if _, err := backend.PublishAntiPigeonCertificate(ctx, cert); err != nil {
+						t.Fatal(err)
+					}
+					change := bayes.ChangePolicy{Hazard: .000001, Threshold: 1, MaxRun: 64, Working: policy, EvidenceTrust: "fixture"}
+					group := bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 8, MaxMembers: 16, DisableAutoRevision: true}
+					var result store.BayesianOutcomeResult
+					for i := 0; i < 25; i++ {
+						event, useful := "a", true
+						if i%2 == 1 || i == 24 {
+							event, useful = "b", false
+						}
+						if i == 24 {
+							group.DisableAutoRevision = false
+							change.Threshold = 1e-12
+						}
+						r := model.BayesianOutcomeRequest{IdempotencyKey: fmt.Sprint(i), TenantID: "tenant-a", EventID: event, Useful: useful, AvailableAt: time.Now().UTC(), Source: model.OutcomeFullStream}
+						var err error
+						result, err = backend.ApplyBayesianOutcome(ctx, r, "ap:working-group", "", r.IdempotencyKey, 1, change, group, model.ResidualObservation{ActionKey: r.IdempotencyKey, GeneralKey: "working", CommittedProbability: .5, Useful: useful, AvailableAt: r.AvailableAt}, residual.Policy{})
+						if err != nil {
+							t.Fatal(err)
+						}
+					}
+					expected := bayes.UpdateWorking(nil, false, 1, true, change.Working)
+					if result.Revision.Action != model.BayesianRevisionSplitReset || result.Posterior.WorkingBelief == nil || *result.Posterior.WorkingBelief != *expected || result.Posterior.EffectiveSupport != 1 {
+						t.Fatalf("split reset lost or duplicated revealing outcome: %+v", result)
+					}
+					sibling, err := backend.GetBayesianPosterior(ctx, "tenant-a", "a")
+					if err != nil || sibling.WorkingBelief != nil || sibling.EvidenceTrust != "fixture" || sibling.EffectiveSupport != 12 {
+						t.Fatalf("sibling incorrectly inherited/reset evidence: %+v %v", sibling, err)
+					}
+				})
 			}
 		})
 	}

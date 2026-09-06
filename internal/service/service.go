@@ -767,6 +767,9 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 			forecast.BeliefLaw = &belief
 			if s.config.WorkingBelief.Enabled {
 				forecast.ModelKind = "working-two-hypothesis-bernoulli-retrieval-usefulness"
+				if s.config.WorkingBelief.Grid {
+					forecast.ModelKind = "working-fixed-share-grid-bernoulli-retrieval-usefulness"
+				}
 			}
 		}
 		cached := cachedResiduals[index]

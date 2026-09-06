@@ -9,6 +9,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
 	"github.com/JuanHuaXu/eventframed/internal/store/libravdbstore"
 )
@@ -16,11 +17,15 @@ import (
 // Paired complete internal requests against an isolated on-disk database.
 // Both modes retain ordinary certificates, residual checks, and journals.
 func BenchmarkEvidenceInternalRequests(b *testing.B) {
-	for _, enabled := range []bool{false, true} {
+	for _, mode := range []string{"legacy", "two", "grid"} {
+		enabled := mode != "legacy"
 		for _, workers := range []int{1, 4} {
 			for _, mixed := range []bool{false, true} {
-				b.Run(fmt.Sprintf("upgrade=%t/workers=%d/mixed=%t", enabled, workers, mixed), func(b *testing.B) {
+				b.Run(fmt.Sprintf("mode=%s/workers=%d/mixed=%t", mode, workers, mixed), func(b *testing.B) {
 					cfg, key := evidenceConfig(b, enabled)
+					if mode == "grid" {
+						cfg.WorkingBelief = bayes.GridWorkingPolicy()
+					}
 					if !enabled {
 						key = nil
 					}

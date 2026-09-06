@@ -1,0 +1,12 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/bayes
+cpu: Apple M4
+BenchmarkGridBelief-10       	  100000	      1532 ns/op	    1312 B/op	      16 allocs/op
+BenchmarkGridBelief-10       	  100000	      1306 ns/op	    1312 B/op	      16 allocs/op
+BenchmarkGridBelief-10       	  100000	      1318 ns/op	    1312 B/op	      16 allocs/op
+BenchmarkWorkingBelief-10    	  100000	       440.5 ns/op	     576 B/op	       6 allocs/op
+BenchmarkWorkingBelief-10    	  100000	       436.4 ns/op	     576 B/op	       6 allocs/op
+BenchmarkWorkingBelief-10    	  100000	       443.2 ns/op	     576 B/op	       6 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/bayes	0.742s

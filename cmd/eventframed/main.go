@@ -171,6 +171,9 @@ func run(args []string) error {
 	workingPolicy := bayes.WorkingPolicy{}
 	if settings.WorkingBelief {
 		workingPolicy = bayes.DefaultWorkingPolicy()
+		if settings.GridBelief {
+			workingPolicy = bayes.GridWorkingPolicy()
+		}
 	}
 	runtime, err := service.New(eventStore, activeEmbedder, service.Config{
 		EvidenceVerifier: evidenceVerifier, WorkingBelief: workingPolicy,

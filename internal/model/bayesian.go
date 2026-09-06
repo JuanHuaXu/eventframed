@@ -185,12 +185,14 @@ type EvidenceAttestation struct {
 	Signature     []byte   `json:"signature"`
 }
 
-// WorkingBelief is a bounded two-hypothesis filter, separate from the retained
+// WorkingBelief stores a bounded two-hypothesis or fixed-grid filter, separate from the retained
 // Beta/member sufficient statistics used by the Anti-Pigeon diagnostic.
 type WorkingBelief struct {
 	PolicyID         string  `json:"policy_id"`
 	LogOdds          float64 `json:"log_odds"`
 	PredictiveUseful float64 `json:"predictive_useful"`
+	// A value array avoids mutable slice aliases across store response copies.
+	GridWeights [21]float64 `json:"grid_weights,omitzero"`
 }
 
 type BayesianMemberEvidence struct {

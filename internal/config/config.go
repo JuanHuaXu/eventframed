@@ -65,6 +65,7 @@ type Config struct {
 	AgencyAuthorityToken        string
 	EvidenceTrustFile           string
 	WorkingBelief               bool
+	GridBelief                  bool
 	BackgroundFuzz              bool
 	BackgroundFuzzCertainty     float64
 	BackgroundFuzzQueue         int
@@ -137,6 +138,7 @@ func Parse(args []string) (Config, error) {
 	set.StringVar(&config.AgencyAuthorityToken, "agency-authority-token", filepath.Join(defaultsRoot, "keys", "agency_authority.token"), "private OpenClaw authority token path")
 	set.StringVar(&config.EvidenceTrustFile, "evidence-trust-file", "", "operator-enrolled public evidence keys; require signed learning outcomes when configured")
 	set.BoolVar(&config.WorkingBelief, "working-belief", false, "use bounded reversible usefulness filter (requires evidence trust file; no hierarchical mode)")
+	set.BoolVar(&config.GridBelief, "grid-belief", false, "use fixed-share grid v1 instead of two hypotheses (requires working-belief)")
 	set.BoolVar(&config.BackgroundFuzz, "background-fuzz", true, "enqueue low-certainty recall fuzz audits for an idle background worker")
 	set.Float64Var(&config.BackgroundFuzzCertainty, "background-fuzz-certainty", .20, "maximum packing-boundary answer certainty that nominates a background fuzz audit")
 	set.IntVar(&config.BackgroundFuzzQueue, "background-fuzz-queue", 128, "maximum in-memory background fuzz jobs")
@@ -147,6 +149,9 @@ func Parse(args []string) (Config, error) {
 	set.IntVar(&config.BackgroundFuzzMaxTrials, "background-fuzz-max-trials", 8, "maximum source-bundle perturbations in one background fuzz job")
 	if err := set.Parse(args); err != nil {
 		return Config{}, err
+	}
+	if config.GridBelief && !config.WorkingBelief {
+		return Config{}, errors.New("grid-belief requires working-belief")
 	}
 	if config.WorkingBelief && (strings.TrimSpace(config.EvidenceTrustFile) == "" || config.HierarchicalPosterior) {
 		return Config{}, errors.New("working-belief requires evidence-trust-file and cannot use hierarchical-posterior")
