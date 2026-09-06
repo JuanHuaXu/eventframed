@@ -21,6 +21,7 @@ type ForecastTemplate struct {
 // posterior predictive was accepted. PreResidualLaw is the law presented to
 // residual selection, and CorrectedLaw is the complete law returned afterward.
 type ForecastBundle struct {
+	ExpertMixture          ExpertForecasts  `json:"expert_mixture,omitzero"`
 	ModelKind              string           `json:"model_kind"`
 	RankScore              float64          `json:"rank_score"`
 	HorizonKey             string           `json:"horizon_key"`
@@ -34,4 +35,13 @@ type ForecastBundle struct {
 	ResidualApplied        bool             `json:"residual_applied"`
 	ResidualShadowEligible bool             `json:"residual_shadow_eligible"`
 	ResidualRecordID       string           `json:"residual_record_id,omitempty"`
+}
+
+// ExpertForecasts is an immutable, pre-outcome journal commitment. Versions
+// prevent delayed feedback from training a selector under a different contract.
+type ExpertForecasts struct {
+	Enabled       bool       `json:"enabled"`
+	Probabilities [4]float64 `json:"probabilities"`
+	PolicyVersion uint64     `json:"policy_version"`
+	EvidenceEpoch uint64     `json:"evidence_epoch"`
 }

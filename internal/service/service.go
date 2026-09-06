@@ -49,6 +49,7 @@ const (
 type Config struct {
 	EvidenceVerifier           *epistemic.Verifier
 	WorkingBelief              bayes.WorkingPolicy
+	ForecastRescue             bool
 	DefaultRecallK             int
 	DefaultPackK               int
 	DefaultTokenBudget         int
@@ -102,6 +103,9 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 	if !config.WorkingBelief.Valid() || (config.WorkingBelief.Enabled && (config.EvidenceVerifier == nil || config.RankingPolicy.HierarchicalEnabled)) {
 		return nil, errors.New("working belief requires valid policy, authenticated evidence, and non-hierarchical prediction")
 	}
+	if config.ForecastRescue && (!config.WorkingBelief.Grid || config.RankingPolicy.ContextualEnabled || config.ResidualMode != ResidualModeDisabled) {
+		return nil, errors.New("forecast rescue requires authenticated grid mode, noncontextual scoring and disabled residuals")
+	}
 	if eventStore == nil || embedder == nil {
 		return nil, errors.New("store and embedder are required")
 	}
@@ -141,6 +145,7 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 		}
 	}
 	config.BayesianChangePolicy.Working = config.WorkingBelief
+	config.BayesianChangePolicy.ForecastRescue = config.ForecastRescue
 	config.BayesianChangePolicy.EvidenceTrust = ""
 	if config.EvidenceVerifier != nil {
 		config.BayesianChangePolicy.EvidenceTrust = config.EvidenceVerifier.Fingerprint()
@@ -675,6 +680,14 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 	// repeated records cannot present themselves as independent selected evidence.
 	// Certified Anti-Pigeon buckets remain independent predictive units.
 	markCorrelatedBayesianDecisions(&shadow)
+	type mixInput struct {
+		State bayes.ForecastMix
+		Beta  float64
+	}
+	var mixInputs map[string]mixInput
+	if s.config.ForecastRescue {
+		mixInputs = make(map[string]mixInput)
+	}
 	if shadow.SelectionSupportCertified && shadow.OmittedInfluenceCertified {
 		decisions := make(map[string]int, len(shadow.Decisions))
 		for index := range shadow.Decisions {
@@ -687,8 +700,11 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 				continue
 			}
 			posterior, getErr := s.store.GetBayesianPosterior(ctx, request.TenantID, decision.PosteriorKey)
-			if errors.Is(getErr, store.ErrPosteriorNotFound) && s.config.RankingPolicy.HierarchicalEnabled {
+			if errors.Is(getErr, store.ErrPosteriorNotFound) && (s.config.RankingPolicy.HierarchicalEnabled || s.config.ForecastRescue) {
 				posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: decision.PosteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: snapshot.EvidenceEpoch, Certified: true}
+				if s.config.ForecastRescue {
+					posterior.EvidenceTrust = s.config.EvidenceVerifier.Fingerprint()
+				}
 				getErr = nil
 			} else if errors.Is(getErr, store.ErrPosteriorNotFound) {
 				continue
@@ -703,6 +719,12 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 				continue
 			}
 			probability := clamp(bayes.PredictiveMean(posterior, s.config.WorkingBelief), 0, 1)
+			if s.config.ForecastRescue {
+				if posterior.ForecastPolicyVersion != snapshot.PolicyVersion {
+					posterior.ForecastWeights = [4]float64{}
+				}
+				mixInputs[candidates[index].Event.ID] = mixInput{State: bayes.ForecastMix{Weights: posterior.ForecastWeights}, Beta: posterior.Mean()}
+			}
 			if s.config.RankingPolicy.HierarchicalEnabled {
 				decision.ParentPosteriorKey = parentPosteriorKey()
 				parent, parentErr := s.store.GetBayesianPosterior(ctx, request.TenantID, decision.ParentPosteriorKey)
@@ -755,9 +777,15 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 		if candidate.BayesianApplied {
 			preResidualProbability = s.config.PredictiveCalibration.Apply(candidate.PredictiveScore)
 		}
+		var experts model.ExpertForecasts
+		if input, ok := mixInputs[candidate.Event.ID]; ok && candidate.BayesianApplied {
+			experts = model.ExpertForecasts{Enabled: true, Probabilities: [4]float64{baseProbability, preResidualProbability, candidate.BayesianProbability, input.Beta}, PolicyVersion: snapshot.PolicyVersion, EvidenceEpoch: snapshot.EvidenceEpoch}
+			preResidualProbability = input.State.Forecast(experts.Probabilities)
+		}
 		preResidual := bernoulliLaw(preResidualProbability)
 		forecast := model.ForecastBundle{
-			ModelKind: "plugin-bernoulli-retrieval-usefulness", RankScore: candidate.Score, HorizonKey: model.RetrievalUsefulnessHorizon,
+			ExpertMixture: experts,
+			ModelKind:     "plugin-bernoulli-retrieval-usefulness", RankScore: candidate.Score, HorizonKey: model.RetrievalUsefulnessHorizon,
 			BaseLaw: bernoulliLaw(baseProbability), PreResidualLaw: preResidual, CorrectedLaw: preResidual,
 			Template:     model.ForecastTemplate{EventID: candidate.Event.ID, PredictedUseful: preResidual.Useful >= .5, Confidence: math.Max(preResidual.Useful, preResidual.NotUseful)},
 			PosteriorKey: decision.PosteriorKey, PosteriorVersion: snapshot.PosteriorVersion,
@@ -773,6 +801,9 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 			}
 		}
 		cached := cachedResiduals[index]
+		if experts.Enabled {
+			forecast.ModelKind = "expert-mixture-bernoulli-retrieval-usefulness"
+		}
 		var selected *model.ResidualRecord
 		if cached.Exact != nil && residual.Eligible(*cached.Exact, preResidual.Useful, snapshot, request.AsOf.UTC(), s.config.ResidualPolicy) {
 			selected = cached.Exact
@@ -1683,9 +1714,10 @@ func (s *Service) ObserveBayesianOutcome(ctx context.Context, request model.Baye
 		return model.BayesianOutcomeResponse{}, errors.New("referenced journal lacks a Phase 4 forecast commitment")
 	}
 	residualObservation := model.ResidualObservation{
-		ActionKey:  residualActionKey(journal.QueryDigest, request.EventID, decision.Forecast.HorizonKey),
-		GeneralKey: residualGeneralKey(decision.PosteriorKey, decision.Forecast.HorizonKey),
-		HorizonKey: decision.Forecast.HorizonKey, BaseProbability: decision.Forecast.PreResidualLaw.Useful, CommittedProbability: decision.Forecast.CorrectedLaw.Useful,
+		ExpertMixture: decision.Forecast.ExpertMixture,
+		ActionKey:     residualActionKey(journal.QueryDigest, request.EventID, decision.Forecast.HorizonKey),
+		GeneralKey:    residualGeneralKey(decision.PosteriorKey, decision.Forecast.HorizonKey),
+		HorizonKey:    decision.Forecast.HorizonKey, BaseProbability: decision.Forecast.PreResidualLaw.Useful, CommittedProbability: decision.Forecast.CorrectedLaw.Useful,
 		Useful: request.Useful, ValidationEligible: request.Source == model.OutcomeFullStream || request.Source == model.OutcomeIndependentAudit,
 		EventID: request.EventID, JournalID: request.JournalID, AvailableAt: request.AvailableAt,
 		PosteriorKey: decision.PosteriorKey,

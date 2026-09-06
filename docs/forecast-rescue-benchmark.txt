@@ -1,0 +1,42 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/service
+cpu: Apple M4
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=1/mixed=false-10         	     500	   7071056 ns/op	  13738292 max-ns	   7003625 p50-ns	   8953708 p99-ns	 1247790 B/op	    8690 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=1/mixed=false-10         	     500	   7316720 ns/op	  17670709 max-ns	   7033583 p50-ns	  10016166 p99-ns	 1247410 B/op	    8688 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=1/mixed=false-10         	     500	   7241822 ns/op	   9326250 max-ns	   7024458 p50-ns	   8978125 p99-ns	 1247611 B/op	    8686 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=1/mixed=true-10          	     500	   7004141 ns/op	  17564292 max-ns	   6989125 p50-ns	   9270833 p99-ns	 1054042 B/op	    7266 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=1/mixed=true-10          	     500	   6759591 ns/op	   9856625 max-ns	   6949291 p50-ns	   8546542 p99-ns	 1053078 B/op	    7265 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=1/mixed=true-10          	     500	   6640357 ns/op	  10823750 max-ns	   6882875 p50-ns	   8844750 p99-ns	 1053428 B/op	    7259 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=4/mixed=false-10         	     500	   2750096 ns/op	  31054000 max-ns	  10108542 p50-ns	  20265375 p99-ns	 1253422 B/op	    8693 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=4/mixed=false-10         	     500	   2684330 ns/op	  52975542 max-ns	  10065541 p50-ns	  20024708 p99-ns	 1252369 B/op	    8699 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=4/mixed=false-10         	     500	   2610676 ns/op	  21135083 max-ns	  10060875 p50-ns	  12593000 p99-ns	 1254024 B/op	    8693 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=4/mixed=true-10          	     500	   3848617 ns/op	  84856792 max-ns	  11844084 p50-ns	  35006625 p99-ns	 1373072 B/op	    9588 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=4/mixed=true-10          	     500	   3700883 ns/op	  38028708 max-ns	  11755875 p50-ns	  33111458 p99-ns	 1388067 B/op	    9720 allocs/op
+BenchmarkEvidenceInternalRequests/mode=two-nr/workers=4/mixed=true-10          	     500	   3707459 ns/op	  34039792 max-ns	  11860167 p50-ns	  32929625 p99-ns	 1371670 B/op	    9558 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=1/mixed=false-10        	     500	   7595561 ns/op	  17575042 max-ns	   7291500 p50-ns	  10032333 p99-ns	 1246535 B/op	    8681 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=1/mixed=false-10        	     500	   7236058 ns/op	  13502250 max-ns	   7042416 p50-ns	   8965709 p99-ns	 1247115 B/op	    8679 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=1/mixed=false-10        	     500	   7275346 ns/op	  13401250 max-ns	   7039833 p50-ns	   9368750 p99-ns	 1248054 B/op	    8686 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=1/mixed=true-10         	     500	   7014457 ns/op	  12830291 max-ns	   6994667 p50-ns	   8871584 p99-ns	 1055514 B/op	    7270 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=1/mixed=true-10         	     500	   7109301 ns/op	  14676167 max-ns	   7022417 p50-ns	   9005750 p99-ns	 1057018 B/op	    7267 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=1/mixed=true-10         	     500	   7327901 ns/op	  35156917 max-ns	   7059709 p50-ns	   9888584 p99-ns	 1054708 B/op	    7268 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=4/mixed=false-10        	     500	   2604769 ns/op	  21723875 max-ns	  10044958 p50-ns	  13967292 p99-ns	 1252492 B/op	    8692 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=4/mixed=false-10        	     500	   2757172 ns/op	  22282709 max-ns	  10070416 p50-ns	  21158416 p99-ns	 1252899 B/op	    8697 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=4/mixed=false-10        	     500	   2682708 ns/op	  21091292 max-ns	  10398417 p50-ns	  16003250 p99-ns	 1252312 B/op	    8688 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=4/mixed=true-10         	     500	   3726437 ns/op	  74142417 max-ns	  11943292 p50-ns	  34121541 p99-ns	 1363679 B/op	    9505 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=4/mixed=true-10         	     500	   3642396 ns/op	  85856125 max-ns	  11081334 p50-ns	  31902084 p99-ns	 1384670 B/op	    9689 allocs/op
+BenchmarkEvidenceInternalRequests/mode=grid-nr/workers=4/mixed=true-10         	     500	   3798097 ns/op	  56914958 max-ns	  11945041 p50-ns	  33055209 p99-ns	 1389076 B/op	    9685 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=1/mixed=false-10         	     500	   7462520 ns/op	  14429000 max-ns	   7583333 p50-ns	   9020583 p99-ns	 1308447 B/op	    8937 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=1/mixed=false-10         	     500	   7069824 ns/op	  14466792 max-ns	   6987459 p50-ns	  12619042 p99-ns	 1309716 B/op	    8941 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=1/mixed=false-10         	     500	   7828000 ns/op	  17564875 max-ns	   7946375 p50-ns	  10206500 p99-ns	 1311290 B/op	    8936 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=1/mixed=true-10          	     500	   7251631 ns/op	  16933125 max-ns	   7070291 p50-ns	   9082000 p99-ns	 1103314 B/op	    7468 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=1/mixed=true-10          	     500	   7556085 ns/op	  17618292 max-ns	   7792208 p50-ns	  12025208 p99-ns	 1104907 B/op	    7471 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=1/mixed=true-10          	     500	   7322172 ns/op	  13793292 max-ns	   7603125 p50-ns	   9178084 p99-ns	 1105951 B/op	    7475 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=4/mixed=false-10         	     500	   2745856 ns/op	  40699583 max-ns	  10061167 p50-ns	  21341333 p99-ns	 1314678 B/op	    8946 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=4/mixed=false-10         	     500	   2724230 ns/op	  24078958 max-ns	  10161083 p50-ns	  20000083 p99-ns	 1314843 B/op	    8947 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=4/mixed=false-10         	     500	   2641256 ns/op	  22891333 max-ns	  10070042 p50-ns	  13169042 p99-ns	 1316421 B/op	    8955 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=4/mixed=true-10          	     500	   3726405 ns/op	  59960459 max-ns	  11956125 p50-ns	  33082250 p99-ns	 1433632 B/op	    9859 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=4/mixed=true-10          	     500	   3870602 ns/op	  39006083 max-ns	  12009250 p50-ns	  33975500 p99-ns	 1457474 B/op	   10035 allocs/op
+BenchmarkEvidenceInternalRequests/mode=rescue/workers=4/mixed=true-10          	     500	   3736243 ns/op	  35011917 max-ns	  11952459 p50-ns	  33042875 p99-ns	 1448672 B/op	    9969 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/service	131.370s

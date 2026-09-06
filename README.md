@@ -47,6 +47,12 @@ The optional `--grid-belief` extension replaces two usefulness hypotheses with
 a fixed 21-state reset mixture. It requires authenticated working mode and is
 not a universal accuracy upgrade. See the [frozen tests and tradeoffs](docs/grid-belief-results.md).
 
+The [complete-forecast rescue](docs/forecast-rescue-results.md) learns a mixture
+of baseline, blended, grid and Beta forecast laws from journaled outcomes.
+`--forecast-rescue` requires authenticated grid mode and `--residual-mode disabled`.
+It repairs the three targeted synthetic composition failures, with small remaining
+regressions; active-residual coexistence and real-world answer gains are untested.
+
 ```text
 OpenClaw
   |  before_prompt_build / agent_end

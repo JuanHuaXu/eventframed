@@ -177,6 +177,7 @@ func run(args []string) error {
 	}
 	runtime, err := service.New(eventStore, activeEmbedder, service.Config{
 		EvidenceVerifier: evidenceVerifier, WorkingBelief: workingPolicy,
+		ForecastRescue:      settings.ForecastRescue,
 		DefaultRecallK:      settings.RecallK,
 		DefaultPackK:        settings.PackK,
 		DefaultTokenBudget:  settings.TokenBudget,

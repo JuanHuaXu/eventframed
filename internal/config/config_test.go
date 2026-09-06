@@ -6,6 +6,15 @@ import (
 )
 
 func TestWorkingBeliefRequiresExplicitTrustAndComposition(t *testing.T) {
+	if _, err := Parse([]string{"--forecast-rescue"}); err == nil {
+		t.Fatal("unguarded rescue")
+	}
+	if _, err := Parse([]string{"--forecast-rescue", "--grid-belief", "--working-belief", "--evidence-trust-file", "keys.json"}); err == nil {
+		t.Fatal("rescue with residuals")
+	}
+	if _, err := Parse([]string{"--forecast-rescue", "--grid-belief", "--working-belief", "--evidence-trust-file", "keys.json", "--residual-mode", "disabled"}); err != nil {
+		t.Fatal(err)
+	}
 	if _, err := Parse([]string{"--grid-belief"}); err == nil {
 		t.Fatal("grid enabled without working mode")
 	}

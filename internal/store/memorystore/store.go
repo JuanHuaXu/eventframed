@@ -355,6 +355,13 @@ func (s *Store) ApplyBayesianOutcome(_ context.Context, request model.BayesianOu
 	certificate, memberIDs := s.antiPigeonGroup(request.TenantID, posteriorKey)
 	pooledWeight := bayes.SharedOutcomeWeight(groupPolicy, len(memberIDs) >= 2, weight)
 	posterior, changePoint := bayes.ApplyOutcomeAuthorized(posterior, request.Useful, pooledWeight, changePolicy, resetAuthorized)
+	if changePolicy.ForecastRescue && posterior.ForecastPolicyVersion != s.snapshot.PolicyVersion {
+		posterior.ForecastWeights = [4]float64{}
+	}
+	posterior.ForecastWeights = bayes.UpdateForecastWeights(posterior.ForecastWeights, residualObservation.ExpertMixture, request.Useful, pooledWeight, changePoint, changePolicy.ForecastRescue, s.snapshot)
+	if changePolicy.ForecastRescue {
+		posterior.ForecastPolicyVersion = s.snapshot.PolicyVersion
+	}
 	bayes.UpdateMemberEvidence(&posterior, request.EventID, request.Useful, weight)
 	updateCalibration(&posterior, residualObservation.CommittedProbability, request.Useful, weight)
 	posterior.UpdatedAt = request.AvailableAt

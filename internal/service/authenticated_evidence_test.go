@@ -257,7 +257,7 @@ func TestWorkingSplitResetMaterialization(t *testing.T) {
 					if _, err := backend.PublishAntiPigeonCertificate(ctx, cert); err != nil {
 						t.Fatal(err)
 					}
-					change := bayes.ChangePolicy{Hazard: .000001, Threshold: 1, MaxRun: 64, Working: policy, EvidenceTrust: "fixture"}
+					change := bayes.ChangePolicy{Hazard: .000001, Threshold: 1, MaxRun: 64, Working: policy, EvidenceTrust: "fixture", ForecastRescue: true}
 					group := bayes.GroupPolicy{PriorSplit: .5, DecisionThreshold: .95, MinMemberSupport: 8, MaxMembers: 16, DisableAutoRevision: true}
 					var result store.BayesianOutcomeResult
 					for i := 0; i < 25; i++ {
@@ -271,9 +271,14 @@ func TestWorkingSplitResetMaterialization(t *testing.T) {
 						}
 						r := model.BayesianOutcomeRequest{IdempotencyKey: fmt.Sprint(i), TenantID: "tenant-a", EventID: event, Useful: useful, AvailableAt: time.Now().UTC(), Source: model.OutcomeFullStream}
 						var err error
-						result, err = backend.ApplyBayesianOutcome(ctx, r, "ap:working-group", "", r.IdempotencyKey, 1, change, group, model.ResidualObservation{ActionKey: r.IdempotencyKey, GeneralKey: "working", CommittedProbability: .5, Useful: useful, AvailableAt: r.AvailableAt}, residual.Policy{})
+						current := backend.Snapshot(ctx)
+						commitment := model.ExpertForecasts{Enabled: true, Probabilities: [4]float64{.2, .3, .8, .9}, PolicyVersion: current.PolicyVersion, EvidenceEpoch: current.EvidenceEpoch}
+						result, err = backend.ApplyBayesianOutcome(ctx, r, "ap:working-group", "", r.IdempotencyKey, 1, change, group, model.ResidualObservation{ExpertMixture: commitment, ActionKey: r.IdempotencyKey, GeneralKey: "working", CommittedProbability: .5, Useful: useful, AvailableAt: r.AvailableAt}, residual.Policy{})
 						if err != nil {
 							t.Fatal(err)
+						}
+						if i == 23 && result.Posterior.ForecastWeights == ([4]float64{}) {
+							t.Fatal("selector never learned before reset")
 						}
 					}
 					expected := bayes.UpdateWorking(nil, false, 1, true, change.Working)
@@ -281,6 +286,9 @@ func TestWorkingSplitResetMaterialization(t *testing.T) {
 						t.Fatalf("split reset lost or duplicated revealing outcome: %+v", result)
 					}
 					sibling, err := backend.GetBayesianPosterior(ctx, "tenant-a", "a")
+					if result.Posterior.ForecastWeights != ([4]float64{}) || sibling.ForecastWeights != ([4]float64{}) {
+						t.Fatal("split inherited pooled selector")
+					}
 					if err != nil || sibling.WorkingBelief != nil || sibling.EvidenceTrust != "fixture" || sibling.EffectiveSupport != 12 {
 						t.Fatalf("sibling incorrectly inherited/reset evidence: %+v %v", sibling, err)
 					}

@@ -154,6 +154,8 @@ func (signals OutcomeSignals) Resolve(fallback bool) (useful, evidence bool) {
 }
 
 type BayesianPosterior struct {
+	ForecastWeights         [4]float64                        `json:"forecast_weights,omitzero"`
+	ForecastPolicyVersion   uint64                            `json:"forecast_policy_version,omitempty"`
 	EvidenceTrust           string                            `json:"evidence_trust,omitempty"`
 	WorkingBelief           *WorkingBelief                    `json:"working_belief,omitempty"`
 	TenantID                string                            `json:"tenant_id"`

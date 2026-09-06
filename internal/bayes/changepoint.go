@@ -7,6 +7,7 @@ import (
 )
 
 type ChangePolicy struct {
+	ForecastRescue   bool `json:",omitempty"`
 	EvidenceTrust    string
 	Working          WorkingPolicy
 	Hazard           float64

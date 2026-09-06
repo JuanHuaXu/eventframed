@@ -54,17 +54,18 @@ func (record ResidualRecord) MeanGain() float64 {
 }
 
 type ResidualObservation struct {
-	ActionKey            string    `json:"action_key"`
-	GeneralKey           string    `json:"general_key"`
-	HorizonKey           string    `json:"horizon_key"`
-	BaseProbability      float64   `json:"base_probability"`
-	CommittedProbability float64   `json:"committed_probability"`
-	Useful               bool      `json:"useful"`
-	ValidationEligible   bool      `json:"validation_eligible"`
-	EventID              string    `json:"event_id"`
-	JournalID            string    `json:"journal_id"`
-	PosteriorKey         string    `json:"posterior_key"`
-	AvailableAt          time.Time `json:"available_at"`
+	ExpertMixture        ExpertForecasts `json:"expert_mixture,omitzero"`
+	ActionKey            string          `json:"action_key"`
+	GeneralKey           string          `json:"general_key"`
+	HorizonKey           string          `json:"horizon_key"`
+	BaseProbability      float64         `json:"base_probability"`
+	CommittedProbability float64         `json:"committed_probability"`
+	Useful               bool            `json:"useful"`
+	ValidationEligible   bool            `json:"validation_eligible"`
+	EventID              string          `json:"event_id"`
+	JournalID            string          `json:"journal_id"`
+	PosteriorKey         string          `json:"posterior_key"`
+	AvailableAt          time.Time       `json:"available_at"`
 }
 
 type ResidualCandidates struct {

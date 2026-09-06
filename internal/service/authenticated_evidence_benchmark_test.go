@@ -11,20 +11,28 @@ import (
 
 	"github.com/JuanHuaXu/eventframed/internal/bayes"
 	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/service"
 	"github.com/JuanHuaXu/eventframed/internal/store/libravdbstore"
 )
 
 // Paired complete internal requests against an isolated on-disk database.
 // Both modes retain ordinary certificates, residual checks, and journals.
 func BenchmarkEvidenceInternalRequests(b *testing.B) {
-	for _, mode := range []string{"legacy", "two", "grid"} {
+	for _, mode := range []string{"legacy", "two", "grid", "two-nr", "grid-nr", "rescue"} {
 		enabled := mode != "legacy"
 		for _, workers := range []int{1, 4} {
 			for _, mixed := range []bool{false, true} {
 				b.Run(fmt.Sprintf("mode=%s/workers=%d/mixed=%t", mode, workers, mixed), func(b *testing.B) {
 					cfg, key := evidenceConfig(b, enabled)
-					if mode == "grid" {
+					if mode == "grid" || mode == "grid-nr" || mode == "rescue" {
 						cfg.WorkingBelief = bayes.GridWorkingPolicy()
+					}
+					if mode == "rescue" {
+						cfg.ForecastRescue = true
+						cfg.ResidualMode = service.ResidualModeDisabled
+					}
+					if mode == "two-nr" || mode == "grid-nr" {
+						cfg.ResidualMode = service.ResidualModeDisabled
 					}
 					if !enabled {
 						key = nil
