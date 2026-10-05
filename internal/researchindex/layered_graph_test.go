@@ -150,7 +150,7 @@ func layerInput(t testing.TB, r layerCaptureNode) *LayeredRecord {
 	if layerHash(v) != r.VectorHash {
 		t.Fatal("vector regeneration mismatch", r.ID)
 	}
-	return &LayeredRecord{ID:r.ID, Level:r.Level, Vector:v, Links:r.Links, Backlinks:r.Backlinks, Heuristic:r.Heuristic}
+	return &LayeredRecord{ID: r.ID, Level: r.Level, Vector: v, Links: r.Links, Backlinks: r.Backlinks, Heuristic: r.Heuristic}
 }
 
 // Measures preparation of known logical edits only, excluding their discovery,

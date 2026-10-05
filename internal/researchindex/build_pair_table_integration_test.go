@@ -17,9 +17,14 @@ func TestBuildPairTableRealDistanceAndLifetime(t *testing.T) {
 	ctx := libra.ResearchTableBuildPairs(context.Background(), func(n int) (interface {
 		Lookup(uint32, uint32) (float32, bool)
 		Store(uint32, uint32, float32)
-	}, func()) { table, err := NewBuildPairTable(65536); if err != nil {
-		t.Fatal(err)
-	}; observed := &checkedPairTable{BuildPairTable: table, t: t, calls: &calls}; return observed, func() { observed.ended.Store(true); hits.Add(table.Stats().Hits) } })
+	}, func()) {
+		table, err := NewBuildPairTable(65536)
+		if err != nil {
+			t.Fatal(err)
+		}
+		observed := &checkedPairTable{BuildPairTable: table, t: t, calls: &calls}
+		return observed, func() { observed.ended.Store(true); hits.Add(table.Stats().Hits) }
+	})
 
 	db, err := libra.Open(libra.WithStoragePath(t.TempDir() + "/db"))
 	if err != nil {
