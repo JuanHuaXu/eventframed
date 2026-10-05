@@ -1,0 +1,272 @@
+=== RUN   TestResearchArchiveBoundaryV29
+    research_archive_boundary_v29_test.go:36: exclusive isolated archival experiment
+--- SKIP: TestResearchArchiveBoundaryV29 (0.00s)
+=== RUN   TestResearchArchiveAuthorityV29
+    research_archive_boundary_v29_test.go:240: isolated authority controls
+--- SKIP: TestResearchArchiveAuthorityV29 (0.00s)
+=== RUN   TestResearchArchiveCostGenerationV34
+--- PASS: TestResearchArchiveCostGenerationV34 (0.01s)
+=== RUN   TestResearchArchiveCostAuthorityV34
+    research_archive_cost_audit_v34_test.go:175: isolated paired authority controls
+--- SKIP: TestResearchArchiveCostAuthorityV34 (0.00s)
+=== RUN   TestResearchBatchArchiveRetryV34
+    research_archive_cost_checks_v34_generated_test.go:17: isolated archival retry controls
+--- SKIP: TestResearchBatchArchiveRetryV34 (0.00s)
+=== RUN   TestResearchBatchArchiveLifecycleV34
+    research_archive_cost_checks_v34_generated_test.go:85: isolated bounded queue/cancel/close controls
+--- SKIP: TestResearchBatchArchiveLifecycleV34 (0.00s)
+=== RUN   TestResearchBatchArchiveInterruptionV34
+    research_archive_cost_checks_v34_generated_test.go:189: isolated native/sidecar interruptions
+--- SKIP: TestResearchBatchArchiveInterruptionV34 (0.00s)
+=== RUN   TestResearchBatchArchiveLoadV34
+    research_archive_cost_load_v34_generated_test.go:256: exclusive frozen joined workload
+--- SKIP: TestResearchBatchArchiveLoadV34 (0.00s)
+=== RUN   TestResearchArchiveGenerationV29
+--- PASS: TestResearchArchiveGenerationV29 (0.00s)
+=== RUN   TestResearchArchiveInterruptionV30
+    research_archive_lifecycle_v30_test.go:16: isolated archival durability controls
+--- SKIP: TestResearchArchiveInterruptionV30 (0.00s)
+=== RUN   TestResearchArchiveConcurrentV30
+    research_archive_lifecycle_v30_test.go:70: isolated bounded concurrent archive
+--- SKIP: TestResearchArchiveConcurrentV30 (0.00s)
+=== RUN   TestResearchArchiveOwnershipV30
+    research_archive_lifecycle_v30_test.go:204: isolated copy/alias control
+--- SKIP: TestResearchArchiveOwnershipV30 (0.00s)
+=== RUN   TestResearchArchiveInterruptionV31
+    research_archive_lifecycle_v31_generated_test.go:17: isolated archival durability controls
+--- SKIP: TestResearchArchiveInterruptionV31 (0.00s)
+=== RUN   TestResearchArchiveConcurrentV31
+    research_archive_lifecycle_v31_generated_test.go:71: isolated bounded concurrent archive
+--- SKIP: TestResearchArchiveConcurrentV31 (0.00s)
+=== RUN   TestResearchArchiveOwnershipV31
+    research_archive_lifecycle_v31_generated_test.go:204: isolated copy/alias control
+--- SKIP: TestResearchArchiveOwnershipV31 (0.00s)
+=== RUN   TestResearchArchiveRequestsV32
+    research_archive_requests_v32_test.go:31: exclusive request-identity diagnostic
+--- SKIP: TestResearchArchiveRequestsV32 (0.00s)
+=== RUN   TestResearchBatchArchiveRetryV33
+    research_batch_archive_checks_v33_test.go:16: isolated archival retry controls
+--- SKIP: TestResearchBatchArchiveRetryV33 (0.00s)
+=== RUN   TestResearchBatchArchiveLifecycleV33
+    research_batch_archive_checks_v33_test.go:84: isolated bounded queue/cancel/close controls
+--- SKIP: TestResearchBatchArchiveLifecycleV33 (0.00s)
+=== RUN   TestResearchBatchArchiveInterruptionV33
+    research_batch_archive_checks_v33_test.go:188: isolated native/sidecar interruptions
+--- SKIP: TestResearchBatchArchiveInterruptionV33 (0.00s)
+=== RUN   TestResearchBatchArchiveLoadV33
+    research_batch_archive_load_v33_generated_test.go:256: exclusive frozen joined workload
+--- SKIP: TestResearchBatchArchiveLoadV33 (0.00s)
+=== RUN   TestResearchBatchArchiveWorkloadV33
+    research_batch_archive_workload_v33_test.go:102: offer rates, independent producers, full request measurements and gates preserved
+--- PASS: TestResearchBatchArchiveWorkloadV33 (0.00s)
+=== RUN   TestResearchJoinedWitnessLifecycleV25_CohortV46
+    research_cohort_batch_v46_generated_test.go:245: isolated joined integration
+--- SKIP: TestResearchJoinedWitnessLifecycleV25_CohortV46 (0.00s)
+=== RUN   TestResearchJoinedWitnessCancellationV25_CohortV46
+    research_cohort_batch_v46_generated_test.go:347: isolated joined cancellation
+--- SKIP: TestResearchJoinedWitnessCancellationV25_CohortV46 (0.00s)
+=== RUN   TestResearchJoinedWitnessBatchV25_CohortV46
+    research_cohort_batch_v46_generated_test.go:396: isolated joined batch contract
+--- SKIP: TestResearchJoinedWitnessBatchV25_CohortV46 (0.00s)
+=== RUN   TestResearchJoinedWitnessGapV25_CohortV46
+    research_cohort_batch_v46_generated_test.go:446: isolated joined fail-closed controls
+--- SKIP: TestResearchJoinedWitnessGapV25_CohortV46 (0.00s)
+=== RUN   TestResearchBatchArchiveRetryV34_CohortV46
+    research_cohort_batch_v46_generated_test.go:1214: isolated archival retry controls
+--- SKIP: TestResearchBatchArchiveRetryV34_CohortV46 (0.00s)
+=== RUN   TestResearchBatchArchiveLifecycleV34_CohortV46
+    research_cohort_batch_v46_generated_test.go:1281: isolated bounded queue/cancel/close controls
+--- SKIP: TestResearchBatchArchiveLifecycleV34_CohortV46 (0.00s)
+=== RUN   TestResearchBatchArchiveInterruptionV34_CohortV46
+    research_cohort_batch_v46_generated_test.go:1395: isolated native/sidecar interruptions
+--- SKIP: TestResearchBatchArchiveInterruptionV34_CohortV46 (0.00s)
+=== RUN   TestResearchEagerTracedOwnerAndDurabilityV44_CohortV46
+    research_cohort_batch_v46_generated_test.go:2379: explicit isolated native control
+--- SKIP: TestResearchEagerTracedOwnerAndDurabilityV44_CohortV46 (0.00s)
+=== RUN   TestResearchCohortSourcePreservationV46
+    research_cohort_batch_v46_test.go:128: independently normalized all 58 functions; exactly two worker and two native 4->8 bounds
+--- PASS: TestResearchCohortSourcePreservationV46 (0.03s)
+=== RUN   TestResearchCohortEightJournalDurabilityV46
+    research_cohort_batch_v46_test.go:133: isolated native eight-entry regression
+--- SKIP: TestResearchCohortEightJournalDurabilityV46 (0.00s)
+=== RUN   TestResearchCohortBatchLoadV46
+    research_cohort_batch_v46_test.go:196: exclusive isolated mixed load
+--- SKIP: TestResearchCohortBatchLoadV46 (0.00s)
+=== RUN   TestResearchCombinedWitnessLoadV26
+    research_combined_witness_v26_load_test.go:256: exclusive frozen joined workload
+--- SKIP: TestResearchCombinedWitnessLoadV26 (0.00s)
+=== RUN   TestResearchCombinedWitnessLifecycleV26
+    research_combined_witness_v26_test.go:26: isolated combined lifecycle
+--- SKIP: TestResearchCombinedWitnessLifecycleV26 (0.00s)
+=== RUN   TestResearchCombinedWitnessCancellationV26
+    research_combined_witness_v26_test.go:112: isolated combined cancellation
+--- SKIP: TestResearchCombinedWitnessCancellationV26 (0.00s)
+=== RUN   TestResearchContextPriorV26IdentityAndCounts
+--- PASS: TestResearchContextPriorV26IdentityAndCounts (0.00s)
+=== RUN   TestResearchContextPriorV26Validity
+=== RUN   TestResearchContextPriorV26Validity/epoch
+=== RUN   TestResearchContextPriorV26Validity/policy
+=== RUN   TestResearchContextPriorV26Validity/stale-posterior
+=== RUN   TestResearchContextPriorV26Validity/future-posterior
+=== RUN   TestResearchContextPriorV26Validity/pre-anchor
+=== RUN   TestResearchContextPriorV26Validity/uncertified
+=== RUN   TestResearchContextPriorV26Validity/fractional
+=== RUN   TestResearchContextPriorV26Validity/support-mismatch
+=== RUN   TestResearchContextPriorV26Validity/nan
+=== RUN   TestResearchContextPriorV26Validity/infinity
+=== RUN   TestResearchContextPriorV26Validity/negative
+=== RUN   TestResearchContextPriorV26Validity/wrong-key
+=== RUN   TestResearchContextPriorV26Validity/wrong-tenant
+=== RUN   TestResearchContextPriorV26Validity/working
+=== RUN   TestResearchContextPriorV26Validity/cap
+--- PASS: TestResearchContextPriorV26Validity (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/epoch (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/policy (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/stale-posterior (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/future-posterior (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/pre-anchor (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/uncertified (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/fractional (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/support-mismatch (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/nan (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/infinity (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/negative (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/wrong-key (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/wrong-tenant (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/working (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/cap (0.00s)
+=== RUN   TestResearchDurableWitnessWireDiagnosticV23
+    research_durable_witness_v23_diagnostic_test.go:19: isolated post-hoc journal boundary diagnostic
+--- SKIP: TestResearchDurableWitnessWireDiagnosticV23 (0.00s)
+=== RUN   TestResearchDurableWitnessLifecycleV23
+    research_durable_witness_v23_test.go:547: isolated libravdb witness integration
+--- SKIP: TestResearchDurableWitnessLifecycleV23 (0.00s)
+=== RUN   TestResearchDurableWitnessLoadV23
+    research_durable_witness_v23_test.go:963: exclusive prospective output required
+--- SKIP: TestResearchDurableWitnessLoadV23 (0.00s)
+=== RUN   TestResearchEagerCoreWireControlsV42
+=== RUN   TestResearchEagerCoreWireControlsV42/forecast
+=== RUN   TestResearchEagerCoreWireControlsV42/snapshot
+=== RUN   TestResearchEagerCoreWireControlsV42/omission
+=== RUN   TestResearchEagerCoreWireControlsV42/durability
+=== RUN   TestResearchEagerCoreWireControlsV42/journal
+=== RUN   TestResearchEagerCoreWireControlsV42/report
+=== RUN   TestResearchEagerCoreWireControlsV42/nonfinite
+--- PASS: TestResearchEagerCoreWireControlsV42 (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/forecast (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/snapshot (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/omission (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/durability (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/journal (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/report (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/nonfinite (0.00s)
+=== RUN   TestResearchEagerCoreOwnerBoundaryV42
+    research_eager_core_v42_test.go:205: explicit isolated native preflight
+--- SKIP: TestResearchEagerCoreOwnerBoundaryV42 (0.00s)
+=== RUN   TestResearchEagerCoreMutationV42
+    research_eager_core_v42_test.go:306: explicit isolated native preflight
+--- SKIP: TestResearchEagerCoreMutationV42 (0.00s)
+=== RUN   TestResearchEagerCoreGapAndCancellationV42
+    research_eager_core_v42_test.go:363: explicit isolated native preflight
+--- SKIP: TestResearchEagerCoreGapAndCancellationV42 (0.00s)
+=== RUN   TestResearchEagerPredicatePreservationV44
+--- PASS: TestResearchEagerPredicatePreservationV44 (0.00s)
+=== RUN   TestResearchEagerWorkloadGenerationV44
+--- PASS: TestResearchEagerWorkloadGenerationV44 (0.00s)
+=== RUN   TestResearchEagerTracedOwnerAndDurabilityV44
+    research_eager_load_v44_controls_test.go:92: explicit isolated native control
+--- SKIP: TestResearchEagerTracedOwnerAndDurabilityV44 (0.00s)
+=== RUN   TestResearchEagerLoadV44
+    research_eager_load_v44_generated_test.go:259: exclusive frozen joined workload
+--- SKIP: TestResearchEagerLoadV44 (0.00s)
+=== RUN   TestResearchSortableReceiptCostV1
+    research_event_batch_receipt_cost_test.go:15: opt-in private receipt writer cost comparison
+--- SKIP: TestResearchSortableReceiptCostV1 (0.00s)
+=== RUN   TestResearchSortableEventBatchReceipt
+--- PASS: TestResearchSortableEventBatchReceipt (0.09s)
+=== RUN   TestResearchSortableEventBatchRequiresDeclaredKey
+--- PASS: TestResearchSortableEventBatchRequiresDeclaredKey (0.06s)
+=== RUN   TestResearchSortableEventBatchRejectsWrongKeyType
+--- PASS: TestResearchSortableEventBatchRejectsWrongKeyType (0.04s)
+=== RUN   TestResearchSortableEventBatch
+--- PASS: TestResearchSortableEventBatch (0.07s)
+=== RUN   TestResearchEventBatchParityReopen
+panic: test timed out after 6m0s
+	running tests:
+		TestResearchEventBatchParityReopen (6m0s)
+
+goroutine 161 [running]:
+testing.(*M).startAlarm.func1()
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2959 +0x2c4
+created by time.goFunc
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/time/sleep.go:182 +0x38
+
+goroutine 1 [chan receive, 5 minutes]:
+testing.(*T).Run(0x2acf59dee248, {0x10112482b?, 0x2acf5a25da88?}, 0x101e3a3e8)
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2266 +0x3cc
+testing.runTests.func1(0x2acf59dee248)
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2742 +0x38
+testing.tRunner(0x2acf59dee248, 0x2acf5a25dbb8)
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2193 +0xc4
+testing.runTests({0x101120760, 0x20}, {0x1011472e5, 0x3d}, 0x2acf59d02408, {0x101ec8f50, 0xa8, 0xa8}, {0x2acf5a25dc58?, 0x2acf5a1047a0?, ...})
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2740 +0x400
+testing.(*M).Run(0x2acf59ea30e0)
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2600 +0x578
+main.main()
+	_testmain.go:392 +0x80
+
+goroutine 60 [select, 5 minutes]:
+github.com/xDarkicex/libravdb/libravdb.(*writeController).acquire(0x2acf5a25f500, {0x101e338b8, 0x101ef6d20})
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/write_controller.go:75 +0x270
+github.com/xDarkicex/libravdb/libravdb.(*Collection).acquireWrite(0x2acf59f10870?, {0x101e338b8?, 0x101ef6d20?})
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/collection.go:4131 +0x30
+github.com/xDarkicex/libravdb/libravdb.(*Database).commitTxWithGraphReceipt(0x2acf59f10870, {0x101e338b8, 0x101ef6d20}, {0x2acf5aabc340?, 0x4?, 0x4?}, 0x0, 0x0, {0x101ef6d20, 0x0, ...}, ...)
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/tx.go:1222 +0x268
+github.com/xDarkicex/libravdb/libravdb.(*transaction).commitWithReceipt(0x2acf59dc65a0, {0x101e338b8, 0x101ef6d20}, 0x0)
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/tx.go:1043 +0x558
+github.com/xDarkicex/libravdb/libravdb.(*transaction).Commit(0x101e36bf0?, {0x101e338b8?, 0x101ef6d20?})
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/tx.go:963 +0x28
+github.com/xDarkicex/libravdb/libravdb.(*Database).WithTx(0x101100329?, {0x101e338b8, 0x101ef6d20}, 0x2acf59fadd78)
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/tx.go:256 +0x144
+github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.(*Store).putResearchEventBatch(0x2acf5a44a388, {0x101e338b8, 0x101ef6d20}, {0x2acf59faf3f8, 0x4, 0x4}, 0x0, 0x0)
+	/private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate/internal/store/libravdbstore/research_event_batch.go:205 +0x15a4
+github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.(*Store).PutResearchEventBatch(...)
+	/private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate/internal/store/libravdbstore/research_event_batch.go:30
+github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.TestResearchEventBatchParityReopen(0x2acf5a022488)
+	/private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate/internal/store/libravdbstore/research_event_batch_test.go:37 +0x330
+testing.tRunner(0x2acf5a022488, 0x101e3a3e8)
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2193 +0xc4
+created by testing.(*T).Run in goroutine 1
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2258 +0x3b8
+
+goroutine 61 [select]:
+github.com/xDarkicex/libravdb/internal/storage/singlefile.(*Engine).batchFlusher(0x2acf5a530008)
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/internal/storage/singlefile/engine.go:4972 +0xfc
+created by github.com/xDarkicex/libravdb/internal/storage/singlefile.init.func2 in goroutine 60
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/internal/storage/singlefile/engine.go:645 +0x64
+
+goroutine 111 [select]:
+github.com/xDarkicex/libravdb/internal/storage/singlefile.(*Engine).batchFlusher(0x2acf59e4a008)
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/internal/storage/singlefile/engine.go:4972 +0xfc
+created by github.com/xDarkicex/libravdb/internal/storage/singlefile.init.func2 in goroutine 60
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/internal/storage/singlefile/engine.go:645 +0x64
+
+goroutine 62 [select]:
+github.com/xDarkicex/libravdb/libravdb.(*SystemHealthMonitorImpl).monitorLoop(0x2acf59eafc30)
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/health_monitor.go:143 +0xcc
+created by github.com/xDarkicex/libravdb/libravdb.(*SystemHealthMonitorImpl).Start in goroutine 60
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/health_monitor.go:85 +0x1a8
+
+goroutine 63 [select]:
+github.com/xDarkicex/memory.(*sharedPIDController).run(0x101eb7e60, 0x2acf59e8ea10, 0x0?)
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/memory@v1.2.9/sharded_pid.go:101 +0xbc
+created by github.com/xDarkicex/memory.(*sharedPIDController).startLocked in goroutine 60
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/memory@v1.2.9/sharded_pid.go:81 +0xf8
+
+goroutine 112 [select]:
+github.com/xDarkicex/libravdb/libravdb.(*SystemHealthMonitorImpl).monitorLoop(0x2acf5a660160)
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/health_monitor.go:143 +0xcc
+created by github.com/xDarkicex/libravdb/libravdb.(*SystemHealthMonitorImpl).Start in goroutine 60
+	/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/health_monitor.go:85 +0x1a8
+FAIL	github.com/JuanHuaXu/eventframed/internal/store/libravdbstore	360.369s
+FAIL

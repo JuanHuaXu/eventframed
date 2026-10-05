@@ -1,0 +1,82 @@
+{
+  "revision": "f3231fab2244c5c6bca8f7f822e5669ac58d13cd",
+  "paths": {
+    "control": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/control-repaired-v3",
+    "candidate": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-repaired-v3",
+    "fork": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork-v3"
+  },
+  "sources": {
+    "control": {
+      "go.mod": "b585b8d9cbbdc3cb557f6d35c0d761ac76ef882a0d2858990c7e18fc932c8588",
+      "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13",
+      "internal/store/libravdbstore/store.go": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+    },
+    "candidate": {
+      "go.mod": "b585b8d9cbbdc3cb557f6d35c0d761ac76ef882a0d2858990c7e18fc932c8588",
+      "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13",
+      "internal/store/libravdbstore/store.go": "74dea08e7fb400c30d839a66852ea6c121000be3396f1723238eff1a6c262b94",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7",
+      "internal/store/libravdbstore/sharded_topology_test.go": "c8fc7edfe36ef69814b6a22baaed299ebacd57ce9d954780de1c1b31944b8139"
+    },
+    "fork": {
+      "go.mod": "86aaabb9ce3698af72c969bf540f530590c599ac57589d979f51b187695842df",
+      "go.sum": "1af3db24ecd6f578f6036cad72cf42d91aa2594cc9de13e4034b30214bdd94fa",
+      "libravdb/tx.go": "e760458e6dd870b3d531d9d34106d8dd285e8468a7a8968462f82819b794dbd5",
+      "libravdb/database.go": "10cbd08b9d58d5243c31f53079a566556761f89bfc0e0e0db8b07146e7ef4761",
+      "libravdb/collection.go": "83cb57f1b391df40aae9c833f108bcf482881ace4e6436a2391a02ed229870af",
+      "libravdb/index_persistence.go": "440c299b2cf50965f4d655531f0cca581667991d71fe00eedb5d45efd22e3b6b",
+      "internal/storage/interfaces.go": "dbb8217911539e217bdfcf083b661572e7b5fe87f7d915791e5aa1b3dd15edde",
+      "internal/storage/singlefile/codec.go": "a49141890e9f2e6448f50439d66d633b5d41bc0998d819d79ac00a53d695dfcd",
+      "internal/index/hnsw/hnsw.go": "9930fb3069a95cb5b12a6b47856b24d48769861c98cc0b9a14545449300026c1",
+      "libravdb/research_admission_regression_test.go": "bc4a9f6aa5522e1bb253397ef5e1d7a8741fc82f617f0cab7194d2ae0e572be0",
+      "libravdb/research_logical_discovery_test.go": "888ca89ab72e505866bc5ee7272b0c3e5cd84968fd73347d98473d614e93921a",
+      "libravdb/research_quantization_reopen_test.go": "a50ed730a10e9aefbe895f9a9e4e95d1d966455095a78300a720428b10d2014c",
+      "internal/storage/singlefile/research_quantization_codec_test.go": "e8f7f90c874b025ad33f6a74dd711a4d90439bbbff0962f517f65310ba0d7fae",
+      "libravdb/research_missing_shard_test.go": "5bf1f2e765f8a777bb59956c18b053bc0276010b293a269ffea2cd9dba8237a6",
+      "internal/index/hnsw/research_training_race_test.go": "2da8b0a9d4dbb7b625c0d1e46c7f23b2668404ffdd227ca97fe630b22cb7116a"
+    }
+  },
+  "originalLibrarySources": {
+    "libravdb/tx.go": "179c2f226585a6f28fcde58489621f77d76d9ca2502a907c34fe55dd0894e6be",
+    "libravdb/database.go": "89d68be3b2170b9a9275daa7e1c819492182b577947049da5dcf4dea22302311",
+    "libravdb/collection.go": "67a3a5a4e343f426a6745725e6a8007e20e549567082bb2528554ce7b3c59ac4",
+    "libravdb/index_persistence.go": "18b31cd6798a064d1b3c8a49c7048867666a08db32a6525abf0c52e488c1f543",
+    "internal/storage/interfaces.go": "00383d55e9c5d2e5ba6316040ab124d11674f117c3bf9ca1dfb0cc76c4e0d500",
+    "internal/storage/singlefile/codec.go": "d737a34d9985adcffc9e95541ae6b51a1d5c2ab2d6bb4e32fb8d298f7af75703",
+    "internal/index/hnsw/hnsw.go": "6110af530ebf1c7edd24e4a7dbba5f925b7e12e5f0853599e3a042ca86c6b6f9"
+  },
+  "libraryFiles": [
+    "libravdb/tx.go",
+    "libravdb/database.go",
+    "libravdb/collection.go",
+    "libravdb/index_persistence.go",
+    "internal/storage/interfaces.go",
+    "internal/storage/singlefile/codec.go",
+    "internal/index/hnsw/hnsw.go"
+  ],
+  "libraryTests": [
+    "libravdb/research_admission_regression_test.go",
+    "libravdb/research_logical_discovery_test.go",
+    "libravdb/research_quantization_reopen_test.go",
+    "internal/storage/singlefile/research_quantization_codec_test.go",
+    "libravdb/research_missing_shard_test.go",
+    "internal/index/hnsw/research_training_race_test.go"
+  ],
+  "protocolSHA256": "5a050bf108ac2ac029738ec824ac4071159f135afc2f41f56ee4c8aadd27dcce",
+  "preparationSHA256": "1b380b7323229ae0e014355b4972b3f5e41927dc6d24d70c6528139add7d5350",
+  "patchSHA256": "466fe8ae5acf460119d606347248ae158164a43e918e748e7d2c5ac87c2efcc9",
+  "inheritedFailedManifestSHA256": "74b1d4383524832a222b1046044e2df981b0b80354cb1e7f990545c48c8868a3",
+  "workers": 10,
+  "privateDataUsed": false,
+  "productionTouched": false,
+  "wholeGoalValidation": false,
+  "priorV2ManifestSHA256": "458b15dd091e880e7417748345a2b2c0a74daf240dafc4a0a5db57f8d023be0b",
+  "priorV2RaceSHA256": "5c08a34d25ad0324f7a5e0a3e8b9902acb37d850dcb6d214aaffa33588aeb13f"
+}

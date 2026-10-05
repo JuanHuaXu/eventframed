@@ -1,0 +1,173 @@
+=== RUN   TestAsyncIndexingConfiguresWALAdmissionDefaults
+--- PASS: TestAsyncIndexingConfiguresWALAdmissionDefaults (0.03s)
+=== RUN   TestShardedBatchInsertParallelizesAcrossShards
+--- PASS: TestShardedBatchInsertParallelizesAcrossShards (0.12s)
+=== RUN   TestShardedConcurrentSingleInserts
+--- PASS: TestShardedConcurrentSingleInserts (0.10s)
+=== RUN   TestCollectionConfigValidation
+=== RUN   TestCollectionConfigValidation/valid_basic_config
+=== RUN   TestCollectionConfigValidation/invalid_dimension
+=== RUN   TestCollectionConfigValidation/invalid_memory_limit
+=== RUN   TestCollectionConfigValidation/valid_quantization_config
+=== RUN   TestCollectionConfigValidation/invalid_quantization_config
+=== RUN   TestCollectionConfigValidation/valid_metadata_schema
+=== RUN   TestCollectionConfigValidation/invalid_indexed_field_not_in_schema
+=== RUN   TestCollectionConfigValidation/invalid_batch_config_-_negative_chunk_size
+=== RUN   TestCollectionConfigValidation/valid_memory_config
+=== RUN   TestCollectionConfigValidation/invalid_memory_config_-_negative_max_memory
+--- PASS: TestCollectionConfigValidation (0.00s)
+    --- PASS: TestCollectionConfigValidation/valid_basic_config (0.00s)
+    --- PASS: TestCollectionConfigValidation/invalid_dimension (0.00s)
+    --- PASS: TestCollectionConfigValidation/invalid_memory_limit (0.00s)
+    --- PASS: TestCollectionConfigValidation/valid_quantization_config (0.00s)
+    --- PASS: TestCollectionConfigValidation/invalid_quantization_config (0.00s)
+    --- PASS: TestCollectionConfigValidation/valid_metadata_schema (0.00s)
+    --- PASS: TestCollectionConfigValidation/invalid_indexed_field_not_in_schema (0.00s)
+    --- PASS: TestCollectionConfigValidation/invalid_batch_config_-_negative_chunk_size (0.00s)
+    --- PASS: TestCollectionConfigValidation/valid_memory_config (0.00s)
+    --- PASS: TestCollectionConfigValidation/invalid_memory_config_-_negative_max_memory (0.00s)
+=== RUN   TestDefaultBatchConfig
+--- PASS: TestDefaultBatchConfig (0.00s)
+=== RUN   TestEnhancedCollectionConfiguration
+    collection_integration_test.go:150: Enhanced collection test completed successfully
+    collection_integration_test.go:151: Collection stats: &{MemoryStats:0xd227c48e000 OptimizationStatus:0xd227bcb28c0 RawVectorStoreStats:0xd227c48e070 IndexType:HNSW Name:test_enhanced MemoryUsage:0 Dimension:128 VectorCount:0 LiveRecordCount:0 OrdinalUtilization:0 NextOrdinal:0 HasQuantization:true HasMemoryLimit:true MemoryMappingEnabled:true}
+    collection_integration_test.go:152: Search took: 98.834µs
+--- PASS: TestEnhancedCollectionConfiguration (0.04s)
+=== RUN   TestBackwardCompatibleConfiguration
+    collection_integration_test.go:199: Backward compatibility test passed
+--- PASS: TestBackwardCompatibleConfiguration (0.03s)
+=== RUN   TestConfigurationValidationIntegration
+    collection_integration_test.go:244: Configuration validation integration test passed
+--- PASS: TestConfigurationValidationIntegration (0.01s)
+=== RUN   TestShardedCollectionStatsAggregation
+--- PASS: TestShardedCollectionStatsAggregation (0.06s)
+=== RUN   TestShardedCollectionGetMemoryUsage
+--- PASS: TestShardedCollectionGetMemoryUsage (0.05s)
+=== RUN   TestShardedCollectionTriggerGC
+--- PASS: TestShardedCollectionTriggerGC (0.05s)
+=== RUN   TestShardedSearchUsesPerShardK
+--- PASS: TestShardedSearchUsesPerShardK (0.12s)
+=== RUN   TestShardedSearchUsesBoundedTopKMerge
+--- PASS: TestShardedSearchUsesBoundedTopKMerge (0.37s)
+=== RUN   TestCollectionConfigurationValidation
+--- PASS: TestCollectionConfigurationValidation (0.03s)
+=== RUN   TestCollectionLifecycleWithMemoryManagement
+    collection_management_test.go:465: Memory usage at vector 0: 7913747 bytes (limit: 104857600)
+    collection_management_test.go:465: Memory usage at vector 10: 7924690 bytes (limit: 104857600)
+    collection_management_test.go:465: Memory usage at vector 20: 7927450 bytes (limit: 104857600)
+    collection_management_test.go:465: Memory usage at vector 30: 7930210 bytes (limit: 104857600)
+    collection_management_test.go:465: Memory usage at vector 40: 7965738 bytes (limit: 104857600)
+--- PASS: TestCollectionLifecycleWithMemoryManagement (0.28s)
+=== RUN   TestShardedCollectionUnsupportedMethods
+--- PASS: TestShardedCollectionUnsupportedMethods (0.05s)
+=== RUN   TestNonShardedConcurrentSingleInserts
+--- PASS: TestNonShardedConcurrentSingleInserts (0.03s)
+=== RUN   TestDurability_DirectGraphTransactionRecovery
+    epoch_durability_test.go:301: Phase 1: direct graph txn committed edge A(1)→B(2)
+    epoch_durability_test.go:331: Phase 2: direct graph edge replayed A(1)→B(2)
+    epoch_durability_test.go:332: ✅ test C: direct graph transaction recovery preserves edges
+--- PASS: TestDurability_DirectGraphTransactionRecovery (0.10s)
+=== RUN   TestDurability_IncompleteWALTransaction
+    epoch_durability_test.go:481: Phase 1: epoch commit failed as expected: injected failure before TxCommit
+    epoch_durability_test.go:509: Phase 2: incomplete transaction did not leak record or edges ✓
+    epoch_durability_test.go:510: ✅ test E: incomplete WAL transaction does not leak
+--- PASS: TestDurability_IncompleteWALTransaction (0.04s)
+=== RUN   TestEpochTxRollbackDiscardsRecords
+--- PASS: TestEpochTxRollbackDiscardsRecords (0.02s)
+=== RUN   TestEpochTxCommitPublishesRecords
+--- PASS: TestEpochTxCommitPublishesRecords (0.04s)
+=== RUN   TestEpochTxListRecordsIncludesStagedWrites
+--- PASS: TestEpochTxListRecordsIncludesStagedWrites (0.03s)
+=== RUN   TestDatabaseIterateIncludesShardedRecords
+--- PASS: TestDatabaseIterateIncludesShardedRecords (0.05s)
+=== RUN   TestCollectionConfigReturnsDefensiveCopy
+--- PASS: TestCollectionConfigReturnsDefensiveCopy (0.00s)
+=== RUN   TestSQLJSONNullSemanticsAndPersistence
+--- PASS: TestSQLJSONNullSemanticsAndPersistence (0.03s)
+=== RUN   TestShardedDeleteIsIdempotentAndRepairsStaleIndexEntry
+--- PASS: TestShardedDeleteIsIdempotentAndRepairsStaleIndexEntry (0.06s)
+=== RUN   TestShardedCollectionReopen
+--- PASS: TestShardedCollectionReopen (0.08s)
+=== RUN   TestShardedCollectionListHidesShardNames
+--- PASS: TestShardedCollectionListHidesShardNames (0.06s)
+=== RUN   TestShardedCollectionDeleteRemovesAllShards
+--- PASS: TestShardedCollectionDeleteRemovesAllShards (0.06s)
+=== RUN   TestShardedCollectionCloseCleansUpResources
+--- PASS: TestShardedCollectionCloseCleansUpResources (0.09s)
+=== RUN   TestIndexedMetadataPostingsTrackMutationsAndTransactions
+--- PASS: TestIndexedMetadataPostingsTrackMutationsAndTransactions (0.06s)
+=== RUN   TestNotNull_TransactionalAndSavepointOverlay
+--- PASS: TestNotNull_TransactionalAndSavepointOverlay (0.04s)
+=== RUN   TestMixedTransactionalAndDirectWritesKeepOrdinalsUnique
+--- PASS: TestMixedTransactionalAndDirectWritesKeepOrdinalsUnique (0.05s)
+=== RUN   TestConcurrentTransactionalAndDirectOrdinalReservations
+--- PASS: TestConcurrentTransactionalAndDirectOrdinalReservations (0.10s)
+=== RUN   TestPublicRegistryAPISharded
+--- PASS: TestPublicRegistryAPISharded (0.04s)
+=== RUN   TestCosinePublicScoreContract_IVFPQPersistence
+--- PASS: TestCosinePublicScoreContract_IVFPQPersistence (0.03s)
+=== RUN   TestResearchTransactionSharedShardAdmissionV1
+--- PASS: TestResearchTransactionSharedShardAdmissionV1 (0.09s)
+=== RUN   TestSQLSelectAfterMixedTransactionalAndDirectWritesReturnsAllRows
+--- PASS: TestSQLSelectAfterMixedTransactionalAndDirectWritesReturnsAllRows (0.83s)
+=== RUN   TestTemporalAtomicity_SeparateTransactionsIndependent
+--- PASS: TestTemporalAtomicity_SeparateTransactionsIndependent (0.04s)
+=== RUN   TestTemporalEdgeVersionChain_FullLifecycle
+    temporal_atomicity_test.go:242: snap1.LSN=12 snap2.LSN=15 snap3.LSN=18 snap4.LSN=21
+--- PASS: TestTemporalEdgeVersionChain_FullLifecycle (0.21s)
+=== RUN   TestTxForeignKeySeesStagedParentAndRejectsStagedDelete
+--- PASS: TestTxForeignKeySeesStagedParentAndRejectsStagedDelete (0.03s)
+=== RUN   TestTxInsertAndUpsertApplyDefaultsAndCheck
+--- PASS: TestTxInsertAndUpsertApplyDefaultsAndCheck (0.03s)
+=== RUN   TestTransactionRoutesShardedMutationWithUnshardedMutation
+--- PASS: TestTransactionRoutesShardedMutationWithUnshardedMutation (0.05s)
+=== RUN   TestFlatTransactionPublishesDeltaWithoutRebuild
+--- PASS: TestFlatTransactionPublishesDeltaWithoutRebuild (0.04s)
+=== RUN   TestFlatTransactionStateLoadsOnlyTouchedRecords
+--- PASS: TestFlatTransactionStateLoadsOnlyTouchedRecords (0.50s)
+=== RUN   TestTxListByMetadataReadsStagedView
+--- PASS: TestTxListByMetadataReadsStagedView (0.04s)
+=== RUN   TestWithTxCommitsAcrossCollectionsAtomically
+--- PASS: TestWithTxCommitsAcrossCollectionsAtomically (0.05s)
+=== RUN   TestTransactionRollbackLeavesNoVisibleWrites
+--- PASS: TestTransactionRollbackLeavesNoVisibleWrites (0.03s)
+=== RUN   TestTransactionDurabilityAcrossReopen
+--- PASS: TestTransactionDurabilityAcrossReopen (0.06s)
+=== RUN   TestTransactionSameKeySemantics
+--- PASS: TestTransactionSameKeySemantics (0.04s)
+=== RUN   TestTransactionStagedInsertOverwriteIsDeterministic
+--- PASS: TestTransactionStagedInsertOverwriteIsDeterministic (0.03s)
+=== RUN   TestTransactionReadersNeverObserveOddCounts
+--- PASS: TestTransactionReadersNeverObserveOddCounts (0.15s)
+=== RUN   TestTransactionManyCommitsRemainCorrectAfterReopen
+--- PASS: TestTransactionManyCommitsRemainCorrectAfterReopen (0.23s)
+=== RUN   TestCASConflictAbortsWholeTransaction
+--- PASS: TestCASConflictAbortsWholeTransaction (0.04s)
+=== RUN   TestCASSameKeyConflictingExpectedVersionsInOneTxFails
+--- PASS: TestCASSameKeyConflictingExpectedVersionsInOneTxFails (0.03s)
+=== RUN   TestTransactionDeleteThenUpsertPreservesOrdinal
+--- PASS: TestTransactionDeleteThenUpsertPreservesOrdinal (0.04s)
+=== RUN   TestCASSameKeyRepeatedSameExpectedVersionInOneTxSucceeds
+--- PASS: TestCASSameKeyRepeatedSameExpectedVersionInOneTxSucceeds (0.04s)
+=== RUN   TestShardedUpsertInsertOnNewID
+--- PASS: TestShardedUpsertInsertOnNewID (0.05s)
+=== RUN   TestShardedUpsertReplaceOnExistingID
+--- PASS: TestShardedUpsertReplaceOnExistingID (0.06s)
+=== RUN   TestShardedUpsertMetadataReplaceNotMerge
+--- PASS: TestShardedUpsertMetadataReplaceNotMerge (0.06s)
+=== RUN   TestShardedUpsertOrdinalPreservedOnReplace
+--- PASS: TestShardedUpsertOrdinalPreservedOnReplace (0.06s)
+=== RUN   TestShardedUpsertConcurrentSameID
+--- PASS: TestShardedUpsertConcurrentSameID (0.10s)
+=== RUN   TestShardedUpsertConcurrentDifferentShards
+--- PASS: TestShardedUpsertConcurrentDifferentShards (0.17s)
+=== RUN   TestShardedUpsertMultipleReplacesSameID
+--- PASS: TestShardedUpsertMultipleReplacesSameID (0.07s)
+=== RUN   TestTransactionUpsertRollsBackCleanly
+--- PASS: TestTransactionUpsertRollsBackCleanly (0.03s)
+=== RUN   TestTransactionUpsertVisibleInListByMetadata
+--- PASS: TestTransactionUpsertVisibleInListByMetadata (0.04s)
+=== RUN   TestTransactionUpsertReplaceVisibleInListByMetadata
+--- PASS: TestTransactionUpsertReplaceVisibleInListByMetadata (0.04s)
+PASS
+ok  	github.com/xDarkicex/libravdb/libravdb	5.894s

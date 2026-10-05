@@ -1,0 +1,25 @@
+package hnsw
+
+import (
+	"context"
+	"fmt"
+	"math"
+	"testing"
+
+	"github.com/xDarkicex/libravdb/internal/quant"
+	"github.com/xDarkicex/libravdb/internal/util"
+)
+
+func TestResearchParallelQuantizerTrainingV3(t *testing.T) {
+	for trial:=0;trial<4;trial++ {
+		config:=&Config{Dimension:128,M:8,EfConstruction:40,EfSearch:20,ML:1/math.Log(2),Metric:util.L2Distance,RandomSeed:int64(42+trial),Quantization:&quant.QuantizationConfig{Type:quant.ScalarQuantization,Bits:8,TrainRatio:1}}
+		index,err:=NewHNSW(config);if err!=nil { t.Fatal(err) }
+		entries:=make([]*VectorEntry,1000)
+		for i:=range entries { vector:=make([]float32,128);for j:=range vector { vector[j]=float32((i*17+j*11)%101)/101 };entries[i]=&VectorEntry{ID:fmt.Sprintf("public-%d-%d",trial,i),Vector:vector} }
+		err=index.BatchInsert(context.Background(),entries)
+		if err==nil && !index.quantizationTrained.Load() { t.Error("completed batch did not publish trained state") }
+		if err==nil { result,searchErr:=index.Search(context.Background(),entries[0].Vector,10,nil);if searchErr!=nil || len(result)!=10 { t.Error("search after training",len(result),searchErr) } }
+		if closeErr:=index.Close();closeErr!=nil { t.Error(closeErr) }
+		if err!=nil { t.Fatal("parallel quantization failed",err) }
+	}
+}

@@ -1,0 +1,23 @@
+import fs from "node:fs";
+import path from "node:path";
+import crypto from "node:crypto";
+import {spawnSync} from "node:child_process";
+import {fileURLToPath} from "node:url";
+
+const output=path.dirname(fileURLToPath(import.meta.url)),read=n=>fs.readFileSync(path.join(output,n));
+const m=JSON.parse(read("repaired-manifest.json")),hash=b=>crypto.createHash("sha256").update(b).digest("hex");
+const check=()=>{for(const[arm,files]of Object.entries(m.sources))for(const[file,h]of Object.entries(files))if(hash(fs.readFileSync(path.join(m.paths[arm],file)))!==h)throw Error("source drift: "+arm+"/"+file);};
+check();
+const args=["test","-mod=readonly","-race","-count=1","-v","-timeout","4m","-run","^TestResearchPublicCaptureLoadV1$","./internal/service"];
+const manifest={runnerSHA256:hash(fs.readFileSync(fileURLToPath(import.meta.url))),protocolSHA256:hash(read("SUPPLEMENTAL_PROTOCOL.md")),sourceManifestSHA256:hash(read("repaired-manifest.json")),command:["go",...args],arm:"candidate",frontier:200,workers:10,ordinaryTimingVerdictChanged:false};
+fs.writeFileSync(path.join(output,"race-load-manifest.json"),JSON.stringify(manifest,null,2)+"\n");
+const p=spawnSync("go",args,{cwd:m.paths.candidate,env:{...process.env,GOMAXPROCS:"10",EVENTFRAME_PUBLIC_FRONTIER:"200"},encoding:"utf8",maxBuffer:32*1024*1024});
+const text=(p.stdout??"")+(p.stderr??"");fs.writeFileSync(path.join(output,"repaired-candidate-load-race.txt"),text);check();
+const match=text.match(/PUBLIC_CAPTURE_TRACE=(\{[^\n]+\})/),trace=match?JSON.parse(match[1]):null;
+const dataRaceReported=/WARNING: DATA RACE/.test(text),panicReported=/panic:|fatal error:/.test(text);
+const errors=[...text.matchAll(/^\s+public_capture_load_test.go:\d+: (.+)$/gm)].map(x=>x[1]).filter(x=>!x.startsWith("PUBLIC_CAPTURE_TRACE="));
+const timingOnly=p.status===1&&errors.length>0&&errors.every(x=>["frozen recall p99 <100ms screen failed","frozen publication p99 <250ms screen failed"].includes(x));
+const functionalRacePass=trace?.functional===true&&!dataRaceReported&&!panicReported&&!/--- SKIP:/.test(text)&&(p.status===0||timingOnly);
+const result={command:["go",...args],status:p.status,signal:p.signal,error:p.error?.message??null,transcript:"repaired-candidate-load-race.txt",transcriptSHA256:hash(text),trace,dataRaceReported,panicReported,errors,timingOnly,functionalRacePass,ordinaryTimingVerdictChanged:false,allArmsFullLoadRaceValidated:false,wholeGoalValidation:false,productionTouched:false,privateDataUsed:false};
+fs.writeFileSync(path.join(output,"race-load-results.json"),JSON.stringify(result,null,2)+"\n");
+console.log(JSON.stringify({completed:true,status:p.status,functionalRacePass,dataRaceReported,timingOnly,ordinaryTimingVerdictChanged:false}));

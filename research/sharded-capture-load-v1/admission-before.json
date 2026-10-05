@@ -1,0 +1,16 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-count=1",
+    "-v",
+    "-timeout",
+    "30s",
+    "-run",
+    "^TestResearchTransactionSharedShardAdmissionV1$",
+    "./libravdb"
+  ],
+  "status": 1,
+  "sha256": "1a0c9b93160d53b7c2ae40762eb978a0adea07c01b707a082baf4e8b3ba5f66f",
+  "sourceSHA256": "179c2f226585a6f28fcde58489621f77d76d9ca2502a907c34fe55dd0894e6be"
+}

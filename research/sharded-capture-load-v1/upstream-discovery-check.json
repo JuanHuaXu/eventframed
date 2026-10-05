@@ -1,0 +1,7 @@
+{
+  "commit": "18515d4ce0620b24fd2512b0f9023b8b1f4d8355",
+  "url": "https://raw.githubusercontent.com/xDarkicex/libravdb/18515d4ce0620b24fd2512b0f9023b8b1f4d8355/libravdb/database.go",
+  "sha256": "89d68be3b2170b9a9275daa7e1c819492182b577947049da5dcf4dea22302311",
+  "matchesPinned": true,
+  "listingExcerpt": "func (db *Database) ListCollectionsWithContext(ctx context.Context) ([]string, error) {\n\tif err := ctx.Err(); err != nil {\n\t\treturn nil, err\n\t}\n\n\tdb.mu.RLock()\n\tif db.closed {\n\t\tdb.mu.RUnlock()\n\t\treturn nil, ErrDatabaseClosed\n\t}\n\tnamesMap := make(map[string]struct{}, len(db.collections))\n\tfor name := range db.collections {\n\t\tnamesMap[name] = struct{}{}\n\t}\n\tdb.mu.RUnlock()\n\n\tnames, err := db.storage.ListCollections()\n\tif err != nil {\n\t\treturn nil, err\n\t}\n\tfor _, name := range names {\n\t\t// Filter out shard collection names - only return parent collection names\n\t\tif _, _, ok := parseShardName(name); !ok {\n\t\t\tnamesMap[name] = struct{}{}\n\t\t}\n\t}\n\n\tresult := make([]string, 0, len(namesMap))\n\tfor name := range namesMap {\n\t\tresult = append(result, name)\n\t}\n\tsort.Strings(result)\n\treturn result, nil\n}\n\n"
+}

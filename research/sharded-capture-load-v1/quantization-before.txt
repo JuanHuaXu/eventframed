@@ -1,0 +1,21 @@
+=== RUN   TestResearchQuantizationDeclarationReopenV1
+=== RUN   TestResearchQuantizationDeclarationReopenV1/none/sharded=false
+=== RUN   TestResearchQuantizationDeclarationReopenV1/sq8/sharded=false
+    research_quantization_reopen_test.go:58: quantization declaration lost: got=<nil> want=&{Type:scalar Codebooks:0 Bits:8 TrainRatio:0.1 CacheSize:0 Levels:[]} sharded=false
+=== RUN   TestResearchQuantizationDeclarationReopenV1/fsq/sharded=false
+    research_quantization_reopen_test.go:58: quantization declaration lost: got=<nil> want=&{Type:fsq Codebooks:0 Bits:6 TrainRatio:0.1 CacheSize:0 Levels:[8 8 8 6]} sharded=false
+=== RUN   TestResearchQuantizationDeclarationReopenV1/none/sharded=true
+=== RUN   TestResearchQuantizationDeclarationReopenV1/sq8/sharded=true
+    research_quantization_reopen_test.go:58: quantization declaration lost: got=<nil> want=&{Type:scalar Codebooks:0 Bits:8 TrainRatio:0.1 CacheSize:0 Levels:[]} sharded=true
+=== RUN   TestResearchQuantizationDeclarationReopenV1/fsq/sharded=true
+    research_quantization_reopen_test.go:58: quantization declaration lost: got=<nil> want=&{Type:fsq Codebooks:0 Bits:6 TrainRatio:0.1 CacheSize:0 Levels:[8 8 8 6]} sharded=true
+--- FAIL: TestResearchQuantizationDeclarationReopenV1 (0.74s)
+    --- PASS: TestResearchQuantizationDeclarationReopenV1/none/sharded=false (0.10s)
+    --- FAIL: TestResearchQuantizationDeclarationReopenV1/sq8/sharded=false (0.10s)
+    --- FAIL: TestResearchQuantizationDeclarationReopenV1/fsq/sharded=false (0.10s)
+    --- PASS: TestResearchQuantizationDeclarationReopenV1/none/sharded=true (0.16s)
+    --- FAIL: TestResearchQuantizationDeclarationReopenV1/sq8/sharded=true (0.13s)
+    --- FAIL: TestResearchQuantizationDeclarationReopenV1/fsq/sharded=true (0.14s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/libravdb	1.043s
+FAIL

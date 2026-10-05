@@ -1,0 +1,18 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-count=1",
+    "-v",
+    "-timeout",
+    "30s",
+    "-run",
+    "^TestResearchShardedTopologyReopenV1$",
+    "./internal/store/libravdbstore"
+  ],
+  "status": 1,
+  "sha256": "a588f70436ee37be61b44e7b9aec1d9065ccff0c1c1cfe832086158767b62f3f",
+  "separateDiagnostic": true,
+  "originalFailureRetained": true
+}

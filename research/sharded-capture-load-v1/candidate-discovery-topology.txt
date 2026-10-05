@@ -1,0 +1,6 @@
+=== RUN   TestResearchShardedTopologyReopenV1
+    sharded_topology_test.go:147: topology/quantization lost after reopen <nil>
+--- FAIL: TestResearchShardedTopologyReopenV1 (1.03s)
+FAIL
+FAIL	github.com/JuanHuaXu/eventframed/internal/store/libravdbstore	1.394s
+FAIL

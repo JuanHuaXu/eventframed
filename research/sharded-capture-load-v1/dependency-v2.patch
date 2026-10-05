@@ -1,0 +1,263 @@
+diff --git a/internal/storage/interfaces.go b/internal/storage/interfaces.go
+index 6f8e5d8..5a2a6e8 100644
+--- a/internal/storage/interfaces.go
++++ b/internal/storage/interfaces.go
+@@ -7,6 +7,7 @@ import (
+ 	"time"
+ 
+ 	"github.com/xDarkicex/libravdb/internal/index"
++	"github.com/xDarkicex/libravdb/internal/quant"
+ )
+ 
+ var ErrV1FormatMigrationRequired = errors.New("v1 format migration required")
+@@ -26,6 +27,7 @@ type CollectionConfig struct {
+ 	Version        int
+ 	RawStoreCap    int
+ 	IDMapCapacity  int
++	Quantization   *quant.QuantizationConfig
+ 	// CostModelStats is an opaque, versioned collection-statistics payload.
+ 	// The storage engine persists it but intentionally does not interpret it.
+ 	// DataLSN is populated on reads only and is never serialized as config.
+diff --git a/internal/storage/singlefile/codec.go b/internal/storage/singlefile/codec.go
+index 05fed2f..2ad8ee7 100644
+--- a/internal/storage/singlefile/codec.go
++++ b/internal/storage/singlefile/codec.go
+@@ -3,10 +3,12 @@ package singlefile
+ import (
+ 	"bytes"
+ 	"encoding/binary"
++	"encoding/json"
+ 	"fmt"
+ 	"sort"
+ 	"strings"
+ 
++	"github.com/xDarkicex/libravdb/internal/quant"
+ 	"github.com/xDarkicex/libravdb/internal/storage"
+ 	"github.com/xDarkicex/libravdb/internal/util"
+ )
+@@ -18,6 +20,7 @@ const (
+ const snapshotCodecVersion byte = 8 // v4: historical versions; v5: graph tombstones; v6: temporal catalog; v7: edge kinds; v8: edge directionality
+ 
+ var graphConfigFieldMagic = []byte{'G', 'R', 'P', 'H', 1}
++var quantizationConfigFieldMagic = []byte{'Q', 'N', 'T', 'Z', 1}
+ 
+ type encodedPayload struct {
+ 	encoder *util.BinaryEncoder
+@@ -610,6 +613,13 @@ func decodeTxCommitPayload(data []byte) (txCommitPayload, bool) {
+ }
+ 
+ func writeCollectionConfig(enc *util.BinaryEncoder, config storage.CollectionConfig) error {
++	if config.Quantization != nil && config.Version < 2 {
++		return fmt.Errorf("quantization persistence requires config version 2")
++	}
++	quantizationField, err := encodeQuantizationConfigField(config.Quantization)
++	if err != nil {
++		return err
++	}
+ 	enc.WriteUint32(uint32(config.Dimension))
+ 	enc.WriteUint32(uint32(config.Metric))
+ 	enc.WriteUint32(uint32(config.IndexType))
+@@ -628,7 +638,7 @@ func writeCollectionConfig(enc *util.BinaryEncoder, config storage.CollectionCon
+ 		// optional field so readers of the previous layout can skip them.
+ 		declarations := encodeCollectionDeclarations(config)
+ 		optSize := uint32(4 + 4 + 4 + 4 + len(config.CostModelStats))
+-		if len(declarations) > 0 {
++		if len(declarations) > 0 || len(quantizationField) > 0 {
+ 			optSize += uint32(4 + len(declarations))
+ 		}
+ 		if config.GraphEnabled {
+@@ -636,6 +646,9 @@ func writeCollectionConfig(enc *util.BinaryEncoder, config storage.CollectionCon
+ 			// to skip this declaration using the existing optSize boundary.
+ 			optSize += uint32(4 + len(graphConfigField(config.GraphNamespace)))
+ 		}
++		if len(quantizationField) > 0 {
++			optSize += uint32(4 + len(quantizationField))
++		}
+ 		enc.WriteUint32(optSize)
+ 	}
+ 	enc.WriteUint32(uint32(config.NClusters))
+@@ -643,12 +656,15 @@ func writeCollectionConfig(enc *util.BinaryEncoder, config storage.CollectionCon
+ 	if config.Version >= 2 {
+ 		enc.WriteUint32(uint32(config.IDMapCapacity))
+ 		enc.WriteBytes(config.CostModelStats)
+-		if declarations := encodeCollectionDeclarations(config); len(declarations) > 0 {
++		if declarations := encodeCollectionDeclarations(config); len(declarations) > 0 || len(quantizationField) > 0 {
+ 			enc.WriteBytes(declarations)
+ 		}
+ 		if config.GraphEnabled {
+ 			enc.WriteBytes(graphConfigField(config.GraphNamespace))
+ 		}
++		if len(quantizationField) > 0 {
++			enc.WriteBytes(quantizationField)
++		}
+ 	}
+ 	return nil
+ }
+@@ -903,12 +919,15 @@ func estimateCollectionConfigSize(config storage.CollectionConfig) int {
+ 	size := 4 + 4 + 4 + 4 + 4 + 4 + 8 + 4 + 4 + len(config.RawVectorStore) + 4 + 4 + 4
+ 	if config.Version >= 2 {
+ 		size += 4 + 4 + len(config.CostModelStats) // block length + stats bytes length + payload
+-		if declarations := encodeCollectionDeclarations(config); len(declarations) > 0 {
++		if declarations := encodeCollectionDeclarations(config); len(declarations) > 0 || config.Quantization != nil {
+ 			size += 4 + len(declarations)
+ 		}
+ 		if config.GraphEnabled {
+ 			size += 4 + len(graphConfigField(config.GraphNamespace))
+ 		}
++		if field, err := encodeQuantizationConfigField(config.Quantization); err == nil && len(field) > 0 {
++			size += 4 + len(field)
++		}
+ 	}
+ 	return size
+ }
+@@ -973,6 +992,7 @@ func readCollectionConfig(dec *util.BinaryDecoder) (storage.CollectionConfig, er
+ 	var sqlIndexedFields []string
+ 	var graphEnabled bool
+ 	var graphNamespace string
++	var quantization *quant.QuantizationConfig
+ 
+ 	if version >= 2 {
+ 		if dec.Off+4 <= len(dec.Data) {
+@@ -1031,6 +1051,29 @@ func readCollectionConfig(dec *util.BinaryDecoder) (storage.CollectionConfig, er
+ 				}
+ 				consumed += 4 + len(graphBytes)
+ 			}
++			if int(optSize) >= consumed+4+len(quantizationConfigFieldMagic) && dec.Off+4+len(quantizationConfigFieldMagic) <= len(dec.Data) && bytes.HasPrefix(dec.Data[dec.Off+4:], quantizationConfigFieldMagic) {
++				end := dec.Off + int(optSize) - consumed
++				if end > len(dec.Data) {
++					return storage.CollectionConfig{}, fmt.Errorf("truncated quantization config block")
++				}
++				fieldDecoder := &util.BinaryDecoder{Data: dec.Data[dec.Off:end]}
++				field, readErr := fieldDecoder.ReadBytes()
++				if readErr != nil {
++					return storage.CollectionConfig{}, readErr
++				}
++				if len(field) < len(quantizationConfigFieldMagic) {
++					return storage.CollectionConfig{}, fmt.Errorf("invalid quantization config field")
++				}
++				quantization = &quant.QuantizationConfig{}
++				if err := json.Unmarshal(field[len(quantizationConfigFieldMagic):], quantization); err != nil {
++					return storage.CollectionConfig{}, fmt.Errorf("decode quantization config: %w", err)
++				}
++				if err := quantization.Validate(); err != nil {
++					return storage.CollectionConfig{}, fmt.Errorf("invalid quantization config: %w", err)
++				}
++				dec.Off += fieldDecoder.Off
++				consumed += fieldDecoder.Off
++			}
+ 			if int(optSize) > consumed {
+ 				dec.Off += int(optSize) - consumed
+ 			}
+@@ -1065,6 +1108,7 @@ func readCollectionConfig(dec *util.BinaryDecoder) (storage.CollectionConfig, er
+ 		RawVectorStore:   rawVectorStore,
+ 		RawStoreCap:      int(rawStoreCap),
+ 		IDMapCapacity:    int(idMapCapacity),
++		Quantization:     quantization,
+ 		CostModelStats:   costModelStats,
+ 		MetadataSchema:   metadataSchema,
+ 		IndexedFields:    indexedFields,
+@@ -1096,6 +1140,22 @@ func graphConfigField(namespace string) []byte {
+ 	return field
+ }
+ 
++func encodeQuantizationConfigField(config *quant.QuantizationConfig) ([]byte, error) {
++	if config == nil {
++		return nil, nil
++	}
++	if err := config.Validate(); err != nil {
++		return nil, err
++	}
++	data, err := json.Marshal(config)
++	if err != nil {
++		return nil, err
++	}
++	field := make([]byte, 0, len(quantizationConfigFieldMagic)+len(data))
++	field = append(field, quantizationConfigFieldMagic...)
++	return append(field, data...), nil
++}
++
+ func readCollection(dec *util.BinaryDecoder, snapshotVersion byte) (*persistedCollection, error) {
+ 	id, err := dec.ReadUint64()
+ 	if err != nil {
+diff --git a/libravdb/collection.go b/libravdb/collection.go
+index 3efe722..3dad1f2 100644
+--- a/libravdb/collection.go
++++ b/libravdb/collection.go
+@@ -811,6 +811,7 @@ func newCollection(ctx context.Context, name string, storageEngine storage.Engin
+ 		RawVectorStore:   config.RawVectorStore,
+ 		RawStoreCap:      config.RawStoreCap,
+ 		IDMapCapacity:    config.IDMapCapacity,
++		Quantization:     config.Quantization,
+ 		MetadataSchema:   metadataSchemaToStorage(config.MetadataSchema),
+ 		IndexedFields:    append([]string(nil), config.IndexedFields...),
+ 		SQLIndexes:       sqlIndexesToStorage(config.SQLIndexes),
+@@ -916,6 +917,7 @@ func newCollectionFromStorage(ctx context.Context, name string, storageCollectio
+ 		RawVectorStore:   engineConfig.RawVectorStore,
+ 		RawStoreCap:      engineConfig.RawStoreCap,
+ 		IDMapCapacity:    engineConfig.IDMapCapacity,
++		Quantization:     engineConfig.Quantization,
+ 		MetadataSchema:   metadataSchemaFromStorage(engineConfig.MetadataSchema),
+ 		IndexedFields:    append([]string(nil), engineConfig.IndexedFields...),
+ 		SQLIndexes:       sqlIndexesFromStorage(engineConfig.SQLIndexes),
+@@ -1088,6 +1090,7 @@ func newShardedCollectionFromStorage(ctx context.Context, name string, shardStor
+ 		RawVectorStore:   engineConfig.RawVectorStore,
+ 		RawStoreCap:      engineConfig.RawStoreCap,
+ 		IDMapCapacity:    engineConfig.IDMapCapacity,
++		Quantization:     engineConfig.Quantization,
+ 		MetadataSchema:   metadataSchemaFromStorage(engineConfig.MetadataSchema),
+ 		IndexedFields:    append([]string(nil), engineConfig.IndexedFields...),
+ 		SQLIndexes:       sqlIndexesFromStorage(engineConfig.SQLIndexes),
+diff --git a/libravdb/database.go b/libravdb/database.go
+index 747f38c..37039e3 100644
+--- a/libravdb/database.go
++++ b/libravdb/database.go
+@@ -999,8 +999,10 @@ func (db *Database) ListCollectionsWithContext(ctx context.Context) ([]string, e
+ 		return nil, err
+ 	}
+ 	for _, name := range names {
+-		// Filter out shard collection names - only return parent collection names
+-		if _, _, ok := parseShardName(name); !ok {
++		// Lazy reopen has physical children but no loaded parent yet.
++		if parent, _, ok := parseShardName(name); ok {
++			namesMap[parent] = struct{}{}
++		} else {
+ 			namesMap[name] = struct{}{}
+ 		}
+ 	}
+diff --git a/libravdb/index_persistence.go b/libravdb/index_persistence.go
+index b44feec..45eb3d6 100644
+--- a/libravdb/index_persistence.go
++++ b/libravdb/index_persistence.go
+@@ -311,6 +311,7 @@ func (b *indexPersistenceBridge) createIndexFromEngineConfig(config *storage.Col
+ 		RawVectorStore: config.RawVectorStore,
+ 		RawStoreCap:    config.RawStoreCap,
+ 		IDMapCapacity:  config.IDMapCapacity,
++		Quantization:   config.Quantization,
+ 	}
+ 	return createIndexForCollection(libraConfig, nil)
+ }
+diff --git a/libravdb/tx.go b/libravdb/tx.go
+index fece0eb..2ee8ccf 100644
+--- a/libravdb/tx.go
++++ b/libravdb/tx.go
+@@ -1218,12 +1218,20 @@ func (db *Database) commitTxWithGraphReceipt(ctx context.Context, ops []txMutati
+ 		}
+ 	}()
+ 
++	// Shard views share admission control; one transaction occupies one slot
++	// per controller while retaining every physical collection mutation lock.
++	admitted := make(map[*writeController]bool, len(names))
+ 	for _, name := range names {
++		controller := collections[name].writes
++		if admitted[controller] {
++			continue
++		}
+ 		release, err := collections[name].acquireWrite(ctx)
+ 		if err != nil {
+ 			return err
+ 		}
+ 		releases = append(releases, release)
++		admitted[controller] = true
+ 	}
+ 	for _, name := range names {
+ 		collection := collections[name]

@@ -1,0 +1,48 @@
+{
+  "commands": [
+    {
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "45s",
+        "-run",
+        "^TestResearchMissingShardFailClosedV2$",
+        "./libravdb"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "missing-shard.txt",
+      "sha256": "97a7b8bdfcabcdb5387e2aea930de1ee391d66c8031a2afa253aa0d0ec2ee8d2",
+      "passed": true
+    },
+    {
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "45s",
+        "-run",
+        "^TestResearchMissingShardFailClosedV2$",
+        "./libravdb"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "missing-shard-race.txt",
+      "sha256": "43605f98f7787f327f19776736206e364903886cc6d272b0407e9a02a95efb73",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "productionTouched": false,
+  "wholeGoalValidation": false
+}

@@ -1,0 +1,73 @@
+{
+  "revision": "f3231fab2244c5c6bca8f7f822e5669ac58d13cd",
+  "paths": {
+    "control": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/control-repaired-v2",
+    "candidate": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2",
+    "fork": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork"
+  },
+  "sources": {
+    "control": {
+      "go.mod": "f650633ecbd49b727d7910532d2036987471d4eeb8e759e37d3fd3f8c8ce57e6",
+      "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13",
+      "internal/store/libravdbstore/store.go": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+    },
+    "candidate": {
+      "go.mod": "f650633ecbd49b727d7910532d2036987471d4eeb8e759e37d3fd3f8c8ce57e6",
+      "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13",
+      "internal/store/libravdbstore/store.go": "74dea08e7fb400c30d839a66852ea6c121000be3396f1723238eff1a6c262b94",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7",
+      "internal/store/libravdbstore/sharded_topology_test.go": "c8fc7edfe36ef69814b6a22baaed299ebacd57ce9d954780de1c1b31944b8139"
+    },
+    "fork": {
+      "go.mod": "86aaabb9ce3698af72c969bf540f530590c599ac57589d979f51b187695842df",
+      "go.sum": "1af3db24ecd6f578f6036cad72cf42d91aa2594cc9de13e4034b30214bdd94fa",
+      "libravdb/tx.go": "e760458e6dd870b3d531d9d34106d8dd285e8468a7a8968462f82819b794dbd5",
+      "libravdb/database.go": "10cbd08b9d58d5243c31f53079a566556761f89bfc0e0e0db8b07146e7ef4761",
+      "libravdb/collection.go": "83cb57f1b391df40aae9c833f108bcf482881ace4e6436a2391a02ed229870af",
+      "libravdb/index_persistence.go": "440c299b2cf50965f4d655531f0cca581667991d71fe00eedb5d45efd22e3b6b",
+      "internal/storage/interfaces.go": "dbb8217911539e217bdfcf083b661572e7b5fe87f7d915791e5aa1b3dd15edde",
+      "internal/storage/singlefile/codec.go": "a49141890e9f2e6448f50439d66d633b5d41bc0998d819d79ac00a53d695dfcd",
+      "libravdb/research_admission_regression_test.go": "bc4a9f6aa5522e1bb253397ef5e1d7a8741fc82f617f0cab7194d2ae0e572be0",
+      "libravdb/research_logical_discovery_test.go": "888ca89ab72e505866bc5ee7272b0c3e5cd84968fd73347d98473d614e93921a",
+      "libravdb/research_quantization_reopen_test.go": "a50ed730a10e9aefbe895f9a9e4e95d1d966455095a78300a720428b10d2014c",
+      "internal/storage/singlefile/research_quantization_codec_test.go": "e8f7f90c874b025ad33f6a74dd711a4d90439bbbff0962f517f65310ba0d7fae"
+    }
+  },
+  "originalLibrarySources": {
+    "libravdb/tx.go": "179c2f226585a6f28fcde58489621f77d76d9ca2502a907c34fe55dd0894e6be",
+    "libravdb/database.go": "89d68be3b2170b9a9275daa7e1c819492182b577947049da5dcf4dea22302311",
+    "libravdb/collection.go": "67a3a5a4e343f426a6745725e6a8007e20e549567082bb2528554ce7b3c59ac4",
+    "libravdb/index_persistence.go": "18b31cd6798a064d1b3c8a49c7048867666a08db32a6525abf0c52e488c1f543",
+    "internal/storage/interfaces.go": "00383d55e9c5d2e5ba6316040ab124d11674f117c3bf9ca1dfb0cc76c4e0d500",
+    "internal/storage/singlefile/codec.go": "d737a34d9985adcffc9e95541ae6b51a1d5c2ab2d6bb4e32fb8d298f7af75703"
+  },
+  "libraryFiles": [
+    "libravdb/tx.go",
+    "libravdb/database.go",
+    "libravdb/collection.go",
+    "libravdb/index_persistence.go",
+    "internal/storage/interfaces.go",
+    "internal/storage/singlefile/codec.go"
+  ],
+  "libraryTests": [
+    "libravdb/research_admission_regression_test.go",
+    "libravdb/research_logical_discovery_test.go",
+    "libravdb/research_quantization_reopen_test.go",
+    "internal/storage/singlefile/research_quantization_codec_test.go"
+  ],
+  "protocolSHA256": "49aae081e8ab6b74d7045c16108b6b9b4bc29b1b52ab6919accae51945d10bcb",
+  "preparationSHA256": "6bad92e2b73354878abeba483dfa17ecc3325cc9c0274ab42ee5d8d5a17b2377",
+  "patchSHA256": "d081e5dd09344ec1600ac84b9cd657588138c100f1f94dfece69529473cfb6e9",
+  "inheritedFailedManifestSHA256": "74b1d4383524832a222b1046044e2df981b0b80354cb1e7f990545c48c8868a3",
+  "workers": 10,
+  "privateDataUsed": false,
+  "productionTouched": false,
+  "wholeGoalValidation": false
+}

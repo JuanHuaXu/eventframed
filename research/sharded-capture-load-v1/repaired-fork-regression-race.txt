@@ -1,0 +1,24 @@
+=== RUN   TestResearchTransactionSharedShardAdmissionV1
+--- PASS: TestResearchTransactionSharedShardAdmissionV1 (0.13s)
+=== RUN   TestResearchLogicalParentDiscoveryV1
+--- PASS: TestResearchLogicalParentDiscoveryV1 (0.09s)
+=== RUN   TestResearchQuantizationDeclarationReopenV1
+=== RUN   TestResearchQuantizationDeclarationReopenV1/none/sharded=false
+=== RUN   TestResearchQuantizationDeclarationReopenV1/sq8/sharded=false
+=== RUN   TestResearchQuantizationDeclarationReopenV1/fsq/sharded=false
+=== RUN   TestResearchQuantizationDeclarationReopenV1/none/sharded=true
+=== RUN   TestResearchQuantizationDeclarationReopenV1/sq8/sharded=true
+=== RUN   TestResearchQuantizationDeclarationReopenV1/fsq/sharded=true
+--- PASS: TestResearchQuantizationDeclarationReopenV1 (0.91s)
+    --- PASS: TestResearchQuantizationDeclarationReopenV1/none/sharded=false (0.11s)
+    --- PASS: TestResearchQuantizationDeclarationReopenV1/sq8/sharded=false (0.12s)
+    --- PASS: TestResearchQuantizationDeclarationReopenV1/fsq/sharded=false (0.12s)
+    --- PASS: TestResearchQuantizationDeclarationReopenV1/none/sharded=true (0.20s)
+    --- PASS: TestResearchQuantizationDeclarationReopenV1/sq8/sharded=true (0.18s)
+    --- PASS: TestResearchQuantizationDeclarationReopenV1/fsq/sharded=true (0.18s)
+PASS
+ok  	github.com/xDarkicex/libravdb/libravdb	2.595s
+=== RUN   TestResearchQuantizationOptionalCodecV1
+--- PASS: TestResearchQuantizationOptionalCodecV1 (0.00s)
+PASS
+ok  	github.com/xDarkicex/libravdb/internal/storage/singlefile	1.201s

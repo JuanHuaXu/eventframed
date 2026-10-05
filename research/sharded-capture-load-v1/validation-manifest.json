@@ -1,0 +1,106 @@
+{
+  "runnerSHA256": "40bc8438dc31ab90e0204edfffe422abe5354e861a8d8a9e59254df4981092cf",
+  "plan": [
+    {
+      "arm": "control",
+      "name": "store",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "6m",
+        "./internal/store/libravdbstore"
+      ]
+    },
+    {
+      "arm": "control",
+      "name": "vet",
+      "args": [
+        "vet",
+        "./internal/store/libravdbstore",
+        "./internal/service"
+      ]
+    },
+    {
+      "arm": "control",
+      "name": "guard-race",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "3m",
+        "-run",
+        "^(TestResearchGuardedAdmissionPersistentBoundary|TestResearchBatchValidationParity|TestResearchTemporalFeedbackBoundaries)$",
+        "./internal/service"
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "store",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "6m",
+        "./internal/store/libravdbstore"
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "vet",
+      "args": [
+        "vet",
+        "./internal/store/libravdbstore",
+        "./internal/service"
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "guard-race",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "3m",
+        "-run",
+        "^(TestResearchGuardedAdmissionPersistentBoundary|TestResearchBatchValidationParity|TestResearchTemporalFeedbackBoundaries)$",
+        "./internal/service"
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "control": {
+      "internal/store/libravdbstore/store.go": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+    },
+    "candidate": {
+      "internal/store/libravdbstore/store.go": "74dea08e7fb400c30d839a66852ea6c121000be3396f1723238eff1a6c262b94",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+    }
+  },
+  "knownStoreOptInSkips": "reported separately, not executed coverage",
+  "requiredGuardSuites": [
+    "TestResearchGuardedAdmissionPersistentBoundary",
+    "TestResearchBatchValidationParity",
+    "TestResearchTemporalFeedbackBoundaries"
+  ],
+  "requireTopology": "candidate store suite must execute and PASS TestResearchShardedTopologyReopenV1",
+  "fullPublicLoadRaceValidated": false,
+  "productionTouched": false
+}

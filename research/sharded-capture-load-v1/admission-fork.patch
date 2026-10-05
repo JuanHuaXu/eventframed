@@ -1,0 +1,25 @@
+diff --git a/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/tx.go b/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go
+index fece0eb..2ee8ccf 100644
+--- a/Users/clawdius/go/pkg/mod/github.com/x!darkicex/libravdb@v1.6.13/libravdb/tx.go
++++ b/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go
+@@ -1218,12 +1218,20 @@ func (db *Database) commitTxWithGraphReceipt(ctx context.Context, ops []txMutati
+ 		}
+ 	}()
+ 
++	// Shard views share admission control; one transaction occupies one slot
++	// per controller while retaining every physical collection mutation lock.
++	admitted := make(map[*writeController]bool, len(names))
+ 	for _, name := range names {
++		controller := collections[name].writes
++		if admitted[controller] {
++			continue
++		}
+ 		release, err := collections[name].acquireWrite(ctx)
+ 		if err != nil {
+ 			return err
+ 		}
+ 		releases = append(releases, release)
++		admitted[controller] = true
+ 	}
+ 	for _, name := range names {
+ 		collection := collections[name]

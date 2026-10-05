@@ -1,0 +1,94 @@
+diff --git a/internal/index/hnsw/hnsw.go b/internal/index/hnsw/hnsw.go
+index d583852..a6696f3 100644
+--- a/internal/index/hnsw/hnsw.go
++++ b/internal/index/hnsw/hnsw.go
+@@ -167,6 +167,7 @@ type Index struct {
+ 	repairDone            chan struct{}
+ 	mmapPath              string
+ 	trainingVectors       [][]float32
++	trainingMu            sync.Mutex
+ 	trainingCount         atomic.Int32
+ 	nodes                 *segmentedNodeArray
+ 	size                  atomic.Int32
+@@ -519,20 +520,8 @@ func (h *Index) insertSingleMetadata(ctx context.Context, entry *VectorEntry) (*
+ 
+ 	// Handle quantization training collection
+ 	if h.quantizer != nil && !h.quantizationTrained.Load() {
+-		// Collect vectors for training lock-free
+-		vectorCopy := make([]float32, len(entry.Vector))
+-		copy(vectorCopy, entry.Vector)
+-
+-		threshold := h.getTrainingThreshold()
+-		count := h.trainingCount.Add(1)
+-		if int(count) <= threshold {
+-			h.trainingVectors[count-1] = vectorCopy
+-			if int(count) == threshold {
+-				if err := h.trainQuantizer(ctx); err != nil {
+-					return nil, fmt.Errorf("failed to train quantizer: %w", err)
+-				}
+-				h.quantizationTrained.Store(true)
+-			}
++		if err := h.collectTrainingVector(ctx, entry.Vector); err != nil {
++			return nil, fmt.Errorf("failed to train quantizer: %w", err)
+ 		}
+ 	}
+ 
+@@ -1245,11 +1234,13 @@ func (h *Index) calculateMemoryUsage() int64 {
+ 	}
+ 
+ 	// Add training vectors memory usage if still collecting
++	h.trainingMu.Lock()
+ 	if h.trainingVectors != nil {
+ 		for _, vec := range h.trainingVectors {
+ 			usage += int64(len(vec) * 4)
+ 		}
+ 	}
++	h.trainingMu.Unlock()
+ 
+ 	return usage
+ }
+@@ -1417,7 +1408,33 @@ func (h *Index) getTrainingThreshold() int {
+ 	}
+ }
+ 
+-// trainQuantizer trains the quantizer using collected training vectors
++// Only completed samples count toward training; reservation alone is not publication.
++func (h *Index) collectTrainingVector(ctx context.Context, vector []float32) error {
++	h.trainingMu.Lock()
++	defer h.trainingMu.Unlock()
++	if h.quantizationTrained.Load() {
++		return nil
++	}
++	if err := ctx.Err(); err != nil {
++		return err
++	}
++	threshold := h.getTrainingThreshold()
++	if len(h.trainingVectors) < threshold || threshold <= 0 {
++		return fmt.Errorf("training buffer unavailable")
++	}
++	count := int(h.trainingCount.Load())
++	if count < threshold {
++		h.trainingVectors[count] = append([]float32(nil), vector...)
++		count++
++		h.trainingCount.Store(int32(count))
++	}
++	if count == threshold {
++		return h.trainQuantizer(ctx)
++	}
++	return nil
++}
++
++// trainQuantizer requires trainingMu and trains completed sample vectors.
+ func (h *Index) trainQuantizer(ctx context.Context) error {
+ 	if h.quantizer == nil || len(h.trainingVectors) == 0 {
+ 		return fmt.Errorf("no quantizer or training data available")
+@@ -1734,7 +1751,9 @@ func (h *Index) EnableMemoryMapping(basePath string) error {
+ 	}
+ 
+ 	// Clear training vectors
++	h.trainingMu.Lock()
+ 	h.trainingVectors = nil
++	h.trainingMu.Unlock()
+ 
+ 	return nil
+ }

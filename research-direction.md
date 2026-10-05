@@ -17,11 +17,45 @@ entry below records new work, not a change to any original success criterion.
 
 ## Current Continuation
 
-Publication note: the public capture-load checkpoint below is now authorized for
-publication on the curated research branch. Raw profiler captures remain local;
-their omission is documented in `research/public-capture-load-v1/PUBLICATION.json`.
-The original continuation notes describe the state at collection time. No
-unfinished shard-rescue work or production promotion is included in this push.
+2026-10-05 latest: [V3 repaired four-shard pilot](research/sharded-capture-load-v1/V3_RESULTS.md).
+Previous goal turn PROGRESS (admission/discovery failures and temporary admission
+rescue); intervening authorized push published the earlier public-load checkpoint.
+This turn PROGRESS: independently reproduced discovery and quantization loss,
+temporary repairs, full preflight, sixteen ordinary paired load commands, a
+failed full V2 race test, separate synchronized-training V3 rescue and complete
+candidate/200 race recheck. All seven WHOLE goals remain OPEN/ACTIVE; usage 47%.
+
+V1 FAILS its original timeout/reopen preflight. V2 passes finite ordinary timing
+but its complete candidate/200 race run exposes an unsynchronized training-vector
+slice, NOT the already-atomic trained flag. Preserve that failure. A small
+four-index pre-patch unit passed and did not reproduce the race; the full workload
+is the failing witness. V3 serializes bounded cold sample completion/training
+and leaves warm trained insertion outside that mutex. All twelve V3 functional
+preflight commands pass, including a complete candidate/200 race run with no
+reported race. The instrumented timing screen fails and remains a nonzero exit,
+explicitly not an ordinary performance pass. Known 119 store opt-in skips per
+arm remain unexecuted. Partial-shard negative guards pass normally and under race.
+
+All four V3 ordinary paired cells pass unchanged recall <100ms, live-publication
+age <250ms and ratio <=.90: recall p99 46.58-88.68ms vs115.11-172.10ms control,
+48.47-62.53% lower sample maxima. Live age p99 11.48-18.64ms. All256captures,
+64recalls/worker labels and128durable rows complete with same-epoch replay.
+At64samples p99 is max, NOT a population-tail guarantee. Closed-loop offered
+rate, ANN/rank quality, counterfactual future-law equality, retained RAM, large-
+corpus/open-loop backlog, crash/cross-epoch/network and untouched agent tasks
+remain unproved. This is finite public DESIGN evidence, not whole Goal6 success.
+
+The temporary seven-file dependency patch, original failures, source hashes,
+unchanged gates and four verifier negative controls are retained. Production,
+installed cache, private/sealed labels, existing dirty runtime files and paper
+are untouched. No automatic publication/deployment: make a scoped local
+checkpoint. Next preserve scaling/quality/recovery requirements in the original
+goal scope; other six directions and the .698246 TV defect remain unresolved.
+
+Publication note: the earlier public capture-load checkpoint below was
+authorized for publication on the curated research branch. Raw profiler captures
+remain local; their omission is documented in its PUBLICATION.json. Original
+continuation notes describe collection-time state. No production promotion.
 
 2026-10-05 latest: [full-frontier public capture load](research/public-capture-load-v1/RESULTS.md)
 and [two-worker rejection](research/public-capture-load-v1/WORKER_CAP_RESULTS.md).

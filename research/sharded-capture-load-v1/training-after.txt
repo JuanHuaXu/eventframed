@@ -1,0 +1,43 @@
+=== RUN   TestHNSW_MemoryMappingWithQuantization
+--- PASS: TestHNSW_MemoryMappingWithQuantization (0.03s)
+=== RUN   TestHNSWWithQuantization
+=== RUN   TestHNSWWithQuantization/Product_Quantization_Integration
+=== RUN   TestHNSWWithQuantization/Scalar_Quantization_Integration
+=== RUN   TestHNSWWithQuantization/Finite_Scalar_Quantization_Integration
+=== RUN   TestHNSWWithQuantization/Quantization_Training_Threshold
+=== RUN   TestHNSWWithQuantization/Mixed_Quantized_and_Unquantized_Nodes
+--- PASS: TestHNSWWithQuantization (0.14s)
+    --- PASS: TestHNSWWithQuantization/Product_Quantization_Integration (0.05s)
+    --- PASS: TestHNSWWithQuantization/Scalar_Quantization_Integration (0.04s)
+    --- PASS: TestHNSWWithQuantization/Finite_Scalar_Quantization_Integration (0.04s)
+    --- PASS: TestHNSWWithQuantization/Quantization_Training_Threshold (0.01s)
+    --- PASS: TestHNSWWithQuantization/Mixed_Quantized_and_Unquantized_Nodes (0.01s)
+=== RUN   TestQuantizationPerformance
+=== RUN   TestQuantizationPerformance/Performance_Comparison
+    quantization_test.go:426: Unquantized memory usage: 7535820 bytes
+    quantization_test.go:427: Quantized memory usage: 7659076 bytes
+    quantization_test.go:431: Warning: Quantized memory (7659076) not less than unquantized (7535820)
+--- PASS: TestQuantizationPerformance (2.92s)
+    --- PASS: TestQuantizationPerformance/Performance_Comparison (2.92s)
+=== RUN   TestResearchParallelQuantizerTrainingV3
+--- PASS: TestResearchParallelQuantizerTrainingV3 (0.07s)
+=== RUN   TestSimpleQuantizationIntegration
+=== RUN   TestSimpleQuantizationIntegration/Basic_Quantization_Setup
+    simple_quantization_test.go:46: Training threshold: 64
+=== RUN   TestSimpleQuantizationIntegration/Quantization_Training_Trigger
+    simple_quantization_test.go:113: Training threshold: 50
+    simple_quantization_test.go:134: Training triggered after 51 vectors
+    simple_quantization_test.go:160: Quantized nodes: 2 out of 51
+=== RUN   TestSimpleQuantizationIntegration/Search_with_Mixed_Nodes
+--- PASS: TestSimpleQuantizationIntegration (0.01s)
+    --- PASS: TestSimpleQuantizationIntegration/Basic_Quantization_Setup (0.00s)
+    --- PASS: TestSimpleQuantizationIntegration/Quantization_Training_Trigger (0.00s)
+    --- PASS: TestSimpleQuantizationIntegration/Search_with_Mixed_Nodes (0.00s)
+=== RUN   TestQuantizationConfiguration
+=== RUN   TestQuantizationConfiguration/Invalid_Quantization_Config
+=== RUN   TestQuantizationConfiguration/No_Quantization_Config
+--- PASS: TestQuantizationConfiguration (0.00s)
+    --- PASS: TestQuantizationConfiguration/Invalid_Quantization_Config (0.00s)
+    --- PASS: TestQuantizationConfiguration/No_Quantization_Config (0.00s)
+PASS
+ok  	github.com/xDarkicex/libravdb/internal/index/hnsw	3.359s

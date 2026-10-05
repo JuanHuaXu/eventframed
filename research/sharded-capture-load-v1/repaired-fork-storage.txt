@@ -1,0 +1,180 @@
+=== RUN   TestAdversarialGraphNodeID_InsertBatch
+--- PASS: TestAdversarialGraphNodeID_InsertBatch (0.04s)
+=== RUN   TestAdversarialGraphNodeID_UpdatePreservesIdentity
+--- PASS: TestAdversarialGraphNodeID_UpdatePreservesIdentity (0.04s)
+=== RUN   TestAdversarialGraphNodeID_DeleteReinsertFreshIdentity
+--- PASS: TestAdversarialGraphNodeID_DeleteReinsertFreshIdentity (0.04s)
+=== RUN   TestAdversarialGraphNodeID_AbortedCommitsNoGap
+--- PASS: TestAdversarialGraphNodeID_AbortedCommitsNoGap (0.03s)
+=== RUN   TestAdversarialGraphNodeID_DuplicateKeyInTx
+--- PASS: TestAdversarialGraphNodeID_DuplicateKeyInTx (0.03s)
+=== RUN   TestAdversarialGraphNodeID_MaxUint64Overflow
+--- PASS: TestAdversarialGraphNodeID_MaxUint64Overflow (0.03s)
+=== RUN   TestAdversarialGraphNodeID_ReverseAPI
+--- PASS: TestAdversarialGraphNodeID_ReverseAPI (0.04s)
+=== RUN   TestAdversarialGraphNodeID_CollidingOrdinals
+--- PASS: TestAdversarialGraphNodeID_CollidingOrdinals (0.04s)
+=== RUN   TestAdversarialGraphNodeID_ConcurrentRace
+--- PASS: TestAdversarialGraphNodeID_ConcurrentRace (0.03s)
+=== RUN   TestAdversarialGraphNodeID_V2CheckpointFailure
+    adversarial_registry_test.go:366: checkpoint metapage writes attempted: 1
+    adversarial_registry_test.go:373: correctly blocked open: permission denied
+--- PASS: TestAdversarialGraphNodeID_V2CheckpointFailure (0.02s)
+=== RUN   TestAdversarialGraphNodeID_LegacyV2Migration
+--- PASS: TestAdversarialGraphNodeID_LegacyV2Migration (0.02s)
+=== RUN   TestAdversarialGraphNodeID_SyncFailure
+--- PASS: TestAdversarialGraphNodeID_SyncFailure (0.05s)
+=== RUN   TestAdversarialGraphNodeID_WriteFailure
+--- PASS: TestAdversarialGraphNodeID_WriteFailure (0.03s)
+=== RUN   TestAdversarialGraphNodeID_NULAliasing
+--- PASS: TestAdversarialGraphNodeID_NULAliasing (0.04s)
+=== RUN   TestAdversarialGraphNodeID_TombstoneSurvivesRestart
+--- PASS: TestAdversarialGraphNodeID_TombstoneSurvivesRestart (0.04s)
+=== RUN   TestAdversarialGraphNodeID_ShortWrite
+--- PASS: TestAdversarialGraphNodeID_ShortWrite (0.05s)
+=== RUN   TestAdversarialGraphNodeID_SyncFailureReopen
+--- PASS: TestAdversarialGraphNodeID_SyncFailureReopen (0.06s)
+=== RUN   TestAdversarialGraphNodeID_CollectionDeleteTombstone
+--- PASS: TestAdversarialGraphNodeID_CollectionDeleteTombstone (0.04s)
+=== RUN   TestAdversarialGraphNodeID_ReverseDirExhaustion
+    adversarial_registry_test.go:983: exhausted after 65536 inserts with 1 MiB pool
+--- PASS: TestAdversarialGraphNodeID_ReverseDirExhaustion (5.46s)
+=== RUN   TestAdversarialGraphNodeID_ConcurrentResolveClose
+--- PASS: TestAdversarialGraphNodeID_ConcurrentResolveClose (0.03s)
+=== RUN   TestAdversarialGraphNodeID_DeleteReinsertReopen
+--- PASS: TestAdversarialGraphNodeID_DeleteReinsertReopen (0.04s)
+=== RUN   TestAdversarialGraphNodeID_AmbiguousSync
+    adversarial_registry_test.go:1159: baselineID=1 -> ("col","r1",<nil>); newID=2 -> ("col2","r3",<nil>)
+--- PASS: TestAdversarialGraphNodeID_AmbiguousSync (0.05s)
+=== RUN   TestAdversarialGraphNodeID_QueuedBatchGateRace
+--- PASS: TestAdversarialGraphNodeID_QueuedBatchGateRace (0.05s)
+=== RUN   TestMetadataCodecAcceptsAllIntegerWidths
+--- PASS: TestMetadataCodecAcceptsAllIntegerWidths (0.00s)
+=== RUN   TestWALWriteBufferUsesReusableOffHeapArena
+--- PASS: TestWALWriteBufferUsesReusableOffHeapArena (0.01s)
+=== RUN   TestWALSyncDefaultsOnAndUnsafeModeIsExplicit
+--- PASS: TestWALSyncDefaultsOnAndUnsafeModeIsExplicit (0.03s)
+=== RUN   TestGroupCommitSyncsOnceAndAcknowledgesAllWriters
+--- PASS: TestGroupCommitSyncsOnceAndAcknowledgesAllWriters (0.05s)
+=== RUN   TestGroupCommitReturnsSyncFailureToWriter
+--- PASS: TestGroupCommitReturnsSyncFailureToWriter (0.02s)
+=== RUN   TestRecoveryRebuildsIndexTouchedAfterCheckpoint
+--- PASS: TestRecoveryRebuildsIndexTouchedAfterCheckpoint (0.04s)
+=== RUN   TestRecoveryReplaysIndexDeltasWithoutSecondRebuild
+--- PASS: TestRecoveryReplaysIndexDeltasWithoutSecondRebuild (0.06s)
+=== RUN   TestRecoveryReplaysIndexLifecycleDeltas
+--- PASS: TestRecoveryReplaysIndexLifecycleDeltas (0.05s)
+=== RUN   TestRecoveryRejectsLaggingIndexSnapshot
+--- PASS: TestRecoveryRejectsLaggingIndexSnapshot (0.03s)
+=== RUN   TestRecoveryHonorsIndexRestorePolicy
+--- PASS: TestRecoveryHonorsIndexRestorePolicy (0.03s)
+=== RUN   TestRecoveryAcceptsCollectionFrontierBehindUnrelatedWAL
+--- PASS: TestRecoveryAcceptsCollectionFrontierBehindUnrelatedWAL (0.04s)
+=== RUN   TestGroupedWALReturnsPerTransactionCommitLSN
+--- PASS: TestGroupedWALReturnsPerTransactionCommitLSN (0.02s)
+=== RUN   TestNewInitializesSingleFileDatabase
+--- PASS: TestNewInitializesSingleFileDatabase (0.01s)
+=== RUN   TestNewRejectsMalformedFile
+--- PASS: TestNewRejectsMalformedFile (0.00s)
+=== RUN   TestMetapageFailoverOnCorruption
+--- PASS: TestMetapageFailoverOnCorruption (0.03s)
+=== RUN   TestRecoveryFallsBackFromTruncatedNewestSnapshot
+--- PASS: TestRecoveryFallsBackFromTruncatedNewestSnapshot (0.05s)
+=== RUN   TestRecoveryIgnoresTruncatedFinalWALFrame
+--- PASS: TestRecoveryIgnoresTruncatedFinalWALFrame (0.05s)
+=== RUN   TestReplayIgnoresUncommittedTransactions
+--- PASS: TestReplayIgnoresUncommittedTransactions (0.03s)
+=== RUN   TestRecoveryStatsTrackReplayedAndDiscardedTransactions
+--- PASS: TestRecoveryStatsTrackReplayedAndDiscardedTransactions (0.03s)
+=== RUN   TestBatchWALCommitMultipleRecordsInOneTransaction
+--- PASS: TestBatchWALCommitMultipleRecordsInOneTransaction (0.03s)
+=== RUN   TestConcurrentSingleInsertsCoalesceIntoFewerTransactions
+--- PASS: TestConcurrentSingleInsertsCoalesceIntoFewerTransactions (0.05s)
+=== RUN   TestConcurrentSingleInsertsGroupCommitWindowSweep
+=== RUN   TestConcurrentSingleInsertsGroupCommitWindowSweep/disabled
+    engine_test.go:1357: window=0s tx_delta=3 flush_delta=3 entry_delta=256 wal_bytes=27901 elapsed=15.445375ms
+=== RUN   TestConcurrentSingleInsertsGroupCommitWindowSweep/default
+    engine_test.go:1357: window=1ms tx_delta=1 flush_delta=1 entry_delta=256 wal_bytes=27659 elapsed=6.9795ms
+=== RUN   TestConcurrentSingleInsertsGroupCommitWindowSweep/larger
+    engine_test.go:1357: window=5ms tx_delta=1 flush_delta=1 entry_delta=256 wal_bytes=27659 elapsed=8.189042ms
+--- PASS: TestConcurrentSingleInsertsGroupCommitWindowSweep (0.11s)
+    --- PASS: TestConcurrentSingleInsertsGroupCommitWindowSweep/disabled (0.04s)
+    --- PASS: TestConcurrentSingleInsertsGroupCommitWindowSweep/default (0.03s)
+    --- PASS: TestConcurrentSingleInsertsGroupCommitWindowSweep/larger (0.04s)
+=== RUN   TestBatchWALCommitRecoveryReplaysAllRecords
+--- PASS: TestBatchWALCommitRecoveryReplaysAllRecords (0.03s)
+=== RUN   TestInsertBatchReturnsErrorOnDeletedCollection
+--- PASS: TestInsertBatchReturnsErrorOnDeletedCollection (0.04s)
+=== RUN   TestInsertReturnsErrorOnDeletedCollection
+--- PASS: TestInsertReturnsErrorOnDeletedCollection (0.04s)
+=== RUN   TestBatchWALRecoveryStillWorks
+--- PASS: TestBatchWALRecoveryStillWorks (0.03s)
+=== RUN   TestNewNoGoroutineLeakOnFailure
+--- PASS: TestNewNoGoroutineLeakOnFailure (0.00s)
+=== RUN   TestFlushBatchFailureDoesNotPublishOrRequeue
+--- PASS: TestFlushBatchFailureDoesNotPublishOrRequeue (0.02s)
+=== RUN   TestFlushErrorReQueuesRemainingBatches
+--- PASS: TestFlushErrorReQueuesRemainingBatches (0.05s)
+=== RUN   TestCompactEmptyEngine
+--- PASS: TestCompactEmptyEngine (0.02s)
+=== RUN   TestNewSyncsParentDirectory
+--- PASS: TestNewSyncsParentDirectory (0.01s)
+=== RUN   TestCompactParentSyncFailureKeepsEngineUsable
+--- PASS: TestCompactParentSyncFailureKeepsEngineUsable (0.03s)
+=== RUN   TestBackupParentSyncFailureRemovesDestination
+--- PASS: TestBackupParentSyncFailureRemovesDestination (0.02s)
+=== RUN   TestCompactPreservesDataAndReducesFileSize
+--- PASS: TestCompactPreservesDataAndReducesFileSize (0.51s)
+=== RUN   TestOpenExistingIgnoresOrphanCompactSidecar
+--- PASS: TestOpenExistingIgnoresOrphanCompactSidecar (0.03s)
+=== RUN   TestCompactPreventsUnboundedFileGrowth
+--- PASS: TestCompactPreventsUnboundedFileGrowth (0.58s)
+=== RUN   TestDeleteReleasesOrdinalSlot
+--- PASS: TestDeleteReleasesOrdinalSlot (0.03s)
+=== RUN   TestReplayWALSkipsCorruptNonWALHeader
+--- PASS: TestReplayWALSkipsCorruptNonWALHeader (0.04s)
+=== RUN   TestCatalogRelocationIsIdempotentAndClearsLegacyPage
+--- PASS: TestCatalogRelocationIsIdempotentAndClearsLegacyPage (0.02s)
+=== RUN   TestOrdinalPreReservation_CrashRecovery
+    engine_test.go:2414: uncommitted ordinals: u1=0 u2=1
+--- PASS: TestOrdinalPreReservation_CrashRecovery (0.02s)
+=== RUN   TestOrdinalPreReservation_NextOrdinalAfterCommit
+    engine_test.go:2494: NextOrdinal=5 reservedNextOrdinal=5
+--- PASS: TestOrdinalPreReservation_NextOrdinalAfterCommit (0.05s)
+=== RUN   TestOrdinalPreReservation_ConcurrentAssignments
+    engine_test.go:2599: concurrent: 8 goroutines x 100 = 800 unique ordinals [0,799]
+--- PASS: TestOrdinalPreReservation_ConcurrentAssignments (0.02s)
+=== RUN   TestEngine_Vacuum
+--- PASS: TestEngine_Vacuum (6.94s)
+=== RUN   TestEngine_Backup
+--- PASS: TestEngine_Backup (0.08s)
+=== RUN   TestEngine_Drop
+--- PASS: TestEngine_Drop (0.03s)
+=== RUN   TestPersistedCollectionVectorSFLSegmentsGrowAndReuse
+--- PASS: TestPersistedCollectionVectorSFLSegmentsGrowAndReuse (0.00s)
+=== RUN   TestPersistedCollectionVectorSegmentSizingIsBounded
+=== RUN   TestPersistedCollectionVectorSegmentSizingIsBounded/small-vector
+=== RUN   TestPersistedCollectionVectorSegmentSizingIsBounded/embedding
+=== RUN   TestPersistedCollectionVectorSegmentSizingIsBounded/small-configured-cap
+--- PASS: TestPersistedCollectionVectorSegmentSizingIsBounded (0.00s)
+    --- PASS: TestPersistedCollectionVectorSegmentSizingIsBounded/small-vector (0.00s)
+    --- PASS: TestPersistedCollectionVectorSegmentSizingIsBounded/embedding (0.00s)
+    --- PASS: TestPersistedCollectionVectorSegmentSizingIsBounded/small-configured-cap (0.00s)
+=== RUN   TestResearchQuantizationOptionalCodecV1
+--- PASS: TestResearchQuantizationOptionalCodecV1 (0.00s)
+=== RUN   TestResolveLSNClassifiesCompactedAndAbsentLSNs
+--- PASS: TestResolveLSNClassifiesCompactedAndAbsentLSNs (0.04s)
+=== RUN   TestRetainedHistoryStatsTrackCompactionAndReopen
+--- PASS: TestRetainedHistoryStatsTrackCompactionAndReopen (0.03s)
+=== RUN   TestWALRequestRecordIsOneCacheLine
+--- PASS: TestWALRequestRecordIsOneCacheLine (0.00s)
+=== RUN   TestWALRequestPoolCompletionAndReuse
+--- PASS: TestWALRequestPoolCompletionAndReuse (0.00s)
+=== RUN   TestWALRequestPoolPreservesCompletionError
+--- PASS: TestWALRequestPoolPreservesCompletionError (0.00s)
+=== RUN   TestWALRequestPoolWakesGroupCompletion
+--- PASS: TestWALRequestPoolWakesGroupCompletion (0.00s)
+=== RUN   TestWALRequestPoolSteadyStateDoesNotAllocate
+--- PASS: TestWALRequestPoolSteadyStateDoesNotAllocate (0.00s)
+PASS
+ok  	github.com/xDarkicex/libravdb/internal/storage/singlefile	16.008s

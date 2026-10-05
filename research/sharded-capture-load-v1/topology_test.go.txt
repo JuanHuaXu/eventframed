@@ -1,0 +1,95 @@
+package libravdbstore
+
+import (
+	"bufio"
+	"context"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"hash/fnv"
+	"os"
+	"strings"
+	"testing"
+	"time"
+
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	storecontract "github.com/JuanHuaXu/eventframed/internal/store"
+	"github.com/JuanHuaXu/eventframed/internal/testutil"
+)
+
+func TestResearchShardedTopologyReopenV1(t *testing.T) {
+	ctx := context.Background()
+	config := Config{Path:t.TempDir()+"/shards.libravdb",Dimension:128,EmbeddingModel:"shard-probe:d128",Quantization:"sq8",MemoryMapping:true}
+	db,err:=Open(config)
+	if err!=nil { t.Fatal(err) }
+	defer func(){ if db!=nil { db.Close() } }()
+	file,err:=os.Open("../../../testdata/text-public-facts/corpus.jsonl")
+	if err!=nil { t.Fatal(err) }
+	defer file.Close()
+	var texts []string
+	scanner:=bufio.NewScanner(file)
+	for scanner.Scan() {
+		var row struct { Split string `json:"split"`; Capture struct { Turn model.TurnCapture `json:"turn"` } `json:"capture"` }
+		if err:=json.Unmarshal(scanner.Bytes(),&row);err!=nil { t.Fatal(err) }
+		if row.Split=="design" { texts=append(texts,row.Capture.Turn.AssistantText) }
+	}
+	if err:=scanner.Err();err!=nil { t.Fatal(err) }
+	if len(texts)!=288 { t.Fatal("design template count",len(texts)) }
+	now:=time.Date(2026,9,12,0,0,0,0,time.UTC)
+	vector:=make([]float32,128);vector[0]=1
+	ids:=make([]string,0,128)
+	want:=make(map[string]model.Event)
+	routing:=make([]int,4)
+	for i:=0;i<128;i++ {
+		at:=now.Add(-time.Minute)
+		if i>=96 { at=now.Add(time.Hour) }
+		id:=fmt.Sprintf("topology-%03d",i)
+		event:=testutil.Event(id,texts[i],at)
+		if _,err:=db.Put(ctx,event,vector,id);err!=nil { t.Fatal(err) }
+		ids=append(ids,id);want[id]=event
+		h:=fnv.New32a();h.Write([]byte(id));routing[int(h.Sum32()%4)]++
+	}
+	for _,n:=range routing { if n==0 { t.Fatal("fixture did not cover a declared shard route",routing) } }
+	collection,err:=db.collection(ctx,"tenant-a")
+	if err!=nil || !collection.Config().Sharded || !collection.Stats(ctx).HasQuantization { t.Fatal("wrong candidate topology/config",err) }
+	before:=db.Snapshot(ctx)
+	check:=func() {
+		t.Helper()
+		col,err:=db.collection(ctx,"tenant-a")
+		if err!=nil || !col.Config().Sharded || !col.Stats(ctx).HasQuantization { t.Fatal("topology/quantization lost after reopen",err) }
+		if db.Snapshot(ctx)!=before { t.Fatal("snapshot changed across read/reopen",db.Snapshot(ctx),before) }
+		events,err:=db.GetEvents(ctx,"tenant-a",ids,now.Add(2*time.Hour))
+		if err!=nil || len(events)!=128 { t.Fatal("durable routing/get",len(events),err) }
+		for _,event:=range events { original,ok:=want[event.ID];if !ok || event.Content!=original.Content || !event.AvailableAt.Equal(original.AvailableAt) || event.TenantID!=original.TenantID { t.Fatal("payload changed",event.ID) } }
+		all,err:=db.ListAllEvents(ctx)
+		if err!=nil || len(all)!=128 { t.Fatal("parent/shard list coverage",len(all),err) }
+		seen:=make(map[string]bool)
+		for _,event:=range all { if seen[event.ID] || want[event.ID].ID=="" { t.Fatal("duplicate or missing list identity",event.ID) };seen[event.ID]=true }
+		for _,k:=range []int{50,96} {
+			result,err:=db.Search(ctx,"tenant-a",vector,now,k)
+			if err!=nil || len(result)!=k { t.Fatal("merged availability search",k,len(result),err) }
+			seen:=make(map[string]bool)
+			for _,row:=range result { if row.Event.AvailableAt.After(now) || seen[row.Event.ID] || want[row.Event.ID].ID=="" { t.Fatal("future/duplicate/unknown search record",row.Event.ID) };seen[row.Event.ID]=true }
+		}
+		if _,err:=db.GetEvents(ctx,"tenant-other",[]string{ids[0]},now);!errors.Is(err,storecontract.ErrEventNotFound) { t.Fatal("cross-tenant lookup",err) }
+	}
+	check()
+	if err:=db.Close();err!=nil { t.Fatal(err) };db=nil
+	db,err=Open(config);if err!=nil { t.Fatal(err) }
+	check()
+	duplicate,err:=db.Put(ctx,want[ids[0]],vector,ids[0])
+	if err!=nil || !duplicate.Duplicate || db.Snapshot(ctx)!=before { t.Fatal("reopen retry not idempotent",err) }
+	conflict:=want[ids[0]];conflict.Content+=" changed payload"
+	if _,err:=db.Put(ctx,conflict,vector,"changed-digest");!errors.Is(err,storecontract.ErrIdempotencyConflict) { t.Fatal("conflicting retry accepted",err) }
+	if result,err:=db.Delete(ctx,"tenant-other",ids[0]);err!=nil || result.Deleted { t.Fatal("cross-tenant delete",err) }
+	deleted,err:=db.Delete(ctx,"tenant-a",ids[0]);if err!=nil || !deleted.Deleted { t.Fatal("owned delete",err) }
+	afterDelete:=db.Snapshot(ctx)
+	if afterDelete==before { t.Fatal("delete did not move snapshot") }
+	if err:=db.Close();err!=nil { t.Fatal(err) };db=nil
+	db,err=Open(config);if err!=nil { t.Fatal(err) }
+	if db.Snapshot(ctx)!=afterDelete { t.Fatal("delete snapshot lost after reopen") }
+	if _,err:=db.GetEvents(ctx,"tenant-a",[]string{ids[0]},now);!errors.Is(err,storecontract.ErrEventNotFound) { t.Fatal("deleted record revived",err) }
+	all,err:=db.ListAllEvents(ctx);if err!=nil || len(all)!=127 { t.Fatal("delete list count",len(all),err) }
+	for _,event:=range all { if strings.HasSuffix(event.ID,"-000") { t.Fatal("deleted ID listed") } }
+	t.Logf("SHARDED_TOPOLOGY_V1 routes=%v records_before=128 records_after=127 quantization=sq8 reopen=pass retry=pass tenant=pass",routing)
+}

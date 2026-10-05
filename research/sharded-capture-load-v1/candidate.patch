@@ -1,0 +1,11 @@
+diff --git a/internal/store/libravdbstore/store.go b/internal/store/libravdbstore/store.go
+--- a/internal/store/libravdbstore/store.go
++++ b/internal/store/libravdbstore/store.go
+@@ -1711,6 +1711,7 @@ func (s *Store) collection(ctx context.Context, tenantID string) (*libra.Collection,
+ 	options := []libra.CollectionOption{
+ 		libra.WithMetric(libra.CosineDistance),
+ 		libra.WithHNSW(16, 200, 100),
++		libra.WithSharding(true),
+ 		libra.WithMemoryMapping(s.config.MemoryMapping),
+ 	}
+ 	switch s.config.Quantization {

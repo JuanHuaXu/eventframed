@@ -1,0 +1,43 @@
+{
+  "commands": [
+    {
+      "command": [
+        "go",
+        "test",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "30s",
+        "-run",
+        "^TestResearchTransactionSharedShardAdmissionV1$",
+        "./libravdb"
+      ],
+      "status": 0,
+      "transcript": "admission-after.txt",
+      "sha256": "b8fd312f8e371844af84d8478f236633d9165b923174a9d892c9a43d6b0bb8e6",
+      "dataRaceReported": false
+    },
+    {
+      "command": [
+        "go",
+        "test",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "30s",
+        "-run",
+        "^TestResearchTransactionSharedShardAdmissionV1$",
+        "./libravdb"
+      ],
+      "status": 0,
+      "transcript": "admission-after-race.txt",
+      "sha256": "fb86b995a50a0450b2a88b7464d86c2ba92f93d7181c87cc6938cdf3860c4fe5",
+      "dataRaceReported": false
+    }
+  ],
+  "sourceSHA256": "e760458e6dd870b3d531d9d34106d8dd285e8468a7a8968462f82819b794dbd5",
+  "testSHA256": "bc4a9f6aa5522e1bb253397ef5e1d7a8741fc82f617f0cab7194d2ae0e572be0",
+  "passed": true,
+  "productionTouched": false
+}

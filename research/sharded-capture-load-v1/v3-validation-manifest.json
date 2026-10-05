@@ -1,0 +1,217 @@
+{
+  "runnerSHA256": "26623e730d38e134b404ca3d2cb979ee6f0f45e334c5872f94a2814410fdca3b",
+  "sourceManifestSHA256": "3de922f5d64c8e71d3a477dfe1c328b3cddeada8df3ea339f8cac2f7115c5002",
+  "plan": [
+    {
+      "arm": "fork",
+      "name": "regression",
+      "required": [
+        "TestResearchTransactionSharedShardAdmissionV1",
+        "TestResearchLogicalParentDiscoveryV1",
+        "TestResearchQuantizationDeclarationReopenV1",
+        "TestResearchQuantizationOptionalCodecV1",
+        "TestResearchParallelQuantizerTrainingV3"
+      ],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "90s",
+        "-run",
+        "^(TestResearchTransactionSharedShardAdmissionV1|TestResearchLogicalParentDiscoveryV1|TestResearchQuantizationDeclarationReopenV1|TestResearchQuantizationOptionalCodecV1|TestResearchParallelQuantizerTrainingV3)$",
+        "./libravdb",
+        "./internal/storage/singlefile",
+        "./internal/index/hnsw"
+      ]
+    },
+    {
+      "arm": "fork",
+      "name": "regression-race",
+      "required": [
+        "TestResearchTransactionSharedShardAdmissionV1",
+        "TestResearchLogicalParentDiscoveryV1",
+        "TestResearchQuantizationDeclarationReopenV1",
+        "TestResearchQuantizationOptionalCodecV1",
+        "TestResearchParallelQuantizerTrainingV3"
+      ],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "90s",
+        "-run",
+        "^(TestResearchTransactionSharedShardAdmissionV1|TestResearchLogicalParentDiscoveryV1|TestResearchQuantizationDeclarationReopenV1|TestResearchQuantizationOptionalCodecV1|TestResearchParallelQuantizerTrainingV3)$",
+        "./libravdb",
+        "./internal/storage/singlefile",
+        "./internal/index/hnsw"
+      ]
+    },
+    {
+      "arm": "fork",
+      "name": "storage",
+      "required": [],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "4m",
+        "./internal/storage/singlefile"
+      ]
+    },
+    {
+      "arm": "fork",
+      "name": "adjacent-library",
+      "required": [],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "4m",
+        "-run",
+        "(Tx|Transaction|Sharded|Sharding|Config|Persistence|Lifecycle)",
+        "./libravdb"
+      ]
+    },
+    {
+      "arm": "control",
+      "name": "store",
+      "required": [],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "6m",
+        "./internal/store/libravdbstore"
+      ]
+    },
+    {
+      "arm": "control",
+      "name": "vet",
+      "required": [],
+      "args": [
+        "vet",
+        "-mod=readonly",
+        "./internal/store/libravdbstore",
+        "./internal/service"
+      ]
+    },
+    {
+      "arm": "control",
+      "name": "guard-race",
+      "required": [
+        "TestResearchGuardedAdmissionPersistentBoundary",
+        "TestResearchBatchValidationParity",
+        "TestResearchTemporalFeedbackBoundaries"
+      ],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "3m",
+        "-run",
+        "^(TestResearchGuardedAdmissionPersistentBoundary|TestResearchBatchValidationParity|TestResearchTemporalFeedbackBoundaries)$",
+        "./internal/service"
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "store",
+      "required": [
+        "TestResearchShardedTopologyReopenV1"
+      ],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "6m",
+        "./internal/store/libravdbstore"
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "vet",
+      "required": [],
+      "args": [
+        "vet",
+        "-mod=readonly",
+        "./internal/store/libravdbstore",
+        "./internal/service"
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "guard-race",
+      "required": [
+        "TestResearchGuardedAdmissionPersistentBoundary",
+        "TestResearchBatchValidationParity",
+        "TestResearchTemporalFeedbackBoundaries"
+      ],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "3m",
+        "-run",
+        "^(TestResearchGuardedAdmissionPersistentBoundary|TestResearchBatchValidationParity|TestResearchTemporalFeedbackBoundaries)$",
+        "./internal/service"
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "topology-race",
+      "required": [
+        "TestResearchShardedTopologyReopenV1"
+      ],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "90s",
+        "-run",
+        "^TestResearchShardedTopologyReopenV1$",
+        "./internal/store/libravdbstore"
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "load-race",
+      "required": [],
+      "args": [
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "4m",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "./internal/service"
+      ]
+    }
+  ],
+  "knownOptInSkipsNotExecuted": true,
+  "fullPublicLoadRaceValidated": false
+}

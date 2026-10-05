@@ -1,0 +1,518 @@
+=== RUN   TestResearchArchiveBoundaryV29
+    research_archive_boundary_v29_test.go:36: exclusive isolated archival experiment
+--- SKIP: TestResearchArchiveBoundaryV29 (0.00s)
+=== RUN   TestResearchArchiveAuthorityV29
+    research_archive_boundary_v29_test.go:240: isolated authority controls
+--- SKIP: TestResearchArchiveAuthorityV29 (0.00s)
+=== RUN   TestResearchArchiveCostGenerationV34
+--- PASS: TestResearchArchiveCostGenerationV34 (0.01s)
+=== RUN   TestResearchArchiveCostAuthorityV34
+    research_archive_cost_audit_v34_test.go:175: isolated paired authority controls
+--- SKIP: TestResearchArchiveCostAuthorityV34 (0.00s)
+=== RUN   TestResearchBatchArchiveRetryV34
+    research_archive_cost_checks_v34_generated_test.go:17: isolated archival retry controls
+--- SKIP: TestResearchBatchArchiveRetryV34 (0.00s)
+=== RUN   TestResearchBatchArchiveLifecycleV34
+    research_archive_cost_checks_v34_generated_test.go:85: isolated bounded queue/cancel/close controls
+--- SKIP: TestResearchBatchArchiveLifecycleV34 (0.00s)
+=== RUN   TestResearchBatchArchiveInterruptionV34
+    research_archive_cost_checks_v34_generated_test.go:189: isolated native/sidecar interruptions
+--- SKIP: TestResearchBatchArchiveInterruptionV34 (0.00s)
+=== RUN   TestResearchBatchArchiveLoadV34
+    research_archive_cost_load_v34_generated_test.go:256: exclusive frozen joined workload
+--- SKIP: TestResearchBatchArchiveLoadV34 (0.00s)
+=== RUN   TestResearchArchiveGenerationV29
+--- PASS: TestResearchArchiveGenerationV29 (0.00s)
+=== RUN   TestResearchArchiveInterruptionV30
+    research_archive_lifecycle_v30_test.go:16: isolated archival durability controls
+--- SKIP: TestResearchArchiveInterruptionV30 (0.00s)
+=== RUN   TestResearchArchiveConcurrentV30
+    research_archive_lifecycle_v30_test.go:70: isolated bounded concurrent archive
+--- SKIP: TestResearchArchiveConcurrentV30 (0.00s)
+=== RUN   TestResearchArchiveOwnershipV30
+    research_archive_lifecycle_v30_test.go:204: isolated copy/alias control
+--- SKIP: TestResearchArchiveOwnershipV30 (0.00s)
+=== RUN   TestResearchArchiveInterruptionV31
+    research_archive_lifecycle_v31_generated_test.go:17: isolated archival durability controls
+--- SKIP: TestResearchArchiveInterruptionV31 (0.00s)
+=== RUN   TestResearchArchiveConcurrentV31
+    research_archive_lifecycle_v31_generated_test.go:71: isolated bounded concurrent archive
+--- SKIP: TestResearchArchiveConcurrentV31 (0.00s)
+=== RUN   TestResearchArchiveOwnershipV31
+    research_archive_lifecycle_v31_generated_test.go:204: isolated copy/alias control
+--- SKIP: TestResearchArchiveOwnershipV31 (0.00s)
+=== RUN   TestResearchArchiveRequestsV32
+    research_archive_requests_v32_test.go:31: exclusive request-identity diagnostic
+--- SKIP: TestResearchArchiveRequestsV32 (0.00s)
+=== RUN   TestResearchBatchArchiveRetryV33
+    research_batch_archive_checks_v33_test.go:16: isolated archival retry controls
+--- SKIP: TestResearchBatchArchiveRetryV33 (0.00s)
+=== RUN   TestResearchBatchArchiveLifecycleV33
+    research_batch_archive_checks_v33_test.go:84: isolated bounded queue/cancel/close controls
+--- SKIP: TestResearchBatchArchiveLifecycleV33 (0.00s)
+=== RUN   TestResearchBatchArchiveInterruptionV33
+    research_batch_archive_checks_v33_test.go:188: isolated native/sidecar interruptions
+--- SKIP: TestResearchBatchArchiveInterruptionV33 (0.00s)
+=== RUN   TestResearchBatchArchiveLoadV33
+    research_batch_archive_load_v33_generated_test.go:256: exclusive frozen joined workload
+--- SKIP: TestResearchBatchArchiveLoadV33 (0.00s)
+=== RUN   TestResearchBatchArchiveWorkloadV33
+    research_batch_archive_workload_v33_test.go:102: offer rates, independent producers, full request measurements and gates preserved
+--- PASS: TestResearchBatchArchiveWorkloadV33 (0.00s)
+=== RUN   TestResearchJoinedWitnessLifecycleV25_CohortV46
+    research_cohort_batch_v46_generated_test.go:245: isolated joined integration
+--- SKIP: TestResearchJoinedWitnessLifecycleV25_CohortV46 (0.00s)
+=== RUN   TestResearchJoinedWitnessCancellationV25_CohortV46
+    research_cohort_batch_v46_generated_test.go:347: isolated joined cancellation
+--- SKIP: TestResearchJoinedWitnessCancellationV25_CohortV46 (0.00s)
+=== RUN   TestResearchJoinedWitnessBatchV25_CohortV46
+    research_cohort_batch_v46_generated_test.go:396: isolated joined batch contract
+--- SKIP: TestResearchJoinedWitnessBatchV25_CohortV46 (0.00s)
+=== RUN   TestResearchJoinedWitnessGapV25_CohortV46
+    research_cohort_batch_v46_generated_test.go:446: isolated joined fail-closed controls
+--- SKIP: TestResearchJoinedWitnessGapV25_CohortV46 (0.00s)
+=== RUN   TestResearchBatchArchiveRetryV34_CohortV46
+    research_cohort_batch_v46_generated_test.go:1214: isolated archival retry controls
+--- SKIP: TestResearchBatchArchiveRetryV34_CohortV46 (0.00s)
+=== RUN   TestResearchBatchArchiveLifecycleV34_CohortV46
+    research_cohort_batch_v46_generated_test.go:1281: isolated bounded queue/cancel/close controls
+--- SKIP: TestResearchBatchArchiveLifecycleV34_CohortV46 (0.00s)
+=== RUN   TestResearchBatchArchiveInterruptionV34_CohortV46
+    research_cohort_batch_v46_generated_test.go:1395: isolated native/sidecar interruptions
+--- SKIP: TestResearchBatchArchiveInterruptionV34_CohortV46 (0.00s)
+=== RUN   TestResearchEagerTracedOwnerAndDurabilityV44_CohortV46
+    research_cohort_batch_v46_generated_test.go:2379: explicit isolated native control
+--- SKIP: TestResearchEagerTracedOwnerAndDurabilityV44_CohortV46 (0.00s)
+=== RUN   TestResearchCohortSourcePreservationV46
+    research_cohort_batch_v46_test.go:128: independently normalized all 58 functions; exactly two worker and two native 4->8 bounds
+--- PASS: TestResearchCohortSourcePreservationV46 (0.03s)
+=== RUN   TestResearchCohortEightJournalDurabilityV46
+    research_cohort_batch_v46_test.go:133: isolated native eight-entry regression
+--- SKIP: TestResearchCohortEightJournalDurabilityV46 (0.00s)
+=== RUN   TestResearchCohortBatchLoadV46
+    research_cohort_batch_v46_test.go:196: exclusive isolated mixed load
+--- SKIP: TestResearchCohortBatchLoadV46 (0.00s)
+=== RUN   TestResearchCombinedWitnessLoadV26
+    research_combined_witness_v26_load_test.go:256: exclusive frozen joined workload
+--- SKIP: TestResearchCombinedWitnessLoadV26 (0.00s)
+=== RUN   TestResearchCombinedWitnessLifecycleV26
+    research_combined_witness_v26_test.go:26: isolated combined lifecycle
+--- SKIP: TestResearchCombinedWitnessLifecycleV26 (0.00s)
+=== RUN   TestResearchCombinedWitnessCancellationV26
+    research_combined_witness_v26_test.go:112: isolated combined cancellation
+--- SKIP: TestResearchCombinedWitnessCancellationV26 (0.00s)
+=== RUN   TestResearchContextPriorV26IdentityAndCounts
+--- PASS: TestResearchContextPriorV26IdentityAndCounts (0.00s)
+=== RUN   TestResearchContextPriorV26Validity
+=== RUN   TestResearchContextPriorV26Validity/epoch
+=== RUN   TestResearchContextPriorV26Validity/policy
+=== RUN   TestResearchContextPriorV26Validity/stale-posterior
+=== RUN   TestResearchContextPriorV26Validity/future-posterior
+=== RUN   TestResearchContextPriorV26Validity/pre-anchor
+=== RUN   TestResearchContextPriorV26Validity/uncertified
+=== RUN   TestResearchContextPriorV26Validity/fractional
+=== RUN   TestResearchContextPriorV26Validity/support-mismatch
+=== RUN   TestResearchContextPriorV26Validity/nan
+=== RUN   TestResearchContextPriorV26Validity/infinity
+=== RUN   TestResearchContextPriorV26Validity/negative
+=== RUN   TestResearchContextPriorV26Validity/wrong-key
+=== RUN   TestResearchContextPriorV26Validity/wrong-tenant
+=== RUN   TestResearchContextPriorV26Validity/working
+=== RUN   TestResearchContextPriorV26Validity/cap
+--- PASS: TestResearchContextPriorV26Validity (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/epoch (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/policy (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/stale-posterior (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/future-posterior (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/pre-anchor (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/uncertified (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/fractional (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/support-mismatch (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/nan (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/infinity (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/negative (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/wrong-key (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/wrong-tenant (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/working (0.00s)
+    --- PASS: TestResearchContextPriorV26Validity/cap (0.00s)
+=== RUN   TestResearchDurableWitnessWireDiagnosticV23
+    research_durable_witness_v23_diagnostic_test.go:19: isolated post-hoc journal boundary diagnostic
+--- SKIP: TestResearchDurableWitnessWireDiagnosticV23 (0.00s)
+=== RUN   TestResearchDurableWitnessLifecycleV23
+    research_durable_witness_v23_test.go:547: isolated libravdb witness integration
+--- SKIP: TestResearchDurableWitnessLifecycleV23 (0.00s)
+=== RUN   TestResearchDurableWitnessLoadV23
+    research_durable_witness_v23_test.go:963: exclusive prospective output required
+--- SKIP: TestResearchDurableWitnessLoadV23 (0.00s)
+=== RUN   TestResearchEagerCoreWireControlsV42
+=== RUN   TestResearchEagerCoreWireControlsV42/forecast
+=== RUN   TestResearchEagerCoreWireControlsV42/snapshot
+=== RUN   TestResearchEagerCoreWireControlsV42/omission
+=== RUN   TestResearchEagerCoreWireControlsV42/durability
+=== RUN   TestResearchEagerCoreWireControlsV42/journal
+=== RUN   TestResearchEagerCoreWireControlsV42/report
+=== RUN   TestResearchEagerCoreWireControlsV42/nonfinite
+--- PASS: TestResearchEagerCoreWireControlsV42 (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/forecast (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/snapshot (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/omission (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/durability (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/journal (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/report (0.00s)
+    --- PASS: TestResearchEagerCoreWireControlsV42/nonfinite (0.00s)
+=== RUN   TestResearchEagerCoreOwnerBoundaryV42
+    research_eager_core_v42_test.go:205: explicit isolated native preflight
+--- SKIP: TestResearchEagerCoreOwnerBoundaryV42 (0.00s)
+=== RUN   TestResearchEagerCoreMutationV42
+    research_eager_core_v42_test.go:306: explicit isolated native preflight
+--- SKIP: TestResearchEagerCoreMutationV42 (0.00s)
+=== RUN   TestResearchEagerCoreGapAndCancellationV42
+    research_eager_core_v42_test.go:363: explicit isolated native preflight
+--- SKIP: TestResearchEagerCoreGapAndCancellationV42 (0.00s)
+=== RUN   TestResearchEagerPredicatePreservationV44
+--- PASS: TestResearchEagerPredicatePreservationV44 (0.00s)
+=== RUN   TestResearchEagerWorkloadGenerationV44
+--- PASS: TestResearchEagerWorkloadGenerationV44 (0.00s)
+=== RUN   TestResearchEagerTracedOwnerAndDurabilityV44
+    research_eager_load_v44_controls_test.go:92: explicit isolated native control
+--- SKIP: TestResearchEagerTracedOwnerAndDurabilityV44 (0.00s)
+=== RUN   TestResearchEagerLoadV44
+    research_eager_load_v44_generated_test.go:259: exclusive frozen joined workload
+--- SKIP: TestResearchEagerLoadV44 (0.00s)
+=== RUN   TestResearchSortableReceiptCostV1
+    research_event_batch_receipt_cost_test.go:15: opt-in private receipt writer cost comparison
+--- SKIP: TestResearchSortableReceiptCostV1 (0.00s)
+=== RUN   TestResearchSortableEventBatchReceipt
+--- PASS: TestResearchSortableEventBatchReceipt (0.09s)
+=== RUN   TestResearchSortableEventBatchRequiresDeclaredKey
+--- PASS: TestResearchSortableEventBatchRequiresDeclaredKey (0.04s)
+=== RUN   TestResearchSortableEventBatchRejectsWrongKeyType
+--- PASS: TestResearchSortableEventBatchRejectsWrongKeyType (0.04s)
+=== RUN   TestResearchSortableEventBatch
+--- PASS: TestResearchSortableEventBatch (0.06s)
+=== RUN   TestResearchEventBatchParityReopen
+--- PASS: TestResearchEventBatchParityReopen (0.12s)
+=== RUN   TestResearchEventBatchRejectsBeforeWrites
+=== RUN   TestResearchEventBatchRejectsBeforeWrites/conflict
+=== RUN   TestResearchEventBatchRejectsBeforeWrites/existing-conflict
+=== RUN   TestResearchEventBatchRejectsBeforeWrites/dimension
+=== RUN   TestResearchEventBatchRejectsBeforeWrites/tenant
+=== RUN   TestResearchEventBatchRejectsBeforeWrites/cancel
+=== RUN   TestResearchEventBatchRejectsBeforeWrites/over-cap
+--- PASS: TestResearchEventBatchRejectsBeforeWrites (0.26s)
+    --- PASS: TestResearchEventBatchRejectsBeforeWrites/conflict (0.04s)
+    --- PASS: TestResearchEventBatchRejectsBeforeWrites/existing-conflict (0.05s)
+    --- PASS: TestResearchEventBatchRejectsBeforeWrites/dimension (0.04s)
+    --- PASS: TestResearchEventBatchRejectsBeforeWrites/tenant (0.04s)
+    --- PASS: TestResearchEventBatchRejectsBeforeWrites/cancel (0.04s)
+    --- PASS: TestResearchEventBatchRejectsBeforeWrites/over-cap (0.05s)
+=== RUN   TestResearchEventBatchConcurrentPut
+--- PASS: TestResearchEventBatchConcurrentPut (0.15s)
+=== RUN   TestResearchFrontierChurnV21
+    research_frontier_churn_v21_test.go:109: k=10 changes=6/128 first_nonimpact=6 final_cutoff_angle=0.01278
+    research_frontier_churn_v21_test.go:109: k=50 changes=34/128 first_nonimpact=34 final_cutoff_angle=0.07242
+    research_frontier_churn_v21_test.go:109: k=150 changes=104/128 first_nonimpact=104 final_cutoff_angle=0.22152
+--- PASS: TestResearchFrontierChurnV21 (0.01s)
+=== RUN   TestResearchHandoffBoundaryV27
+    research_handoff_boundary_v27_test.go:75: exclusive isolated boundary diagnostic
+--- SKIP: TestResearchHandoffBoundaryV27 (0.00s)
+=== RUN   TestResearchHandoffBoundaryV28
+    research_handoff_boundary_v28_test.go:17: exclusive isolated boundary diagnostic
+--- SKIP: TestResearchHandoffBoundaryV28 (0.00s)
+=== RUN   TestResearchHandoffCoverageV28
+    research_handoff_coverage_v28_test.go:112: all31 interface methods observed first and actually delegated; missing Snapshot rejected
+--- PASS: TestResearchHandoffCoverageV28 (0.00s)
+=== RUN   TestResearchJoinedWitnessLoadV25
+    research_joined_witness_v25_load_test.go:262: exclusive frozen joined workload
+--- SKIP: TestResearchJoinedWitnessLoadV25 (0.00s)
+=== RUN   TestResearchJoinedWitnessLifecycleV25
+    research_joined_witness_v25_test.go:264: isolated joined integration
+--- SKIP: TestResearchJoinedWitnessLifecycleV25 (0.00s)
+=== RUN   TestResearchJoinedWitnessCancellationV25
+    research_joined_witness_v25_test.go:369: isolated joined cancellation
+--- SKIP: TestResearchJoinedWitnessCancellationV25 (0.00s)
+=== RUN   TestResearchJoinedWitnessBatchV25
+    research_joined_witness_v25_test.go:413: isolated joined batch contract
+--- SKIP: TestResearchJoinedWitnessBatchV25 (0.00s)
+=== RUN   TestResearchJoinedWitnessGapV25
+    research_joined_witness_v25_test.go:464: isolated joined fail-closed controls
+--- SKIP: TestResearchJoinedWitnessGapV25 (0.00s)
+=== RUN   TestResearchLSNAvailabilitySchemaV1
+    research_lsn_availability_schema_test.go:15: opt-in SQL availability-schema contract probe
+--- SKIP: TestResearchLSNAvailabilitySchemaV1 (0.00s)
+=== RUN   TestResearchLSNFixedKeyV1
+    research_lsn_fixed_key_test.go:19: opt-in fixed-width availability key probe
+--- SKIP: TestResearchLSNFixedKeyV1 (0.00s)
+=== RUN   TestResearchLSNFractionalAvailabilityV1
+    research_lsn_fractional_availability_test.go:14: opt-in fractional availability falsifier
+--- SKIP: TestResearchLSNFractionalAvailabilityV1 (0.00s)
+=== RUN   TestResearchLSNTimeFieldV1
+    research_lsn_timefield_test.go:14: opt-in TimeField drop-in rescue probe
+--- SKIP: TestResearchLSNTimeFieldV1 (0.00s)
+=== RUN   TestResearchMetadataGenerationV35
+--- PASS: TestResearchMetadataGenerationV35 (0.01s)
+=== RUN   TestResearchMetadataCoverageV35
+    research_metadata_audit_v35_test.go:156: all31methods classified; not a claim that arbitrary delegated mutations have projection authority
+--- PASS: TestResearchMetadataCoverageV35 (0.00s)
+=== RUN   TestResearchMetadataControlsV35
+    research_metadata_audit_v35_test.go:161: isolated native projection controls
+--- SKIP: TestResearchMetadataControlsV35 (0.00s)
+=== RUN   TestResearchMetadataCancellationV35
+    research_metadata_audit_v35_test.go:319: isolated projected handoff cancellation
+--- SKIP: TestResearchMetadataCancellationV35 (0.00s)
+=== RUN   TestResearchMetadataCoreGenerationV36
+--- PASS: TestResearchMetadataCoreGenerationV36 (0.00s)
+=== RUN   TestResearchMetadataCoreControlsV36
+    research_metadata_core_audit_v36_test.go:39: isolated native head-core controls
+--- SKIP: TestResearchMetadataCoreControlsV36 (0.00s)
+=== RUN   TestResearchMetadataCoreCancellationV36
+    research_metadata_core_audit_v36_test.go:174: isolated core handoff cancellation
+--- SKIP: TestResearchMetadataCoreCancellationV36 (0.00s)
+=== RUN   TestResearchMetadataCoreLoadV36
+    research_metadata_core_load_v36_generated_test.go:259: exclusive frozen joined workload
+--- SKIP: TestResearchMetadataCoreLoadV36 (0.00s)
+=== RUN   TestResearchMetadataProjectionLoadV35
+    research_metadata_projection_load_v35_generated_test.go:259: exclusive frozen joined workload
+--- SKIP: TestResearchMetadataProjectionLoadV35 (0.00s)
+=== RUN   TestResearchMixedOutcomeV22
+    research_mixed_outcome_v22_test.go:266: opt-in mixed-outcome scored-law screen
+--- SKIP: TestResearchMixedOutcomeV22 (0.00s)
+=== RUN   TestResearchPacketInnovationV23Controls
+--- PASS: TestResearchPacketInnovationV23Controls (0.00s)
+=== RUN   TestResearchPacketInnovationV23
+    research_packet_innovation_v23_test.go:330: opt-in all-candidate packet screen
+--- SKIP: TestResearchPacketInnovationV23 (0.00s)
+=== RUN   TestResearchPacketInnovationV24Controls
+--- PASS: TestResearchPacketInnovationV24Controls (0.00s)
+=== RUN   TestResearchPacketInnovationV24
+    research_packet_innovation_v24_test.go:358: opt-in all-candidate packet screen
+--- SKIP: TestResearchPacketInnovationV24 (0.00s)
+=== RUN   TestResearchPacketInnovationV25Controls
+--- PASS: TestResearchPacketInnovationV25Controls (0.00s)
+=== RUN   TestResearchPacketInnovationV25
+    research_packet_prior_v25_test.go:375: opt-in all-candidate packet screen
+--- SKIP: TestResearchPacketInnovationV25 (0.00s)
+=== RUN   TestResearchPacketPriorV25RaceWorlds
+    research_packet_prior_v25_test.go:441: opt-in full-service correctness worlds
+--- SKIP: TestResearchPacketPriorV25RaceWorlds (0.00s)
+=== RUN   TestResearchPacketInnovationV26Controls
+--- PASS: TestResearchPacketInnovationV26Controls (0.00s)
+=== RUN   TestResearchPacketInnovationV26
+    research_packet_prior_v26_test.go:407: opt-in all-candidate packet screen
+--- SKIP: TestResearchPacketInnovationV26 (0.00s)
+=== RUN   TestResearchPacketPriorV26RaceWorlds
+    research_packet_prior_v26_test.go:476: opt-in full-service correctness worlds
+--- SKIP: TestResearchPacketPriorV26RaceWorlds (0.00s)
+=== RUN   TestResearchPinnedLSNReaderV1
+    research_pinned_lsn_reader_test.go:276: opt-in pinned-LSN reader design screen
+--- SKIP: TestResearchPinnedLSNReaderV1 (0.00s)
+=== RUN   TestResearchCertificateRefreshGateV19
+    research_published_certificate_refresh_v19_test.go:131: opt-in synthetic certificate publication contract
+--- SKIP: TestResearchCertificateRefreshGateV19 (0.00s)
+=== RUN   TestResearchCertificateRefreshLoadV19
+    research_published_certificate_refresh_v19_test.go:194: opt-in synthetic certificate-supply load screen
+--- SKIP: TestResearchCertificateRefreshLoadV19 (0.00s)
+=== RUN   TestResearchPublishedCosineV2
+    research_published_cosine_v2_test.go:15: opt-in certified-LSN cosine score conversion probe
+--- SKIP: TestResearchPublishedCosineV2 (0.00s)
+=== RUN   TestResearchPublishedDenseLoadV7
+    research_published_dense_load_v7_test.go:301: opt-in loaded dense published-LSN top-k transfer test
+--- SKIP: TestResearchPublishedDenseLoadV7 (0.00s)
+=== RUN   TestResearchPublishedDenseV6
+    research_published_dense_v6_test.go:181: opt-in dense 256D certified-LSN top-k transfer test
+--- SKIP: TestResearchPublishedDenseV6 (0.00s)
+=== RUN   TestResearchPublishedNormalizedBoundaryV4
+    research_published_normalized_boundary_v4_test.go:148: opt-in normalized certified-LSN search boundary probe
+--- SKIP: TestResearchPublishedNormalizedBoundaryV4 (0.00s)
+=== RUN   TestResearchPublishedOutcomeGateV17
+    research_published_outcome_gate_v17_test.go:190: opt-in private outcome publication contract
+--- SKIP: TestResearchPublishedOutcomeGateV17 (0.00s)
+=== RUN   TestResearchPublishedOutcomeServiceV17
+    research_published_outcome_gate_v17_test.go:339: opt-in private outcome service contract
+--- SKIP: TestResearchPublishedOutcomeServiceV17 (0.00s)
+=== RUN   TestResearchPublishedOutcomeLoadV18
+    research_published_outcome_load_v18_test.go:532: opt-in live-as-of outcome load screen
+--- SKIP: TestResearchPublishedOutcomeLoadV18 (0.00s)
+=== RUN   TestResearchPublishedPayloadV1
+    research_published_payload_v1_test.go:90: opt-in certified-LSN EventFrame payload projection probe
+--- SKIP: TestResearchPublishedPayloadV1 (0.00s)
+=== RUN   TestResearchPublishedRecallLoadV10
+    research_published_recall_admission_v10_test.go:430: opt-in full Service Recall published-LSN load screen
+--- SKIP: TestResearchPublishedRecallLoadV10 (0.00s)
+=== RUN   TestResearchPublishedBatchJournalGateV15
+    research_published_recall_batch_gate_v15_test.go:157: opt-in native batch-journal contract
+--- SKIP: TestResearchPublishedBatchJournalGateV15 (0.00s)
+=== RUN   TestResearchPublishedRecallLoadV15
+    research_published_recall_batch_load_v15_test.go:558: opt-in full Service Recall published-LSN load screen
+--- SKIP: TestResearchPublishedRecallLoadV15 (0.00s)
+=== RUN   TestResearchBatchJournalDrainV15
+    research_published_recall_batch_load_v15_test.go:570: opt-in native batch-journal Close drain
+--- SKIP: TestResearchBatchJournalDrainV15 (0.00s)
+=== RUN   TestResearchPublishedRecallLoadV14
+    research_published_recall_journal_phases_v14_test.go:712: opt-in full Service Recall published-LSN load screen
+--- SKIP: TestResearchPublishedRecallLoadV14 (0.00s)
+=== RUN   TestResearchJournalPhaseParityV14
+    research_published_recall_journal_phases_v14_test.go:724: opt-in timed journal gate parity and interruption controls
+--- SKIP: TestResearchJournalPhaseParityV14 (0.00s)
+=== RUN   TestResearchPublishedRecallLoadV9
+    research_published_recall_load_v9_test.go:411: opt-in full Service Recall published-LSN load screen
+--- SKIP: TestResearchPublishedRecallLoadV9 (0.00s)
+=== RUN   TestResearchPublishedRecallLoadV13
+    research_published_recall_phases_v13_test.go:567: opt-in full Service Recall published-LSN load screen
+--- SKIP: TestResearchPublishedRecallLoadV13 (0.00s)
+=== RUN   TestResearchPublishedRecallLoadV12
+    research_published_recall_residual_ablation_v12_test.go:444: opt-in full Service Recall published-LSN load screen
+--- SKIP: TestResearchPublishedRecallLoadV12 (0.00s)
+=== RUN   TestResearchPublishedRecallV8
+    research_published_recall_v8_test.go:222: opt-in published-LSN full Service Recall interleaving probe
+--- SKIP: TestResearchPublishedRecallV8 (0.00s)
+=== RUN   TestResearchPublishedRecallLoadV16
+    research_published_recall_worker_v16_test.go:558: opt-in full Service Recall published-LSN load screen
+--- SKIP: TestResearchPublishedRecallLoadV16 (0.00s)
+=== RUN   TestResearchPublishedScoreV1
+    research_published_score_v1_test.go:31: opt-in exact-LSN score contrast probe
+--- SKIP: TestResearchPublishedScoreV1 (0.00s)
+=== RUN   TestResearchPublishedTopkV5
+    research_published_topk_v5_test.go:88: opt-in certified-LSN bounded top-k transfer screen
+--- SKIP: TestResearchPublishedTopkV5 (0.00s)
+=== RUN   TestResearchPublishedUnitCosineV3
+    research_published_unit_cosine_v3_test.go:29: opt-in unit-vector certified-LSN score probe
+--- SKIP: TestResearchPublishedUnitCosineV3 (0.00s)
+=== RUN   TestResearchRollingLSNReaderV1
+    research_rolling_lsn_reader_test.go:325: opt-in rolling-LSN visible-write design screen
+--- SKIP: TestResearchRollingLSNReaderV1 (0.00s)
+=== RUN   TestResearchRollingLSNCandidateDiagnostic
+    research_rolling_lsn_reader_test.go:368: opt-in candidate-only diagnostic; not a paired gate
+--- SKIP: TestResearchRollingLSNCandidateDiagnostic (0.00s)
+=== RUN   TestResearchRollingLSNReaderV2
+    research_rolling_lsn_reader_v2_test.go:390: opt-in rolling LSN captured-view screen
+--- SKIP: TestResearchRollingLSNReaderV2 (0.00s)
+=== RUN   TestResearchRollingLSNReaderV3
+    research_rolling_lsn_reader_v3_test.go:11: opt-in sortable-key rolling LSN screen
+--- SKIP: TestResearchRollingLSNReaderV3 (0.00s)
+=== RUN   TestResearchRollingLSNReaderV3Race
+    research_rolling_lsn_reader_v3_test.go:52: opt-in v3 correctness under race instrumentation; no latency gate
+--- SKIP: TestResearchRollingLSNReaderV3Race (0.00s)
+=== RUN   TestResearchScheduledWitnessCancellationV24
+    research_scheduled_witness_v24_test.go:138: isolated scheduled durable handoff
+--- SKIP: TestResearchScheduledWitnessCancellationV24 (0.00s)
+=== RUN   TestResearchScheduledWitnessLifecycleV24
+    research_scheduled_witness_v24_test.go:192: isolated scheduled native lifecycle
+--- SKIP: TestResearchScheduledWitnessLifecycleV24 (0.00s)
+=== RUN   TestResearchScheduledWitnessLoadV24
+    research_scheduled_witness_v24_test.go:513: exclusive frozen scheduled workload
+--- SKIP: TestResearchScheduledWitnessLoadV24 (0.00s)
+=== RUN   TestResearchIncrementalSortBatchOpenLoopV1
+    research_sort_batch_openloop_test.go:422: opt-in private 4 ms batch publication load diagnostic
+--- SKIP: TestResearchIncrementalSortBatchOpenLoopV1 (0.00s)
+=== RUN   TestResearchSortBatchReadPhasesV1
+    research_sort_batch_openloop_test.go:468: opt-in private read-phase attribution diagnostic
+--- SKIP: TestResearchSortBatchReadPhasesV1 (0.00s)
+=== RUN   TestResearchSortPublishedOpenLoopV1
+    research_sort_batch_openloop_test.go:496: opt-in three-arm published-view load diagnostic
+--- SKIP: TestResearchSortPublishedOpenLoopV1 (0.00s)
+=== RUN   TestResearchSortPublishedOpenLoopRaceV1
+    research_sort_batch_openloop_test.go:556: opt-in published-view concurrent correctness under race instrumentation
+--- SKIP: TestResearchSortPublishedOpenLoopRaceV1 (0.00s)
+=== RUN   TestResearchIncrementalSortBatchPublicationV1
+    research_sort_batch_publication_test.go:174: opt-in private batch publication contract
+--- SKIP: TestResearchIncrementalSortBatchPublicationV1 (0.00s)
+=== RUN   TestResearchIncrementalSortBatchCostV1
+    research_sort_batch_publication_test.go:370: opt-in private batch publication cost diagnostic
+--- SKIP: TestResearchIncrementalSortBatchCostV1 (0.00s)
+=== RUN   TestResearchSortJournalCoexistenceV1
+    research_sort_batch_publication_test.go:450: opt-in private Recall journal coexistence probe
+--- SKIP: TestResearchSortJournalCoexistenceV1 (0.00s)
+=== RUN   TestResearchIncrementalSortPublicationV1
+    research_sort_incremental_publication_test.go:392: opt-in private incremental sort-key publication test
+--- SKIP: TestResearchIncrementalSortPublicationV1 (0.00s)
+=== RUN   TestResearchIncrementalSortPublicationCostV1
+    research_sort_incremental_publication_test.go:549: opt-in private incremental publication cost test
+--- SKIP: TestResearchIncrementalSortPublicationCostV1 (0.00s)
+=== RUN   TestResearchIncrementalSortStartupScaleV1
+    research_sort_incremental_publication_test.go:583: opt-in private incremental publication startup diagnostic
+--- SKIP: TestResearchIncrementalSortStartupScaleV1 (0.00s)
+=== RUN   TestResearchIncrementalSortAppendScaleV1
+    research_sort_incremental_publication_test.go:668: opt-in private incremental publication append scale diagnostic
+--- SKIP: TestResearchIncrementalSortAppendScaleV1 (0.00s)
+=== RUN   TestResearchSortJournalGateV1
+    research_sort_journal_gate_test.go:105: opt-in private journal-through-gate contract
+--- SKIP: TestResearchSortJournalGateV1 (0.00s)
+=== RUN   TestResearchSortJournalGateCostV1
+    research_sort_journal_gate_test.go:217: opt-in private journal-through-gate cost diagnostic
+--- SKIP: TestResearchSortJournalGateCostV1 (0.00s)
+=== RUN   TestResearchSortableReadyRequiresDeclaredSchema
+--- PASS: TestResearchSortableReadyRequiresDeclaredSchema (0.04s)
+=== RUN   TestResearchSortKeyMigrationV1
+    research_sort_key_migration_test.go:73: opt-in private legacy collection migration probe
+--- SKIP: TestResearchSortKeyMigrationV1 (0.00s)
+=== RUN   TestResearchSortKeyPublicationV1
+    research_sort_key_publication_test.go:273: opt-in private sort-key publication state-machine test
+--- SKIP: TestResearchSortKeyPublicationV1 (0.00s)
+=== RUN   TestResearchSortPublishedViewV1
+    research_sort_published_view_test.go:84: opt-in private published-view lifecycle contract
+--- SKIP: TestResearchSortPublishedViewV1 (0.00s)
+=== RUN   TestResearchSortWriterOwnershipV1
+    research_sort_writer_ownership_unix_test.go:18: opt-in private writer ownership bypass probe
+--- SKIP: TestResearchSortWriterOwnershipV1 (0.00s)
+=== RUN   TestResearchSortWriterSerialHandoffV1
+    research_sort_writer_serial_test.go:15: opt-in private serial writer handoff control
+--- SKIP: TestResearchSortWriterSerialHandoffV1 (0.00s)
+=== RUN   TestResearchWarmGenerationV37
+--- PASS: TestResearchWarmGenerationV37 (0.01s)
+=== RUN   TestResearchWarmControlsV37
+    research_warm_search_audit_v37_test.go:92: isolated native warm controls
+--- SKIP: TestResearchWarmControlsV37 (0.00s)
+=== RUN   TestResearchWarmCancellationV37
+    research_warm_search_audit_v37_test.go:239: isolated warm handoff cancellation
+--- SKIP: TestResearchWarmCancellationV37 (0.00s)
+=== RUN   TestResearchWarmSearchLoadV37
+    research_warm_search_load_v37_generated_test.go:259: exclusive frozen joined workload
+--- SKIP: TestResearchWarmSearchLoadV37 (0.00s)
+=== RUN   TestResearchFourWritersIntegrity
+--- PASS: TestResearchFourWritersIntegrity (0.23s)
+=== RUN   TestResearchFourWritersAbruptExit
+--- PASS: TestResearchFourWritersAbruptExit (0.08s)
+=== RUN   TestResearchWriterCostExperiment
+    research_writers_test.go:182: opt-in writer cost diagnostic
+--- SKIP: TestResearchWriterCostExperiment (0.00s)
+=== RUN   TestVectorHydrationIsExplicit
+--- PASS: TestVectorHydrationIsExplicit (0.04s)
+=== RUN   TestEmbeddedMixedSearchAndPutCompletes
+--- PASS: TestEmbeddedMixedSearchAndPutCompletes (0.54s)
+=== RUN   TestHigherOrderCompositionSurvivesRestartAndDecomposesWithoutMembers
+--- PASS: TestHigherOrderCompositionSurvivesRestartAndDecomposesWithoutMembers (0.09s)
+=== RUN   TestLegacyMigrationRequiresBackupAndRecoversRecords
+--- PASS: TestLegacyMigrationRequiresBackupAndRecoversRecords (0.09s)
+=== RUN   TestEventFrameCorpusMigrationReembedsAndPreservesRawMetadata
+--- PASS: TestEventFrameCorpusMigrationReembedsAndPreservesRawMetadata (0.09s)
+=== RUN   TestStoreRoundTripAndAvailabilityGate
+--- PASS: TestStoreRoundTripAndAvailabilityGate (0.06s)
+=== RUN   TestDurableStateSurvivesRestartAndPinsEmbeddingContract
+--- PASS: TestDurableStateSurvivesRestartAndPinsEmbeddingContract (0.05s)
+=== RUN   TestBayesianJournalSurvivesRestartAndRejectsConflict
+--- PASS: TestBayesianJournalSurvivesRestartAndRejectsConflict (0.04s)
+=== RUN   TestConcurrentBayesianJournalsRemainDurable
+--- PASS: TestConcurrentBayesianJournalsRemainDurable (0.12s)
+=== RUN   TestBayesianPosteriorUpdateSurvivesRestart
+--- PASS: TestBayesianPosteriorUpdateSurvivesRestart (0.05s)
+=== RUN   TestAntiPigeonRevisionSurvivesRestart
+--- PASS: TestAntiPigeonRevisionSurvivesRestart (0.13s)
+=== RUN   TestSharedEvidenceDiscountSurvivesRestart
+--- PASS: TestSharedEvidenceDiscountSurvivesRestart (0.07s)
+=== RUN   TestPredictiveSnapInvalidationRollbackAndRestart
+--- PASS: TestPredictiveSnapInvalidationRollbackAndRestart (0.08s)
+=== RUN   TestAgencyProposalLeaseAndResolutionSurviveRestart
+--- PASS: TestAgencyProposalLeaseAndResolutionSurviveRestart (0.13s)
+=== RUN   TestExpiredAgencyProposalDoesNotBlockDurableQueueAdmission
+--- PASS: TestExpiredAgencyProposalDoesNotBlockDurableQueueAdmission (0.06s)
+=== RUN   TestAgencyClaimIgnoresCorruptTerminalArchive
+--- PASS: TestAgencyClaimIgnoresCorruptTerminalArchive (0.12s)
+=== RUN   TestContractSixRestartRebuildsActiveAgencyProjection
+--- PASS: TestContractSixRestartRebuildsActiveAgencyProjection (0.12s)
+=== RUN   TestBayesianPolicyDigestSurvivesRestartAndAdvancesVersionOnChange
+--- PASS: TestBayesianPolicyDigestSurvivesRestartAndAdvancesVersionOnChange (0.05s)
+=== RUN   TestDeleteRetentionCompactAndBackup
+--- PASS: TestDeleteRetentionCompactAndBackup (0.09s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/store/libravdbstore	3.541s

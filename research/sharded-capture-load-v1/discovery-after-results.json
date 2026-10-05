@@ -1,0 +1,49 @@
+{
+  "commands": [
+    {
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "30s",
+        "-run",
+        "^TestResearchLogicalParentDiscoveryV1$",
+        "./libravdb"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "discovery-after.txt",
+      "sha256": "a581bf57ac2980ca70599adaac46561cc11675d91bc1d1a168652cc30e13975a",
+      "passed": true
+    },
+    {
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-timeout",
+        "30s",
+        "-run",
+        "^TestResearchLogicalParentDiscoveryV1$",
+        "./libravdb"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "discovery-after-race.txt",
+      "sha256": "096511dcd9e3d8ce8ec2d58ce66b9b0bb5208ecd62bb1ecd6250e0d367745dfd",
+      "passed": true
+    }
+  ],
+  "databaseSHA256": "10cbd08b9d58d5243c31f53079a566556761f89bfc0e0e0db8b07146e7ef4761",
+  "testSHA256": "888ca89ab72e505866bc5ee7272b0c3e5cd84968fd73347d98473d614e93921a",
+  "passed": true,
+  "productionTouched": false
+}

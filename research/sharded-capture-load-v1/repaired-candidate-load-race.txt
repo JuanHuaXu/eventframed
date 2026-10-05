@@ -1,0 +1,836 @@
+=== RUN   TestResearchPublicCaptureLoadV1
+==================
+WARNING: DATA RACE
+Write at 0x00c0016f0158 by goroutine 25837:
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).trainQuantizer()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:1446 +0x2e8
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).insertSingleMetadata()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:531 +0x4d8
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).Insert()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:465 +0x78
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).batchInsertOptimized.func1()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:885 +0x12c
+
+Previous read at 0x00c0016f0158 by goroutine 25838:
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).insertSingleMetadata()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:529 +0x438
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).Insert()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:465 +0x78
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).batchInsertOptimized.func1()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:885 +0x12c
+
+Goroutine 25837 (running) created at:
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).batchInsertOptimized()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:869 +0x2b4
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).BatchInsert()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:842 +0x78
+  github.com/xDarkicex/libravdb/internal/index.(*hnswWrapper).BatchInsert()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/interfaces.go:182 +0x38
+  github.com/xDarkicex/libravdb/libravdb.insertEntriesIntoIndex()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/collection.go:594 +0x84
+  github.com/xDarkicex/libravdb/libravdb.buildIndexForEntries()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/collection.go:693 +0xcc
+  github.com/xDarkicex/libravdb/libravdb.(*txCommitState).buildIndexes()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:2143 +0x3d4
+  github.com/xDarkicex/libravdb/libravdb.(*Database).commitTxWithGraphReceipt()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:1314 +0xba4
+  github.com/xDarkicex/libravdb/libravdb.(*transaction).commitWithReceipt()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:1043 +0xae4
+  github.com/xDarkicex/libravdb/libravdb.(*transaction).Commit()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:963 +0x3c
+  github.com/xDarkicex/libravdb/libravdb.(*Database).WithTx()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:256 +0x208
+  github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.(*Store).Put.func1()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/store/libravdbstore/store.go:135 +0xa8
+  github.com/xDarkicex/libravdb/libravdb.(*Database).WithTx()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:249 +0x58
+  github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.(*Store).Put()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/store/libravdbstore/store.go:134 +0xb0c
+  github.com/JuanHuaXu/eventframed/internal/researchpublicationstore.(*Store).Put.func1()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/researchpublicationstore/mutations.go:15 +0x124
+  github.com/JuanHuaXu/eventframed/internal/researchpublicationstore.mutateWithTouches[go.shape.struct { Duplicate bool; Snapshot github.com/JuanHuaXu/eventframed/internal/model.Snapshot }]()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/researchpublicationstore/store.go:100 +0x460
+  github.com/JuanHuaXu/eventframed/internal/researchpublicationstore.(*Store).Put()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/researchpublicationstore/mutations.go:15 +0x150
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+
+Goroutine 25838 (running) created at:
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).batchInsertOptimized()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:869 +0x2b4
+  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).BatchInsert()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/hnsw/hnsw.go:842 +0x78
+  github.com/xDarkicex/libravdb/internal/index.(*hnswWrapper).BatchInsert()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/internal/index/interfaces.go:182 +0x38
+  github.com/xDarkicex/libravdb/libravdb.insertEntriesIntoIndex()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/collection.go:594 +0x84
+  github.com/xDarkicex/libravdb/libravdb.buildIndexForEntries()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/collection.go:693 +0xcc
+  github.com/xDarkicex/libravdb/libravdb.(*txCommitState).buildIndexes()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:2143 +0x3d4
+  github.com/xDarkicex/libravdb/libravdb.(*Database).commitTxWithGraphReceipt()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:1314 +0xba4
+  github.com/xDarkicex/libravdb/libravdb.(*transaction).commitWithReceipt()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:1043 +0xae4
+  github.com/xDarkicex/libravdb/libravdb.(*transaction).Commit()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:963 +0x3c
+  github.com/xDarkicex/libravdb/libravdb.(*Database).WithTx()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:256 +0x208
+  github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.(*Store).Put.func1()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/store/libravdbstore/store.go:135 +0xa8
+  github.com/xDarkicex/libravdb/libravdb.(*Database).WithTx()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/libravdb-fork/libravdb/tx.go:249 +0x58
+  github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.(*Store).Put()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/store/libravdbstore/store.go:134 +0xb0c
+  github.com/JuanHuaXu/eventframed/internal/researchpublicationstore.(*Store).Put.func1()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/researchpublicationstore/mutations.go:15 +0x124
+  github.com/JuanHuaXu/eventframed/internal/researchpublicationstore.mutateWithTouches[go.shape.struct { Duplicate bool; Snapshot github.com/JuanHuaXu/eventframed/internal/model.Snapshot }]()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/researchpublicationstore/store.go:100 +0x460
+  github.com/JuanHuaXu/eventframed/internal/researchpublicationstore.(*Store).Put()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/researchpublicationstore/mutations.go:15 +0x150
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).observeEvent()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:521 +0x3c0
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:499 +0x4f4
+  github.com/JuanHuaXu/eventframed/internal/service.(*Service).CaptureTurn()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/service.go:488 +0x1e8
+  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1.func5()
+      /private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z/candidate-admission-v2/internal/service/public_capture_load_test.go:218 +0x2e4
+==================
+    public_capture_load_test.go:385: frozen recall p99 <100ms screen failed
+    public_capture_load_test.go:58: PUBLIC_CAPTURE_TRACE={"frontier":200,"functional":true,"init_ns":70433725958,"init_bytes":182269,"recall_ns":[568636708,810805625,829824292,811879875,729700125,829007208,831969167,817087917,819095000,850416333,848247125,844355791,866574667,867411875,867576042,867296458,896197583,885278709,898223083,886474166,895450750,904443500,921911292,921984708,924143709,937634208,936601750,919029083,967988500,970171708,955048542,967062292,940435333,967258000,812466708,982589625,989980792,976041250,1013940708,968685709,1006933000,1005669917,1010170250,357514542,359988834,359705833,367689042,360158708,363866500,357200250,365236958,358024375,361967959,364017083,361932250,356458459,355844209,357972666,364511916,358245750,365719125,367630834,369580708,361078792],"recall_start_ns":[141486708,1104749208,2308426333,3542362625,4757437666,5903021708,7170086333,8424592208,9680281833,10937108875,12187460166,13466979875,14760553041,16054987125,17365549208,18669939000,19964364750,21312676416,22661654458,23985364500,25285987250,26655992708,28007229666,29378134250,30731596166,32137117583,33565050708,34996459375,36390770166,37819883375,39240860458,40676843958,42114940583,43512020625,44984159083,46260402333,47738462958,49214774750,50660723333,52168845041,53645675375,55142248666,56638788208,57937144791,58412809916,58894637333,59373015791,59862309500,60343076791,60827360625,61299923208,61787856250,62265878416,62750336708,63234239583,63713860666,64187746541,64661075500,65138059000,65623824375,66103008416,66586871916,67090463458,67577212291],"recall_end_ns":[710123416,1915554833,3138250625,4354242500,5487137791,6732028916,8002055500,9241680125,10499376833,11787525208,13035707291,14311335666,15627127708,16922399000,18233125250,19537235458,20860562333,22197955125,23559877541,24871838666,26181438000,27560436208,28929140958,30300118958,31655739875,33074751791,34501652458,35915488458,37358758666,38790055083,40195909000,41643906250,43055375916,44479278625,45796625791,47242991958,48728443750,50190816000,51674664041,53137530750,54652608375,56147918583,57648958458,58294659333,58772798750,59254343166,59740704833,60222468208,60706943291,61184560875,61665160166,62145880625,62627846375,63114353791,63596171833,64070319125,64543590750,65019048166,65502570916,65982070125,66468727541,66954502750,67460044166,67938291083],"feedback_ns":[188842125,183142375,195743166,193758750,201307334,207797375,205353708,205341542,211743500,182273292,189598709,207464917,191099375,210696875,193239292,206388708,212936709,217386917,195355292,192658750,219178916,197697375,200476750,221857959,228682166,228104833,236925416,228366417,205566625,206476750,224217875,213941500,207401791,240127291,231168291,229722541,211874292,224568583,234337000,236856417,239457292,222714042,41182625,40137167,40862500,40492667,40783500,40913542,41277917,38794541,41375250,40592000,41821125,40548166,39264458,39999125,38261542,40519917,41517583,40712500,38924958,40813417,39400292,40671167],"live_age_ns":[188855292,183169166,195756333,193771250,201335917,207810459,205380666,205354875,211756708,182297667,189612042,207479750,191112208,210710375,193257209,206399666,212950625,217400625,195368125,192686083,219193541,197712416,200490291,221871250,228696708,228117000,236938791,228392208,205580834,206489875,224231250,220959000,207415458,240141750,231196291,229749166,211889375,224585875,234351416,236870667,239479125,222728292,41200250,40163875,40880917,40516542,40800375,46957417,41296625,38817833,41392083,40616250,41845625,40571625,39281083,40020083,38278709,40542583,41540375,40730167,38949375,40831625,39425250,46498375],"capture_ns":[141407166,241454458,158650750,152869667,141794250,228447959,186845375,365416083,143983875,141557833,142984291,222352292,201557167,360980458,150756709,140014291,145425208,236446375,180537542,349672375,156788000,150876167,143908458,234009125,201025583,370537041,62027167,120752875,150935458,237924250,201638417,351976667,158840167,144948417,161455833,248189167,186659583,360790459,149317792,159115750,151895833,245782667,189161375,354763959,147425583,153034750,169207208,243223458,183183083,353115541,150796042,159150250,158594208,250865834,204131584,378918917,146619667,148110417,151018041,222465291,186846834,361609333,158372625,164390291,178833750,228540458,187736875,363439917,152649958,167630584,177302708,246503958,206139208,361168666,173031167,153012042,171052917,229134541,193280709,384920708,153119125,163697000,166236166,249121250,196701459,384322000,164448125,145434041,180557667,233716625,194669042,372635500,151565084,174629625,155966000,245141125,215124333,396883417,157070750,153548667,174520333,249993083,191809209,392843750,154114208,174049875,179469250,256416250,199387125,387825667,183908125,150602583,165139625,236111916,198472459,370448375,166170333,178765209,157120334,231760333,198318083,391628708,178473750,150725584,190530792,259103542,197621667,391697083,165144000,177509334,181597125,239517709,225139833,386037250,158486125,174184125,183772250,240359291,221690333,403057083,169725042,154679750,143838375,261516583,203558208,402350959,188165125,156879292,187717583,266639333,203614333,417734250,162583333,180840792,195080375,267454250,212005416,395321459,189034709,164899083,192484083,277249875,203831917,390818125,195785083,155880917,181646292,266798125,225399084,396854708,191987291,178297000,190984417,244851750,206226666,411529000,191761709,187732833,178530333,245134583,214009500,395838625,192668917,178228417,190964417,263759584,229027917,418735042,180495875,166645375,191537750,253267166,220399208,405123291,178301166,164615416,181602125,247135750,209729042,409234292,183816833,190746417,201196542,277540334,231828000,432172708,170815084,169486209,270986750,232017875,402630000,196280125,179111250,199628792,269108375,212682333,422824500,198620375,181459084,208425417,253891584,216005084,412936833,195811000,175569625,179233209,264182875,213242125,439412709,196281500,191752792,193721875,273253917,233970458,407933583,184788167,169903667,208481875,274561875,230863292,421248500,179230833,199130292,183108000,282375583,215553125,432553291,178247375,200967750,210100792,258418500,235372250,421478125,189832708,185779750,183288917],"capture_start_ns":[53875,141479125,382942041,541602958,694480208,836284416,1064742583,1251598083,1617022416,1761013000,1902577500,2045571458,2267932958,2469497333,2830485291,2981248625,3121269500,3266704291,3503159208,3683705666,4033385541,4190181291,4341066333,4484981916,4719000208,4920033625,5290578583,5352612791,5473372875,5624318291,5862250708,6063899208,6415883583,6574733208,6719688875,6881154583,7129353125,7316019416,7676818333,7826145833,7985269833,8137174708,8382965208,8572133541,8926905500,9074340708,9227382500,9396599000,9639831250,9823024375,10176147916,10326952291,10486109708,10644713916,10895588166,11099729041,11478656708,11625284333,11773402875,11924429500,12146903916,12333759083,12695376250,12853759125,13018157291,13197002958,13425552125,13613297166,13976744583,14129401916,14297039958,14474353833,14720868583,14927017000,15288193416,15461233458,15614252541,15785314500,16014457916,16207747625,16592676125,16745803916,16909508375,17075754208,17324885166,17521594500,17905924125,18070379875,18215823083,18396394333,18630120583,18824798833,19197442166,19349015375,19523652916,19679628833,19924779875,20139913291,20536804375,20693882416,20847438500,21021968833,21271971541,21463788041,21856638458,22010761875,22184820416,22364300041,22620726041,22820121208,23207954916,23391871125,23542482000,23707630250,23943749916,24142230708,24512687083,24678865666,24857638666,25014767458,25246535625,25444862458,25836499625,26014981041,26165716833,26356257083,26615369458,26812999333,27204704000,27369858541,27547375333,27728982166,27968509083,28193656625,28579703833,28738196208,28912387791,29096168875,29336537125,29558235625,29961300708,30131031750,30285718791,30429576583,30691101125,30894667541,31297026000,31485198916,31642086125,31829812125,32096461458,32300084083,32717826750,32880419333,33061267041,33256355666,33523818500,33735831416,34131161291,34320204625,34485110750,34677606583,34954867291,35158708041,35549534125,35745326041,35901213958,36082869458,36349675041,36575082375,36971953125,37163948916,37342254666,37533248541,37778110375,37984346291,38395881916,38587652500,38775392458,38953932583,39199075208,39413092250,39808939458,40001616541,40179851333,40370824166,40634591958,40863628333,41282372833,41462885666,41629538333,41821083375,42074357708,42294764875,42699895750,42878205125,43042830125,43224441041,43471585916,43681323791,44090565458,44274390958,44465144833,44666349416,44943899333,45175734583,45607915416,45778737416,45948231208,46219226000,46451251791,46853889458,47050177791,47229295916,47428934458,47698054125,47910743625,48333576708,48532204791,48713670791,48922105416,49176006291,49392019375,49804963041,50000781375,50176360041,50355601833,50619793500,50833042916,51272463875,51468752833,51660512208,51854244041,52127506208,52361485250,52769425958,52954221833,53124132833,53332624041,53607194708,53838066958,54259322958,54438564333,54637701333,54820824833,55103212750,55318773375,55751334333,55929589125,56130564583,56340674125,56599103833,56834485916,57255971333,57445811416,57631598666],"capture_end_ns":[141461041,382933583,541592791,694472625,836274458,1064732375,1251587958,1617014166,1761006291,1902570833,2045561791,2267923750,2469490125,2830477791,2981242000,3121262916,3266694708,3503150666,3683696750,4033378041,4190173541,4341057458,4484974791,4718991041,4920025791,5290570666,5352605750,5473365666,5624308333,5862242541,6063889125,6415875875,6574723750,6719681625,6881144708,7129343750,7316012708,7676809875,7826136125,7985261583,8137165666,8382957375,8572126583,8926897500,9074331083,9227375458,9396589708,9639822458,9823014333,10176139916,10326943958,10486102541,10644703916,10895579750,11099719750,11478647958,11625276375,11773394750,11924420916,12146894791,12333750750,12695368416,12853748875,13018149416,13196991041,13425543416,13613289000,13976737083,14129394541,14297032500,14474342666,14720857791,14927007791,15288185666,15461224583,15614245500,15785305458,16014449041,16207738625,16592668333,16745795250,16909500916,17075744541,17324875458,17521586625,17905916500,18070372250,18215813916,18396380750,18630110958,18824789625,19197434333,19349007250,19523645000,19679618916,19924769958,20139904208,20536796708,20693875125,20847431083,21021958833,21271961916,21463780750,21856631791,22010752666,22184811750,22364289666,22620716291,22820113166,23207946875,23391863041,23542473708,23707621625,23943742166,24142222375,24512679083,24678857416,24857630875,25014759000,25246527791,25444853708,25836491166,26014973375,26165706625,26356247625,26615360625,26812991125,27204696416,27369848000,27547367875,27728972458,27968499875,28193648916,28579693875,28738189958,28912380333,29096160041,29336528166,29558227458,29961292708,30131025750,30285711500,30429557166,30691093166,30894659333,31297018500,31485191125,31642078208,31829803708,32096451458,32300075791,32717818333,32880410083,33061260125,33256347416,33523809916,33735823916,34131152875,34320196000,34485103708,34677594833,34954856458,35158699208,35549526166,35745319208,35901206958,36082860250,36349667583,36575074125,36971937083,37163940416,37342245916,37533239083,37778100291,37984337041,38395875291,38587643625,38775385333,38953922791,39199067166,39413084708,39808930875,40001608375,40179844958,40370815750,40634583750,40863619875,41282363375,41462868708,41629531041,41821076083,42074350541,42294756916,42699888166,42878196916,43042820541,43224432250,43471576791,43681314958,44090558083,44274382291,44465137375,44666341375,44943889750,45175727333,45607907291,45778730500,45948223625,46219217958,46451243875,46853881791,47050169583,47229289041,47428924708,47698042833,47910736458,48333568125,48532197083,48713663875,48922096208,49175997000,49392011375,49804956208,50000774041,50176351000,50355593250,50619784708,50833035625,51272455625,51468745375,51660505625,51854234083,52127497958,52361476666,52769418833,52954214125,53124125500,53332614708,53607185916,53838058000,54259315458,54438553791,54637694625,54820809333,55103200416,55318765875,55751326666,55929581708,56130556875,56340665375,56599092625,56834476083,57255964041,57445804041,57631591166,57814887583],"capture_bytes":46766,"overlaps":213,"candidate_counts":[200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200],"packed_counts":[10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],"ledger_rows":128,"replay_ns":31523667,"completed":64,"replay_completed":64}
+    testing.go:1865: race detected during execution of test
+--- FAIL: TestResearchPublicCaptureLoadV1 (138.80s)
+FAIL
+FAIL	github.com/JuanHuaXu/eventframed/internal/service	139.247s
+FAIL

@@ -1,0 +1,22 @@
+{
+  "runnerSHA256": "4f67612a4db224f7a259249d68b06339f90742119c0419adcc4010221ca0d956",
+  "protocolSHA256": "303c7a61eac1fee25be7e975172051d5b45a43b02bcad8d719aaf2b174deb4e7",
+  "sourceManifestSHA256": "458b15dd091e880e7417748345a2b2c0a74daf240dafc4a0a5db57f8d023be0b",
+  "command": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-race",
+    "-count=1",
+    "-v",
+    "-timeout",
+    "4m",
+    "-run",
+    "^TestResearchPublicCaptureLoadV1$",
+    "./internal/service"
+  ],
+  "arm": "candidate",
+  "frontier": 200,
+  "workers": 10,
+  "ordinaryTimingVerdictChanged": false
+}

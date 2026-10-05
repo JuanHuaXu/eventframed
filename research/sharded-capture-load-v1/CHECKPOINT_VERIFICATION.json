@@ -1,0 +1,38 @@
+{
+  "verified": true,
+  "pilots": [
+    {
+      "verified": true,
+      "preflightPass": true,
+      "loadFunctionalPass": true,
+      "candidateAbsoluteTimingPass": true,
+      "pairedRescuePass": true,
+      "pilotPass": true,
+      "fullPublicLoadRaceValidated": false,
+      "wholeGoalValidation": false
+    },
+    {
+      "verified": true,
+      "preflightPass": true,
+      "loadFunctionalPass": true,
+      "candidateAbsoluteTimingPass": true,
+      "pairedRescuePass": true,
+      "pilotPass": true,
+      "completeCandidate200FunctionalRacePass": true,
+      "allArmsFullLoadRaceValidated": false,
+      "wholeGoalValidation": false
+    }
+  ],
+  "originalOneLineCandidatePass": false,
+  "v2PromotionAllowed": false,
+  "v2CompleteLoadRacePass": false,
+  "missingShardNegativeControlPass": true,
+  "v3ComponentTestsPass": true,
+  "completeCandidate200FunctionalRacePass": true,
+  "allArmsFullLoadRaceValidated": false,
+  "verifierNegativeControlsPass": true,
+  "allSevenWholeGoals": "OPEN",
+  "wholeGoalValidation": false,
+  "productionTouched": false,
+  "privateDataUsed": false
+}

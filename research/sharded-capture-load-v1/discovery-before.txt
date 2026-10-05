@@ -1,0 +1,6 @@
+=== RUN   TestResearchLogicalParentDiscoveryV1
+    research_logical_discovery_test.go:44: logical parents not discoverable before loading: names=[ordinary] err=<nil>
+--- FAIL: TestResearchLogicalParentDiscoveryV1 (0.10s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/libravdb	0.407s
+FAIL

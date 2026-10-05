@@ -1,0 +1,27 @@
+{
+  "positivePass": true,
+  "negativeControls": [
+    {
+      "name": "fabricated paired gain",
+      "rejected": true,
+      "status": 1
+    },
+    {
+      "name": "fabricated durable rows",
+      "rejected": true,
+      "status": 1
+    },
+    {
+      "name": "fabricated latency summary",
+      "rejected": true,
+      "status": 1
+    },
+    {
+      "name": "fabricated executed coverage",
+      "rejected": true,
+      "status": 1
+    }
+  ],
+  "verified": true,
+  "historicalArtifactsMutated": false
+}

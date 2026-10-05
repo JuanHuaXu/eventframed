@@ -1,0 +1,54 @@
+=== RUN   TestResearchBatchValidationParity
+=== RUN   TestResearchBatchValidationParity/valid
+=== RUN   TestResearchBatchValidationParity/features
+=== RUN   TestResearchBatchValidationParity/baseline
+=== RUN   TestResearchBatchValidationParity/event
+=== RUN   TestResearchBatchValidationParity/journal
+=== RUN   TestResearchBatchValidationParity/snapshot
+=== RUN   TestResearchBatchValidationParity/query
+=== RUN   TestResearchBatchValidationParity/asof
+=== RUN   TestResearchBatchValidationParity/tenant
+=== RUN   TestResearchBatchValidationParity/duplicate
+=== RUN   TestResearchBatchValidationParity/prediction-id
+=== RUN   TestResearchBatchValidationParity/empty
+=== RUN   TestResearchBatchValidationParity/over-cap
+=== RUN   TestResearchBatchValidationParity/duplicate-decision
+=== RUN   TestResearchBatchValidationParity/duplicate-event
+=== RUN   TestResearchBatchValidationParity/missing-event
+=== RUN   TestResearchBatchValidationParity/changed-policy
+--- PASS: TestResearchBatchValidationParity (0.04s)
+    --- PASS: TestResearchBatchValidationParity/valid (0.00s)
+    --- PASS: TestResearchBatchValidationParity/features (0.00s)
+    --- PASS: TestResearchBatchValidationParity/baseline (0.00s)
+    --- PASS: TestResearchBatchValidationParity/event (0.00s)
+    --- PASS: TestResearchBatchValidationParity/journal (0.00s)
+    --- PASS: TestResearchBatchValidationParity/snapshot (0.00s)
+    --- PASS: TestResearchBatchValidationParity/query (0.00s)
+    --- PASS: TestResearchBatchValidationParity/asof (0.00s)
+    --- PASS: TestResearchBatchValidationParity/tenant (0.00s)
+    --- PASS: TestResearchBatchValidationParity/duplicate (0.00s)
+    --- PASS: TestResearchBatchValidationParity/prediction-id (0.00s)
+    --- PASS: TestResearchBatchValidationParity/empty (0.00s)
+    --- PASS: TestResearchBatchValidationParity/over-cap (0.00s)
+    --- PASS: TestResearchBatchValidationParity/duplicate-decision (0.00s)
+    --- PASS: TestResearchBatchValidationParity/duplicate-event (0.00s)
+    --- PASS: TestResearchBatchValidationParity/missing-event (0.00s)
+    --- PASS: TestResearchBatchValidationParity/changed-policy (0.00s)
+=== RUN   TestResearchGuardedAdmissionPersistentBoundary
+=== RUN   TestResearchGuardedAdmissionPersistentBoundary/memory/policy
+=== RUN   TestResearchGuardedAdmissionPersistentBoundary/persistent/policy
+=== RUN   TestResearchGuardedAdmissionPersistentBoundary/memory/future-ingest
+=== RUN   TestResearchGuardedAdmissionPersistentBoundary/persistent/future-ingest
+--- PASS: TestResearchGuardedAdmissionPersistentBoundary (0.39s)
+    --- PASS: TestResearchGuardedAdmissionPersistentBoundary/memory/policy (0.04s)
+    --- PASS: TestResearchGuardedAdmissionPersistentBoundary/persistent/policy (0.17s)
+    --- PASS: TestResearchGuardedAdmissionPersistentBoundary/memory/future-ingest (0.04s)
+    --- PASS: TestResearchGuardedAdmissionPersistentBoundary/persistent/future-ingest (0.14s)
+=== RUN   TestResearchTemporalFeedbackBoundaries
+=== RUN   TestResearchTemporalFeedbackBoundaries/memory
+=== RUN   TestResearchTemporalFeedbackBoundaries/persistent
+--- PASS: TestResearchTemporalFeedbackBoundaries (0.12s)
+    --- PASS: TestResearchTemporalFeedbackBoundaries/memory (0.00s)
+    --- PASS: TestResearchTemporalFeedbackBoundaries/persistent (0.12s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/service	2.055s

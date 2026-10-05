@@ -1,0 +1,33 @@
+{
+  "revision": "f3231fab2244c5c6bca8f7f822e5669ac58d13cd",
+  "temporary": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-sharded-load-oPxb8z",
+  "sources": {
+    "control": {
+      "internal/store/libravdbstore/store.go": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+    },
+    "candidate": {
+      "internal/store/libravdbstore/store.go": "74dea08e7fb400c30d839a66852ea6c121000be3396f1723238eff1a6c262b94",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+    }
+  },
+  "protocolSHA256": "7d01fcf4c5bb7d4528b0a9a869cd71503e489413d1cbf5698ac0b8be8622a21f",
+  "patchSHA256": "4bae5bdcb4cb1fc2b2e9d8d25183668ccff20308a9aa7416d834117c8982d0c5",
+  "preparationSHA256": "c0032440123951f6e9346d09b7e1a46275eed4b58df5e753d85010a4c82a7bfa",
+  "topologyTemplateSHA256": "fe53458866394e8a0b6254c57b1ed1418c1a7d46205e44f9c8df916cf2de74b9",
+  "topologyCompiledSHA256": "c8fc7edfe36ef69814b6a22baaed299ebacd57ce9d954780de1c1b31944b8139",
+  "oldFixtureSHA256": "5c51cdf2ef3070dc1b85573905ddf7490d2010ec8b0d2c50490fd37db286160d",
+  "privateDataUsed": false,
+  "productionTouched": false,
+  "wholeGoalValidation": false,
+  "goVersion": "go version go1.27.1 darwin/arm64",
+  "runtimeWorkers": 10,
+  "expectedLibraryShardCount": 4,
+  "preExecutionRefinement": "Require SQ8 quantization to survive reopen before any tests execute"
+}

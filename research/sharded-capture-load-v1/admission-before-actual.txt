@@ -1,0 +1,6 @@
+=== RUN   TestResearchTransactionSharedShardAdmissionV1
+    research_admission_regression_test.go:57: bounded multi-shard transaction failed: transaction commit failed: context deadline exceeded
+--- FAIL: TestResearchTransactionSharedShardAdmissionV1 (0.28s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/libravdb	0.578s
+FAIL

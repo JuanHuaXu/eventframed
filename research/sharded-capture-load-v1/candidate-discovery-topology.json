@@ -1,0 +1,22 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-count=1",
+    "-v",
+    "-timeout",
+    "45s",
+    "-run",
+    "^TestResearchShardedTopologyReopenV1$",
+    "./internal/store/libravdbstore"
+  ],
+  "status": 1,
+  "signal": null,
+  "sourceSHA256": "74dea08e7fb400c30d839a66852ea6c121000be3396f1723238eff1a6c262b94",
+  "topologySHA256": "c8fc7edfe36ef69814b6a22baaed299ebacd57ce9d954780de1c1b31944b8139",
+  "databaseSHA256": "10cbd08b9d58d5243c31f53079a566556761f89bfc0e0e0db8b07146e7ef4761",
+  "txSHA256": "e760458e6dd870b3d531d9d34106d8dd285e8468a7a8968462f82819b794dbd5",
+  "transcriptSHA256": "506a74aa6d6278734e159292a17427eacacfe08e7e4dadfeeab47300d6069341",
+  "passed": false
+}

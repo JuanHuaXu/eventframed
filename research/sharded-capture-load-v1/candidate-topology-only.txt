@@ -1,0 +1,6 @@
+=== RUN   TestResearchShardedTopologyReopenV1
+    sharded_topology_test.go:147: topology/quantization lost after reopen ensure tenant collection: failed to create collection: failed to initialize shards: failed to create shard 0 storage: collection events_v2_0ffa46713e464c565eaf42b6__shard__0 already exists
+--- FAIL: TestResearchShardedTopologyReopenV1 (0.90s)
+FAIL
+FAIL	github.com/JuanHuaXu/eventframed/internal/store/libravdbstore	1.281s
+FAIL

@@ -1,0 +1,25 @@
+package libravdb
+
+import (
+	"context"
+	"reflect"
+	"sort"
+	"testing"
+)
+
+func TestResearchMissingShardFailClosedV2(t *testing.T) {
+	ctx:=context.Background();path:=t.TempDir()+"/missing-shard.libravdb"
+	db,err:=Open(WithStoragePath(path));if err!=nil { t.Fatal(err) }
+	defer func(){ if db!=nil { db.Close() } }()
+	col,err:=db.EnsureCollection(ctx,"event",4,WithHNSW(8,40,20),WithSharding(true));if err!=nil { t.Fatal(err) }
+	if err:=col.Insert(ctx,"public-probe",[]float32{1,0,0,0},nil);err!=nil { t.Fatal(err) }
+	if err:=db.Close();err!=nil { t.Fatal(err) };db=nil
+	db,err=Open(WithStoragePath(path));if err!=nil { t.Fatal(err) }
+	if err:=db.storage.DeleteCollection(shardName("event",3));err!=nil { t.Fatal(err) }
+	before,err:=db.storage.ListCollections();if err!=nil { t.Fatal(err) };sort.Strings(before)
+	names,err:=db.ListCollectionsWithContext(ctx);if err!=nil || !reflect.DeepEqual(names,[]string{"event"}) { t.Fatal("partial parent discovery",names,err) }
+	if _,err:=db.GetCollection("event");err==nil { t.Fatal("partial shard load accepted") }
+	if _,err:=db.EnsureCollection(ctx,"event",4,WithHNSW(8,40,20),WithSharding(true));err==nil { t.Fatal("partial shard ensure accepted") }
+	after,err:=db.storage.ListCollections();if err!=nil { t.Fatal(err) };sort.Strings(after)
+	if !reflect.DeepEqual(before,after) { t.Fatal("failed load/ensure changed physical collection set",before,after) }
+}

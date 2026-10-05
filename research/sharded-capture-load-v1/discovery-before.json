@@ -1,0 +1,20 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-count=1",
+    "-v",
+    "-timeout",
+    "30s",
+    "-run",
+    "^TestResearchLogicalParentDiscoveryV1$",
+    "./libravdb"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "transcriptSHA256": "221b47c5ab04d00029609222cab5ab844fba25009c9ee16424083de49205c2ab",
+  "databaseSHA256": "89d68be3b2170b9a9275daa7e1c819492182b577947049da5dcf4dea22302311",
+  "testSHA256": "888ca89ab72e505866bc5ee7272b0c3e5cd84968fd73347d98473d614e93921a"
+}

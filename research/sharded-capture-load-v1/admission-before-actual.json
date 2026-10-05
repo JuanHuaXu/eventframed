@@ -1,0 +1,17 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-count=1",
+    "-v",
+    "-timeout",
+    "30s",
+    "-run",
+    "^TestResearchTransactionSharedShardAdmissionV1$",
+    "./libravdb"
+  ],
+  "status": 1,
+  "sha256": "08a9c9cc2408cb16b9e4760c74e1a8a7d5d3718bdfebf5c68abf84cb97d8046a",
+  "sourceSHA256": "179c2f226585a6f28fcde58489621f77d76d9ca2502a907c34fe55dd0894e6be",
+  "environmentRepair": "pinned lexer module copied to satisfy unchanged local replacement"
+}

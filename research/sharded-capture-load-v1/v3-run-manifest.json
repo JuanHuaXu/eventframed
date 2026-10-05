@@ -1,0 +1,24 @@
+{
+  "runnerSHA256": "38cfa701eb811daf834d8aa5bfd63a25a45cce3e7b70b29b85d6c315f0508da6",
+  "sourceManifestSHA256": "3de922f5d64c8e71d3a477dfe1c328b3cddeada8df3ea339f8cac2f7115c5002",
+  "preflightSHA256": "251b025f296ce0d9a7495b15c40d33a325da4cb6cdc946f0cd7c122c8510cf2d",
+  "preflightPassed": true,
+  "frontiers": [
+    50,
+    200
+  ],
+  "runOrder": [
+    [
+      "control",
+      "candidate"
+    ],
+    [
+      "candidate",
+      "control"
+    ]
+  ],
+  "workers": 10,
+  "postFailureDesignPilot": true,
+  "productionTouched": false,
+  "privateDataUsed": false
+}

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-count=1",
+    "-v",
+    "-timeout",
+    "45s",
+    "-run",
+    "^TestResearchQuantizationDeclarationReopenV1$",
+    "./libravdb"
+  ],
+  "status": 1,
+  "signal": null,
+  "transcriptSHA256": "227d898e08c4c2dd717d416c7316c0ffb10005b8d11e95ec71bff533c0d4903f",
+  "testSHA256": "a50ed730a10e9aefbe895f9a9e4e95d1d966455095a78300a720428b10d2014c",
+  "collectionSHA256": "67a3a5a4e343f426a6745725e6a8007e20e549567082bb2528554ce7b3c59ac4"
+}
