@@ -1,0 +1,39 @@
+File: service.test
+Type: cpu
+Time: 2026-10-05 15:29:05 EDT
+Duration: 25.40s, Total samples = 134.01s (527.59%)
+Active filters:
+   focus=Service.*Recall
+Showing nodes accounting for 0.24s, 0.18% of 134.01s total
+Showing top 30 nodes out of 144
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      0.62s  0.46%  github.com/JuanHuaXu/eventframed/internal/service.(*Service).Recall
+         0     0%     0%      0.62s  0.46%  github.com/JuanHuaXu/eventframed/internal/service.(*Service).recallOnce
+         0     0%     0%      0.62s  0.46%  github.com/JuanHuaXu/eventframed/internal/service.TestResearchPublicCaptureLoadV1
+         0     0%     0%      0.62s  0.46%  testing.tRunner
+         0     0%     0%      0.37s  0.28%  github.com/JuanHuaXu/eventframed/internal/service.(*Service).nominateCandidates
+         0     0%     0%      0.37s  0.28%  github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.(*Store).Search
+     0.01s 0.0075% 0.0075%      0.37s  0.28%  github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.decodeEligible
+         0     0% 0.0075%      0.36s  0.27%  github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.decodeStoredEvent
+         0     0% 0.0075%      0.29s  0.22%  encoding/json.Unmarshal (inline)
+         0     0% 0.0075%      0.29s  0.22%  encoding/json/v2.Unmarshal
+         0     0% 0.0075%      0.29s  0.22%  encoding/json/v2.unmarshalDecode
+         0     0% 0.0075%      0.22s  0.16%  encoding/json/v2.makeStructArshaler.func3
+     0.02s 0.015% 0.022%      0.13s 0.097%  encoding/json/jsontext.(*decoderState).consumeValue
+         0     0% 0.022%      0.13s 0.097%  encoding/json/v2.makeStringArshaler.func2
+         0     0% 0.022%      0.10s 0.075%  encoding/json.Marshal (inline)
+         0     0% 0.022%      0.10s 0.075%  encoding/json/v2.Marshal
+         0     0% 0.022%      0.10s 0.075%  encoding/json/v2.marshalEncode
+         0     0% 0.022%      0.10s 0.075%  github.com/JuanHuaXu/eventframed/internal/epistemic.Describe
+     0.02s 0.015% 0.037%      0.09s 0.067%  encoding/json/jsontext.(*decoderState).ReadValue
+         0     0% 0.037%      0.09s 0.067%  encoding/json/v2.makeMapArshaler.func3
+     0.09s 0.067%   0.1%      0.09s 0.067%  runtime.memmove
+         0     0%   0.1%      0.07s 0.052%  encoding/json/jsontext.(*decoderState).CheckNextValue
+     0.03s 0.022%  0.13%      0.07s 0.052%  encoding/json/jsontext.(*decoderState).consumeObject
+         0     0%  0.13%      0.07s 0.052%  github.com/JuanHuaXu/eventframed/internal/epistemic.normalize
+     0.06s 0.045%  0.17%      0.06s 0.045%  encoding/json/internal/jsonwire.ConsumeSimpleString (inline)
+         0     0%  0.17%      0.06s 0.045%  encoding/json/v2.makeSliceArshaler.func2
+     0.01s 0.0075%  0.18%      0.06s 0.045%  encoding/json/v2.makeStructArshaler.func2
+         0     0%  0.18%      0.06s 0.045%  github.com/JuanHuaXu/eventframed/internal/model.Event.FrameText
+         0     0%  0.18%      0.06s 0.045%  github.com/JuanHuaXu/eventframed/internal/service.(*Service).rankCandidates
+         0     0%  0.18%      0.06s 0.045%  runtime.mallocgc

@@ -1,0 +1,26 @@
+{
+  "revision": "f3231fab2244c5c6bca8f7f822e5669ac58d13cd",
+  "sourceHashes": {
+    "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+    "internal/frame/query.go": "34aec61ade88b154686e34efd99096fd4689d04f45d5d1b9de44120b2d4c315f",
+    "internal/frame/text.go": "06c9d7772ef011a901dccd5f5f2ff7602b64c00f754d473fb38174435c25b66f",
+    "internal/frame/identity.go": "78e20396658bdb15940e62cece042af4334f4f74e85f497dbc0e483ed919689d",
+    "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+    "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+    "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+  },
+  "workers": {
+    "default": 10,
+    "cap": 2
+  },
+  "frontiers": [
+    50,
+    200
+  ],
+  "protocolSHA256": "7ee57d548e26456120fe225696640713bfdc9846da156afd09eb2e6970bb9e68",
+  "runnerSHA256": "f6849a503b98e074303e643f8a857c3c564da5c4f24f4766dd12005517688105",
+  "privateDataUsed": false,
+  "productionTouched": false,
+  "wholeGoalValidation": false,
+  "maskCandidateApplied": false
+}

@@ -1,0 +1,11 @@
+=== RUN   TestResearchDurableIdentityAudit
+    research_durable_identity_audit_test.go:25: opt-in lifecycle characterization
+--- SKIP: TestResearchDurableIdentityAudit (0.00s)
+=== RUN   TestResearchTemporalFeedbackBoundaries
+=== RUN   TestResearchTemporalFeedbackBoundaries/memory
+=== RUN   TestResearchTemporalFeedbackBoundaries/persistent
+--- PASS: TestResearchTemporalFeedbackBoundaries (0.13s)
+    --- PASS: TestResearchTemporalFeedbackBoundaries/memory (0.01s)
+    --- PASS: TestResearchTemporalFeedbackBoundaries/persistent (0.13s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/service	1.630s

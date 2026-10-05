@@ -1,0 +1,21 @@
+{
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "transcriptSHA256": "ce0ef7c86128c9a67141f73b3e20762ca598087ab1fb34f13b200004c0b0a251",
+  "dataRaceReported": false,
+  "skipped": false,
+  "requiredSuites": [
+    "TestResearchGuardedAdmissionPersistentBoundary",
+    "TestResearchBatchValidationParity",
+    "TestResearchTemporalFeedbackBoundaries"
+  ],
+  "executedSuites": [
+    "TestResearchGuardedAdmissionPersistentBoundary",
+    "TestResearchBatchValidationParity",
+    "TestResearchTemporalFeedbackBoundaries"
+  ],
+  "fullLoadRaceValidated": false,
+  "wholeGoalValidation": false,
+  "passed": true
+}

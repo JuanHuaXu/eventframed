@@ -17,6 +17,46 @@ entry below records new work, not a change to any original success criterion.
 
 ## Current Continuation
 
+Publication note: the public capture-load checkpoint below is now authorized for
+publication on the curated research branch. Raw profiler captures remain local;
+their omission is documented in `research/public-capture-load-v1/PUBLICATION.json`.
+The original continuation notes describe the state at collection time. No
+unfinished shard-rescue work or production promotion is included in this push.
+
+2026-10-05 latest: [full-frontier public capture load](research/public-capture-load-v1/RESULTS.md)
+and [two-worker rejection](research/public-capture-load-v1/WORKER_CAP_RESULTS.md).
+Previous goal turn PROGRESS (audited local checkpoint published). This turn
+PROGRESS: unchanged loaded comparison, eight public capture/frontier runs,
+post-screen CPU/block/mutex diagnosis and eight frozen worker-cap rescue runs.
+All seven WHOLE goals remain OPEN/ACTIVE; weekly usage rechecked at 46%.
+
+The old one-event loaded fixture passes absolute finite gates but fails one
+paired quiet non-regression cell (ratio 1.1633). In the new 1,000-replica public
+DESIGN workload, all functional availability/publication/ledger checks pass,
+but all ordinary runs miss recall p99 <100 ms: 114.56-127.88 ms at frontier 50,
+156.88-176.37 ms at frontier 200. Mask reuse also fails one paired frontier-200
+non-regression cell (ratio 1.1188). It remains a component optimization only.
+
+The measured profile identifies capture-released reader locks and HNSW index
+construction as the main new lead, not mask scans. A two-worker cap is rejected:
+full recall p99 is 2.16-2.44x the explicit ten-worker control, with the same
+capture bytes and almost identical overlap. No scored candidate, durable write
+or guard was dropped to manufacture a pass. Every failed cell is preserved.
+All 64 worker labels per run publish live before Close; 128 durable rows and
+same-epoch replay agree. These are synthetic mechanics labels, not real agent
+utility or cross-epoch learning transfer. The count of 288 public inputs is a
+DESIGN capture-template count, not independent facts; the frozen runner's
+misnamed field is explicitly corrected in the audit, not used for inference.
+
+Next structural investigation: transaction-compatible incremental or smaller
+partition index publication, preserving full merged retrieval, chronology,
+atomic event/runtime publication and reopen/invalidation checks. A small-corpus
+Flat-index control is not a replacement for large-corpus ANN serving. Visible
+mutations, transfer/recovery, sustained backlog, all other original goals and
+the .698246 TV defect remain unresolved. Production, private data, whitepaper
+and published branches are untouched by this continuation; retain a local
+scoped checkpoint, not an automatic publication or deployed setting change.
+
 2026-10-05 latest: [per-message mask reuse](research/frame-mask-cache-v1/RESULTS.md).
 Previous goal turn PROGRESS (reviewed software and whitepaper fixes published).
 This continuation PROGRESS: isolated repaired-control performance rescue,

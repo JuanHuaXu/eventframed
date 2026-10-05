@@ -1,0 +1,12 @@
+{
+  "sourceLocalCheckpoint": "f7b7bb1c69336a13d8376ee7a460f59ab8dffc57",
+  "reason": "Raw profiler captures are retained locally rather than published. Public timing transcripts and summarized stack reports are unchanged.",
+  "omittedRawProfiles": {
+    "cpu.pprof": "cdd58b0f1eed4b0d9793314bebe13af2602e4820fae4e8265a681c025b81293b",
+    "mutex.pprof": "cae2d8760b3aed25734de0123daa782d1e39f394260d071093f5a1a87930bb17",
+    "block.pprof": "e39e4107d6781ab4d0fb3ac1fe30d5454f02281cd9cacf41994ad51730331a95"
+  },
+  "rawProfilesIndependentlyVerifiableFromPublication": false,
+  "productionPromotion": false,
+  "unfinishedShardRescueIncluded": false
+}

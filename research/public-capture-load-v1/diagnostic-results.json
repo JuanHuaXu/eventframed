@@ -1,0 +1,31 @@
+{
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "transcriptSHA256": "2d4a53ef6114ad2ec9e117786d4cffde063104c128b3d9ce5f6bd9078e3cdad6",
+  "reports": [
+    {
+      "file": "cpu-top.txt",
+      "sha256": "16b524ef08063593818ff03296eba625dea199209ee3e122a8d1d9f17119a148"
+    },
+    {
+      "file": "cpu-recall.txt",
+      "sha256": "20444fb1c3c1efb7366089e8ed9cb015027015f1803ea0c5b5e75d83c9f542a6"
+    },
+    {
+      "file": "mutex-top.txt",
+      "sha256": "0a2d0dcbff2f4ad9da827433efcf23ff0f4076207223d60b0f1ecf51289280a4"
+    },
+    {
+      "file": "block-top.txt",
+      "sha256": "9a6594eb71e98bb400bd41d5d42501d43524c7152fc414553e421faf4c38f8fe"
+    }
+  ],
+  "profiles": {
+    "cpu.pprof": "cdd58b0f1eed4b0d9793314bebe13af2602e4820fae4e8265a681c025b81293b",
+    "mutex.pprof": "cae2d8760b3aed25734de0123daa782d1e39f394260d071093f5a1a87930bb17",
+    "block.pprof": "e39e4107d6781ab4d0fb3ac1fe30d5454f02281cd9cacf41994ad51730331a95"
+  },
+  "diagnosticOnly": true,
+  "wholeGoalValidation": false
+}

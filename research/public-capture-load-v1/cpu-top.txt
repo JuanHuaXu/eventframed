@@ -1,0 +1,38 @@
+File: service.test
+Type: cpu
+Time: 2026-10-05 15:29:05 EDT
+Duration: 25.40s, Total samples = 134.01s (527.59%)
+Showing nodes accounting for 94.90s, 70.82% of 134.01s total
+Dropped 549 nodes (cum <= 0.67s)
+Showing top 30 nodes out of 88
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%     67.96s 50.71%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).batchInsertOptimized.func1
+     0.01s 0.0075% 0.0075%     67.72s 50.53%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).Insert
+         0     0% 0.0075%     63.81s 47.62%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).insertNode
+         0     0% 0.0075%     60.56s 45.19%  runtime.mcall
+    44.34s 33.09% 33.09%     44.34s 33.09%  runtime.usleep
+     0.61s  0.46% 33.55%     37.06s 27.65%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).searchAndSelectForConstructionWithScratch
+     0.02s 0.015% 33.56%     37.01s 27.62%  runtime.schedule
+     0.02s 0.015% 33.58%     36.82s 27.48%  runtime.findRunnable
+     0.01s 0.0075% 33.59%     32.85s 24.51%  runtime.goschedImpl
+         0     0% 33.59%     32.30s 24.10%  runtime.gosched_m
+    10.89s  8.13% 41.71%     27.13s 20.24%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).searchLevelScratchValues
+         0     0% 41.71%     25.49s 19.02%  runtime.lock (partial-inline)
+     0.17s  0.13% 41.84%     25.49s 19.02%  runtime.lock2
+         0     0% 41.84%     25.49s 19.02%  runtime.lockWithRank (inline)
+         0     0% 41.84%     23.50s 17.54%  runtime.park_m
+     0.01s 0.0075% 41.85%     22.82s 17.03%  runtime.stealWork
+     0.01s 0.0075% 41.86%     22.79s 17.01%  runtime.runqgrab
+         0     0% 41.86%     22.79s 17.01%  runtime.runqsteal
+         0     0% 41.86%     21.56s 16.09%  runtime.osyield (inline)
+     0.29s  0.22% 42.07%     19.62s 14.64%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).connectBidirectionalOptimizedValues
+     1.16s  0.87% 42.94%     17.01s 12.69%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*NeighborSelector).connectLinkWithHeuristic
+     2.13s  1.59% 44.53%     14.10s 10.52%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*NeighborSelector).connectLinkWithHeuristic.func1
+     0.35s  0.26% 44.79%     12.52s  9.34%  github.com/xDarkicex/libravdb/internal/util.GetDistanceFunc.func4
+    12.45s  9.29% 54.08%     12.45s  9.29%  github.com/xDarkicex/libravdb/internal/util/simd.DotProductNEON
+     0.08s  0.06% 54.14%     11.86s  8.85%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).computeDistanceOptimized
+     1.35s  1.01% 55.15%     11.42s  8.52%  github.com/xDarkicex/libravdb/internal/quant.(*ScalarQuantizer).DistanceToQuery
+     0.95s  0.71% 55.85%     10.29s  7.68%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*NeighborSelector).selectWithSimpleHeuristicValues
+     9.84s  7.34% 63.20%      9.84s  7.34%  github.com/xDarkicex/libravdb/internal/quant.(*ScalarQuantizer).unpackBits
+     8.98s  6.70% 69.90%      9.09s  6.78%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).searchLevelScratchValues.func1
+     1.23s  0.92% 70.82%      8.87s  6.62%  github.com/xDarkicex/libravdb/internal/index/hnsw.(*Index).rejectBySelectedHeuristic

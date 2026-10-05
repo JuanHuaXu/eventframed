@@ -1,0 +1,56 @@
+import fs from "node:fs";
+import path from "node:path";
+import crypto from "node:crypto";
+import assert from "node:assert/strict";
+import { fileURLToPath } from "node:url";
+
+const root=path.dirname(fileURLToPath(import.meta.url));
+const read=name=>fs.readFileSync(path.join(root,name));
+const hash=b=>crypto.createHash("sha256").update(b).digest("hex");
+const primary=JSON.parse(read("manifest.json"));
+const manifest=JSON.parse(read("worker-cap-manifest.json"));
+const result=JSON.parse(read("worker-cap-results.json"));
+assert.equal(hash(read("WORKER_CAP_PROTOCOL.md")),manifest.protocolSHA256);
+assert.equal(hash(read("worker-cap.mjs")),manifest.runnerSHA256);
+assert.deepEqual(manifest.sourceHashes,primary.sources.control);
+assert.equal(result.commands.length,8);
+assert.deepEqual(result.commands.map(c=>[c.frontier,c.pair,c.arm]),[50,200].flatMap(k=>[[0,["default","cap"]],[1,["cap","default"]]].flatMap(([pair,order])=>order.map(arm=>[k,pair,arm]))));
+const quantile=(values,fraction)=>[...values].sort((a,b)=>a-b)[Math.ceil(values.length*fraction)-1]/1e6;
+for (const command of result.commands) {
+  const bytes=read(command.transcript);
+  assert.equal(hash(bytes),command.transcriptSHA256);
+  assert.equal(command.workers,command.arm==="cap"?2:10);
+  const match=bytes.toString().match(/PUBLIC_CAPTURE_TRACE=(\{[^\n]+\})/);
+  assert.ok(match);
+  const trace=JSON.parse(match[1]);
+  assert.deepEqual(trace,command.trace);
+  assert.equal(trace.functional,true);
+  assert.equal(trace.frontier,command.frontier);
+  for (const key of ["recall_ns","recall_start_ns","recall_end_ns","feedback_ns","live_age_ns","candidate_counts","packed_counts"]) assert.equal(trace[key].length,64);
+  for (const key of ["capture_ns","capture_start_ns","capture_end_ns"]) assert.equal(trace[key].length,256);
+  assert.ok(trace.candidate_counts.every(n=>n===command.frontier));
+  assert.ok(trace.packed_counts.every(n=>n>=0&&n<=10));
+  assert.equal(trace.completed,64);
+  assert.equal(trace.replay_completed,64);
+  assert.equal(trace.ledger_rows,128);
+  let overlaps=0;
+  for (let j=0;j<256;j++) {
+    assert.equal(trace.capture_ns[j],trace.capture_end_ns[j]-trace.capture_start_ns[j]);
+    if (trace.recall_start_ns.some((start,i)=>trace.capture_start_ns[j]<trace.recall_end_ns[i]&&trace.capture_end_ns[j]>start)) overlaps++;
+  }
+  assert.equal(trace.overlaps,overlaps);
+  assert.ok(overlaps>0);
+  for (const name of ["recall","feedback","live_age","capture"]) for (const [key,fraction] of [["p50",.5],["p95",.95],["p99",.99],["max",1]]) assert.equal(command.measurements[name][key+"_ms"],quantile(trace[name+"_ns"],fraction));
+  const absolute=command.measurements.recall.p99_ms<100&&command.measurements.live_age.p99_ms<250;
+  assert.equal(command.status===0,absolute);
+}
+for (const pair of result.paired) {
+  const get=arm=>result.commands.find(c=>c.frontier===pair.frontier&&c.pair===pair.pair&&c.arm===arm).measurements.recall.p99_ms;
+  assert.equal(pair.ratio,get("cap")/get("default"));
+  assert.equal(pair.pass,pair.ratio<=.90);
+}
+assert.equal(result.functionalPass,true);
+assert.equal(result.capAbsoluteTimingPass,result.commands.filter(c=>c.arm==="cap").every(c=>c.status===0));
+assert.equal(result.pairedRescuePass,result.paired.every(p=>p.pass));
+assert.equal(result.wholeGoalValidation,false);
+console.log(JSON.stringify({verified:true,functionalPass:true,capAbsoluteTimingPass:result.capAbsoluteTimingPass,pairedRescuePass:result.pairedRescuePass,wholeGoalValidation:false}));

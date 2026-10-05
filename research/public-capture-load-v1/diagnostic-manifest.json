@@ -1,0 +1,39 @@
+{
+  "revision": "f3231fab2244c5c6bca8f7f822e5669ac58d13cd",
+  "sourceHashes": {
+    "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+    "internal/frame/query.go": "34aec61ade88b154686e34efd99096fd4689d04f45d5d1b9de44120b2d4c315f",
+    "internal/frame/text.go": "06c9d7772ef011a901dccd5f5f2ff7602b64c00f754d473fb38174435c25b66f",
+    "internal/frame/identity.go": "78e20396658bdb15940e62cece042af4334f4f74e85f497dbc0e483ed919689d",
+    "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+    "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+    "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+  },
+  "protocolSHA256": "2bbcbc16a7a45115942548da36f074ab8a8e9aa346f739b906e8869dd1dbbc65",
+  "runnerSHA256": "769801739e11ae3f9c4c0d3e99755f67421b29074ad1e453ac515a952b865249",
+  "frontier": 200,
+  "command": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-count=1",
+    "-v",
+    "-timeout",
+    "4m",
+    "-run",
+    "^TestResearchPublicCaptureLoadV1$",
+    "-o",
+    "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-public-capture-load-xX1pV0/profile-service.test",
+    "-cpuprofile",
+    "/Volumes/Data/eventframed/research/public-capture-load-v1/cpu.pprof",
+    "-mutexprofile",
+    "/Volumes/Data/eventframed/research/public-capture-load-v1/mutex.pprof",
+    "-blockprofile",
+    "/Volumes/Data/eventframed/research/public-capture-load-v1/block.pprof",
+    "./internal/service"
+  ],
+  "primaryTimingVerdictChanged": false,
+  "diagnosticOnly": true,
+  "productionTouched": false,
+  "privateDataUsed": false
+}

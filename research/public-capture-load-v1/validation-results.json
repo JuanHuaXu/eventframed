@@ -1,0 +1,39 @@
+{
+  "commands": [
+    {
+      "command": [
+        "go",
+        "vet",
+        "./internal/service"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "vet.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dataRaceReported": false
+    },
+    {
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "-run",
+        "^(TestResearchDurableIdentityAudit|TestResearchTemporalFeedbackBoundaries)$",
+        "./internal/service"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "guard-race.txt",
+      "sha256": "34d74b68682230ee5ccf73031f06808b36ca69bcb8693b97bdae5a96e6b24a0a",
+      "dataRaceReported": false
+    }
+  ],
+  "passed": true,
+  "fullLoadRaceValidated": false,
+  "wholeGoalValidation": false
+}

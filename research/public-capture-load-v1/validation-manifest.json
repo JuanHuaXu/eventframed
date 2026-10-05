@@ -1,0 +1,14 @@
+{
+  "sourceHashes": {
+    "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+    "internal/frame/query.go": "34aec61ade88b154686e34efd99096fd4689d04f45d5d1b9de44120b2d4c315f",
+    "internal/frame/text.go": "06c9d7772ef011a901dccd5f5f2ff7602b64c00f754d473fb38174435c25b66f",
+    "internal/frame/identity.go": "78e20396658bdb15940e62cece042af4334f4f74e85f497dbc0e483ed919689d",
+    "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+    "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+    "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+  },
+  "runnerSHA256": "ec6dc19d78e289ade82ee9ce7f51c481b63c7919a275312d8d4ef33a5d7fd651",
+  "scope": "Static validation of new fixture, adjacent durable identity and temporal guard race regressions; NOT full public-load race coverage or timing",
+  "productionTouched": false
+}

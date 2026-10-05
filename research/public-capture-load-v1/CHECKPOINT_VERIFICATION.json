@@ -1,0 +1,41 @@
+{
+  "verified": true,
+  "comparisons": [
+    {
+      "verified": true,
+      "absolutePass": true,
+      "pairedNonRegressionPass": false,
+      "wholeGoalValidation": false
+    },
+    {
+      "verified": true,
+      "commands": 8,
+      "functionalPass": true,
+      "absoluteTimingPass": false,
+      "pairedNonRegressionPass": false,
+      "wholeGoalValidation": false
+    },
+    {
+      "verified": true,
+      "functionalPass": true,
+      "capAbsoluteTimingPass": false,
+      "pairedRescuePass": false,
+      "wholeGoalValidation": false
+    }
+  ],
+  "adjacentGuardRacePassed": true,
+  "fullLoadRaceValidated": false,
+  "primaryMetadataErratum": "independentFactCount=288 is design capture-template count, NOT independent facts",
+  "originalValidationErratum": "opt-in identity audit skipped; only v2 establishes all named guard regressions executed",
+  "diagnosticOnly": true,
+  "wholeGoalValidation": false,
+  "allSevenGoals": "OPEN",
+  "productionTouched": false,
+  "privateDataUsed": false,
+  "rawProfilesVerified": false,
+  "omittedRawProfiles": [
+    "block.pprof",
+    "cpu.pprof",
+    "mutex.pprof"
+  ]
+}

@@ -1,0 +1,10 @@
+=== RUN   TestResearchGuardedDurableLiveFreshnessV2
+=== RUN   TestResearchGuardedDurableLiveFreshnessV2/quiet
+    research_durable_live_freshness_test.go:27: arm=quiet calls=192 live_labels=192 writes=0 overlaps=0 recall_p50=5.212792ms recall_p95=6.188083ms recall_p99=6.651083ms feedback_p99=890.208µs live_age_p50=399.75µs live_age_p95=1.421ms live_age_p99=3.258166ms live_age_max=3.327375ms
+=== RUN   TestResearchGuardedDurableLiveFreshnessV2/future-writer
+    research_durable_live_freshness_test.go:27: arm=future-writer calls=192 live_labels=192 writes=768 overlaps=762 recall_p50=29.5735ms recall_p95=50.2775ms recall_p99=54.575458ms feedback_p99=12.260042ms live_age_p50=6.948542ms live_age_p95=11.207791ms live_age_p99=12.264625ms live_age_max=13.032334ms
+--- PASS: TestResearchGuardedDurableLiveFreshnessV2 (9.35s)
+    --- PASS: TestResearchGuardedDurableLiveFreshnessV2/quiet (1.52s)
+    --- PASS: TestResearchGuardedDurableLiveFreshnessV2/future-writer (7.83s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/service	9.683s

@@ -1,0 +1,47 @@
+{
+  "revision": "f3231fab2244c5c6bca8f7f822e5669ac58d13cd",
+  "patchSHA256": "afe0da66cc0bd2712f432c3eae42e5065e7f0a4c49d398842a6269b75963a908",
+  "protocolSHA256": "27f010bbecffb9b029feb4f4befc1ee112738dd7d00002d822167b9420fda719",
+  "runnerSHA256": "e3215bc2b468ca157e5ca1a6fe0d0b993e7f50c239e87545cf1f608825ce8da1",
+  "fixtureSHA256": "5c51cdf2ef3070dc1b85573905ddf7490d2010ec8b0d2c50490fd37db286160d",
+  "goVersion": "go version go1.27.1 darwin/arm64",
+  "architecture": "arm64",
+  "sources": {
+    "control": {
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/frame/query.go": "34aec61ade88b154686e34efd99096fd4689d04f45d5d1b9de44120b2d4c315f",
+      "internal/frame/text.go": "06c9d7772ef011a901dccd5f5f2ff7602b64c00f754d473fb38174435c25b66f",
+      "internal/frame/identity.go": "78e20396658bdb15940e62cece042af4334f4f74e85f497dbc0e483ed919689d",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+    },
+    "candidate": {
+      "internal/frame/turn.go": "230a62c9656ecf5ce620776f7cab50e7265b05c764495fab6897bc2580efd053",
+      "internal/frame/query.go": "b8bdf97f86e5f8f28a03137e78913bdca3c0d366541d34d098ae42deb463e610",
+      "internal/frame/text.go": "ddb3174bd6f4a63f6a1fab6c7f40cc8fec61e85827990852a2c154245a06b636",
+      "internal/frame/identity.go": "78e20396658bdb15940e62cece042af4334f4f74e85f497dbc0e483ed919689d",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"
+    }
+  },
+  "runOrder": [
+    [
+      "control",
+      "candidate"
+    ],
+    [
+      "candidate",
+      "control"
+    ]
+  ],
+  "frontiers": [
+    50,
+    200
+  ],
+  "temporary": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-public-capture-load-xX1pV0",
+  "privateDataUsed": false,
+  "productionTouched": false,
+  "wholeGoalValidation": false
+}

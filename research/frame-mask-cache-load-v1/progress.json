@@ -1,0 +1,209 @@
+{
+  "completed": false,
+  "commands": [
+    {
+      "pair": 0,
+      "arm": "control",
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-run",
+        "^TestResearchGuardedDurableLiveFreshnessV2$",
+        "./internal/service"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "0-control.txt",
+      "transcriptSHA256": "588f09bc7b4fd6c7949684ac1f7dd282a3b6ac2d1a10036116ec9d0512dbdd18",
+      "measurements": [
+        {
+          "arm": "quiet",
+          "calls": 192,
+          "labels": 192,
+          "writes": 0,
+          "overlaps": 0,
+          "recall_p50_ms": 5.310375,
+          "recall_p95_ms": 6.085375,
+          "recall_p99_ms": 7.245333,
+          "feedback_p99_ms": 0.961334,
+          "live_age_p50_ms": 0.35554199999999997,
+          "live_age_p95_ms": 1.083667,
+          "live_age_p99_ms": 3.122833,
+          "live_age_max_ms": 3.336292
+        },
+        {
+          "arm": "future-writer",
+          "calls": 192,
+          "labels": 192,
+          "writes": 768,
+          "overlaps": 762,
+          "recall_p50_ms": 31.468167,
+          "recall_p95_ms": 51.571666,
+          "recall_p99_ms": 54.416916,
+          "feedback_p99_ms": 12.452625,
+          "live_age_p50_ms": 6.895625,
+          "live_age_p95_ms": 11.021708,
+          "live_age_p99_ms": 12.457458,
+          "live_age_max_ms": 12.8705
+        }
+      ]
+    },
+    {
+      "pair": 0,
+      "arm": "candidate",
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-run",
+        "^TestResearchGuardedDurableLiveFreshnessV2$",
+        "./internal/service"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "0-candidate.txt",
+      "transcriptSHA256": "640361a2ab5ffe4cf6162df4afa44eb737d0f852b01e61f5a72f5e84307d9c6d",
+      "measurements": [
+        {
+          "arm": "quiet",
+          "calls": 192,
+          "labels": 192,
+          "writes": 0,
+          "overlaps": 0,
+          "recall_p50_ms": 5.212792,
+          "recall_p95_ms": 6.188083,
+          "recall_p99_ms": 6.651083,
+          "feedback_p99_ms": 0.890208,
+          "live_age_p50_ms": 0.39975,
+          "live_age_p95_ms": 1.421,
+          "live_age_p99_ms": 3.258166,
+          "live_age_max_ms": 3.327375
+        },
+        {
+          "arm": "future-writer",
+          "calls": 192,
+          "labels": 192,
+          "writes": 768,
+          "overlaps": 762,
+          "recall_p50_ms": 29.5735,
+          "recall_p95_ms": 50.2775,
+          "recall_p99_ms": 54.575458,
+          "feedback_p99_ms": 12.260042,
+          "live_age_p50_ms": 6.948542,
+          "live_age_p95_ms": 11.207791,
+          "live_age_p99_ms": 12.264625,
+          "live_age_max_ms": 13.032334
+        }
+      ]
+    },
+    {
+      "pair": 1,
+      "arm": "candidate",
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-run",
+        "^TestResearchGuardedDurableLiveFreshnessV2$",
+        "./internal/service"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "1-candidate.txt",
+      "transcriptSHA256": "5fa0c0a381577e08c15d7b807a04158ffe2b8a9d9b4da36d2deab880e2540880",
+      "measurements": [
+        {
+          "arm": "quiet",
+          "calls": 192,
+          "labels": 192,
+          "writes": 0,
+          "overlaps": 0,
+          "recall_p50_ms": 5.280416,
+          "recall_p95_ms": 6.152416,
+          "recall_p99_ms": 7.191625,
+          "feedback_p99_ms": 1.059209,
+          "live_age_p50_ms": 0.4665,
+          "live_age_p95_ms": 1.316417,
+          "live_age_p99_ms": 8.183625,
+          "live_age_max_ms": 8.193333
+        },
+        {
+          "arm": "future-writer",
+          "calls": 192,
+          "labels": 192,
+          "writes": 768,
+          "overlaps": 762,
+          "recall_p50_ms": 29.560167,
+          "recall_p95_ms": 50.043833,
+          "recall_p99_ms": 56.720709,
+          "feedback_p99_ms": 15.429166,
+          "live_age_p50_ms": 7.507917,
+          "live_age_p95_ms": 11.688542,
+          "live_age_p99_ms": 15.470291,
+          "live_age_max_ms": 26.654125
+        }
+      ]
+    },
+    {
+      "pair": 1,
+      "arm": "control",
+      "command": [
+        "go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "-run",
+        "^TestResearchGuardedDurableLiveFreshnessV2$",
+        "./internal/service"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "transcript": "1-control.txt",
+      "transcriptSHA256": "47dc501ef0030f8f5316e87ae20b27792b6d1cec62e7993475f68e8a10b5c079",
+      "measurements": [
+        {
+          "arm": "quiet",
+          "calls": 192,
+          "labels": 192,
+          "writes": 0,
+          "overlaps": 0,
+          "recall_p50_ms": 4.877792,
+          "recall_p95_ms": 5.932,
+          "recall_p99_ms": 6.182167,
+          "feedback_p99_ms": 1.152375,
+          "live_age_p50_ms": 0.59025,
+          "live_age_p95_ms": 1.363875,
+          "live_age_p99_ms": 3.868709,
+          "live_age_max_ms": 4.035459
+        },
+        {
+          "arm": "future-writer",
+          "calls": 192,
+          "labels": 192,
+          "writes": 768,
+          "overlaps": 762,
+          "recall_p50_ms": 31.102291,
+          "recall_p95_ms": 49.439542,
+          "recall_p99_ms": 52.626958,
+          "feedback_p99_ms": 13.001041,
+          "live_age_p50_ms": 7.307292,
+          "live_age_p95_ms": 10.974584,
+          "live_age_p99_ms": 13.005375,
+          "live_age_max_ms": 15.798084
+        }
+      ]
+    }
+  ]
+}

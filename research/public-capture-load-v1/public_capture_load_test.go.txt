@@ -1,0 +1,236 @@
+package service
+
+import (
+	"bufio"
+	"context"
+	"crypto/sha256"
+	"encoding/json"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+	"testing"
+	"time"
+
+	"github.com/JuanHuaXu/eventframed/internal/embed"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/researchledger"
+	"github.com/JuanHuaXu/eventframed/internal/researchmemory"
+	"github.com/JuanHuaXu/eventframed/internal/researchpublicationstore"
+	"github.com/JuanHuaXu/eventframed/internal/store/libravdbstore"
+)
+
+type publicCaptureTrace struct {
+	Frontier int `json:"frontier"`
+	Functional bool `json:"functional"`
+	InitNS int64 `json:"init_ns"`
+	InitBytes int `json:"init_bytes"`
+	RecallNS []int64 `json:"recall_ns"`
+	RecallStartNS []int64 `json:"recall_start_ns"`
+	RecallEndNS []int64 `json:"recall_end_ns"`
+	FeedbackNS []int64 `json:"feedback_ns"`
+	LiveAgeNS []int64 `json:"live_age_ns"`
+	CaptureNS []int64 `json:"capture_ns"`
+	CaptureStartNS []int64 `json:"capture_start_ns"`
+	CaptureEndNS []int64 `json:"capture_end_ns"`
+	CaptureBytes int `json:"capture_bytes"`
+	Overlaps int `json:"overlaps"`
+	CandidateCounts []int `json:"candidate_counts"`
+	PackedCounts []int `json:"packed_counts"`
+	LedgerRows int `json:"ledger_rows"`
+	ReplayNS int64 `json:"replay_ns"`
+	Completed uint64 `json:"completed"`
+	ReplayCompleted uint64 `json:"replay_completed"`
+}
+
+func TestResearchPublicCaptureLoadV1(t *testing.T) {
+	k, err := strconv.Atoi(os.Getenv("EVENTFRAME_PUBLIC_FRONTIER"))
+	if err != nil || (k != 50 && k != 200) { t.Fatal("explicit frontier 50 or 200 required") }
+	result := publicCaptureTrace{Frontier: k}
+	defer func() { b, err := json.Marshal(result); if err != nil { t.Error(err); return }; t.Log("PUBLIC_CAPTURE_TRACE=" + string(b)) }()
+	data, err := os.ReadFile("../../testdata/text-public-facts/corpus.jsonl")
+	if err != nil { t.Fatal(err) }
+	if fmt.Sprintf("%x", sha256.Sum256(data)) != "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7" { t.Fatal("public corpus byte identity changed") }
+	var captures []model.CaptureTurnRequest
+	var questions []string
+	scanner := bufio.NewScanner(strings.NewReader(string(data)))
+	for scanner.Scan() {
+		var row struct { Split string `json:"split"`; Capture model.CaptureTurnRequest `json:"capture"`; Oracle struct { Query string `json:"query_before_capture"` } `json:"oracle"` }
+		if err := json.Unmarshal(scanner.Bytes(), &row); err != nil { t.Fatal(err) }
+		if row.Split != "design" { continue }
+		captures = append(captures, row.Capture)
+		if row.Oracle.Query != "" { questions = append(questions, row.Oracle.Query) }
+	}
+	if err := scanner.Err(); err != nil { t.Fatal(err) }
+	if len(captures) != 288 || len(questions) != 96 { t.Fatal("design fixture count", len(captures), len(questions)) }
+	const tenant = "public-capture-load"
+	now := time.Date(2026, 9, 12, 0, 0, 0, 0, time.UTC)
+	replica := func(i int, future bool) model.CaptureTurnRequest {
+		request := captures[i%len(captures)]
+		prefix := "seed-"
+		at := now.Add(-time.Hour).Add(time.Duration(i)*time.Millisecond)
+		if future { prefix = "future-"; at = now.Add(time.Hour).Add(time.Duration(i)*time.Millisecond) }
+		request.IdempotencyKey = fmt.Sprintf("%s%04d", prefix, i)
+		request.Turn.ID = request.IdempotencyKey
+		request.Turn.TenantID = tenant
+		request.Turn.SessionID = request.IdempotencyKey
+		request.Turn.Sequence = 1
+		request.Turn.RunID = "public-load"
+		request.Turn.PreviousTurnID = ""
+		request.Turn.RetrievedIDs = nil
+		request.Turn.OccurredAt, request.Turn.ObservedAt, request.Turn.AvailableAt = at, at, at
+		return request
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 180*time.Second)
+	defer cancel()
+	em, err := embed.NewHashEmbedder(128)
+	if err != nil { t.Fatal(err) }
+	db, err := libravdbstore.Open(libravdbstore.Config{Path: t.TempDir()+"/public.libravdb", Dimension:128, EmbeddingModel:em.ModelKey(), Quantization:"sq8", MemoryMapping:true})
+	if err != nil { t.Fatal(err) }
+	wrapped, err := researchpublicationstore.Wrap(db)
+	if err != nil { db.Close(); t.Fatal(err) }
+	tap, err := NewResearchFrontierTap(tenant, 4)
+	if err != nil { db.Close(); t.Fatal(err) }
+	defer tap.Close()
+	s, err := New(wrapped, em, Config{ResearchFrontier:tap, DefaultRecallK:k, DefaultPackK:10, DefaultTokenBudget:2000})
+	if err != nil { db.Close(); t.Fatal(err) }
+	defer s.Close()
+	start := time.Now()
+	for i:=0; i<1000; i++ {
+		request := replica(i, false)
+		result.InitBytes += len(request.Turn.UserText)+len(request.Turn.AssistantText)
+		if _, err := s.CaptureTurn(ctx, request); err != nil { t.Fatal("seed capture", i, err) }
+	}
+	result.InitNS = time.Since(start).Nanoseconds()
+	ledgerPath := t.TempDir()+"/learner.sqlite"
+	durable, err := researchmemory.OpenDurable(ctx, ledgerPath, tenant, "public-load", 1, 42)
+	if err != nil { t.Fatal(err) }
+	defer durable.Close()
+	preview := researchmemory.New(1, 42)
+	type submission struct { id uint64; at time.Time }
+	type observation struct { ages []int64; err error }
+	submissions := make(chan submission, 64)
+	observed := make(chan observation, 1)
+	observerCtx, stopObserver := context.WithCancel(ctx)
+	go func() {
+		out := observation{}
+		for label := range submissions {
+			if err := durable.WaitProcessed(observerCtx, label.id); err != nil { out.err = err; break }
+			completed, failed, _, _ := durable.Counts()
+			if failed != 0 || completed < label.id { out.err=fmt.Errorf("label %d not published", label.id); break }
+			out.ages=append(out.ages, time.Since(label.at).Nanoseconds())
+		}
+		observed <- out
+	}()
+	defer func() { if submissions != nil { stopObserver(); close(submissions); <-observed }; stopObserver() }()
+	origin := time.Now()
+	type writerResult struct { durations, starts, ends []int64; bytes int; err error }
+	writerDone := make(chan writerResult, 1)
+	started := make(chan struct{})
+	writerCtx, stopWriter := context.WithCancel(ctx)
+	go func() {
+		out := writerResult{}
+		defer func() { writerDone <- out }()
+		ticker := time.NewTicker(time.Millisecond)
+		defer ticker.Stop()
+		for i:=0; i<256; i++ {
+			if i>0 { select { case <-writerCtx.Done(): return; case <-ticker.C: } }
+			request := replica(i, true)
+			begin := time.Now()
+			_, err := s.CaptureTurn(writerCtx, request)
+			end := time.Now()
+			if i==0 { close(started) }
+			if err != nil { out.err=err; return }
+			out.durations=append(out.durations,end.Sub(begin).Nanoseconds())
+			out.starts=append(out.starts,begin.Sub(origin).Nanoseconds())
+			out.ends=append(out.ends,end.Sub(origin).Nanoseconds())
+			out.bytes+=len(request.Turn.UserText)+len(request.Turn.AssistantText)
+		}
+	}()
+	defer func() { if writerDone != nil { stopWriter(); <-writerDone }; stopWriter() }()
+	<-started
+	bindings := make([]researchmemory.ServiceBinding, 0, 64)
+	for i:=0; i<64; i++ {
+		queryAt := now.Add(time.Duration(2*i)*time.Second)
+		request := model.RecallRequest{ProtocolVersion:model.ProtocolVersion, TenantID:tenant, SessionID:fmt.Sprintf("request-%d",i), Query:questions[i%len(questions)], AsOf:queryAt, RecallK:k, PackK:10, TokenBudget:2000}
+		begin := time.Now()
+		packet, err := s.Recall(ctx, request)
+		end := time.Now()
+		result.RecallNS=append(result.RecallNS,end.Sub(begin).Nanoseconds())
+		result.RecallStartNS=append(result.RecallStartNS,begin.Sub(origin).Nanoseconds())
+		result.RecallEndNS=append(result.RecallEndNS,end.Sub(origin).Nanoseconds())
+		if err != nil { t.Fatal("recall",i,err) }
+		in, err := tap.Take(ctx)
+		if err != nil { t.Fatal(err) }
+		result.CandidateCounts=append(result.CandidateCounts,len(in.Candidates))
+		result.PackedCounts=append(result.PackedCounts,len(packet.Candidates))
+		if len(in.Candidates)!=k { t.Fatal("frontier size differs",len(in.Candidates),k) }
+		for _, candidate := range in.Candidates { if !strings.HasPrefix(candidate.EventID,"seed-") { t.Fatal("future event in frontier",candidate.EventID) } }
+		for _, candidate := range packet.Candidates { if !strings.HasPrefix(candidate.Event.ID,"seed-") { t.Fatal("future event in packet",candidate.Event.ID) } }
+		candidate := in.Candidates[i%len(in.Candidates)]
+		prediction, err := preview.Predict(candidate.Features,candidate.Baseline,1,in.AsOf)
+		if err != nil || prediction.ID!=uint64(i+1) { t.Fatal("preview identity",prediction,err) }
+		envelope, err := preview.Record(prediction.ID)
+		if err != nil { t.Fatal(err) }
+		binding := researchmemory.ServiceBinding{Tenant:tenant,JournalID:in.JournalID,EventID:candidate.EventID,Snapshot:in.Snapshot}
+		bindings=append(bindings,binding)
+		envelope.Binding=&binding
+		var original researchmemory.RecordedPrediction
+		err=s.WithValidatedResearchAsOfAdmission(ctx,envelope,request,func() error {
+			_,retry,err:=durable.AdmitBound(ctx,uint64(i+1),candidate.Features,candidate.Baseline,in.AsOf,binding)
+			if err!=nil || retry { return fmt.Errorf("admit retry=%v err=%v",retry,err) }
+			original,err=durable.Admission(ctx,uint64(i+1)); if err!=nil { return err }
+			return s.ValidateResearchAdmission(ctx,original,request)
+		})
+		if err!=nil || original.Binding==nil || *original.Binding!=binding { t.Fatal("bound admission",i,err) }
+		begin=time.Now()
+		submissions<-submission{id:uint64(i+1),at:begin}
+		err=s.WithValidatedResearchAsOfAdmission(ctx,original,request,func() error { _,err:=durable.Feedback(ctx,uint64(i+1),i%3!=0,queryAt.Add(time.Second)); return err })
+		result.FeedbackNS=append(result.FeedbackNS,time.Since(begin).Nanoseconds())
+		if err!=nil { t.Fatal("feedback",i,err) }
+	}
+	close(submissions)
+	out:=<-observed
+	submissions=nil
+	if out.err!=nil || len(out.ages)!=64 { t.Fatal("live publication",len(out.ages),out.err) }
+	result.LiveAgeNS=out.ages
+	completed,failed,pending,queued:=durable.Counts()
+	result.Completed=completed
+	if completed!=64 || failed!=0 || pending!=0 || queued!=0 { t.Fatal("publication counts",completed,failed,pending,queued) }
+	writer:=<-writerDone
+	writerDone=nil
+	result.CaptureNS,result.CaptureStartNS,result.CaptureEndNS=writer.durations,writer.starts,writer.ends
+	result.CaptureBytes=writer.bytes
+	if writer.err!=nil || len(writer.durations)!=256 { t.Fatal("capture writer",len(writer.durations),writer.err) }
+	// Intersect actual monotonic intervals, not a flag covering feedback as well.
+	for j:=range writer.starts { for i:=range result.RecallStartNS { if writer.starts[j]<result.RecallEndNS[i] && writer.ends[j]>result.RecallStartNS[i] { result.Overlaps++; break } } }
+	if result.Overlaps==0 || tap.Dropped()!=0 { t.Fatal("overlap or tap delivery",result.Overlaps,tap.Dropped()) }
+	if err:=durable.Close();err!=nil { t.Fatal(err) }
+	log,err:=researchledger.Open(ledgerPath)
+	if err!=nil { t.Fatal(err) }
+	defer log.Close()
+	rows,err:=log.ReadAfter(ctx,0,256)
+	result.LedgerRows=len(rows)
+	if err!=nil || len(rows)!=128 { t.Fatal("ledger rows",len(rows),err) }
+	seen:=make(map[string]bool)
+	for i:=0;i<64;i++ {
+		admit,terminal:=rows[2*i],rows[2*i+1]
+		var prediction researchmemory.RecordedPrediction
+		var feedback researchmemory.RecordedFeedback
+		if err:=json.Unmarshal(admit.Payload,&prediction);err!=nil { t.Fatal(err) }
+		if err:=json.Unmarshal(terminal.Payload,&feedback);err!=nil { t.Fatal(err) }
+		if admit.Kind!="admit" || terminal.Kind!="feedback" || admit.Key!=terminal.Key || admit.Key.Event!=fmt.Sprint(i+1) || prediction.Binding==nil || *prediction.Binding!=bindings[i] || seen[bindings[i].JournalID] || !prediction.At.Equal(now.Add(time.Duration(2*i)*time.Second)) || feedback.ID!=uint64(i+1) || feedback.Useful!=(i%3!=0) || !feedback.Available.Equal(prediction.At.Add(time.Second)) { t.Fatal("ledger identity",i) }
+		seen[bindings[i].JournalID]=true
+	}
+	start=time.Now()
+	restored,err:=researchmemory.ResumeBackground(ctx,log,tenant,"public-load",1,42,128)
+	result.ReplayNS=time.Since(start).Nanoseconds()
+	if err!=nil { t.Fatal(err) }
+	defer restored.Close()
+	completed,failed,pending,queued=restored.Counts()
+	result.ReplayCompleted=completed
+	if completed!=64 || failed!=0 || pending!=0 || queued!=0 { t.Fatal("replay counts",completed,failed,pending,queued) }
+	result.Functional=true
+	if researchDurableLoadPercentile(result.RecallNS,.99)>=100*time.Millisecond { t.Error("frozen recall p99 <100ms screen failed") }
+	if researchDurableLoadPercentile(result.LiveAgeNS,.99)>=250*time.Millisecond { t.Error("frozen publication p99 <250ms screen failed") }
+}
