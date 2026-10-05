@@ -1,0 +1,45 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import readline from 'node:readline';
+import {createGunzip} from 'node:zlib';
+import {evaluate as quality} from './quality-evaluate.mjs';
+import {evaluate as load,summarize as loadSummary} from './load-evaluate.mjs';
+import {independent as independentQuality} from './quality-independent.mjs';
+import {independent as independentLoad} from './load-independent.mjs';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+export async function verify(root,{sources=true,qualityCheck=true}={}){
+ const read=f=>fs.readFileSync(path.join(root,f)),json=f=>JSON.parse(read(f));
+ const m=json('manifest.json'),start=json('run-started.json'),run=json('run-results.json');
+ assert.equal(hash(read('PROTOCOL.md')),m.protocolSHA256);assert.equal(hash(read('prepare.mjs')),m.preparationSHA256);assert.equal(hash(read('manifest.json')),start.manifestSHA256);assert.equal(hash(read('run.mjs')),start.runnerSHA256);
+ if(sources)for(const[a,files]of Object.entries(m.sources))for(const[f,h]of Object.entries(files))assert.equal(hash(fs.readFileSync(path.join(m.paths[a],f))),h,a+'/'+f);
+ assert.equal(run.completed,true);assert.equal(run.preflightPassed,true);assert.equal(run.commands.length,42);assert.equal(start.plan.length,42);
+ for(let i=0;i<42;i++){
+  const c=run.commands[i],p=start.plan[i];for(const k of Object.keys(p))assert.deepEqual(c[k],p[k]);assert.equal(c.functional,true);assert.equal(c.signal,null);assert.equal(c.error,null);assert.equal(c.dataRaceReported,false);assert.equal(c.skipNames.length,0);
+  if(c.kind==='quality'){
+   if(!qualityCheck)continue;
+   assert.equal(c.status,0);const file=path.join(root,c.transcript),stream=fs.existsSync(file)?fs.createReadStream(file):fs.createReadStream(file+'.gz').pipe(createGunzip());
+   let passed=false;for await(const line of readline.createInterface({input:stream,crlfDelay:Infinity})){
+    assert.doesNotMatch(line,/^--- (FAIL|SKIP):|WARNING: DATA RACE|panic:|fatal error:/);
+    if(/^--- PASS: TestResearchShardedQualityV1 \(/.test(line))passed=true;
+   }assert.equal(passed,true);continue;
+  }
+  const b=read(c.transcript),t=b.toString();assert.equal(hash(b),c.sha256);assert.equal(b.length,c.bytes);assert.doesNotMatch(t,/WARNING: DATA RACE|panic:|fatal error:|--- SKIP:/);
+  if(c.kind==='preflight'){assert.equal(c.status,0);assert.ok(c.required.length>0);for(const name of c.required)assert.match(t,new RegExp('^--- PASS: '+name+' \\(','m'));}
+  if(c.kind==='race-load'||c.kind==='load'){
+   const measured=loadSummary(c),errors=[...t.matchAll(/^\s+public_capture_load_test.go:\d+: (.+)$/gm)].map(x=>x[1]).filter(x=>!x.startsWith('PUBLIC_CAPTURE_TRACE='));
+   const expected=[];if(measured.metrics.recall.p99_ms>=100)expected.push('frozen recall p99 <100ms screen failed');if(measured.metrics.live_age.p99_ms>=250)expected.push('frozen publication p99 <250ms screen failed');
+   assert.deepEqual(errors,expected);assert.deepEqual(errors,c.testErrors);assert.equal(c.status,measured.absolute?0:1);
+   if(c.status===0)assert.match(t,/^--- PASS: TestResearchPublicCaptureLoadV1 \(/m);
+   const timingOnly=c.status===1&&errors.length>0&&errors.every(x=>['frozen recall p99 <100ms screen failed','frozen publication p99 <250ms screen failed'].includes(x));
+   assert.equal(c.instrumentedTimingOnly,c.kind==='race-load'&&timingOnly);assert.ok(c.status===0||timingOnly);
+  }
+ }
+ const d=json('EVALUATOR_DERIVATION.json');for(const x of d.derivations)assert.equal(hash(read(x.dst)),x.destinationSHA256);
+ const l=load(root);assert.deepEqual(l,json('load-evaluation.json'));const il=independentLoad(root);assert.deepEqual(il,json('load-independent-results.json'));
+ let q=null,iq=null;if(qualityCheck){q=await quality(root);assert.deepEqual(q,json('quality-evaluation.json'));iq=await independentQuality(root);assert.deepEqual(iq,json('quality-independent-results.json'));}
+ return{verified:true,currentSourceReadback:sources,commands:42,preflightCommands:18,qualityRuns:8,loadRuns:16,quality:q?.armVerdicts??'not rechecked',load:l.arms,independentQualityRows:iq?.checkedRows??'not rechecked',independentLoadSamples:il.latencySamples,wholeGoalValidation:false};
+}
+if(process.argv[1]&&fs.realpathSync(process.argv[1])===fs.realpathSync(fileURLToPath(import.meta.url)))console.log(JSON.stringify(await verify(path.dirname(fileURLToPath(import.meta.url)))));

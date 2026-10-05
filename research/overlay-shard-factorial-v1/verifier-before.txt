@@ -1,0 +1,25 @@
+✖ unexpected ordinary load failure is rejected even with consistent receipt summaries (27.629625ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67.451708
+
+✖ failing tests:
+
+test at negative.test.mjs:16:1
+✖ unexpected ordinary load failure is rejected even with consistent receipt summaries (27.629625ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async rejects (file:///Volumes/Data/eventframed/research/overlay-shard-factorial-v1/negative.test.mjs:11:67)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }

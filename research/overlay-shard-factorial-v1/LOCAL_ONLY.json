@@ -1,0 +1,14 @@
+{
+  "files": [
+    "quality-0-rebuild.txt",
+    "quality-0-overlay.txt",
+    "quality-0-shard.txt",
+    "quality-0-both.txt",
+    "quality-1-both.txt",
+    "quality-1-shard.txt",
+    "quality-1-overlay.txt",
+    "quality-1-rebuild.txt"
+  ],
+  "reason": "Oversized public numerical traces remain local; exact byte-equivalent gzip archives preserve every pass and failure.",
+  "privateDataUsed": false
+}

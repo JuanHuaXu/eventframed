@@ -1,0 +1,67 @@
+{
+  "sourceArchives": [
+    {
+      "arm": "rebuild",
+      "file": "go.mod",
+      "archive": "rebuild-go.mod.txt",
+      "sha256": "bce91f7b78d67bbcc84cc5eb641acff0287314368f04cd9792d2f8283ea38bd6"
+    },
+    {
+      "arm": "rebuild",
+      "file": "internal/store/libravdbstore/store.go",
+      "archive": "rebuild-internal-store-libravdbstore-store.go.txt",
+      "sha256": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974"
+    },
+    {
+      "arm": "overlay",
+      "file": "go.mod",
+      "archive": "overlay-go.mod.txt",
+      "sha256": "b61e3252a0c70ba10884b2ee3d619894df42e9d29f8096c344a912089643e487"
+    },
+    {
+      "arm": "overlay",
+      "file": "internal/store/libravdbstore/store.go",
+      "archive": "overlay-internal-store-libravdbstore-store.go.txt",
+      "sha256": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974"
+    },
+    {
+      "arm": "shard",
+      "file": "go.mod",
+      "archive": "shard-go.mod.txt",
+      "sha256": "bce91f7b78d67bbcc84cc5eb641acff0287314368f04cd9792d2f8283ea38bd6"
+    },
+    {
+      "arm": "shard",
+      "file": "internal/store/libravdbstore/store.go",
+      "archive": "shard-internal-store-libravdbstore-store.go.txt",
+      "sha256": "74dea08e7fb400c30d839a66852ea6c121000be3396f1723238eff1a6c262b94"
+    },
+    {
+      "arm": "shard",
+      "file": "internal/store/libravdbstore/sharded_topology_test.go",
+      "archive": "shard-internal-store-libravdbstore-sharded_topology_test.go.txt",
+      "sha256": "c8fc7edfe36ef69814b6a22baaed299ebacd57ce9d954780de1c1b31944b8139"
+    },
+    {
+      "arm": "both",
+      "file": "go.mod",
+      "archive": "both-go.mod.txt",
+      "sha256": "b61e3252a0c70ba10884b2ee3d619894df42e9d29f8096c344a912089643e487"
+    },
+    {
+      "arm": "both",
+      "file": "internal/store/libravdbstore/store.go",
+      "archive": "both-internal-store-libravdbstore-store.go.txt",
+      "sha256": "74dea08e7fb400c30d839a66852ea6c121000be3396f1723238eff1a6c262b94"
+    },
+    {
+      "arm": "both",
+      "file": "internal/store/libravdbstore/sharded_topology_test.go",
+      "archive": "both-internal-store-libravdbstore-sharded_topology_test.go.txt",
+      "sha256": "c8fc7edfe36ef69814b6a22baaed299ebacd57ce9d954780de1c1b31944b8139"
+    }
+  ],
+  "parent": "index-overlay-v6",
+  "dependencyCopiedUnchanged": true,
+  "runtimeAlgorithmChanges": false
+}

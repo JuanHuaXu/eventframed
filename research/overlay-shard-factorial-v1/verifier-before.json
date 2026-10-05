@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "--test-name-pattern=unexpected ordinary",
+    "negative.test.mjs"
+  ],
+  "status": 1,
+  "sha256": "2a7df04a71aa4f320be48dbbe1d2a8c07c8eecbc6842e449ef01984182ab32b3",
+  "scope": "tampered artifact witness, not runtime or experimental failure"
+}

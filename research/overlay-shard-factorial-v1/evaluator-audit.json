@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "evaluate.test.mjs",
+    "negative.test.mjs"
+  ],
+  "status": 0,
+  "sha256": "dc45f114e44766cc12882e6cc045fcdd9a493182a3418c64a3e4c0bbce0c45e3",
+  "tests": 13,
+  "postOutcomeVerifierRepair": true
+}

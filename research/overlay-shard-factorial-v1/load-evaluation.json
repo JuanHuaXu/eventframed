@@ -1,0 +1,885 @@
+{
+  "verified": true,
+  "rows": [
+    {
+      "arm": "rebuild",
+      "k": 50,
+      "pair": 0,
+      "metrics": {
+        "recall": {
+          "p50_ms": 102.927667,
+          "p95_ms": 134.254292,
+          "p99_ms": 242.593834,
+          "max_ms": 242.593834
+        },
+        "capture": {
+          "p50_ms": 34.921459,
+          "p95_ms": 49.398416,
+          "p99_ms": 89.6675,
+          "max_ms": 98.707792
+        },
+        "feedback": {
+          "p50_ms": 31.065625,
+          "p95_ms": 42.889458,
+          "p99_ms": 66.341625,
+          "max_ms": 66.341625
+        },
+        "live_age": {
+          "p50_ms": 31.069416,
+          "p95_ms": 42.894625,
+          "p99_ms": 66.728083,
+          "max_ms": 66.728083
+        }
+      },
+      "initMS": 16415.61075,
+      "replayMS": 2.961958,
+      "wallMS": 28476.319916999957,
+      "overlaps": 204,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": false,
+      "status": 1
+    },
+    {
+      "arm": "overlay",
+      "k": 50,
+      "pair": 0,
+      "metrics": {
+        "recall": {
+          "p50_ms": 23.983958,
+          "p95_ms": 30.304334,
+          "p99_ms": 163.230959,
+          "max_ms": 163.230959
+        },
+        "capture": {
+          "p50_ms": 5.958708,
+          "p95_ms": 10.970958,
+          "p99_ms": 141.027625,
+          "max_ms": 167.141833
+        },
+        "feedback": {
+          "p50_ms": 4.995708,
+          "p95_ms": 5.734375,
+          "p99_ms": 150.841708,
+          "max_ms": 150.841708
+        },
+        "live_age": {
+          "p50_ms": 5.066291,
+          "p95_ms": 5.739583,
+          "p99_ms": 150.844583,
+          "max_ms": 150.844583
+        }
+      },
+      "initMS": 6469.066083,
+      "replayMS": 3.193125,
+      "wallMS": 10496.357499999925,
+      "overlaps": 209,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": false,
+      "status": 1
+    },
+    {
+      "arm": "shard",
+      "k": 50,
+      "pair": 0,
+      "metrics": {
+        "recall": {
+          "p50_ms": 39.446916,
+          "p95_ms": 42.329291,
+          "p99_ms": 43.335083,
+          "max_ms": 43.335083
+        },
+        "capture": {
+          "p50_ms": 11.044458,
+          "p95_ms": 16.069,
+          "p99_ms": 17.032958,
+          "max_ms": 17.903292
+        },
+        "feedback": {
+          "p50_ms": 10.424958,
+          "p95_ms": 11.407666,
+          "p99_ms": 11.681959,
+          "max_ms": 11.681959
+        },
+        "live_age": {
+          "p50_ms": 10.441375,
+          "p95_ms": 11.4115,
+          "p99_ms": 11.685375,
+          "max_ms": 11.685375
+        }
+      },
+      "initMS": 7762.253625,
+      "replayMS": 3.277625,
+      "wallMS": 12415.305167000042,
+      "overlaps": 204,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": true,
+      "status": 0
+    },
+    {
+      "arm": "both",
+      "k": 50,
+      "pair": 0,
+      "metrics": {
+        "recall": {
+          "p50_ms": 25.302375,
+          "p95_ms": 32.237167,
+          "p99_ms": 91.784583,
+          "max_ms": 91.784583
+        },
+        "capture": {
+          "p50_ms": 6.032792,
+          "p95_ms": 11.152666,
+          "p99_ms": 28.917584,
+          "max_ms": 31.578416
+        },
+        "feedback": {
+          "p50_ms": 5.244042,
+          "p95_ms": 6.078916,
+          "p99_ms": 6.636416,
+          "max_ms": 6.636416
+        },
+        "live_age": {
+          "p50_ms": 5.25,
+          "p95_ms": 6.226542,
+          "p99_ms": 6.646416,
+          "max_ms": 6.646416
+        }
+      },
+      "initMS": 6194.067583,
+      "replayMS": 3.031792,
+      "wallMS": 9720.997166999965,
+      "overlaps": 208,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": true,
+      "status": 0
+    },
+    {
+      "arm": "both",
+      "k": 50,
+      "pair": 1,
+      "metrics": {
+        "recall": {
+          "p50_ms": 25.827292,
+          "p95_ms": 32.211334,
+          "p99_ms": 75.838625,
+          "max_ms": 75.838625
+        },
+        "capture": {
+          "p50_ms": 6.02025,
+          "p95_ms": 11.236958,
+          "p99_ms": 25.97525,
+          "max_ms": 30.660459
+        },
+        "feedback": {
+          "p50_ms": 5.269,
+          "p95_ms": 6.344,
+          "p99_ms": 25.37125,
+          "max_ms": 25.37125
+        },
+        "live_age": {
+          "p50_ms": 5.274,
+          "p95_ms": 6.53375,
+          "p99_ms": 25.37525,
+          "max_ms": 25.37525
+        }
+      },
+      "initMS": 5847.102625,
+      "replayMS": 2.9855,
+      "wallMS": 9236.253999999957,
+      "overlaps": 209,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": true,
+      "status": 0
+    },
+    {
+      "arm": "shard",
+      "k": 50,
+      "pair": 1,
+      "metrics": {
+        "recall": {
+          "p50_ms": 39.91425,
+          "p95_ms": 43.629084,
+          "p99_ms": 45.938,
+          "max_ms": 45.938
+        },
+        "capture": {
+          "p50_ms": 11.063,
+          "p95_ms": 16.0595,
+          "p99_ms": 17.894625,
+          "max_ms": 19.648125
+        },
+        "feedback": {
+          "p50_ms": 10.428084,
+          "p95_ms": 11.436667,
+          "p99_ms": 15.568416,
+          "max_ms": 15.568416
+        },
+        "live_age": {
+          "p50_ms": 10.43975,
+          "p95_ms": 11.471959,
+          "p99_ms": 15.575833,
+          "max_ms": 15.575833
+        }
+      },
+      "initMS": 7834.407916,
+      "replayMS": 3.337166,
+      "wallMS": 12377.635708000045,
+      "overlaps": 204,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": true,
+      "status": 0
+    },
+    {
+      "arm": "overlay",
+      "k": 50,
+      "pair": 1,
+      "metrics": {
+        "recall": {
+          "p50_ms": 24.418666,
+          "p95_ms": 34.78375,
+          "p99_ms": 179.977083,
+          "max_ms": 179.977083
+        },
+        "capture": {
+          "p50_ms": 6.022208,
+          "p95_ms": 11.217334,
+          "p99_ms": 146.959875,
+          "max_ms": 158.33875
+        },
+        "feedback": {
+          "p50_ms": 5.308333,
+          "p95_ms": 6.565666,
+          "p99_ms": 133.274833,
+          "max_ms": 133.274833
+        },
+        "live_age": {
+          "p50_ms": 5.311708,
+          "p95_ms": 6.719708,
+          "p99_ms": 133.278541,
+          "max_ms": 133.278541
+        }
+      },
+      "initMS": 6387.497583,
+      "replayMS": 2.966792,
+      "wallMS": 10217.808625000063,
+      "overlaps": 211,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": false,
+      "status": 1
+    },
+    {
+      "arm": "rebuild",
+      "k": 50,
+      "pair": 1,
+      "metrics": {
+        "recall": {
+          "p50_ms": 101.639541,
+          "p95_ms": 112.358375,
+          "p99_ms": 116.794583,
+          "max_ms": 116.794583
+        },
+        "capture": {
+          "p50_ms": 33.921958,
+          "p95_ms": 38.991958,
+          "p99_ms": 39.980875,
+          "max_ms": 41.062334
+        },
+        "feedback": {
+          "p50_ms": 31.400917,
+          "p95_ms": 34.883333,
+          "p99_ms": 35.965459,
+          "max_ms": 35.965459
+        },
+        "live_age": {
+          "p50_ms": 31.406084,
+          "p95_ms": 35.319958,
+          "p99_ms": 35.969417,
+          "max_ms": 35.969417
+        }
+      },
+      "initMS": 15565.946542,
+      "replayMS": 2.982792,
+      "wallMS": 25593.633833000087,
+      "overlaps": 204,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": false,
+      "status": 1
+    },
+    {
+      "arm": "rebuild",
+      "k": 200,
+      "pair": 0,
+      "metrics": {
+        "recall": {
+          "p50_ms": 139.739,
+          "p95_ms": 157.874375,
+          "p99_ms": 158.913792,
+          "max_ms": 158.913792
+        },
+        "capture": {
+          "p50_ms": 34.635375,
+          "p95_ms": 44.060791,
+          "p99_ms": 46.889125,
+          "max_ms": 47.484958
+        },
+        "feedback": {
+          "p50_ms": 31.793917,
+          "p95_ms": 36.208667,
+          "p99_ms": 37.027875,
+          "max_ms": 37.027875
+        },
+        "live_age": {
+          "p50_ms": 31.798625,
+          "p95_ms": 36.311625,
+          "p99_ms": 37.032917,
+          "max_ms": 37.032917
+        }
+      },
+      "initMS": 15618.107666,
+      "replayMS": 3.004042,
+      "wallMS": 26700.710166000063,
+      "overlaps": 213,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": false,
+      "status": 1
+    },
+    {
+      "arm": "overlay",
+      "k": 200,
+      "pair": 0,
+      "metrics": {
+        "recall": {
+          "p50_ms": 30.37,
+          "p95_ms": 164.45175,
+          "p99_ms": 193.193958,
+          "max_ms": 193.193958
+        },
+        "capture": {
+          "p50_ms": 4.258458,
+          "p95_ms": 16.386708,
+          "p99_ms": 137.461666,
+          "max_ms": 155.862834
+        },
+        "feedback": {
+          "p50_ms": 1.883292,
+          "p95_ms": 6.480708,
+          "p99_ms": 6.805625,
+          "max_ms": 6.805625
+        },
+        "live_age": {
+          "p50_ms": 1.910709,
+          "p95_ms": 6.484542,
+          "p99_ms": 6.809042,
+          "max_ms": 6.809042
+        }
+      },
+      "initMS": 6369.650917,
+      "replayMS": 3.319083,
+      "wallMS": 11255.812082999968,
+      "overlaps": 231,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": false,
+      "status": 1
+    },
+    {
+      "arm": "shard",
+      "k": 200,
+      "pair": 0,
+      "metrics": {
+        "recall": {
+          "p50_ms": 57.837334,
+          "p95_ms": 62.588834,
+          "p99_ms": 70.401959,
+          "max_ms": 70.401959
+        },
+        "capture": {
+          "p50_ms": 12.794292,
+          "p95_ms": 22.006416,
+          "p99_ms": 23.114167,
+          "max_ms": 23.833291
+        },
+        "feedback": {
+          "p50_ms": 11.265041,
+          "p95_ms": 12.33725,
+          "p99_ms": 12.550625,
+          "max_ms": 12.550625
+        },
+        "live_age": {
+          "p50_ms": 11.269041,
+          "p95_ms": 12.372917,
+          "p99_ms": 13.194667,
+          "max_ms": 13.194667
+        }
+      },
+      "initMS": 7660.28425,
+      "replayMS": 3.483458,
+      "wallMS": 13196.404290999984,
+      "overlaps": 213,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": true,
+      "status": 0
+    },
+    {
+      "arm": "both",
+      "k": 200,
+      "pair": 0,
+      "metrics": {
+        "recall": {
+          "p50_ms": 30.064125,
+          "p95_ms": 61.466875,
+          "p99_ms": 82.281209,
+          "max_ms": 82.281209
+        },
+        "capture": {
+          "p50_ms": 4.888959,
+          "p95_ms": 16.728542,
+          "p99_ms": 25.813375,
+          "max_ms": 28.995791
+        },
+        "feedback": {
+          "p50_ms": 1.845208,
+          "p95_ms": 6.775416,
+          "p99_ms": 25.62425,
+          "max_ms": 25.62425
+        },
+        "live_age": {
+          "p50_ms": 1.893542,
+          "p95_ms": 6.779375,
+          "p99_ms": 25.629541,
+          "max_ms": 25.629541
+        }
+      },
+      "initMS": 5822.678542,
+      "replayMS": 3.008333,
+      "wallMS": 10249.53212499991,
+      "overlaps": 230,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": true,
+      "status": 0
+    },
+    {
+      "arm": "both",
+      "k": 200,
+      "pair": 1,
+      "metrics": {
+        "recall": {
+          "p50_ms": 30.173916,
+          "p95_ms": 60.434084,
+          "p99_ms": 64.43475,
+          "max_ms": 64.43475
+        },
+        "capture": {
+          "p50_ms": 4.727,
+          "p95_ms": 16.831584,
+          "p99_ms": 25.016583,
+          "max_ms": 29.024458
+        },
+        "feedback": {
+          "p50_ms": 1.838167,
+          "p95_ms": 6.971458,
+          "p99_ms": 24.215542,
+          "max_ms": 24.215542
+        },
+        "live_age": {
+          "p50_ms": 1.863458,
+          "p95_ms": 6.978333,
+          "p99_ms": 24.224,
+          "max_ms": 24.224
+        }
+      },
+      "initMS": 5967.144833,
+      "replayMS": 3.046583,
+      "wallMS": 10354.564957999974,
+      "overlaps": 231,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": true,
+      "status": 0
+    },
+    {
+      "arm": "shard",
+      "k": 200,
+      "pair": 1,
+      "metrics": {
+        "recall": {
+          "p50_ms": 57.478083,
+          "p95_ms": 66.948709,
+          "p99_ms": 75.464917,
+          "max_ms": 75.464917
+        },
+        "capture": {
+          "p50_ms": 12.97725,
+          "p95_ms": 22.109083,
+          "p99_ms": 24.456541,
+          "max_ms": 32.876292
+        },
+        "feedback": {
+          "p50_ms": 11.374791,
+          "p95_ms": 13.21275,
+          "p99_ms": 16.369375,
+          "max_ms": 16.369375
+        },
+        "live_age": {
+          "p50_ms": 11.383166,
+          "p95_ms": 13.21975,
+          "p99_ms": 16.845667,
+          "max_ms": 16.845667
+        }
+      },
+      "initMS": 7743.318875,
+      "replayMS": 3.475375,
+      "wallMS": 13344.782708000042,
+      "overlaps": 213,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": true,
+      "status": 0
+    },
+    {
+      "arm": "overlay",
+      "k": 200,
+      "pair": 1,
+      "metrics": {
+        "recall": {
+          "p50_ms": 30.319333,
+          "p95_ms": 175.122375,
+          "p99_ms": 195.6255,
+          "max_ms": 195.6255
+        },
+        "capture": {
+          "p50_ms": 4.861792,
+          "p95_ms": 15.996958,
+          "p99_ms": 133.77225,
+          "max_ms": 155.303125
+        },
+        "feedback": {
+          "p50_ms": 1.847334,
+          "p95_ms": 6.483333,
+          "p99_ms": 7.597041,
+          "max_ms": 7.597041
+        },
+        "live_age": {
+          "p50_ms": 1.867125,
+          "p95_ms": 6.486292,
+          "p99_ms": 7.60475,
+          "max_ms": 7.60475
+        }
+      },
+      "initMS": 6300.569541,
+      "replayMS": 3.013375,
+      "wallMS": 11182.282125000027,
+      "overlaps": 231,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": false,
+      "status": 1
+    },
+    {
+      "arm": "rebuild",
+      "k": 200,
+      "pair": 1,
+      "metrics": {
+        "recall": {
+          "p50_ms": 139.157916,
+          "p95_ms": 156.983833,
+          "p99_ms": 161.436375,
+          "max_ms": 161.436375
+        },
+        "capture": {
+          "p50_ms": 34.871583,
+          "p95_ms": 44.040791,
+          "p99_ms": 46.16775,
+          "max_ms": 47.052625
+        },
+        "feedback": {
+          "p50_ms": 31.951583,
+          "p95_ms": 36.162958,
+          "p99_ms": 36.446042,
+          "max_ms": 36.446042
+        },
+        "live_age": {
+          "p50_ms": 31.956208,
+          "p95_ms": 36.268917,
+          "p99_ms": 36.559125,
+          "max_ms": 36.559125
+        }
+      },
+      "initMS": 15653.203667,
+      "replayMS": 3.011458,
+      "wallMS": 26726.438209000044,
+      "overlaps": 213,
+      "captureBytes": 46766,
+      "initBytes": 182269,
+      "completed": 64,
+      "captures": 256,
+      "ledgerRows": 128,
+      "absolute": false,
+      "status": 1
+    }
+  ],
+  "contrasts": [
+    {
+      "k": 50,
+      "pair": 0,
+      "reference": "rebuild",
+      "candidate": "overlay",
+      "recallP99Ratio": 0.6728569985006297,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 50,
+      "pair": 0,
+      "reference": "rebuild",
+      "candidate": "shard",
+      "recallP99Ratio": 0.1786322524586507,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 50,
+      "pair": 0,
+      "reference": "rebuild",
+      "candidate": "both",
+      "recallP99Ratio": 0.3783467266525826,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 50,
+      "pair": 0,
+      "reference": "shard",
+      "candidate": "both",
+      "recallP99Ratio": 2.118020242398059,
+      "nonRegression": false,
+      "rescueImprovement": false
+    },
+    {
+      "k": 50,
+      "pair": 0,
+      "reference": "overlay",
+      "candidate": "both",
+      "recallP99Ratio": 0.5622988651313382,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 50,
+      "pair": 1,
+      "reference": "rebuild",
+      "candidate": "overlay",
+      "recallP99Ratio": 1.5409711510336057,
+      "nonRegression": false,
+      "rescueImprovement": false
+    },
+    {
+      "k": 50,
+      "pair": 1,
+      "reference": "rebuild",
+      "candidate": "shard",
+      "recallP99Ratio": 0.3933230362233495,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 50,
+      "pair": 1,
+      "reference": "rebuild",
+      "candidate": "both",
+      "recallP99Ratio": 0.6493334112935699,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 50,
+      "pair": 1,
+      "reference": "shard",
+      "candidate": "both",
+      "recallP99Ratio": 1.6508908746571465,
+      "nonRegression": false,
+      "rescueImprovement": false
+    },
+    {
+      "k": 50,
+      "pair": 1,
+      "reference": "overlay",
+      "candidate": "both",
+      "recallP99Ratio": 0.4213793430578047,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 200,
+      "pair": 0,
+      "reference": "rebuild",
+      "candidate": "overlay",
+      "recallP99Ratio": 1.2157154867967659,
+      "nonRegression": false,
+      "rescueImprovement": false
+    },
+    {
+      "k": 200,
+      "pair": 0,
+      "reference": "rebuild",
+      "candidate": "shard",
+      "recallP99Ratio": 0.4430198166814873,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 200,
+      "pair": 0,
+      "reference": "rebuild",
+      "candidate": "both",
+      "recallP99Ratio": 0.5177726109512257,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 200,
+      "pair": 0,
+      "reference": "shard",
+      "candidate": "both",
+      "recallP99Ratio": 1.168734651261622,
+      "nonRegression": false,
+      "rescueImprovement": false
+    },
+    {
+      "k": 200,
+      "pair": 0,
+      "reference": "overlay",
+      "candidate": "both",
+      "recallP99Ratio": 0.42589949422745405,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 200,
+      "pair": 1,
+      "reference": "rebuild",
+      "candidate": "overlay",
+      "recallP99Ratio": 1.2117808021890977,
+      "nonRegression": false,
+      "rescueImprovement": false
+    },
+    {
+      "k": 200,
+      "pair": 1,
+      "reference": "rebuild",
+      "candidate": "shard",
+      "recallP99Ratio": 0.4674591894175027,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 200,
+      "pair": 1,
+      "reference": "rebuild",
+      "candidate": "both",
+      "recallP99Ratio": 0.39913402416277,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 200,
+      "pair": 1,
+      "reference": "shard",
+      "candidate": "both",
+      "recallP99Ratio": 0.8538371545548774,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    {
+      "k": 200,
+      "pair": 1,
+      "reference": "overlay",
+      "candidate": "both",
+      "recallP99Ratio": 0.3293780718771326,
+      "nonRegression": true,
+      "rescueImprovement": true
+    }
+  ],
+  "arms": {
+    "rebuild": {
+      "absolute": false,
+      "nonRegression": null,
+      "rescueImprovement": null
+    },
+    "overlay": {
+      "absolute": false,
+      "nonRegression": false,
+      "rescueImprovement": false
+    },
+    "shard": {
+      "absolute": true,
+      "nonRegression": true,
+      "rescueImprovement": true
+    },
+    "both": {
+      "absolute": true,
+      "nonRegression": true,
+      "rescueImprovement": true
+    }
+  },
+  "closedLoopOnly": true,
+  "p99IsSampleMaximum": true,
+  "peakRSS": "not captured",
+  "wholeGoalValidation": false
+}

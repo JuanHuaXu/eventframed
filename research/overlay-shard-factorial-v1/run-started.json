@@ -1,0 +1,1019 @@
+{
+  "startedAt": "2026-10-05T23:03:04.693Z",
+  "runnerSHA256": "3f2289d273cf63e2ec01f04b9f51a59241b090e4971e76b6262455dfe067776a",
+  "manifestSHA256": "c922854a47d5235e91e6cc89933c47180219e047a0976f9b62bb87da7c7ba9e5",
+  "plan": [
+    {
+      "arm": "library-control",
+      "kind": "preflight",
+      "label": "library-control-ordinary",
+      "args": [
+        "test",
+        "./libravdb",
+        "-run",
+        "^(TestResearchOverlay(WALAndReopen|PrefixIdentity)|TestResearchDeltaKeyCapacity|TestWithTxCommitsAcrossCollectionsAtomically|TestTransactionRollbackLeavesNoVisibleWrites|TestTransactionManyCommitsRemainCorrectAfterReopen|TestDurability_IncompleteWALTransaction)$",
+        "-count=1",
+        "-v",
+        "-timeout=3m"
+      ],
+      "required": [
+        "TestDurability_IncompleteWALTransaction",
+        "TestResearchDeltaKeyCapacity",
+        "TestResearchOverlayPrefixIdentity",
+        "TestResearchOverlayWALAndReopen",
+        "TestWithTxCommitsAcrossCollectionsAtomically",
+        "TestTransactionRollbackLeavesNoVisibleWrites",
+        "TestTransactionManyCommitsRemainCorrectAfterReopen"
+      ],
+      "race": false
+    },
+    {
+      "arm": "library-control",
+      "kind": "preflight",
+      "label": "library-control-race",
+      "args": [
+        "test",
+        "-race",
+        "./libravdb",
+        "-run",
+        "^(TestResearchOverlay(WALAndReopen|PrefixIdentity)|TestResearchDeltaKeyCapacity|TestWithTxCommitsAcrossCollectionsAtomically|TestTransactionRollbackLeavesNoVisibleWrites|TestTransactionManyCommitsRemainCorrectAfterReopen|TestDurability_IncompleteWALTransaction)$",
+        "-count=1",
+        "-v",
+        "-timeout=3m"
+      ],
+      "required": [
+        "TestDurability_IncompleteWALTransaction",
+        "TestResearchDeltaKeyCapacity",
+        "TestResearchOverlayPrefixIdentity",
+        "TestResearchOverlayWALAndReopen",
+        "TestWithTxCommitsAcrossCollectionsAtomically",
+        "TestTransactionRollbackLeavesNoVisibleWrites",
+        "TestTransactionManyCommitsRemainCorrectAfterReopen"
+      ],
+      "race": true
+    },
+    {
+      "arm": "library-candidate",
+      "kind": "preflight",
+      "label": "library-candidate-ordinary",
+      "args": [
+        "test",
+        "./internal/index",
+        "./libravdb",
+        "-run",
+        "^(TestResearchOverlay(SnapshotWhilePrepared|AbortCommitOwnership|FilterUpsertCompaction|ValidationPersistence|ConcurrentReaders|ProfileContract|ResultOwnership|ProviderHydrationBoundary|ColdVisibility|BaseErrorsRemainVisible|CanonicalPublicScore|SparseOrdinals|PrefixIdentity|WALAndReopen)|TestResearchDeltaKeyCapacity|TestWithTxCommitsAcrossCollectionsAtomically|TestTransactionRollbackLeavesNoVisibleWrites|TestTransactionManyCommitsRemainCorrectAfterReopen|TestDurability_IncompleteWALTransaction)$",
+        "-count=1",
+        "-v",
+        "-timeout=3m"
+      ],
+      "required": [
+        "TestResearchOverlayBaseErrorsRemainVisible",
+        "TestResearchOverlayColdVisibility",
+        "TestResearchOverlaySparseOrdinals",
+        "TestResearchOverlayResultOwnership",
+        "TestResearchOverlayProviderHydrationBoundary",
+        "TestResearchOverlayProfileContract",
+        "TestResearchOverlaySnapshotWhilePrepared",
+        "TestResearchOverlayAbortCommitOwnership",
+        "TestResearchOverlayFilterUpsertCompaction",
+        "TestResearchOverlayValidationPersistence",
+        "TestResearchOverlayConcurrentReaders",
+        "TestDurability_IncompleteWALTransaction",
+        "TestResearchDeltaKeyCapacity",
+        "TestResearchOverlayPrefixIdentity",
+        "TestResearchOverlayCanonicalPublicScore",
+        "TestResearchOverlayWALAndReopen",
+        "TestWithTxCommitsAcrossCollectionsAtomically",
+        "TestTransactionRollbackLeavesNoVisibleWrites",
+        "TestTransactionManyCommitsRemainCorrectAfterReopen"
+      ],
+      "race": false
+    },
+    {
+      "arm": "library-candidate",
+      "kind": "preflight",
+      "label": "library-candidate-race",
+      "args": [
+        "test",
+        "-race",
+        "./internal/index",
+        "./libravdb",
+        "-run",
+        "^(TestResearchOverlay(SnapshotWhilePrepared|AbortCommitOwnership|FilterUpsertCompaction|ValidationPersistence|ConcurrentReaders|ProfileContract|ResultOwnership|ProviderHydrationBoundary|ColdVisibility|BaseErrorsRemainVisible|CanonicalPublicScore|SparseOrdinals|PrefixIdentity|WALAndReopen)|TestResearchDeltaKeyCapacity|TestWithTxCommitsAcrossCollectionsAtomically|TestTransactionRollbackLeavesNoVisibleWrites|TestTransactionManyCommitsRemainCorrectAfterReopen|TestDurability_IncompleteWALTransaction)$",
+        "-count=1",
+        "-v",
+        "-timeout=3m"
+      ],
+      "required": [
+        "TestResearchOverlayBaseErrorsRemainVisible",
+        "TestResearchOverlayColdVisibility",
+        "TestResearchOverlaySparseOrdinals",
+        "TestResearchOverlayResultOwnership",
+        "TestResearchOverlayProviderHydrationBoundary",
+        "TestResearchOverlayProfileContract",
+        "TestResearchOverlaySnapshotWhilePrepared",
+        "TestResearchOverlayAbortCommitOwnership",
+        "TestResearchOverlayFilterUpsertCompaction",
+        "TestResearchOverlayValidationPersistence",
+        "TestResearchOverlayConcurrentReaders",
+        "TestDurability_IncompleteWALTransaction",
+        "TestResearchDeltaKeyCapacity",
+        "TestResearchOverlayPrefixIdentity",
+        "TestResearchOverlayCanonicalPublicScore",
+        "TestResearchOverlayWALAndReopen",
+        "TestWithTxCommitsAcrossCollectionsAtomically",
+        "TestTransactionRollbackLeavesNoVisibleWrites",
+        "TestTransactionManyCommitsRemainCorrectAfterReopen"
+      ],
+      "race": true
+    },
+    {
+      "arm": "rebuild",
+      "kind": "preflight",
+      "label": "rebuild-adjacent-ordinary",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestRecallExcludesUnavailableEventsBeforeCandidateLimit|TestRerankingRunsBeforeIndependentPackingCap|TestCalibrationChangesForecastLawWithoutChangingRetrievalScore|TestRerankingReceivesOnlyEventFrameCorpus|TestDefaultPolicyActivatesCompleteBoundedFrontier|TestVectorHydrationIsExplicit|TestStoreRoundTripAndAvailabilityGate|TestDurableStateSurvivesRestartAndPinsEmbeddingContract|TestBayesianJournalSurvivesRestartAndRejectsConflict|TestConcurrentBayesianJournalsRemainDurable|TestBayesianPosteriorUpdateSurvivesRestart|TestAntiPigeonRevisionSurvivesRestart|TestSharedEvidenceDiscountSurvivesRestart|TestPredictiveSnapInvalidationRollbackAndRestart|TestDeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "required": [
+        "TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields",
+        "TestRecallExcludesUnavailableEventsBeforeCandidateLimit",
+        "TestRerankingRunsBeforeIndependentPackingCap",
+        "TestCalibrationChangesForecastLawWithoutChangingRetrievalScore",
+        "TestRerankingReceivesOnlyEventFrameCorpus",
+        "TestDefaultPolicyActivatesCompleteBoundedFrontier",
+        "TestVectorHydrationIsExplicit",
+        "TestStoreRoundTripAndAvailabilityGate",
+        "TestDurableStateSurvivesRestartAndPinsEmbeddingContract",
+        "TestBayesianJournalSurvivesRestartAndRejectsConflict",
+        "TestConcurrentBayesianJournalsRemainDurable",
+        "TestBayesianPosteriorUpdateSurvivesRestart",
+        "TestAntiPigeonRevisionSurvivesRestart",
+        "TestSharedEvidenceDiscountSurvivesRestart",
+        "TestPredictiveSnapInvalidationRollbackAndRestart",
+        "TestDeleteRetentionCompactAndBackup"
+      ],
+      "race": false
+    },
+    {
+      "arm": "rebuild",
+      "kind": "preflight",
+      "label": "rebuild-adjacent-race",
+      "args": [
+        "test",
+        "-race",
+        "-mod=readonly",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestRecallExcludesUnavailableEventsBeforeCandidateLimit|TestRerankingRunsBeforeIndependentPackingCap|TestCalibrationChangesForecastLawWithoutChangingRetrievalScore|TestRerankingReceivesOnlyEventFrameCorpus|TestDefaultPolicyActivatesCompleteBoundedFrontier|TestVectorHydrationIsExplicit|TestStoreRoundTripAndAvailabilityGate|TestDurableStateSurvivesRestartAndPinsEmbeddingContract|TestBayesianJournalSurvivesRestartAndRejectsConflict|TestConcurrentBayesianJournalsRemainDurable|TestBayesianPosteriorUpdateSurvivesRestart|TestAntiPigeonRevisionSurvivesRestart|TestSharedEvidenceDiscountSurvivesRestart|TestPredictiveSnapInvalidationRollbackAndRestart|TestDeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "required": [
+        "TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields",
+        "TestRecallExcludesUnavailableEventsBeforeCandidateLimit",
+        "TestRerankingRunsBeforeIndependentPackingCap",
+        "TestCalibrationChangesForecastLawWithoutChangingRetrievalScore",
+        "TestRerankingReceivesOnlyEventFrameCorpus",
+        "TestDefaultPolicyActivatesCompleteBoundedFrontier",
+        "TestVectorHydrationIsExplicit",
+        "TestStoreRoundTripAndAvailabilityGate",
+        "TestDurableStateSurvivesRestartAndPinsEmbeddingContract",
+        "TestBayesianJournalSurvivesRestartAndRejectsConflict",
+        "TestConcurrentBayesianJournalsRemainDurable",
+        "TestBayesianPosteriorUpdateSurvivesRestart",
+        "TestAntiPigeonRevisionSurvivesRestart",
+        "TestSharedEvidenceDiscountSurvivesRestart",
+        "TestPredictiveSnapInvalidationRollbackAndRestart",
+        "TestDeleteRetentionCompactAndBackup"
+      ],
+      "race": true
+    },
+    {
+      "arm": "overlay",
+      "kind": "preflight",
+      "label": "overlay-adjacent-ordinary",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestRecallExcludesUnavailableEventsBeforeCandidateLimit|TestRerankingRunsBeforeIndependentPackingCap|TestCalibrationChangesForecastLawWithoutChangingRetrievalScore|TestRerankingReceivesOnlyEventFrameCorpus|TestDefaultPolicyActivatesCompleteBoundedFrontier|TestVectorHydrationIsExplicit|TestStoreRoundTripAndAvailabilityGate|TestDurableStateSurvivesRestartAndPinsEmbeddingContract|TestBayesianJournalSurvivesRestartAndRejectsConflict|TestConcurrentBayesianJournalsRemainDurable|TestBayesianPosteriorUpdateSurvivesRestart|TestAntiPigeonRevisionSurvivesRestart|TestSharedEvidenceDiscountSurvivesRestart|TestPredictiveSnapInvalidationRollbackAndRestart|TestDeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "required": [
+        "TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields",
+        "TestRecallExcludesUnavailableEventsBeforeCandidateLimit",
+        "TestRerankingRunsBeforeIndependentPackingCap",
+        "TestCalibrationChangesForecastLawWithoutChangingRetrievalScore",
+        "TestRerankingReceivesOnlyEventFrameCorpus",
+        "TestDefaultPolicyActivatesCompleteBoundedFrontier",
+        "TestVectorHydrationIsExplicit",
+        "TestStoreRoundTripAndAvailabilityGate",
+        "TestDurableStateSurvivesRestartAndPinsEmbeddingContract",
+        "TestBayesianJournalSurvivesRestartAndRejectsConflict",
+        "TestConcurrentBayesianJournalsRemainDurable",
+        "TestBayesianPosteriorUpdateSurvivesRestart",
+        "TestAntiPigeonRevisionSurvivesRestart",
+        "TestSharedEvidenceDiscountSurvivesRestart",
+        "TestPredictiveSnapInvalidationRollbackAndRestart",
+        "TestDeleteRetentionCompactAndBackup"
+      ],
+      "race": false
+    },
+    {
+      "arm": "overlay",
+      "kind": "preflight",
+      "label": "overlay-adjacent-race",
+      "args": [
+        "test",
+        "-race",
+        "-mod=readonly",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestRecallExcludesUnavailableEventsBeforeCandidateLimit|TestRerankingRunsBeforeIndependentPackingCap|TestCalibrationChangesForecastLawWithoutChangingRetrievalScore|TestRerankingReceivesOnlyEventFrameCorpus|TestDefaultPolicyActivatesCompleteBoundedFrontier|TestVectorHydrationIsExplicit|TestStoreRoundTripAndAvailabilityGate|TestDurableStateSurvivesRestartAndPinsEmbeddingContract|TestBayesianJournalSurvivesRestartAndRejectsConflict|TestConcurrentBayesianJournalsRemainDurable|TestBayesianPosteriorUpdateSurvivesRestart|TestAntiPigeonRevisionSurvivesRestart|TestSharedEvidenceDiscountSurvivesRestart|TestPredictiveSnapInvalidationRollbackAndRestart|TestDeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "required": [
+        "TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields",
+        "TestRecallExcludesUnavailableEventsBeforeCandidateLimit",
+        "TestRerankingRunsBeforeIndependentPackingCap",
+        "TestCalibrationChangesForecastLawWithoutChangingRetrievalScore",
+        "TestRerankingReceivesOnlyEventFrameCorpus",
+        "TestDefaultPolicyActivatesCompleteBoundedFrontier",
+        "TestVectorHydrationIsExplicit",
+        "TestStoreRoundTripAndAvailabilityGate",
+        "TestDurableStateSurvivesRestartAndPinsEmbeddingContract",
+        "TestBayesianJournalSurvivesRestartAndRejectsConflict",
+        "TestConcurrentBayesianJournalsRemainDurable",
+        "TestBayesianPosteriorUpdateSurvivesRestart",
+        "TestAntiPigeonRevisionSurvivesRestart",
+        "TestSharedEvidenceDiscountSurvivesRestart",
+        "TestPredictiveSnapInvalidationRollbackAndRestart",
+        "TestDeleteRetentionCompactAndBackup"
+      ],
+      "race": true
+    },
+    {
+      "arm": "shard",
+      "kind": "preflight",
+      "label": "shard-adjacent-ordinary",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestRecallExcludesUnavailableEventsBeforeCandidateLimit|TestRerankingRunsBeforeIndependentPackingCap|TestCalibrationChangesForecastLawWithoutChangingRetrievalScore|TestRerankingReceivesOnlyEventFrameCorpus|TestDefaultPolicyActivatesCompleteBoundedFrontier|TestVectorHydrationIsExplicit|TestStoreRoundTripAndAvailabilityGate|TestDurableStateSurvivesRestartAndPinsEmbeddingContract|TestBayesianJournalSurvivesRestartAndRejectsConflict|TestConcurrentBayesianJournalsRemainDurable|TestBayesianPosteriorUpdateSurvivesRestart|TestAntiPigeonRevisionSurvivesRestart|TestSharedEvidenceDiscountSurvivesRestart|TestPredictiveSnapInvalidationRollbackAndRestart|TestDeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "required": [
+        "TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields",
+        "TestRecallExcludesUnavailableEventsBeforeCandidateLimit",
+        "TestRerankingRunsBeforeIndependentPackingCap",
+        "TestCalibrationChangesForecastLawWithoutChangingRetrievalScore",
+        "TestRerankingReceivesOnlyEventFrameCorpus",
+        "TestDefaultPolicyActivatesCompleteBoundedFrontier",
+        "TestVectorHydrationIsExplicit",
+        "TestStoreRoundTripAndAvailabilityGate",
+        "TestDurableStateSurvivesRestartAndPinsEmbeddingContract",
+        "TestBayesianJournalSurvivesRestartAndRejectsConflict",
+        "TestConcurrentBayesianJournalsRemainDurable",
+        "TestBayesianPosteriorUpdateSurvivesRestart",
+        "TestAntiPigeonRevisionSurvivesRestart",
+        "TestSharedEvidenceDiscountSurvivesRestart",
+        "TestPredictiveSnapInvalidationRollbackAndRestart",
+        "TestDeleteRetentionCompactAndBackup"
+      ],
+      "race": false
+    },
+    {
+      "arm": "shard",
+      "kind": "preflight",
+      "label": "shard-adjacent-race",
+      "args": [
+        "test",
+        "-race",
+        "-mod=readonly",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestRecallExcludesUnavailableEventsBeforeCandidateLimit|TestRerankingRunsBeforeIndependentPackingCap|TestCalibrationChangesForecastLawWithoutChangingRetrievalScore|TestRerankingReceivesOnlyEventFrameCorpus|TestDefaultPolicyActivatesCompleteBoundedFrontier|TestVectorHydrationIsExplicit|TestStoreRoundTripAndAvailabilityGate|TestDurableStateSurvivesRestartAndPinsEmbeddingContract|TestBayesianJournalSurvivesRestartAndRejectsConflict|TestConcurrentBayesianJournalsRemainDurable|TestBayesianPosteriorUpdateSurvivesRestart|TestAntiPigeonRevisionSurvivesRestart|TestSharedEvidenceDiscountSurvivesRestart|TestPredictiveSnapInvalidationRollbackAndRestart|TestDeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "required": [
+        "TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields",
+        "TestRecallExcludesUnavailableEventsBeforeCandidateLimit",
+        "TestRerankingRunsBeforeIndependentPackingCap",
+        "TestCalibrationChangesForecastLawWithoutChangingRetrievalScore",
+        "TestRerankingReceivesOnlyEventFrameCorpus",
+        "TestDefaultPolicyActivatesCompleteBoundedFrontier",
+        "TestVectorHydrationIsExplicit",
+        "TestStoreRoundTripAndAvailabilityGate",
+        "TestDurableStateSurvivesRestartAndPinsEmbeddingContract",
+        "TestBayesianJournalSurvivesRestartAndRejectsConflict",
+        "TestConcurrentBayesianJournalsRemainDurable",
+        "TestBayesianPosteriorUpdateSurvivesRestart",
+        "TestAntiPigeonRevisionSurvivesRestart",
+        "TestSharedEvidenceDiscountSurvivesRestart",
+        "TestPredictiveSnapInvalidationRollbackAndRestart",
+        "TestDeleteRetentionCompactAndBackup"
+      ],
+      "race": true
+    },
+    {
+      "arm": "both",
+      "kind": "preflight",
+      "label": "both-adjacent-ordinary",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestRecallExcludesUnavailableEventsBeforeCandidateLimit|TestRerankingRunsBeforeIndependentPackingCap|TestCalibrationChangesForecastLawWithoutChangingRetrievalScore|TestRerankingReceivesOnlyEventFrameCorpus|TestDefaultPolicyActivatesCompleteBoundedFrontier|TestVectorHydrationIsExplicit|TestStoreRoundTripAndAvailabilityGate|TestDurableStateSurvivesRestartAndPinsEmbeddingContract|TestBayesianJournalSurvivesRestartAndRejectsConflict|TestConcurrentBayesianJournalsRemainDurable|TestBayesianPosteriorUpdateSurvivesRestart|TestAntiPigeonRevisionSurvivesRestart|TestSharedEvidenceDiscountSurvivesRestart|TestPredictiveSnapInvalidationRollbackAndRestart|TestDeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "required": [
+        "TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields",
+        "TestRecallExcludesUnavailableEventsBeforeCandidateLimit",
+        "TestRerankingRunsBeforeIndependentPackingCap",
+        "TestCalibrationChangesForecastLawWithoutChangingRetrievalScore",
+        "TestRerankingReceivesOnlyEventFrameCorpus",
+        "TestDefaultPolicyActivatesCompleteBoundedFrontier",
+        "TestVectorHydrationIsExplicit",
+        "TestStoreRoundTripAndAvailabilityGate",
+        "TestDurableStateSurvivesRestartAndPinsEmbeddingContract",
+        "TestBayesianJournalSurvivesRestartAndRejectsConflict",
+        "TestConcurrentBayesianJournalsRemainDurable",
+        "TestBayesianPosteriorUpdateSurvivesRestart",
+        "TestAntiPigeonRevisionSurvivesRestart",
+        "TestSharedEvidenceDiscountSurvivesRestart",
+        "TestPredictiveSnapInvalidationRollbackAndRestart",
+        "TestDeleteRetentionCompactAndBackup"
+      ],
+      "race": false
+    },
+    {
+      "arm": "both",
+      "kind": "preflight",
+      "label": "both-adjacent-race",
+      "args": [
+        "test",
+        "-race",
+        "-mod=readonly",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestRecallExcludesUnavailableEventsBeforeCandidateLimit|TestRerankingRunsBeforeIndependentPackingCap|TestCalibrationChangesForecastLawWithoutChangingRetrievalScore|TestRerankingReceivesOnlyEventFrameCorpus|TestDefaultPolicyActivatesCompleteBoundedFrontier|TestVectorHydrationIsExplicit|TestStoreRoundTripAndAvailabilityGate|TestDurableStateSurvivesRestartAndPinsEmbeddingContract|TestBayesianJournalSurvivesRestartAndRejectsConflict|TestConcurrentBayesianJournalsRemainDurable|TestBayesianPosteriorUpdateSurvivesRestart|TestAntiPigeonRevisionSurvivesRestart|TestSharedEvidenceDiscountSurvivesRestart|TestPredictiveSnapInvalidationRollbackAndRestart|TestDeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "required": [
+        "TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields",
+        "TestRecallExcludesUnavailableEventsBeforeCandidateLimit",
+        "TestRerankingRunsBeforeIndependentPackingCap",
+        "TestCalibrationChangesForecastLawWithoutChangingRetrievalScore",
+        "TestRerankingReceivesOnlyEventFrameCorpus",
+        "TestDefaultPolicyActivatesCompleteBoundedFrontier",
+        "TestVectorHydrationIsExplicit",
+        "TestStoreRoundTripAndAvailabilityGate",
+        "TestDurableStateSurvivesRestartAndPinsEmbeddingContract",
+        "TestBayesianJournalSurvivesRestartAndRejectsConflict",
+        "TestConcurrentBayesianJournalsRemainDurable",
+        "TestBayesianPosteriorUpdateSurvivesRestart",
+        "TestAntiPigeonRevisionSurvivesRestart",
+        "TestSharedEvidenceDiscountSurvivesRestart",
+        "TestPredictiveSnapInvalidationRollbackAndRestart",
+        "TestDeleteRetentionCompactAndBackup"
+      ],
+      "race": true
+    },
+    {
+      "arm": "shard",
+      "kind": "preflight",
+      "label": "shard-topology-ordinary",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^TestResearchShardedTopologyReopenV1$",
+        "-count=1",
+        "-v",
+        "-timeout=90s"
+      ],
+      "required": [
+        "TestResearchShardedTopologyReopenV1"
+      ],
+      "race": false
+    },
+    {
+      "arm": "shard",
+      "kind": "preflight",
+      "label": "shard-topology-race",
+      "args": [
+        "test",
+        "-race",
+        "-mod=readonly",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^TestResearchShardedTopologyReopenV1$",
+        "-count=1",
+        "-v",
+        "-timeout=90s"
+      ],
+      "required": [
+        "TestResearchShardedTopologyReopenV1"
+      ],
+      "race": true
+    },
+    {
+      "arm": "both",
+      "kind": "preflight",
+      "label": "both-topology-ordinary",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^TestResearchShardedTopologyReopenV1$",
+        "-count=1",
+        "-v",
+        "-timeout=90s"
+      ],
+      "required": [
+        "TestResearchShardedTopologyReopenV1"
+      ],
+      "race": false
+    },
+    {
+      "arm": "both",
+      "kind": "preflight",
+      "label": "both-topology-race",
+      "args": [
+        "test",
+        "-race",
+        "-mod=readonly",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^TestResearchShardedTopologyReopenV1$",
+        "-count=1",
+        "-v",
+        "-timeout=90s"
+      ],
+      "required": [
+        "TestResearchShardedTopologyReopenV1"
+      ],
+      "race": true
+    },
+    {
+      "arm": "overlay",
+      "kind": "race-load",
+      "label": "overlay-load-race",
+      "args": [
+        "test",
+        "-race",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [],
+      "race": true,
+      "frontier": 200
+    },
+    {
+      "arm": "both",
+      "kind": "race-load",
+      "label": "both-load-race",
+      "args": [
+        "test",
+        "-race",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [],
+      "race": true,
+      "frontier": 200
+    },
+    {
+      "arm": "rebuild",
+      "kind": "quality",
+      "label": "quality-0-rebuild",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchShardedQualityV1$",
+        "-count=1",
+        "-v",
+        "-timeout=10m"
+      ],
+      "required": [
+        "TestResearchShardedQualityV1"
+      ],
+      "pair": 0
+    },
+    {
+      "arm": "overlay",
+      "kind": "quality",
+      "label": "quality-0-overlay",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchShardedQualityV1$",
+        "-count=1",
+        "-v",
+        "-timeout=10m"
+      ],
+      "required": [
+        "TestResearchShardedQualityV1"
+      ],
+      "pair": 0
+    },
+    {
+      "arm": "shard",
+      "kind": "quality",
+      "label": "quality-0-shard",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchShardedQualityV1$",
+        "-count=1",
+        "-v",
+        "-timeout=10m"
+      ],
+      "required": [
+        "TestResearchShardedQualityV1"
+      ],
+      "pair": 0
+    },
+    {
+      "arm": "both",
+      "kind": "quality",
+      "label": "quality-0-both",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchShardedQualityV1$",
+        "-count=1",
+        "-v",
+        "-timeout=10m"
+      ],
+      "required": [
+        "TestResearchShardedQualityV1"
+      ],
+      "pair": 0
+    },
+    {
+      "arm": "both",
+      "kind": "quality",
+      "label": "quality-1-both",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchShardedQualityV1$",
+        "-count=1",
+        "-v",
+        "-timeout=10m"
+      ],
+      "required": [
+        "TestResearchShardedQualityV1"
+      ],
+      "pair": 1
+    },
+    {
+      "arm": "shard",
+      "kind": "quality",
+      "label": "quality-1-shard",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchShardedQualityV1$",
+        "-count=1",
+        "-v",
+        "-timeout=10m"
+      ],
+      "required": [
+        "TestResearchShardedQualityV1"
+      ],
+      "pair": 1
+    },
+    {
+      "arm": "overlay",
+      "kind": "quality",
+      "label": "quality-1-overlay",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchShardedQualityV1$",
+        "-count=1",
+        "-v",
+        "-timeout=10m"
+      ],
+      "required": [
+        "TestResearchShardedQualityV1"
+      ],
+      "pair": 1
+    },
+    {
+      "arm": "rebuild",
+      "kind": "quality",
+      "label": "quality-1-rebuild",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchShardedQualityV1$",
+        "-count=1",
+        "-v",
+        "-timeout=10m"
+      ],
+      "required": [
+        "TestResearchShardedQualityV1"
+      ],
+      "pair": 1
+    },
+    {
+      "arm": "rebuild",
+      "kind": "load",
+      "label": "load-50-0-rebuild",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 50,
+      "pair": 0
+    },
+    {
+      "arm": "overlay",
+      "kind": "load",
+      "label": "load-50-0-overlay",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 50,
+      "pair": 0
+    },
+    {
+      "arm": "shard",
+      "kind": "load",
+      "label": "load-50-0-shard",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 50,
+      "pair": 0
+    },
+    {
+      "arm": "both",
+      "kind": "load",
+      "label": "load-50-0-both",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 50,
+      "pair": 0
+    },
+    {
+      "arm": "both",
+      "kind": "load",
+      "label": "load-50-1-both",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 50,
+      "pair": 1
+    },
+    {
+      "arm": "shard",
+      "kind": "load",
+      "label": "load-50-1-shard",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 50,
+      "pair": 1
+    },
+    {
+      "arm": "overlay",
+      "kind": "load",
+      "label": "load-50-1-overlay",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 50,
+      "pair": 1
+    },
+    {
+      "arm": "rebuild",
+      "kind": "load",
+      "label": "load-50-1-rebuild",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 50,
+      "pair": 1
+    },
+    {
+      "arm": "rebuild",
+      "kind": "load",
+      "label": "load-200-0-rebuild",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 200,
+      "pair": 0
+    },
+    {
+      "arm": "overlay",
+      "kind": "load",
+      "label": "load-200-0-overlay",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 200,
+      "pair": 0
+    },
+    {
+      "arm": "shard",
+      "kind": "load",
+      "label": "load-200-0-shard",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 200,
+      "pair": 0
+    },
+    {
+      "arm": "both",
+      "kind": "load",
+      "label": "load-200-0-both",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 200,
+      "pair": 0
+    },
+    {
+      "arm": "both",
+      "kind": "load",
+      "label": "load-200-1-both",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 200,
+      "pair": 1
+    },
+    {
+      "arm": "shard",
+      "kind": "load",
+      "label": "load-200-1-shard",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 200,
+      "pair": 1
+    },
+    {
+      "arm": "overlay",
+      "kind": "load",
+      "label": "load-200-1-overlay",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 200,
+      "pair": 1
+    },
+    {
+      "arm": "rebuild",
+      "kind": "load",
+      "label": "load-200-1-rebuild",
+      "args": [
+        "test",
+        "-mod=readonly",
+        "./internal/service",
+        "-run",
+        "^TestResearchPublicCaptureLoadV1$",
+        "-count=1",
+        "-v",
+        "-timeout=4m"
+      ],
+      "required": [
+        "TestResearchPublicCaptureLoadV1"
+      ],
+      "frontier": 200,
+      "pair": 1
+    }
+  ],
+  "workers": 10,
+  "orders": [
+    [
+      "rebuild",
+      "overlay",
+      "shard",
+      "both"
+    ],
+    [
+      "both",
+      "shard",
+      "overlay",
+      "rebuild"
+    ]
+  ],
+  "wholeGoalValidation": false
+}

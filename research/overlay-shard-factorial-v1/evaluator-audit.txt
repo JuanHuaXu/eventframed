@@ -1,0 +1,21 @@
+✔ complete raw trace accepted with explicit finite timing (0.888709ms)
+✔ truncated capture array is rejected (0.4735ms)
+✔ frontier truncation is rejected (1.560958ms)
+✔ false publication completion is rejected (0.129084ms)
+✔ fabricated overlap is rejected (0.32175ms)
+✔ inconsistent monotonic intervals are rejected (0.096875ms)
+✔ p99 includes last compaction outlier (0.270625ms)
+✔ future nominated identity is rejected before score interpretation (0.859166ms)
+✔ missing required PASS is rejected even with updated transcript hash (17.306375ms)
+✔ changed frozen thresholds are rejected (12.515625ms)
+✔ fabricated published load means are rejected (25.920292ms)
+✔ failed race preflight cannot be hidden by a functional flag (15.260542ms)
+✔ unexpected ordinary load failure is rejected even with consistent receipt summaries (18.139208ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 129.565417

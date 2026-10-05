@@ -1,0 +1,36 @@
+=== RUN   TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields
+--- PASS: TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields (0.01s)
+=== RUN   TestRecallExcludesUnavailableEventsBeforeCandidateLimit
+--- PASS: TestRecallExcludesUnavailableEventsBeforeCandidateLimit (0.00s)
+=== RUN   TestRerankingRunsBeforeIndependentPackingCap
+--- PASS: TestRerankingRunsBeforeIndependentPackingCap (0.00s)
+=== RUN   TestCalibrationChangesForecastLawWithoutChangingRetrievalScore
+--- PASS: TestCalibrationChangesForecastLawWithoutChangingRetrievalScore (0.00s)
+=== RUN   TestRerankingReceivesOnlyEventFrameCorpus
+--- PASS: TestRerankingReceivesOnlyEventFrameCorpus (0.00s)
+=== RUN   TestDefaultPolicyActivatesCompleteBoundedFrontier
+--- PASS: TestDefaultPolicyActivatesCompleteBoundedFrontier (0.02s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/service	1.473s
+=== RUN   TestVectorHydrationIsExplicit
+--- PASS: TestVectorHydrationIsExplicit (0.17s)
+=== RUN   TestStoreRoundTripAndAvailabilityGate
+--- PASS: TestStoreRoundTripAndAvailabilityGate (0.15s)
+=== RUN   TestDurableStateSurvivesRestartAndPinsEmbeddingContract
+--- PASS: TestDurableStateSurvivesRestartAndPinsEmbeddingContract (0.13s)
+=== RUN   TestBayesianJournalSurvivesRestartAndRejectsConflict
+--- PASS: TestBayesianJournalSurvivesRestartAndRejectsConflict (0.09s)
+=== RUN   TestConcurrentBayesianJournalsRemainDurable
+--- PASS: TestConcurrentBayesianJournalsRemainDurable (0.18s)
+=== RUN   TestBayesianPosteriorUpdateSurvivesRestart
+--- PASS: TestBayesianPosteriorUpdateSurvivesRestart (0.06s)
+=== RUN   TestAntiPigeonRevisionSurvivesRestart
+--- PASS: TestAntiPigeonRevisionSurvivesRestart (0.19s)
+=== RUN   TestSharedEvidenceDiscountSurvivesRestart
+--- PASS: TestSharedEvidenceDiscountSurvivesRestart (0.08s)
+=== RUN   TestPredictiveSnapInvalidationRollbackAndRestart
+--- PASS: TestPredictiveSnapInvalidationRollbackAndRestart (0.10s)
+=== RUN   TestDeleteRetentionCompactAndBackup
+--- PASS: TestDeleteRetentionCompactAndBackup (0.15s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/store/libravdbstore	2.791s

@@ -1,0 +1,26 @@
+{
+  "postOutcomeAudit": true,
+  "reason": "Investigate whether unknown ordinary load failure can be relabeled as functional",
+  "files": [
+    {
+      "file": "verify.mjs",
+      "before": "before-verify.mjs.txt",
+      "beforeSHA256": "25cea2fb1158444b2426dbf2fc392659aa26942202b07d34b39692a0b99f9f79",
+      "afterSHA256": "9f1c79ee1f93709dba6714b340da2574bf02ef81a7e363b3fca475b7651a762f"
+    },
+    {
+      "file": "negative.test.mjs",
+      "before": "before-negative.test.mjs.txt",
+      "beforeSHA256": "87b3d02bb13fea9d7ef8e36fd42d7018eecba9d27a345a00b33f8ed3ce47e311",
+      "afterSHA256": "8bbd8e33c2eedb204c838eb9e45c1d74d38a50602f8033a3b60fd0681c91857b"
+    }
+  ],
+  "confirmed": true,
+  "rawMeasurementsChanged": false,
+  "metricArithmeticChanged": false,
+  "thresholdsChanged": false,
+  "prospectiveEvaluatorPinsPreserved": true,
+  "result": "unexpected assertion/status cannot be hidden; timing-only exits verified against raw metrics and emitted messages; full quality PASS marker required",
+  "testsPassed": true,
+  "testSetupCorrection": "Expanded quality streaming check initially attempted omitted oversized traces in load-only negative fixtures. qualityCheck:false now explicitly skips quality checking; full default verification still checks every quality transcript."
+}

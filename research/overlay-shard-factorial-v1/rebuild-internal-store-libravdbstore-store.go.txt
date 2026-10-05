@@ -1,0 +1,2076 @@
+package libravdbstore
+
+import (
+	"context"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"reflect"
+	"sort"
+	"strings"
+	"sync"
+	"time"
+
+	"github.com/JuanHuaXu/eventframed/internal/bayes"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/residual"
+	"github.com/JuanHuaXu/eventframed/internal/store"
+	libra "github.com/xDarkicex/libravdb/libravdb"
+)
+
+type Config struct {
+	Path           string
+	Dimension      int
+	Quantization   string
+	MemoryMapping  bool
+	EmbeddingModel string
+}
+
+type Store struct {
+	db           *libra.Database
+	config       Config
+	mu           sync.Mutex
+	writeMu      sync.RWMutex
+	eventMu      sync.RWMutex
+	journalMu    [64]sync.Mutex
+	collections  map[string]*libra.Collection
+	bayesian     *libra.Collection
+	agency       *libra.Collection
+	agencyActive map[string]*libra.Collection
+	policyDigest string
+	snapshot     model.Snapshot
+	ingestMotion map[uint64]time.Time
+}
+
+const systemCollection = "_eventframe_system"
+const bayesianCollection = "_eventframe_bayesian"
+const agencyCollection = "_eventframe_agency"
+
+type persistentState struct {
+	SchemaVersion        uint64         `json:"schema_version"`
+	EmbeddingModel       string         `json:"embedding_model"`
+	Dimension            int            `json:"dimension"`
+	Quantization         string         `json:"quantization"`
+	Snapshot             model.Snapshot `json:"snapshot"`
+	BayesianPolicyDigest string         `json:"bayesian_policy_digest,omitempty"`
+}
+
+func Open(config Config) (*Store, error) {
+	return openWithWriteConcurrency(config, 2)
+}
+
+func openWithWriteConcurrency(config Config, writers int) (*Store, error) {
+	if config.Path == "" {
+		return nil, errors.New("database path is required")
+	}
+	if config.Dimension <= 0 {
+		return nil, errors.New("dimension must be positive")
+	}
+	if config.EmbeddingModel == "" {
+		return nil, errors.New("embedding model key is required")
+	}
+	db, err := libra.Open(
+		libra.WithStoragePath(config.Path),
+		libra.WithMaxConcurrentWrites(writers),
+		libra.WithMaxWriteQueueDepth(64),
+	)
+	if err != nil {
+		return nil, fmt.Errorf("open libravdb: %w", err)
+	}
+	s := &Store{
+		db: db, config: config, collections: make(map[string]*libra.Collection),
+		agencyActive: make(map[string]*libra.Collection), ingestMotion: make(map[uint64]time.Time),
+	}
+	if err := s.loadOrInitializeState(context.Background()); err != nil {
+		_ = db.Close()
+		return nil, err
+	}
+	return s, nil
+}
+
+func (s *Store) Put(ctx context.Context, event model.Event, vector []float32, digest string) (store.PutResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
+	collectionKey := collectionName(event.TenantID, s.config.EmbeddingModel)
+	collection, err := s.collection(ctx, event.TenantID)
+	if err != nil {
+		return store.PutResult{}, err
+	}
+	record, err := collection.Get(ctx, event.ID)
+	if err == nil {
+		if current, _ := record.Metadata["content_digest"].(string); current != digest {
+			return store.PutResult{}, store.ErrIdempotencyConflict
+		}
+		return store.PutResult{Duplicate: true, Snapshot: s.snapshot}, nil
+	}
+	if !errors.Is(err, libra.ErrRecordNotFound) {
+		return store.PutResult{}, fmt.Errorf("check existing event: %w", err)
+	}
+	payload, err := encodeStoredEvent(event)
+	if err != nil {
+		return store.PutResult{}, fmt.Errorf("encode event: %w", err)
+	}
+	metadata := map[string]interface{}{
+		"event_json":     string(payload),
+		"corpus_text":    event.FrameText(),
+		"raw_content":    event.Content,
+		"content_digest": digest,
+		"session_id":     event.SessionID,
+		"kind":           event.Kind,
+		"available_at":   event.AvailableAt.UTC().Format("2006-01-02T15:04:05.999999999Z07:00"),
+		"priority":       event.Priority,
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.EvidenceEpoch++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.PutResult{}, err
+	}
+	err = s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Insert(ctx, collectionKey, event.ID, vector, metadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	})
+	if err != nil {
+		// Resolve the timeout/racing-insert ambiguity through the durable record.
+		if current, getErr := collection.Get(ctx, event.ID); getErr == nil {
+			if currentDigest, _ := current.Metadata["content_digest"].(string); currentDigest == digest {
+				return store.PutResult{Duplicate: true, Snapshot: s.snapshot}, nil
+			}
+			return store.PutResult{}, store.ErrIdempotencyConflict
+		}
+		return store.PutResult{}, fmt.Errorf("insert event: %w", err)
+	}
+	s.snapshot = next
+	recordIngestMotion(s.ingestMotion, next.RuntimeVersion, event.AvailableAt)
+	return store.PutResult{Snapshot: next}, nil
+}
+
+func (s *Store) PutComposition(ctx context.Context, event model.Event, vector []float32, digest string, base model.Snapshot) (store.PutResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
+	if s.snapshot != base {
+		return store.PutResult{}, store.ErrStaleSnapshot
+	}
+	if event.Composition == nil {
+		return store.PutResult{}, store.ErrCompositionAuthority
+	}
+	certificate, err := s.GetAntiPigeonCertificate(ctx, event.TenantID, event.Composition.MemberEventIDs)
+	if err != nil || certificate.ID != event.Composition.AntiPigeonCertificateID || !sameIDSet(certificate.MemberEventIDs, event.Composition.MemberEventIDs) {
+		return store.PutResult{}, store.ErrCompositionAuthority
+	}
+	collectionKey := collectionName(event.TenantID, s.config.EmbeddingModel)
+	collection, err := s.collection(ctx, event.TenantID)
+	if err != nil {
+		return store.PutResult{}, err
+	}
+	for _, memberID := range event.Composition.MemberEventIDs {
+		record, getErr := collection.Get(ctx, memberID)
+		if getErr != nil {
+			return store.PutResult{}, store.ErrCompositionAuthority
+		}
+		member, decodeErr := decodeStoredEvent(record.Metadata, true)
+		if decodeErr != nil || member.AvailableAt.After(event.AvailableAt) {
+			return store.PutResult{}, store.ErrCompositionAuthority
+		}
+	}
+	if record, getErr := collection.Get(ctx, event.ID); getErr == nil {
+		if current, _ := record.Metadata["content_digest"].(string); current != digest {
+			return store.PutResult{}, store.ErrIdempotencyConflict
+		}
+		return store.PutResult{Duplicate: true, Snapshot: s.snapshot}, nil
+	} else if !errors.Is(getErr, libra.ErrRecordNotFound) {
+		return store.PutResult{}, fmt.Errorf("check existing composition: %w", getErr)
+	}
+	payload, err := encodeStoredEvent(event)
+	if err != nil {
+		return store.PutResult{}, fmt.Errorf("encode composition: %w", err)
+	}
+	metadata := map[string]interface{}{
+		"event_json": string(payload), "corpus_text": event.FrameText(), "raw_content": event.Content,
+		"content_digest": digest, "session_id": event.SessionID, "kind": event.Kind,
+		"available_at": event.AvailableAt.UTC().Format("2006-01-02T15:04:05.999999999Z07:00"), "priority": event.Priority,
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.AbstractionVersion++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.PutResult{}, err
+	}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Insert(ctx, collectionKey, event.ID, vector, metadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return store.PutResult{}, fmt.Errorf("insert composition: %w", err)
+	}
+	s.snapshot = next
+	recordIngestMotion(s.ingestMotion, next.RuntimeVersion, event.AvailableAt)
+	return store.PutResult{Snapshot: next}, nil
+}
+
+func (s *Store) BindBayesianPolicy(ctx context.Context, digest string) (model.Snapshot, error) {
+	if strings.TrimSpace(digest) == "" {
+		return model.Snapshot{}, errors.New("Bayesian policy digest is required")
+	}
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	if digest == s.policyDigest {
+		return s.snapshot, nil
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.PolicyVersion++
+	metadata, err := s.stateMetadataWithPolicy(next, digest)
+	if err != nil {
+		return model.Snapshot{}, err
+	}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, metadata)
+	}); err != nil {
+		return model.Snapshot{}, fmt.Errorf("bind Bayesian policy: %w", err)
+	}
+	s.policyDigest = digest
+	s.snapshot = next
+	return next, nil
+}
+
+func (s *Store) Search(ctx context.Context, tenantID string, vector []float32, availableBy time.Time, limit int) ([]store.SearchResult, error) {
+	s.eventMu.RLock()
+	defer s.eventMu.RUnlock()
+	collection, err := s.collection(ctx, tenantID)
+	if err != nil {
+		return nil, err
+	}
+	// LibraVDB's metadata filter is applied after ANN limiting in this release.
+	// Expand deterministically until enough availability-eligible candidates are
+	// found, or every live record has been examined. This prevents a dense set
+	// of future records from crowding valid history out before reranking.
+	live := collection.Stats(ctx).LiveRecordCount
+	probe := min(max(limit, 1), max(live, 1))
+	for {
+		results, searchErr := collection.Search(ctx, vector, probe)
+		if searchErr != nil {
+			return nil, fmt.Errorf("search events: %w", searchErr)
+		}
+		out := decodeEligible(results.Results, availableBy, limit)
+		if len(out) >= limit || probe >= live {
+			return out, nil
+		}
+		probe = min(live, probe*2)
+	}
+}
+
+func (s *Store) GetEvents(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	return s.getEvents(ctx, tenantID, eventIDs, availableBy, false)
+}
+
+func (s *Store) GetEventsWithVectors(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time) ([]model.Event, error) {
+	return s.getEvents(ctx, tenantID, eventIDs, availableBy, true)
+}
+
+func (s *Store) getEvents(ctx context.Context, tenantID string, eventIDs []string, availableBy time.Time, hydrateVectors bool) ([]model.Event, error) {
+	s.eventMu.RLock()
+	defer s.eventMu.RUnlock()
+	collection, err := s.collection(ctx, tenantID)
+	if err != nil {
+		return nil, err
+	}
+	results := make([]model.Event, 0, len(eventIDs))
+	for _, eventID := range eventIDs {
+		record, getErr := collection.Get(ctx, eventID)
+		if errors.Is(getErr, libra.ErrRecordNotFound) {
+			return nil, fmt.Errorf("%w: id=%s absent", store.ErrEventNotFound, eventID)
+		}
+		if getErr != nil {
+			return nil, fmt.Errorf("read event %q: %w", eventID, getErr)
+		}
+		event, decodeErr := decodeStoredEvent(record.Metadata, true)
+		if decodeErr != nil {
+			return nil, fmt.Errorf("%w: id=%s has no event payload", store.ErrEventNotFound, eventID)
+		}
+		if event.ID != eventID || event.TenantID != tenantID || event.AvailableAt.After(availableBy) {
+			return nil, fmt.Errorf("%w: id=%s failed identity or availability validation", store.ErrEventNotFound, eventID)
+		}
+		if hydrateVectors {
+			if len(record.Vector) != s.config.Dimension {
+				return nil, fmt.Errorf("%w: id=%s has an invalid durable vector", store.ErrEventNotFound, eventID)
+			}
+			event.Embedding = append([]float32(nil), record.Vector...)
+			event.EmbeddingModel = s.config.EmbeddingModel
+		} else {
+			event.Embedding = nil
+		}
+		results = append(results, event)
+	}
+	return results, nil
+}
+
+// ListAllEvents returns only records in collections bound to the active
+// embedding representation. It is intended for explicit maintenance jobs.
+func (s *Store) ListAllEvents(ctx context.Context) ([]model.Event, error) {
+	names, err := s.db.ListCollectionsWithContext(ctx)
+	if err != nil {
+		return nil, err
+	}
+	result := make([]model.Event, 0)
+	for _, name := range names {
+		collection, getErr := s.db.GetCollection(name)
+		if getErr != nil {
+			continue
+		}
+		records, listErr := collection.ListAll(ctx)
+		if listErr != nil {
+			return nil, listErr
+		}
+		for _, record := range records {
+			event, decodeErr := decodeStoredEvent(record.Metadata, true)
+			if decodeErr != nil || collectionName(event.TenantID, s.config.EmbeddingModel) != name {
+				continue
+			}
+			result = append(result, event)
+		}
+	}
+	sort.Slice(result, func(i, j int) bool {
+		if result[i].TenantID == result[j].TenantID {
+			return result[i].ID < result[j].ID
+		}
+		return result[i].TenantID < result[j].TenantID
+	})
+	return result, nil
+}
+
+func (s *Store) PutBayesianJournal(ctx context.Context, entry model.BayesianJournalEntry) error {
+	encoded, err := json.Marshal(entry)
+	if err != nil {
+		return fmt.Errorf("encode Bayesian journal: %w", err)
+	}
+	recordID := bayesianJournalRecordID(entry.TenantID, entry.ID)
+	stripe := &s.journalMu[journalStripe(recordID)]
+	stripe.Lock()
+	defer stripe.Unlock()
+	s.writeMu.RLock()
+	defer s.writeMu.RUnlock()
+	record, err := s.bayesian.Get(ctx, recordID)
+	if err == nil {
+		current, _ := record.Metadata["journal_json"].(string)
+		if current != string(encoded) {
+			return store.ErrJournalConflict
+		}
+		return nil
+	}
+	if !errors.Is(err, libra.ErrRecordNotFound) {
+		return fmt.Errorf("check Bayesian journal: %w", err)
+	}
+	if !store.JournalSnapshotCompatible(entry.Snapshot, s.snapshot, entry.AsOf, s.ingestMotion) {
+		return store.ErrStaleSnapshot
+	}
+	metadata := map[string]interface{}{
+		"record_type": "frontier_journal", "tenant_id": entry.TenantID,
+		"journal_id": entry.ID, "as_of": entry.AsOf.UTC().Format(time.RFC3339Nano),
+		"journal_json": string(encoded),
+	}
+	if err := s.bayesian.Insert(ctx, recordID, nil, metadata); err != nil {
+		return fmt.Errorf("insert Bayesian journal: %w", err)
+	}
+	return nil
+}
+
+func journalStripe(recordID string) int {
+	digest := sha256.Sum256([]byte(recordID))
+	return int(digest[0]) % 64
+}
+
+func recordIngestMotion(motion map[uint64]time.Time, version uint64, availableAt time.Time) {
+	motion[version] = availableAt
+	const retainedVersions = uint64(4096)
+	if version > retainedVersions {
+		delete(motion, version-retainedVersions)
+	}
+}
+
+func (s *Store) GetBayesianJournal(ctx context.Context, tenantID, journalID string) (model.BayesianJournalEntry, error) {
+	record, err := s.bayesian.Get(ctx, bayesianJournalRecordID(tenantID, journalID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.BayesianJournalEntry{}, store.ErrJournalNotFound
+	}
+	if err != nil {
+		return model.BayesianJournalEntry{}, fmt.Errorf("read Bayesian journal: %w", err)
+	}
+	encoded, ok := record.Metadata["journal_json"].(string)
+	if !ok {
+		return model.BayesianJournalEntry{}, errors.New("Bayesian journal is malformed")
+	}
+	var entry model.BayesianJournalEntry
+	if err := json.Unmarshal([]byte(encoded), &entry); err != nil {
+		return model.BayesianJournalEntry{}, fmt.Errorf("decode Bayesian journal: %w", err)
+	}
+	if entry.TenantID != tenantID || entry.ID != journalID {
+		return model.BayesianJournalEntry{}, errors.New("Bayesian journal identity mismatch")
+	}
+	return entry, nil
+}
+
+func (s *Store) PublishSelectionCertificate(ctx context.Context, certificate model.SelectionSupportCertificate) (model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	if certificate.PolicyVersion != s.snapshot.PolicyVersion || certificate.EvidenceEpoch != s.snapshot.EvidenceEpoch {
+		return model.Snapshot{}, store.ErrStaleSnapshot
+	}
+	encoded, err := json.Marshal(certificate)
+	if err != nil {
+		return model.Snapshot{}, fmt.Errorf("encode selection certificate: %w", err)
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return model.Snapshot{}, err
+	}
+	recordID := selectionCertificateRecordID(certificate.TenantID)
+	metadata := map[string]interface{}{"record_type": "selection_certificate", "tenant_id": certificate.TenantID, "certificate_json": string(encoded)}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Upsert(ctx, bayesianCollection, recordID, nil, metadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return model.Snapshot{}, fmt.Errorf("publish selection certificate: %w", err)
+	}
+	s.snapshot = next
+	return next, nil
+}
+
+func (s *Store) GetSelectionCertificate(ctx context.Context, tenantID string) (model.SelectionSupportCertificate, error) {
+	record, err := s.bayesian.Get(ctx, selectionCertificateRecordID(tenantID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.SelectionSupportCertificate{}, store.ErrCertificateNotFound
+	}
+	if err != nil {
+		return model.SelectionSupportCertificate{}, fmt.Errorf("read selection certificate: %w", err)
+	}
+	var certificate model.SelectionSupportCertificate
+	if err := decodeCertificate(record.Metadata, &certificate); err != nil {
+		return model.SelectionSupportCertificate{}, err
+	}
+	if certificate.TenantID != tenantID {
+		return model.SelectionSupportCertificate{}, errors.New("selection certificate tenant mismatch")
+	}
+	return certificate, nil
+}
+
+func (s *Store) PublishOmittedInfluenceCertificate(ctx context.Context, certificate model.OmittedInfluenceCertificate) (model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	if certificate.PolicyVersion != s.snapshot.PolicyVersion || certificate.EvidenceEpoch != s.snapshot.EvidenceEpoch {
+		return model.Snapshot{}, store.ErrStaleSnapshot
+	}
+	encoded, err := json.Marshal(certificate)
+	if err != nil {
+		return model.Snapshot{}, fmt.Errorf("encode omitted-influence certificate: %w", err)
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return model.Snapshot{}, err
+	}
+	metadata := map[string]interface{}{"record_type": "omitted_influence_certificate", "tenant_id": certificate.TenantID, "certificate_json": string(encoded)}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Upsert(ctx, bayesianCollection, omittedInfluenceCertificateRecordID(certificate.TenantID), nil, metadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return model.Snapshot{}, fmt.Errorf("publish omitted-influence certificate: %w", err)
+	}
+	s.snapshot = next
+	return next, nil
+}
+
+func (s *Store) GetOmittedInfluenceCertificate(ctx context.Context, tenantID string) (model.OmittedInfluenceCertificate, error) {
+	record, err := s.bayesian.Get(ctx, omittedInfluenceCertificateRecordID(tenantID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.OmittedInfluenceCertificate{}, store.ErrCertificateNotFound
+	}
+	if err != nil {
+		return model.OmittedInfluenceCertificate{}, fmt.Errorf("read omitted-influence certificate: %w", err)
+	}
+	var certificate model.OmittedInfluenceCertificate
+	if err := decodeCertificate(record.Metadata, &certificate); err != nil {
+		return model.OmittedInfluenceCertificate{}, err
+	}
+	if certificate.TenantID != tenantID {
+		return model.OmittedInfluenceCertificate{}, errors.New("omitted-influence certificate tenant mismatch")
+	}
+	return certificate, nil
+}
+
+func (s *Store) PublishAntiPigeonCertificate(ctx context.Context, certificate model.AntiPigeonCertificate) (model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	if certificate.GraphVersion != s.snapshot.GraphVersion || certificate.EvidenceEpoch != s.snapshot.EvidenceEpoch {
+		return model.Snapshot{}, store.ErrStaleSnapshot
+	}
+	encoded, err := json.Marshal(certificate)
+	if err != nil {
+		return model.Snapshot{}, fmt.Errorf("encode Anti-Pigeon certificate: %w", err)
+	}
+	certificateRecordID := antiPigeonCertificateRecordID(certificate.TenantID, certificate.ID)
+	if current, getErr := s.bayesian.Get(ctx, certificateRecordID); getErr == nil {
+		currentJSON, _ := current.Metadata["certificate_json"].(string)
+		if currentJSON != string(encoded) {
+			return model.Snapshot{}, store.ErrCertificateConflict
+		}
+		return s.snapshot, nil
+	} else if !errors.Is(getErr, libra.ErrRecordNotFound) {
+		return model.Snapshot{}, fmt.Errorf("check Anti-Pigeon certificate: %w", getErr)
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.AbstractionVersion++
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return model.Snapshot{}, err
+	}
+	metadata := map[string]interface{}{"record_type": "anti_pigeon_certificate", "tenant_id": certificate.TenantID, "certificate_json": string(encoded)}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Insert(ctx, bayesianCollection, certificateRecordID, nil, metadata); err != nil {
+			return err
+		}
+		for _, eventID := range certificate.MemberEventIDs {
+			index := map[string]interface{}{"record_type": "anti_pigeon_index", "tenant_id": certificate.TenantID, "certificate_id": certificate.ID}
+			if err := tx.Upsert(ctx, bayesianCollection, antiPigeonIndexRecordID(certificate.TenantID, eventID), nil, index); err != nil {
+				return err
+			}
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return model.Snapshot{}, fmt.Errorf("publish Anti-Pigeon certificate: %w", err)
+	}
+	s.snapshot = next
+	return next, nil
+}
+
+func (s *Store) GetAntiPigeonCertificate(ctx context.Context, tenantID string, eventIDs []string) (model.AntiPigeonCertificate, error) {
+	var certificateID string
+	for _, eventID := range eventIDs {
+		record, err := s.bayesian.Get(ctx, antiPigeonIndexRecordID(tenantID, eventID))
+		if errors.Is(err, libra.ErrRecordNotFound) {
+			return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+		}
+		if err != nil {
+			return model.AntiPigeonCertificate{}, fmt.Errorf("read Anti-Pigeon index: %w", err)
+		}
+		current, _ := record.Metadata["certificate_id"].(string)
+		if current == "" || (certificateID != "" && current != certificateID) {
+			return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+		}
+		certificateID = current
+	}
+	if certificateID == "" {
+		return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+	}
+	record, err := s.bayesian.Get(ctx, antiPigeonCertificateRecordID(tenantID, certificateID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.AntiPigeonCertificate{}, store.ErrCertificateNotFound
+	}
+	if err != nil {
+		return model.AntiPigeonCertificate{}, fmt.Errorf("read Anti-Pigeon certificate: %w", err)
+	}
+	var certificate model.AntiPigeonCertificate
+	if err := decodeCertificate(record.Metadata, &certificate); err != nil {
+		return model.AntiPigeonCertificate{}, err
+	}
+	return certificate, nil
+}
+
+func (s *Store) ApplyBayesianOutcome(ctx context.Context, request model.BayesianOutcomeRequest, posteriorKey, parentPosteriorKey, digest string, weight float64, changePolicy bayes.ChangePolicy, groupPolicy bayes.GroupPolicy, residualObservation model.ResidualObservation, residualPolicy residual.Policy) (store.BayesianOutcomeResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	outcomeRecordID := bayesianOutcomeRecordID(request.TenantID, request.IdempotencyKey)
+	if record, err := s.bayesian.Get(ctx, outcomeRecordID); err == nil {
+		currentDigest, _ := record.Metadata["content_digest"].(string)
+		currentKey, _ := record.Metadata["posterior_key"].(string)
+		currentParentKey, _ := record.Metadata["parent_posterior_key"].(string)
+		if currentDigest != digest || currentKey != posteriorKey || currentParentKey != parentPosteriorKey {
+			return store.BayesianOutcomeResult{}, store.ErrOutcomeConflict
+		}
+		resultKey, _ := record.Metadata["result_posterior_key"].(string)
+		if resultKey == "" {
+			resultKey = posteriorKey
+		}
+		posterior, getErr := s.getBayesianPosterior(ctx, request.TenantID, resultKey)
+		if getErr != nil {
+			return store.BayesianOutcomeResult{}, getErr
+		}
+		var revision model.BayesianRevision
+		if encoded, ok := record.Metadata["revision_json"].(string); ok {
+			_ = json.Unmarshal([]byte(encoded), &revision)
+		}
+		return store.BayesianOutcomeResult{Duplicate: true, Revision: revision, Posterior: posterior, Snapshot: s.snapshot}, nil
+	} else if !errors.Is(err, libra.ErrRecordNotFound) {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("check Bayesian outcome: %w", err)
+	}
+	posterior, err := s.getBayesianPosterior(ctx, request.TenantID, posteriorKey)
+	if err != nil && !errors.Is(err, store.ErrPosteriorNotFound) {
+		return store.BayesianOutcomeResult{}, err
+	}
+	if errors.Is(err, store.ErrPosteriorNotFound) || posterior.EvidenceEpoch != s.snapshot.EvidenceEpoch || (changePolicy.EvidenceTrust != "" && posterior.EvidenceTrust != changePolicy.EvidenceTrust) {
+		posterior = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: posteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: s.snapshot.EvidenceEpoch, Certified: true}
+	}
+	validationEligible := request.Source == model.OutcomeFullStream || request.Source == model.OutcomeIndependentAudit
+	resetAuthorized := validationEligible || !strings.HasPrefix(posteriorKey, "ap:")
+	certificate, memberIDs, err := s.antiPigeonGroup(ctx, request.TenantID, posteriorKey)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, err
+	}
+	pooledWeight := bayes.SharedOutcomeWeight(groupPolicy, len(memberIDs) >= 2, weight)
+	posterior, changePoint := bayes.ApplyOutcomeAuthorized(posterior, request.Useful, pooledWeight, changePolicy, resetAuthorized)
+	if changePolicy.ForecastRescue && posterior.ForecastPolicyVersion != s.snapshot.PolicyVersion {
+		posterior.ForecastWeights = [4]float64{}
+	}
+	posterior.ForecastWeights = bayes.UpdateForecastWeights(posterior.ForecastWeights, residualObservation.ExpertMixture, request.Useful, pooledWeight, changePoint, changePolicy.ForecastRescue, s.snapshot)
+	if changePolicy.ForecastRescue {
+		posterior.ForecastPolicyVersion = s.snapshot.PolicyVersion
+	}
+	bayes.UpdateMemberEvidence(&posterior, request.EventID, request.Useful, weight)
+	updateCalibration(&posterior, residualObservation.CommittedProbability, request.Useful, weight)
+	posterior.UpdatedAt = request.AvailableAt
+	revision := bayes.AssessRevision(posterior, memberIDs, request.EventID, changePoint, validationEligible, groupPolicy)
+	outcomeJSON, err := json.Marshal(request)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian outcome: %w", err)
+	}
+	next := s.snapshot
+	if changePoint {
+		next = invalidatedSnapshot(next)
+		posterior.EvidenceEpoch = next.EvidenceEpoch
+		if !bayes.RevisionSplits(revision.Action) {
+			posterior.MemberEvidence = nil
+		}
+	} else if bayes.RevisionSplits(revision.Action) {
+		next.RuntimeVersion++
+		next.AbstractionVersion++
+		next.PosteriorVersion++
+		next.ResidualVersion++
+	} else {
+		next.RuntimeVersion++
+		next.PosteriorVersion++
+		next.ResidualVersion++
+	}
+	exact, err := s.getResidualRecord(ctx, request.TenantID, model.ResidualExact, residualObservation.ActionKey)
+	if err != nil && !errors.Is(err, store.ErrResidualNotFound) {
+		return store.BayesianOutcomeResult{}, err
+	}
+	general, err := s.getResidualRecord(ctx, request.TenantID, model.ResidualGeneral, residualObservation.GeneralKey)
+	if err != nil && !errors.Is(err, store.ErrResidualNotFound) {
+		return store.BayesianOutcomeResult{}, err
+	}
+	exact = residual.Update(exact, residualObservation, model.ResidualExact, residualObservation.ActionKey, request.TenantID, weight, next, residualPolicy)
+	general = residual.Update(general, residualObservation, model.ResidualGeneral, residualObservation.GeneralKey, request.TenantID, weight, next, residualPolicy)
+	if bayes.RevisionSplits(revision.Action) {
+		exact.Active, general.Active = false, false
+	}
+	var parent model.BayesianPosterior
+	if parentPosteriorKey != "" && parentPosteriorKey != posteriorKey {
+		parent, err = s.getBayesianPosterior(ctx, request.TenantID, parentPosteriorKey)
+		if err != nil && !errors.Is(err, store.ErrPosteriorNotFound) {
+			return store.BayesianOutcomeResult{}, err
+		}
+		if errors.Is(err, store.ErrPosteriorNotFound) || parent.EvidenceEpoch != next.EvidenceEpoch || (changePolicy.EvidenceTrust != "" && parent.EvidenceTrust != changePolicy.EvidenceTrust) {
+			parent = model.BayesianPosterior{TenantID: request.TenantID, PosteriorKey: parentPosteriorKey, Alpha: 1, Beta: 1, EvidenceEpoch: next.EvidenceEpoch, Certified: true}
+		}
+		if request.Useful {
+			parent.Alpha += weight
+		} else {
+			parent.Beta += weight
+		}
+		parent.EffectiveSupport += weight
+		parent.EvidenceTrust = changePolicy.EvidenceTrust
+		parent.UpdatedAt = request.AvailableAt
+	}
+	resultPosterior := posterior
+	children := make(map[string]model.BayesianPosterior)
+	if bayes.RevisionSplits(revision.Action) {
+		posterior.Certified = false
+		for _, eventID := range memberIDs {
+			evidence := posterior.MemberEvidence[eventID]
+			child := materializedMemberPosterior(request.TenantID, eventID, evidence, next.EvidenceEpoch, request.AvailableAt)
+			child.EvidenceTrust = changePolicy.EvidenceTrust
+			if changePoint && eventID == request.EventID {
+				child = resetMemberPosterior(child, request.Useful, weight)
+				child.WorkingBelief = bayes.UpdateWorking(nil, request.Useful, weight, true, changePolicy.Working)
+			}
+			children[eventID] = child
+			if eventID == request.EventID {
+				resultPosterior = child
+			}
+		}
+	}
+	posteriorJSON, err := json.Marshal(posterior)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian posterior: %w", err)
+	}
+	exactJSON, err := json.Marshal(exact)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode exact residual: %w", err)
+	}
+	generalJSON, err := json.Marshal(general)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode general residual: %w", err)
+	}
+	stateMetadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, err
+	}
+	posteriorMetadata := map[string]interface{}{"record_type": "posterior", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "posterior_json": string(posteriorJSON)}
+	var parentMetadata map[string]interface{}
+	if parentPosteriorKey != "" && parentPosteriorKey != posteriorKey {
+		parentJSON, marshalErr := json.Marshal(parent)
+		if marshalErr != nil {
+			return store.BayesianOutcomeResult{}, fmt.Errorf("encode parent Bayesian posterior: %w", marshalErr)
+		}
+		parentMetadata = map[string]interface{}{"record_type": "posterior", "tenant_id": request.TenantID, "posterior_key": parentPosteriorKey, "posterior_json": string(parentJSON)}
+	}
+	exactMetadata := map[string]interface{}{"record_type": "residual", "tenant_id": request.TenantID, "scope": string(model.ResidualExact), "key": residualObservation.ActionKey, "residual_json": string(exactJSON)}
+	generalMetadata := map[string]interface{}{"record_type": "residual", "tenant_id": request.TenantID, "scope": string(model.ResidualGeneral), "key": residualObservation.GeneralKey, "residual_json": string(generalJSON)}
+	revisionJSON, err := json.Marshal(revision)
+	if err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("encode Bayesian revision: %w", err)
+	}
+	outcomeMetadata := map[string]interface{}{"record_type": "outcome", "tenant_id": request.TenantID, "posterior_key": posteriorKey, "result_posterior_key": resultPosterior.PosteriorKey, "parent_posterior_key": parentPosteriorKey, "content_digest": digest, "outcome_json": string(outcomeJSON), "revision_json": string(revisionJSON)}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Insert(ctx, bayesianCollection, outcomeRecordID, nil, outcomeMetadata); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, bayesianPosteriorRecordID(request.TenantID, posteriorKey), nil, posteriorMetadata); err != nil {
+			return err
+		}
+		for eventID, child := range children {
+			payload, marshalErr := json.Marshal(child)
+			if marshalErr != nil {
+				return marshalErr
+			}
+			metadata := map[string]interface{}{"record_type": "posterior", "tenant_id": request.TenantID, "posterior_key": eventID, "posterior_json": string(payload)}
+			if err := tx.Upsert(ctx, bayesianCollection, bayesianPosteriorRecordID(request.TenantID, eventID), nil, metadata); err != nil {
+				return err
+			}
+		}
+		if bayes.RevisionSplits(revision.Action) && certificate.ID != "" {
+			if err := tx.Delete(ctx, bayesianCollection, antiPigeonCertificateRecordID(certificate.TenantID, certificate.ID)); err != nil {
+				return err
+			}
+			for _, eventID := range certificate.MemberEventIDs {
+				if err := tx.Delete(ctx, bayesianCollection, antiPigeonIndexRecordID(certificate.TenantID, eventID)); err != nil {
+					return err
+				}
+			}
+		}
+		if parentMetadata != nil {
+			if err := tx.Upsert(ctx, bayesianCollection, bayesianPosteriorRecordID(request.TenantID, parentPosteriorKey), nil, parentMetadata); err != nil {
+				return err
+			}
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, residualRecordID(request.TenantID, model.ResidualExact, residualObservation.ActionKey), nil, exactMetadata); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, residualRecordID(request.TenantID, model.ResidualGeneral, residualObservation.GeneralKey), nil, generalMetadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, stateMetadata)
+	}); err != nil {
+		return store.BayesianOutcomeResult{}, fmt.Errorf("apply Bayesian outcome: %w", err)
+	}
+	s.snapshot = next
+	return store.BayesianOutcomeResult{ChangePoint: changePoint, Revision: revision, Posterior: resultPosterior, Snapshot: next}, nil
+}
+
+func (s *Store) antiPigeonGroup(ctx context.Context, tenantID, posteriorKey string) (model.AntiPigeonCertificate, []string, error) {
+	if !strings.HasPrefix(posteriorKey, "ap:") {
+		return model.AntiPigeonCertificate{}, nil, nil
+	}
+	certificateID := strings.TrimPrefix(posteriorKey, "ap:")
+	record, err := s.bayesian.Get(ctx, antiPigeonCertificateRecordID(tenantID, certificateID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.AntiPigeonCertificate{}, nil, nil
+	}
+	if err != nil {
+		return model.AntiPigeonCertificate{}, nil, fmt.Errorf("read Anti-Pigeon certificate for revision: %w", err)
+	}
+	var certificate model.AntiPigeonCertificate
+	if err := decodeCertificate(record.Metadata, &certificate); err != nil {
+		return model.AntiPigeonCertificate{}, nil, err
+	}
+	if certificate.TenantID != tenantID || certificate.ID != certificateID {
+		return model.AntiPigeonCertificate{}, nil, errors.New("Anti-Pigeon certificate identity mismatch")
+	}
+	for _, eventID := range certificate.MemberEventIDs {
+		index, indexErr := s.bayesian.Get(ctx, antiPigeonIndexRecordID(tenantID, eventID))
+		if errors.Is(indexErr, libra.ErrRecordNotFound) {
+			return model.AntiPigeonCertificate{}, nil, nil
+		}
+		if indexErr != nil {
+			return model.AntiPigeonCertificate{}, nil, fmt.Errorf("read Anti-Pigeon revision index: %w", indexErr)
+		}
+		indexedID, _ := index.Metadata["certificate_id"].(string)
+		if indexedID != certificateID {
+			return model.AntiPigeonCertificate{}, nil, nil
+		}
+	}
+	return certificate, append([]string(nil), certificate.MemberEventIDs...), nil
+}
+
+func materializedMemberPosterior(tenantID, eventID string, evidence model.BayesianMemberEvidence, epoch uint64, updatedAt time.Time) model.BayesianPosterior {
+	return model.BayesianPosterior{
+		TenantID: tenantID, PosteriorKey: eventID, Alpha: 1 + evidence.UsefulWeight, Beta: 1 + evidence.NotUsefulWeight,
+		EffectiveSupport: evidence.UsefulWeight + evidence.NotUsefulWeight, EvidenceEpoch: epoch, Certified: true, UpdatedAt: updatedAt,
+		MemberEvidence: map[string]model.BayesianMemberEvidence{eventID: evidence},
+	}
+}
+
+func resetMemberPosterior(posterior model.BayesianPosterior, useful bool, weight float64) model.BayesianPosterior {
+	posterior.Alpha, posterior.Beta, posterior.EffectiveSupport = 1, 1, 0
+	posterior.MemberEvidence = make(map[string]model.BayesianMemberEvidence)
+	if useful {
+		posterior.Alpha += weight
+	} else {
+		posterior.Beta += weight
+	}
+	posterior.EffectiveSupport = weight
+	bayes.UpdateMemberEvidence(&posterior, posterior.PosteriorKey, useful, weight)
+	return posterior
+}
+
+func (s *Store) GetResidualCandidates(ctx context.Context, tenantID, actionKey, generalKey string) (model.ResidualCandidates, error) {
+	var candidates model.ResidualCandidates
+	exact, err := s.getResidualRecord(ctx, tenantID, model.ResidualExact, actionKey)
+	if err == nil {
+		candidates.Exact = &exact
+	} else if !errors.Is(err, store.ErrResidualNotFound) {
+		return model.ResidualCandidates{}, err
+	}
+	general, err := s.getResidualRecord(ctx, tenantID, model.ResidualGeneral, generalKey)
+	if err == nil {
+		candidates.General = &general
+	} else if !errors.Is(err, store.ErrResidualNotFound) {
+		return model.ResidualCandidates{}, err
+	}
+	return candidates, nil
+}
+
+func (s *Store) GetPredictiveGraph(ctx context.Context, tenantID string) (model.PredictiveGraph, error) {
+	s.writeMu.RLock()
+	defer s.writeMu.RUnlock()
+	return s.getPredictiveGraphLocked(ctx, tenantID)
+}
+
+func (s *Store) PutAgencyProposal(ctx context.Context, agencyRecord model.AgencyProposalRecord, digest string, maxPerChain, maxPending int, evidenceAvailableBy time.Time) (store.AgencyPutResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	recordID := agencyProposalRecordID(agencyRecord.Proposal.TenantID, agencyRecord.Proposal.ID)
+	if existing, err := s.agency.Get(ctx, recordID); err == nil {
+		if existingDigest, _ := existing.Metadata["content_digest"].(string); existingDigest != digest {
+			return store.AgencyPutResult{}, store.ErrAgencyConflict
+		}
+		decoded, decodeErr := decodeAgencyRecord(existing.Metadata)
+		if decodeErr != nil {
+			return store.AgencyPutResult{}, decodeErr
+		}
+		if (decoded.Status == model.AgencyPending || decoded.Status == model.AgencyClaimed) && decoded.Proposal.ExpiresAt.After(evidenceAvailableBy) {
+			active, _, activeErr := s.activeAgencyCollection(ctx, decoded.Proposal.TenantID)
+			if activeErr != nil {
+				return store.AgencyPutResult{}, activeErr
+			}
+			if repairErr := active.Upsert(ctx, recordID, nil, existing.Metadata); repairErr != nil {
+				return store.AgencyPutResult{}, fmt.Errorf("repair active agency projection: %w", repairErr)
+			}
+		}
+		return store.AgencyPutResult{Duplicate: true, Record: decoded, Snapshot: s.snapshot}, nil
+	} else if !errors.Is(err, libra.ErrRecordNotFound) {
+		return store.AgencyPutResult{}, err
+	}
+	collection, err := s.collection(ctx, agencyRecord.Proposal.TenantID)
+	if err != nil {
+		return store.AgencyPutResult{}, err
+	}
+	for _, id := range agencyRecord.Proposal.EvidenceIDs {
+		evidence, getErr := collection.Get(ctx, id)
+		if getErr != nil {
+			return store.AgencyPutResult{}, store.ErrAgencyEvidence
+		}
+		event, decodeErr := decodeStoredEvent(evidence.Metadata, false)
+		if decodeErr != nil || event.TenantID != agencyRecord.Proposal.TenantID || event.AvailableAt.After(evidenceAvailableBy) {
+			return store.AgencyPutResult{}, store.ErrAgencyEvidence
+		}
+	}
+	records, err := s.listAgencyRecords(ctx, agencyRecord.Proposal.TenantID)
+	if err != nil {
+		return store.AgencyPutResult{}, err
+	}
+	byID := make(map[string]model.AgencyProposalRecord, len(records))
+	for _, current := range records {
+		byID[current.Proposal.ID] = current
+	}
+	if !validAgencyParentRecords(byID, agencyRecord.Proposal) || countAgencyChainRecords(records, agencyRecord.Proposal.CausalChainID) >= maxPerChain || countPendingAgencyRecords(records, evidenceAvailableBy) >= maxPending {
+		return store.AgencyPutResult{}, store.ErrAgencyChainBudget
+	}
+	next := agencyMutatedSnapshot(s.snapshot)
+	metadata, err := encodeAgencyMetadata(agencyRecord, digest)
+	if err != nil {
+		return store.AgencyPutResult{}, err
+	}
+	state, err := s.stateMetadata(next)
+	if err != nil {
+		return store.AgencyPutResult{}, err
+	}
+	_, activeName, err := s.activeAgencyCollection(ctx, agencyRecord.Proposal.TenantID)
+	if err != nil {
+		return store.AgencyPutResult{}, err
+	}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Upsert(ctx, agencyCollection, recordID, nil, metadata); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, activeName, recordID, nil, metadata); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
+	}); err != nil {
+		return store.AgencyPutResult{}, err
+	}
+	s.snapshot = next
+	return store.AgencyPutResult{Record: agencyRecord, Snapshot: next}, nil
+}
+
+func (s *Store) ClaimAgencyProposals(ctx context.Context, tenantID, consumerID string, now time.Time, limit int, lease time.Duration) ([]model.AgencyProposalRecord, model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	activeCollection, activeName, err := s.activeAgencyCollection(ctx, tenantID)
+	if err != nil {
+		return nil, model.Snapshot{}, err
+	}
+	records, err := listAgencyRecordsFrom(ctx, activeCollection, tenantID)
+	if err != nil {
+		return nil, model.Snapshot{}, err
+	}
+	eligible := make([]model.AgencyProposalRecord, 0)
+	updates := make(map[string]model.AgencyProposalRecord)
+	for _, record := range records {
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && !now.Before(record.Proposal.ExpiresAt) {
+			record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyExpired, "", time.Time{}
+			record.ResolutionReason, record.ResolvedAt = "proposal expired before authorization", now
+			updates[record.Proposal.ID] = record
+			continue
+		}
+		if now.Before(record.Proposal.NotBefore) || record.Status != model.AgencyPending && (record.Status != model.AgencyClaimed || now.Before(record.LeaseUntil)) {
+			continue
+		}
+		eligible = append(eligible, record)
+	}
+	sort.Slice(eligible, func(i, j int) bool {
+		if eligible[i].Proposal.Priority != eligible[j].Proposal.Priority {
+			return eligible[i].Proposal.Priority > eligible[j].Proposal.Priority
+		}
+		if !eligible[i].Proposal.NotBefore.Equal(eligible[j].Proposal.NotBefore) {
+			return eligible[i].Proposal.NotBefore.Before(eligible[j].Proposal.NotBefore)
+		}
+		return eligible[i].Proposal.ID < eligible[j].Proposal.ID
+	})
+	if len(eligible) > limit {
+		eligible = eligible[:limit]
+	}
+	for index := range eligible {
+		record := eligible[index]
+		record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyClaimed, consumerID, now.Add(lease)
+		eligible[index], updates[record.Proposal.ID] = record, record
+	}
+	if len(updates) == 0 {
+		return eligible, s.snapshot, nil
+	}
+	encodedUpdates := make(map[string]map[string]interface{}, len(updates))
+	for id, record := range updates {
+		metadata, encodeErr := encodeAgencyMetadata(record, "")
+		if encodeErr != nil {
+			return nil, model.Snapshot{}, encodeErr
+		}
+		existing, getErr := s.agency.Get(ctx, agencyProposalRecordID(tenantID, id))
+		if getErr != nil {
+			return nil, model.Snapshot{}, getErr
+		}
+		metadata["content_digest"] = existing.Metadata["content_digest"]
+		encodedUpdates[id] = metadata
+	}
+	next := agencyMutatedSnapshot(s.snapshot)
+	state, err := s.stateMetadata(next)
+	if err != nil {
+		return nil, model.Snapshot{}, err
+	}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		for id, metadata := range encodedUpdates {
+			if upsertErr := tx.Upsert(ctx, agencyCollection, agencyProposalRecordID(tenantID, id), nil, metadata); upsertErr != nil {
+				return upsertErr
+			}
+			if updates[id].Status == model.AgencyExpired {
+				if deleteErr := tx.Delete(ctx, activeName, agencyProposalRecordID(tenantID, id)); deleteErr != nil {
+					return deleteErr
+				}
+			} else if upsertErr := tx.Upsert(ctx, activeName, agencyProposalRecordID(tenantID, id), nil, metadata); upsertErr != nil {
+				return upsertErr
+			}
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
+	}); err != nil {
+		return nil, model.Snapshot{}, err
+	}
+	s.snapshot = next
+	return eligible, next, nil
+}
+
+func (s *Store) ResolveAgencyProposal(ctx context.Context, request model.ResolveAgencyProposalRequest, now time.Time) (store.AgencyResolveResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	recordID := agencyProposalRecordID(request.TenantID, request.ProposalID)
+	stored, err := s.agency.Get(ctx, recordID)
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return store.AgencyResolveResult{}, store.ErrAgencyNotFound
+	}
+	if err != nil {
+		return store.AgencyResolveResult{}, err
+	}
+	record, err := decodeAgencyRecord(stored.Metadata)
+	if err != nil {
+		return store.AgencyResolveResult{}, err
+	}
+	if record.Status == model.AgencyApproved || record.Status == model.AgencyRejected || record.Status == model.AgencyExpired {
+		if record.Status == request.Decision && record.ResolutionReason == request.Reason && record.ExecutionRef == request.ExecutionRef {
+			return store.AgencyResolveResult{Duplicate: true, Record: record, Snapshot: s.snapshot}, nil
+		}
+		return store.AgencyResolveResult{}, store.ErrAgencyConflict
+	}
+	if record.Status != model.AgencyClaimed || record.ClaimedBy != request.ConsumerID {
+		return store.AgencyResolveResult{}, store.ErrAgencyLease
+	}
+	if !now.Before(record.Proposal.ExpiresAt) {
+		record.Status, record.ResolutionReason, record.ResolvedAt = model.AgencyExpired, "proposal expired before authorization completed", now
+		record.ClaimedBy, record.LeaseUntil, record.ExecutionRef = "", time.Time{}, ""
+		result, persistErr := s.persistAgencyResolution(ctx, recordID, record, stored.Metadata["content_digest"], agencyMutatedSnapshot(s.snapshot))
+		if persistErr != nil {
+			return store.AgencyResolveResult{}, persistErr
+		}
+		return result, store.ErrAgencyExpired
+	}
+	if !now.Before(record.LeaseUntil) {
+		return store.AgencyResolveResult{}, store.ErrAgencyLease
+	}
+	record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = request.Decision, request.Reason, request.ExecutionRef, now
+	record.ClaimedBy, record.LeaseUntil = "", time.Time{}
+	next := agencyMutatedSnapshot(s.snapshot)
+	return s.persistAgencyResolution(ctx, recordID, record, stored.Metadata["content_digest"], next)
+}
+
+func (s *Store) persistAgencyResolution(ctx context.Context, recordID string, record model.AgencyProposalRecord, contentDigest interface{}, next model.Snapshot) (store.AgencyResolveResult, error) {
+	_, activeName, err := s.activeAgencyCollection(ctx, record.Proposal.TenantID)
+	if err != nil {
+		return store.AgencyResolveResult{}, err
+	}
+	metadata, err := encodeAgencyMetadata(record, "")
+	if err != nil {
+		return store.AgencyResolveResult{}, err
+	}
+	metadata["content_digest"] = contentDigest
+	state, err := s.stateMetadata(next)
+	if err != nil {
+		return store.AgencyResolveResult{}, err
+	}
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Upsert(ctx, agencyCollection, recordID, nil, metadata); err != nil {
+			return err
+		}
+		if err := tx.Delete(ctx, activeName, recordID); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
+	}); err != nil {
+		return store.AgencyResolveResult{}, err
+	}
+	s.snapshot = next
+	return store.AgencyResolveResult{Record: record, Snapshot: next}, nil
+}
+
+func (s *Store) PublishPredictiveSnap(ctx context.Context, snap model.PredictiveSnapRecord) (model.PredictiveGraph, model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	current, err := s.getPredictiveGraphLocked(ctx, snap.TenantID)
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	if !reflect.DeepEqual(current, snap.PreviousGraph) || s.snapshot.GraphVersion != snap.PreviousGraph.Version {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+	}
+	if existing, getErr := s.bayesian.Get(ctx, predictiveSnapRecordID(snap.TenantID, snap.ID)); getErr == nil {
+		encoded, _ := existing.Metadata["snap_json"].(string)
+		var prior model.PredictiveSnapRecord
+		if json.Unmarshal([]byte(encoded), &prior) != nil || !reflect.DeepEqual(prior, snap) {
+			return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+		}
+		return current, s.snapshot, nil
+	} else if !errors.Is(getErr, libra.ErrRecordNotFound) {
+		return model.PredictiveGraph{}, model.Snapshot{}, getErr
+	}
+	next := snapInvalidatedSnapshot(s.snapshot)
+	snap.PublishedGraph.Version = next.GraphVersion
+	invalidations, err := s.snapInvalidations(ctx, snap.TenantID, snap.Closure)
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	if err := s.writeSnapTransaction(ctx, snap, snap.PublishedGraph, next, invalidations); err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	s.snapshot = next
+	return snap.PublishedGraph, next, nil
+}
+
+func (s *Store) RollbackPredictiveSnap(ctx context.Context, tenantID, snapID, reason string) (model.PredictiveGraph, model.Snapshot, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	record, err := s.bayesian.Get(ctx, predictiveSnapRecordID(tenantID, snapID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapNotFound
+	}
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	encoded, _ := record.Metadata["snap_json"].(string)
+	var snap model.PredictiveSnapRecord
+	if json.Unmarshal([]byte(encoded), &snap) != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, errors.New("predictive snap record is malformed")
+	}
+	current, err := s.getPredictiveGraphLocked(ctx, tenantID)
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	if snap.RolledBack || current.SourceSnapID != snapID {
+		return model.PredictiveGraph{}, model.Snapshot{}, store.ErrSnapConflict
+	}
+	next := snapInvalidatedSnapshot(s.snapshot)
+	graph := snap.PreviousGraph
+	graph.Version = next.GraphVersion
+	graph.PublishedAt = time.Now().UTC()
+	graph.SourceSnapID = "rollback:" + snapID
+	snap.RolledBack, snap.RollbackReason = true, reason
+	invalidations, err := s.snapInvalidations(ctx, tenantID, snap.Closure)
+	if err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	if err := s.writeSnapTransaction(ctx, snap, graph, next, invalidations); err != nil {
+		return model.PredictiveGraph{}, model.Snapshot{}, err
+	}
+	s.snapshot = next
+	return graph, next, nil
+}
+
+type snapInvalidation struct {
+	id       string
+	metadata map[string]interface{}
+}
+
+func (s *Store) agencyDeletionUpdates(ctx context.Context, tenantID string, eventIDs []string, now time.Time) ([]snapInvalidation, string, error) {
+	deleted := make(map[string]struct{}, len(eventIDs))
+	for _, id := range eventIDs {
+		deleted[id] = struct{}{}
+	}
+	active, activeName, err := s.activeAgencyCollection(ctx, tenantID)
+	if err != nil {
+		return nil, "", err
+	}
+	records, err := active.ListAll(ctx)
+	if err != nil {
+		return nil, "", err
+	}
+	updates := make([]snapInvalidation, 0)
+	for _, stored := range records {
+		if kind, _ := stored.Metadata["record_type"].(string); kind != "agency_proposal" {
+			continue
+		}
+		record, decodeErr := decodeAgencyRecord(stored.Metadata)
+		if decodeErr != nil {
+			return nil, "", decodeErr
+		}
+		if record.Proposal.TenantID != tenantID || record.Status != model.AgencyPending && record.Status != model.AgencyClaimed {
+			continue
+		}
+		affected := false
+		for _, evidenceID := range record.Proposal.EvidenceIDs {
+			if _, ok := deleted[evidenceID]; ok {
+				affected = true
+				break
+			}
+		}
+		if !affected {
+			continue
+		}
+		record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyRejected, "", time.Time{}
+		record.ResolutionReason, record.ResolvedAt = "supporting evidence was deleted", now
+		metadata, encodeErr := encodeAgencyMetadata(record, "")
+		if encodeErr != nil {
+			return nil, "", encodeErr
+		}
+		metadata["content_digest"] = stored.Metadata["content_digest"]
+		updates = append(updates, snapInvalidation{id: stored.ID, metadata: metadata})
+	}
+	return updates, activeName, nil
+}
+
+func (s *Store) snapInvalidations(ctx context.Context, tenantID string, closure model.DependencyClosure) ([]snapInvalidation, error) {
+	keys, events := make(map[string]struct{}), make(map[string]struct{})
+	for _, key := range closure.PosteriorKeys {
+		keys[key] = struct{}{}
+	}
+	for _, id := range closure.EventIDs {
+		events[id] = struct{}{}
+	}
+	records, err := s.bayesian.ListAll(ctx)
+	if err != nil {
+		return nil, err
+	}
+	out := make([]snapInvalidation, 0)
+	for _, record := range records {
+		if encoded, ok := record.Metadata["posterior_json"].(string); ok {
+			var posterior model.BayesianPosterior
+			if json.Unmarshal([]byte(encoded), &posterior) == nil && posterior.TenantID == tenantID {
+				if _, affected := keys[posterior.PosteriorKey]; affected {
+					posterior.Certified = false
+					payload, _ := json.Marshal(posterior)
+					metadata := cloneMap(record.Metadata)
+					metadata["posterior_json"] = string(payload)
+					out = append(out, snapInvalidation{id: record.ID, metadata: metadata})
+				}
+			}
+		}
+		if encoded, ok := record.Metadata["residual_json"].(string); ok {
+			var residualRecord model.ResidualRecord
+			if json.Unmarshal([]byte(encoded), &residualRecord) == nil && residualRecord.TenantID == tenantID {
+				_, keyAffected := keys[residualRecord.PosteriorKey]
+				_, eventAffected := events[residualRecord.SourceEventID]
+				if keyAffected || eventAffected {
+					residualRecord.Active = false
+					payload, _ := json.Marshal(residualRecord)
+					metadata := cloneMap(record.Metadata)
+					metadata["residual_json"] = string(payload)
+					out = append(out, snapInvalidation{id: record.ID, metadata: metadata})
+				}
+			}
+		}
+	}
+	return out, nil
+}
+
+func (s *Store) writeSnapTransaction(ctx context.Context, snap model.PredictiveSnapRecord, graph model.PredictiveGraph, snapshot model.Snapshot, invalidations []snapInvalidation) error {
+	graphJSON, _ := json.Marshal(graph)
+	snapJSON, _ := json.Marshal(snap)
+	state, err := s.stateMetadata(snapshot)
+	if err != nil {
+		return err
+	}
+	return s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Upsert(ctx, bayesianCollection, predictiveGraphRecordID(graph.TenantID), nil, map[string]interface{}{"record_type": "predictive_graph", "tenant_id": graph.TenantID, "graph_json": string(graphJSON)}); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, predictiveSnapRecordID(snap.TenantID, snap.ID), nil, map[string]interface{}{"record_type": "predictive_snap", "tenant_id": snap.TenantID, "snap_json": string(snapJSON)}); err != nil {
+			return err
+		}
+		for _, item := range invalidations {
+			if err := tx.Upsert(ctx, bayesianCollection, item.id, nil, item.metadata); err != nil {
+				return err
+			}
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
+	})
+}
+
+func (s *Store) getPredictiveGraphLocked(ctx context.Context, tenantID string) (model.PredictiveGraph, error) {
+	record, err := s.bayesian.Get(ctx, predictiveGraphRecordID(tenantID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.PredictiveGraph{TenantID: tenantID, Version: s.snapshot.GraphVersion}, nil
+	}
+	if err != nil {
+		return model.PredictiveGraph{}, fmt.Errorf("read predictive graph: %w", err)
+	}
+	graph, err := decodePredictiveGraph(record.Metadata, tenantID)
+	if err != nil {
+		return model.PredictiveGraph{}, err
+	}
+	graph.Version = s.snapshot.GraphVersion
+	return graph, nil
+}
+
+func decodePredictiveGraph(metadata map[string]interface{}, tenantID string) (model.PredictiveGraph, error) {
+	encoded, ok := metadata["graph_json"].(string)
+	if !ok {
+		return model.PredictiveGraph{}, errors.New("predictive graph is malformed")
+	}
+	var graph model.PredictiveGraph
+	if err := json.Unmarshal([]byte(encoded), &graph); err != nil {
+		return model.PredictiveGraph{}, err
+	}
+	if graph.TenantID != tenantID {
+		return model.PredictiveGraph{}, errors.New("predictive graph tenant mismatch")
+	}
+	return graph, nil
+}
+func cloneMap(input map[string]interface{}) map[string]interface{} {
+	output := make(map[string]interface{}, len(input))
+	for key, value := range input {
+		output[key] = value
+	}
+	return output
+}
+func snapInvalidatedSnapshot(snapshot model.Snapshot) model.Snapshot {
+	snapshot.RuntimeVersion++
+	snapshot.GraphVersion++
+	snapshot.AbstractionVersion++
+	snapshot.PosteriorVersion++
+	snapshot.ResidualVersion++
+	return snapshot
+}
+
+func (s *Store) getResidualRecord(ctx context.Context, tenantID string, scope model.ResidualScope, key string) (model.ResidualRecord, error) {
+	record, err := s.bayesian.Get(ctx, residualRecordID(tenantID, scope, key))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.ResidualRecord{}, store.ErrResidualNotFound
+	}
+	if err != nil {
+		return model.ResidualRecord{}, fmt.Errorf("read residual record: %w", err)
+	}
+	encoded, ok := record.Metadata["residual_json"].(string)
+	if !ok {
+		return model.ResidualRecord{}, errors.New("residual record is malformed")
+	}
+	var residualRecord model.ResidualRecord
+	if err := json.Unmarshal([]byte(encoded), &residualRecord); err != nil {
+		return model.ResidualRecord{}, fmt.Errorf("decode residual record: %w", err)
+	}
+	if residualRecord.TenantID != tenantID || residualRecord.Scope != scope || residualRecord.Key != key {
+		return model.ResidualRecord{}, errors.New("residual record identity mismatch")
+	}
+	return residualRecord, nil
+}
+
+func (s *Store) GetBayesianPosterior(ctx context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error) {
+	return s.getBayesianPosterior(ctx, tenantID, posteriorKey)
+}
+
+func (s *Store) getBayesianPosterior(ctx context.Context, tenantID, posteriorKey string) (model.BayesianPosterior, error) {
+	record, err := s.bayesian.Get(ctx, bayesianPosteriorRecordID(tenantID, posteriorKey))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.BayesianPosterior{}, store.ErrPosteriorNotFound
+	}
+	if err != nil {
+		return model.BayesianPosterior{}, fmt.Errorf("read Bayesian posterior: %w", err)
+	}
+	encoded, ok := record.Metadata["posterior_json"].(string)
+	if !ok {
+		return model.BayesianPosterior{}, errors.New("Bayesian posterior is malformed")
+	}
+	var posterior model.BayesianPosterior
+	if err := json.Unmarshal([]byte(encoded), &posterior); err != nil {
+		return model.BayesianPosterior{}, fmt.Errorf("decode Bayesian posterior: %w", err)
+	}
+	if posterior.TenantID != tenantID || posterior.PosteriorKey != posteriorKey {
+		return model.BayesianPosterior{}, errors.New("Bayesian posterior identity mismatch")
+	}
+	return posterior, nil
+}
+
+func decodeEligible(results []*libra.SearchResult, availableBy time.Time, limit int) []store.SearchResult {
+	out := make([]store.SearchResult, 0, min(limit, len(results)))
+	for _, result := range results {
+		event, err := decodeStoredEvent(result.Metadata, true)
+		if err != nil {
+			continue
+		}
+		event.Embedding = nil
+		if event.AvailableAt.After(availableBy) {
+			continue
+		}
+		out = append(out, store.SearchResult{Event: event, Similarity: float64(result.Score)})
+		if len(out) >= limit {
+			break
+		}
+	}
+	return out
+}
+
+func (s *Store) Stats(ctx context.Context) (store.Stats, error) {
+	s.eventMu.RLock()
+	defer s.eventMu.RUnlock()
+	databaseStats := s.db.Stats(ctx)
+	stats := store.Stats{Backend: "libravdb", MemoryBytes: databaseStats.MemoryUsage}
+	for name, collection := range databaseStats.Collections {
+		if !strings.HasPrefix(name, "events_v2_") {
+			continue
+		}
+		stats.Tenants++
+		stats.Events += collection.LiveRecordCount
+	}
+	return stats, nil
+}
+
+func (s *Store) Delete(ctx context.Context, tenantID, eventID string) (store.DeleteResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
+	collection, err := s.collection(ctx, tenantID)
+	if err != nil {
+		return store.DeleteResult{}, err
+	}
+	if _, err := collection.Get(ctx, eventID); errors.Is(err, libra.ErrRecordNotFound) {
+		return store.DeleteResult{Snapshot: s.snapshot}, nil
+	} else if err != nil {
+		return store.DeleteResult{}, err
+	}
+	agencyUpdates, activeAgencyName, err := s.agencyDeletionUpdates(ctx, tenantID, []string{eventID}, time.Now().UTC())
+	if err != nil {
+		return store.DeleteResult{}, err
+	}
+	next := invalidatedSnapshot(s.snapshot)
+	if len(agencyUpdates) > 0 {
+		next.AgencyVersion++
+	}
+	metadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.DeleteResult{}, err
+	}
+	key := collectionName(tenantID, s.config.EmbeddingModel)
+	err = s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Delete(ctx, key, eventID); err != nil {
+			return err
+		}
+		for _, item := range agencyUpdates {
+			if err := tx.Upsert(ctx, agencyCollection, item.id, nil, item.metadata); err != nil {
+				return err
+			}
+			if err := tx.Delete(ctx, activeAgencyName, item.id); err != nil {
+				return err
+			}
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, metadata)
+	})
+	if err != nil {
+		return store.DeleteResult{}, fmt.Errorf("delete event: %w", err)
+	}
+	s.snapshot = next
+	return store.DeleteResult{Deleted: true, Snapshot: next}, nil
+}
+
+func (s *Store) DeleteComposition(ctx context.Context, tenantID, eventID, reason string, decomposedAt time.Time) (store.CompositionDeleteResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
+	collection, err := s.collection(ctx, tenantID)
+	if err != nil {
+		return store.CompositionDeleteResult{}, err
+	}
+	record, err := collection.Get(ctx, eventID)
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return store.CompositionDeleteResult{Snapshot: s.snapshot}, nil
+	}
+	if err != nil {
+		return store.CompositionDeleteResult{}, err
+	}
+	event, err := decodeStoredEvent(record.Metadata, true)
+	if err != nil || event.Composition == nil {
+		return store.CompositionDeleteResult{}, store.ErrCompositionAuthority
+	}
+	tombstone := model.CompositionTombstone{TenantID: tenantID, EventID: eventID, MemberEventIDs: append([]string(nil), event.Composition.MemberEventIDs...), AntiPigeonCertificateID: event.Composition.AntiPigeonCertificateID, Reason: reason, DecomposedAt: decomposedAt.UTC()}
+	tombstoneJSON, err := json.Marshal(tombstone)
+	if err != nil {
+		return store.CompositionDeleteResult{}, fmt.Errorf("encode composition tombstone: %w", err)
+	}
+	next := s.snapshot
+	next.RuntimeVersion++
+	next.AbstractionVersion++
+	metadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.CompositionDeleteResult{}, err
+	}
+	key := collectionName(tenantID, s.config.EmbeddingModel)
+	if err := s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.Delete(ctx, key, eventID); err != nil {
+			return err
+		}
+		if err := tx.Upsert(ctx, bayesianCollection, compositionTombstoneRecordID(tenantID, eventID), nil, map[string]interface{}{"record_type": "composition_tombstone", "tenant_id": tenantID, "tombstone_json": string(tombstoneJSON)}); err != nil {
+			return err
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, metadata)
+	}); err != nil {
+		return store.CompositionDeleteResult{}, fmt.Errorf("delete composition: %w", err)
+	}
+	s.snapshot = next
+	return store.CompositionDeleteResult{Deleted: true, MemberEventIDs: append([]string(nil), event.Composition.MemberEventIDs...), Snapshot: next}, nil
+}
+
+func (s *Store) GetCompositionTombstone(ctx context.Context, tenantID, eventID string) (model.CompositionTombstone, error) {
+	record, err := s.bayesian.Get(ctx, compositionTombstoneRecordID(tenantID, eventID))
+	if errors.Is(err, libra.ErrRecordNotFound) {
+		return model.CompositionTombstone{}, store.ErrEventNotFound
+	}
+	if err != nil {
+		return model.CompositionTombstone{}, fmt.Errorf("read composition tombstone: %w", err)
+	}
+	encoded, _ := record.Metadata["tombstone_json"].(string)
+	var tombstone model.CompositionTombstone
+	if encoded == "" || json.Unmarshal([]byte(encoded), &tombstone) != nil || tombstone.TenantID != tenantID || tombstone.EventID != eventID {
+		return model.CompositionTombstone{}, errors.New("invalid composition tombstone")
+	}
+	return tombstone, nil
+}
+
+func sameIDSet(left, right []string) bool {
+	if len(left) != len(right) {
+		return false
+	}
+	seen := make(map[string]struct{}, len(left))
+	for _, id := range left {
+		seen[id] = struct{}{}
+	}
+	for _, id := range right {
+		if _, ok := seen[id]; !ok {
+			return false
+		}
+	}
+	return true
+}
+
+func (s *Store) DeleteBefore(ctx context.Context, tenantID string, before time.Time, limit int) (store.RetentionResult, error) {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	s.eventMu.Lock()
+	defer s.eventMu.Unlock()
+	collection, err := s.collection(ctx, tenantID)
+	if err != nil {
+		return store.RetentionResult{}, err
+	}
+	records, err := collection.ListAll(ctx)
+	if err != nil {
+		return store.RetentionResult{}, err
+	}
+	type datedID struct {
+		id string
+		at time.Time
+	}
+	eligible := make([]datedID, 0)
+	for _, record := range records {
+		event, err := decodeStoredEvent(record.Metadata, false)
+		if err != nil {
+			continue
+		}
+		if event.AvailableAt.Before(before) {
+			eligible = append(eligible, datedID{id: event.ID, at: event.AvailableAt})
+		}
+	}
+	sort.Slice(eligible, func(i, j int) bool {
+		if eligible[i].at.Equal(eligible[j].at) {
+			return eligible[i].id < eligible[j].id
+		}
+		return eligible[i].at.Before(eligible[j].at)
+	})
+	if len(eligible) > limit {
+		eligible = eligible[:limit]
+	}
+	ids := make([]string, len(eligible))
+	for i := range eligible {
+		ids[i] = eligible[i].id
+	}
+	if len(ids) == 0 {
+		return store.RetentionResult{Snapshot: s.snapshot}, nil
+	}
+	agencyUpdates, activeAgencyName, err := s.agencyDeletionUpdates(ctx, tenantID, ids, time.Now().UTC())
+	if err != nil {
+		return store.RetentionResult{}, err
+	}
+	next := invalidatedSnapshot(s.snapshot)
+	if len(agencyUpdates) > 0 {
+		next.AgencyVersion++
+	}
+	metadata, err := s.stateMetadata(next)
+	if err != nil {
+		return store.RetentionResult{}, err
+	}
+	key := collectionName(tenantID, s.config.EmbeddingModel)
+	err = s.db.WithTx(ctx, func(tx libra.Tx) error {
+		if err := tx.DeleteBatch(ctx, key, ids); err != nil {
+			return err
+		}
+		for _, item := range agencyUpdates {
+			if err := tx.Upsert(ctx, agencyCollection, item.id, nil, item.metadata); err != nil {
+				return err
+			}
+			if err := tx.Delete(ctx, activeAgencyName, item.id); err != nil {
+				return err
+			}
+		}
+		return tx.Upsert(ctx, systemCollection, "runtime", nil, metadata)
+	})
+	if err != nil {
+		return store.RetentionResult{}, fmt.Errorf("retention delete: %w", err)
+	}
+	s.snapshot = next
+	return store.RetentionResult{DeletedIDs: ids, Snapshot: next}, nil
+}
+
+func decodeStoredEvent(metadata map[string]interface{}, hydrateRaw bool) (model.Event, error) {
+	payload, ok := metadata["event_json"].(string)
+	if !ok {
+		return model.Event{}, errors.New("event payload is absent")
+	}
+	var event model.Event
+	if err := json.Unmarshal([]byte(payload), &event); err != nil {
+		return model.Event{}, err
+	}
+	corpus, ok := metadata["corpus_text"].(string)
+	if !ok || corpus != event.FrameText() {
+		return model.Event{}, errors.New("event corpus does not match canonical EventFrame")
+	}
+	if hydrateRaw {
+		if raw, ok := metadata["raw_content"].(string); ok && raw != "" {
+			event.Content = raw
+		}
+	}
+	event.Embedding = nil
+	return event, nil
+}
+
+func encodeStoredEvent(event model.Event) ([]byte, error) {
+	metadataEvent := event
+	metadataEvent.Content = ""
+	metadataEvent.Embedding = nil
+	return json.Marshal(metadataEvent)
+}
+
+func (s *Store) Backup(ctx context.Context, destination string) error {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	return s.db.Backup(ctx, destination)
+}
+
+func (s *Store) Compact(ctx context.Context) error {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	return s.db.Vacuum(ctx)
+}
+
+func (s *Store) Close() error {
+	return s.db.Close()
+}
+
+func (s *Store) Snapshot(_ context.Context) model.Snapshot {
+	s.writeMu.RLock()
+	defer s.writeMu.RUnlock()
+	return s.snapshot
+}
+
+func (s *Store) collection(ctx context.Context, tenantID string) (*libra.Collection, error) {
+	name := collectionName(tenantID, s.config.EmbeddingModel)
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if collection := s.collections[name]; collection != nil {
+		return collection, nil
+	}
+	names, err := s.db.ListCollectionsWithContext(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("list collections: %w", err)
+	}
+	for _, existingName := range names {
+		if existingName != name {
+			continue
+		}
+		collection, err := s.db.GetCollection(name)
+		if err != nil {
+			return nil, fmt.Errorf("load tenant collection: %w", err)
+		}
+		if collection.Dimension() != s.config.Dimension {
+			return nil, fmt.Errorf("tenant collection dimension %d does not match %d", collection.Dimension(), s.config.Dimension)
+		}
+		s.collections[name] = collection
+		return collection, nil
+	}
+	options := []libra.CollectionOption{
+		libra.WithMetric(libra.CosineDistance),
+		libra.WithHNSW(16, 200, 100),
+		libra.WithMemoryMapping(s.config.MemoryMapping),
+	}
+	switch s.config.Quantization {
+	case "", "none":
+	case "sq8":
+		options = append(options, libra.WithScalarQuantization(8, 0.10))
+	case "fsq6":
+		options = append(options, libra.WithFSQQuantization(6, 0.10))
+	case "pq8":
+		options = append(options, libra.WithProductQuantization(8, 8, 0.10))
+	default:
+		return nil, fmt.Errorf("unsupported quantization %q", s.config.Quantization)
+	}
+	collection, err := s.db.EnsureCollection(ctx, name, s.config.Dimension, options...)
+	if err != nil {
+		return nil, fmt.Errorf("ensure tenant collection: %w", err)
+	}
+	s.collections[name] = collection
+	return collection, nil
+}
+
+func collectionName(tenantID, embeddingModel string) string {
+	digest := sha256.Sum256([]byte(tenantID + "\x00" + embeddingModel))
+	return "events_v2_" + hex.EncodeToString(digest[:12])
+}
+
+func agencyActiveCollectionName(tenantID string) string {
+	digest := sha256.Sum256([]byte(tenantID))
+	return "_eventframe_agency_active_" + hex.EncodeToString(digest[:12])
+}
+
+func (s *Store) activeAgencyCollection(ctx context.Context, tenantID string) (*libra.Collection, string, error) {
+	name := agencyActiveCollectionName(tenantID)
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if collection := s.agencyActive[name]; collection != nil {
+		return collection, name, nil
+	}
+	collection, err := s.db.EnsureCollection(ctx, name, 0, libra.WithMetadataOnly())
+	if err != nil {
+		return nil, "", fmt.Errorf("ensure active agency collection: %w", err)
+	}
+	s.agencyActive[name] = collection
+	return collection, name, nil
+}
+
+func (s *Store) loadOrInitializeState(ctx context.Context) error {
+	collection, err := s.db.EnsureCollection(ctx, systemCollection, 0, libra.WithMetadataOnly())
+	if err != nil {
+		return fmt.Errorf("ensure system collection: %w", err)
+	}
+	s.bayesian, err = s.db.EnsureCollection(ctx, bayesianCollection, 0, libra.WithMetadataOnly())
+	if err != nil {
+		return fmt.Errorf("ensure Bayesian collection: %w", err)
+	}
+	s.agency, err = s.db.EnsureCollection(ctx, agencyCollection, 0, libra.WithMetadataOnly())
+	if err != nil {
+		return fmt.Errorf("ensure agency collection: %w", err)
+	}
+	record, err := collection.Get(ctx, "runtime")
+	if err == nil {
+		encoded, ok := record.Metadata["state_json"].(string)
+		if !ok {
+			return errors.New("durable runtime state is malformed")
+		}
+		var state persistentState
+		if err := json.Unmarshal([]byte(encoded), &state); err != nil {
+			return fmt.Errorf("decode durable runtime state: %w", err)
+		}
+		if state.SchemaVersion != 2 {
+			return fmt.Errorf("database schema %d requires migration", state.SchemaVersion)
+		}
+		if state.EmbeddingModel != s.config.EmbeddingModel || state.Dimension != s.config.Dimension || state.Quantization != s.config.Quantization {
+			return fmt.Errorf("database embedding contract %q/d%d does not match active %q/d%d", state.EmbeddingModel, state.Dimension, s.config.EmbeddingModel, s.config.Dimension)
+		}
+		if state.Snapshot.ContractVersion > model.ContractVersion {
+			return fmt.Errorf("database contract version %d is newer than runtime contract %d", state.Snapshot.ContractVersion, model.ContractVersion)
+		}
+		s.policyDigest = state.BayesianPolicyDigest
+		if state.Snapshot.ContractVersion < model.ContractVersion {
+			if state.Snapshot.ContractVersion < 7 {
+				if rebuildErr := s.rebuildActiveAgencyCollections(ctx, time.Now().UTC()); rebuildErr != nil {
+					return fmt.Errorf("rebuild active agency projection: %w", rebuildErr)
+				}
+			}
+			state.Snapshot.ContractVersion = model.ContractVersion
+			if state.Snapshot.AgencyVersion == 0 {
+				state.Snapshot.AgencyVersion = 1
+			}
+			state.Snapshot.RuntimeVersion++
+			metadata, metadataErr := s.stateMetadata(state.Snapshot)
+			if metadataErr != nil {
+				return metadataErr
+			}
+			if upsertErr := collection.Upsert(ctx, "runtime", nil, metadata); upsertErr != nil {
+				return fmt.Errorf("upgrade durable contract marker: %w", upsertErr)
+			}
+		}
+		s.snapshot = state.Snapshot
+		return nil
+	}
+	if !errors.Is(err, libra.ErrRecordNotFound) {
+		return fmt.Errorf("read durable runtime state: %w", err)
+	}
+	names, listErr := s.db.ListCollectionsWithContext(ctx)
+	if listErr != nil {
+		return fmt.Errorf("inspect database schema: %w", listErr)
+	}
+	for _, name := range names {
+		if isLegacyCollection(name) {
+			return errors.New("legacy Phase 1 collections detected; run with -migrate-v1 and -migration-backup before starting")
+		}
+	}
+	s.snapshot = model.Snapshot{PolicyVersion: 1, ContractVersion: model.ContractVersion, GraphVersion: 1, PosteriorVersion: 1, ResidualVersion: 1, AbstractionVersion: 1, AgencyVersion: 1}
+	metadata, err := s.stateMetadata(s.snapshot)
+	if err != nil {
+		return err
+	}
+	if err := collection.Insert(ctx, "runtime", nil, metadata); err != nil {
+		return fmt.Errorf("initialize durable runtime state: %w", err)
+	}
+	return nil
+}
+
+func (s *Store) rebuildActiveAgencyCollections(ctx context.Context, now time.Time) error {
+	records, err := s.agency.ListAll(ctx)
+	if err != nil {
+		return err
+	}
+	byTenant := make(map[string][]libra.Record)
+	for _, stored := range records {
+		if kind, _ := stored.Metadata["record_type"].(string); kind != "agency_proposal" {
+			continue
+		}
+		record, decodeErr := decodeAgencyRecord(stored.Metadata)
+		if decodeErr != nil {
+			return decodeErr
+		}
+		if _, exists := byTenant[record.Proposal.TenantID]; !exists {
+			byTenant[record.Proposal.TenantID] = nil
+		}
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
+			byTenant[record.Proposal.TenantID] = append(byTenant[record.Proposal.TenantID], stored)
+		}
+	}
+	for tenantID, activeRecords := range byTenant {
+		active, name, ensureErr := s.activeAgencyCollection(ctx, tenantID)
+		if ensureErr != nil {
+			return ensureErr
+		}
+		existing, listErr := active.ListAll(ctx)
+		if listErr != nil {
+			return listErr
+		}
+		if txErr := s.db.WithTx(ctx, func(tx libra.Tx) error {
+			if len(existing) > 0 {
+				ids := make([]string, len(existing))
+				for index := range existing {
+					ids[index] = existing[index].ID
+				}
+				if deleteErr := tx.DeleteBatch(ctx, name, ids); deleteErr != nil {
+					return deleteErr
+				}
+			}
+			for _, stored := range activeRecords {
+				if upsertErr := tx.Upsert(ctx, name, stored.ID, nil, stored.Metadata); upsertErr != nil {
+					return upsertErr
+				}
+			}
+			return nil
+		}); txErr != nil {
+			return txErr
+		}
+	}
+	return nil
+}
+
+func bayesianJournalRecordID(tenantID, journalID string) string {
+	digest := sha256.Sum256([]byte(tenantID + "\x00" + journalID))
+	return "journal_" + hex.EncodeToString(digest[:])
+}
+
+func selectionCertificateRecordID(tenantID string) string {
+	return hashedBayesianRecordID("selection", tenantID)
+}
+
+func omittedInfluenceCertificateRecordID(tenantID string) string {
+	return hashedBayesianRecordID("omitted_influence", tenantID)
+}
+
+func antiPigeonCertificateRecordID(tenantID, certificateID string) string {
+	return hashedBayesianRecordID("anti_pigeon", tenantID+"\x00"+certificateID)
+}
+
+func antiPigeonIndexRecordID(tenantID, eventID string) string {
+	return hashedBayesianRecordID("anti_pigeon_index", tenantID+"\x00"+eventID)
+}
+
+func compositionTombstoneRecordID(tenantID, eventID string) string {
+	return hashedBayesianRecordID("composition_tombstone", tenantID+"\x00"+eventID)
+}
+
+func hashedBayesianRecordID(kind, value string) string {
+	digest := sha256.Sum256([]byte(kind + "\x00" + value))
+	return kind + "_" + hex.EncodeToString(digest[:])
+}
+
+func bayesianOutcomeRecordID(tenantID, idempotencyKey string) string {
+	return hashedBayesianRecordID("outcome", tenantID+"\x00"+idempotencyKey)
+}
+
+func bayesianPosteriorRecordID(tenantID, posteriorKey string) string {
+	return hashedBayesianRecordID("posterior", tenantID+"\x00"+posteriorKey)
+}
+
+func residualRecordID(tenantID string, scope model.ResidualScope, key string) string {
+	return hashedBayesianRecordID("residual", tenantID+"\x00"+string(scope)+"\x00"+key)
+}
+
+func predictiveGraphRecordID(tenantID string) string {
+	return hashedBayesianRecordID("predictive_graph", tenantID)
+}
+func predictiveSnapRecordID(tenantID, snapID string) string {
+	return hashedBayesianRecordID("predictive_snap", tenantID+"\x00"+snapID)
+}
+
+func agencyProposalRecordID(tenantID, proposalID string) string {
+	return hashedBayesianRecordID("agency_proposal", tenantID+"\x00"+proposalID)
+}
+
+func (s *Store) listAgencyRecords(ctx context.Context, tenantID string) ([]model.AgencyProposalRecord, error) {
+	return listAgencyRecordsFrom(ctx, s.agency, tenantID)
+}
+
+func listAgencyRecordsFrom(ctx context.Context, collection *libra.Collection, tenantID string) ([]model.AgencyProposalRecord, error) {
+	records, err := collection.ListAll(ctx)
+	if err != nil {
+		return nil, err
+	}
+	out := make([]model.AgencyProposalRecord, 0)
+	for _, record := range records {
+		if kind, _ := record.Metadata["record_type"].(string); kind != "agency_proposal" {
+			continue
+		}
+		if recordTenant, _ := record.Metadata["tenant_id"].(string); recordTenant != tenantID {
+			continue
+		}
+		decoded, decodeErr := decodeAgencyRecord(record.Metadata)
+		if decodeErr != nil {
+			return nil, decodeErr
+		}
+		out = append(out, decoded)
+	}
+	return out, nil
+}
+
+func encodeAgencyMetadata(record model.AgencyProposalRecord, digest string) (map[string]interface{}, error) {
+	encoded, err := json.Marshal(record)
+	if err != nil {
+		return nil, err
+	}
+	return map[string]interface{}{
+		"record_type": "agency_proposal", "tenant_id": record.Proposal.TenantID,
+		"proposal_id": record.Proposal.ID, "content_digest": digest, "agency_json": string(encoded),
+	}, nil
+}
+
+func decodeAgencyRecord(metadata map[string]interface{}) (model.AgencyProposalRecord, error) {
+	encoded, ok := metadata["agency_json"].(string)
+	if !ok {
+		return model.AgencyProposalRecord{}, errors.New("agency proposal record is malformed")
+	}
+	var record model.AgencyProposalRecord
+	if err := json.Unmarshal([]byte(encoded), &record); err != nil {
+		return model.AgencyProposalRecord{}, err
+	}
+	if record.Proposal.ID == "" || record.Proposal.TenantID == "" || record.Signed.Payload == "" || record.Signed.Signature == "" {
+		return model.AgencyProposalRecord{}, errors.New("agency proposal record is incomplete")
+	}
+	return record, nil
+}
+
+func validAgencyParentRecords(records map[string]model.AgencyProposalRecord, proposal model.AgencyProposal) bool {
+	if proposal.CausalChainDepth == 0 {
+		return proposal.ParentProposalID == ""
+	}
+	parent, ok := records[proposal.ParentProposalID]
+	return ok && parent.Proposal.CausalChainID == proposal.CausalChainID && parent.Proposal.CausalChainDepth+1 == proposal.CausalChainDepth
+}
+
+func countAgencyChainRecords(records []model.AgencyProposalRecord, chainID string) int {
+	count := 0
+	for _, record := range records {
+		if record.Proposal.CausalChainID == chainID {
+			count++
+		}
+	}
+	return count
+}
+
+func countPendingAgencyRecords(records []model.AgencyProposalRecord, now time.Time) int {
+	count := 0
+	for _, record := range records {
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
+			count++
+		}
+	}
+	return count
+}
+
+func agencyMutatedSnapshot(snapshot model.Snapshot) model.Snapshot {
+	snapshot.RuntimeVersion++
+	snapshot.AgencyVersion++
+	return snapshot
+}
+
+func updateCalibration(posterior *model.BayesianPosterior, probability float64, useful bool, weight float64) {
+	target := 0.0
+	if useful {
+		target = 1
+	}
+	posterior.CalibrationWeight += weight
+	posterior.BrierLossSum += weight * (target - probability) * (target - probability)
+	posterior.ForecastUsefulSum += weight * probability
+	posterior.ObservedUsefulSum += weight * target
+}
+
+func decodeCertificate(metadata map[string]interface{}, target any) error {
+	encoded, ok := metadata["certificate_json"].(string)
+	if !ok {
+		return errors.New("Bayesian certificate is malformed")
+	}
+	if err := json.Unmarshal([]byte(encoded), target); err != nil {
+		return fmt.Errorf("decode Bayesian certificate: %w", err)
+	}
+	return nil
+}
+
+func isLegacyCollection(name string) bool {
+	return strings.HasPrefix(name, "events_") && !strings.HasPrefix(name, "events_v2_")
+}
+
+func (s *Store) stateMetadata(snapshot model.Snapshot) (map[string]interface{}, error) {
+	return s.stateMetadataWithPolicy(snapshot, s.policyDigest)
+}
+
+func (s *Store) stateMetadataWithPolicy(snapshot model.Snapshot, policyDigest string) (map[string]interface{}, error) {
+	encoded, err := json.Marshal(persistentState{SchemaVersion: 2, EmbeddingModel: s.config.EmbeddingModel, Dimension: s.config.Dimension, Quantization: s.config.Quantization, Snapshot: snapshot, BayesianPolicyDigest: policyDigest})
+	if err != nil {
+		return nil, err
+	}
+	return map[string]interface{}{"state_json": string(encoded)}, nil
+}
+
+func invalidatedSnapshot(snapshot model.Snapshot) model.Snapshot {
+	snapshot.RuntimeVersion++
+	snapshot.EvidenceEpoch++
+	snapshot.GraphVersion++
+	snapshot.PosteriorVersion++
+	snapshot.ResidualVersion++
+	snapshot.AbstractionVersion++
+	return snapshot
+}

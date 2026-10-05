@@ -1,0 +1,5 @@
+=== RUN   TestResearchShardedTopologyReopenV1
+    sharded_topology_test.go:191: SHARDED_TOPOLOGY_V1 routes=[32 32 32 32] records_before=128 records_after=127 quantization=sq8 reopen=pass retry=pass tenant=pass
+--- PASS: TestResearchShardedTopologyReopenV1 (1.05s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/store/libravdbstore	1.375s

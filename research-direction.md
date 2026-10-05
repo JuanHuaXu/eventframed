@@ -17,6 +17,38 @@ entry below records new work, not a change to any original success criterion.
 
 ## Current Continuation
 
+2026-10-05 latest: [overlay x four routes](research/overlay-shard-factorial-v1/RESULTS.md).
+Previous goal turn PROGRESS (V6 integrated rescue and authorized publication);
+this turn PROGRESS: fresh four-arm factorial,42commands,18functional preflight,
+8quality databases and16loaded trials. All seven WHOLE goals OPEN/ACTIVE;
+weekly usage50%at entry,51%on recheck, below80%stop threshold. Production/paper untouched.
+
+Sharding alone passes all four finite loaded cells: recall p99 43.335-75.465ms.
+Combined overlay/sharding also passes at64.435-91.785ms, but is slower than
+shard-only in3/4cells (ratios2.118,1.651,1.169,.854). Overlay alone FAILS all
+absolute cells at163.231-195.626ms and3/4paired nonregression screens. Preserve
+those failures; earlier quiet mean-write wins do not rescue loaded serving.
+Combined mean future captures6.839-7.445ms vs12.184-14.078ms shard-only: lower
+write mean coexists with higher tails. Use shard-only as next finite mechanical
+serving reference, not a new deployed default or a change to Adaptive's accuracy
+baseline. All16runs complete4096captures/1024labels/2048durable rows in total.
+
+All4arms pass unchanged cold numerical quality/repeat/future screens over6144
+ordinary plus6144exact recalls, independently checked. Past output stable while
+all native future nominations change; small-route exact fallback remains. No
+untouched agent utility, learned-law certificate, large ANN or population-tail
+claim. Two full loaded race trials pass functional-only with genuine timing
+failure exits. A verifier-only unexpected-exit gap was falsified/repaired after
+measurements; original pins/code/failure retained, thresholds/metrics unchanged.
+All13final arithmetic/tamper tests pass. Final checkpoint requires full source,
+compressed raw-trace and relocated evidence verification. No automatic push.
+
+Next bounded async merge/backpressure compared against shard-only, not merely
+the slower rebuild. ASYNC_DESIGN.md is explicit unimplemented watermark/reader/
+tail-pressure/recovery work. Sustained open-loop arrival rate, heap/peakRSS,
+retired bytes, crash/cross-epoch, heterogeneous scaling and all other six original
+directions remain unresolved, including the .698246 capped-model TV limitation.
+
 2026-10-05 latest: [immutable-base overlay V6](research/index-overlay-v6/RESULTS.md).
 Previous GOAL turn PROGRESS (V1-V3 prototype/cost evidence; the intervening user
 push request verified published refs without new research). This turn PROGRESS:
