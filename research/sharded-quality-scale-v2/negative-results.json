@@ -1,0 +1,32 @@
+{
+  "verified": true,
+  "positivePass": true,
+  "negativeControls": [
+    {
+      "name": "fabricated_paired_quality",
+      "status": 1,
+      "rejected": true,
+      "setupError": false
+    },
+    {
+      "name": "hidden_future_law_failure",
+      "status": 1,
+      "rejected": true,
+      "setupError": false
+    },
+    {
+      "name": "missing_executed_arm",
+      "status": 1,
+      "rejected": true,
+      "setupError": false
+    },
+    {
+      "name": "substituted_harness",
+      "status": 1,
+      "rejected": true,
+      "setupError": false
+    }
+  ],
+  "historicalInputsMutated": false,
+  "independentArithmeticSeparatelyChecked": true
+}

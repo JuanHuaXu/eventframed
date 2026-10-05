@@ -1,0 +1,37 @@
+{
+  "verification": {
+    "verified": true,
+    "commands": 8,
+    "ordinaryServiceRecalls": 3072,
+    "exactReferenceRecalls": 3072,
+    "functionalPass": true,
+    "annAbsolutePass": true,
+    "packetQualityPass": true,
+    "pairedQualityPass": true,
+    "repeatEqualityPass": true,
+    "counterfactualEqualityPass": true,
+    "exactReferenceStabilityPass": true,
+    "finiteDesignOnly": true,
+    "coldLawOnly": true,
+    "semanticTaskAccuracyTested": false,
+    "populationTailGuarantee": false,
+    "wholeGoalValidation": false,
+    "productionTouched": false,
+    "privateDataUsed": false
+  },
+  "independentArithmetic": {
+    "verified": true,
+    "checkedRows": 3072,
+    "checkedCells": 32,
+    "checkedPhasePairs": 48,
+    "independentArithmetic": true,
+    "rawCanonicalVectorRecomputationIndependent": false,
+    "wholeGoalValidation": false
+  },
+  "verifierNegativeControls": true,
+  "evaluatorUnitTests": 9,
+  "allSevenWholeGoals": "OPEN",
+  "wholeGoalValidation": false,
+  "productionTouched": false,
+  "privateDataUsed": false
+}

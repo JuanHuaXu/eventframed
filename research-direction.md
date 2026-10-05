@@ -17,6 +17,50 @@ entry below records new work, not a change to any original success criterion.
 
 ## Current Continuation
 
+2026-10-05 latest: [four-shard cold quality](research/sharded-quality-v1/RESULTS.md)
+and [4000-record ANN follow-up](research/sharded-quality-scale-v2/RESULTS.md).
+Previous goal turn PROGRESS (V3 load rescue and scoped publication); this turn
+PROGRESS: two frozen quality protocols, eight fresh full-database runs, exact
+nomination references, independent arithmetic and adversarial verifier checks.
+All seven original WHOLE goals remain OPEN/ACTIVE; usage47% at entry,48% on
+final recheck (below the80%stop threshold).
+
+Each study completes3072ordinary and3072exact-reference service recalls over
+96DESIGN public questions, four phases and frontiers50/200. Candidate mean
+tie-aware nomination recall100%, zero mean exact packet score deficit and
+stable retained cold frontier/packet/forecast semantics in both studies. Native
+proposal sequences still change; no selection-support certificate or learned
+posterior/residual layer is validated. Exact reference common-law rounding
+deviation <=4.48e-8, NOT an observed Brier/calibration gain. No held-out labels.
+
+The1000record candidate used the library's <=400 exact-local fallback, so do
+NOT call that large ANN proof. Fresh4000record routes1000each exceed nominal
+150/600cutoff. Expanded availability probes can still force exact searches;
+branch counts are unmeasured. Control4000 frontier200 changes3/96packets and
+frontiers after future-only captures in BOTH pairs, while unchanged repeats and
+exact-reference outputs stay stable. Preserve counterfactual equality FAIL,
+despite excluded future IDs and0common-ID law motion. Candidate passes this
+finite cold-output check, not universal future independence or agent utility.
+
+Four-way initialization62.121/62.099s vs239.045/238.977s, but pinned HNSW still
+rebuilds touched physical collections per transaction. Quiet descriptive p99
+12.82-40.07ms candidate vs6.43-37.42ms control; some quiet cells cost more, so
+do not replace V3's distinct loaded results with a universal speedup claim.
+No large heterogeneous corpus, sustained open-loop/RSS, crash/cross-epoch/native
+contract or untouched-agent success. Goal6 remains OPEN alongside the other6.
+
+Two audit defects fixed within isolated evaluators: cutoff-only tie recall
+could omit a strictly better neighbor, and literal macOS CLI path comparison
+could skip verifier execution. Failing witnesses and original metric retained;
+unchanged thresholds and raw Go traces, canonical-path execution plus explicit
+verified:true required. Independent3072row/32cell/48phase checks agree per study.
+Lossless archives preserve oversize numerical traces; native copies remain local.
+Production, installed cache, private/sealed labels, dirty runtime files and paper
+untouched. Preserve scoped local checkpoint; no automatic push/deployment.
+Next investigate immutable durable index generations + bounded mutation overlay
+or prepared HNSW deltas, with full safety/quality/freshness gates (V2 NEXT.md).
+Other science leads, including .698246 TV defect, remain required and unresolved.
+
 2026-10-05 latest: [V3 repaired four-shard pilot](research/sharded-capture-load-v1/V3_RESULTS.md).
 Previous goal turn PROGRESS (admission/discovery failures and temporary admission
 rescue); intervening authorized push published the earlier public-load checkpoint.

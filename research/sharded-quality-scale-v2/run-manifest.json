@@ -1,0 +1,18 @@
+{
+  "manifestSHA256": "82484eb38cd843d8283be99dee00fb3cb254f6c775562c490deaf108f206f387",
+  "runnerSHA256": "1af84ed665e6fbb03008cf9b81a944f6ff25fcc0a808e7455053353347a74759",
+  "protocolSHA256": "f478a4e88dcdeef772990927440d5e8982cf5419bc28c3cc3d905e75c45bd765",
+  "workers": 10,
+  "orders": [
+    [
+      "control",
+      "candidate"
+    ],
+    [
+      "candidate",
+      "control"
+    ]
+  ],
+  "coldLawOnly": true,
+  "wholeGoalValidation": false
+}

@@ -1,0 +1,25 @@
+{
+  "omittedFiles": [
+    {
+      "file": "quality-0-control.txt",
+      "sha256": "b40b627a6f62b2e4775cda90f0a26edd8d81f44f85645eb37714582f7cf49036",
+      "reason": "Oversize plain transcript is preserved losslessly in quality-0-control.txt.gz; native raw copy remains local."
+    },
+    {
+      "file": "quality-0-candidate.txt",
+      "sha256": "2d2700ddf4380d87f420d34c5066d4c330567ae47dfdfccd327797232e05adcb",
+      "reason": "Oversize plain transcript is preserved losslessly in quality-0-candidate.txt.gz; native raw copy remains local."
+    },
+    {
+      "file": "quality-1-candidate.txt",
+      "sha256": "48743b40f676ef1dbef959258fb5ad93a83fb827898f3edd2a8079ab50776069",
+      "reason": "Oversize plain transcript is preserved losslessly in quality-1-candidate.txt.gz; native raw copy remains local."
+    },
+    {
+      "file": "quality-1-control.txt",
+      "sha256": "eb96f88ffca89da9c1a478dce21ca9bc933eb8c1c126b67ba26ceee8dc6227c7",
+      "reason": "Oversize plain transcript is preserved losslessly in quality-1-control.txt.gz; native raw copy remains local."
+    }
+  ],
+  "privateDataUsed": false
+}

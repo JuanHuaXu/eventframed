@@ -1,0 +1,42 @@
+✔ ties differ in ID without an exact-score deficit (1.587708ms)
+✔ missed high-score neighbor incurs regret and lost tie recall (0.586333ms)
+✖ boundary tie cannot replace a required strictly better neighbor (1.810833ms)
+✔ future and duplicate nominations fail validation (6.158958ms)
+✔ law motion cannot hide behind matching packet IDs (3.271ms)
+✔ packet confidence motion and frontier order are independently visible (3.012667ms)
+✔ invalid and nonnormalized laws are rejected (2.577291ms)
+✔ field deletion is not numerical equality (0.130709ms)
+✔ binary Brier difference is bounded by 2 absolute probability motion (2.292833ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 87.770791
+
+✖ failing tests:
+
+test at research/sharded-quality-v1/evaluate.test.mjs:20:1
+✖ boundary tie cannot replace a required strictly better neighbor (1.810833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 1
+  - 0.9933333333333333
+  
+      at TestContext.<anonymous> (file:///Volumes/Data/eventframed/research/sharded-quality-v1/evaluate.test.mjs:23:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0.9933333333333333,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

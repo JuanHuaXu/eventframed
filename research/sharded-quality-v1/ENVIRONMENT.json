@@ -1,0 +1,14 @@
+{
+  "goVersion": "go version go1.27.1 darwin/arm64",
+  "nodeVersion": "v26.8.1",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "GOMAXPROCS": 10,
+  "hardware": "hw.physicalcpu: 10\nhw.logicalcpu: 10\nhw.memsize: 17179869184",
+  "collectedAfterMeasurements": true,
+  "benchmarkOtherWork": "No simultaneous benchmark. Ordinary query timing interleaves exact reference calls and retains construction.",
+  "peakRSS": "not captured",
+  "compilerDerivedProspectiveClosure": false,
+  "privateDataUsed": false,
+  "productionTouched": false
+}

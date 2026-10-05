@@ -1,0 +1,17 @@
+✔ ties differ in ID without an exact-score deficit (1.517458ms)
+✔ missed high-score neighbor incurs regret and lost tie recall (0.591875ms)
+✔ boundary tie cannot replace a required strictly better neighbor (0.778708ms)
+✔ future and duplicate nominations fail validation (3.397917ms)
+✔ law motion cannot hide behind matching packet IDs (1.309ms)
+✔ packet confidence motion and frontier order are independently visible (1.336459ms)
+✔ invalid and nonnormalized laws are rejected (1.085833ms)
+✔ field deletion is not numerical equality (0.055083ms)
+✔ binary Brier difference is bounded by 2 absolute probability motion (1.012083ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55.476875

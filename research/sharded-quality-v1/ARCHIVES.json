@@ -1,0 +1,38 @@
+{
+  "losslessVerified": true,
+  "archives": [
+    {
+      "original": "quality-0-control.txt",
+      "originalSHA256": "b40b627a6f62b2e4775cda90f0a26edd8d81f44f85645eb37714582f7cf49036",
+      "originalBytes": 187827769,
+      "archive": "quality-0-control.txt.gz",
+      "archiveSHA256": "bbeb577baf640c6f873f9e196dcaf885f585a5efa8c6fe0708bd3f1c1914d40b",
+      "archiveBytes": 20813326
+    },
+    {
+      "original": "quality-0-candidate.txt",
+      "originalSHA256": "2d2700ddf4380d87f420d34c5066d4c330567ae47dfdfccd327797232e05adcb",
+      "originalBytes": 187826518,
+      "archive": "quality-0-candidate.txt.gz",
+      "archiveSHA256": "656485e926fe9a029c7d1e336b4e7d3720ca9a679774d8d9368d59e8ffaf5ff1",
+      "archiveBytes": 20762336
+    },
+    {
+      "original": "quality-1-candidate.txt",
+      "originalSHA256": "48743b40f676ef1dbef959258fb5ad93a83fb827898f3edd2a8079ab50776069",
+      "originalBytes": 187826536,
+      "archive": "quality-1-candidate.txt.gz",
+      "archiveSHA256": "6f10578c55325fb9344e5ba41f58638959f888e40cac6b7971025ab31befc6e8",
+      "archiveBytes": 20762322
+    },
+    {
+      "original": "quality-1-control.txt",
+      "originalSHA256": "eb96f88ffca89da9c1a478dce21ca9bc933eb8c1c126b67ba26ceee8dc6227c7",
+      "originalBytes": 187827828,
+      "archive": "quality-1-control.txt.gz",
+      "archiveSHA256": "1a4b40e488f26bf47ab401dbe07eeef0738f60f85721947f771fc55149516732",
+      "archiveBytes": 20819067
+    }
+  ],
+  "rawCopiesKeptLocally": true
+}

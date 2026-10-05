@@ -1,0 +1,179 @@
+package service
+
+import (
+    "bufio"
+    "context"
+    "crypto/sha256"
+    "encoding/json"
+    "fmt"
+    "math"
+    "os"
+    "sort"
+    "strings"
+    "testing"
+    "time"
+
+    "github.com/JuanHuaXu/eventframed/internal/embed"
+    "github.com/JuanHuaXu/eventframed/internal/frame"
+    "github.com/JuanHuaXu/eventframed/internal/model"
+    "github.com/JuanHuaXu/eventframed/internal/store"
+    "github.com/JuanHuaXu/eventframed/internal/store/libravdbstore"
+)
+
+type qualityScore struct {
+    ID string `json:"id"`
+    Native float64 `json:"native"`
+    Exact float64 `json:"exact"`
+    Baseline float64 `json:"baseline"`
+}
+type qualityFrontier struct {
+    ID string `json:"id"`
+    Baseline float64 `json:"baseline"`
+    Forecast model.ForecastBundle `json:"forecast"`
+}
+type qualityPacket struct {
+    IDs []string `json:"ids"`
+    ExactBaseline []float64 `json:"exact_baseline"`
+    Forecasts []model.ForecastBundle `json:"forecasts"`
+    Frontier []qualityFrontier `json:"frontier"`
+    Confidence float64 `json:"confidence"`
+    AnswerCertainty float64 `json:"answer_certainty"`
+    Snapshot model.Snapshot `json:"snapshot"`
+    NS int64 `json:"ns"`
+}
+type qualityRow struct {
+    Phase string `json:"phase"`
+    Query int `json:"query"`
+    K int `json:"k"`
+    Nomination []qualityScore `json:"nomination"`
+    ExactTop []qualityScore `json:"exact_top"`
+    Actual qualityPacket `json:"actual"`
+    Reference qualityPacket `json:"reference"`
+}
+
+// The reference overrides nomination only. Every posterior gate, journal,
+// forecast, rank-delta calculation and packing call still runs in Service.
+type qualityObserverStore struct {
+    store.EventStore
+    vectors []model.Event
+    exact bool
+    last []store.SearchResult
+}
+func (s *qualityObserverStore) Search(ctx context.Context, tenant string, vector []float32, at time.Time, limit int) ([]store.SearchResult,error) {
+    if !s.exact {
+        out,err:=s.EventStore.Search(ctx,tenant,vector,at,limit)
+        s.last=append([]store.SearchResult(nil),out...)
+        return out,err
+    }
+    if err:=ctx.Err();err!=nil{return nil,err}
+    out:=make([]store.SearchResult,0,len(s.vectors))
+    for _,e:=range s.vectors {
+        if e.TenantID!=tenant||e.AvailableAt.After(at){continue}
+        similarity:=qualityCosine(vector,e.Embedding)
+        e.Embedding=nil
+        out=append(out,store.SearchResult{Event:e,Similarity:similarity})
+    }
+    sort.Slice(out,func(i,j int)bool {if out[i].Similarity==out[j].Similarity{return out[i].Event.ID<out[j].Event.ID};return out[i].Similarity>out[j].Similarity})
+    if len(out)>limit {out=out[:limit]}
+    s.last=append([]store.SearchResult(nil),out...)
+    return out,nil
+}
+func qualityCosine(a,b []float32)float64 {
+    if len(a)!=len(b){panic("dimension mismatch")}
+    var dot,aa,bb float64
+    for i:=range a {x,y:=float64(a[i]),float64(b[i]);dot+=x*y;aa+=x*x;bb+=y*y}
+    if aa==0||bb==0{return 0}
+    return dot/math.Sqrt(aa*bb)
+}
+func qualityLog(t *testing.T,label string,v any){t.Helper();b,err:=json.Marshal(v);if err!=nil{t.Fatal(err)};t.Log(label+string(b))}
+
+func TestResearchShardedQualityV1(t *testing.T){
+    data,err:=os.ReadFile("../../testdata/text-public-facts/corpus.jsonl");if err!=nil{t.Fatal(err)}
+    digest:=fmt.Sprintf("%x",sha256.Sum256(data))
+    if digest!="20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7"{t.Fatal("corpus drift")}
+    var captures []model.CaptureTurnRequest
+    var questions []string
+    scanner:=bufio.NewScanner(strings.NewReader(string(data)))
+    for scanner.Scan(){
+        // Decode the split first: no held-out payload or expected-answer label
+        // is read into the experiment. Only DESIGN question text is retained.
+        var split struct{Split string `json:"split"`}
+        if err:=json.Unmarshal(scanner.Bytes(),&split);err!=nil{t.Fatal(err)}
+        if split.Split!="design"{continue}
+        var row struct{Capture model.CaptureTurnRequest `json:"capture"`;Oracle struct{Query string `json:"query_before_capture"`} `json:"oracle"`}
+        if err:=json.Unmarshal(scanner.Bytes(),&row);err!=nil{t.Fatal(err)}
+        captures=append(captures,row.Capture);if row.Oracle.Query!=""{questions=append(questions,row.Oracle.Query)}
+    }
+    if err:=scanner.Err();err!=nil{t.Fatal(err)}
+    if len(captures)!=288||len(questions)!=96{t.Fatal("fixture count",len(captures),len(questions))}
+    const tenant="public-sharded-quality"
+    at:=time.Date(2026,9,12,0,0,0,0,time.UTC)
+    em,err:=embed.NewHashEmbedder(128);if err!=nil{t.Fatal(err)}
+    db,err:=libravdbstore.Open(libravdbstore.Config{Path:t.TempDir()+"/quality.libravdb",Dimension:128,EmbeddingModel:em.ModelKey(),Quantization:"sq8",MemoryMapping:true});if err!=nil{t.Fatal(err)}
+    wrapped:=&qualityObserverStore{EventStore:db}
+    tap,err:=NewResearchFrontierTap(tenant,4);if err!=nil{db.Close();t.Fatal(err)};defer tap.Close()
+    s,err:=New(wrapped,em,Config{ResearchFrontier:tap,DefaultRecallK:200,DefaultPackK:10,DefaultTokenBudget:2000});if err!=nil{db.Close();t.Fatal(err)};defer s.Close()
+    ctx,cancel:=context.WithTimeout(context.Background(),240*time.Second);defer cancel()
+    replica:=func(i int,future bool)model.CaptureTurnRequest{
+        r:=captures[i%len(captures)];prefix:="past-";when:=at.Add(-time.Hour).Add(time.Duration(i)*time.Millisecond)
+        if future{prefix="future-";when=at.Add(time.Hour).Add(time.Duration(i)*time.Millisecond)}
+        r.IdempotencyKey=fmt.Sprintf("%s%04d",prefix,i);r.Turn.ID=r.IdempotencyKey;r.Turn.TenantID=tenant;r.Turn.SessionID=r.IdempotencyKey;r.Turn.Sequence=1;r.Turn.RunID="public-quality";r.Turn.PreviousTurnID="";r.Turn.RetrievedIDs=nil
+        r.Turn.OccurredAt,r.Turn.ObservedAt,r.Turn.AvailableAt=when,when,when
+        return r
+    }
+    ids:=make([]string,1000);begin:=time.Now()
+    for i:=range ids {r:=replica(i,false);ids[i]=r.Turn.ID;if _,err:=s.CaptureTurn(ctx,r);err!=nil{t.Fatal("capture",i,err)}}
+    initNS:=time.Since(begin).Nanoseconds()
+    vectors,err:=db.GetEventsWithVectors(ctx,tenant,ids,at);if err!=nil||len(vectors)!=1000{t.Fatal("hydrate",len(vectors),err)}
+    for _,e:=range vectors{
+        v,err:=embed.Document(em,e.FrameText());if err!=nil{t.Fatal(err)}
+        if len(v)!=len(e.Embedding){t.Fatal("vector dimension")};for i:=range v{if v[i]!=e.Embedding[i]{t.Fatal("stored canonical vector drift",e.ID,i)}}
+    }
+    wrapped.vectors=vectors
+    qualityLog(t,"SHARD_QUALITY_HEADER=",map[string]any{"corpus_sha256":digest,"design_captures":288,"questions":96,"past_count":1000,"init_ns":initNS,"nomination_multiplier":s.config.OverfetchMultiplier,"cold_law_only":true})
+    byID:=make(map[string]model.Event,len(vectors));for _,e:=range vectors{byID[e.ID]=e}
+    run:=func(request model.RecallRequest,exact bool)qualityPacket{
+        t.Helper();wrapped.exact=exact;wrapped.last=nil;begin:=time.Now();p,err:=s.Recall(ctx,request);elapsed:=time.Since(begin).Nanoseconds();wrapped.exact=false;if err!=nil{t.Fatal("recall",exact,err)}
+        in,err:=tap.Take(ctx);if err!=nil||len(in.Candidates)!=request.RecallK{t.Fatal("frontier",len(in.Candidates),err)}
+        out:=qualityPacket{Confidence:p.PacketConfidence,AnswerCertainty:p.PacketAnswerCertainty,Snapshot:p.Snapshot,NS:elapsed}
+        forecasts:=make(map[string]model.ForecastBundle,len(p.BayesianShadow.Decisions));for _,d:=range p.BayesianShadow.Decisions{forecasts[d.EventID]=d.Forecast}
+        check:=func(id string,f model.ForecastBundle){
+            if _,ok:=byID[id];!ok{t.Fatal("nonpast output",id)}
+            if f.BeliefLaw!=nil||f.ResidualApplied||f.ExpertMixture.Enabled{t.Fatal("fixture unexpectedly learned")}
+            for _,law:=range []model.BernoulliLaw{f.BaseLaw,f.PreResidualLaw,f.CorrectedLaw}{if math.IsNaN(law.Useful)||math.IsInf(law.Useful,0)||law.Useful<0||law.Useful>1||math.Abs(law.Useful+law.NotUseful-1)>1e-12{t.Fatal("invalid law",id)}}
+        }
+        for _,c:=range in.Candidates{f,ok:=forecasts[c.EventID];if !ok{t.Fatal("unscored frontier",c.EventID)};check(c.EventID,f);out.Frontier=append(out.Frontier,qualityFrontier{c.EventID,c.Baseline,f})}
+        query,err:=embed.Query(em,frame.QueryText(request.Query));if err!=nil{t.Fatal(err)}
+        for _,c:=range p.Candidates{
+            check(c.Event.ID,c.Forecast);if math.Abs(c.Score-c.BaselineScore)>1e-9{t.Fatal("fixture rank is not cold baseline",c.Event.ID)}
+            e:=byID[c.Event.ID];exactScore:=scoreCandidate(model.Candidate{Event:e,Similarity:qualityCosine(query,e.Embedding)},request.SessionID,request.AsOf)
+            out.IDs=append(out.IDs,c.Event.ID);out.ExactBaseline=append(out.ExactBaseline,exactScore);out.Forecasts=append(out.Forecasts,c.Forecast)
+        }
+        return out
+    }
+    rows:=0;futureNS:=int64(0)
+    for _,phase:=range []string{"past","unchanged_repeat","future","future_repeat"}{
+        if phase=="future"{begin:=time.Now();for i:=0;i<256;i++{if _,err:=s.CaptureTurn(ctx,replica(i,true));err!=nil{t.Fatal("future capture",i,err)}};futureNS=time.Since(begin).Nanoseconds()}
+        for _,k:=range []int{50,200}{for qi,q:=range questions{
+            request:=model.RecallRequest{ProtocolVersion:model.ProtocolVersion,TenantID:tenant,SessionID:fmt.Sprintf("request-%d",qi),Query:q,AsOf:at.Add(time.Duration(2*qi)*time.Second),RecallK:k,PackK:10,TokenBudget:2000}
+            vector,err:=embed.Query(em,frame.QueryText(q));if err!=nil{t.Fatal(err)}
+            row:=qualityRow{Phase:phase,Query:qi,K:k};row.Actual=run(request,false)
+            for _,r:=range wrapped.last{e,ok:=byID[r.Event.ID];if !ok{t.Fatal("future nomination",r.Event.ID)};row.Nomination=append(row.Nomination,qualityScore{r.Event.ID,r.Similarity,qualityCosine(vector,e.Embedding),scoreCandidate(model.Candidate{Event:e,Similarity:qualityCosine(vector,e.Embedding)},request.SessionID,request.AsOf)})}
+            row.Reference=run(request,true)
+            for _,r:=range wrapped.last{row.ExactTop=append(row.ExactTop,qualityScore{r.Event.ID,r.Similarity,r.Similarity,scoreCandidate(model.Candidate{Event:r.Event,Similarity:r.Similarity},request.SessionID,request.AsOf)})}
+            if len(row.Nomination)!=3*k||len(row.ExactTop)!=3*k{t.Fatal("nomination count",len(row.Nomination),len(row.ExactTop))}
+            qualityLog(t,"SHARD_QUALITY_ROW=",row);rows++
+        }}
+    }
+    if tap.Dropped()!=0{t.Fatal("lost frontier")}
+    qualityLog(t,"SHARD_QUALITY_TERMINAL=",map[string]any{"functional":true,"rows":rows,"future_count":256,"future_ns":futureNS,"whole_goal_validation":false})
+}
+
+func TestResearchQualityOracleV1(t *testing.T){
+    if math.Abs(qualityCosine([]float32{1,0},[]float32{2,0})-1)>1e-12||qualityCosine([]float32{0,0},[]float32{1,0})!=0{t.Fatal("cosine")}
+    now:=time.Date(2026,1,1,0,0,0,0,time.UTC)
+    w:=qualityObserverStore{exact:true,vectors:[]model.Event{{ID:"b",TenantID:"t",Embedding:[]float32{1,0},AvailableAt:now},{ID:"a",TenantID:"t",Embedding:[]float32{1,0},AvailableAt:now},{ID:"future",TenantID:"t",Embedding:[]float32{1,0},AvailableAt:now.Add(time.Second)},{ID:"other",TenantID:"other",Embedding:[]float32{1,0},AvailableAt:now}}}
+    out,err:=w.Search(context.Background(),"t",[]float32{1,0},now,3);if err!=nil||len(out)!=2||out[0].Event.ID!="a"||out[1].Event.ID!="b"{t.Fatal("eligibility or ties",out,err)}
+    if out[0].Event.Embedding!=nil||w.vectors[1].Embedding==nil{t.Fatal("vector alias changed")}
+    ctx,cancel:=context.WithCancel(context.Background());cancel();if _,err:=w.Search(ctx,"t",[]float32{1,0},now,1);err==nil{t.Fatal("cancel ignored")}
+}
