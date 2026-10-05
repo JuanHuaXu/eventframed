@@ -1,0 +1,9 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkSparseVRVMIntegral-10    	   16398	     20935 ns/op	      48 B/op	       1 allocs/op
+BenchmarkSparseVRVMIntegral-10    	   17047	     20831 ns/op	      48 B/op	       1 allocs/op
+BenchmarkSparseVRVMIntegral-10    	   17186	     21204 ns/op	      48 B/op	       1 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	2.037s

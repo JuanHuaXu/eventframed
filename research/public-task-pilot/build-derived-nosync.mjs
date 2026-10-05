@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+const dir='research/public-task-pilot/derived-nosync-overlay-v1';
+fs.mkdirSync(dir);
+let s=fs.readFileSync('research/public-task-pilot/bulk-base-overlay-v1/hnsw_base.go.txt','utf8');
+const a='libra.Open(libra.WithStoragePath(filepath.Join(directory, "base.libravdb")))';
+if(s.split(a).length!==2)throw Error('builder open not unique');
+s=s.replace(a,'libra.Open(libra.WithStoragePath(filepath.Join(directory, "base.libravdb")), libra.WithDurability(libra.DurabilityUnsafeNoSync))');
+fs.writeFileSync(`${dir}/hnsw_base.go.txt`,s,{flag:'wx'});
+fs.writeFileSync(`${dir}/overlay.json`,JSON.stringify({Replace:{[`${process.cwd()}/internal/researchindex/hnsw_base.go`]:`${process.cwd()}/${dir}/hnsw_base.go.txt`}},null,2),{flag:'wx'});
+let runner=fs.readFileSync('cmd/research-partition-load/main.go','utf8');
+const old='"cmd/research-partition-load/main.go"';
+if(runner.split(old).length!==2)throw Error('runner hash anchor');
+runner=runner.replace(old,`"cmd/research-derived-nosync/main.go", "research/public-task-pilot/DERIVED_NOSYNC_PROTOCOL.md", "${dir}/hnsw_base.go.txt", "${dir}/overlay.json"`);
+fs.mkdirSync('cmd/research-derived-nosync');fs.writeFileSync('cmd/research-derived-nosync/main.go',runner,{flag:'wx'});

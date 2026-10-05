@@ -1,0 +1,17 @@
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkHazardV113WholeFixture$' -benchmem -benchtime=1x -count=3
+Benchmark source SHA256: e8f2ab49527ea0a344d22ae6da6987b56ef8fb4c1687c840e5ba08031c404445
+No concurrent research computation; all three repeats retained.
+One operation is 256 frames, fits and all nine policies, not one serving query.
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkHazardV113WholeFixture/immediate-10               1  159724875 ns/op  27316144 B/op  10030 allocs/op
+BenchmarkHazardV113WholeFixture/immediate-10               1  137018875 ns/op  27316288 B/op  10030 allocs/op
+BenchmarkHazardV113WholeFixture/immediate-10               1  137588625 ns/op  27315952 B/op  10026 allocs/op
+BenchmarkHazardV113WholeFixture/delayed_missing-10         1  169800750 ns/op  27282408 B/op   9897 allocs/op
+BenchmarkHazardV113WholeFixture/delayed_missing-10         1  168164084 ns/op  27276752 B/op   9888 allocs/op
+BenchmarkHazardV113WholeFixture/delayed_missing-10         1  168007708 ns/op  27276896 B/op   9890 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/observationlearners 1.151s

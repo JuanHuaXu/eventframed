@@ -1,0 +1,82 @@
+{
+  "verifiedForecasts": 172032,
+  "referenceTransitions": 22106112,
+  "incrementalTransitions": 1030484,
+  "rounds": [
+    {
+      "repeat": 0,
+      "name": "reference",
+      "millisecondsBySchedule": [
+        1642.3801259999955,
+        1313.718824000006
+      ],
+      "microsecondsPerForecastBySchedule": [
+        19.093890973772268,
+        15.272958798363163
+      ]
+    },
+    {
+      "repeat": 0,
+      "name": "incremental",
+      "millisecondsBySchedule": [
+        22.464766000003692,
+        72.63658700000542
+      ],
+      "microsecondsPerForecastBySchedule": [
+        0.2611696196056977,
+        0.8444543689546761
+      ]
+    },
+    {
+      "repeat": 1,
+      "name": "incremental",
+      "millisecondsBySchedule": [
+        22.178908000004412,
+        72.3526559999982
+      ],
+      "microsecondsPerForecastBySchedule": [
+        0.2578463076637418,
+        0.8411534598214078
+      ]
+    },
+    {
+      "repeat": 1,
+      "name": "reference",
+      "millisecondsBySchedule": [
+        1651.198701000004,
+        1321.2137490000205
+      ],
+      "microsecondsPerForecastBySchedule": [
+        19.1964134695871,
+        15.360092878069436
+      ]
+    },
+    {
+      "repeat": 2,
+      "name": "reference",
+      "millisecondsBySchedule": [
+        1655.1593780000185,
+        1325.0444190000253
+      ],
+      "microsecondsPerForecastBySchedule": [
+        19.24245928664456,
+        15.404627267020384
+      ]
+    },
+    {
+      "repeat": 2,
+      "name": "incremental",
+      "millisecondsBySchedule": [
+        22.690959999999905,
+        73.2691199999881
+      ],
+      "microsecondsPerForecastBySchedule": [
+        0.2637992931547608,
+        0.8518080357141474
+      ]
+    }
+  ],
+  "checksum": 1859.43497118879,
+  "complexity": "O(T*K*(D+1)) for maximum delivery lag D (D=0 still next-issue update), O(T*K) batch cache; unbounded delays retain O(T^2*K) worst case.",
+  "limitations": "Same-source warm weights-only comparison, excludes aggregation, I/O, model fitting, scoring, persistence and concurrent serving. No runtime/production integration. All172032 strong forecasts checked bit-identical."
+}

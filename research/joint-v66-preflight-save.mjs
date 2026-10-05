@@ -1,0 +1,6 @@
+// Preserve the test-only delayed queue drain failure before local repair.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';import {spawnSync} from 'node:child_process';
+const root='research/joint-v66-preflight',src='internal/researchjointsequence/reference_test.go';assert(!fs.existsSync(root));fs.mkdirSync(root,{mode:0o700});const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const args=['test','./internal/researchjointsequence','-run','^TestIndependentDelayedJointAndTower$','-count=1','-v'];const r=spawnSync('go',args,{encoding:'utf8'});assert.equal(r.status,1);assert(r.stdout.includes('drain'));
+fs.copyFileSync(src,root+'/reference-test.go.txt',fs.constants.COPYFILE_EXCL);fs.writeFileSync(root+'/failure.log',r.stdout+r.stderr,{flag:'wx',mode:0o600});
+fs.writeFileSync(root+'/failure.json',JSON.stringify({args,exitCode:r.status,source:src,sourceSHA256:hash(fs.readFileSync(src)),logSHA256:hash(r.stdout+r.stderr),cause:'final delivery pass nominates late first receipts and schedules additional second receipts beyond the pass cutoff; final newly enqueued packets need draining',repair:'second explicit drain pass after final first receipts; no model/ref/math changes',scope:'unit fixture failure'},null,2)+'\n',{flag:'wx',mode:0o600});

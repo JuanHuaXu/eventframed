@@ -1,0 +1,3251 @@
+{
+  "time": "2026-10-03T22:32:20.894Z",
+  "raw_sha256": "57876e2fbc81cde7425526b293682f5f3dcc791a649f51f22ccc13579719b017",
+  "model_sha256": "ddeebcb09f52583e8e9bcc633b4ec5dcbafb5962769ec7e38ae7092d995cc495",
+  "technical_pass": true,
+  "weight": 1,
+  "cells": {
+    "structured/design": {
+      "baseline": {
+        "wordings": {
+          "literal": {
+            "top1": 18,
+            "survival": 18
+          },
+          "paraphrase": {
+            "top1": 16,
+            "survival": 18
+          }
+        },
+        "top1": 34,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.9675925925925927,
+        "per": [
+          {
+            "id": "2c826c34a1de050baec4f6c8",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "312a1cd60cd42fd3eb5324f2",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a55e1327bceccccbe89427fa",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "25d5d67dfc7124a4036ca3d6",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3da8cf2b1d0c8e411c7f0aac",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "261b7c023c9ffcfdf13dfdc3",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "872491671bf8ed4827f8528e",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e29649db3c816ec6bb9d629b",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6286adf8d54071b4ab180ef0",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1465661a957a7eb315bdabf4",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "b256c11b994b52148fb8c703",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "2fe9ca82013c1ec70effc8fe",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "47dbc83693ecc25ba4744383",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5b43a334169721bb9e6a4088",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "37ef02a222e864d6111727d5",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0f358e03b223dfaddfe18ac0",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5f2624d83493377192132d47",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ce26f2ff5f480303a8f02db4",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0c7b2599fa503331ed744179",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "410a8ad53f554d32aca67922",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "702c75355e319f885506abdf",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d3f8552705fcfda4a61e9714",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a0617757ebec4c120d8b883e",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "716c55cc8365607dd0e6a072",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1edd0c21c09dcf907faf9fea",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e9747bdd0d4af4c19df1615d",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "fc0fe6e9a09b0792d6dd4703",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "033d403b9c402894b3abdb42",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8eb0e765d37a46655eab61aa",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d9cdd7f4408e8529b6b612c8",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8251b72bf7255006ee0a4ec0",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "acd26e01b84aebfa22c586a4",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a5e5fcbb0b098280f655e19d",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "79af8234c890005286ab30d1",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8b14b70ce3ed1a899ba300b3",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "46bab04bcd310c3ef583fce5",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "international length": 1,
+          "mass conventions": 0.8333333333333334,
+          "temperature readings": 1,
+          "area": 1,
+          "energy conventions": 1,
+          "pressure": 0.8333333333333334
+        }
+      },
+      "selected": {
+        "wordings": {
+          "literal": {
+            "top1": 18,
+            "survival": 18
+          },
+          "paraphrase": {
+            "top1": 16,
+            "survival": 18
+          }
+        },
+        "top1": 34,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.9675925925925927,
+        "per": [
+          {
+            "id": "2c826c34a1de050baec4f6c8",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "312a1cd60cd42fd3eb5324f2",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a55e1327bceccccbe89427fa",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "25d5d67dfc7124a4036ca3d6",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3da8cf2b1d0c8e411c7f0aac",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "261b7c023c9ffcfdf13dfdc3",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "872491671bf8ed4827f8528e",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e29649db3c816ec6bb9d629b",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6286adf8d54071b4ab180ef0",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1465661a957a7eb315bdabf4",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "b256c11b994b52148fb8c703",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "2fe9ca82013c1ec70effc8fe",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "47dbc83693ecc25ba4744383",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5b43a334169721bb9e6a4088",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "37ef02a222e864d6111727d5",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0f358e03b223dfaddfe18ac0",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5f2624d83493377192132d47",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ce26f2ff5f480303a8f02db4",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0c7b2599fa503331ed744179",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "410a8ad53f554d32aca67922",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "702c75355e319f885506abdf",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d3f8552705fcfda4a61e9714",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a0617757ebec4c120d8b883e",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "716c55cc8365607dd0e6a072",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1edd0c21c09dcf907faf9fea",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e9747bdd0d4af4c19df1615d",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "fc0fe6e9a09b0792d6dd4703",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "033d403b9c402894b3abdb42",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8eb0e765d37a46655eab61aa",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d9cdd7f4408e8529b6b612c8",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8251b72bf7255006ee0a4ec0",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "acd26e01b84aebfa22c586a4",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a5e5fcbb0b098280f655e19d",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "79af8234c890005286ab30d1",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8b14b70ce3ed1a899ba300b3",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "46bab04bcd310c3ef583fce5",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "international length": 1,
+          "mass conventions": 0.8333333333333334,
+          "temperature readings": 1,
+          "area": 1,
+          "energy conventions": 1,
+          "pressure": 0.8333333333333334
+        }
+      },
+      "comparison": {
+        "gains": 0,
+        "losses": 0,
+        "literal_losses": 0,
+        "survival_losses": 0,
+        "cluster_vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cluster_mean": 0,
+        "one_sided95_lower": 0,
+        "two_sided95": [
+          0,
+          0
+        ],
+        "exact_cluster_sign_p": 1,
+        "pass": false
+      }
+    },
+    "structured/confirmation": {
+      "baseline": {
+        "wordings": {
+          "literal": {
+            "top1": 18,
+            "survival": 18
+          },
+          "paraphrase": {
+            "top1": 13,
+            "survival": 18
+          }
+        },
+        "top1": 31,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.914351851851852,
+        "per": [
+          {
+            "id": "2f07a51437e3c997ef430b8c",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9211579e3a7a1b31b5e2411f",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "981039ddd7b2ed6bbae1c4d6",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3ccdf247aebdb8b12edf246a",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1aff1546ba1a75dca24a7fa0",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ced07f1dbb5a881dcd60ecc2",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8b7ef6be3ef390292b68deda",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "80c7a465ec05b73a36b304d5",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c8469e86b5bf5327bf6dc271",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "332b4dc1eb64ee60117b4a4a",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "221f1aac15932dd916f516af",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "32be53f999cad3a4bd57fd42",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0e3d11d5c54e742dca011509",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a48289133f57488721ed5371",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8c8a5197953fea46cf45fa28",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "10d58de56d43dfd5dbafe534",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.25,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ca477e6d178070bb43cac334",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c08e3cf802f95e90d722c33b",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d85c9c8bc3dfdec578467b26",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4d8640b8256ab320e32ce6d0",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "81a46f152bfcd17dfdc6cd04",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "09e9c4ffbe6f98a8f787f20c",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6bec90cdc8fa9b86ba2044cf",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "47e1533a45ac809a7fbd45e6",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c270c2d2251c54832bad7200",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e17a709b815ebd2ccfe76648",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ba6d807ce1f0b15512a634dc",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "556838eedd35a39fecad4c76",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "55bdd549b09fc69b2b3608ed",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c9b5b725ac0f20eb18f5c699",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "75eb77f3d1dc79b8e4e4f81c",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "11609ee519fee2615879f5b5",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "70ec99cf69a640cd29f04e40",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d96dd18fe1d7bfdbb8afc701",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "98f3d36b8dddfe934a929a40",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "de9b7b6fa13edb4099772df4",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "legacy survey length": 1,
+          "gallon conventions": 1,
+          "temperature intervals": 0.5,
+          "speed": 1,
+          "elapsed time": 0.8333333333333334,
+          "angular subdivisions": 0.8333333333333334
+        }
+      },
+      "selected": {
+        "wordings": {
+          "literal": {
+            "top1": 18,
+            "survival": 18
+          },
+          "paraphrase": {
+            "top1": 12,
+            "survival": 18
+          }
+        },
+        "top1": 30,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.9037037037037037,
+        "per": [
+          {
+            "id": "2f07a51437e3c997ef430b8c",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9211579e3a7a1b31b5e2411f",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "981039ddd7b2ed6bbae1c4d6",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3ccdf247aebdb8b12edf246a",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1aff1546ba1a75dca24a7fa0",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ced07f1dbb5a881dcd60ecc2",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8b7ef6be3ef390292b68deda",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "80c7a465ec05b73a36b304d5",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c8469e86b5bf5327bf6dc271",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "332b4dc1eb64ee60117b4a4a",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "221f1aac15932dd916f516af",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "32be53f999cad3a4bd57fd42",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0e3d11d5c54e742dca011509",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a48289133f57488721ed5371",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8c8a5197953fea46cf45fa28",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "10d58de56d43dfd5dbafe534",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ca477e6d178070bb43cac334",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c08e3cf802f95e90d722c33b",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d85c9c8bc3dfdec578467b26",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4d8640b8256ab320e32ce6d0",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "81a46f152bfcd17dfdc6cd04",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "09e9c4ffbe6f98a8f787f20c",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6bec90cdc8fa9b86ba2044cf",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "47e1533a45ac809a7fbd45e6",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c270c2d2251c54832bad7200",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e17a709b815ebd2ccfe76648",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ba6d807ce1f0b15512a634dc",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "556838eedd35a39fecad4c76",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "55bdd549b09fc69b2b3608ed",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c9b5b725ac0f20eb18f5c699",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "75eb77f3d1dc79b8e4e4f81c",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "11609ee519fee2615879f5b5",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "70ec99cf69a640cd29f04e40",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d96dd18fe1d7bfdbb8afc701",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.2,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "98f3d36b8dddfe934a929a40",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "de9b7b6fa13edb4099772df4",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "legacy survey length": 1,
+          "gallon conventions": 1,
+          "temperature intervals": 0.5,
+          "speed": 0.8333333333333334,
+          "elapsed time": 0.8333333333333334,
+          "angular subdivisions": 0.8333333333333334
+        }
+      },
+      "comparison": {
+        "gains": 0,
+        "losses": 1,
+        "literal_losses": 0,
+        "survival_losses": 0,
+        "cluster_vector": [
+          0,
+          0,
+          0,
+          -0.16666666666666663,
+          0,
+          0
+        ],
+        "cluster_mean": -0.027777777777777773,
+        "one_sided95_lower": -0.08375134369444444,
+        "two_sided95": [
+          -0.09918282877777777,
+          0.04362727322222222
+        ],
+        "exact_cluster_sign_p": 1,
+        "pass": false
+      }
+    },
+    "text/design": {
+      "baseline": {
+        "wordings": {
+          "literal": {
+            "top1": 18,
+            "survival": 18
+          },
+          "paraphrase": {
+            "top1": 16,
+            "survival": 18
+          }
+        },
+        "top1": 34,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.9675925925925927,
+        "per": [
+          {
+            "id": "2c826c34a1de050baec4f6c8",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "312a1cd60cd42fd3eb5324f2",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a55e1327bceccccbe89427fa",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "25d5d67dfc7124a4036ca3d6",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3da8cf2b1d0c8e411c7f0aac",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "261b7c023c9ffcfdf13dfdc3",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "872491671bf8ed4827f8528e",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e29649db3c816ec6bb9d629b",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6286adf8d54071b4ab180ef0",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1465661a957a7eb315bdabf4",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "b256c11b994b52148fb8c703",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "2fe9ca82013c1ec70effc8fe",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "47dbc83693ecc25ba4744383",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5b43a334169721bb9e6a4088",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "37ef02a222e864d6111727d5",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0f358e03b223dfaddfe18ac0",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5f2624d83493377192132d47",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ce26f2ff5f480303a8f02db4",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0c7b2599fa503331ed744179",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "410a8ad53f554d32aca67922",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "702c75355e319f885506abdf",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d3f8552705fcfda4a61e9714",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a0617757ebec4c120d8b883e",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "716c55cc8365607dd0e6a072",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1edd0c21c09dcf907faf9fea",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e9747bdd0d4af4c19df1615d",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "fc0fe6e9a09b0792d6dd4703",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "033d403b9c402894b3abdb42",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8eb0e765d37a46655eab61aa",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d9cdd7f4408e8529b6b612c8",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8251b72bf7255006ee0a4ec0",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "acd26e01b84aebfa22c586a4",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a5e5fcbb0b098280f655e19d",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "79af8234c890005286ab30d1",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8b14b70ce3ed1a899ba300b3",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "46bab04bcd310c3ef583fce5",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "international length": 1,
+          "mass conventions": 0.8333333333333334,
+          "temperature readings": 1,
+          "area": 1,
+          "energy conventions": 1,
+          "pressure": 0.8333333333333334
+        }
+      },
+      "selected": {
+        "wordings": {
+          "literal": {
+            "top1": 18,
+            "survival": 18
+          },
+          "paraphrase": {
+            "top1": 16,
+            "survival": 18
+          }
+        },
+        "top1": 34,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.9675925925925927,
+        "per": [
+          {
+            "id": "2c826c34a1de050baec4f6c8",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "312a1cd60cd42fd3eb5324f2",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a55e1327bceccccbe89427fa",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "25d5d67dfc7124a4036ca3d6",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3da8cf2b1d0c8e411c7f0aac",
+            "cluster": "international length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "261b7c023c9ffcfdf13dfdc3",
+            "cluster": "international length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "872491671bf8ed4827f8528e",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e29649db3c816ec6bb9d629b",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6286adf8d54071b4ab180ef0",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1465661a957a7eb315bdabf4",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "b256c11b994b52148fb8c703",
+            "cluster": "mass conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "2fe9ca82013c1ec70effc8fe",
+            "cluster": "mass conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "47dbc83693ecc25ba4744383",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5b43a334169721bb9e6a4088",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "37ef02a222e864d6111727d5",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0f358e03b223dfaddfe18ac0",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5f2624d83493377192132d47",
+            "cluster": "temperature readings",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ce26f2ff5f480303a8f02db4",
+            "cluster": "temperature readings",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0c7b2599fa503331ed744179",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "410a8ad53f554d32aca67922",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "702c75355e319f885506abdf",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d3f8552705fcfda4a61e9714",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a0617757ebec4c120d8b883e",
+            "cluster": "area",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "716c55cc8365607dd0e6a072",
+            "cluster": "area",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1edd0c21c09dcf907faf9fea",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e9747bdd0d4af4c19df1615d",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "fc0fe6e9a09b0792d6dd4703",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "033d403b9c402894b3abdb42",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8eb0e765d37a46655eab61aa",
+            "cluster": "energy conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d9cdd7f4408e8529b6b612c8",
+            "cluster": "energy conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8251b72bf7255006ee0a4ec0",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "acd26e01b84aebfa22c586a4",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a5e5fcbb0b098280f655e19d",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "79af8234c890005286ab30d1",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8b14b70ce3ed1a899ba300b3",
+            "cluster": "pressure",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "46bab04bcd310c3ef583fce5",
+            "cluster": "pressure",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "international length": 1,
+          "mass conventions": 0.8333333333333334,
+          "temperature readings": 1,
+          "area": 1,
+          "energy conventions": 1,
+          "pressure": 0.8333333333333334
+        }
+      },
+      "comparison": {
+        "gains": 0,
+        "losses": 0,
+        "literal_losses": 0,
+        "survival_losses": 0,
+        "cluster_vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cluster_mean": 0,
+        "one_sided95_lower": 0,
+        "two_sided95": [
+          0,
+          0
+        ],
+        "exact_cluster_sign_p": 1,
+        "pass": false
+      }
+    },
+    "text/confirmation": {
+      "baseline": {
+        "wordings": {
+          "literal": {
+            "top1": 18,
+            "survival": 18
+          },
+          "paraphrase": {
+            "top1": 14,
+            "survival": 18
+          }
+        },
+        "top1": 32,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.9444444444444444,
+        "per": [
+          {
+            "id": "2f07a51437e3c997ef430b8c",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9211579e3a7a1b31b5e2411f",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "981039ddd7b2ed6bbae1c4d6",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3ccdf247aebdb8b12edf246a",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1aff1546ba1a75dca24a7fa0",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ced07f1dbb5a881dcd60ecc2",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8b7ef6be3ef390292b68deda",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "80c7a465ec05b73a36b304d5",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c8469e86b5bf5327bf6dc271",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "332b4dc1eb64ee60117b4a4a",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "221f1aac15932dd916f516af",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "32be53f999cad3a4bd57fd42",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0e3d11d5c54e742dca011509",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a48289133f57488721ed5371",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8c8a5197953fea46cf45fa28",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "10d58de56d43dfd5dbafe534",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ca477e6d178070bb43cac334",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c08e3cf802f95e90d722c33b",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d85c9c8bc3dfdec578467b26",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4d8640b8256ab320e32ce6d0",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "81a46f152bfcd17dfdc6cd04",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "09e9c4ffbe6f98a8f787f20c",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6bec90cdc8fa9b86ba2044cf",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "47e1533a45ac809a7fbd45e6",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c270c2d2251c54832bad7200",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e17a709b815ebd2ccfe76648",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ba6d807ce1f0b15512a634dc",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "556838eedd35a39fecad4c76",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "55bdd549b09fc69b2b3608ed",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c9b5b725ac0f20eb18f5c699",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "75eb77f3d1dc79b8e4e4f81c",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "11609ee519fee2615879f5b5",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "70ec99cf69a640cd29f04e40",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d96dd18fe1d7bfdbb8afc701",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "98f3d36b8dddfe934a929a40",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "de9b7b6fa13edb4099772df4",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "legacy survey length": 1,
+          "gallon conventions": 1,
+          "temperature intervals": 0.6666666666666666,
+          "speed": 0.8333333333333334,
+          "elapsed time": 1,
+          "angular subdivisions": 0.8333333333333334
+        }
+      },
+      "selected": {
+        "wordings": {
+          "literal": {
+            "top1": 18,
+            "survival": 18
+          },
+          "paraphrase": {
+            "top1": 13,
+            "survival": 18
+          }
+        },
+        "top1": 31,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.9222222222222223,
+        "per": [
+          {
+            "id": "2f07a51437e3c997ef430b8c",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9211579e3a7a1b31b5e2411f",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "981039ddd7b2ed6bbae1c4d6",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3ccdf247aebdb8b12edf246a",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "1aff1546ba1a75dca24a7fa0",
+            "cluster": "legacy survey length",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ced07f1dbb5a881dcd60ecc2",
+            "cluster": "legacy survey length",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8b7ef6be3ef390292b68deda",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "80c7a465ec05b73a36b304d5",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c8469e86b5bf5327bf6dc271",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "332b4dc1eb64ee60117b4a4a",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "221f1aac15932dd916f516af",
+            "cluster": "gallon conventions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "32be53f999cad3a4bd57fd42",
+            "cluster": "gallon conventions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0e3d11d5c54e742dca011509",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a48289133f57488721ed5371",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8c8a5197953fea46cf45fa28",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "10d58de56d43dfd5dbafe534",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ca477e6d178070bb43cac334",
+            "cluster": "temperature intervals",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c08e3cf802f95e90d722c33b",
+            "cluster": "temperature intervals",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d85c9c8bc3dfdec578467b26",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4d8640b8256ab320e32ce6d0",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "81a46f152bfcd17dfdc6cd04",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "09e9c4ffbe6f98a8f787f20c",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6bec90cdc8fa9b86ba2044cf",
+            "cluster": "speed",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "47e1533a45ac809a7fbd45e6",
+            "cluster": "speed",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c270c2d2251c54832bad7200",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e17a709b815ebd2ccfe76648",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ba6d807ce1f0b15512a634dc",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "556838eedd35a39fecad4c76",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "55bdd549b09fc69b2b3608ed",
+            "cluster": "elapsed time",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c9b5b725ac0f20eb18f5c699",
+            "cluster": "elapsed time",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "75eb77f3d1dc79b8e4e4f81c",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "11609ee519fee2615879f5b5",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "70ec99cf69a640cd29f04e40",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "d96dd18fe1d7bfdbb8afc701",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.2,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "98f3d36b8dddfe934a929a40",
+            "cluster": "angular subdivisions",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "de9b7b6fa13edb4099772df4",
+            "cluster": "angular subdivisions",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "legacy survey length": 1,
+          "gallon conventions": 1,
+          "temperature intervals": 0.6666666666666666,
+          "speed": 0.6666666666666666,
+          "elapsed time": 1,
+          "angular subdivisions": 0.8333333333333334
+        }
+      },
+      "comparison": {
+        "gains": 0,
+        "losses": 1,
+        "literal_losses": 0,
+        "survival_losses": 0,
+        "cluster_vector": [
+          0,
+          0,
+          0,
+          -0.16666666666666674,
+          0,
+          0
+        ],
+        "cluster_mean": -0.02777777777777779,
+        "one_sided95_lower": -0.08375134369444448,
+        "two_sided95": [
+          -0.09918282877777783,
+          0.04362727322222225
+        ],
+        "exact_cluster_sign_p": 1,
+        "pass": false
+      }
+    }
+  },
+  "adoption_pass": false,
+  "timing": {
+    "structured/baseline": {
+      "cases": 72,
+      "recall_median_ms": 1.672709,
+      "recall_p99_ms": 3.409166,
+      "hook_p99_ms": 0,
+      "import_median_ms": 0.29825,
+      "import_p99_ms": 1123.612333
+    },
+    "structured/incumbent": {
+      "cases": 72,
+      "recall_median_ms": 2.210833,
+      "recall_p99_ms": 3.490833,
+      "hook_p99_ms": 0.035084,
+      "import_median_ms": 0.2935,
+      "import_p99_ms": 0.9165
+    },
+    "structured/selected": {
+      "cases": 72,
+      "recall_median_ms": 2.215708,
+      "recall_p99_ms": 3.375792,
+      "hook_p99_ms": 0.012,
+      "import_median_ms": 0.299542,
+      "import_p99_ms": 0.685667
+    },
+    "text/baseline": {
+      "cases": 72,
+      "recall_median_ms": 1.833209,
+      "recall_p99_ms": 2.943625,
+      "hook_p99_ms": 0,
+      "import_median_ms": 2.303125,
+      "import_p99_ms": 3.650916
+    },
+    "text/incumbent": {
+      "cases": 72,
+      "recall_median_ms": 2.6725,
+      "recall_p99_ms": 4.993125,
+      "hook_p99_ms": 0.010792,
+      "import_median_ms": 2.262667,
+      "import_p99_ms": 910.959292
+    },
+    "text/selected": {
+      "cases": 72,
+      "recall_median_ms": 2.588834,
+      "recall_p99_ms": 3.820625,
+      "hook_p99_ms": 0.012167,
+      "import_median_ms": 2.2575,
+      "import_p99_ms": 3.597708
+    }
+  },
+  "memo": {
+    "hits": 16272,
+    "misses": 144,
+    "acquisition_ns": 3878391712,
+    "entries": 144
+  },
+  "whole_goal_complete": false
+}

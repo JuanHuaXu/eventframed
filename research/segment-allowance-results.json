@@ -1,0 +1,2770 @@
+{
+  "Go": "go1.27.1",
+  "Procs": 4,
+  "Hashes": {
+    "../../research/segment-allowance-protocol.md": "e1f0ec501686c649ce2a6c8e23eb054c9d717c5c1fc369d694af2d445db9d975",
+    "../service/research_shadow.go": "e2b9a8de38de0a3c5d5b0a07c9a2286faa07b8d8eeb082ed5d0ce416f9468ddc",
+    "../service/service.go": "0e50797c5b2288b0dc269d7bcc79262a681d728ac961ce4537d8da1c49b239e5",
+    "segment_allowance_test.go": "081057e03979465e228abcf1f8684e755a8198ed22a64db591b66e02910ca5de",
+    "segment_batch_research_test.go": "d8b4d250940166f430647d59289d99d5cd2216407dd0e3bcc3323aed3b172680",
+    "segment_batch_service_helper_test.go": "593c29674ee9c4649032bab63cbbba67976600dc74d89220e02d8a9859fa953f",
+    "segment_transform_context_test.go": "fb9b22a6139d3579cf59d3b1c608fcce943c8da7ba8c90abfa6d9f7a1eda346b",
+    "segment_transform_export_test.go": "dd80491e2c9e5e6c365cd21f13c2bc37219e5393372cf5ba984bc0e491cdfb20",
+    "segment_transform_fullpair_test.go": "4601838fe6bc66079b26920ea4d2f1355d7dc8e5e02119d4daa21f90e5a783e0",
+    "segment_transform_memo_test.go": "0b39a13a1cdd542bb778074608a5270c11ddc30e94cc9d5fb637cfaa16393a7c"
+  },
+  "Arms": [
+    {
+      "Traces": [
+        {
+          "ID": 32,
+          "EntryRemainingMS": 88.068625,
+          "ComputeMS": 58.245875,
+          "ExitRemainingMS": 29.82275,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 16,
+          "EntryRemainingMS": 13.998041,
+          "ComputeMS": 14.404208,
+          "ExitRemainingMS": -0.406167,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 0,
+          "EntryRemainingMS": 4.98175,
+          "ComputeMS": 5.081375,
+          "ExitRemainingMS": -0.099625,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 17,
+          "EntryRemainingMS": 2.617417,
+          "ComputeMS": 2.766917,
+          "ExitRemainingMS": -0.1495,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 18,
+          "EntryRemainingMS": 2.629334,
+          "ComputeMS": 2.677625,
+          "ExitRemainingMS": -0.048291,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 19,
+          "EntryRemainingMS": 2.66175,
+          "ComputeMS": 2.831791,
+          "ExitRemainingMS": -0.170041,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 37,
+          "EntryRemainingMS": 27.672416,
+          "ComputeMS": 29.145291,
+          "ExitRemainingMS": -1.472875,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 38,
+          "EntryRemainingMS": 10.645666,
+          "ComputeMS": 12.11475,
+          "ExitRemainingMS": -1.469084,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 6,
+          "EntryRemainingMS": 0.767917,
+          "ComputeMS": 0.816,
+          "ExitRemainingMS": -0.048083,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 7,
+          "EntryRemainingMS": 10.980333,
+          "ComputeMS": 11.105875,
+          "ExitRemainingMS": -0.125542,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 40,
+          "EntryRemainingMS": 12.693083,
+          "ComputeMS": 12.93425,
+          "ExitRemainingMS": -0.241167,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 8,
+          "EntryRemainingMS": 4.804125,
+          "ComputeMS": 5.046625,
+          "ExitRemainingMS": -0.2425,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 25,
+          "EntryRemainingMS": 10.757708,
+          "ComputeMS": 10.939416,
+          "ExitRemainingMS": -0.181708,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 57,
+          "EntryRemainingMS": 3.781,
+          "ComputeMS": 3.934292,
+          "ExitRemainingMS": -0.153292,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 10,
+          "EntryRemainingMS": 11.710417,
+          "ComputeMS": 11.852917,
+          "ExitRemainingMS": -0.1425,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 26,
+          "EntryRemainingMS": 4.86475,
+          "ComputeMS": 5.254875,
+          "ExitRemainingMS": -0.390125,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 60,
+          "EntryRemainingMS": 23.595208,
+          "ComputeMS": 23.618208,
+          "ExitRemainingMS": -0.023,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 61,
+          "EntryRemainingMS": 15.975958,
+          "ComputeMS": 16.2355,
+          "ExitRemainingMS": -0.259542,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 45,
+          "EntryRemainingMS": 4.8005,
+          "ComputeMS": 4.986791,
+          "ExitRemainingMS": -0.186291,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 14,
+          "EntryRemainingMS": 10.739708,
+          "ComputeMS": 10.943083,
+          "ExitRemainingMS": -0.203375,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 63,
+          "EntryRemainingMS": 9.83275,
+          "ComputeMS": 10.094625,
+          "ExitRemainingMS": -0.261875,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 47,
+          "EntryRemainingMS": 4.723875,
+          "ComputeMS": 4.975125,
+          "ExitRemainingMS": -0.25125,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        }
+      ],
+      "Trial": 0,
+      "Arm": "batch",
+      "Distinct": true,
+      "Fits": 1,
+      "Hits": 0,
+      "Checked": 1,
+      "ReadNS": [
+        13974208,
+        13974875,
+        19697833,
+        19474333,
+        17610375,
+        28576666,
+        22856500,
+        16009875,
+        27902000,
+        16020583,
+        16030416,
+        15944208,
+        15948541,
+        9060417,
+        14047209,
+        13039458,
+        18003291,
+        11154417,
+        15111875,
+        21103375,
+        16879750,
+        28047917,
+        15834125,
+        21817000,
+        13966083,
+        9036083,
+        14114041,
+        19042459,
+        11030667,
+        16108500,
+        21102375,
+        16024667,
+        10939667,
+        15933417,
+        20987125,
+        15988333,
+        10997125,
+        16051083,
+        20016542,
+        14996875,
+        11839042,
+        15839500,
+        20843250,
+        16886750,
+        15077250,
+        15093000,
+        15014333,
+        15012000,
+        8965375,
+        13918417,
+        18923417,
+        14001625,
+        15999917,
+        10973375,
+        21057334,
+        16044375,
+        10925333,
+        15992458,
+        20998833,
+        15939959,
+        10033125,
+        10040750,
+        10010125,
+        10018708
+      ],
+      "WriteNS": [
+        7925875,
+        15921291,
+        9670667,
+        13832417,
+        11954792,
+        11879166,
+        16115458,
+        12604625,
+        10405459,
+        13884709,
+        13804000,
+        13995500,
+        13676000,
+        13131833,
+        12916958,
+        12930833
+      ],
+      "Errors": null,
+      "Overlap": 16,
+      "Status": {
+        "AsOf": "2026-09-12T00:00:00.000032Z",
+        "Accepted": 43,
+        "Dropped": 21,
+        "Completed": 1,
+        "Stale": 42,
+        "Failed": 0,
+        "Cancelled": 0,
+        "Depth": 0,
+        "Running": false,
+        "Closed": false,
+        "HasResult": true,
+        "Value": 0.4594868147702216,
+        "Snapshot": {
+          "runtime_version": 52,
+          "policy_version": 2,
+          "contract_version": 16,
+          "graph_version": 1,
+          "posterior_version": 1,
+          "residual_version": 1,
+          "abstraction_version": 1,
+          "agency_version": 1,
+          "evidence_epoch": 51
+        }
+      },
+      "P99": 28576666,
+      "Started": 22,
+      "Interrupted": 21
+    },
+    {
+      "Traces": [
+        {
+          "ID": 48,
+          "EntryRemainingMS": 90.793375,
+          "ComputeMS": 52.257,
+          "ExitRemainingMS": 38.536375,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 0,
+          "EntryRemainingMS": 25.778292,
+          "ComputeMS": 0.00025,
+          "ExitRemainingMS": 25.778042,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 32,
+          "EntryRemainingMS": 29.678792,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 29.67875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 16,
+          "EntryRemainingMS": 29.682541,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 29.6825,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 49,
+          "EntryRemainingMS": 41.583417,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 41.583375,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 33,
+          "EntryRemainingMS": 41.588375,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 41.588333,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 1,
+          "EntryRemainingMS": 45.613333,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 45.61325,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 17,
+          "EntryRemainingMS": 45.613541,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 45.6135,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 2,
+          "EntryRemainingMS": 56.587375,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 56.587333,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 50,
+          "EntryRemainingMS": 56.590458,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 56.590417,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 34,
+          "EntryRemainingMS": 61.64025,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 61.640209,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 18,
+          "EntryRemainingMS": 61.644625,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 61.644584,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 19,
+          "EntryRemainingMS": 74.543334,
+          "ComputeMS": 44.125959,
+          "ExitRemainingMS": 30.417375,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 51,
+          "EntryRemainingMS": 29.574917,
+          "ComputeMS": 0.000209,
+          "ExitRemainingMS": 29.574708,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 35,
+          "EntryRemainingMS": 34.608958,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 34.608916,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 3,
+          "EntryRemainingMS": 34.61325,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 34.613167,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 4,
+          "EntryRemainingMS": 44.814625,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 44.814583,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 37,
+          "EntryRemainingMS": 59.631083,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 59.631042,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 21,
+          "EntryRemainingMS": 59.634875,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 59.634792,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 53,
+          "EntryRemainingMS": 63.599291,
+          "ComputeMS": 0.000125,
+          "ExitRemainingMS": 63.599166,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 5,
+          "EntryRemainingMS": 63.603458,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 63.603416,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 6,
+          "EntryRemainingMS": 74.576292,
+          "ComputeMS": 43.39575,
+          "ExitRemainingMS": 31.180542,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 22,
+          "EntryRemainingMS": 29.705875,
+          "ComputeMS": 0.000166,
+          "ExitRemainingMS": 29.705709,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 54,
+          "EntryRemainingMS": 34.759333,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 34.759292,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 38,
+          "EntryRemainingMS": 34.7635,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 34.763458,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 39,
+          "EntryRemainingMS": 44.70525,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 44.705209,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 7,
+          "EntryRemainingMS": 44.7315,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 44.731459,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 55,
+          "EntryRemainingMS": 49.755291,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 49.75525,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 23,
+          "EntryRemainingMS": 49.761917,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 49.761875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 24,
+          "EntryRemainingMS": 60.688708,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 60.688667,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 40,
+          "EntryRemainingMS": 60.691875,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 60.691833,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 8,
+          "EntryRemainingMS": 64.741625,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 64.741542,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 56,
+          "EntryRemainingMS": 64.745291,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 64.74525,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 41,
+          "EntryRemainingMS": 75.678875,
+          "ComputeMS": 43.026166,
+          "ExitRemainingMS": 32.652709,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 25,
+          "EntryRemainingMS": 26.597625,
+          "ComputeMS": 0.000209,
+          "ExitRemainingMS": 26.597416,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 57,
+          "EntryRemainingMS": 31.682625,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 31.682583,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 9,
+          "EntryRemainingMS": 31.686542,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 31.6865,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 10,
+          "EntryRemainingMS": 41.654125,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 41.654084,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 59,
+          "EntryRemainingMS": 55.616959,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 55.616917,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 27,
+          "EntryRemainingMS": 55.618625,
+          "ComputeMS": 0.000084,
+          "ExitRemainingMS": 55.618541,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 43,
+          "EntryRemainingMS": 60.66025,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 60.660208,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 11,
+          "EntryRemainingMS": 60.663125,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 60.663083,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 12,
+          "EntryRemainingMS": 72.59675,
+          "ComputeMS": 43.623208,
+          "ExitRemainingMS": 28.973542,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 28,
+          "EntryRemainingMS": 28.973292,
+          "ComputeMS": 0.000292,
+          "ExitRemainingMS": 28.973,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 60,
+          "EntryRemainingMS": 34.03,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 34.029959,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 44,
+          "EntryRemainingMS": 34.033458,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 34.033417,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 13,
+          "EntryRemainingMS": 45.9785,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 45.978458,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 29,
+          "EntryRemainingMS": 45.98225,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 45.982209,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 61,
+          "EntryRemainingMS": 51.07225,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 51.072208,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 45,
+          "EntryRemainingMS": 51.078583,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 51.078542,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 14,
+          "EntryRemainingMS": 60.074125,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 60.074083,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 30,
+          "EntryRemainingMS": 60.0785,
+          "ComputeMS": 0.000084,
+          "ExitRemainingMS": 60.078416,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 46,
+          "EntryRemainingMS": 64.972291,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 64.97225,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 62,
+          "EntryRemainingMS": 64.972125,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 64.972084,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 63,
+          "EntryRemainingMS": 75.974875,
+          "ComputeMS": 43.592167,
+          "ExitRemainingMS": 32.382708,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 31,
+          "EntryRemainingMS": 32.382417,
+          "ComputeMS": 0.000125,
+          "ExitRemainingMS": 32.382292,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 15,
+          "EntryRemainingMS": 37.448708,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 37.448667,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 47,
+          "EntryRemainingMS": 37.451458,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 37.451417,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        }
+      ],
+      "Trial": 0,
+      "Arm": "allowance",
+      "Distinct": true,
+      "Fits": 6,
+      "Hits": 0,
+      "Checked": 6,
+      "ReadNS": [
+        12823458,
+        12851542,
+        16751542,
+        16763542,
+        15810208,
+        11911667,
+        19839042,
+        15933417,
+        10975167,
+        15010042,
+        20054625,
+        16033208,
+        12899166,
+        17956792,
+        17941750,
+        23000833,
+        10213709,
+        15268291,
+        15151583,
+        20194083,
+        9872792,
+        14798791,
+        13835750,
+        18781084,
+        10973875,
+        14945208,
+        16034416,
+        20009542,
+        9942334,
+        15028917,
+        14998041,
+        20059833,
+        10927209,
+        15988959,
+        20012583,
+        14992583,
+        14988375,
+        14996042,
+        16024291,
+        16033791,
+        9968542,
+        15062584,
+        19102750,
+        14018166,
+        9919000,
+        13962917,
+        14969333,
+        19011584,
+        11934000,
+        16982125,
+        22042042,
+        17001542,
+        17009375,
+        17011375,
+        17044459,
+        17047166,
+        14097333,
+        14097958,
+        13894667,
+        13901833,
+        11003000,
+        15898834,
+        20970666,
+        16074625
+      ],
+      "WriteNS": [
+        6048500,
+        13874792,
+        13596833,
+        14098625,
+        14264833,
+        13112791,
+        11686167,
+        13902459,
+        13086000,
+        12675084,
+        13862500,
+        11974709,
+        13817084,
+        14887917,
+        14068584,
+        11837000
+      ],
+      "Errors": null,
+      "Overlap": 16,
+      "Status": {
+        "AsOf": "2026-09-12T00:00:00.000063Z",
+        "Accepted": 58,
+        "Dropped": 6,
+        "Completed": 6,
+        "Stale": 0,
+        "Failed": 52,
+        "Cancelled": 0,
+        "Depth": 0,
+        "Running": false,
+        "Closed": false,
+        "HasResult": true,
+        "Value": 0.5299293524750308,
+        "Snapshot": {
+          "runtime_version": 67,
+          "policy_version": 2,
+          "contract_version": 16,
+          "graph_version": 1,
+          "posterior_version": 1,
+          "residual_version": 1,
+          "abstraction_version": 1,
+          "agency_version": 1,
+          "evidence_epoch": 66
+        }
+      },
+      "P99": 23000833,
+      "Started": 58,
+      "Interrupted": 0
+    },
+    {
+      "Traces": [
+        {
+          "ID": 0,
+          "EntryRemainingMS": 87.988,
+          "ComputeMS": 61.28925,
+          "ExitRemainingMS": 26.69875,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 32,
+          "EntryRemainingMS": 20.380167,
+          "ComputeMS": 0.000375,
+          "ExitRemainingMS": 20.379792,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 48,
+          "EntryRemainingMS": 26.068708,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 26.068667,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 16,
+          "EntryRemainingMS": 37.082667,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 37.082625,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 33,
+          "EntryRemainingMS": 42.100083,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 42.1,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 1,
+          "EntryRemainingMS": 42.108958,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 42.108917,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 49,
+          "EntryRemainingMS": 44.988125,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 44.988084,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 34,
+          "EntryRemainingMS": 56.088208,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 56.088166,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 2,
+          "EntryRemainingMS": 56.0955,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 56.095458,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 17,
+          "EntryRemainingMS": 60.05,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 60.049959,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 50,
+          "EntryRemainingMS": 70.117208,
+          "ComputeMS": 43.604125,
+          "ExitRemainingMS": 26.513083,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 3,
+          "EntryRemainingMS": 25.907416,
+          "ComputeMS": 0.000208,
+          "ExitRemainingMS": 25.907208,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 18,
+          "EntryRemainingMS": 29.809708,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 29.809666,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 35,
+          "EntryRemainingMS": 29.812917,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 29.812875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 36,
+          "EntryRemainingMS": 40.805459,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 40.805417,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 4,
+          "EntryRemainingMS": 40.805333,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 40.80525,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 19,
+          "EntryRemainingMS": 44.79275,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 44.792708,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 37,
+          "EntryRemainingMS": 60.773375,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 60.773333,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 5,
+          "EntryRemainingMS": 60.776084,
+          "ComputeMS": 0.000084,
+          "ExitRemainingMS": 60.776,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 20,
+          "EntryRemainingMS": 63.91125,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 63.911209,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 52,
+          "EntryRemainingMS": 63.918292,
+          "ComputeMS": 0.000084,
+          "ExitRemainingMS": 63.918208,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 53,
+          "EntryRemainingMS": 73.797542,
+          "ComputeMS": 42.799208,
+          "ExitRemainingMS": 30.998334,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 6,
+          "EntryRemainingMS": 27.625375,
+          "ComputeMS": 0.000208,
+          "ExitRemainingMS": 27.625167,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 38,
+          "EntryRemainingMS": 32.581375,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 32.581334,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 21,
+          "EntryRemainingMS": 32.582458,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 32.582416,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 54,
+          "EntryRemainingMS": 43.564875,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 43.564834,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 7,
+          "EntryRemainingMS": 43.566417,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 43.566375,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 22,
+          "EntryRemainingMS": 58.680042,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 58.679959,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 55,
+          "EntryRemainingMS": 58.681875,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 58.681833,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 40,
+          "EntryRemainingMS": 63.575041,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 63.574958,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 8,
+          "EntryRemainingMS": 63.581917,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 63.581875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 23,
+          "EntryRemainingMS": 73.556958,
+          "ComputeMS": 43.012083,
+          "ExitRemainingMS": 30.544875,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 56,
+          "EntryRemainingMS": 29.6525,
+          "ComputeMS": 0.000458,
+          "ExitRemainingMS": 29.652042,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 41,
+          "EntryRemainingMS": 34.658291,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 34.65825,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 9,
+          "EntryRemainingMS": 34.66225,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 34.662209,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 24,
+          "EntryRemainingMS": 45.671084,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 45.671042,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 57,
+          "EntryRemainingMS": 45.672958,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 45.672916,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 10,
+          "EntryRemainingMS": 50.680792,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 50.680709,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 42,
+          "EntryRemainingMS": 60.744125,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 60.744042,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 25,
+          "EntryRemainingMS": 60.752459,
+          "ComputeMS": 0.000084,
+          "ExitRemainingMS": 60.752375,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 58,
+          "EntryRemainingMS": 64.665041,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 64.665,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 11,
+          "EntryRemainingMS": 64.673708,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 64.673625,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 26,
+          "EntryRemainingMS": 74.68675,
+          "ComputeMS": 42.960916,
+          "ExitRemainingMS": 31.725834,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 59,
+          "EntryRemainingMS": 31.726375,
+          "ComputeMS": 0.000166,
+          "ExitRemainingMS": 31.726209,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 43,
+          "EntryRemainingMS": 36.686708,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 36.686666,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 12,
+          "EntryRemainingMS": 36.690833,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 36.690792,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 60,
+          "EntryRemainingMS": 47.673875,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 47.673834,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 27,
+          "EntryRemainingMS": 47.677041,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 47.677,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 45,
+          "EntryRemainingMS": 62.683459,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 62.683417,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 61,
+          "EntryRemainingMS": 62.685958,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 62.685917,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 14,
+          "EntryRemainingMS": 67.683125,
+          "ComputeMS": 43.631917,
+          "ExitRemainingMS": 24.051208,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 46,
+          "EntryRemainingMS": 35.061875,
+          "ComputeMS": 0.000583,
+          "ExitRemainingMS": 35.061292,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 28,
+          "EntryRemainingMS": 35.064833,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 35.064792,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 62,
+          "EntryRemainingMS": 39.059,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 39.058958,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 15,
+          "EntryRemainingMS": 39.060833,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 39.060791,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 47,
+          "EntryRemainingMS": 44.107375,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 44.107333,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 29,
+          "EntryRemainingMS": 44.110375,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 44.110333,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 30,
+          "EntryRemainingMS": 48.066,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 48.065958,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 63,
+          "EntryRemainingMS": 48.06825,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 48.068208,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        }
+      ],
+      "Trial": 1,
+      "Arm": "allowance",
+      "Distinct": true,
+      "Fits": 6,
+      "Hits": 0,
+      "Checked": 6,
+      "ReadNS": [
+        14844125,
+        14949000,
+        20630834,
+        31662625,
+        21722459,
+        21733291,
+        18921792,
+        13989792,
+        13987833,
+        22970792,
+        25131208,
+        14033083,
+        13981750,
+        17948750,
+        10993250,
+        14901292,
+        14985875,
+        18900291,
+        19970042,
+        19973125,
+        19120917,
+        19128375,
+        9880542,
+        13029875,
+        17990542,
+        14852791,
+        15947583,
+        15944458,
+        16015542,
+        26099708,
+        15119042,
+        14982083,
+        20017958,
+        14879417,
+        14879042,
+        14992417,
+        14989084,
+        16023125,
+        16024208,
+        16020792,
+        26089791,
+        15084750,
+        18995041,
+        13996292,
+        13936875,
+        10026125,
+        18909708,
+        14982250,
+        15949250,
+        15955375,
+        14984625,
+        14986500,
+        11014125,
+        15013417,
+        16008083,
+        16016500,
+        31027667,
+        20012292,
+        15016875,
+        9047834,
+        9047083,
+        3956000,
+        9011167,
+        5987125
+      ],
+      "WriteNS": [
+        6980750,
+        17805416,
+        16120083,
+        11978083,
+        11986666,
+        18564000,
+        11105500,
+        12875792,
+        13938417,
+        12739083,
+        12902333,
+        14120833,
+        11680167,
+        12980041,
+        13074166,
+        14753875
+      ],
+      "Errors": null,
+      "Overlap": 16,
+      "Status": {
+        "AsOf": "2026-09-12T00:00:00.000014Z",
+        "Accepted": 59,
+        "Dropped": 5,
+        "Completed": 6,
+        "Stale": 0,
+        "Failed": 53,
+        "Cancelled": 0,
+        "Depth": 0,
+        "Running": false,
+        "Closed": false,
+        "HasResult": true,
+        "Value": 0.5827968467454644,
+        "Snapshot": {
+          "runtime_version": 66,
+          "policy_version": 2,
+          "contract_version": 16,
+          "graph_version": 1,
+          "posterior_version": 1,
+          "residual_version": 1,
+          "abstraction_version": 1,
+          "agency_version": 1,
+          "evidence_epoch": 65
+        }
+      },
+      "P99": 31662625,
+      "Started": 59,
+      "Interrupted": 0
+    },
+    {
+      "Traces": [
+        {
+          "ID": 48,
+          "EntryRemainingMS": 92.923458,
+          "ComputeMS": 60.326333,
+          "ExitRemainingMS": 32.597125,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 16,
+          "EntryRemainingMS": 22.037833,
+          "ComputeMS": 22.526708,
+          "ExitRemainingMS": -0.488875,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 32,
+          "EntryRemainingMS": 6.789875,
+          "ComputeMS": 7.069125,
+          "ExitRemainingMS": -0.27925,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 49,
+          "EntryRemainingMS": 0.711292,
+          "ComputeMS": 0.875125,
+          "ExitRemainingMS": -0.163833,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 17,
+          "EntryRemainingMS": 3.843084,
+          "ComputeMS": 4.096334,
+          "ExitRemainingMS": -0.25325,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 34,
+          "EntryRemainingMS": 0.549542,
+          "ComputeMS": 0.552417,
+          "ExitRemainingMS": -0.002875,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 18,
+          "EntryRemainingMS": 0.005625,
+          "ComputeMS": 0.128458,
+          "ExitRemainingMS": -0.122833,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 50,
+          "EntryRemainingMS": 4.778875,
+          "ComputeMS": 4.79525,
+          "ExitRemainingMS": -0.016375,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 35,
+          "EntryRemainingMS": 1.680791,
+          "ComputeMS": 1.696041,
+          "ExitRemainingMS": -0.01525,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 3,
+          "EntryRemainingMS": 3.98225,
+          "ComputeMS": 4.18525,
+          "ExitRemainingMS": -0.203,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 52,
+          "EntryRemainingMS": 0.670917,
+          "ComputeMS": 0.731125,
+          "ExitRemainingMS": -0.060208,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 5,
+          "EntryRemainingMS": 12.750084,
+          "ComputeMS": 13.675542,
+          "ExitRemainingMS": -0.925458,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 55,
+          "EntryRemainingMS": 27.714292,
+          "ComputeMS": 28.383292,
+          "ExitRemainingMS": -0.669,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 7,
+          "EntryRemainingMS": 1.737375,
+          "ComputeMS": 1.79375,
+          "ExitRemainingMS": -0.056375,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 24,
+          "EntryRemainingMS": 10.7865,
+          "ComputeMS": 10.920459,
+          "ExitRemainingMS": -0.133959,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 40,
+          "EntryRemainingMS": 4.961042,
+          "ComputeMS": 5.582667,
+          "ExitRemainingMS": -0.621625,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 41,
+          "EntryRemainingMS": 10.273292,
+          "ComputeMS": 10.585292,
+          "ExitRemainingMS": -0.312,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 9,
+          "EntryRemainingMS": 4.7205,
+          "ComputeMS": 4.949708,
+          "ExitRemainingMS": -0.229208,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 58,
+          "EntryRemainingMS": 9.703667,
+          "ComputeMS": 9.945125,
+          "ExitRemainingMS": -0.241458,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 42,
+          "EntryRemainingMS": 3.982209,
+          "ComputeMS": 4.04975,
+          "ExitRemainingMS": -0.067541,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 43,
+          "EntryRemainingMS": 10.718959,
+          "ComputeMS": 10.963959,
+          "ExitRemainingMS": -0.245,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 44,
+          "EntryRemainingMS": 14.805333,
+          "ComputeMS": 15.158208,
+          "ExitRemainingMS": -0.352875,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 46,
+          "EntryRemainingMS": 31.616459,
+          "ComputeMS": 31.889375,
+          "ExitRemainingMS": -0.272916,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 14,
+          "EntryRemainingMS": 4.856291,
+          "ComputeMS": 5.062708,
+          "ExitRemainingMS": -0.206417,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 63,
+          "EntryRemainingMS": 3.707042,
+          "ComputeMS": 3.720125,
+          "ExitRemainingMS": -0.013083,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 15,
+          "EntryRemainingMS": 4.926041,
+          "ComputeMS": 4.981208,
+          "ExitRemainingMS": -0.055167,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        }
+      ],
+      "Trial": 1,
+      "Arm": "batch",
+      "Distinct": true,
+      "Fits": 1,
+      "Hits": 0,
+      "Checked": 1,
+      "ReadNS": [
+        15065583,
+        15097208,
+        27779625,
+        27766375,
+        23609917,
+        10917750,
+        27604542,
+        14893958,
+        15001750,
+        11015167,
+        19929500,
+        15916250,
+        16926666,
+        16917500,
+        16012208,
+        16014708,
+        9029209,
+        13031791,
+        17162791,
+        13171750,
+        8669250,
+        12812041,
+        17952417,
+        13823208,
+        15126834,
+        15134584,
+        13966666,
+        13965750,
+        11093125,
+        15076667,
+        20155333,
+        16192875,
+        10831041,
+        15938042,
+        21027041,
+        15950292,
+        10897375,
+        16000125,
+        15923625,
+        21031375,
+        9927584,
+        14968750,
+        19194000,
+        14172250,
+        10788000,
+        15019792,
+        15797042,
+        15051375,
+        30064250,
+        20004792,
+        15002584,
+        10992917,
+        15952750,
+        15972209,
+        20949042,
+        11020625,
+        16021709,
+        16155917,
+        21144167,
+        9040625,
+        9052042,
+        8854584,
+        8857792,
+        5998792
+      ],
+      "WriteNS": [
+        6076708,
+        13849250,
+        9705958,
+        12976375,
+        13968875,
+        12891208,
+        11032292,
+        11768209,
+        12007750,
+        11349750,
+        13071750,
+        13667083,
+        11969250,
+        13847791,
+        12600417,
+        14173083
+      ],
+      "Errors": null,
+      "Overlap": 16,
+      "Status": {
+        "AsOf": "2026-09-12T00:00:00.000048Z",
+        "Accepted": 42,
+        "Dropped": 22,
+        "Completed": 1,
+        "Stale": 41,
+        "Failed": 0,
+        "Cancelled": 0,
+        "Depth": 0,
+        "Running": false,
+        "Closed": false,
+        "HasResult": true,
+        "Value": 0.47113221700847546,
+        "Snapshot": {
+          "runtime_version": 52,
+          "policy_version": 2,
+          "contract_version": 16,
+          "graph_version": 1,
+          "posterior_version": 1,
+          "residual_version": 1,
+          "abstraction_version": 1,
+          "agency_version": 1,
+          "evidence_epoch": 51
+        }
+      },
+      "P99": 30064250,
+      "Started": 26,
+      "Interrupted": 25
+    },
+    {
+      "Traces": [
+        {
+          "ID": 0,
+          "EntryRemainingMS": 87.92325,
+          "ComputeMS": 59.911458,
+          "ExitRemainingMS": 28.011792,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 48,
+          "EntryRemainingMS": 26.057417,
+          "ComputeMS": 27.593083,
+          "ExitRemainingMS": -1.535666,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 32,
+          "EntryRemainingMS": 2.802542,
+          "ComputeMS": 2.990625,
+          "ExitRemainingMS": -0.188083,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 1,
+          "EntryRemainingMS": -0.324584,
+          "ComputeMS": 0.021958,
+          "ExitRemainingMS": -0.346542,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 49,
+          "EntryRemainingMS": 4.685333,
+          "ComputeMS": 5.33175,
+          "ExitRemainingMS": -0.646417,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 17,
+          "EntryRemainingMS": 0.699916,
+          "ComputeMS": 0.76525,
+          "ExitRemainingMS": -0.065334,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 34,
+          "EntryRemainingMS": 0.01125,
+          "ComputeMS": 0.152542,
+          "ExitRemainingMS": -0.141292,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 50,
+          "EntryRemainingMS": 4.698584,
+          "ComputeMS": 4.727125,
+          "ExitRemainingMS": -0.028541,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 35,
+          "EntryRemainingMS": 0.756375,
+          "ComputeMS": 0.792125,
+          "ExitRemainingMS": -0.03575,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 18,
+          "EntryRemainingMS": 0.079375,
+          "ComputeMS": 0.2195,
+          "ExitRemainingMS": -0.140125,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 51,
+          "EntryRemainingMS": 4.697083,
+          "ComputeMS": 4.712583,
+          "ExitRemainingMS": -0.0155,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 37,
+          "EntryRemainingMS": 13.628542,
+          "ComputeMS": 14.235542,
+          "ExitRemainingMS": -0.607,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 39,
+          "EntryRemainingMS": 28.832416,
+          "ComputeMS": 28.952333,
+          "ExitRemainingMS": -0.119917,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 7,
+          "EntryRemainingMS": 4.922291,
+          "ComputeMS": 4.969,
+          "ExitRemainingMS": -0.046709,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 8,
+          "EntryRemainingMS": 3.722292,
+          "ComputeMS": 4.285375,
+          "ExitRemainingMS": -0.563083,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 23,
+          "EntryRemainingMS": 10.315916,
+          "ComputeMS": 10.856583,
+          "ExitRemainingMS": -0.540667,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 9,
+          "EntryRemainingMS": 4.597542,
+          "ComputeMS": 4.892209,
+          "ExitRemainingMS": -0.294667,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 24,
+          "EntryRemainingMS": 10.575625,
+          "ComputeMS": 10.778792,
+          "ExitRemainingMS": -0.203167,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 10,
+          "EntryRemainingMS": 4.916958,
+          "ComputeMS": 4.938708,
+          "ExitRemainingMS": -0.02175,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 59,
+          "EntryRemainingMS": 9.889541,
+          "ComputeMS": 9.945875,
+          "ExitRemainingMS": -0.056334,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 60,
+          "EntryRemainingMS": 13.893958,
+          "ComputeMS": 14.001083,
+          "ExitRemainingMS": -0.107125,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 62,
+          "EntryRemainingMS": 29.881292,
+          "ComputeMS": 30.033292,
+          "ExitRemainingMS": -0.152,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 14,
+          "EntryRemainingMS": 5.019125,
+          "ComputeMS": 5.251667,
+          "ExitRemainingMS": -0.232542,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 47,
+          "EntryRemainingMS": 10.686666,
+          "ComputeMS": 10.880916,
+          "ExitRemainingMS": -0.19425,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 28,
+          "EntryRemainingMS": 4.707708,
+          "ComputeMS": 4.931583,
+          "ExitRemainingMS": -0.223875,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 29,
+          "EntryRemainingMS": 5.788041,
+          "ComputeMS": 5.934833,
+          "ExitRemainingMS": -0.146792,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 30,
+          "EntryRemainingMS": 5.880375,
+          "ComputeMS": 6.11875,
+          "ExitRemainingMS": -0.238375,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        },
+        {
+          "ID": 31,
+          "EntryRemainingMS": 5.735166,
+          "ComputeMS": 5.934125,
+          "ExitRemainingMS": -0.198959,
+          "ContextError": "context deadline exceeded",
+          "FitError": "context deadline exceeded"
+        }
+      ],
+      "Trial": 2,
+      "Arm": "batch",
+      "Distinct": true,
+      "Fits": 1,
+      "Hits": 0,
+      "Checked": 1,
+      "ReadNS": [
+        12034042,
+        12012500,
+        17871958,
+        17890041,
+        18660625,
+        12823708,
+        23692083,
+        27870792,
+        15130958,
+        14947125,
+        19985000,
+        15929709,
+        16124667,
+        16041291,
+        16041250,
+        9634042,
+        14474792,
+        18954375,
+        14001250,
+        9981334,
+        14351959,
+        18355333,
+        13990417,
+        9969625,
+        13981375,
+        18966292,
+        14955666,
+        11099708,
+        16082125,
+        21126541,
+        25015583,
+        13979750,
+        13980166,
+        19027000,
+        15992000,
+        15932125,
+        16023375,
+        16036500,
+        16013166,
+        16016708,
+        15994625,
+        15982791,
+        9907000,
+        15033625,
+        14910500,
+        20034000,
+        13951375,
+        13951417,
+        13964250,
+        13968792,
+        15013208,
+        15022875,
+        14989292,
+        14966250,
+        24977083,
+        15162375,
+        20154417,
+        10909083,
+        16122333,
+        20991708,
+        15828958,
+        6012417,
+        6027625,
+        5974083
+      ],
+      "WriteNS": [
+        5056875,
+        16941916,
+        15795583,
+        11868792,
+        14955500,
+        11006209,
+        11792292,
+        13072708,
+        13804750,
+        12004583,
+        13818333,
+        13940375,
+        12765000,
+        11840000,
+        12893292,
+        13001792
+      ],
+      "Errors": null,
+      "Overlap": 16,
+      "Status": {
+        "AsOf": "2026-09-12T00:00:00Z",
+        "Accepted": 44,
+        "Dropped": 20,
+        "Completed": 1,
+        "Stale": 43,
+        "Failed": 0,
+        "Cancelled": 0,
+        "Depth": 0,
+        "Running": false,
+        "Closed": false,
+        "HasResult": true,
+        "Value": 0.5615107126011494,
+        "Snapshot": {
+          "runtime_version": 52,
+          "policy_version": 2,
+          "contract_version": 16,
+          "graph_version": 1,
+          "posterior_version": 1,
+          "residual_version": 1,
+          "abstraction_version": 1,
+          "agency_version": 1,
+          "evidence_epoch": 51
+        }
+      },
+      "P99": 27870792,
+      "Started": 28,
+      "Interrupted": 27
+    },
+    {
+      "Traces": [
+        {
+          "ID": 32,
+          "EntryRemainingMS": 87.063542,
+          "ComputeMS": 58.166917,
+          "ExitRemainingMS": 28.896625,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 48,
+          "EntryRemainingMS": 28.904833,
+          "ComputeMS": 0.000167,
+          "ExitRemainingMS": 28.904666,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 0,
+          "EntryRemainingMS": 34.654041,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 34.654,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 16,
+          "EntryRemainingMS": 34.670417,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 34.670375,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 49,
+          "EntryRemainingMS": 47.548542,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 47.5485,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 17,
+          "EntryRemainingMS": 47.572291,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 47.57225,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 1,
+          "EntryRemainingMS": 50.267166,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 50.267125,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 33,
+          "EntryRemainingMS": 60.56025,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 60.560167,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 18,
+          "EntryRemainingMS": 60.687709,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 60.687667,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 2,
+          "EntryRemainingMS": 65.42725,
+          "ComputeMS": 43.309459,
+          "ExitRemainingMS": 22.117791,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 50,
+          "EntryRemainingMS": 20.646833,
+          "ComputeMS": 0.000166,
+          "ExitRemainingMS": 20.646667,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 19,
+          "EntryRemainingMS": 30.752916,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 30.752875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 34,
+          "EntryRemainingMS": 30.756041,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 30.755958,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 51,
+          "EntryRemainingMS": 34.64125,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 34.641167,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 35,
+          "EntryRemainingMS": 44.664917,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 44.664875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 3,
+          "EntryRemainingMS": 44.670916,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 44.670875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 20,
+          "EntryRemainingMS": 49.646459,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 49.646417,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 21,
+          "EntryRemainingMS": 58.652917,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 58.652875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 4,
+          "EntryRemainingMS": 58.652625,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 58.652584,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 36,
+          "EntryRemainingMS": 62.659,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 62.658959,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 53,
+          "EntryRemainingMS": 62.662916,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 62.662875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 37,
+          "EntryRemainingMS": 73.603625,
+          "ComputeMS": 44.120291,
+          "ExitRemainingMS": 29.483334,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 5,
+          "EntryRemainingMS": 27.587792,
+          "ComputeMS": 0.000167,
+          "ExitRemainingMS": 27.587625,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 22,
+          "EntryRemainingMS": 32.630167,
+          "ComputeMS": 0.000084,
+          "ExitRemainingMS": 32.630083,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 54,
+          "EntryRemainingMS": 32.632917,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 32.632875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 23,
+          "EntryRemainingMS": 43.594292,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 43.59425,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 7,
+          "EntryRemainingMS": 59.59075,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 59.590708,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 39,
+          "EntryRemainingMS": 59.599917,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 59.599875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 24,
+          "EntryRemainingMS": 64.643416,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 64.643375,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 56,
+          "EntryRemainingMS": 64.645916,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 64.645833,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 25,
+          "EntryRemainingMS": 75.595166,
+          "ComputeMS": 43.511791,
+          "ExitRemainingMS": 32.083375,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 40,
+          "EntryRemainingMS": 27.569166,
+          "ComputeMS": 0.000333,
+          "ExitRemainingMS": 27.568833,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 8,
+          "EntryRemainingMS": 32.5615,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 32.561459,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 57,
+          "EntryRemainingMS": 41.553333,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 41.553291,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 41,
+          "EntryRemainingMS": 41.553334,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 41.553292,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 9,
+          "EntryRemainingMS": 46.562,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 46.561959,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 26,
+          "EntryRemainingMS": 46.563458,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 46.563416,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 58,
+          "EntryRemainingMS": 56.586167,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 56.586125,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 10,
+          "EntryRemainingMS": 56.588458,
+          "ComputeMS": 0.000083,
+          "ExitRemainingMS": 56.588375,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 27,
+          "EntryRemainingMS": 61.564417,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 61.564375,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 42,
+          "EntryRemainingMS": 61.567166,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 61.567125,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 11,
+          "EntryRemainingMS": 72.539875,
+          "ComputeMS": 43.697375,
+          "ExitRemainingMS": 28.8425,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 59,
+          "EntryRemainingMS": 28.848666,
+          "ComputeMS": 0.000208,
+          "ExitRemainingMS": 28.848458,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 28,
+          "EntryRemainingMS": 33.858333,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 33.858292,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 43,
+          "EntryRemainingMS": 33.86,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 33.859959,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 12,
+          "EntryRemainingMS": 45.864916,
+          "ComputeMS": 0,
+          "ExitRemainingMS": 45.864916,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 60,
+          "EntryRemainingMS": 45.871458,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 45.871416,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 30,
+          "EntryRemainingMS": 61.851333,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 61.851291,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 13,
+          "EntryRemainingMS": 61.856584,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 61.856542,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 61,
+          "EntryRemainingMS": 66.838959,
+          "ComputeMS": 43.276167,
+          "ExitRemainingMS": 23.562792,
+          "ContextError": "",
+          "FitError": ""
+        },
+        {
+          "ID": 45,
+          "EntryRemainingMS": 23.56525,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 23.565209,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 14,
+          "EntryRemainingMS": 27.57975,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 27.579708,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 31,
+          "EntryRemainingMS": 27.582625,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 27.582583,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 62,
+          "EntryRemainingMS": 32.576417,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 32.576375,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 46,
+          "EntryRemainingMS": 32.581334,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 32.581292,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 47,
+          "EntryRemainingMS": 36.594625,
+          "ComputeMS": 0.000041,
+          "ExitRemainingMS": 36.594584,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 15,
+          "EntryRemainingMS": 36.599041,
+          "ComputeMS": 0,
+          "ExitRemainingMS": 36.599041,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        },
+        {
+          "ID": 63,
+          "EntryRemainingMS": 41.586917,
+          "ComputeMS": 0.000042,
+          "ExitRemainingMS": 41.586875,
+          "ContextError": "",
+          "FitError": "insufficient research computation allowance"
+        }
+      ],
+      "Trial": 2,
+      "Arm": "allowance",
+      "Distinct": true,
+      "Fits": 6,
+      "Hits": 0,
+      "Checked": 6,
+      "ReadNS": [
+        21071750,
+        21040792,
+        26825083,
+        26856750,
+        18645458,
+        12903250,
+        15615708,
+        31669708,
+        13117000,
+        15162042,
+        17887792,
+        14853041,
+        14984500,
+        13996250,
+        13910166,
+        24032875,
+        18896250,
+        15009833,
+        9006708,
+        13983834,
+        17997208,
+        13016166,
+        10945833,
+        14956583,
+        20000541,
+        15992166,
+        10965416,
+        16016292,
+        15987833,
+        21035333,
+        10970459,
+        16003167,
+        21050791,
+        16027958,
+        10952708,
+        16001541,
+        21004792,
+        24940708,
+        13986875,
+        14002584,
+        19003417,
+        15036041,
+        10030959,
+        15004708,
+        20019959,
+        15953000,
+        15966083,
+        15995125,
+        15994000,
+        17026208,
+        17024750,
+        17009292,
+        17013834,
+        10980833,
+        15992708,
+        20968958,
+        15975083,
+        9000958,
+        9010000,
+        9015417,
+        9017541,
+        4013541,
+        9021083,
+        9011834
+      ],
+      "WriteNS": [
+        7028291,
+        6957791,
+        15793625,
+        12753708,
+        11993459,
+        11946250,
+        12047375,
+        11837250,
+        13903625,
+        14000709,
+        13656666,
+        13894792,
+        11989333,
+        12751084,
+        14905833,
+        14160834
+      ],
+      "Errors": null,
+      "Overlap": 16,
+      "Status": {
+        "AsOf": "2026-09-12T00:00:00.000061Z",
+        "Accepted": 58,
+        "Dropped": 6,
+        "Completed": 6,
+        "Stale": 0,
+        "Failed": 52,
+        "Cancelled": 0,
+        "Depth": 0,
+        "Running": false,
+        "Closed": false,
+        "HasResult": true,
+        "Value": 0.530952987193752,
+        "Snapshot": {
+          "runtime_version": 67,
+          "policy_version": 2,
+          "contract_version": 16,
+          "graph_version": 1,
+          "posterior_version": 1,
+          "residual_version": 1,
+          "abstraction_version": 1,
+          "agency_version": 1,
+          "evidence_epoch": 66
+        }
+      },
+      "P99": 31669708,
+      "Started": 58,
+      "Interrupted": 0
+    }
+  ]
+}

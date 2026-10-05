@@ -1,0 +1,28 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchdispersion
+cpu: Apple M4
+go test ./internal/researchdispersion -run '^$' -bench '^BenchmarkOrientation' -benchmem -count=3
+BenchmarkOrientationFilterReplay150-10        1498587        791.4 ns/op       0 B/op       0 allocs/op
+BenchmarkOrientationFilterReplay150-10        1523548        789.8 ns/op       0 B/op       0 allocs/op
+BenchmarkOrientationFilterReplay150-10        1509211        788.0 ns/op       0 B/op       0 allocs/op
+BenchmarkOrientationFilterReplay1800-10        126132         9469 ns/op       0 B/op       0 allocs/op
+BenchmarkOrientationFilterReplay1800-10        127048         9470 ns/op       0 B/op       0 allocs/op
+BenchmarkOrientationFilterReplay1800-10        127146         9438 ns/op       0 B/op       0 allocs/op
+BenchmarkOrientationObserverNew-10             7714       155499 ns/op 1418902 B/op      24 allocs/op
+BenchmarkOrientationObserverNew-10             7564       155413 ns/op 1418902 B/op      24 allocs/op
+BenchmarkOrientationObserverNew-10             7563       155883 ns/op 1418901 B/op      24 allocs/op
+BenchmarkOrientationObserverFreezePlan-10      6770       178329 ns/op  379473 B/op       6 allocs/op
+BenchmarkOrientationObserverFreezePlan-10      6758       178863 ns/op  379473 B/op       6 allocs/op
+BenchmarkOrientationObserverFreezePlan-10      6657       179343 ns/op  379473 B/op       6 allocs/op
+BenchmarkOrientationFilterPredict150-10      5291691        228.8 ns/op       0 B/op       0 allocs/op
+BenchmarkOrientationFilterPredict150-10      5334042        229.0 ns/op       0 B/op       0 allocs/op
+BenchmarkOrientationFilterPredict150-10      5299843        227.2 ns/op       0 B/op       0 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/researchdispersion 21.684s
+
+Actual command output, whitespace normalized. Replay cases include restoring
+the affected node suffix. The suffix contains observed emissions, not just
+empty positions. FreezePlan is separately measured and included in the
+declared construction-plus-freeze allocation screen. These are component
+costs, not acquisition, persistence, queues or loaded service latency.

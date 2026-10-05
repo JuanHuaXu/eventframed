@@ -1,0 +1,263 @@
+{
+  "protocol": "mmm-brier-kernel-v94",
+  "artifactSHA256": "715516a85fbb6fcdf5976b47d4b854ab9c4cee270cef545817681101645168d7",
+  "evaluatorSHA256": "c6f65877fec9450a367a298b7fb46cc2ad459b9a33194e08c872204011f7f950",
+  "runtime": "go1.27.1 darwin/arm64",
+  "records": 448,
+  "pairedStreams": 224,
+  "caveat": "Deterministic duplicate tapes are not independent confirmation; cumulative realized-loss checks do not establish future risk or learned-model quality.",
+  "groups": [
+    {
+      "scenario": "random",
+      "share": 0,
+      "records": 32,
+      "distinctTapes": 32,
+      "meanBrier": [
+        0.33233445624772995,
+        0.3334013108528681,
+        0.32555763287039935
+      ],
+      "maxRegret": 0.05245963454442437,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 2.220446049250313e-16,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "random",
+      "share": 0.001,
+      "records": 32,
+      "distinctTapes": 32,
+      "meanBrier": [
+        0.33233445624772995,
+        0.3334013108528681,
+        0.3172924453139671
+      ],
+      "maxRegret": 0.05255364196056789,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 0,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "adaptive_adversary",
+      "share": 0,
+      "records": 32,
+      "distinctTapes": 32,
+      "meanBrier": [
+        0.16684077293873253,
+        0.5011988082325352,
+        0.1668548554730785
+      ],
+      "maxRegret": 0.07121409651483646,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 2.220446049250313e-16,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "adaptive_adversary",
+      "share": 0.001,
+      "records": 32,
+      "distinctTapes": 32,
+      "meanBrier": [
+        0.16684077293873253,
+        0.5011988082325352,
+        0.166911334571412
+      ],
+      "maxRegret": 0.30492415243168125,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 0,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "alternating_extremes",
+      "share": 0,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.5,
+        0.5,
+        0.4707933569375964
+      ],
+      "maxRegret": 0.0025000000000000053,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 0,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "alternating_extremes",
+      "share": 0.001,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.5,
+        0.5,
+        0.4644496269817414
+      ],
+      "maxRegret": 0.0025000000000000053,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 0,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "regime_flip",
+      "share": 0,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.5,
+        0.5,
+        0.49996251073571196
+      ],
+      "maxRegret": 0.0040318388769453595,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 0,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": 0
+    },
+    {
+      "scenario": "regime_flip",
+      "share": 0.001,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.5,
+        0.5,
+        0.0037948866553037816
+      ],
+      "maxRegret": 0.004072528062552587,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 0,
+      "recoveryLag": [
+        18
+      ],
+      "postFlipAccuracy": 0.9912109375
+    },
+    {
+      "scenario": "changing_experts",
+      "share": 0,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.34468841552734375,
+        0.34273529052734375,
+        0.33726161341020594
+      ],
+      "maxRegret": 0.020349925994162743,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 1.1102230246251565e-16,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "changing_experts",
+      "share": 0.001,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.34468841552734375,
+        0.34273529052734375,
+        0.3120180261971821
+      ],
+      "maxRegret": 0.020469964277137653,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 2.220446049250313e-16,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "generic_better",
+      "share": 0,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.04000000000000042,
+        0.6400000000000067,
+        0.040012051714774996
+      ],
+      "maxRegret": 0.04936382371670334,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 1.1102230246251565e-16,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "generic_better",
+      "share": 0.001,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.04000000000000042,
+        0.6400000000000067,
+        0.040058165056086274
+      ],
+      "maxRegret": 0.23824406972764223,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 0,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "challenger_better",
+      "share": 0,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.6400000000000067,
+        0.04000000000000042,
+        0.041252199898233886
+      ],
+      "maxRegret": 0,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 1.1102230246251565e-16,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    },
+    {
+      "scenario": "challenger_better",
+      "share": 0.001,
+      "records": 32,
+      "distinctTapes": 1,
+      "meanBrier": [
+        0.6400000000000067,
+        0.04000000000000042,
+        0.04213716040852573
+      ],
+      "maxRegret": 0,
+      "maxBoundViolation": 0,
+      "maxJensenViolation": 0,
+      "recoveryLag": [
+        -1
+      ],
+      "postFlipAccuracy": null
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "exactReplay": true,
+  "component": {
+    "analyticChecks": 300,
+    "maxError": 6.8833827526759706e-15,
+    "variationalChecks": 2000,
+    "maxCycles": 1329,
+    "maxGap": 9.94997487180349e-13
+  },
+  "boundary": {
+    "boundaryAndRedundantOrderChecks": 3,
+    "maxError": 2.7755575615628914e-17
+  },
+  "artifactSHA256": "2013692f23fcb34137c7e70cc1473e1d04d86a6d932efc430304a93e67772db9",
+  "boundarySourceSHA256": "06812771e03eb06f33feb38235a66ae7bb0c949b7489ebf8f438c5789aa4954a"
+}

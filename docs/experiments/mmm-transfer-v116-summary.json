@@ -1,0 +1,7062 @@
+{
+  "version": "transfer-v116",
+  "artifactSHA256": "cad9f6f36879280044f0148895910f9fc10e3d0df902da95cc8276980f079d1e",
+  "sourceHashes": 154,
+  "latentTrajectories": 576,
+  "scheduleRuns": 1152,
+  "steps": 294912,
+  "uniqueEffectiveSeeds": 2880,
+  "passed": 290,
+  "total": 348,
+  "status": "FAIL",
+  "candidates": [
+    {
+      "candidate": 1,
+      "passed": 145,
+      "total": 168,
+      "status": "FAIL"
+    },
+    {
+      "candidate": 2,
+      "passed": 145,
+      "total": 180,
+      "status": "FAIL"
+    }
+  ],
+  "gates": [
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0004008320221652725,
+      "lower": -0.0011517884226807003,
+      "upper": 0.0003501243783501552,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0004008320221652725,
+      "lower": -0.0011517884226807003,
+      "upper": 0.0003501243783501552,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.00035677491964157104,
+      "lower": -0.001831526758505295,
+      "upper": 0.002545076597788437,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.00035677491964157104,
+      "lower": -0.001831526758505295,
+      "upper": 0.002545076597788437,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0002846628017062428,
+      "lower": -0.0007757988815119193,
+      "upper": 0.001345124484924405,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.000021693149696175307,
+      "lower": -0.00004589307148030735,
+      "upper": 0.00008927937087265797,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0002629696520100675,
+      "lower": -0.0007377005908226649,
+      "upper": 0.0012636398948428,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000021693149696175307,
+      "lower": -0.00008927937087265797,
+      "upper": 0.00004589307148030735,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0009381692385729773,
+      "lower": -0.003437909997266367,
+      "upper": 0.005314248474412322,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.000044605225333540534,
+      "lower": -0.00018033842167385837,
+      "upper": 0.00026954887234093944,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0008935640132394368,
+      "lower": -0.0032717172433715707,
+      "upper": 0.005058845269850444,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000044605225333540534,
+      "lower": -0.00026954887234093944,
+      "upper": 0.00018033842167385837,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.002572347173987747,
+      "lower": -0.0045874573828716125,
+      "upper": -0.0005572369651038814,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.002572347173987747,
+      "lower": -0.0045874573828716125,
+      "upper": -0.0005572369651038814,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0006053969915333348,
+      "lower": -0.0047944749786532894,
+      "upper": 0.006005268961719959,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0006053969915333348,
+      "lower": -0.006005268961719959,
+      "upper": 0.0047944749786532894,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0006053969915333348,
+      "lower": -0.0047944749786532894,
+      "upper": 0.006005268961719959,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0006053969915333348,
+      "lower": -0.006005268961719959,
+      "upper": 0.0047944749786532894,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0015489346134025944,
+      "lower": -0.0039550723332191905,
+      "upper": 0.0008572031064140021,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00021926921897073588,
+      "lower": -0.0000792807251467148,
+      "upper": 0.0005178191630881865,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0017682038323733303,
+      "lower": -0.004234590027134931,
+      "upper": 0.0006981823623882703,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00021926921897073588,
+      "lower": -0.0005178191630881865,
+      "upper": 0.0000792807251467148,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.001953143645330312,
+      "lower": -0.0035818066983068584,
+      "upper": 0.007488093988967482,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.0007814557611068047,
+      "lower": -0.00039735153995777207,
+      "upper": 0.001960263062171381,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.001953143645330312,
+      "lower": -0.007488093988967482,
+      "upper": 0.0035818066983068584,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0011716878842235072,
+      "lower": -0.004657586646692853,
+      "upper": 0.007000962415139867,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.0007814557611068047,
+      "lower": -0.001960263062171381,
+      "upper": 0.00039735153995777207,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0011716878842235072,
+      "lower": -0.007000962415139867,
+      "upper": 0.004657586646692853,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.0007814557611068047,
+      "lower": -0.00039735153995777207,
+      "upper": 0.001960263062171381,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0019281723418430466,
+      "lower": -0.004288819950264807,
+      "upper": 0.0004324752665787134,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0019281723418430466,
+      "lower": -0.004288819950264807,
+      "upper": 0.0004324752665787134,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.00026886485667991077,
+      "lower": -0.003094616196989358,
+      "upper": 0.0036323459103491797,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.00026886485667991077,
+      "lower": -0.0036323459103491797,
+      "upper": 0.003094616196989358,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.00026886485667991077,
+      "lower": -0.003094616196989358,
+      "upper": 0.0036323459103491797,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.00026886485667991077,
+      "lower": -0.0036323459103491797,
+      "upper": 0.003094616196989358,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.002070536287984798,
+      "lower": -0.0043002287237047625,
+      "upper": 0.0001591561477351667,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.0001413922274914499,
+      "lower": -0.00009117099599027702,
+      "upper": 0.0003739554509731768,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0022119285154762478,
+      "lower": -0.00452414247898726,
+      "upper": 0.00010028544803476411,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.0001413922274914499,
+      "lower": -0.0003739554509731768,
+      "upper": 0.00009117099599027702,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0038785288791637756,
+      "lower": -0.012372383992741773,
+      "upper": 0.004615326234414222,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00015106087315503586,
+      "lower": -0.0006641624641853442,
+      "upper": 0.0009662842104954159,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0038785288791637756,
+      "lower": -0.004615326234414222,
+      "upper": 0.012372383992741773,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0040295897523188115,
+      "lower": -0.012955448648859221,
+      "upper": 0.004896269144221598,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00015106087315503586,
+      "lower": -0.0009662842104954159,
+      "upper": 0.0006641624641853442,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0040295897523188115,
+      "lower": -0.004896269144221598,
+      "upper": 0.012955448648859221,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.00015106087315503586,
+      "lower": -0.0006641624641853442,
+      "upper": 0.0009662842104954159,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0012026556040674518,
+      "lower": -0.002830256504180342,
+      "upper": 0.0004249452960454383,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0012026556040674518,
+      "lower": -0.002830256504180342,
+      "upper": 0.0004249452960454383,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0006184318463973559,
+      "lower": -0.002287014297711303,
+      "upper": 0.0010501506049165916,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0006184318463973559,
+      "lower": -0.002287014297711303,
+      "upper": 0.0010501506049165916,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0007101571274697608,
+      "lower": -0.0018581132557480133,
+      "upper": 0.00043779900080849173,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00008008512593325572,
+      "lower": -0.00015375621393539263,
+      "upper": 0.00031392646580190406,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0007902422534030165,
+      "lower": -0.0018845727122973732,
+      "upper": 0.0003040882054913402,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00008008512593325572,
+      "lower": -0.00031392646580190406,
+      "upper": 0.00015375621393539263,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0007154401060087655,
+      "lower": -0.0026024436613475196,
+      "upper": 0.0011715634493299884,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00026487020476009034,
+      "lower": -0.0004269215807118338,
+      "upper": 0.0009566619902320145,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0009803103107688558,
+      "lower": -0.002698302724941973,
+      "upper": 0.0007376821034042612,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00026487020476009034,
+      "lower": -0.0009566619902320145,
+      "upper": 0.0004269215807118338,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0021794545545719135,
+      "lower": -0.0035795256685175326,
+      "upper": -0.0007793834406262944,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0021794545545719135,
+      "lower": -0.0035795256685175326,
+      "upper": -0.0007793834406262944,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0021423982340865455,
+      "lower": -0.006639271569862576,
+      "upper": 0.002354475101689485,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0021423982340865455,
+      "lower": -0.002354475101689485,
+      "upper": 0.006639271569862576,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0021423982340865455,
+      "lower": -0.006639271569862576,
+      "upper": 0.002354475101689485,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0021423982340865455,
+      "lower": -0.002354475101689485,
+      "upper": 0.006639271569862576,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0022054293098361178,
+      "lower": -0.004532737177624381,
+      "upper": 0.00012187855795214473,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00003334424445736693,
+      "lower": -0.00004437514768915819,
+      "upper": 0.00011106363660389206,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0022387735542934847,
+      "lower": -0.004532543690041253,
+      "upper": 0.00005499658145428389,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00003334424445736693,
+      "lower": -0.00011106363660389206,
+      "upper": 0.00004437514768915819,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0013510209725704743,
+      "lower": -0.006682735881964191,
+      "upper": 0.003980693936823243,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.0001237551274756131,
+      "lower": -0.00014056260785707772,
+      "upper": 0.0003880728628083039,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0013510209725704743,
+      "lower": -0.003980693936823243,
+      "upper": 0.006682735881964191,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0014747761000460874,
+      "lower": -0.006671704465762273,
+      "upper": 0.003722152265670098,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.0001237551274756131,
+      "lower": -0.0003880728628083039,
+      "upper": 0.00014056260785707772,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0014747761000460874,
+      "lower": -0.003722152265670098,
+      "upper": 0.006671704465762273,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.0001237551274756131,
+      "lower": -0.00014056260785707772,
+      "upper": 0.0003880728628083039,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0029037930660885426,
+      "lower": -0.005022325256294166,
+      "upper": -0.000785260875882919,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0029037930660885426,
+      "lower": -0.005022325256294166,
+      "upper": -0.000785260875882919,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0033827097653222893,
+      "lower": -0.010474852011835466,
+      "upper": 0.0037094324811908887,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0033827097653222893,
+      "lower": -0.0037094324811908887,
+      "upper": 0.010474852011835466,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0033827097653222893,
+      "lower": -0.010474852011835466,
+      "upper": 0.0037094324811908887,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0033827097653222893,
+      "lower": -0.0037094324811908887,
+      "upper": 0.010474852011835466,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0016533094910455926,
+      "lower": -0.003153228320651076,
+      "upper": -0.00015339066144010884,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.000036869257652201795,
+      "lower": -0.00003339109612571895,
+      "upper": 0.00010712961143012254,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0016901787486977944,
+      "lower": -0.0031993471411548777,
+      "upper": -0.00018101035624071087,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000036869257652201795,
+      "lower": -0.00010712961143012254,
+      "upper": 0.00003339109612571895,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0005511338809178895,
+      "lower": -0.0037550581582116048,
+      "upper": 0.0026527903963758257,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00012560574549970883,
+      "lower": -0.0000457933112259704,
+      "upper": 0.000297004802225388,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0005511338809178895,
+      "lower": -0.0026527903963758257,
+      "upper": 0.0037550581582116048,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0006767396264175983,
+      "lower": -0.003798323712342067,
+      "upper": 0.0024448444595068703,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00012560574549970883,
+      "lower": -0.000297004802225388,
+      "upper": 0.0000457933112259704,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0006767396264175983,
+      "lower": -0.0024448444595068703,
+      "upper": 0.003798323712342067,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.00012560574549970883,
+      "lower": -0.0000457933112259704,
+      "upper": 0.000297004802225388,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0013718714115003444,
+      "lower": -0.0029652404546906845,
+      "upper": 0.00022149763168999585,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0013718714115003444,
+      "lower": -0.0029652404546906845,
+      "upper": 0.00022149763168999585,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0013462002513898166,
+      "lower": -0.0044332531017363015,
+      "upper": 0.0017408525989566679,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0013462002513898166,
+      "lower": -0.0044332531017363015,
+      "upper": 0.0017408525989566679,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0006559325257801821,
+      "lower": -0.0015464808962965925,
+      "upper": 0.00023461584473622832,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.000058341394439024793,
+      "lower": -0.000040816725052152076,
+      "upper": 0.00015749951393020166,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0007142739202192069,
+      "lower": -0.0016094840285810954,
+      "upper": 0.00018093618814268148,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000058341394439024793,
+      "lower": -0.00015749951393020166,
+      "upper": 0.000040816725052152076,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.000521248087286064,
+      "lower": -0.0028857098672469407,
+      "upper": 0.0018432136926748127,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00010676428315863594,
+      "lower": -0.00011143493661778953,
+      "upper": 0.0003249635029350614,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0006280123704446999,
+      "lower": -0.003000581986806964,
+      "upper": 0.001744557245917564,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00010676428315863594,
+      "lower": -0.0003249635029350614,
+      "upper": 0.00011143493661778953,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0032828394851433925,
+      "lower": -0.005403980255035442,
+      "upper": -0.0011616987152513435,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0032828394851433925,
+      "lower": -0.005403980255035442,
+      "upper": -0.0011616987152513435,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.002725953250523057,
+      "lower": -0.009175317086222153,
+      "upper": 0.0037234105851760404,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.002725953250523057,
+      "lower": -0.0037234105851760404,
+      "upper": 0.009175317086222153,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.002725953250523057,
+      "lower": -0.009175317086222153,
+      "upper": 0.0037234105851760404,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.002725953250523057,
+      "lower": -0.0037234105851760404,
+      "upper": 0.009175317086222153,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0023613525391271645,
+      "lower": -0.004083085359479184,
+      "upper": -0.0006396197187751456,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00002380033300452243,
+      "lower": -0.0000820609805577995,
+      "upper": 0.00012966164656684438,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.002385152872131687,
+      "lower": -0.004101087232459357,
+      "upper": -0.0006692185118040166,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00002380033300452243,
+      "lower": -0.00012966164656684438,
+      "upper": 0.0000820609805577995,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0005631213940045033,
+      "lower": -0.004179123491027307,
+      "upper": 0.0030528807030183007,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.000046832077423829624,
+      "lower": -0.0002272827419527033,
+      "upper": 0.00032094689680036255,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0005631213940045033,
+      "lower": -0.0030528807030183007,
+      "upper": 0.004179123491027307,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0006099534714283329,
+      "lower": -0.004088379553234221,
+      "upper": 0.0028684726103775553,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000046832077423829624,
+      "lower": -0.00032094689680036255,
+      "upper": 0.0002272827419527033,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0006099534714283329,
+      "lower": -0.0028684726103775553,
+      "upper": 0.004088379553234221,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.000046832077423829624,
+      "lower": -0.0002272827419527033,
+      "upper": 0.00032094689680036255,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0036453747576782394,
+      "lower": -0.006702025793783347,
+      "upper": -0.0005887237215731317,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0036453747576782394,
+      "lower": -0.006702025793783347,
+      "upper": -0.0005887237215731317,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.003333241423698281,
+      "lower": -0.00726168480948416,
+      "upper": 0.000595201962087598,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.003333241423698281,
+      "lower": -0.000595201962087598,
+      "upper": 0.00726168480948416,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.003333241423698281,
+      "lower": -0.00726168480948416,
+      "upper": 0.000595201962087598,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.003333241423698281,
+      "lower": -0.000595201962087598,
+      "upper": 0.00726168480948416,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0028847720298127337,
+      "lower": -0.004937314663294988,
+      "upper": -0.0008322293963304787,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": -0.000019779862227477935,
+      "lower": -0.00007662177065233838,
+      "upper": 0.000037062046197382507,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.002864992167585256,
+      "lower": -0.004891859116493809,
+      "upper": -0.0008381252186767029,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.000019779862227477935,
+      "lower": -0.000037062046197382507,
+      "upper": 0.00007662177065233838,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.004877894215959471,
+      "lower": -0.009408303445347954,
+      "upper": -0.0003474849865709867,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": -0.00010613177980946242,
+      "lower": -0.00035875688137330003,
+      "upper": 0.00014649332175437519,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.004877894215959471,
+      "lower": 0.0003474849865709867,
+      "upper": 0.009408303445347954,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.004771762436150008,
+      "lower": -0.009238526534511342,
+      "upper": -0.00030499833778867454,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.00010613177980946242,
+      "lower": -0.00014649332175437519,
+      "upper": 0.00035875688137330003,
+      "pass": true
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.004771762436150008,
+      "lower": 0.00030499833778867454,
+      "upper": 0.009238526534511342,
+      "pass": false
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00010613177980946242,
+      "lower": -0.00035875688137330003,
+      "upper": 0.00014649332175437519,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.00034354467289144514,
+      "lower": -0.0009920788465615327,
+      "upper": 0.0003049895007786425,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.00034354467289144514,
+      "lower": -0.0009920788465615327,
+      "upper": 0.0003049895007786425,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0007470430867319786,
+      "lower": -0.0008060601363304865,
+      "upper": 0.002300146309794444,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0007470430867319786,
+      "lower": -0.0008060601363304865,
+      "upper": 0.002300146309794444,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.00010544588934166023,
+      "lower": -0.0009366855146475048,
+      "upper": 0.0011475772933308252,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00001830788684733381,
+      "lower": -0.00005435001156163416,
+      "upper": 0.00009096578525630178,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.00008713800249432642,
+      "lower": -0.000893994190201517,
+      "upper": 0.0010682701951901699,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00001830788684733381,
+      "lower": -0.00009096578525630178,
+      "upper": 0.00005435001156163416,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0009302883806376503,
+      "lower": -0.0023139673812690815,
+      "upper": 0.004174544142544382,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.000060631946676856056,
+      "lower": -0.0001967097184868084,
+      "upper": 0.0003179736118405205,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0008696564339607943,
+      "lower": -0.0021414444728144987,
+      "upper": 0.0038807573407360872,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000060631946676856056,
+      "lower": -0.0003179736118405205,
+      "upper": 0.0001967097184868084,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0012930117256573868,
+      "lower": -0.002572573366637018,
+      "upper": -0.000013450084677755613,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0012930117256573868,
+      "lower": -0.002572573366637018,
+      "upper": -0.000013450084677755613,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0002323133148339155,
+      "lower": -0.004714729720747214,
+      "upper": 0.004250103091079383,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0002323133148339155,
+      "lower": -0.004250103091079383,
+      "upper": 0.004714729720747214,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0002323133148339155,
+      "lower": -0.004714729720747214,
+      "upper": 0.004250103091079383,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0002323133148339155,
+      "lower": -0.004250103091079383,
+      "upper": 0.004714729720747214,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.00103736180504734,
+      "lower": -0.002034933417349933,
+      "upper": -0.0000397901927447473,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00007882838458369776,
+      "lower": -0.000031228896436360845,
+      "upper": 0.00018888566560375637,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0011161901896310378,
+      "lower": -0.0021111346443203195,
+      "upper": -0.00012124573494175618,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00007882838458369776,
+      "lower": -0.00018888566560375637,
+      "upper": 0.000031228896436360845,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0002882290755620055,
+      "lower": -0.00505557351214459,
+      "upper": 0.0044791153610205785,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00006326319971733645,
+      "lower": -0.0004500461879151789,
+      "upper": 0.0005765725873498518,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0002882290755620055,
+      "lower": -0.0044791153610205785,
+      "upper": 0.00505557351214459,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.000351492275279342,
+      "lower": -0.004927102245369665,
+      "upper": 0.004224117694810981,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00006326319971733645,
+      "lower": -0.0005765725873498518,
+      "upper": 0.0004500461879151789,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.000351492275279342,
+      "lower": -0.004224117694810981,
+      "upper": 0.004927102245369665,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.00006326319971733645,
+      "lower": -0.0004500461879151789,
+      "upper": 0.0005765725873498518,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0013717513632704684,
+      "lower": -0.0026493873824613625,
+      "upper": -0.0000941153440795746,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0013717513632704684,
+      "lower": -0.0026493873824613625,
+      "upper": -0.0000941153440795746,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0005191152128151202,
+      "lower": -0.0030687675178741975,
+      "upper": 0.002030537092243957,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0005191152128151202,
+      "lower": -0.002030537092243957,
+      "upper": 0.0030687675178741975,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0005191152128151202,
+      "lower": -0.0030687675178741975,
+      "upper": 0.002030537092243957,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0005191152128151202,
+      "lower": -0.002030537092243957,
+      "upper": 0.0030687675178741975,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0015587938876998617,
+      "lower": -0.003248540706155275,
+      "upper": 0.00013095293075555156,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00013386849392379736,
+      "lower": -0.00011594393094756662,
+      "upper": 0.00038368091879516133,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.001692662381623659,
+      "lower": -0.003312836994176011,
+      "upper": -0.00007248776907130684,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00013386849392379736,
+      "lower": -0.00038368091879516133,
+      "upper": 0.00011594393094756662,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0019595944880450014,
+      "lower": -0.0072298788788792475,
+      "upper": 0.0033106899027892447,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00020789185095932555,
+      "lower": -0.00035879772705518375,
+      "upper": 0.0007745814289738349,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0019595944880450014,
+      "lower": -0.0033106899027892447,
+      "upper": 0.0072298788788792475,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.002167486339004327,
+      "lower": -0.007203187390884871,
+      "upper": 0.0028682147128762173,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00020789185095932555,
+      "lower": -0.0007745814289738349,
+      "upper": 0.00035879772705518375,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.002167486339004327,
+      "lower": -0.0028682147128762173,
+      "upper": 0.007203187390884871,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.00020789185095932555,
+      "lower": -0.00035879772705518375,
+      "upper": 0.0007745814289738349,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0013673168300198275,
+      "lower": -0.002669079686073713,
+      "upper": -0.00006555397396594228,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0013673168300198275,
+      "lower": -0.002669079686073713,
+      "upper": -0.00006555397396594228,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.001503354557307224,
+      "lower": -0.004533993817064912,
+      "upper": 0.0015272847024504644,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.001503354557307224,
+      "lower": -0.004533993817064912,
+      "upper": 0.0015272847024504644,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0007782407315515489,
+      "lower": -0.0015298277179546982,
+      "upper": -0.000026653745148399544,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00004114135619883233,
+      "lower": -0.00003897729083098267,
+      "upper": 0.00012126000322864733,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0008193820877503812,
+      "lower": -0.0015873942939973586,
+      "upper": -0.0000513698815034038,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00004114135619883233,
+      "lower": -0.00012126000322864733,
+      "upper": 0.00003897729083098267,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0006352591715678589,
+      "lower": -0.002882764194676825,
+      "upper": 0.0016122458515411072,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00006920615850496657,
+      "lower": -0.00016352082881529852,
+      "upper": 0.00030193314582523166,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0007044653300728254,
+      "lower": -0.0029742449949779616,
+      "upper": 0.0015653143348323107,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00006920615850496657,
+      "lower": -0.00030193314582523166,
+      "upper": 0.00016352082881529852,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.003184289885402574,
+      "lower": -0.005293867264584213,
+      "upper": -0.0010747125062209352,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.003184289885402574,
+      "lower": -0.005293867264584213,
+      "upper": -0.0010747125062209352,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0018643790826118134,
+      "lower": -0.006454693042936878,
+      "upper": 0.002725934877713251,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0018643790826118134,
+      "lower": -0.002725934877713251,
+      "upper": 0.006454693042936878,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0018643790826118134,
+      "lower": -0.006454693042936878,
+      "upper": 0.002725934877713251,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0018643790826118134,
+      "lower": -0.002725934877713251,
+      "upper": 0.006454693042936878,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.00251470660333038,
+      "lower": -0.004594779009602042,
+      "upper": -0.0004346341970587176,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.000034706618097753335,
+      "lower": -0.000059784938142754,
+      "upper": 0.00012919817433826067,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.002549413221428133,
+      "lower": -0.004584144205832447,
+      "upper": -0.0005146822370238197,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000034706618097753335,
+      "lower": -0.00012919817433826067,
+      "upper": 0.000059784938142754,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0020153940500624717,
+      "lower": -0.007720318369055913,
+      "upper": 0.0036895302689309694,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00015080384003222057,
+      "lower": -0.0001848176657575921,
+      "upper": 0.00048642534582203325,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0020153940500624717,
+      "lower": -0.0036895302689309694,
+      "upper": 0.007720318369055913,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0021661978900946923,
+      "lower": -0.0076660746992911165,
+      "upper": 0.003333678919101732,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00015080384003222057,
+      "lower": -0.00048642534582203325,
+      "upper": 0.0001848176657575921,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0021661978900946923,
+      "lower": -0.003333678919101732,
+      "upper": 0.0076660746992911165,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.00015080384003222057,
+      "lower": -0.0001848176657575921,
+      "upper": 0.00048642534582203325,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0023685532308261818,
+      "lower": -0.00408211026684461,
+      "upper": -0.0006549961948077536,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0023685532308261818,
+      "lower": -0.00408211026684461,
+      "upper": -0.0006549961948077536,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.003132488606839846,
+      "lower": -0.007650394476205566,
+      "upper": 0.0013854172625258742,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.003132488606839846,
+      "lower": -0.0013854172625258742,
+      "upper": 0.007650394476205566,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.003132488606839846,
+      "lower": -0.007650394476205566,
+      "upper": 0.0013854172625258742,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.003132488606839846,
+      "lower": -0.0013854172625258742,
+      "upper": 0.007650394476205566,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0022428776235547104,
+      "lower": -0.003901050135757564,
+      "upper": -0.0005847051113518566,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.000017013498565697158,
+      "lower": -0.00018927184295947989,
+      "upper": 0.0002232988400908742,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0022598911221204075,
+      "lower": -0.003984266067874539,
+      "upper": -0.0005355161763662764,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000017013498565697158,
+      "lower": -0.0002232988400908742,
+      "upper": 0.00018927184295947989,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.004033089428017186,
+      "lower": -0.00798101001736351,
+      "upper": -0.00008516883867086197,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": -0.000007912584843364386,
+      "lower": -0.000803478370992331,
+      "upper": 0.0007876532013056022,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.004033089428017186,
+      "lower": 0.00008516883867086197,
+      "upper": 0.00798101001736351,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.004025176843173822,
+      "lower": -0.008380141708850056,
+      "upper": 0.00032978802250241326,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.000007912584843364386,
+      "lower": -0.0007876532013056022,
+      "upper": 0.000803478370992331,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.004025176843173822,
+      "lower": -0.00032978802250241326,
+      "upper": 0.008380141708850056,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.000007912584843364386,
+      "lower": -0.000803478370992331,
+      "upper": 0.0007876532013056022,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0006580936386744807,
+      "lower": -0.0020329492693943697,
+      "upper": 0.0007167619920454081,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0006580936386744807,
+      "lower": -0.0020329492693943697,
+      "upper": 0.0007167619920454081,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.00002689356979228806,
+      "lower": -0.002821405860154109,
+      "upper": 0.0027676187205695328,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.00002689356979228806,
+      "lower": -0.002821405860154109,
+      "upper": 0.0027676187205695328,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0007057866650106636,
+      "lower": -0.0022097523319021036,
+      "upper": 0.0007981790018807766,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00008983846525034526,
+      "lower": -0.00009785854168763904,
+      "upper": 0.00027753547218832954,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0007956251302610089,
+      "lower": -0.0022025844562433236,
+      "upper": 0.0006113341957213058,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00008983846525034526,
+      "lower": -0.00027753547218832954,
+      "upper": 0.00009785854168763904,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0007745477709093637,
+      "lower": -0.00523143500455337,
+      "upper": 0.003682339462734643,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.0002586305238458531,
+      "lower": -0.00038939216863767936,
+      "upper": 0.0009066532163293856,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0010331782947552168,
+      "lower": -0.00499075500362165,
+      "upper": 0.0029243984141112166,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.0002586305238458531,
+      "lower": -0.0009066532163293856,
+      "upper": 0.00038939216863767936,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0029918802228856073,
+      "lower": -0.005045398217417075,
+      "upper": -0.0009383622283541397,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0029918802228856073,
+      "lower": -0.005045398217417075,
+      "upper": -0.0009383622283541397,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0006862770615384418,
+      "lower": -0.004032678059059435,
+      "upper": 0.0026601239359825514,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0006862770615384418,
+      "lower": -0.0026601239359825514,
+      "upper": 0.004032678059059435,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0006862770615384418,
+      "lower": -0.004032678059059435,
+      "upper": 0.0026601239359825514,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0006862770615384418,
+      "lower": -0.0026601239359825514,
+      "upper": 0.004032678059059435,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0019723018353553718,
+      "lower": -0.003377728113636151,
+      "upper": -0.0005668755570745925,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00005811976963119268,
+      "lower": -0.00006132619845925581,
+      "upper": 0.00017756573772164118,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0020304216049865645,
+      "lower": -0.003445773938765418,
+      "upper": -0.000615069271207711,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00005811976963119268,
+      "lower": -0.00017756573772164118,
+      "upper": 0.00006132619845925581,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0012945963590542424,
+      "lower": -0.004789342120444426,
+      "upper": 0.0022001494023359417,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00021156322060033195,
+      "lower": -0.00024552813697619174,
+      "upper": 0.0006686545781768556,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0012945963590542424,
+      "lower": -0.0022001494023359417,
+      "upper": 0.004789342120444426,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0015061595796545743,
+      "lower": -0.004712107809497122,
+      "upper": 0.001699788650187974,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00021156322060033195,
+      "lower": -0.0006686545781768556,
+      "upper": 0.00024552813697619174,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0015061595796545743,
+      "lower": -0.001699788650187974,
+      "upper": 0.004712107809497122,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.00021156322060033195,
+      "lower": -0.00024552813697619174,
+      "upper": 0.0006686545781768556,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.003491711746138682,
+      "lower": -0.005980298151091986,
+      "upper": -0.0010031253411853778,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.003491711746138682,
+      "lower": -0.005980298151091986,
+      "upper": -0.0010031253411853778,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0038511839500505194,
+      "lower": -0.010574981392529565,
+      "upper": 0.0028726134924285263,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.0038511839500505194,
+      "lower": -0.0028726134924285263,
+      "upper": 0.010574981392529565,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0038511839500505194,
+      "lower": -0.010574981392529565,
+      "upper": 0.0028726134924285263,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.0038511839500505194,
+      "lower": -0.0028726134924285263,
+      "upper": 0.010574981392529565,
+      "pass": false
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.0031282688752125023,
+      "lower": -0.005284210921643094,
+      "upper": -0.0009723268287819102,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.0001012421703924472,
+      "lower": -0.00005984923899255153,
+      "upper": 0.0002623335797774459,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.0032295110456049495,
+      "lower": -0.00539365720006473,
+      "upper": -0.0010653648911451694,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.0001012421703924472,
+      "lower": -0.0002623335797774459,
+      "upper": 0.00005984923899255153,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 0,
+      "mean": -0.006615987700382009,
+      "lower": -0.012653542314447545,
+      "upper": -0.0005784330863164728,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 1,
+      "control": 2,
+      "mean": 0.00006866842957927062,
+      "lower": -0.00021823707408495446,
+      "upper": 0.0003555739332434957,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 1,
+      "control": 0,
+      "mean": 0.006615987700382009,
+      "lower": 0.0005784330863164728,
+      "upper": 0.012653542314447545,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 0,
+      "mean": -0.006684656129961279,
+      "lower": -0.01258492336468839,
+      "upper": -0.0007843888952341685,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "nonharm",
+      "candidate": 2,
+      "control": 1,
+      "mean": -0.00006866842957927062,
+      "lower": -0.0003555739332434957,
+      "upper": 0.00021823707408495446,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 0,
+      "mean": 0.006684656129961279,
+      "lower": 0.0007843888952341685,
+      "upper": 0.01258492336468839,
+      "pass": true
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "type": "gain",
+      "candidate": 2,
+      "control": 1,
+      "mean": 0.00006866842957927062,
+      "lower": -0.00021823707408495446,
+      "upper": 0.0003555739332434957,
+      "pass": false
+    }
+  ],
+  "groups": [
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2170625220252953,
+          "accuracy": 0.6635733858430553,
+          "logLoss": 0.6276667697061838,
+          "acquisitionReads": 5.929931640625
+        },
+        {
+          "brier": 0.21666169000313001,
+          "accuracy": 0.6628820956761697,
+          "logLoss": 0.625927586450926,
+          "acquisitionReads": 5.9373779296875
+        },
+        {
+          "brier": 0.21666169000313001,
+          "accuracy": 0.6628820956761697,
+          "logLoss": 0.625927586450926,
+          "acquisitionReads": 5.9373779296875
+        }
+      ],
+      "bayesBrierFloor": 0.17092383982591752,
+      "bayesAccuracyCeiling": 0.7543028812477407,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2069805491845627,
+          "accuracy": 0.6863109287456604,
+          "logLoss": 0.6069094295675906,
+          "acquisitionReads": 5.9013671875
+        },
+        {
+          "brier": 0.2073373241042043,
+          "accuracy": 0.6817503733009876,
+          "logLoss": 0.6059453297085616,
+          "acquisitionReads": 5.921875
+        },
+        {
+          "brier": 0.2073373241042043,
+          "accuracy": 0.6817503733009876,
+          "logLoss": 0.6059453297085616,
+          "acquisitionReads": 5.921875
+        }
+      ],
+      "bayesBrierFloor": 0.170058372883904,
+      "bayesAccuracyCeiling": 0.7564884999286541,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.21846761302221465,
+          "accuracy": 0.6563798389995209,
+          "logLoss": 0.6301084874561608,
+          "acquisitionReads": 5.93994140625
+        },
+        {
+          "brier": 0.2187522758239209,
+          "accuracy": 0.6548313104651264,
+          "logLoss": 0.6302501072734273,
+          "acquisitionReads": 5.9482421875
+        },
+        {
+          "brier": 0.2187305826742247,
+          "accuracy": 0.6548380818420084,
+          "logLoss": 0.630178707807227,
+          "acquisitionReads": 5.94921875
+        }
+      ],
+      "bayesBrierFloor": 0.17092383982591752,
+      "bayesAccuracyCeiling": 0.7543028812477407,
+      "fullAuditReadsPerTrajectory": 1975.5
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.20775761223545003,
+          "accuracy": 0.6894875820676801,
+          "logLoss": 0.6083750507632307,
+          "acquisitionReads": 5.88232421875
+        },
+        {
+          "brier": 0.2086957814740231,
+          "accuracy": 0.68474744351394,
+          "logLoss": 0.6094941755748501,
+          "acquisitionReads": 5.90185546875
+        },
+        {
+          "brier": 0.20865117624868956,
+          "accuracy": 0.6851345558005331,
+          "logLoss": 0.6093132789592093,
+          "acquisitionReads": 5.90478515625
+        }
+      ],
+      "bayesBrierFloor": 0.170058372883904,
+      "bayesAccuracyCeiling": 0.7564884999286541,
+      "fullAuditReadsPerTrajectory": 1975.5
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.23423738370285876,
+          "accuracy": 0.6201224241439223,
+          "logLoss": 0.6667632459050212,
+          "acquisitionReads": 5.9481201171875
+        },
+        {
+          "brier": 0.23166503652887108,
+          "accuracy": 0.6233966688751887,
+          "logLoss": 0.6589937582578848,
+          "acquisitionReads": 5.969970703125
+        },
+        {
+          "brier": 0.23166503652887108,
+          "accuracy": 0.6233966688751887,
+          "logLoss": 0.6589937582578848,
+          "acquisitionReads": 5.969970703125
+        }
+      ],
+      "bayesBrierFloor": 0.17120324813013774,
+      "bayesAccuracyCeiling": 0.7534536558752987,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.220039970899063,
+          "accuracy": 0.6579522341418599,
+          "logLoss": 0.6363662200938812,
+          "acquisitionReads": 5.95361328125
+        },
+        {
+          "brier": 0.2206453678905963,
+          "accuracy": 0.6611503784710988,
+          "logLoss": 0.6358667291801179,
+          "acquisitionReads": 5.98095703125
+        },
+        {
+          "brier": 0.2206453678905963,
+          "accuracy": 0.6611503784710988,
+          "logLoss": 0.6358667291801179,
+          "acquisitionReads": 5.98095703125
+        }
+      ],
+      "bayesBrierFloor": 0.1710281968444454,
+      "bayesAccuracyCeiling": 0.7535663758029773,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24247923030534835,
+          "accuracy": 0.6007256486038837,
+          "logLoss": 0.6851578012211953,
+          "acquisitionReads": 5.9632568359375
+        },
+        {
+          "brier": 0.2409302956919457,
+          "accuracy": 0.6025656593560716,
+          "logLoss": 0.6799637904736351,
+          "acquisitionReads": 5.973388671875
+        },
+        {
+          "brier": 0.24071102647297504,
+          "accuracy": 0.6030215583774452,
+          "logLoss": 0.6794117750986464,
+          "acquisitionReads": 5.9730224609375
+        }
+      ],
+      "bayesBrierFloor": 0.17120324813013774,
+      "bayesAccuracyCeiling": 0.7534536558752987,
+      "fullAuditReadsPerTrajectory": 1998.28125
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.23054405587657123,
+          "accuracy": 0.6271698176207824,
+          "logLoss": 0.6582146225855082,
+          "acquisitionReads": 5.978515625
+        },
+        {
+          "brier": 0.23249719952190154,
+          "accuracy": 0.6233621227078262,
+          "logLoss": 0.6606530601396655,
+          "acquisitionReads": 5.97900390625
+        },
+        {
+          "brier": 0.23171574376079476,
+          "accuracy": 0.6251354813443486,
+          "logLoss": 0.6586953868554521,
+          "acquisitionReads": 5.97802734375
+        }
+      ],
+      "bayesBrierFloor": 0.1710281968444454,
+      "bayesAccuracyCeiling": 0.7535663758029773,
+      "fullAuditReadsPerTrajectory": 1998.28125
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2327010304706656,
+          "accuracy": 0.6228700945552496,
+          "logLoss": 0.6620401502821159,
+          "acquisitionReads": 5.9615478515625
+        },
+        {
+          "brier": 0.23077285812882248,
+          "accuracy": 0.6252105280796938,
+          "logLoss": 0.6558907689017744,
+          "acquisitionReads": 5.974365234375
+        },
+        {
+          "brier": 0.23077285812882248,
+          "accuracy": 0.6252105280796938,
+          "logLoss": 0.6558907689017744,
+          "acquisitionReads": 5.974365234375
+        }
+      ],
+      "bayesBrierFloor": 0.17502115936698323,
+      "bayesAccuracyCeiling": 0.7449850005852829,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2242062968568427,
+          "accuracy": 0.6456578965187372,
+          "logLoss": 0.6416901798953598,
+          "acquisitionReads": 5.9921875
+        },
+        {
+          "brier": 0.22447516171352272,
+          "accuracy": 0.6452110688780219,
+          "logLoss": 0.641244099697506,
+          "acquisitionReads": 5.99755859375
+        },
+        {
+          "brier": 0.22447516171352272,
+          "accuracy": 0.6452110688780219,
+          "logLoss": 0.641244099697506,
+          "acquisitionReads": 5.99755859375
+        }
+      ],
+      "bayesBrierFloor": 0.1729309972729288,
+      "bayesAccuracyCeiling": 0.7499420955787093,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24261768018735305,
+          "accuracy": 0.6021191142837862,
+          "logLoss": 0.6862686627346765,
+          "acquisitionReads": 5.9510498046875
+        },
+        {
+          "brier": 0.24054714389936832,
+          "accuracy": 0.604256263012131,
+          "logLoss": 0.6796617240266916,
+          "acquisitionReads": 5.9619140625
+        },
+        {
+          "brier": 0.24040575167187675,
+          "accuracy": 0.6041354270283882,
+          "logLoss": 0.6792879051260532,
+          "acquisitionReads": 5.9622802734375
+        }
+      ],
+      "bayesBrierFloor": 0.17502115936698323,
+      "bayesAccuracyCeiling": 0.7449850005852829,
+      "fullAuditReadsPerTrajectory": 1971.84375
+    },
+    {
+      "phase": "design",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24386394092400543,
+          "accuracy": 0.591008224041754,
+          "logLoss": 0.6846863990973646,
+          "acquisitionReads": 5.99560546875
+        },
+        {
+          "brier": 0.23998541204484167,
+          "accuracy": 0.594917007191612,
+          "logLoss": 0.6743706363150287,
+          "acquisitionReads": 5.99658203125
+        },
+        {
+          "brier": 0.2398343511716866,
+          "accuracy": 0.5937333369202588,
+          "logLoss": 0.673999496787131,
+          "acquisitionReads": 5.9970703125
+        }
+      ],
+      "bayesBrierFloor": 0.1729309972729288,
+      "bayesAccuracyCeiling": 0.7499420955787093,
+      "fullAuditReadsPerTrajectory": 1971.84375
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2378901749467045,
+          "accuracy": 0.6018175215656347,
+          "logLoss": 0.6703845638843874,
+          "acquisitionReads": 5.980224609375
+        },
+        {
+          "brier": 0.23668751934263701,
+          "accuracy": 0.6014693837216213,
+          "logLoss": 0.6670591133997471,
+          "acquisitionReads": 5.983154296875
+        },
+        {
+          "brier": 0.23668751934263701,
+          "accuracy": 0.6014693837216213,
+          "logLoss": 0.6670591133997471,
+          "acquisitionReads": 5.983154296875
+        }
+      ],
+      "bayesBrierFloor": 0.19259152659439813,
+      "bayesAccuracyCeiling": 0.7094117683327698,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2350147503283214,
+          "accuracy": 0.6069503548344629,
+          "logLoss": 0.6633969949869334,
+          "acquisitionReads": 5.9931640625
+        },
+        {
+          "brier": 0.23439631848192405,
+          "accuracy": 0.6076995730052975,
+          "logLoss": 0.6617755194917777,
+          "acquisitionReads": 5.9931640625
+        },
+        {
+          "brier": 0.23439631848192405,
+          "accuracy": 0.6076995730052975,
+          "logLoss": 0.6617755194917777,
+          "acquisitionReads": 5.9931640625
+        }
+      ],
+      "bayesBrierFloor": 0.19171230176092835,
+      "bayesAccuracyCeiling": 0.7108179771812032,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.23966967164397568,
+          "accuracy": 0.5986386960950123,
+          "logLoss": 0.674553251575349,
+          "acquisitionReads": 5.9771728515625
+        },
+        {
+          "brier": 0.23895951451650588,
+          "accuracy": 0.5964581405934368,
+          "logLoss": 0.6724684305865659,
+          "acquisitionReads": 5.979248046875
+        },
+        {
+          "brier": 0.2388794293905726,
+          "accuracy": 0.5965596641173216,
+          "logLoss": 0.6722853746722552,
+          "acquisitionReads": 5.979248046875
+        }
+      ],
+      "bayesBrierFloor": 0.19259152659439813,
+      "bayesAccuracyCeiling": 0.7094117683327698,
+      "fullAuditReadsPerTrajectory": 1987.59375
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2366630731140454,
+          "accuracy": 0.6105174246539934,
+          "logLoss": 0.6678965005539227,
+          "acquisitionReads": 5.9619140625
+        },
+        {
+          "brier": 0.2359476330080366,
+          "accuracy": 0.6086537877561072,
+          "logLoss": 0.665864144229668,
+          "acquisitionReads": 5.9619140625
+        },
+        {
+          "brier": 0.2356827628032765,
+          "accuracy": 0.6095487003314849,
+          "logLoss": 0.6652670777203014,
+          "acquisitionReads": 5.9619140625
+        }
+      ],
+      "bayesBrierFloor": 0.19171230176092835,
+      "bayesAccuracyCeiling": 0.7108179771812032,
+      "fullAuditReadsPerTrajectory": 1987.59375
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24812086928293345,
+          "accuracy": 0.5738389055938701,
+          "logLoss": 0.6936573722356033,
+          "acquisitionReads": 5.984130859375
+        },
+        {
+          "brier": 0.24594141472836162,
+          "accuracy": 0.5721424368247344,
+          "logLoss": 0.6873816440299741,
+          "acquisitionReads": 5.9898681640625
+        },
+        {
+          "brier": 0.24594141472836162,
+          "accuracy": 0.5721424368247344,
+          "logLoss": 0.6873816440299741,
+          "acquisitionReads": 5.9898681640625
+        }
+      ],
+      "bayesBrierFloor": 0.19455394413566926,
+      "bayesAccuracyCeiling": 0.7052198790320359,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2441823937981876,
+          "accuracy": 0.5888567122299906,
+          "logLoss": 0.6855297920825391,
+          "acquisitionReads": 5.97900390625
+        },
+        {
+          "brier": 0.24203999556410108,
+          "accuracy": 0.5851694655161692,
+          "logLoss": 0.6781700786569219,
+          "acquisitionReads": 5.99365234375
+        },
+        {
+          "brier": 0.24203999556410108,
+          "accuracy": 0.5851694655161692,
+          "logLoss": 0.6781700786569219,
+          "acquisitionReads": 5.99365234375
+        }
+      ],
+      "bayesBrierFloor": 0.19737006131594553,
+      "bayesAccuracyCeiling": 0.6971760348874848,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2517543817236665,
+          "accuracy": 0.5646594087719284,
+          "logLoss": 0.7013849620145031,
+          "acquisitionReads": 5.9912109375
+        },
+        {
+          "brier": 0.24954895241383038,
+          "accuracy": 0.5639712747904159,
+          "logLoss": 0.6953992786968011,
+          "acquisitionReads": 5.9927978515625
+        },
+        {
+          "brier": 0.24951560816937302,
+          "accuracy": 0.5645667209293727,
+          "logLoss": 0.695323604086982,
+          "acquisitionReads": 5.992919921875
+        }
+      ],
+      "bayesBrierFloor": 0.19455394413566926,
+      "bayesAccuracyCeiling": 0.7052198790320359,
+      "fullAuditReadsPerTrajectory": 1971.28125
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24535881325718795,
+          "accuracy": 0.5859749863336232,
+          "logLoss": 0.6873352133106304,
+          "acquisitionReads": 5.98779296875
+        },
+        {
+          "brier": 0.24400779228461747,
+          "accuracy": 0.5829167614109476,
+          "logLoss": 0.6829290005216947,
+          "acquisitionReads": 5.9912109375
+        },
+        {
+          "brier": 0.2438840371571418,
+          "accuracy": 0.5843322983322077,
+          "logLoss": 0.6826598365773391,
+          "acquisitionReads": 5.9912109375
+        }
+      ],
+      "bayesBrierFloor": 0.19737006131594553,
+      "bayesAccuracyCeiling": 0.6971760348874848,
+      "fullAuditReadsPerTrajectory": 1971.28125
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24422930258248238,
+          "accuracy": 0.5923215645075165,
+          "logLoss": 0.6856316970543899,
+          "acquisitionReads": 5.989990234375
+        },
+        {
+          "brier": 0.24132550951639392,
+          "accuracy": 0.5914875313818658,
+          "logLoss": 0.6775177517255146,
+          "acquisitionReads": 5.994873046875
+        },
+        {
+          "brier": 0.24132550951639392,
+          "accuracy": 0.5914875313818658,
+          "logLoss": 0.6775177517255146,
+          "acquisitionReads": 5.994873046875
+        }
+      ],
+      "bayesBrierFloor": 0.19518459049784495,
+      "bayesAccuracyCeiling": 0.7061052818448544,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2412224017232233,
+          "accuracy": 0.5959448992168833,
+          "logLoss": 0.6794831862833177,
+          "acquisitionReads": 5.998046875
+        },
+        {
+          "brier": 0.23783969195790103,
+          "accuracy": 0.5960132698819698,
+          "logLoss": 0.6691823305273664,
+          "acquisitionReads": 5.998046875
+        },
+        {
+          "brier": 0.23783969195790103,
+          "accuracy": 0.5960132698819698,
+          "logLoss": 0.6691823305273664,
+          "acquisitionReads": 5.998046875
+        }
+      ],
+      "bayesBrierFloor": 0.19402650045129546,
+      "bayesAccuracyCeiling": 0.7079913150151325,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24661828089950702,
+          "accuracy": 0.583398976659646,
+          "logLoss": 0.690591910006149,
+          "acquisitionReads": 5.9837646484375
+        },
+        {
+          "brier": 0.24496497140846143,
+          "accuracy": 0.5830852215236739,
+          "logLoss": 0.68609595924601,
+          "acquisitionReads": 5.9853515625
+        },
+        {
+          "brier": 0.2449281021508092,
+          "accuracy": 0.5830685286495811,
+          "logLoss": 0.6859894494365057,
+          "acquisitionReads": 5.9853515625
+        }
+      ],
+      "bayesBrierFloor": 0.19518459049784495,
+      "bayesAccuracyCeiling": 0.7061052818448544,
+      "fullAuditReadsPerTrajectory": 1992.09375
+    },
+    {
+      "phase": "design",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24429140426810708,
+          "accuracy": 0.5866616833533559,
+          "logLoss": 0.683888704150425,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.24374027038718912,
+          "accuracy": 0.5831156910371988,
+          "logLoss": 0.6819629205252076,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.24361466464168943,
+          "accuracy": 0.5828319167930499,
+          "logLoss": 0.681625318861117,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19402650045129546,
+      "bayesAccuracyCeiling": 0.7079913150151325,
+      "fullAuditReadsPerTrajectory": 1992.09375
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24587484398859316,
+          "accuracy": 0.5764769827808967,
+          "logLoss": 0.6881487684646052,
+          "acquisitionReads": 5.9837646484375
+        },
+        {
+          "brier": 0.24450297257709283,
+          "accuracy": 0.5758693765969827,
+          "logLoss": 0.6840068589159393,
+          "acquisitionReads": 5.99169921875
+        },
+        {
+          "brier": 0.24450297257709283,
+          "accuracy": 0.5758693765969827,
+          "logLoss": 0.6840068589159393,
+          "acquisitionReads": 5.99169921875
+        }
+      ],
+      "bayesBrierFloor": 0.19955481251529836,
+      "bayesAccuracyCeiling": 0.6947049580068567,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24409440369244711,
+          "accuracy": 0.5859919393693419,
+          "logLoss": 0.6845595361088385,
+          "acquisitionReads": 5.98828125
+        },
+        {
+          "brier": 0.2427482034410573,
+          "accuracy": 0.5824699680055369,
+          "logLoss": 0.6800293540832166,
+          "acquisitionReads": 5.99462890625
+        },
+        {
+          "brier": 0.2427482034410573,
+          "accuracy": 0.5824699680055369,
+          "logLoss": 0.6800293540832166,
+          "acquisitionReads": 5.99462890625
+        }
+      ],
+      "bayesBrierFloor": 0.20078258770979035,
+      "bayesAccuracyCeiling": 0.6918492786156958,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24532636266482333,
+          "accuracy": 0.5761299274606254,
+          "logLoss": 0.6859533649982673,
+          "acquisitionReads": 5.9879150390625
+        },
+        {
+          "brier": 0.24467043013904316,
+          "accuracy": 0.5743723989781456,
+          "logLoss": 0.6838795660175857,
+          "acquisitionReads": 5.9931640625
+        },
+        {
+          "brier": 0.24461208874460408,
+          "accuracy": 0.574518079238652,
+          "logLoss": 0.6837306425593044,
+          "acquisitionReads": 5.9932861328125
+        }
+      ],
+      "bayesBrierFloor": 0.19955481251529836,
+      "bayesAccuracyCeiling": 0.6947049580068567,
+      "fullAuditReadsPerTrajectory": 1991.53125
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2409696665405012,
+          "accuracy": 0.5996899621230382,
+          "logLoss": 0.6774666652980847,
+          "acquisitionReads": 5.99609375
+        },
+        {
+          "brier": 0.24044841845321516,
+          "accuracy": 0.5988775000098684,
+          "logLoss": 0.675386094452198,
+          "acquisitionReads": 5.99951171875
+        },
+        {
+          "brier": 0.24034165417005643,
+          "accuracy": 0.5987291806479331,
+          "logLoss": 0.6751258972369594,
+          "acquisitionReads": 5.99951171875
+        }
+      ],
+      "bayesBrierFloor": 0.20078258770979035,
+      "bayesAccuracyCeiling": 0.6918492786156958,
+      "fullAuditReadsPerTrajectory": 1991.53125
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2533282466351057,
+          "accuracy": 0.557550605155284,
+          "logLoss": 0.7044708960101136,
+          "acquisitionReads": 5.993896484375
+        },
+        {
+          "brier": 0.2500454071499623,
+          "accuracy": 0.5540167882979751,
+          "logLoss": 0.6953384951036382,
+          "acquisitionReads": 5.9981689453125
+        },
+        {
+          "brier": 0.2500454071499623,
+          "accuracy": 0.5540167882979751,
+          "logLoss": 0.6953384951036382,
+          "acquisitionReads": 5.9981689453125
+        }
+      ],
+      "bayesBrierFloor": 0.19828269885159766,
+      "bayesAccuracyCeiling": 0.6966534407084064,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24919537033276218,
+          "accuracy": 0.5738936096990501,
+          "logLoss": 0.6956459792115016,
+          "acquisitionReads": 5.99755859375
+        },
+        {
+          "brier": 0.24646941708223918,
+          "accuracy": 0.5624862125829218,
+          "logLoss": 0.6871199559690261,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.24646941708223918,
+          "accuracy": 0.5624862125829218,
+          "logLoss": 0.6871199559690261,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19850701756331118,
+      "bayesAccuracyCeiling": 0.696033984681756,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2557295242049051,
+          "accuracy": 0.5486828612448424,
+          "logLoss": 0.7091582540470215,
+          "acquisitionReads": 5.9940185546875
+        },
+        {
+          "brier": 0.25336817166577785,
+          "accuracy": 0.5459155556745559,
+          "logLoss": 0.7028813624913235,
+          "acquisitionReads": 5.9991455078125
+        },
+        {
+          "brier": 0.2533443713327734,
+          "accuracy": 0.5460377845156039,
+          "logLoss": 0.702826367463331,
+          "acquisitionReads": 5.9991455078125
+        }
+      ],
+      "bayesBrierFloor": 0.19828269885159766,
+      "bayesAccuracyCeiling": 0.6966534407084064,
+      "fullAuditReadsPerTrajectory": 1980.28125
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2509417260703888,
+          "accuracy": 0.5590349870634328,
+          "logLoss": 0.6985407251094491,
+          "acquisitionReads": 5.98046875
+        },
+        {
+          "brier": 0.2503786046763843,
+          "accuracy": 0.5478194272676618,
+          "logLoss": 0.6956327455693151,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.2503317725989604,
+          "accuracy": 0.5482501703257346,
+          "logLoss": 0.6955461347977387,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19850701756331118,
+      "bayesAccuracyCeiling": 0.696033984681756,
+      "fullAuditReadsPerTrajectory": 1980.28125
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2507280266521674,
+          "accuracy": 0.5631329525867149,
+          "logLoss": 0.6982303367462614,
+          "acquisitionReads": 5.989501953125
+        },
+        {
+          "brier": 0.24708265189448922,
+          "accuracy": 0.5618143438781066,
+          "logLoss": 0.6886527425907192,
+          "acquisitionReads": 5.9957275390625
+        },
+        {
+          "brier": 0.24708265189448922,
+          "accuracy": 0.5618143438781066,
+          "logLoss": 0.6886527425907192,
+          "acquisitionReads": 5.9957275390625
+        }
+      ],
+      "bayesBrierFloor": 0.1986371436711941,
+      "bayesAccuracyCeiling": 0.6942216882875603,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.25047457641389115,
+          "accuracy": 0.5608656706513734,
+          "logLoss": 0.696610954780113,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.2471413349901929,
+          "accuracy": 0.5599649158207404,
+          "logLoss": 0.6882507023220897,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.2471413349901929,
+          "accuracy": 0.5599649158207404,
+          "logLoss": 0.6882507023220897,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19770531850841774,
+      "bayesAccuracyCeiling": 0.6974488385677102,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.25344454420385326,
+          "accuracy": 0.5542814360633708,
+          "logLoss": 0.7039628431732424,
+          "acquisitionReads": 5.982177734375
+        },
+        {
+          "brier": 0.2505597721740405,
+          "accuracy": 0.555536229132964,
+          "logLoss": 0.6964547955570762,
+          "acquisitionReads": 5.9959716796875
+        },
+        {
+          "brier": 0.25057955203626797,
+          "accuracy": 0.5555057073691263,
+          "logLoss": 0.6964988845433877,
+          "acquisitionReads": 5.99609375
+        }
+      ],
+      "bayesBrierFloor": 0.1986371436711941,
+      "bayesAccuracyCeiling": 0.6942216882875603,
+      "fullAuditReadsPerTrajectory": 1985.34375
+    },
+    {
+      "phase": "design",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2562759767729607,
+          "accuracy": 0.5509824252009258,
+          "logLoss": 0.7105681930321028,
+          "acquisitionReads": 5.98583984375
+        },
+        {
+          "brier": 0.25139808255700125,
+          "accuracy": 0.5514264174257605,
+          "logLoss": 0.6979098147995639,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.2515042143368107,
+          "accuracy": 0.5523967728531721,
+          "logLoss": 0.6981334390642439,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19770531850841774,
+      "bayesAccuracyCeiling": 0.6974488385677102,
+      "fullAuditReadsPerTrajectory": 1985.34375
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.21907319971626693,
+          "accuracy": 0.6615742545362467,
+          "logLoss": 0.6331869402068842,
+          "acquisitionReads": 5.848876953125
+        },
+        {
+          "brier": 0.2187296550433755,
+          "accuracy": 0.6612168083305159,
+          "logLoss": 0.6315410263690721,
+          "acquisitionReads": 5.87109375
+        },
+        {
+          "brier": 0.2187296550433755,
+          "accuracy": 0.6612168083305159,
+          "logLoss": 0.6315410263690721,
+          "acquisitionReads": 5.87109375
+        }
+      ],
+      "bayesBrierFloor": 0.1698521964480875,
+      "bayesAccuracyCeiling": 0.7560437966216585,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.215853905672684,
+          "accuracy": 0.6735092635196891,
+          "logLoss": 0.6257208823440708,
+          "acquisitionReads": 5.92578125
+        },
+        {
+          "brier": 0.21660094875941602,
+          "accuracy": 0.6700596560910239,
+          "logLoss": 0.6264441949704282,
+          "acquisitionReads": 5.94677734375
+        },
+        {
+          "brier": 0.21660094875941602,
+          "accuracy": 0.6700596560910239,
+          "logLoss": 0.6264441949704282,
+          "acquisitionReads": 5.94677734375
+        }
+      ],
+      "bayesBrierFloor": 0.1699949265201207,
+      "bayesAccuracyCeiling": 0.7553182354537366,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2206014722520722,
+          "accuracy": 0.6556196082488832,
+          "logLoss": 0.63533127246302,
+          "acquisitionReads": 5.9141845703125
+        },
+        {
+          "brier": 0.22070691814141372,
+          "accuracy": 0.6548379943427418,
+          "logLoss": 0.634873633125511,
+          "acquisitionReads": 5.9296875
+        },
+        {
+          "brier": 0.22068861025456643,
+          "accuracy": 0.6547952398520287,
+          "logLoss": 0.6348414997474904,
+          "acquisitionReads": 5.93017578125
+        }
+      ],
+      "bayesBrierFloor": 0.1698521964480875,
+      "bayesAccuracyCeiling": 0.7560437966216585,
+      "fullAuditReadsPerTrajectory": 1996.59375
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.21382705732381974,
+          "accuracy": 0.6724662417450836,
+          "logLoss": 0.621415126786346,
+          "acquisitionReads": 5.91845703125
+        },
+        {
+          "brier": 0.21475734570445743,
+          "accuracy": 0.6704451135067137,
+          "logLoss": 0.6221881710703071,
+          "acquisitionReads": 5.95166015625
+        },
+        {
+          "brier": 0.21469671375778057,
+          "accuracy": 0.6705101767067975,
+          "logLoss": 0.622082268532357,
+          "acquisitionReads": 5.953125
+        }
+      ],
+      "bayesBrierFloor": 0.1699949265201207,
+      "bayesAccuracyCeiling": 0.7553182354537366,
+      "fullAuditReadsPerTrajectory": 1996.59375
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2307265563193409,
+          "accuracy": 0.6305465615510435,
+          "logLoss": 0.6581837993477153,
+          "acquisitionReads": 5.95556640625
+        },
+        {
+          "brier": 0.22943354459368348,
+          "accuracy": 0.6302944992535271,
+          "logLoss": 0.653288462924155,
+          "acquisitionReads": 5.9779052734375
+        },
+        {
+          "brier": 0.22943354459368348,
+          "accuracy": 0.6302944992535271,
+          "logLoss": 0.653288462924155,
+          "acquisitionReads": 5.9779052734375
+        }
+      ],
+      "bayesBrierFloor": 0.17107667689522632,
+      "bayesAccuracyCeiling": 0.7536412895425513,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.21832122753533187,
+          "accuracy": 0.6684669950439371,
+          "logLoss": 0.6301387016244789,
+          "acquisitionReads": 5.9775390625
+        },
+        {
+          "brier": 0.21808891422049792,
+          "accuracy": 0.6653493237392665,
+          "logLoss": 0.6271632553967136,
+          "acquisitionReads": 5.9990234375
+        },
+        {
+          "brier": 0.21808891422049792,
+          "accuracy": 0.6653493237392665,
+          "logLoss": 0.6271632553967136,
+          "acquisitionReads": 5.9990234375
+        }
+      ],
+      "bayesBrierFloor": 0.17053613599885498,
+      "bayesAccuracyCeiling": 0.7549062944125147,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.23895288680944732,
+          "accuracy": 0.6104833642164053,
+          "logLoss": 0.6762935730367005,
+          "acquisitionReads": 5.9727783203125
+        },
+        {
+          "brier": 0.2379155250043999,
+          "accuracy": 0.6124795112871574,
+          "logLoss": 0.6728972233241793,
+          "acquisitionReads": 5.986572265625
+        },
+        {
+          "brier": 0.23783669661981624,
+          "accuracy": 0.6127655806931284,
+          "logLoss": 0.6727145969459891,
+          "acquisitionReads": 5.986328125
+        }
+      ],
+      "bayesBrierFloor": 0.17107667689522632,
+      "bayesAccuracyCeiling": 0.7536412895425513,
+      "fullAuditReadsPerTrajectory": 1979.4375
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.23213927142932989,
+          "accuracy": 0.6230277703051543,
+          "logLoss": 0.6596221071088647,
+          "acquisitionReads": 5.984375
+        },
+        {
+          "brier": 0.2318510423537679,
+          "accuracy": 0.6277718163784031,
+          "logLoss": 0.657561975672471,
+          "acquisitionReads": 5.99951171875
+        },
+        {
+          "brier": 0.23178777915405052,
+          "accuracy": 0.628916094002287,
+          "logLoss": 0.6574933017226087,
+          "acquisitionReads": 5.998046875
+        }
+      ],
+      "bayesBrierFloor": 0.17053613599885498,
+      "bayesAccuracyCeiling": 0.7549062944125147,
+      "fullAuditReadsPerTrajectory": 1979.4375
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.23157936190649778,
+          "accuracy": 0.6263506702780672,
+          "logLoss": 0.6594656719777965,
+          "acquisitionReads": 5.94921875
+        },
+        {
+          "brier": 0.23020761054322733,
+          "accuracy": 0.6262508457316696,
+          "logLoss": 0.6552008670063952,
+          "acquisitionReads": 5.9652099609375
+        },
+        {
+          "brier": 0.23020761054322733,
+          "accuracy": 0.6262508457316696,
+          "logLoss": 0.6552008670063952,
+          "acquisitionReads": 5.9652099609375
+        }
+      ],
+      "bayesBrierFloor": 0.17471158255315966,
+      "bayesAccuracyCeiling": 0.7458646461626309,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2269500663084988,
+          "accuracy": 0.6386003392371712,
+          "logLoss": 0.6482666371725289,
+          "acquisitionReads": 5.9677734375
+        },
+        {
+          "brier": 0.22643095109568362,
+          "accuracy": 0.636229886884685,
+          "logLoss": 0.6456009187801517,
+          "acquisitionReads": 5.99560546875
+        },
+        {
+          "brier": 0.22643095109568362,
+          "accuracy": 0.636229886884685,
+          "logLoss": 0.6456009187801517,
+          "acquisitionReads": 5.99560546875
+        }
+      ],
+      "bayesBrierFloor": 0.17257315972018097,
+      "bayesAccuracyCeiling": 0.7499219647070555,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.23993413294303437,
+          "accuracy": 0.6098093006478105,
+          "logLoss": 0.6792755665855248,
+          "acquisitionReads": 5.9141845703125
+        },
+        {
+          "brier": 0.23837533905533448,
+          "accuracy": 0.6106210027255126,
+          "logLoss": 0.6737930853393393,
+          "acquisitionReads": 5.9443359375
+        },
+        {
+          "brier": 0.23824147056141073,
+          "accuracy": 0.6101347314137949,
+          "logLoss": 0.6734250929458121,
+          "acquisitionReads": 5.947509765625
+        }
+      ],
+      "bayesBrierFloor": 0.17471158255315966,
+      "bayesAccuracyCeiling": 0.7458646461626309,
+      "fullAuditReadsPerTrajectory": 1993.5
+    },
+    {
+      "phase": "confirmation",
+      "family": "additive",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24108920973972978,
+          "accuracy": 0.6023181409019479,
+          "logLoss": 0.6809253528763594,
+          "acquisitionReads": 5.92529296875
+        },
+        {
+          "brier": 0.2391296152516848,
+          "accuracy": 0.6091193216376721,
+          "logLoss": 0.6742779423920494,
+          "acquisitionReads": 5.966796875
+        },
+        {
+          "brier": 0.23892172340072546,
+          "accuracy": 0.6081202968247756,
+          "logLoss": 0.6736497421524218,
+          "acquisitionReads": 5.97509765625
+        }
+      ],
+      "bayesBrierFloor": 0.17257315972018097,
+      "bayesAccuracyCeiling": 0.7499219647070555,
+      "fullAuditReadsPerTrajectory": 1993.5
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24052858885912995,
+          "accuracy": 0.5980788586621867,
+          "logLoss": 0.6770079375403253,
+          "acquisitionReads": 5.9876708984375
+        },
+        {
+          "brier": 0.2391612720291101,
+          "accuracy": 0.597466519013058,
+          "logLoss": 0.6732018409832156,
+          "acquisitionReads": 5.9949951171875
+        },
+        {
+          "brier": 0.2391612720291101,
+          "accuracy": 0.597466519013058,
+          "logLoss": 0.6732018409832156,
+          "acquisitionReads": 5.9949951171875
+        }
+      ],
+      "bayesBrierFloor": 0.19862032958970757,
+      "bayesAccuracyCeiling": 0.6996894086795062,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.23708726219711293,
+          "accuracy": 0.6024608640129958,
+          "logLoss": 0.6691719577471579,
+          "acquisitionReads": 5.97607421875
+        },
+        {
+          "brier": 0.23558390763980577,
+          "accuracy": 0.6023349525424379,
+          "logLoss": 0.6648432834276563,
+          "acquisitionReads": 5.994140625
+        },
+        {
+          "brier": 0.23558390763980577,
+          "accuracy": 0.6023349525424379,
+          "logLoss": 0.6648432834276563,
+          "acquisitionReads": 5.994140625
+        }
+      ],
+      "bayesBrierFloor": 0.1975199582268558,
+      "bayesAccuracyCeiling": 0.7026139359742654,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24126096014596685,
+          "accuracy": 0.5945052426554409,
+          "logLoss": 0.6791401812057778,
+          "acquisitionReads": 5.9854736328125
+        },
+        {
+          "brier": 0.24048271941441535,
+          "accuracy": 0.5941164297318383,
+          "logLoss": 0.6763706424950939,
+          "acquisitionReads": 5.994384765625
+        },
+        {
+          "brier": 0.2404415780582165,
+          "accuracy": 0.5943810278778997,
+          "logLoss": 0.6762744087724105,
+          "acquisitionReads": 5.9937744140625
+        }
+      ],
+      "bayesBrierFloor": 0.19862032958970757,
+      "bayesAccuracyCeiling": 0.6996894086795062,
+      "fullAuditReadsPerTrajectory": 1987.59375
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.23763759881873808,
+          "accuracy": 0.5980253987836778,
+          "logLoss": 0.672339622800136,
+          "acquisitionReads": 5.97509765625
+        },
+        {
+          "brier": 0.23700233964717027,
+          "accuracy": 0.5962356861757747,
+          "logLoss": 0.6688220776040914,
+          "acquisitionReads": 5.990234375
+        },
+        {
+          "brier": 0.23693313348866535,
+          "accuracy": 0.5970835917621133,
+          "logLoss": 0.6686713565819008,
+          "acquisitionReads": 5.98779296875
+        }
+      ],
+      "bayesBrierFloor": 0.1975199582268558,
+      "bayesAccuracyCeiling": 0.7026139359742654,
+      "fullAuditReadsPerTrajectory": 1987.59375
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.25048512518296073,
+          "accuracy": 0.5661271913937397,
+          "logLoss": 0.69798841382899,
+          "acquisitionReads": 5.9962158203125
+        },
+        {
+          "brier": 0.24730083529755814,
+          "accuracy": 0.5664006630652106,
+          "logLoss": 0.6897843024242049,
+          "acquisitionReads": 5.997314453125
+        },
+        {
+          "brier": 0.24730083529755814,
+          "accuracy": 0.5664006630652106,
+          "logLoss": 0.6897843024242049,
+          "acquisitionReads": 5.997314453125
+        }
+      ],
+      "bayesBrierFloor": 0.19880281738385713,
+      "bayesAccuracyCeiling": 0.6951714547066334,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24158220322918433,
+          "accuracy": 0.5914461896992271,
+          "logLoss": 0.6779583442193317,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.23971782414657258,
+          "accuracy": 0.5913007108972218,
+          "logLoss": 0.6730151394426851,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.23971782414657258,
+          "accuracy": 0.5913007108972218,
+          "logLoss": 0.6730151394426851,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19568648708806152,
+      "bayesAccuracyCeiling": 0.701970623342643,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2550182144005136,
+          "accuracy": 0.5548026800922742,
+          "logLoss": 0.708252936633565,
+          "acquisitionReads": 5.9893798828125
+        },
+        {
+          "brier": 0.2525035077971832,
+          "accuracy": 0.5535757780867423,
+          "logLoss": 0.701195219782145,
+          "acquisitionReads": 5.993408203125
+        },
+        {
+          "brier": 0.2524688011790855,
+          "accuracy": 0.5534874404902558,
+          "logLoss": 0.7011216807561943,
+          "acquisitionReads": 5.993408203125
+        }
+      ],
+      "bayesBrierFloor": 0.19880281738385713,
+      "bayesAccuracyCeiling": 0.6951714547066334,
+      "fullAuditReadsPerTrajectory": 1992.09375
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24993824107951107,
+          "accuracy": 0.5670457465359117,
+          "logLoss": 0.6966286385423153,
+          "acquisitionReads": 5.9853515625
+        },
+        {
+          "brier": 0.24792284702944864,
+          "accuracy": 0.5633416495331743,
+          "logLoss": 0.6903994791836766,
+          "acquisitionReads": 5.9931640625
+        },
+        {
+          "brier": 0.24777204318941645,
+          "accuracy": 0.5623812523485392,
+          "logLoss": 0.6900830082116579,
+          "acquisitionReads": 5.9931640625
+        }
+      ],
+      "bayesBrierFloor": 0.19568648708806152,
+      "bayesAccuracyCeiling": 0.701970623342643,
+      "fullAuditReadsPerTrajectory": 1992.09375
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24590309222916754,
+          "accuracy": 0.579281831380558,
+          "logLoss": 0.688212026771454,
+          "acquisitionReads": 5.9915771484375
+        },
+        {
+          "brier": 0.24353453899834138,
+          "accuracy": 0.5789715218944914,
+          "logLoss": 0.68173653549774,
+          "acquisitionReads": 5.9942626953125
+        },
+        {
+          "brier": 0.24353453899834138,
+          "accuracy": 0.5789715218944914,
+          "logLoss": 0.68173653549774,
+          "acquisitionReads": 5.9942626953125
+        }
+      ],
+      "bayesBrierFloor": 0.19723694167458858,
+      "bayesAccuracyCeiling": 0.699894056262873,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24818790494106507,
+          "accuracy": 0.5682826521945358,
+          "logLoss": 0.6937290106004832,
+          "acquisitionReads": 5.99072265625
+        },
+        {
+          "brier": 0.24505541633422528,
+          "accuracy": 0.5687660634916483,
+          "logLoss": 0.6844000052500782,
+          "acquisitionReads": 5.99560546875
+        },
+        {
+          "brier": 0.24505541633422528,
+          "accuracy": 0.5687660634916483,
+          "logLoss": 0.6844000052500782,
+          "acquisitionReads": 5.99560546875
+        }
+      ],
+      "bayesBrierFloor": 0.19619431183573402,
+      "bayesAccuracyCeiling": 0.7017520944454914,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24909869307918522,
+          "accuracy": 0.5739339236042957,
+          "logLoss": 0.6960695862995827,
+          "acquisitionReads": 5.987548828125
+        },
+        {
+          "brier": 0.24685581545563057,
+          "accuracy": 0.5739759085077155,
+          "logLoss": 0.6898806723441435,
+          "acquisitionReads": 5.9923095703125
+        },
+        {
+          "brier": 0.24683880195706487,
+          "accuracy": 0.5740541008131336,
+          "logLoss": 0.6898303938012332,
+          "acquisitionReads": 5.9923095703125
+        }
+      ],
+      "bayesBrierFloor": 0.19723694167458858,
+      "bayesAccuracyCeiling": 0.699894056262873,
+      "fullAuditReadsPerTrajectory": 1986.46875
+    },
+    {
+      "phase": "confirmation",
+      "family": "hierarchy",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.25752811223756816,
+          "accuracy": 0.550217040718685,
+          "logLoss": 0.713444176416527,
+          "acquisitionReads": 5.9990234375
+        },
+        {
+          "brier": 0.253495022809551,
+          "accuracy": 0.5482734047182214,
+          "logLoss": 0.7025791355816131,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.25350293539439434,
+          "accuracy": 0.5483750203622433,
+          "logLoss": 0.7025640424899038,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19619431183573402,
+      "bayesAccuracyCeiling": 0.7017520944454914,
+      "fullAuditReadsPerTrajectory": 1986.46875
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.24295400113156165,
+          "accuracy": 0.5864960218648071,
+          "logLoss": 0.6817233529264645,
+          "acquisitionReads": 5.9888916015625
+        },
+        {
+          "brier": 0.24229590749288724,
+          "accuracy": 0.5852911872276726,
+          "logLoss": 0.6794497022248369,
+          "acquisitionReads": 5.9927978515625
+        },
+        {
+          "brier": 0.24229590749288724,
+          "accuracy": 0.5852911872276726,
+          "logLoss": 0.6794497022248369,
+          "acquisitionReads": 5.9927978515625
+        }
+      ],
+      "bayesBrierFloor": 0.19314060633034477,
+      "bayesAccuracyCeiling": 0.7061926759885475,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24433905779982482,
+          "accuracy": 0.5833797469819539,
+          "logLoss": 0.684452733230786,
+          "acquisitionReads": 5.99853515625
+        },
+        {
+          "brier": 0.24431216423003255,
+          "accuracy": 0.581506411075281,
+          "logLoss": 0.683570783035894,
+          "acquisitionReads": 5.99853515625
+        },
+        {
+          "brier": 0.24431216423003255,
+          "accuracy": 0.581506411075281,
+          "logLoss": 0.683570783035894,
+          "acquisitionReads": 5.99853515625
+        }
+      ],
+      "bayesBrierFloor": 0.19257200556771686,
+      "bayesAccuracyCeiling": 0.7064498532862095,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.246108148088221,
+          "accuracy": 0.5791010045795398,
+          "logLoss": 0.6889672584855976,
+          "acquisitionReads": 5.9952392578125
+        },
+        {
+          "brier": 0.24540236142321034,
+          "accuracy": 0.5770996358126543,
+          "logLoss": 0.6866504856724459,
+          "acquisitionReads": 5.9962158203125
+        },
+        {
+          "brier": 0.24531252295796,
+          "accuracy": 0.5775151947063255,
+          "logLoss": 0.6864424169967983,
+          "acquisitionReads": 5.9962158203125
+        }
+      ],
+      "bayesBrierFloor": 0.19314060633034477,
+      "bayesAccuracyCeiling": 0.7061926759885475,
+      "fullAuditReadsPerTrajectory": 1990.40625
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "stationary",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2465641529723019,
+          "accuracy": 0.5838755981774657,
+          "logLoss": 0.690787331267414,
+          "acquisitionReads": 5.9912109375
+        },
+        {
+          "brier": 0.24578960520139248,
+          "accuracy": 0.5788166928727054,
+          "logLoss": 0.6884020763805683,
+          "acquisitionReads": 5.9912109375
+        },
+        {
+          "brier": 0.24553097467754664,
+          "accuracy": 0.5796623620379864,
+          "logLoss": 0.6877847411103669,
+          "acquisitionReads": 5.9912109375
+        }
+      ],
+      "bayesBrierFloor": 0.19257200556771686,
+      "bayesAccuracyCeiling": 0.7064498532862095,
+      "fullAuditReadsPerTrajectory": 1990.40625
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.25297515672298054,
+          "accuracy": 0.5551595268171263,
+          "logLoss": 0.7029450789251699,
+          "acquisitionReads": 5.994140625
+        },
+        {
+          "brier": 0.24998327650009503,
+          "accuracy": 0.5549459510652439,
+          "logLoss": 0.6949133385925521,
+          "acquisitionReads": 5.998779296875
+        },
+        {
+          "brier": 0.24998327650009503,
+          "accuracy": 0.5549459510652439,
+          "logLoss": 0.6949133385925521,
+          "acquisitionReads": 5.998779296875
+        }
+      ],
+      "bayesBrierFloor": 0.19899700044947255,
+      "bayesAccuracyCeiling": 0.6938506173049965,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.24504581855862897,
+          "accuracy": 0.5781749680355566,
+          "logLoss": 0.6852857676823334,
+          "acquisitionReads": 5.9951171875
+        },
+        {
+          "brier": 0.2443595414970906,
+          "accuracy": 0.5778392114253142,
+          "logLoss": 0.6826573296666538,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.2443595414970906,
+          "accuracy": 0.5778392114253142,
+          "logLoss": 0.6826573296666538,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19642116297040912,
+      "bayesAccuracyCeiling": 0.7000645690156923,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.25480873423051725,
+          "accuracy": 0.5463519598135199,
+          "logLoss": 0.7062706125539567,
+          "acquisitionReads": 5.997314453125
+        },
+        {
+          "brier": 0.25283643239516196,
+          "accuracy": 0.544308963617944,
+          "logLoss": 0.7010962387668862,
+          "acquisitionReads": 5.998779296875
+        },
+        {
+          "brier": 0.2527783126255307,
+          "accuracy": 0.543643702248918,
+          "logLoss": 0.7009685132953855,
+          "acquisitionReads": 5.998779296875
+        }
+      ],
+      "bayesBrierFloor": 0.19899700044947255,
+      "bayesAccuracyCeiling": 0.6938506173049965,
+      "fullAuditReadsPerTrajectory": 1994.90625
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "abrupt",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2506262658279298,
+          "accuracy": 0.558054558547847,
+          "logLoss": 0.6969454508877567,
+          "acquisitionReads": 5.99853515625
+        },
+        {
+          "brier": 0.24933166946887556,
+          "accuracy": 0.5511915419268318,
+          "logLoss": 0.6932525980338928,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.24912010624827513,
+          "accuracy": 0.5502983783532557,
+          "logLoss": 0.6928091887783066,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19642116297040912,
+      "bayesAccuracyCeiling": 0.7000645690156923,
+      "fullAuditReadsPerTrajectory": 1994.90625
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.2533696985984282,
+          "accuracy": 0.5563243769309396,
+          "logLoss": 0.7040721382899001,
+          "acquisitionReads": 5.9891357421875
+        },
+        {
+          "brier": 0.24987798685228949,
+          "accuracy": 0.556671608065375,
+          "logLoss": 0.6947325658630203,
+          "acquisitionReads": 5.996826171875
+        },
+        {
+          "brier": 0.24987798685228949,
+          "accuracy": 0.556671608065375,
+          "logLoss": 0.6947325658630203,
+          "acquisitionReads": 5.996826171875
+        }
+      ],
+      "bayesBrierFloor": 0.19646085510646344,
+      "bayesAccuracyCeiling": 0.7010982852135202,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 0,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.2478321132140277,
+          "accuracy": 0.5833362873040416,
+          "logLoss": 0.6934669105841265,
+          "acquisitionReads": 5.99560546875
+        },
+        {
+          "brier": 0.24398092926397713,
+          "accuracy": 0.579545214664506,
+          "logLoss": 0.6817918840105944,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.24398092926397713,
+          "accuracy": 0.579545214664506,
+          "logLoss": 0.6817918840105944,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19486798262079086,
+      "bayesAccuracyCeiling": 0.706025013187355,
+      "fullAuditReadsPerTrajectory": 2448
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "all256",
+      "metrics": [
+        {
+          "brier": 0.25610924547278846,
+          "accuracy": 0.5458350858370745,
+          "logLoss": 0.7093344269903374,
+          "acquisitionReads": 5.999267578125
+        },
+        {
+          "brier": 0.25298097659757596,
+          "accuracy": 0.5475893346510008,
+          "logLoss": 0.7016012466003769,
+          "acquisitionReads": 5.999267578125
+        },
+        {
+          "brier": 0.25287973442718353,
+          "accuracy": 0.5475943060328844,
+          "logLoss": 0.7013624504292719,
+          "acquisitionReads": 5.999267578125
+        }
+      ],
+      "bayesBrierFloor": 0.19646085510646344,
+      "bayesAccuracyCeiling": 0.7010982852135202,
+      "fullAuditReadsPerTrajectory": 1992.9375
+    },
+    {
+      "phase": "confirmation",
+      "family": "local_table",
+      "mode": "gradual",
+      "schedule": 1,
+      "segment": "terminal64",
+      "metrics": [
+        {
+          "brier": 0.256657835508364,
+          "accuracy": 0.5433211581495492,
+          "logLoss": 0.7107071903662436,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.250041847807982,
+          "accuracy": 0.5498337358538946,
+          "logLoss": 0.6945206812787186,
+          "acquisitionReads": 6
+        },
+        {
+          "brier": 0.24997317937840272,
+          "accuracy": 0.5500578768217476,
+          "logLoss": 0.6943975851223104,
+          "acquisitionReads": 6
+        }
+      ],
+      "bayesBrierFloor": 0.19486798262079086,
+      "bayesAccuracyCeiling": 0.706025013187355,
+      "fullAuditReadsPerTrajectory": 1992.9375
+    }
+  ]
+}

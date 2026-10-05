@@ -1,0 +1,81 @@
+{
+  "scope": "Byte-exact replay, matched-world archived parity, alternate conditional-risk identity; not an independent inference implementation",
+  "inputSHA256": "ef5dbab7d2db996432fa4753c228036b9a94ea225742374cf429d2368644b20a",
+  "verifierSHA256": "4118a1d5455419d63fbd383cba97cb7d1b30f0f23aae1be24dd26212c36079e8",
+  "replay": true,
+  "matchedWorldExact": true,
+  "checks": 3200,
+  "maxError": 6.106226635438361e-16,
+  "summary": [
+    {
+      "noise": 0.1,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": -0.0019307708759485065,
+      "genuineGainRange": [
+        0.01404422375855896,
+        0.014569887458712238
+      ]
+    },
+    {
+      "noise": 0.15,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.003938317511159861,
+      "genuineGainRange": [
+        0.011877362951878578,
+        0.012351815166892682
+      ]
+    },
+    {
+      "noise": 0.2,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.009999999999423748,
+      "genuineGainRange": [
+        0.008014010948353134,
+        0.00958620440580532
+      ]
+    },
+    {
+      "noise": 0.25,
+      "passed": 94,
+      "failures": {
+        "nonharm": 78,
+        "gain": 8,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.016650031016625877,
+      "genuineGainRange": [
+        0.002966701841002395,
+        0.005868492956431992
+      ]
+    },
+    {
+      "noise": 0.3,
+      "passed": 79,
+      "failures": {
+        "nonharm": 91,
+        "gain": 10,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.023101405354011617,
+      "genuineGainRange": [
+        -0.003180503738283713,
+        0.0013320565794781025
+      ]
+    }
+  ]
+}

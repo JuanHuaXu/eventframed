@@ -1,0 +1,78 @@
+# v108 benchmark records
+
+Benchmark source SHA256: 0784bef90f2c0d4efcd37be2f06971e86d57824aeaf89b3140e692e34cea2d32
+Go1.27.1 darwin/arm64, Apple M4, GOMAXPROCS10.
+
+## First component batch: contended, retained, not primary
+
+A source/metric verification Node process overlapped this batch. The whole batch
+is retained below; no individual fast or slow measurement is selectively removed.
+Both processes were confirmed terminal before the complete isolated repeat.
+
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkAdviceV108Journal$' -benchtime=200ms -count=3
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkAdviceV108Journal/arrival-10         	     148	   1623067 ns/op	  148016 B/op	    1219 allocs/op
+BenchmarkAdviceV108Journal/arrival-10         	     146	   1666656 ns/op	  148016 B/op	    1219 allocs/op
+BenchmarkAdviceV108Journal/arrival-10         	     136	   1721329 ns/op	  148016 B/op	    1219 allocs/op
+BenchmarkAdviceV108Journal/neutral-10         	     135	   1745547 ns/op	  151472 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/neutral-10         	     138	   1746416 ns/op	  151472 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/neutral-10         	     138	   1729464 ns/op	  151472 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/age-10             	     147	   1609594 ns/op	  146672 B/op	    1210 allocs/op
+BenchmarkAdviceV108Journal/age-10             	     152	   1575218 ns/op	  146673 B/op	    1210 allocs/op
+BenchmarkAdviceV108Journal/age-10             	     153	   1578563 ns/op	  146672 B/op	    1210 allocs/op
+BenchmarkAdviceV108Journal/combined-10        	     145	   1639945 ns/op	  151475 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/combined-10        	     146	   1635660 ns/op	  151472 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/combined-10        	     145	   1636610 ns/op	  151473 B/op	    1240 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	5.228s
+
+## Isolated component repeat
+
+Same command, no quality, replay or verification process running from this task.
+External host activity is not controlled. Each operation is a complete256-frame
+journal lifetime, fixed models, release-before-issue delay8, expiry scans and flush.
+Acquisition is policy-dependent; these are not pure arithmetic-only overheads.
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkAdviceV108Journal/arrival-10         	     133	   1619927 ns/op	  148017 B/op	    1219 allocs/op
+BenchmarkAdviceV108Journal/arrival-10         	     146	   1609768 ns/op	  148016 B/op	    1219 allocs/op
+BenchmarkAdviceV108Journal/arrival-10         	     146	   1619761 ns/op	  148016 B/op	    1219 allocs/op
+BenchmarkAdviceV108Journal/neutral-10         	     146	   1631209 ns/op	  151473 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/neutral-10         	     146	   1638204 ns/op	  151475 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/neutral-10         	     147	   1628682 ns/op	  151475 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/age-10             	     151	   1562513 ns/op	  146675 B/op	    1210 allocs/op
+BenchmarkAdviceV108Journal/age-10             	     152	   1560262 ns/op	  146672 B/op	    1210 allocs/op
+BenchmarkAdviceV108Journal/age-10             	     153	   1565224 ns/op	  146673 B/op	    1210 allocs/op
+BenchmarkAdviceV108Journal/combined-10        	     147	   1635755 ns/op	  151473 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/combined-10        	     147	   1624877 ns/op	  151472 B/op	    1240 allocs/op
+BenchmarkAdviceV108Journal/combined-10        	     147	   1616482 ns/op	  151473 B/op	    1240 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	4.921s
+
+## Whole seven-arm fixture
+
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkAdviceV108WholeFixture$' -benchtime=1x -count=3
+
+Each operation includes all seven arms, eight model fits/publications, RNG,
+scoring, recorded trajectories and feedback flush on consumed v106 design
+parity4/index0. No database, network or production serving is measured.
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkAdviceV108WholeFixture/immediate-10         	       1	 132107750 ns/op	26759912 B/op	    6798 allocs/op
+BenchmarkAdviceV108WholeFixture/immediate-10         	       1	 116584625 ns/op	26754752 B/op	    6792 allocs/op
+BenchmarkAdviceV108WholeFixture/immediate-10         	       1	 115540000 ns/op	26754576 B/op	    6789 allocs/op
+BenchmarkAdviceV108WholeFixture/delayed_missing-10   	       1	 114007209 ns/op	26780944 B/op	    7015 allocs/op
+BenchmarkAdviceV108WholeFixture/delayed_missing-10   	       1	 112959125 ns/op	26780800 B/op	    7014 allocs/op
+BenchmarkAdviceV108WholeFixture/delayed_missing-10   	       1	 113423542 ns/op	26780800 B/op	    7014 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	0.867s

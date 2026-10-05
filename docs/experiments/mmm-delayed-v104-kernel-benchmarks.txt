@@ -1,0 +1,15 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkRoleCarryDelay8Lifetime-10    	     429	   1340253 ns/op	  135280 B/op	    1215 allocs/op
+BenchmarkRoleCarryDelay8Lifetime-10    	     442	   1341155 ns/op	  135280 B/op	    1215 allocs/op
+BenchmarkRoleCarryDelay8Lifetime-10    	     441	   1332725 ns/op	  135280 B/op	    1215 allocs/op
+BenchmarkRoutedJournalLifetime/immediate-10         	     405	   1476213 ns/op	  137776 B/op	    1231 allocs/op
+BenchmarkRoutedJournalLifetime/immediate-10         	     405	   1495231 ns/op	  137776 B/op	    1231 allocs/op
+BenchmarkRoutedJournalLifetime/immediate-10         	     402	   1559887 ns/op	  137776 B/op	    1231 allocs/op
+BenchmarkRoutedJournalLifetime/delay8-10            	     445	   1350881 ns/op	  135280 B/op	    1215 allocs/op
+BenchmarkRoutedJournalLifetime/delay8-10            	     444	   1349091 ns/op	  135280 B/op	    1215 allocs/op
+BenchmarkRoutedJournalLifetime/delay8-10            	     445	   1343589 ns/op	  135281 B/op	    1215 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	6.830s

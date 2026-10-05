@@ -1,0 +1,5649 @@
+{
+  "rawSHA256": "3a5fb1fd119c7c14aaeb1864a95e3895a18781bc3e21e75ef5f7dcef485cb76e",
+  "parentSHA256": "4b148306f6fc1fa0f4e8ae5f1db3b878e3f1fd20b628f305313387a91f9af655",
+  "shadowSHA256": "4e0c10e9d5fa9632794fe572b6d413785c15e6d61ce3c86bdb276e9374457777",
+  "sources": 882,
+  "screens": {
+    "gains": 0,
+    "gainTotal": 4,
+    "nonharm": 12,
+    "nonharmTotal": 16
+  },
+  "cells": [
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "schedule": "Immediate",
+      "post": [
+        0.04866667559625939,
+        0.054918228258859225
+      ],
+      "accuracy": [
+        0.949462890625,
+        0.949462890625
+      ],
+      "enlargedFraction": 0.4603271484375,
+      "extraConsumedBits": 2.17626953125,
+      "gain": {
+        "mean": -0.006251552662599835,
+        "lower": -0.008950010037906157,
+        "upper": -0.0035530952872935132
+      },
+      "harmFull": {
+        "mean": 0.006265981140135362,
+        "lower": 0.004639970996420431,
+        "upper": 0.007891991283850293
+      },
+      "harmPost": {
+        "mean": 0.006251552662599835,
+        "lower": 0.0035530952872935132,
+        "upper": 0.008950010037906157
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "schedule": "Delayed",
+      "post": [
+        0.04853463045137661,
+        0.05484736350390851
+      ],
+      "accuracy": [
+        0.949462890625,
+        0.949462890625
+      ],
+      "enlargedFraction": 0.459716796875,
+      "extraConsumedBits": 2.1787109375,
+      "gain": {
+        "mean": -0.006312733052531902,
+        "lower": -0.009049000699889627,
+        "upper": -0.0035764654051741764
+      },
+      "harmFull": {
+        "mean": 0.006390034143545846,
+        "lower": 0.004739025411314594,
+        "upper": 0.008041042875777098
+      },
+      "harmPost": {
+        "mean": 0.006312733052531902,
+        "lower": 0.0035764654051741764,
+        "upper": 0.009049000699889627
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "schedule": "Immediate",
+      "post": [
+        0.1453128173790615,
+        0.08634986239230907
+      ],
+      "accuracy": [
+        0.7412109375,
+        0.892578125
+      ],
+      "enlargedFraction": 0.6746826171875,
+      "extraConsumedBits": 2.1790771484375,
+      "gain": {
+        "mean": 0.05896295498675242,
+        "lower": 0.01969422857131265,
+        "upper": 0.09823168140219218
+      },
+      "harmFull": {
+        "mean": -0.0593751847342594,
+        "lower": -0.09927920950979272,
+        "upper": -0.01947115995872608
+      },
+      "harmPost": {
+        "mean": -0.05896295498675242,
+        "lower": -0.09823168140219218,
+        "upper": -0.01969422857131265
+      },
+      "gainPass": true,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "schedule": "Delayed",
+      "post": [
+        0.1448823677670121,
+        0.08631570720293552
+      ],
+      "accuracy": [
+        0.742431640625,
+        0.892333984375
+      ],
+      "enlargedFraction": 0.6754150390625,
+      "extraConsumedBits": 2.1806640625,
+      "gain": {
+        "mean": 0.058566660564076584,
+        "lower": 0.019757765468236578,
+        "upper": 0.0973755556599166
+      },
+      "harmFull": {
+        "mean": -0.05846848608357479,
+        "lower": -0.09758158415825166,
+        "upper": -0.019355388008897925
+      },
+      "harmPost": {
+        "mean": -0.058566660564076584,
+        "lower": -0.0973755556599166,
+        "upper": -0.019757765468236578
+      },
+      "gainPass": true,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "schedule": "Immediate",
+      "post": [
+        0.24341983340745926,
+        0.24208944065208396
+      ],
+      "accuracy": [
+        0.549072265625,
+        0.5546875
+      ],
+      "enlargedFraction": 0.49951171875,
+      "extraConsumedBits": 2.06005859375,
+      "gain": {
+        "mean": 0.001330392755375281,
+        "lower": 0.00011073546905998512,
+        "upper": 0.002550050041690577
+      },
+      "harmFull": {
+        "mean": 0.0021009020139356512,
+        "lower": 0.0009425175165448578,
+        "upper": 0.003259286511326445
+      },
+      "harmPost": {
+        "mean": -0.001330392755375281,
+        "lower": -0.002550050041690577,
+        "upper": -0.00011073546905998512
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "schedule": "Delayed",
+      "post": [
+        0.27370620847512783,
+        0.26987385555331117
+      ],
+      "accuracy": [
+        0.50439453125,
+        0.50341796875
+      ],
+      "enlargedFraction": 0.4703369140625,
+      "extraConsumedBits": 2.0498046875,
+      "gain": {
+        "mean": 0.0038323529218166792,
+        "lower": 0.0020039795923042485,
+        "upper": 0.00566072625132911
+      },
+      "harmFull": {
+        "mean": 0.0009804510965405171,
+        "lower": -0.00007245140374158494,
+        "upper": 0.002033353596822619
+      },
+      "harmPost": {
+        "mean": -0.0038323529218166792,
+        "lower": -0.00566072625132911,
+        "upper": -0.0020039795923042485
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "schedule": "Immediate",
+      "post": [
+        0.23133816154741774,
+        0.23491576919958496
+      ],
+      "accuracy": [
+        0.605224609375,
+        0.595703125
+      ],
+      "enlargedFraction": 0.7425537109375,
+      "extraConsumedBits": 2.303955078125,
+      "gain": {
+        "mean": -0.003577607652167287,
+        "lower": -0.012076539311196954,
+        "upper": 0.00492132400686238
+      },
+      "harmFull": {
+        "mean": -0.02442149409298965,
+        "lower": -0.043020453267587716,
+        "upper": -0.005822534918391582
+      },
+      "harmPost": {
+        "mean": 0.003577607652167287,
+        "lower": -0.00492132400686238,
+        "upper": 0.012076539311196954
+      },
+      "gainPass": false,
+      "nonharmPass": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "schedule": "Delayed",
+      "post": [
+        0.25974825105765365,
+        0.266851527987223
+      ],
+      "accuracy": [
+        0.53125,
+        0.526611328125
+      ],
+      "enlargedFraction": 0.72607421875,
+      "extraConsumedBits": 2.2783203125,
+      "gain": {
+        "mean": -0.007103276929569385,
+        "lower": -0.026185897977780814,
+        "upper": 0.011979344118642044
+      },
+      "harmFull": {
+        "mean": -0.02205466814340051,
+        "lower": -0.04238061346897322,
+        "upper": -0.001728722817827804
+      },
+      "harmPost": {
+        "mean": 0.007103276929569385,
+        "lower": -0.011979344118642044,
+        "upper": 0.026185897977780814
+      },
+      "gainPass": false,
+      "nonharmPass": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "schedule": "Immediate",
+      "post": [
+        0.05100999573577568,
+        0.05788059436767973
+      ],
+      "accuracy": [
+        0.94677734375,
+        0.946533203125
+      ],
+      "enlargedFraction": 0.51611328125,
+      "extraConsumedBits": 2.3011474609375,
+      "gain": {
+        "mean": -0.006870598631904045,
+        "lower": -0.00895680558157255,
+        "upper": -0.00478439168223554
+      },
+      "harmFull": {
+        "mean": 0.0073086770467494615,
+        "lower": 0.005610373298689145,
+        "upper": 0.009006980794809778
+      },
+      "harmPost": {
+        "mean": 0.006870598631904045,
+        "lower": 0.00478439168223554,
+        "upper": 0.00895680558157255
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "schedule": "Delayed",
+      "post": [
+        0.051261333593130926,
+        0.05851832609551597
+      ],
+      "accuracy": [
+        0.94677734375,
+        0.946533203125
+      ],
+      "enlargedFraction": 0.5169677734375,
+      "extraConsumedBits": 2.30029296875,
+      "gain": {
+        "mean": -0.007256992502385062,
+        "lower": -0.009152419882842842,
+        "upper": -0.005361565121927281
+      },
+      "harmFull": {
+        "mean": 0.007657964075392293,
+        "lower": 0.006153142459581118,
+        "upper": 0.009162785691203467
+      },
+      "harmPost": {
+        "mean": 0.007256992502385062,
+        "lower": 0.005361565121927281,
+        "upper": 0.009152419882842842
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "schedule": "Immediate",
+      "post": [
+        0.18304056911759845,
+        0.10017555739505438
+      ],
+      "accuracy": [
+        0.650390625,
+        0.8740234375
+      ],
+      "enlargedFraction": 0.7486572265625,
+      "extraConsumedBits": 2.3201904296875,
+      "gain": {
+        "mean": 0.08286501172254407,
+        "lower": 0.0386829862943712,
+        "upper": 0.12704703715071694
+      },
+      "harmFull": {
+        "mean": -0.08012177411064327,
+        "lower": -0.11937977690310286,
+        "upper": -0.040863771318183674
+      },
+      "harmPost": {
+        "mean": -0.08286501172254407,
+        "lower": -0.12704703715071694,
+        "upper": -0.0386829862943712
+      },
+      "gainPass": true,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "schedule": "Delayed",
+      "post": [
+        0.18308274975103386,
+        0.09907596541788581
+      ],
+      "accuracy": [
+        0.655517578125,
+        0.8740234375
+      ],
+      "enlargedFraction": 0.7479248046875,
+      "extraConsumedBits": 2.318359375,
+      "gain": {
+        "mean": 0.08400678433314807,
+        "lower": 0.03978581939130379,
+        "upper": 0.12822774927499234
+      },
+      "harmFull": {
+        "mean": -0.07817851928135576,
+        "lower": -0.11689381013440578,
+        "upper": -0.039463228428305734
+      },
+      "harmPost": {
+        "mean": -0.08400678433314807,
+        "lower": -0.12822774927499234,
+        "upper": -0.03978581939130379
+      },
+      "gainPass": true,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "schedule": "Immediate",
+      "post": [
+        0.24040287170637908,
+        0.23955114426085278
+      ],
+      "accuracy": [
+        0.5732421875,
+        0.56689453125
+      ],
+      "enlargedFraction": 0.5740966796875,
+      "extraConsumedBits": 2.1707763671875,
+      "gain": {
+        "mean": 0.000851727445526319,
+        "lower": -0.000552408409768798,
+        "upper": 0.0022558633008214358
+      },
+      "harmFull": {
+        "mean": 0.0028566658090446694,
+        "lower": 0.0012209724830064875,
+        "upper": 0.004492359135082851
+      },
+      "harmPost": {
+        "mean": -0.000851727445526319,
+        "lower": -0.0022558633008214358,
+        "upper": 0.000552408409768798
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "schedule": "Delayed",
+      "post": [
+        0.2702353708402074,
+        0.26639397365689865
+      ],
+      "accuracy": [
+        0.50537109375,
+        0.501708984375
+      ],
+      "enlargedFraction": 0.538330078125,
+      "extraConsumedBits": 2.1700439453125,
+      "gain": {
+        "mean": 0.0038413971833086667,
+        "lower": 0.0013279730459559535,
+        "upper": 0.0063548213206613795
+      },
+      "harmFull": {
+        "mean": 0.0014625356029724715,
+        "lower": 0.0003130027313088654,
+        "upper": 0.0026120684746360773
+      },
+      "harmPost": {
+        "mean": -0.0038413971833086667,
+        "lower": -0.0063548213206613795,
+        "upper": -0.0013279730459559535
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "schedule": "Immediate",
+      "post": [
+        0.2189894895454141,
+        0.22950444755938615
+      ],
+      "accuracy": [
+        0.627197265625,
+        0.621337890625
+      ],
+      "enlargedFraction": 0.8018798828125,
+      "extraConsumedBits": 2.3511962890625,
+      "gain": {
+        "mean": -0.010514958013972056,
+        "lower": -0.02204837040920175,
+        "upper": 0.0010184543812576385
+      },
+      "harmFull": {
+        "mean": -0.0359903076731445,
+        "lower": -0.04625293846652071,
+        "upper": -0.025727676879768284
+      },
+      "harmPost": {
+        "mean": 0.010514958013972056,
+        "lower": -0.0010184543812576385,
+        "upper": 0.02204837040920175
+      },
+      "gainPass": false,
+      "nonharmPass": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "schedule": "Delayed",
+      "post": [
+        0.2524574497253984,
+        0.2692530553755593
+      ],
+      "accuracy": [
+        0.55029296875,
+        0.538818359375
+      ],
+      "enlargedFraction": 0.787841796875,
+      "extraConsumedBits": 2.3033447265625,
+      "gain": {
+        "mean": -0.01679560565016091,
+        "lower": -0.03365932952425023,
+        "upper": 0.00006811822392841296
+      },
+      "harmFull": {
+        "mean": -0.03264721531596587,
+        "lower": -0.04290489522229245,
+        "upper": -0.022389535409639297
+      },
+      "harmPost": {
+        "mean": 0.01679560565016091,
+        "lower": -0.00006811822392841296,
+        "upper": 0.03365932952425023
+      },
+      "gainPass": false,
+      "nonharmPass": false
+    }
+  ],
+  "records": [
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.06338751403529874,
+        0.07035248920675355
+      ],
+      "post": [
+        0.07765022414925107,
+        0.08507065053360259
+      ],
+      "accuracy": [
+        0.91796875,
+        0.91796875
+      ],
+      "enlargedFraction": 0.5234375,
+      "extraConsumedBits": 2.4765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.06361352577657174,
+        0.07101931646753465
+      ],
+      "post": [
+        0.07741170530561703,
+        0.0855306958976462
+      ],
+      "accuracy": [
+        0.91796875,
+        0.91796875
+      ],
+      "enlargedFraction": 0.513671875,
+      "extraConsumedBits": 2.515625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.023958881558951914,
+        0.031233188260299867
+      ],
+      "post": [
+        0.03075122153939743,
+        0.038961222619482705
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "enlargedFraction": 0.375,
+      "extraConsumedBits": 2.044921875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.024385201881425466,
+        0.03173322372621687
+      ],
+      "post": [
+        0.030732895610820637,
+        0.03896606379840856
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "enlargedFraction": 0.375,
+      "extraConsumedBits": 2.044921875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.046907640281038866,
+        0.05406845287717875
+      ],
+      "post": [
+        0.045945826062922746,
+        0.05255339763887222
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.46484375,
+      "extraConsumedBits": 2.234375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.04822177365442755,
+        0.05574522465855656
+      ],
+      "post": [
+        0.0454866647616557,
+        0.05259633466191103
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.46484375,
+      "extraConsumedBits": 2.234375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.054364198529846176,
+        0.06024694094046111
+      ],
+      "post": [
+        0.05571451455983639,
+        0.06049778193453827
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "enlargedFraction": 0.52734375,
+      "extraConsumedBits": 2.09375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.054038546789319436,
+        0.06008153113469749
+      ],
+      "post": [
+        0.0551269589167238,
+        0.05980921777703063
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "enlargedFraction": 0.52734375,
+      "extraConsumedBits": 2.09375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.03239895976833882,
+        0.03963102660970532
+      ],
+      "post": [
+        0.028998047163122067,
+        0.03755626147120893
+      ],
+      "accuracy": [
+        0.97265625,
+        0.97265625
+      ],
+      "enlargedFraction": 0.53515625,
+      "extraConsumedBits": 2.0859375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.03289748344723494,
+        0.04019273741947913
+      ],
+      "post": [
+        0.028998744558225292,
+        0.03767329488856965
+      ],
+      "accuracy": [
+        0.97265625,
+        0.97265625
+      ],
+      "enlargedFraction": 0.53515625,
+      "extraConsumedBits": 2.0859375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.06178570139215302,
+        0.06749899816275154
+      ],
+      "post": [
+        0.05591532016298171,
+        0.0619263276976947
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "enlargedFraction": 0.447265625,
+      "extraConsumedBits": 1.974609375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.06215220959136636,
+        0.06782043751522135
+      ],
+      "post": [
+        0.05606833730624439,
+        0.061921083030173456
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "enlargedFraction": 0.447265625,
+      "extraConsumedBits": 1.974609375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.041367830669927594,
+        0.04854887551750726
+      ],
+      "post": [
+        0.03989574346185294,
+        0.048314817960130985
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "enlargedFraction": 0.58203125,
+      "extraConsumedBits": 2.2890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.04165606347172216,
+        0.048953259993954876
+      ],
+      "post": [
+        0.03968004507539592,
+        0.048068468937016745
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "enlargedFraction": 0.58203125,
+      "extraConsumedBits": 2.2890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.049138766009726,
+        0.05765532631698289
+      ],
+      "post": [
+        0.04585262049188696,
+        0.05645634068323897
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.556640625,
+      "extraConsumedBits": 2.212890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.04952546723135171,
+        0.058117840068780645
+      ],
+      "post": [
+        0.04582320484807438,
+        0.056456466556033195
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.556640625,
+      "extraConsumedBits": 2.212890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.04823448417000216,
+        0.051829397687654336
+      ],
+      "post": [
+        0.04453696035308263,
+        0.047623388660145184
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.357421875,
+      "extraConsumedBits": 2.111328125
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.04886084521718414,
+        0.05234096848449653
+      ],
+      "post": [
+        0.04449849148898832,
+        0.047369624175755555
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.357421875,
+      "extraConsumedBits": 2.111328125
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.057188872190752055,
+        0.06252887100859424
+      ],
+      "post": [
+        0.059065060323518735,
+        0.06378874925889669
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "enlargedFraction": 0.38671875,
+      "extraConsumedBits": 2.091796875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.05725613303584303,
+        0.06251376969177562
+      ],
+      "post": [
+        0.058801264630910115,
+        0.06318927477964909
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "enlargedFraction": 0.38671875,
+      "extraConsumedBits": 2.091796875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.06592707742813292,
+        0.0681454153644946
+      ],
+      "post": [
+        0.08692392048434441,
+        0.08859648491928508
+      ],
+      "accuracy": [
+        0.90625,
+        0.90625
+      ],
+      "enlargedFraction": 0.453125,
+      "extraConsumedBits": 2.234375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.06612405131264186,
+        0.06858320394076459
+      ],
+      "post": [
+        0.08689839068767592,
+        0.08871223229669647
+      ],
+      "accuracy": [
+        0.90625,
+        0.90625
+      ],
+      "enlargedFraction": 0.453125,
+      "extraConsumedBits": 2.234375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.05255323212979237,
+        0.05657979402659218
+      ],
+      "post": [
+        0.06623391116896914,
+        0.0649075801364923
+      ],
+      "accuracy": [
+        0.9296875,
+        0.9296875
+      ],
+      "enlargedFraction": 0.51171875,
+      "extraConsumedBits": 2.255859375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.052689954949507484,
+        0.05683900866148564
+      ],
+      "post": [
+        0.0657712915348066,
+        0.06458136437180863
+      ],
+      "accuracy": [
+        0.9296875,
+        0.9296875
+      ],
+      "enlargedFraction": 0.51171875,
+      "extraConsumedBits": 2.255859375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.044724157814264094,
+        0.05252210420236785
+      ],
+      "post": [
+        0.03757268700393859,
+        0.045893092819384515
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "enlargedFraction": 0.380859375,
+      "extraConsumedBits": 1.998046875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.044941398882033634,
+        0.05282531239380801
+      ],
+      "post": [
+        0.037558175726678356,
+        0.045919630647888385
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "enlargedFraction": 0.380859375,
+      "extraConsumedBits": 1.998046875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.05180928753425478,
+        0.0566951950687027
+      ],
+      "post": [
+        0.03474598852442167,
+        0.04051064497753434
+      ],
+      "accuracy": [
+        0.96484375,
+        0.96484375
+      ],
+      "enlargedFraction": 0.474609375,
+      "extraConsumedBits": 2.560546875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.05271530132513156,
+        0.057725828523407685
+      ],
+      "post": [
+        0.03473954244550766,
+        0.04047539995863206
+      ],
+      "accuracy": [
+        0.96484375,
+        0.96484375
+      ],
+      "enlargedFraction": 0.474609375,
+      "extraConsumedBits": 2.560546875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.027773886666703655,
+        0.03664875430053206
+      ],
+      "post": [
+        0.027527234320628632,
+        0.03617222247305559
+      ],
+      "accuracy": [
+        0.97265625,
+        0.97265625
+      ],
+      "enlargedFraction": 0.388671875,
+      "extraConsumedBits": 2.07421875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.027919522586868938,
+        0.03682748435698718
+      ],
+      "post": [
+        0.027531891878387064,
+        0.0361749994911667
+      ],
+      "accuracy": [
+        0.97265625,
+        0.97265625
+      ],
+      "enlargedFraction": 0.388671875,
+      "extraConsumedBits": 2.07421875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.048295089056440255,
+        0.055886447927210946
+      ],
+      "post": [
+        0.041337529769995024,
+        0.04986268835818448
+      ],
+      "accuracy": [
+        0.95703125,
+        0.95703125
+      ],
+      "enlargedFraction": 0.400390625,
+      "extraConsumedBits": 2.08203125
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.04897412702287542,
+        0.05689300543507216
+      ],
+      "post": [
+        0.041426482446314625,
+        0.05011366479414988
+      ],
+      "accuracy": [
+        0.95703125,
+        0.95703125
+      ],
+      "enlargedFraction": 0.400390625,
+      "extraConsumedBits": 2.08203125
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.052132620548740384,
+        0.06053395205718153
+      ],
+      "post": [
+        0.052053431960377684,
+        0.05677860343462115
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "enlargedFraction": 0.640625,
+      "extraConsumedBits": 2.244140625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.05220706459878471,
+        0.06059258136714336
+      ],
+      "post": [
+        0.05203061885655444,
+        0.056728701559645524
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "enlargedFraction": 0.640625,
+      "extraConsumedBits": 2.244140625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.13550505124486392,
+        0.0840970996009659
+      ],
+      "post": [
+        0.14353647478897952,
+        0.08107039704273948
+      ],
+      "accuracy": [
+        0.75,
+        0.8984375
+      ],
+      "enlargedFraction": 0.6484375,
+      "extraConsumedBits": 2.26953125
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.13702230415792663,
+        0.08566255781929712
+      ],
+      "post": [
+        0.14349262336897647,
+        0.08066062485990823
+      ],
+      "accuracy": [
+        0.75,
+        0.8984375
+      ],
+      "enlargedFraction": 0.6484375,
+      "extraConsumedBits": 2.26953125
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.23449339474410805,
+        0.11259357063005947
+      ],
+      "post": [
+        0.2366884205588808,
+        0.11856824959253878
+      ],
+      "accuracy": [
+        0.5390625,
+        0.84765625
+      ],
+      "enlargedFraction": 0.732421875,
+      "extraConsumedBits": 2.185546875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.2280652414088228,
+        0.11287660994362608
+      ],
+      "post": [
+        0.22357270391674236,
+        0.1149078668216719
+      ],
+      "accuracy": [
+        0.57421875,
+        0.8359375
+      ],
+      "enlargedFraction": 0.73046875,
+      "extraConsumedBits": 2.185546875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.15623085168142206,
+        0.09228987871573704
+      ],
+      "post": [
+        0.15605488665823222,
+        0.0945973099648567
+      ],
+      "accuracy": [
+        0.71484375,
+        0.875
+      ],
+      "enlargedFraction": 0.69921875,
+      "extraConsumedBits": 2.09765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.15649150178298912,
+        0.09329817153258291
+      ],
+      "post": [
+        0.15596559560853904,
+        0.0944020688486558
+      ],
+      "accuracy": [
+        0.71484375,
+        0.875
+      ],
+      "enlargedFraction": 0.69921875,
+      "extraConsumedBits": 2.09765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.20865055527834261,
+        0.0927068672702864
+      ],
+      "post": [
+        0.20109788881663854,
+        0.0938433196789365
+      ],
+      "accuracy": [
+        0.62890625,
+        0.8828125
+      ],
+      "enlargedFraction": 0.744140625,
+      "extraConsumedBits": 2.232421875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.20855797280374735,
+        0.09286886728918477
+      ],
+      "post": [
+        0.2010784432495954,
+        0.09399281270280259
+      ],
+      "accuracy": [
+        0.62890625,
+        0.8828125
+      ],
+      "enlargedFraction": 0.744140625,
+      "extraConsumedBits": 2.232421875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.15200645175913616,
+        0.08971911715735957
+      ],
+      "post": [
+        0.15377734515911856,
+        0.0806787529640596
+      ],
+      "accuracy": [
+        0.7265625,
+        0.89453125
+      ],
+      "enlargedFraction": 0.69921875,
+      "extraConsumedBits": 2.09765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.15152307739615714,
+        0.08948062426412429
+      ],
+      "post": [
+        0.1538014000517127,
+        0.08053041244560892
+      ],
+      "accuracy": [
+        0.73046875,
+        0.89453125
+      ],
+      "enlargedFraction": 0.69921875,
+      "extraConsumedBits": 2.09765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.25139971188029886,
+        0.12065117323551217
+      ],
+      "post": [
+        0.2519003226540417,
+        0.12849779487429272
+      ],
+      "accuracy": [
+        0.5,
+        0.8359375
+      ],
+      "enlargedFraction": 0.779296875,
+      "extraConsumedBits": 2.337890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.25173815911201675,
+        0.12287735453418264
+      ],
+      "post": [
+        0.2518055125260544,
+        0.12936853541285992
+      ],
+      "accuracy": [
+        0.51953125,
+        0.83984375
+      ],
+      "enlargedFraction": 0.779296875,
+      "extraConsumedBits": 2.337890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.035020402966950755,
+        0.04326282260562872
+      ],
+      "post": [
+        0.03128267457788297,
+        0.04049098290354495
+      ],
+      "accuracy": [
+        0.96875,
+        0.96484375
+      ],
+      "enlargedFraction": 0.427734375,
+      "extraConsumedBits": 2.138671875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.03519533398744952,
+        0.043456984522943574
+      ],
+      "post": [
+        0.03127364742312128,
+        0.04051358451590304
+      ],
+      "accuracy": [
+        0.96875,
+        0.96484375
+      ],
+      "enlargedFraction": 0.427734375,
+      "extraConsumedBits": 2.138671875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.10789302800432456,
+        0.08505820865810323
+      ],
+      "post": [
+        0.10024522502910596,
+        0.0826252555151923
+      ],
+      "accuracy": [
+        0.8515625,
+        0.89453125
+      ],
+      "enlargedFraction": 0.537109375,
+      "extraConsumedBits": 1.982421875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.10771993049167154,
+        0.08538877405817032
+      ],
+      "post": [
+        0.10030441622855434,
+        0.08289113611418306
+      ],
+      "accuracy": [
+        0.83984375,
+        0.890625
+      ],
+      "enlargedFraction": 0.53515625,
+      "extraConsumedBits": 1.9765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.15390384807917903,
+        0.09573069323131858
+      ],
+      "post": [
+        0.15252812622597936,
+        0.0825276132098956
+      ],
+      "accuracy": [
+        0.73046875,
+        0.89453125
+      ],
+      "enlargedFraction": 0.6796875,
+      "extraConsumedBits": 2.0390625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.15420589235577614,
+        0.09608850566380646
+      ],
+      "post": [
+        0.1524945452107079,
+        0.08249412953256308
+      ],
+      "accuracy": [
+        0.73046875,
+        0.89453125
+      ],
+      "enlargedFraction": 0.6796875,
+      "extraConsumedBits": 2.0390625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.04502243379803676,
+        0.05821613169951576
+      ],
+      "post": [
+        0.03850002528771807,
+        0.055534064168666755
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "enlargedFraction": 0.703125,
+      "extraConsumedBits": 2.109375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.04534852659933073,
+        0.058619578071022554
+      ],
+      "post": [
+        0.03850510398104917,
+        0.05558259776522839
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "enlargedFraction": 0.703125,
+      "extraConsumedBits": 2.109375
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.10068289112594984,
+        0.06209364892846797
+      ],
+      "post": [
+        0.10795168268489218,
+        0.06855922811449001
+      ],
+      "accuracy": [
+        0.8203125,
+        0.92578125
+      ],
+      "enlargedFraction": 0.75,
+      "extraConsumedBits": 2.25
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.10085847309587223,
+        0.06255556808150077
+      ],
+      "post": [
+        0.10765155198415755,
+        0.06804274229016087
+      ],
+      "accuracy": [
+        0.81640625,
+        0.92578125
+      ],
+      "enlargedFraction": 0.75,
+      "extraConsumedBits": 2.25
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.18673418029507968,
+        0.10671923843315208
+      ],
+      "post": [
+        0.18385452737828434,
+        0.10907147425164151
+      ],
+      "accuracy": [
+        0.67578125,
+        0.83984375
+      ],
+      "enlargedFraction": 0.638671875,
+      "extraConsumedBits": 1.916015625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.18689519876009866,
+        0.10769848115408129
+      ],
+      "post": [
+        0.18386293470042403,
+        0.10933783431210094
+      ],
+      "accuracy": [
+        0.67578125,
+        0.83984375
+      ],
+      "enlargedFraction": 0.638671875,
+      "extraConsumedBits": 1.916015625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.14448266924568096,
+        0.08784486700385376
+      ],
+      "post": [
+        0.13976373670930772,
+        0.09156298805100614
+      ],
+      "accuracy": [
+        0.73828125,
+        0.859375
+      ],
+      "enlargedFraction": 0.625,
+      "extraConsumedBits": 2.197265625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.1446010784000041,
+        0.08882777987876085
+      ],
+      "post": [
+        0.13972498312861445,
+        0.09156600385824241
+      ],
+      "accuracy": [
+        0.73828125,
+        0.859375
+      ],
+      "enlargedFraction": 0.625,
+      "extraConsumedBits": 2.197265625
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.24454932205614982,
+        0.13930765452897798
+      ],
+      "post": [
+        0.23882000826728708,
+        0.12596972587656005
+      ],
+      "accuracy": [
+        0.5625,
+        0.859375
+      ],
+      "enlargedFraction": 0.802734375,
+      "extraConsumedBits": 2.404296875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.246309380143344,
+        0.14258158346204272
+      ],
+      "post": [
+        0.24546076122711477,
+        0.12856408130212724
+      ],
+      "accuracy": [
+        0.5390625,
+        0.8671875
+      ],
+      "enlargedFraction": 0.818359375,
+      "extraConsumedBits": 2.435546875
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.14695762641536653,
+        0.07483715961935933
+      ],
+      "post": [
+        0.13695030130825753,
+        0.07122203863390336
+      ],
+      "accuracy": [
+        0.74609375,
+        0.90234375
+      ],
+      "enlargedFraction": 0.6875,
+      "extraConsumedBits": 2.36328125
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.1473185365155452,
+        0.07568787262987024
+      ],
+      "post": [
+        0.13709304281027532,
+        0.07146818290530645
+      ],
+      "accuracy": [
+        0.74609375,
+        0.90234375
+      ],
+      "enlargedFraction": 0.6875,
+      "extraConsumedBits": 2.36328125
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.15803151002665644,
+        0.15890949198853588
+      ],
+      "post": [
+        0.2604482737676211,
+        0.2565439894752559
+      ],
+      "accuracy": [
+        0.4921875,
+        0.5
+      ],
+      "enlargedFraction": 0.453125,
+      "extraConsumedBits": 2.00390625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.1626855086819861,
+        0.16258365501187813
+      ],
+      "post": [
+        0.2687577469039995,
+        0.26258139824890453
+      ],
+      "accuracy": [
+        0.49609375,
+        0.49609375
+      ],
+      "enlargedFraction": 0.46484375,
+      "extraConsumedBits": 2.015625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.1479646156983517,
+        0.15039521695435937
+      ],
+      "post": [
+        0.24733648372508893,
+        0.2457651607200587
+      ],
+      "accuracy": [
+        0.55859375,
+        0.55078125
+      ],
+      "enlargedFraction": 0.427734375,
+      "extraConsumedBits": 2.173828125
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.16185893334209422,
+        0.16300803498188898
+      ],
+      "post": [
+        0.2724684861008487,
+        0.26774088302705557
+      ],
+      "accuracy": [
+        0.52734375,
+        0.52734375
+      ],
+      "enlargedFraction": 0.40625,
+      "extraConsumedBits": 2.212890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.14666174216270123,
+        0.14983221053830076
+      ],
+      "post": [
+        0.2480287097328776,
+        0.2478342796932861
+      ],
+      "accuracy": [
+        0.59375,
+        0.59765625
+      ],
+      "enlargedFraction": 0.396484375,
+      "extraConsumedBits": 2
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.1581462733783492,
+        0.16024069007665043
+      ],
+      "post": [
+        0.27009091941307223,
+        0.26770089390553786
+      ],
+      "accuracy": [
+        0.51953125,
+        0.52734375
+      ],
+      "enlargedFraction": 0.388671875,
+      "extraConsumedBits": 2.01171875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.15344345437257137,
+        0.15689252448792199
+      ],
+      "post": [
+        0.2540799750293267,
+        0.25218223082409646
+      ],
+      "accuracy": [
+        0.46484375,
+        0.4765625
+      ],
+      "enlargedFraction": 0.623046875,
+      "extraConsumedBits": 2.087890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.16686215003923496,
+        0.16787007273927246
+      ],
+      "post": [
+        0.279194377490361,
+        0.27210608935892766
+      ],
+      "accuracy": [
+        0.4609375,
+        0.453125
+      ],
+      "enlargedFraction": 0.583984375,
+      "extraConsumedBits": 2.05859375
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.14005777166110664,
+        0.14284250191248007
+      ],
+      "post": [
+        0.24480008603824768,
+        0.24349863253614792
+      ],
+      "accuracy": [
+        0.48828125,
+        0.546875
+      ],
+      "enlargedFraction": 0.55859375,
+      "extraConsumedBits": 2.013671875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.15266456363858283,
+        0.15434593528268525
+      ],
+      "post": [
+        0.26831114720187343,
+        0.26394219052094375
+      ],
+      "accuracy": [
+        0.51953125,
+        0.53125
+      ],
+      "enlargedFraction": 0.552734375,
+      "extraConsumedBits": 2.1015625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.13802715036127786,
+        0.13873709279037325
+      ],
+      "post": [
+        0.224223059765781,
+        0.22081048726135669
+      ],
+      "accuracy": [
+        0.5859375,
+        0.59375
+      ],
+      "enlargedFraction": 0.52734375,
+      "extraConsumedBits": 1.9296875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.1643531462159053,
+        0.16636877269463557
+      ],
+      "post": [
+        0.27618315198026777,
+        0.27519007955646285
+      ],
+      "accuracy": [
+        0.51953125,
+        0.48828125
+      ],
+      "enlargedFraction": 0.5,
+      "extraConsumedBits": 1.943359375
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.15510934973701274,
+        0.1581274903399481
+      ],
+      "post": [
+        0.2578983981729449,
+        0.2577356781744353
+      ],
+      "accuracy": [
+        0.52734375,
+        0.5234375
+      ],
+      "enlargedFraction": 0.455078125,
+      "extraConsumedBits": 2.08984375
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.16385426871710107,
+        0.1664948426870793
+      ],
+      "post": [
+        0.2749146050354028,
+        0.274113068127843
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "enlargedFraction": 0.40234375,
+      "extraConsumedBits": 1.935546875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.1432571598480933,
+        0.14502043818423482
+      ],
+      "post": [
+        0.21608450161076873,
+        0.21474521856411394
+      ],
+      "accuracy": [
+        0.6171875,
+        0.60546875
+      ],
+      "enlargedFraction": 0.712890625,
+      "extraConsumedBits": 2.259765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.1702533266431488,
+        0.17140123101225416
+      ],
+      "post": [
+        0.2688007701257338,
+        0.26619531822845177
+      ],
+      "accuracy": [
+        0.48046875,
+        0.47265625
+      ],
+      "enlargedFraction": 0.658203125,
+      "extraConsumedBits": 2.234375
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.1581368337905603,
+        0.15820057451431463
+      ],
+      "post": [
+        0.22987176677783647,
+        0.2266369277653372
+      ],
+      "accuracy": [
+        0.58984375,
+        0.56640625
+      ],
+      "enlargedFraction": 0.68359375,
+      "extraConsumedBits": 2.4765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.1797873065726192,
+        0.17886655166121448
+      ],
+      "post": [
+        0.27255749519692707,
+        0.2668205204805869
+      ],
+      "accuracy": [
+        0.50390625,
+        0.51171875
+      ],
+      "enlargedFraction": 0.607421875,
+      "extraConsumedBits": 2.41796875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.1494174502466891,
+        0.15199174987386482
+      ],
+      "post": [
+        0.2527124515534377,
+        0.25240118716785637
+      ],
+      "accuracy": [
+        0.58203125,
+        0.58984375
+      ],
+      "enlargedFraction": 0.453125,
+      "extraConsumedBits": 1.921875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.1562661580989352,
+        0.1569833114513421
+      ],
+      "post": [
+        0.26694792336685463,
+        0.2627261428926983
+      ],
+      "accuracy": [
+        0.55078125,
+        0.57421875
+      ],
+      "enlargedFraction": 0.453125,
+      "extraConsumedBits": 1.95703125
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.12214893584882278,
+        0.12484832837490123
+      ],
+      "post": [
+        0.19893419001083074,
+        0.19817997643078322
+      ],
+      "accuracy": [
+        0.62890625,
+        0.62890625
+      ],
+      "enlargedFraction": 0.576171875,
+      "extraConsumedBits": 2.244140625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.15773970832433187,
+        0.15856663567671248
+      ],
+      "post": [
+        0.2713770234301096,
+        0.26667110894292806
+      ],
+      "accuracy": [
+        0.52734375,
+        0.515625
+      ],
+      "enlargedFraction": 0.556640625,
+      "extraConsumedBits": 2.32421875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.15004040329353538,
+        0.1523217919972108
+      ],
+      "post": [
+        0.24820084004905682,
+        0.24928877864739712
+      ],
+      "accuracy": [
+        0.5703125,
+        0.58203125
+      ],
+      "enlargedFraction": 0.375,
+      "extraConsumedBits": 1.783203125
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.16042284755704553,
+        0.1615708598707244
+      ],
+      "post": [
+        0.2677664461065178,
+        0.26615821193502776
+      ],
+      "accuracy": [
+        0.48046875,
+        0.48046875
+      ],
+      "enlargedFraction": 0.353515625,
+      "extraConsumedBits": 1.626953125
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.148880268393315,
+        0.14972357958313307
+      ],
+      "post": [
+        0.2486772785321581,
+        0.2459626591597049
+      ],
+      "accuracy": [
+        0.54296875,
+        0.54296875
+      ],
+      "enlargedFraction": 0.4453125,
+      "extraConsumedBits": 2.04296875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.1646236037611996,
+        0.16341363346223797
+      ],
+      "post": [
+        0.2800036862574536,
+        0.27314043126918236
+      ],
+      "accuracy": [
+        0.48046875,
+        0.484375
+      ],
+      "enlargedFraction": 0.376953125,
+      "extraConsumedBits": 1.998046875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.1434123284803869,
+        0.14844000690548745
+      ],
+      "post": [
+        0.25932302453962225,
+        0.2582578742243818
+      ],
+      "accuracy": [
+        0.515625,
+        0.51953125
+      ],
+      "enlargedFraction": 0.51953125,
+      "extraConsumedBits": 2.19140625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.15413037683219283,
+        0.1571733176112264
+      ],
+      "post": [
+        0.2799168855899239,
+        0.27480736332628725
+      ],
+      "accuracy": [
+        0.51953125,
+        0.515625
+      ],
+      "enlargedFraction": 0.494140625,
+      "extraConsumedBits": 2.19921875
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.14950297990690845,
+        0.15111552163589984
+      ],
+      "post": [
+        0.25034296988485205,
+        0.25013509868291606
+      ],
+      "accuracy": [
+        0.5390625,
+        0.5546875
+      ],
+      "enlargedFraction": 0.423828125,
+      "extraConsumedBits": 1.90625
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.16434014517515566,
+        0.16527086282663492
+      ],
+      "post": [
+        0.2780006401443882,
+        0.2763242658674145
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51171875
+      ],
+      "enlargedFraction": 0.390625,
+      "extraConsumedBits": 1.861328125
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.15808345961656262,
+        0.15839132558655614
+      ],
+      "post": [
+        0.25375532532889783,
+        0.2534528711062164
+      ],
+      "accuracy": [
+        0.48828125,
+        0.49609375
+      ],
+      "enlargedFraction": 0.361328125,
+      "extraConsumedBits": 1.8359375
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.17357986897563357,
+        0.17309699645172724
+      ],
+      "post": [
+        0.28400803125831153,
+        0.2817637231647266
+      ],
+      "accuracy": [
+        0.4453125,
+        0.4453125
+      ],
+      "enlargedFraction": 0.3359375,
+      "extraConsumedBits": 1.8984375
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.14947438203938496,
+        0.15142799994910525
+      ],
+      "post": [
+        0.2300050565471483,
+        0.22884786875826368
+      ],
+      "accuracy": [
+        0.609375,
+        0.59375
+      ],
+      "enlargedFraction": 0.6484375,
+      "extraConsumedBits": 2.220703125
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.16925949858390182,
+        0.1710702160258576
+      ],
+      "post": [
+        0.26849846021268786,
+        0.2668997056960475
+      ],
+      "accuracy": [
+        0.5,
+        0.5078125
+      ],
+      "enlargedFraction": 0.666015625,
+      "extraConsumedBits": 2.32421875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.18899182715537766,
+        0.15505885172728873
+      ],
+      "post": [
+        0.2284209518886455,
+        0.23651596815664558
+      ],
+      "accuracy": [
+        0.58203125,
+        0.56640625
+      ],
+      "enlargedFraction": 0.837890625,
+      "extraConsumedBits": 2.44921875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.20643689866969958,
+        0.17021779230309564
+      ],
+      "post": [
+        0.2626982053109525,
+        0.2659057556487599
+      ],
+      "accuracy": [
+        0.44921875,
+        0.48046875
+      ],
+      "enlargedFraction": 0.787109375,
+      "extraConsumedBits": 2.337890625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.20642799449194743,
+        0.1722676514533626
+      ],
+      "post": [
+        0.22575790231782636,
+        0.2334837064804354
+      ],
+      "accuracy": [
+        0.62109375,
+        0.64453125
+      ],
+      "enlargedFraction": 0.759765625,
+      "extraConsumedBits": 2.150390625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.22457991701439545,
+        0.19038026814955603
+      ],
+      "post": [
+        0.2618838070477233,
+        0.26802049968051095
+      ],
+      "accuracy": [
+        0.52734375,
+        0.515625
+      ],
+      "enlargedFraction": 0.705078125,
+      "extraConsumedBits": 2.0234375
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.21550013550088906,
+        0.15774398404989134
+      ],
+      "post": [
+        0.21856563800778517,
+        0.20856528993645734
+      ],
+      "accuracy": [
+        0.62109375,
+        0.6328125
+      ],
+      "enlargedFraction": 0.80859375,
+      "extraConsumedBits": 2.357421875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.23654434130081822,
+        0.17988851097544242
+      ],
+      "post": [
+        0.26086511983887567,
+        0.2518513185264515
+      ],
+      "accuracy": [
+        0.515625,
+        0.55078125
+      ],
+      "enlargedFraction": 0.7578125,
+      "extraConsumedBits": 2.240234375
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.1330751034906832,
+        0.13613592708359018
+      ],
+      "post": [
+        0.21994830675455526,
+        0.21465040473599784
+      ],
+      "accuracy": [
+        0.671875,
+        0.68359375
+      ],
+      "enlargedFraction": 0.8984375,
+      "extraConsumedBits": 2.71484375
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.14414875014025763,
+        0.15338418725092048
+      ],
+      "post": [
+        0.24137227141875403,
+        0.24832639259321015
+      ],
+      "accuracy": [
+        0.6328125,
+        0.6015625
+      ],
+      "enlargedFraction": 0.865234375,
+      "extraConsumedBits": 2.54296875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.2128615116176445,
+        0.1644052646889239
+      ],
+      "post": [
+        0.2272606495631905,
+        0.2383947682490829
+      ],
+      "accuracy": [
+        0.62890625,
+        0.6015625
+      ],
+      "enlargedFraction": 0.81640625,
+      "extraConsumedBits": 2.31640625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.2300153116380378,
+        0.18146790401107482
+      ],
+      "post": [
+        0.2611010502462076,
+        0.2715107292484512
+      ],
+      "accuracy": [
+        0.50390625,
+        0.484375
+      ],
+      "enlargedFraction": 0.771484375,
+      "extraConsumedBits": 2.283203125
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.20241074388151573,
+        0.17324516861640418
+      ],
+      "post": [
+        0.25531358395244713,
+        0.2517943215816155
+      ],
+      "accuracy": [
+        0.57421875,
+        0.5234375
+      ],
+      "enlargedFraction": 0.6953125,
+      "extraConsumedBits": 2.208984375
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.2057236613647284,
+        0.1785849984856266
+      ],
+      "post": [
+        0.2618218805668687,
+        0.2619478907486454
+      ],
+      "accuracy": [
+        0.51953125,
+        0.5078125
+      ],
+      "enlargedFraction": 0.6640625,
+      "extraConsumedBits": 2.16015625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.18370959227253944,
+        0.14674394370456983
+      ],
+      "post": [
+        0.23269760611461252,
+        0.22966008968995952
+      ],
+      "accuracy": [
+        0.62890625,
+        0.6484375
+      ],
+      "enlargedFraction": 0.814453125,
+      "extraConsumedBits": 2.294921875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.192834605201939,
+        0.15911173012253982
+      ],
+      "post": [
+        0.2505198348455769,
+        0.2539697836389111
+      ],
+      "accuracy": [
+        0.61328125,
+        0.61328125
+      ],
+      "enlargedFraction": 0.8125,
+      "extraConsumedBits": 2.267578125
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.17277058220722297,
+        0.15078047197976086
+      ],
+      "post": [
+        0.18462407256177193,
+        0.20127639980619913
+      ],
+      "accuracy": [
+        0.73828125,
+        0.70703125
+      ],
+      "enlargedFraction": 0.859375,
+      "extraConsumedBits": 2.861328125
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.2043292844290655,
+        0.17564308568128267
+      ],
+      "post": [
+        0.24708657378099458,
+        0.2504788085795494
+      ],
+      "accuracy": [
+        0.62890625,
+        0.59765625
+      ],
+      "enlargedFraction": 0.849609375,
+      "extraConsumedBits": 2.6015625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.24146240428696528,
+        0.21294235514327295
+      ],
+      "post": [
+        0.23491734186813368,
+        0.2643548896858468
+      ],
+      "accuracy": [
+        0.62109375,
+        0.60546875
+      ],
+      "enlargedFraction": 0.794921875,
+      "extraConsumedBits": 2.34765625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.24576954442378726,
+        0.25224889645290194
+      ],
+      "post": [
+        0.24548824570461594,
+        0.3318336116238047
+      ],
+      "accuracy": [
+        0.53515625,
+        0.5078125
+      ],
+      "enlargedFraction": 0.80859375,
+      "extraConsumedBits": 2.388671875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.13954023698684276,
+        0.1416759428326068
+      ],
+      "post": [
+        0.24780340416456514,
+        0.24641217164935408
+      ],
+      "accuracy": [
+        0.5234375,
+        0.52734375
+      ],
+      "enlargedFraction": 0.509765625,
+      "extraConsumedBits": 2.08984375
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.15154365980886686,
+        0.15313520193579427
+      ],
+      "post": [
+        0.27026537856643396,
+        0.2676115798557383
+      ],
+      "accuracy": [
+        0.48828125,
+        0.4921875
+      ],
+      "enlargedFraction": 0.466796875,
+      "extraConsumedBits": 2.060546875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.1384081621428441,
+        0.1434286700009808
+      ],
+      "post": [
+        0.2347426229043891,
+        0.23576241584453386
+      ],
+      "accuracy": [
+        0.58984375,
+        0.6015625
+      ],
+      "enlargedFraction": 0.505859375,
+      "extraConsumedBits": 1.916015625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.15784248715558888,
+        0.16351313879582782
+      ],
+      "post": [
+        0.2729614061067829,
+        0.2752250917280943
+      ],
+      "accuracy": [
+        0.55078125,
+        0.53125
+      ],
+      "enlargedFraction": 0.5,
+      "extraConsumedBits": 2.06640625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.245840405954895,
+        0.1910150769347801
+      ],
+      "post": [
+        0.23816604571293387,
+        0.23805594194623603
+      ],
+      "accuracy": [
+        0.51953125,
+        0.4765625
+      ],
+      "enlargedFraction": 0.8828125,
+      "extraConsumedBits": 2.525390625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.25619282013590017,
+        0.1982562470941088
+      ],
+      "post": [
+        0.26884408805324733,
+        0.26247413139256337
+      ],
+      "accuracy": [
+        0.45703125,
+        0.4375
+      ],
+      "enlargedFraction": 0.8671875,
+      "extraConsumedBits": 2.474609375
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.1863598718698509,
+        0.15979195706777358
+      ],
+      "post": [
+        0.23796340977507957,
+        0.23812076403446764
+      ],
+      "accuracy": [
+        0.57421875,
+        0.5546875
+      ],
+      "enlargedFraction": 0.767578125,
+      "extraConsumedBits": 2.263671875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.19616797841145336,
+        0.17000907116546415
+      ],
+      "post": [
+        0.2569685494109948,
+        0.25793011529492815
+      ],
+      "accuracy": [
+        0.546875,
+        0.57421875
+      ],
+      "enlargedFraction": 0.796875,
+      "extraConsumedBits": 2.3359375
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.16086510428576872,
+        0.16263033058294707
+      ],
+      "post": [
+        0.25140882365800965,
+        0.2504598501168688
+      ],
+      "accuracy": [
+        0.58984375,
+        0.5859375
+      ],
+      "enlargedFraction": 0.466796875,
+      "extraConsumedBits": 1.79296875
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.16574629313358907,
+        0.16771241775978826
+      ],
+      "post": [
+        0.2643474263666616,
+        0.2634483337507935
+      ],
+      "accuracy": [
+        0.53515625,
+        0.5
+      ],
+      "enlargedFraction": 0.4765625,
+      "extraConsumedBits": 1.953125
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.20278571698251374,
+        0.17044627386379296
+      ],
+      "post": [
+        0.23381516896758975,
+        0.24229745652139595
+      ],
+      "accuracy": [
+        0.58984375,
+        0.578125
+      ],
+      "enlargedFraction": 0.814453125,
+      "extraConsumedBits": 2.353515625
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.2166854574877685,
+        0.18632215239610803
+      ],
+      "post": [
+        0.2612497194450804,
+        0.2721906997891088
+      ],
+      "accuracy": [
+        0.49609375,
+        0.5234375
+      ],
+      "enlargedFraction": 0.822265625,
+      "extraConsumedBits": 2.392578125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.051444245739679595,
+        0.06113960753902841
+      ],
+      "post": [
+        0.04799314143280673,
+        0.05829715825428153
+      ],
+      "accuracy": [
+        0.94921875,
+        0.9453125
+      ],
+      "enlargedFraction": 0.517578125,
+      "extraConsumedBits": 2.58203125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.05173355201419501,
+        0.06148338928711337
+      ],
+      "post": [
+        0.04788782378577253,
+        0.058169893172357
+      ],
+      "accuracy": [
+        0.94921875,
+        0.9453125
+      ],
+      "enlargedFraction": 0.517578125,
+      "extraConsumedBits": 2.58203125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.05719608204851544,
+        0.06169992459787365
+      ],
+      "post": [
+        0.03776255863318347,
+        0.04592565967116059
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "enlargedFraction": 0.3984375,
+      "extraConsumedBits": 2.33984375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.05667764475631342,
+        0.06128821892363625
+      ],
+      "post": [
+        0.03774308996523796,
+        0.04594316418954142
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "enlargedFraction": 0.3984375,
+      "extraConsumedBits": 2.33984375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.06148323171651765,
+        0.06746104691981085
+      ],
+      "post": [
+        0.0807467375540196,
+        0.08584153892882371
+      ],
+      "accuracy": [
+        0.9140625,
+        0.9140625
+      ],
+      "enlargedFraction": 0.44921875,
+      "extraConsumedBits": 2.37890625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.061818640520984576,
+        0.06867404250536718
+      ],
+      "post": [
+        0.08058994063701753,
+        0.08685889748893148
+      ],
+      "accuracy": [
+        0.9140625,
+        0.9140625
+      ],
+      "enlargedFraction": 0.44921875,
+      "extraConsumedBits": 2.41796875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.04942363638389985,
+        0.054853932489362406
+      ],
+      "post": [
+        0.04888931540396357,
+        0.054168451819550004
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "enlargedFraction": 0.359375,
+      "extraConsumedBits": 2.07421875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.05224282335978512,
+        0.05775326644639037
+      ],
+      "post": [
+        0.04879546266808331,
+        0.054155568024892485
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "enlargedFraction": 0.359375,
+      "extraConsumedBits": 2.07421875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.04851191603764287,
+        0.05608606928915931
+      ],
+      "post": [
+        0.05520601995094861,
+        0.0648031726907678
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "enlargedFraction": 0.611328125,
+      "extraConsumedBits": 2.447265625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.047733712555709316,
+        0.05512065002938781
+      ],
+      "post": [
+        0.05493745788838705,
+        0.06406868890956673
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "enlargedFraction": 0.611328125,
+      "extraConsumedBits": 2.447265625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.038647518385480514,
+        0.04692066500811744
+      ],
+      "post": [
+        0.041443621835124025,
+        0.04893940880550102
+      ],
+      "accuracy": [
+        0.95703125,
+        0.95703125
+      ],
+      "enlargedFraction": 0.54296875,
+      "extraConsumedBits": 2.12890625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.038442484759352684,
+        0.046827908909176486
+      ],
+      "post": [
+        0.04139579005757455,
+        0.04893768864661695
+      ],
+      "accuracy": [
+        0.95703125,
+        0.95703125
+      ],
+      "enlargedFraction": 0.54296875,
+      "extraConsumedBits": 2.12890625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.05106393794900645,
+        0.058792890542262194
+      ],
+      "post": [
+        0.044501215812698065,
+        0.05100190286120795
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.517578125,
+      "extraConsumedBits": 2.314453125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.049764788583557144,
+        0.058042915177690266
+      ],
+      "post": [
+        0.04455126912074377,
+        0.05103134710524662
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.517578125,
+      "extraConsumedBits": 2.314453125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.048086982529974516,
+        0.0549467077543738
+      ],
+      "post": [
+        0.0641070426542046,
+        0.06898096190232822
+      ],
+      "accuracy": [
+        0.93359375,
+        0.93359375
+      ],
+      "enlargedFraction": 0.5625,
+      "extraConsumedBits": 2.42578125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.04801042577510146,
+        0.05484613600879387
+      ],
+      "post": [
+        0.06320864575541173,
+        0.06800397597853693
+      ],
+      "accuracy": [
+        0.93359375,
+        0.93359375
+      ],
+      "enlargedFraction": 0.5625,
+      "extraConsumedBits": 2.396484375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.05076741194905202,
+        0.06039714506697525
+      ],
+      "post": [
+        0.04919270158374286,
+        0.05808660703804459
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "enlargedFraction": 0.591796875,
+      "extraConsumedBits": 2.34765625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.05108048843387905,
+        0.06080035222270952
+      ],
+      "post": [
+        0.04912222141595751,
+        0.05799316992641006
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "enlargedFraction": 0.591796875,
+      "extraConsumedBits": 2.34765625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.03829673646191546,
+        0.04773264627843646
+      ],
+      "post": [
+        0.05266676342571208,
+        0.06075747275682543
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "enlargedFraction": 0.599609375,
+      "extraConsumedBits": 2.396484375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.03879131154591354,
+        0.04819412077577794
+      ],
+      "post": [
+        0.052433223430968026,
+        0.0602091783516101
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "enlargedFraction": 0.599609375,
+      "extraConsumedBits": 2.396484375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.051983775583672204,
+        0.05910783260877826
+      ],
+      "post": [
+        0.05923004489163504,
+        0.06508647317393992
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "enlargedFraction": 0.486328125,
+      "extraConsumedBits": 1.939453125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.054387909552549234,
+        0.06187768592632667
+      ],
+      "post": [
+        0.06258632610826143,
+        0.06903237285176438
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "enlargedFraction": 0.490234375,
+      "extraConsumedBits": 1.919921875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.05125070825987433,
+        0.059975259582895096
+      ],
+      "post": [
+        0.04596374837546781,
+        0.052577979200285584
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.578125,
+      "extraConsumedBits": 2.296875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.05317439524479889,
+        0.062168403118883074
+      ],
+      "post": [
+        0.045998531708058496,
+        0.052565098147359046
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.578125,
+      "extraConsumedBits": 2.296875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.056308107494710095,
+        0.05961442000986067
+      ],
+      "post": [
+        0.059535424244286594,
+        0.06066766140692929
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "enlargedFraction": 0.478515625,
+      "extraConsumedBits": 2.3671875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.05872794217178771,
+        0.06287503519805411
+      ],
+      "post": [
+        0.05939738385025445,
+        0.060979632514041184
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "enlargedFraction": 0.474609375,
+      "extraConsumedBits": 2.359375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.03884997592155087,
+        0.04753967091530231
+      ],
+      "post": [
+        0.04582755072922075,
+        0.05527334326276372
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.6015625,
+      "extraConsumedBits": 2.3515625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.04107140577042102,
+        0.049841006457695645
+      ],
+      "post": [
+        0.04578243358690449,
+        0.05520234948704141
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "enlargedFraction": 0.6015625,
+      "extraConsumedBits": 2.3515625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.053897855285796756,
+        0.059131427634636316
+      ],
+      "post": [
+        0.05179361327921911,
+        0.05618053167817835
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "enlargedFraction": 0.42578125,
+      "extraConsumedBits": 2.11328125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.05588004203139149,
+        0.06355936865404298
+      ],
+      "post": [
+        0.05445940876960578,
+        0.06364850533735295
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "enlargedFraction": 0.439453125,
+      "extraConsumedBits": 2.1171875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.04204656736352501,
+        0.05079827562193261
+      ],
+      "post": [
+        0.0313004319661781,
+        0.039501186432288025
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "enlargedFraction": 0.537109375,
+      "extraConsumedBits": 2.314453125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.04200799936513372,
+        0.05072049200610451
+      ],
+      "post": [
+        0.03129232874185613,
+        0.03949368739698702
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "enlargedFraction": 0.537109375,
+      "extraConsumedBits": 2.314453125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.25099770360895424,
+        0.1458852852559358
+      ],
+      "post": [
+        0.2507166436565821,
+        0.13835005861149247
+      ],
+      "accuracy": [
+        0.4921875,
+        0.796875
+      ],
+      "enlargedFraction": 0.72265625,
+      "extraConsumedBits": 2.173828125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.2512691254388907,
+        0.15689599607014623
+      ],
+      "post": [
+        0.2560695851573856,
+        0.1333582565942928
+      ],
+      "accuracy": [
+        0.46875,
+        0.7890625
+      ],
+      "enlargedFraction": 0.724609375,
+      "extraConsumedBits": 2.171875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.16768578431739703,
+        0.08136780128977823
+      ],
+      "post": [
+        0.1618429610596424,
+        0.08535112469048484
+      ],
+      "accuracy": [
+        0.71484375,
+        0.90234375
+      ],
+      "enlargedFraction": 0.82421875,
+      "extraConsumedBits": 2.47265625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.16781411278050692,
+        0.08188005773786072
+      ],
+      "post": [
+        0.1617575913769572,
+        0.08539262826470391
+      ],
+      "accuracy": [
+        0.71484375,
+        0.90234375
+      ],
+      "enlargedFraction": 0.82421875,
+      "extraConsumedBits": 2.47265625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.14427344717351248,
+        0.06372596706794773
+      ],
+      "post": [
+        0.1540941360914016,
+        0.06453963806740401
+      ],
+      "accuracy": [
+        0.70703125,
+        0.94140625
+      ],
+      "enlargedFraction": 0.875,
+      "extraConsumedBits": 2.625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.14468283410559257,
+        0.06444283020642347
+      ],
+      "post": [
+        0.1541485310486075,
+        0.06470459717724183
+      ],
+      "accuracy": [
+        0.70703125,
+        0.94140625
+      ],
+      "enlargedFraction": 0.875,
+      "extraConsumedBits": 2.625
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.21723324648895362,
+        0.12091357401300966
+      ],
+      "post": [
+        0.22232516942159794,
+        0.12714259852079746
+      ],
+      "accuracy": [
+        0.57421875,
+        0.8125
+      ],
+      "enlargedFraction": 0.634765625,
+      "extraConsumedBits": 1.990234375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.21738540268427356,
+        0.1211952521223943
+      ],
+      "post": [
+        0.2221357828539646,
+        0.12697587639644684
+      ],
+      "accuracy": [
+        0.58203125,
+        0.81640625
+      ],
+      "enlargedFraction": 0.634765625,
+      "extraConsumedBits": 1.990234375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.25026697418780525,
+        0.14717472553332187
+      ],
+      "post": [
+        0.25593764050216194,
+        0.12959796113302194
+      ],
+      "accuracy": [
+        0.4765625,
+        0.828125
+      ],
+      "enlargedFraction": 0.720703125,
+      "extraConsumedBits": 2.13671875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.2520163780068311,
+        0.16486448847089777
+      ],
+      "post": [
+        0.25279976511281327,
+        0.1338040937696177
+      ],
+      "accuracy": [
+        0.5,
+        0.82421875
+      ],
+      "enlargedFraction": 0.705078125,
+      "extraConsumedBits": 2.11328125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.10203229085407492,
+        0.0773591064009269
+      ],
+      "post": [
+        0.11331443873601658,
+        0.08942798062577842
+      ],
+      "accuracy": [
+        0.82421875,
+        0.89453125
+      ],
+      "enlargedFraction": 0.6171875,
+      "extraConsumedBits": 2.15234375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.10315113520436839,
+        0.07807516707502364
+      ],
+      "post": [
+        0.11510044452560571,
+        0.09019052307105058
+      ],
+      "accuracy": [
+        0.82421875,
+        0.8984375
+      ],
+      "enlargedFraction": 0.615234375,
+      "extraConsumedBits": 2.1484375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.10838593909930004,
+        0.07993437956870629
+      ],
+      "post": [
+        0.10509552706863116,
+        0.08026921963421796
+      ],
+      "accuracy": [
+        0.828125,
+        0.921875
+      ],
+      "enlargedFraction": 0.7734375,
+      "extraConsumedBits": 2.6875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.11058197348852113,
+        0.08303249821424877
+      ],
+      "post": [
+        0.10548648043567108,
+        0.0814243441169546
+      ],
+      "accuracy": [
+        0.828125,
+        0.921875
+      ],
+      "enlargedFraction": 0.7734375,
+      "extraConsumedBits": 2.6875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.06387714519895037,
+        0.07369470137125612
+      ],
+      "post": [
+        0.06290027110289169,
+        0.07224432418543056
+      ],
+      "accuracy": [
+        0.93359375,
+        0.93359375
+      ],
+      "enlargedFraction": 0.8203125,
+      "extraConsumedBits": 2.4609375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.06385893378742358,
+        0.07376119322617312
+      ],
+      "post": [
+        0.06279809684486484,
+        0.0722224419625205
+      ],
+      "accuracy": [
+        0.93359375,
+        0.93359375
+      ],
+      "enlargedFraction": 0.8203125,
+      "extraConsumedBits": 2.4609375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.24793668531078672,
+        0.13353134928067026
+      ],
+      "post": [
+        0.25381838930220724,
+        0.09900102811302273
+      ],
+      "accuracy": [
+        0.49609375,
+        0.86328125
+      ],
+      "enlargedFraction": 0.783203125,
+      "extraConsumedBits": 2.330078125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.2478832277109194,
+        0.14067457333129324
+      ],
+      "post": [
+        0.24664353050587484,
+        0.11001980783524677
+      ],
+      "accuracy": [
+        0.50390625,
+        0.86328125
+      ],
+      "enlargedFraction": 0.7734375,
+      "extraConsumedBits": 2.3125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.08735328527483179,
+        0.06548196074071332
+      ],
+      "post": [
+        0.0803732623047566,
+        0.06693996919418921
+      ],
+      "accuracy": [
+        0.84765625,
+        0.89453125
+      ],
+      "enlargedFraction": 0.638671875,
+      "extraConsumedBits": 2.232421875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.08866730600761401,
+        0.06651684519648124
+      ],
+      "post": [
+        0.08033795288974227,
+        0.0668959477707087
+      ],
+      "accuracy": [
+        0.84765625,
+        0.89453125
+      ],
+      "enlargedFraction": 0.638671875,
+      "extraConsumedBits": 2.232421875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.2520451142155779,
+        0.1384402653840618
+      ],
+      "post": [
+        0.2530469581823776,
+        0.15302187685742144
+      ],
+      "accuracy": [
+        0.4765625,
+        0.8359375
+      ],
+      "enlargedFraction": 0.7734375,
+      "extraConsumedBits": 2.3203125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.25087112734899514,
+        0.12302854696321225
+      ],
+      "post": [
+        0.2515653524096554,
+        0.11846592834462617
+      ],
+      "accuracy": [
+        0.51171875,
+        0.83203125
+      ],
+      "enlargedFraction": 0.7734375,
+      "extraConsumedBits": 2.3203125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.24915243576381244,
+        0.10383404013445197
+      ],
+      "post": [
+        0.2466403421543906,
+        0.10240954898610054
+      ],
+      "accuracy": [
+        0.52734375,
+        0.890625
+      ],
+      "enlargedFraction": 0.8828125,
+      "extraConsumedBits": 2.6484375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.2521282286540676,
+        0.10586523516780225
+      ],
+      "post": [
+        0.2516794517842173,
+        0.10741021296080464
+      ],
+      "accuracy": [
+        0.53125,
+        0.890625
+      ],
+      "enlargedFraction": 0.8828125,
+      "extraConsumedBits": 2.6484375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.21224274238529717,
+        0.10022792305063082
+      ],
+      "post": [
+        0.2068994673121974,
+        0.11248959086850857
+      ],
+      "accuracy": [
+        0.59375,
+        0.82421875
+      ],
+      "enlargedFraction": 0.78515625,
+      "extraConsumedBits": 2.35546875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.21228822803789418,
+        0.10268252933169664
+      ],
+      "post": [
+        0.20685171034368874,
+        0.11225952170243328
+      ],
+      "accuracy": [
+        0.6015625,
+        0.828125
+      ],
+      "enlargedFraction": 0.78515625,
+      "extraConsumedBits": 2.35546875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.2475306739918843,
+        0.1279723736027898
+      ],
+      "post": [
+        0.2490359608826627,
+        0.11653215030782142
+      ],
+      "accuracy": [
+        0.5390625,
+        0.8515625
+      ],
+      "enlargedFraction": 0.697265625,
+      "extraConsumedBits": 2.091796875
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.24984894538562064,
+        0.13819670392957614
+      ],
+      "post": [
+        0.24924897948341543,
+        0.1166878375404352
+      ],
+      "accuracy": [
+        0.54296875,
+        0.8515625
+      ],
+      "enlargedFraction": 0.7109375,
+      "extraConsumedBits": 2.109375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.11391954161378934,
+        0.07684861262280282
+      ],
+      "post": [
+        0.09906817097918905,
+        0.06468062496287161
+      ],
+      "accuracy": [
+        0.828125,
+        0.91796875
+      ],
+      "enlargedFraction": 0.689453125,
+      "extraConsumedBits": 2.224609375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.1139526403244597,
+        0.07704695668469917
+      ],
+      "post": [
+        0.09895323396330165,
+        0.06459950742301125
+      ],
+      "accuracy": [
+        0.8359375,
+        0.92578125
+      ],
+      "enlargedFraction": 0.689453125,
+      "extraConsumedBits": 2.224609375
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.20796530569411537,
+        0.10455786409174736
+      ],
+      "post": [
+        0.21353976712486858,
+        0.1008112235623069
+      ],
+      "accuracy": [
+        0.546875,
+        0.875
+      ],
+      "enlargedFraction": 0.740234375,
+      "extraConsumedBits": 2.220703125
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.20814216961674673,
+        0.10552658635310429
+      ],
+      "post": [
+        0.21374750728077654,
+        0.10080392175607836
+      ],
+      "accuracy": [
+        0.5546875,
+        0.87109375
+      ],
+      "enlargedFraction": 0.740234375,
+      "extraConsumedBits": 2.220703125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.15119838155791762,
+        0.15535935747913196
+      ],
+      "post": [
+        0.26026049615775776,
+        0.2598329910262469
+      ],
+      "accuracy": [
+        0.49609375,
+        0.484375
+      ],
+      "enlargedFraction": 0.625,
+      "extraConsumedBits": 2.13671875
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.1615863729140003,
+        0.1643762780438217
+      ],
+      "post": [
+        0.2782005843614958,
+        0.27459287254257075
+      ],
+      "accuracy": [
+        0.47265625,
+        0.47265625
+      ],
+      "enlargedFraction": 0.61328125,
+      "extraConsumedBits": 2.171875
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.1369335708920826,
+        0.1384447062887052
+      ],
+      "post": [
+        0.22436441936474594,
+        0.22352061594425934
+      ],
+      "accuracy": [
+        0.625,
+        0.61328125
+      ],
+      "enlargedFraction": 0.380859375,
+      "extraConsumedBits": 1.9609375
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.15800201622510698,
+        0.15897583332226164
+      ],
+      "post": [
+        0.26681695617788176,
+        0.2647034952811581
+      ],
+      "accuracy": [
+        0.53515625,
+        0.5390625
+      ],
+      "enlargedFraction": 0.337890625,
+      "extraConsumedBits": 1.96484375
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.12763963739928957,
+        0.12964655362473024
+      ],
+      "post": [
+        0.2172761710423513,
+        0.21575193648475952
+      ],
+      "accuracy": [
+        0.62890625,
+        0.625
+      ],
+      "enlargedFraction": 0.419921875,
+      "extraConsumedBits": 2.12109375
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.15347372127883013,
+        0.15552867576829912
+      ],
+      "post": [
+        0.26811179229923265,
+        0.2665952874654317
+      ],
+      "accuracy": [
+        0.47265625,
+        0.4765625
+      ],
+      "enlargedFraction": 0.373046875,
+      "extraConsumedBits": 2.169921875
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.12352997631338361,
+        0.13051737679711475
+      ],
+      "post": [
+        0.22044876758583787,
+        0.21923095390688702
+      ],
+      "accuracy": [
+        0.6171875,
+        0.63671875
+      ],
+      "enlargedFraction": 0.7265625,
+      "extraConsumedBits": 2.578125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.15114136548476173,
+        0.15406112479436404
+      ],
+      "post": [
+        0.2750298012416009,
+        0.26508285432318357
+      ],
+      "accuracy": [
+        0.484375,
+        0.50390625
+      ],
+      "enlargedFraction": 0.685546875,
+      "extraConsumedBits": 2.447265625
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.14408671526448835,
+        0.14549892111452184
+      ],
+      "post": [
+        0.22851400759968252,
+        0.22756957006062606
+      ],
+      "accuracy": [
+        0.55859375,
+        0.55859375
+      ],
+      "enlargedFraction": 0.427734375,
+      "extraConsumedBits": 1.80078125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.16572215616887243,
+        0.16665826294923697
+      ],
+      "post": [
+        0.2705117869772422,
+        0.2684551686961475
+      ],
+      "accuracy": [
+        0.47265625,
+        0.47265625
+      ],
+      "enlargedFraction": 0.345703125,
+      "extraConsumedBits": 1.74609375
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.1416665006629611,
+        0.14518657881101069
+      ],
+      "post": [
+        0.23759603354330155,
+        0.23479030946625865
+      ],
+      "accuracy": [
+        0.625,
+        0.6328125
+      ],
+      "enlargedFraction": 0.62890625,
+      "extraConsumedBits": 2.126953125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.1620125377590426,
+        0.1630292642424597
+      ],
+      "post": [
+        0.27679582341072984,
+        0.26897167674039757
+      ],
+      "accuracy": [
+        0.55859375,
+        0.5703125
+      ],
+      "enlargedFraction": 0.58984375,
+      "extraConsumedBits": 2.08984375
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.1595244382021502,
+        0.16277688735034626
+      ],
+      "post": [
+        0.23864685572616182,
+        0.23854404424243936
+      ],
+      "accuracy": [
+        0.63671875,
+        0.609375
+      ],
+      "enlargedFraction": 0.70703125,
+      "extraConsumedBits": 2.37109375
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.17488351250852344,
+        0.17595604315431346
+      ],
+      "post": [
+        0.2675106298544673,
+        0.26286486033502826
+      ],
+      "accuracy": [
+        0.5390625,
+        0.54296875
+      ],
+      "enlargedFraction": 0.65625,
+      "extraConsumedBits": 2.232421875
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.15862836134263616,
+        0.15997210695550013
+      ],
+      "post": [
+        0.2569842656594973,
+        0.25351558610613917
+      ],
+      "accuracy": [
+        0.53515625,
+        0.53125
+      ],
+      "enlargedFraction": 0.712890625,
+      "extraConsumedBits": 2.451171875
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.16003021347042076,
+        0.1598458082410834
+      ],
+      "post": [
+        0.2581365099521725,
+        0.2514111586730623
+      ],
+      "accuracy": [
+        0.484375,
+        0.48828125
+      ],
+      "enlargedFraction": 0.703125,
+      "extraConsumedBits": 2.494140625
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.14430109580751777,
+        0.14791472524492538
+      ],
+      "post": [
+        0.22605919999367585,
+        0.22612347856606826
+      ],
+      "accuracy": [
+        0.640625,
+        0.578125
+      ],
+      "enlargedFraction": 0.66015625,
+      "extraConsumedBits": 2.23828125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.16287568032806382,
+        0.16499973536489326
+      ],
+      "post": [
+        0.2624337946942735,
+        0.259196094356281
+      ],
+      "accuracy": [
+        0.5625,
+        0.47265625
+      ],
+      "enlargedFraction": 0.63671875,
+      "extraConsumedBits": 2.197265625
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.15473390109208987,
+        0.15576838531298487
+      ],
+      "post": [
+        0.25641101063393124,
+        0.25359479422392117
+      ],
+      "accuracy": [
+        0.4921875,
+        0.53125
+      ],
+      "enlargedFraction": 0.6484375,
+      "extraConsumedBits": 2.234375
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.1609621563211872,
+        0.1618008047106168
+      ],
+      "post": [
+        0.26785347963481165,
+        0.2645429919303301
+      ],
+      "accuracy": [
+        0.48828125,
+        0.50390625
+      ],
+      "enlargedFraction": 0.640625,
+      "extraConsumedBits": 2.3125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.14156489601932978,
+        0.1421857091808956
+      ],
+      "post": [
+        0.23858516341474628,
+        0.23853299298522726
+      ],
+      "accuracy": [
+        0.5390625,
+        0.53125
+      ],
+      "enlargedFraction": 0.47265625,
+      "extraConsumedBits": 2.044921875
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.16052922552898533,
+        0.16069105191807495
+      ],
+      "post": [
+        0.27577411376760225,
+        0.2746786448545665
+      ],
+      "accuracy": [
+        0.48828125,
+        0.46875
+      ],
+      "enlargedFraction": 0.4453125,
+      "extraConsumedBits": 2.0390625
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.14646014245453276,
+        0.15284659213856905
+      ],
+      "post": [
+        0.2404432048043167,
+        0.24211336988076498
+      ],
+      "accuracy": [
+        0.5859375,
+        0.54296875
+      ],
+      "enlargedFraction": 0.728515625,
+      "extraConsumedBits": 2.509765625
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.164053866343643,
+        0.16777515231380194
+      ],
+      "post": [
+        0.2754942457891862,
+        0.27159192082796973
+      ],
+      "accuracy": [
+        0.48828125,
+        0.484375
+      ],
+      "enlargedFraction": 0.689453125,
+      "extraConsumedBits": 2.4453125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.1406843495288321,
+        0.14284332074195183
+      ],
+      "post": [
+        0.2570313039496383,
+        0.25515701198338303
+      ],
+      "accuracy": [
+        0.52734375,
+        0.546875
+      ],
+      "enlargedFraction": 0.53125,
+      "extraConsumedBits": 2.0625
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.15241967750242152,
+        0.152837679694294
+      ],
+      "post": [
+        0.2792138635195202,
+        0.2737478592372531
+      ],
+      "accuracy": [
+        0.4921875,
+        0.51171875
+      ],
+      "enlargedFraction": 0.49609375,
+      "extraConsumedBits": 2.125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.14334574870072653,
+        0.14729795781346444
+      ],
+      "post": [
+        0.24764081290061168,
+        0.25029972368966613
+      ],
+      "accuracy": [
+        0.52734375,
+        0.5234375
+      ],
+      "enlargedFraction": 0.580078125,
+      "extraConsumedBits": 1.953125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.14853231070749992,
+        0.1523472592893827
+      ],
+      "post": [
+        0.2573503495027754,
+        0.2595786440259674
+      ],
+      "accuracy": [
+        0.51953125,
+        0.4921875
+      ],
+      "enlargedFraction": 0.56640625,
+      "extraConsumedBits": 2.03125
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.14882953716803093,
+        0.1514680974711555
+      ],
+      "post": [
+        0.2485751928365848,
+        0.24847772328539794
+      ],
+      "accuracy": [
+        0.5703125,
+        0.57421875
+      ],
+      "enlargedFraction": 0.361328125,
+      "extraConsumedBits": 1.962890625
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.15963890318102592,
+        0.16086040289658893
+      ],
+      "post": [
+        0.2694047613910766,
+        0.2663337472636883
+      ],
+      "accuracy": [
+        0.546875,
+        0.546875
+      ],
+      "enlargedFraction": 0.359375,
+      "extraConsumedBits": 2.201171875
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.1464508007425401,
+        0.14755742976821606
+      ],
+      "post": [
+        0.24760904208922452,
+        0.2457632063215995
+      ],
+      "accuracy": [
+        0.56640625,
+        0.55078125
+      ],
+      "enlargedFraction": 0.57421875,
+      "extraConsumedBits": 2.1796875
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.1604572372259661,
+        0.1599781458924181
+      ],
+      "post": [
+        0.27512744086924873,
+        0.269956301957343
+      ],
+      "accuracy": [
+        0.48046875,
+        0.48046875
+      ],
+      "enlargedFraction": 0.474609375,
+      "extraConsumedBits": 2.052734375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.20019920301303828,
+        0.16582055220324649
+      ],
+      "post": [
+        0.24158024097790343,
+        0.24162425916698413
+      ],
+      "accuracy": [
+        0.5859375,
+        0.62890625
+      ],
+      "enlargedFraction": 0.744140625,
+      "extraConsumedBits": 2.142578125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.21514665437465547,
+        0.18070002664082302
+      ],
+      "post": [
+        0.2697688660293421,
+        0.26772936676136083
+      ],
+      "accuracy": [
+        0.4609375,
+        0.51171875
+      ],
+      "enlargedFraction": 0.720703125,
+      "extraConsumedBits": 2.1015625
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.22407938254407933,
+        0.18903451944737057
+      ],
+      "post": [
+        0.19886677050461254,
+        0.2236741790438851
+      ],
+      "accuracy": [
+        0.6484375,
+        0.67578125
+      ],
+      "enlargedFraction": 0.857421875,
+      "extraConsumedBits": 2.591796875
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.24299851161173824,
+        0.21415891373191978
+      ],
+      "post": [
+        0.23774314915198233,
+        0.2747393379834682
+      ],
+      "accuracy": [
+        0.55078125,
+        0.58984375
+      ],
+      "enlargedFraction": 0.841796875,
+      "extraConsumedBits": 2.501953125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.23550789702556155,
+        0.19662430203632056
+      ],
+      "post": [
+        0.21671266123813648,
+        0.2250843925322016
+      ],
+      "accuracy": [
+        0.62109375,
+        0.609375
+      ],
+      "enlargedFraction": 0.728515625,
+      "extraConsumedBits": 2.1484375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.2528167519850402,
+        0.22254544643901572
+      ],
+      "post": [
+        0.2534384325166361,
+        0.28198891534766424
+      ],
+      "accuracy": [
+        0.5,
+        0.46875
+      ],
+      "enlargedFraction": 0.701171875,
+      "extraConsumedBits": 2.0625
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.23776266804537066,
+        0.2094774605563397
+      ],
+      "post": [
+        0.2237068496540183,
+        0.25222685758342633
+      ],
+      "accuracy": [
+        0.59375,
+        0.609375
+      ],
+      "enlargedFraction": 0.8125,
+      "extraConsumedBits": 2.404296875
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.24958680707576614,
+        0.22936227426343644
+      ],
+      "post": [
+        0.24874772091349653,
+        0.29466297508608924
+      ],
+      "accuracy": [
+        0.53125,
+        0.53515625
+      ],
+      "enlargedFraction": 0.849609375,
+      "extraConsumedBits": 2.4765625
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.1840867416880075,
+        0.1581164940817744
+      ],
+      "post": [
+        0.24125416796165589,
+        0.24806644021243907
+      ],
+      "accuracy": [
+        0.58984375,
+        0.6015625
+      ],
+      "enlargedFraction": 0.755859375,
+      "extraConsumedBits": 2.177734375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.19673945829660117,
+        0.16878590315092745
+      ],
+      "post": [
+        0.2661361106737721,
+        0.2687134770553095
+      ],
+      "accuracy": [
+        0.53125,
+        0.546875
+      ],
+      "enlargedFraction": 0.759765625,
+      "extraConsumedBits": 2.23046875
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.2350925654630969,
+        0.20320932937189506
+      ],
+      "post": [
+        0.2179208448304729,
+        0.2559591427218544
+      ],
+      "accuracy": [
+        0.64453125,
+        0.60546875
+      ],
+      "enlargedFraction": 0.802734375,
+      "extraConsumedBits": 2.333984375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.251311809397703,
+        0.21926536717689424
+      ],
+      "post": [
+        0.2511320602056999,
+        0.2984206723227441
+      ],
+      "accuracy": [
+        0.55078125,
+        0.53515625
+      ],
+      "enlargedFraction": 0.783203125,
+      "extraConsumedBits": 2.328125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.17429255047633357,
+        0.15829098056699825
+      ],
+      "post": [
+        0.21766516435188407,
+        0.21695831955640504
+      ],
+      "accuracy": [
+        0.62109375,
+        0.609375
+      ],
+      "enlargedFraction": 0.84765625,
+      "extraConsumedBits": 2.42578125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.19307389632293812,
+        0.1779947232359197
+      ],
+      "post": [
+        0.25756996679444216,
+        0.25785036959972607
+      ],
+      "accuracy": [
+        0.546875,
+        0.54296875
+      ],
+      "enlargedFraction": 0.841796875,
+      "extraConsumedBits": 2.404296875
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.2075135698224237,
+        0.15084528069865397
+      ],
+      "post": [
+        0.2096275546210748,
+        0.21970568557573503
+      ],
+      "accuracy": [
+        0.6484375,
+        0.6875
+      ],
+      "enlargedFraction": 0.83984375,
+      "extraConsumedBits": 2.48046875
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.2313728214566991,
+        0.17660582152792784
+      ],
+      "post": [
+        0.25774049186226133,
+        0.27253659118059126
+      ],
+      "accuracy": [
+        0.51171875,
+        0.4921875
+      ],
+      "enlargedFraction": 0.83203125,
+      "extraConsumedBits": 2.451171875
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.24743476492848576,
+        0.1820201113988059
+      ],
+      "post": [
+        0.24341326749904063,
+        0.24514227873709335
+      ],
+      "accuracy": [
+        0.5546875,
+        0.51953125
+      ],
+      "enlargedFraction": 0.81640625,
+      "extraConsumedBits": 2.41796875
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.25166424909309226,
+        0.18966332776421235
+      ],
+      "post": [
+        0.25161669512014945,
+        0.2551847327640921
+      ],
+      "accuracy": [
+        0.50390625,
+        0.48828125
+      ],
+      "enlargedFraction": 0.76953125,
+      "extraConsumedBits": 2.287109375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.18989693950966294,
+        0.15319097121355013
+      ],
+      "post": [
+        0.22562452094522603,
+        0.22048519541513678
+      ],
+      "accuracy": [
+        0.59375,
+        0.6328125
+      ],
+      "enlargedFraction": 0.859375,
+      "extraConsumedBits": 2.705078125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.2000663056248567,
+        0.16880459400217285
+      ],
+      "post": [
+        0.24634531668590476,
+        0.25111960902080926
+      ],
+      "accuracy": [
+        0.59375,
+        0.5546875
+      ],
+      "enlargedFraction": 0.861328125,
+      "extraConsumedBits": 2.568359375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.19537789166678332,
+        0.16272165263859195
+      ],
+      "post": [
+        0.19524804306738672,
+        0.20604521239628007
+      ],
+      "accuracy": [
+        0.67578125,
+        0.640625
+      ],
+      "enlargedFraction": 0.796875,
+      "extraConsumedBits": 2.375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.2090301734065989,
+        0.1770391732030932
+      ],
+      "post": [
+        0.22242387300569694,
+        0.23342715837211767
+      ],
+      "accuracy": [
+        0.6328125,
+        0.5859375
+      ],
+      "enlargedFraction": 0.7890625,
+      "extraConsumedBits": 2.359375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.1584781798528396,
+        0.13144709486131514
+      ],
+      "post": [
+        0.17748670374905248,
+        0.18071765664670078
+      ],
+      "accuracy": [
+        0.73828125,
+        0.71875
+      ],
+      "enlargedFraction": 0.779296875,
+      "extraConsumedBits": 2.224609375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.20008585307248444,
+        0.16966213685292697
+      ],
+      "post": [
+        0.2598433737856565,
+        0.25569230428610157
+      ],
+      "accuracy": [
+        0.58984375,
+        0.5859375
+      ],
+      "enlargedFraction": 0.7421875,
+      "extraConsumedBits": 2.080078125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.22388061743201507,
+        0.1877351513512581
+      ],
+      "post": [
+        0.2057703179274987,
+        0.23779862949763325
+      ],
+      "accuracy": [
+        0.6015625,
+        0.62890625
+      ],
+      "enlargedFraction": 0.771484375,
+      "extraConsumedBits": 2.251953125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.24497840508868685,
+        0.2240343248570593
+      ],
+      "post": [
+        0.24796730394374508,
+        0.30224146202749347
+      ],
+      "accuracy": [
+        0.53125,
+        0.53515625
+      ],
+      "enlargedFraction": 0.732421875,
+      "extraConsumedBits": 2.1796875
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.2065728743092914,
+        0.1621097657746465
+      ],
+      "post": [
+        0.2197179497027847,
+        0.21908500032003017
+      ],
+      "accuracy": [
+        0.65234375,
+        0.6015625
+      ],
+      "enlargedFraction": 0.79296875,
+      "extraConsumedBits": 2.392578125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.2197158657326105,
+        0.18009273362414188
+      ],
+      "post": [
+        0.24568758361356574,
+        0.25368016587604675
+      ],
+      "accuracy": [
+        0.60546875,
+        0.546875
+      ],
+      "enlargedFraction": 0.787109375,
+      "extraConsumedBits": 2.298828125
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.2052461866552231,
+        0.17315081295111978
+      ],
+      "post": [
+        0.24165181291004484,
+        0.2515560162911152
+      ],
+      "accuracy": [
+        0.640625,
+        0.59765625
+      ],
+      "enlargedFraction": 0.80859375,
+      "extraConsumedBits": 2.181640625
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.21711853588937352,
+        0.18430833608971242
+      ],
+      "post": [
+        0.2651419645192959,
+        0.27297289700854294
+      ],
+      "accuracy": [
+        0.54296875,
+        0.52734375
+      ],
+      "enlargedFraction": 0.7578125,
+      "extraConsumedBits": 2.15625
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.19304359189160664,
+        0.15882622240162092
+      ],
+      "post": [
+        0.2275849627858336,
+        0.2279418952532587
+      ],
+      "accuracy": [
+        0.625,
+        0.57421875
+      ],
+      "enlargedFraction": 0.81640625,
+      "extraConsumedBits": 2.365234375
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.208567956404418,
+        0.17889550721762557
+      ],
+      "post": [
+        0.25801628678472793,
+        0.2670888513167921
+      ],
+      "accuracy": [
+        0.62109375,
+        0.57421875
+      ],
+      "enlargedFraction": 0.8359375,
+      "extraConsumedBits": 2.3671875
+    }
+  ],
+  "limits": "Consumed fixed-state same-weight diagnostic. No extra acquisitions or future labels, but no available-view feedback or closed-loop policy. Extra consumed bits were already paid, not extra reads."
+}

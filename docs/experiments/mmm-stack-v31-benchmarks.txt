@@ -1,0 +1,24 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchblend
+cpu: Apple M4
+BenchmarkStack/SolveWeights-10         	  469728	       451.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/SolveWeights-10         	  589976	       456.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/SolveWeights-10         	  564307	       451.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/Forecast150-10          	   25492	      9422 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/Forecast150-10          	   25375	      9437 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/Forecast150-10          	   25507	      9430 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/random-10               	 1511950	       162.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/random-10               	 1498225	       160.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/random-10               	 1497952	       161.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/stratified_random-10    	10822978	        22.17 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/stratified_random-10    	10838638	        22.19 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/stratified_random-10    	10921543	        22.29 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/uncertainty-10          	   22620	     10538 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/uncertainty-10          	   22759	     10650 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/uncertainty-10          	   22543	     10579 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/disagreement-10         	   22742	     10755 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/disagreement-10         	   21440	     10859 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStack/disagreement-10         	   22141	     10932 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchblend	6.173s

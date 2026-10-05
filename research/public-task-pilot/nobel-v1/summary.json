@@ -1,0 +1,159 @@
+{
+  "report": {
+    "baseline": {
+      "literal": {
+        "n": 6,
+        "top1": 6,
+        "survived": 6,
+        "mrr": 1.0,
+        "top_ties": [],
+        "max_scores": [
+          0.7503334943837142,
+          0.7590631429235253,
+          0.7483836746562814,
+          0.7310724318699918,
+          0.7029990503467415,
+          0.7247918967076057
+        ]
+      },
+      "paraphrase": {
+        "n": 6,
+        "top1": 2,
+        "survived": 5,
+        "mrr": 0.4142857142857143,
+        "top_ties": [],
+        "max_scores": [
+          0.6431022468471334,
+          0.654210497260012,
+          0.62936730160305,
+          0.6557741624608772,
+          0.6493944538389427,
+          0.6472638091541011
+        ]
+      },
+      "absent": {
+        "n": 2,
+        "top1": 0,
+        "survived": 0,
+        "mrr": 0.0,
+        "top_ties": [],
+        "max_scores": [
+          0.6396810823759591,
+          0.6732132940729056
+        ]
+      }
+    },
+    "lexical": {
+      "literal": {
+        "n": 6,
+        "top1": 6,
+        "survived": 6,
+        "mrr": 1.0,
+        "top_ties": [],
+        "max_scores": [
+          0.9,
+          0.7777777777777778,
+          0.8333333333333334,
+          0.8,
+          0.9090909090909091,
+          0.8888888888888888
+        ]
+      },
+      "paraphrase": {
+        "n": 6,
+        "top1": 2,
+        "survived": 6,
+        "mrr": 0.5694444444444444,
+        "top_ties": [
+          "nobel-physics-2023-paraphrase",
+          "nobel-chemistry-2023-paraphrase",
+          "nobel-chemistry-2022-paraphrase"
+        ],
+        "max_scores": [
+          0.1,
+          0.2,
+          0.09090909090909091,
+          0.15384615384615385,
+          0.18181818181818182,
+          0.18181818181818182
+        ]
+      },
+      "absent": {
+        "n": 2,
+        "top1": 0,
+        "survived": 0,
+        "mrr": 0.0,
+        "top_ties": [
+          "nobel-absent-0"
+        ],
+        "max_scores": [
+          0,
+          0.16666666666666666
+        ]
+      }
+    },
+    "sparse": {
+      "literal": {
+        "n": 6,
+        "top1": 6,
+        "survived": 6,
+        "mrr": 1.0,
+        "top_ties": [],
+        "max_scores": [
+          0.4492905233729821,
+          0.3649924820838806,
+          0.3804875369906365,
+          0.36975375712674796,
+          0.43207050587133705,
+          0.41280353938905134
+        ]
+      },
+      "paraphrase": {
+        "n": 6,
+        "top1": 2,
+        "survived": 6,
+        "mrr": 0.5416666666666666,
+        "top_ties": [
+          "nobel-chemistry-2023-paraphrase"
+        ],
+        "max_scores": [
+          0.037994837406179975,
+          0.05222116018068089,
+          0.035611757186769635,
+          0.04451544357540578,
+          0.04783193995092061,
+          0.05132323069644146
+        ]
+      },
+      "absent": {
+        "n": 2,
+        "top1": 0,
+        "survived": 0,
+        "mrr": 0.0,
+        "top_ties": [
+          "nobel-absent-0"
+        ],
+        "max_scores": [
+          0.025943335344381983,
+          0.04622126561353209
+        ]
+      }
+    }
+  },
+  "screen_passed": true,
+  "sha256": {
+    "research/public-task-pilot/nobel-v1/baseline-results.json": "1469587a299295ed6edb18165928d8e9b4136255501185e930d18747755ac71d",
+    "research/public-task-pilot/nobel-v1/lexical-results.json": "8f3888625c4acbbd767dad20911b5d8833891a384f6fffa44ba35f1d200a2e95",
+    "research/public-task-pilot/nobel-v1/sparse-results.json": "e98d83602ad381e669053cc12603ff55f705820f06573df0a96da9246916334d",
+    "research/public-task-pilot/nobel-v1/corpus.json": "387c8c49a5aa0136a2869e4de74214781df7e9d78aa4877032062e9c93e87610",
+    "research/public-task-pilot/nobel-v1/queries.json": "4e635a19c41edcadbfd6db49beee758ce5953c12e81dffc8ef6f5de4b7fcaa1d",
+    "research/public-task-pilot/nobel-v1/oracle.json": "ebabeb9e2a73de5945edcd97cc395eb53a7715e655e223e386c2dc11f39667f4",
+    "research/public-task-pilot/NOBEL_PROTOCOL.md": "d1ba0301e2058075aace493122f5d647f001bc8bfc46367d54a7d38c63d711c7",
+    "research/public-task-pilot/prepare_nobel.py": "041af78c578ec4c84ee97221c0beff0191788a4b9cd8f981bbaa6e1667a0730a",
+    "research/public-task-pilot/summarize_nobel.py": "2abda090b7c044c7d60c7a0073f32e612e75f634ef781653930d957dbe691d6c",
+    "research/public-task-pilot/sparse-go-golden.json": "33fc2b941b92374a3bcba12f1f1f6885042134cc4fd151b121817ccdba897f07",
+    "internal/researchsparse/sparse.go": "ea7e0a3713081ed03ce11b646b020468a64f4bf9177fa058b75fbc8ed41450c4",
+    "internal/service/research_rank.go": "3d44b913a685ddb80d03845a3a8f78af5cfb6ed3e3825e1fcbcff9047942a942",
+    "cmd/public-pilot-preflight/main.go": "da5d6fd4039c55c801a0f5b491ab3e9b058a17788e8fc0b63ac3a7795b8a0e35"
+  }
+}

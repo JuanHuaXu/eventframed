@@ -1,0 +1,22 @@
+// Extend the existing independent metric readback with mode-specific controls.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const source='research/shared-v68-readback.mjs',raw=fs.readFileSync(source);let s=raw.toString().replaceAll('shared-v68-diagnostic','class-v69-diagnostic');
+const a=s.indexOf('const streams='),b=s.indexOf('const totals=',a);assert(a>0&&b>a);
+s=s.slice(0,a)+`const streams=[load(root+'/diagnostic.jsonl'),load('research/shared-v68-diagnostic/diagnostic.jsonl')];
+const m=(await streams[0].next()).value;assert.equal(m.Worlds,40);assert.equal(m.SeedBase,2026105407);assert.deepEqual(m.Sources,freeze.files);
+assert.equal((await streams[1].next()).value.Worlds,40);
+const modes=['full','adaptive','hybrid_no_pair','hybrid_random','hybrid_uncertainty','hybrid_information','hybrid_falsification','hybrid_predictive','hybrid_model_class','hybrid_noise_class'];
+`+s.slice(b);
+s=s.replace('const w=(await streams[0].next()).value,old=(await streams[1].next()).value,v60=(await streams[2].next()).value;','const w=(await streams[0].next()).value,old=(await streams[1].next()).value;');
+s=s.replace('assert(w&&old&&v60);assert.deepEqual(w.Population,old.Population);assert.deepEqual(w.Population,v60.Population);assert.equal(w.Arms.length,42);','assert(w&&old);assert.deepEqual(w.Population,old.Population);assert.equal(w.Arms.length,30);');
+s=s.replace('for(let j=0;j<42;j++)','for(let j=0;j<30;j++)').replaceAll('j%14','j%10').replaceAll('Math.floor(j/14)','Math.floor(j/10)').replaceAll('schedule*14','schedule*10');
+s=s.replace("oldLocal=old.Arms[schedule*8+(mode.endsWith('no_pair')?2:4)]","oldLocal=old.Arms[schedule*14+(i<8?i:6)]").replace('old.Arms[schedule*8].Schedule','old.Arms[schedule*14].Schedule');
+s=s.replace('if(i<2){assert.deepEqual(strip(a),strip(old.Arms[schedule*8+i]));assert.deepEqual(strip(a),strip(v60.Arms[schedule*8+i]));controls++}','if(i<8){assert.deepEqual(strip(a),strip(old.Arms[schedule*14+i]));controls++}');
+s=s.replace('assert.equal(controls,240)','assert.equal(controls,960)').replaceAll('v66LocalGain','v68LatentGain').replace("study:'shared-v68'","study:'class-v69'").replace("stage:'1680-arm consumed-cohort diagnostic, n1 per cell, NOT confirmation'","stage:'1200-arm consumed-cohort class diagnostic, n1 per cell, NOT confirmation'").replace('arms:1680,modelArms:1440','arms:1200,modelArms:960').replace('independentIssuedPackets:3456000,scalarIssuedComparisons:6912000','independentIssuedPackets:2304000,scalarIssuedComparisons:4608000');
+const k=s.indexOf('const allocation='),end=s.indexOf('const result=',k);assert(k>0&&end>k);
+s=s.slice(0,k)+`const allocation=JSON.parse(fs.readFileSync(root+'/allocation.json')),costComparison={};
+for(const candidate of ['hybrid_model_class','hybrid_noise_class'])for(const against of ['hybrid_random','hybrid_uncertainty','hybrid_falsification'])costComparison[candidate+'/'+against]={riskGain:totals[against].risk-totals[candidate].risk,coreCostRatio:totals[candidate].totalMS/totals[against].totalMS};
+`+s.slice(end);
+assert(!s.includes('v60'));assert(s.includes('old.Arms[schedule*14+i]'));assert(s.includes('modelArms:960'));
+const out='research/class-v69-readback.mjs',hash=b=>crypto.createHash('sha256').update(b).digest('hex');fs.writeFileSync(out,s,{flag:'wx',mode:0o600});
+fs.writeFileSync('research/class-v69-readback-generation.json',JSON.stringify({source,sourceSHA256:hash(raw),output:out,outputSHA256:hash(s),changes:'10-mode cardinalities,960 unchangedV68 controls,andclass-vs-random/uncertainty/latent comparisons; originalmetric equations kept'},null,2)+'\n',{flag:'wx',mode:0o600});

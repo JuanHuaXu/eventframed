@@ -1,0 +1,586 @@
+{
+  "sourceHash": "8de76fe379cfe1bb9219880ae94fb4b94f48dccf800ba343628f2d2c7db8a7c2",
+  "sources": {
+    "internal/observationlearners/coherent_count_test.go": "package observationlearners\n\nimport (\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"github.com/JuanHuaXu/eventframed/internal/observation\"\n\t\"math\"\n\t\"math/rand\"\n\t\"os\"\n\t\"testing\"\n)\n\n// One joint Dirichlet prior with total mass2, uniform inputs and symmetric\n// binary outcomes. Every coarser state sums the same full-cell posterior mass.\n// This changes fine-context regularization; it is not old-count forecast parity.\nfunc fitCoherentCount(samples []observation.Sample) (*ConditionalForest, error) {\n\tif len(samples) == 0 || len(samples) > 8192 {\n\t\treturn nil, fmt.Errorf(\"invalid sample count\")\n\t}\n\tm := new(ConditionalForest)\n\tfor x := uint16(0); x < 512; x++ {\n\t\tm.cells[partialIndex(511, x)] = conditionalCell{2. / 512, 1. / 512}\n\t}\n\tfor _, s := range samples {\n\t\tif s.Bits >= 512 {\n\t\t\treturn nil, fmt.Errorf(\"invalid bits\")\n\t\t}\n\t\tc := &m.cells[partialIndex(511, s.Bits)]\n\t\tc.mass++\n\t\tif s.Outcome {\n\t\t\tc.weighted++\n\t\t}\n\t}\n\tfor i := len(m.cells) - 1; i >= 0; i-- {\n\t\tv, p := i, 1\n\t\tfor bit := 0; bit < 9; bit++ {\n\t\t\tif v%3 == 0 {\n\t\t\t\ta, b := m.cells[i+p], m.cells[i+2*p]\n\t\t\t\tm.cells[i] = conditionalCell{a.mass + b.mass, a.weighted + b.weighted}\n\t\t\t\tbreak\n\t\t\t}\n\t\t\tv /= 3\n\t\t\tp *= 3\n\t\t}\n\t}\n\treturn m, nil\n}\n\nfunc TestCoherentCountContracts(t *testing.T) {\n\tsamples := []observation.Sample{{Bits: 0, Outcome: true}, {Bits: 1, Outcome: true}}\n\tm, err := fitCoherentCount(samples)\n\tif err != nil {\n\t\tt.Fatal(err)\n\t}\n\tfor mask := uint16(0); mask < 512; mask++ {\n\t\tfor value := mask; ; value = (value - 1) & mask {\n\t\t\tmass, yes := 0., 0.\n\t\t\tfor x := uint16(0); x < 512; x++ {\n\t\t\t\tif x&mask == value {\n\t\t\t\t\tmass += 2. / 512\n\t\t\t\t\tyes += 1. / 512\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor _, s := range samples {\n\t\t\t\tif s.Bits&mask == value {\n\t\t\t\t\tmass++\n\t\t\t\t\tif s.Outcome {\n\t\t\t\t\t\tyes++\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tc := m.cells[partialIndex(mask, value)]\n\t\t\tp, err := m.Forecast(mask, value)\n\t\t\tif err != nil || c.mass != mass || c.weighted != yes || p != yes/mass {\n\t\t\t\tt.Fatal(\"literal marginal\", mask, value, err)\n\t\t\t}\n\t\t\tfor bit := uint16(1); bit < 512; bit <<= 1 {\n\t\t\t\tif mask&bit != 0 {\n\t\t\t\t\tcontinue\n\t\t\t\t}\n\t\t\t\ta, b := m.cells[partialIndex(mask|bit, value)], m.cells[partialIndex(mask|bit, value|bit)]\n\t\t\t\tif a.mass+b.mass != c.mass || a.weighted+b.weighted != c.weighted {\n\t\t\t\t\tt.Fatal(\"partition identity\")\n\t\t\t\t}\n\t\t\t}\n\t\t\tif value == 0 {\n\t\t\t\tbreak\n\t\t\t}\n\t\t}\n\t}\n\tfor _, v := range []uint16{0, 1} {\n\t\tp, _ := m.Forecast(1, v)\n\t\tif p != .75 {\n\t\t\tt.Fatal(\"witness repair\")\n\t\t}\n\t}\n\tsamples[0].Outcome = false\n\tp, _ := m.Forecast(0, 0)\n\tif p != .75 {\n\t\tt.Fatal(\"aliased fit\")\n\t}\n\tfor _, bad := range [][]observation.Sample{nil, {{Bits: 512}}, make([]observation.Sample, 8193)} {\n\t\tif _, err := fitCoherentCount(bad); err == nil {\n\t\t\tt.Fatal(\"invalid accepted\")\n\t\t}\n\t}\n\tif _, err := m.Forecast(0, 1); err == nil {\n\t\tt.Fatal(\"invalid partial\")\n\t}\n\t// Equal positive/negative evidence remains neutral everywhere.\n\tneutral, _ := fitCoherentCount([]observation.Sample{{Bits: 1}, {Bits: 1, Outcome: true}})\n\tfor _, c := range neutral.cells {\n\t\tif c.weighted/c.mass != .5 {\n\t\t\tt.Fatal(\"neutrality\")\n\t\t}\n\t}\n}\n\nfunc TestCoherentCountExperiment(t *testing.T) {\n\tpath := os.Getenv(\"EVENTFRAME_COHERENT_COUNT\")\n\tif path == \"\" {\n\t\tt.Skip(\"opt-in finite sample screen\")\n\t}\n\ttype row struct {\n\t\tDependent     bool\n\t\tTarget        string\n\t\tN, Index      int\n\t\tSeed          int64\n\t\tOld, Coherent [4]float64\n\t}\n\tvar rows []row\n\tfor dep := 0; dep < 2; dep++ {\n\t\tfor target := 0; target < 2; target++ {\n\t\t\tfor _, n := range []int{64, 128, 4096} {\n\t\t\t\tfor index := 0; index < 16; index++ {\n\t\t\t\t\tseed := int64(2026092170 + dep*1000000 + target*100000 + n*20 + index)\n\t\t\t\t\trng := rand.New(rand.NewSource(seed))\n\t\t\t\t\tsamples := make([]observation.Sample, n)\n\t\t\t\t\ttransform := func(x uint16) uint16 {\n\t\t\t\t\t\tif dep == 1 {\n\t\t\t\t\t\t\treturn (x &^ 1) | ((x >> 2) & 1)\n\t\t\t\t\t\t}\n\t\t\t\t\t\treturn x\n\t\t\t\t\t}\n\t\t\t\t\ttruth := func(x uint16) bool {\n\t\t\t\t\t\tif target == 0 {\n\t\t\t\t\t\t\treturn x&4 != 0\n\t\t\t\t\t\t}\n\t\t\t\t\t\treturn (((x&2 != 0) != (x&4 != 0)) != (x&8 != 0)) != (x&16 != 0)\n\t\t\t\t\t}\n\t\t\t\t\tfor i := range samples {\n\t\t\t\t\t\tx := transform(uint16(rng.Intn(512)))\n\t\t\t\t\t\ty := truth(x)\n\t\t\t\t\t\tif rng.Float64() < .05 {\n\t\t\t\t\t\t\ty = !y\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsamples[i] = observation.Sample{Bits: x, Outcome: y}\n\t\t\t\t\t}\n\t\t\t\t\told, err := observation.Fit(samples)\n\t\t\t\t\tif err != nil {\n\t\t\t\t\t\tt.Fatal(err)\n\t\t\t\t\t}\n\t\t\t\t\tc, err := fitCoherentCount(samples)\n\t\t\t\t\tif err != nil {\n\t\t\t\t\t\tt.Fatal(err)\n\t\t\t\t\t}\n\t\t\t\t\tr := row{Dependent: dep == 1, Target: []string{\"bit\", \"parity4\"}[target], N: n, Index: index, Seed: seed}\n\t\t\t\t\tfor raw := uint16(0); raw < 512; raw++ {\n\t\t\t\t\t\tx := transform(raw)\n\t\t\t\t\t\tq := .05\n\t\t\t\t\t\tif truth(x) {\n\t\t\t\t\t\t\tq = .95\n\t\t\t\t\t\t}\n\t\t\t\t\t\tfor i, mask := range []uint16{0, 1, 31, 511} {\n\t\t\t\t\t\t\ta, err := old.ForecastObserved(mask, x&mask)\n\t\t\t\t\t\t\tif err != nil {\n\t\t\t\t\t\t\t\tt.Fatal(err)\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tb, err := c.Forecast(mask, x&mask)\n\t\t\t\t\t\t\tif err != nil {\n\t\t\t\t\t\t\t\tt.Fatal(err)\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tif mask == 0 && a != b {\n\t\t\t\t\t\t\t\tt.Fatal(\"root drift\")\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tr.Old[i] += (q*(1-a)*(1-a) + (1-q)*a*a) / 512\n\t\t\t\t\t\t\tr.Coherent[i] += (q*(1-b)*(1-b) + (1-q)*b*b) / 512\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\trows = append(rows, r)\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\tb, err := json.Marshal(rows)\n\tif err != nil {\n\t\tt.Fatal(err)\n\t}\n\tf, err := os.OpenFile(path, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0600)\n\tif err != nil {\n\t\tt.Fatal(err)\n\t}\n\tdefer f.Close()\n\tif _, err = f.Write(append(b, '\\n')); err != nil {\n\t\tt.Fatal(err)\n\t}\n\tif err = f.Sync(); err != nil {\n\t\tt.Fatal(err)\n\t}\n\tt.Log(\"192 independent fits; exact population risks at four fixed masks\")\n}\n\nvar coherentCountSink *ConditionalForest\n\nfunc BenchmarkCoherentCountFit(b *testing.B) {\n\tsamples := make([]observation.Sample, 64)\n\tfor i := range samples {\n\t\tsamples[i] = observation.Sample{Bits: uint16(i * 7 % 512), Outcome: i%3 == 0}\n\t}\n\tb.ReportAllocs()\n\tfor i := 0; i < b.N; i++ {\n\t\tm, err := fitCoherentCount(samples)\n\t\tif err != nil {\n\t\t\tb.Fatal(err)\n\t\t}\n\t\tcoherentCountSink = m\n\t}\n}\n\nfunc TestCoherentCountBounded(t *testing.T) {\n\tm, _ := fitCoherentCount([]observation.Sample{{Bits: 0, Outcome: true}})\n\tfor _, c := range m.cells {\n\t\tp := c.weighted / c.mass\n\t\tif math.IsNaN(p) || p <= 0 || p >= 1 {\n\t\t\tt.Fatal(\"invalid probability\")\n\t\t}\n\t}\n}\n",
+    "internal/observationlearners/conditional.go": "package observationlearners\n\nimport (\n\t\"errors\"\n\t\"math\"\n)\n\ntype conditionalCell struct{ mass, weighted float64 }\n\n// ConditionalForest freezes both the fitted tree and an input distribution.\n// Its 3^9 states are a finite research representation, not a scalable default.\ntype ConditionalForest struct{ cells [19683]conditionalCell }\n\nfunc partialIndex(mask, values uint16) int {\n\ti, p := 0, 1\n\tfor bit := uint16(1); bit < 512; bit <<= 1 {\n\t\tif mask&bit != 0 {\n\t\t\ti += p\n\t\t\tif values&bit != 0 {\n\t\t\t\ti += p\n\t\t\t}\n\t\t}\n\t\tp *= 3\n\t}\n\treturn i\n}\n\nfunc NewConditionalForest(f *Forest, weights [512]float64) (*ConditionalForest, error) {\n\tif f == nil {\n\t\treturn nil, errors.New(\"missing conditional forest\")\n\t}\n\tm := new(ConditionalForest)\n\tfor x, w := range weights {\n\t\tif math.IsNaN(w) || math.IsInf(w, 0) || w <= 0 || w > 1e6 {\n\t\t\treturn nil, errors.New(\"invalid conditional weight\")\n\t\t}\n\t\tm.cells[partialIndex(511, uint16(x))] = conditionalCell{w, w * f.Predict(uint16(x))}\n\t}\n\t// Every missing ternary coordinate has children with larger indices, so a\n\t// descending pass sums disjoint completions without double counting.\n\tfor i := len(m.cells) - 1; i >= 0; i-- {\n\t\tv, p := i, 1\n\t\tfor bit := 0; bit < 9; bit++ {\n\t\t\tif v%3 == 0 {\n\t\t\t\ta, b := m.cells[i+p], m.cells[i+2*p]\n\t\t\t\tm.cells[i] = conditionalCell{a.mass + b.mass, a.weighted + b.weighted}\n\t\t\t\tbreak\n\t\t\t}\n\t\t\tv /= 3\n\t\t\tp *= 3\n\t\t}\n\t}\n\treturn m, nil\n}\n\nfunc (m *ConditionalForest) Forecast(mask, values uint16) (float64, error) {\n\tif m == nil || mask >= 512 || values&^mask != 0 {\n\t\treturn 0, errors.New(\"invalid conditional observation\")\n\t}\n\tc := m.cells[partialIndex(mask, values)]\n\tif c.mass <= 0 {\n\t\treturn 0, errors.New(\"uninitialized conditional forecast\")\n\t}\n\treturn c.weighted / c.mass, nil\n}\n",
+    "internal/observation/controller.go": "// Package observation is an isolated finite observation-allocation prototype.\n// It is not wired into serving and does not publish beliefs or causal claims.\npackage observation\n\nimport (\n\t\"errors\"\n\t\"math\"\n\t\"math/bits\"\n\t\"math/rand\"\n)\n\nconst Dimensions = 9\nconst Universe = 1 << Dimensions\n\ntype Sample struct {\n\tBits    uint16\n\tOutcome bool\n}\ntype count struct{ n, yes uint32 }\n\n// Model is immutable after fitting. Repeated inspection must never add support.\ntype Model struct{ table [Universe][Universe]count }\n\nfunc Fit(samples []Sample) (*Model, error) {\n\tif len(samples) == 0 || len(samples) > 8192 {\n\t\treturn nil, errors.New(\"fitting size outside 1..8192\")\n\t}\n\tvar full [Universe]count\n\tfor _, s := range samples {\n\t\tif s.Bits >= Universe {\n\t\t\treturn nil, errors.New(\"invalid fitting bits\")\n\t\t}\n\t\tc := &full[s.Bits]\n\t\tc.n++\n\t\tif s.Outcome {\n\t\t\tc.yes++\n\t\t}\n\t}\n\tm := new(Model)\n\tfor mask := 0; mask < Universe; mask++ {\n\t\tfor value, c := range full {\n\t\t\tp := &m.table[mask][value&mask]\n\t\t\tp.n += c.n\n\t\t\tp.yes += c.yes\n\t\t}\n\t}\n\treturn m, nil\n}\n\nfunc (m *Model) Support() uint32 { return m.table[0][0].n }\nfunc (m *Model) predict(mask, value uint16) float64 {\n\tc := m.table[mask][value&mask]\n\treturn float64(c.yes+1) / float64(c.n+2)\n}\n\ntype View struct {\n\tScope int `json:\"scope\"`\n\tDepth int `json:\"depth\"`\n}\n\nfunc (v View) Mask() uint16 { return uint16((1<<(v.Depth+1))-1) << (3 * v.Scope) }\n\ntype Reader interface {\n\tEpoch() uint64\n\tRead(View) (mask, values uint16, err error)\n}\n\ntype Step struct {\n\tView        View    `json:\"view\"`\n\tAttempted   uint16  `json:\"attempted\"`\n\tObserved    uint16  `json:\"observed\"`\n\tValues      uint16  `json:\"values\"`\n\tProbability float64 `json:\"probability\"`\n}\ntype Result struct {\n\tProbability float64 `json:\"probability\"`\n\tCost        int     `json:\"cost\"`\n\tObserved    int     `json:\"observed\"`\n\tTrace       []Step  `json:\"trace\"`\n\tStop        string  `json:\"stop\"`\n}\n\nvar Policies = []string{\"fixed\", \"scope\", \"depth\", \"breadth\", \"depth_first\", \"random\", \"mmm\", \"exhaustive\"}\n\nfunc entropy(p float64) float64 { return -p*math.Log(p) - (1-p)*math.Log1p(-p) }\n\nfunc (m *Model) value(mask, value, added uint16) float64 {\n\tparent := m.table[mask][value&mask]\n\tif parent.n == 0 {\n\t\treturn 0\n\t}\n\texpected := 0.0\n\t// At most eight possible observations for a three-coordinate view.\n\tfor sub := added; ; sub = (sub - 1) & added {\n\t\tc := m.table[mask|added][(value&mask)|sub]\n\t\tif c.n > 0 {\n\t\t\texpected += float64(c.n) / float64(parent.n) * entropy(m.predict(mask|added, value|sub))\n\t\t}\n\t\tif sub == 0 {\n\t\t\tbreak\n\t\t}\n\t}\n\treturn math.Max(0, entropy(m.predict(mask, value))-expected)\n}\n\nfunc Run(m *Model, reader Reader, epoch uint64, policy string, seed int64) (Result, error) {\n\tvalid := false\n\tfor _, p := range Policies {\n\t\tif p == policy {\n\t\t\tvalid = true\n\t\t}\n\t}\n\tif m == nil || reader == nil || !valid {\n\t\treturn Result{}, errors.New(\"invalid model, reader, or policy\")\n\t}\n\tbudget := 6\n\tif policy == \"exhaustive\" {\n\t\tbudget = 9\n\t}\n\trng := rand.New(rand.NewSource(seed))\n\tvar mask, values, attempted uint16\n\tresult := Result{Probability: m.predict(0, 0)}\n\tfor result.Cost < budget {\n\t\tif reader.Epoch() != epoch {\n\t\t\treturn Result{}, errors.New(\"stale observation snapshot\")\n\t\t}\n\t\tif result.Cost > 0 && policy != \"exhaustive\" && (result.Probability <= .1 || result.Probability >= .9) {\n\t\t\tresult.Stop = \"confidence\"\n\t\t\tbreak\n\t\t}\n\t\tvar candidates []View\n\t\tfor scope := 0; scope < 3; scope++ {\n\t\t\tfor depth := 0; depth < 3; depth++ {\n\t\t\t\tv := View{scope, depth}\n\t\t\t\tcost := bits.OnesCount16(v.Mask() &^ attempted)\n\t\t\t\tif cost == 0 || cost > budget-result.Cost {\n\t\t\t\t\tcontinue\n\t\t\t\t}\n\t\t\t\tif result.Cost == 0 && v != (View{0, 0}) {\n\t\t\t\t\tcontinue\n\t\t\t\t}\n\t\t\t\tif policy == \"fixed\" && v != (View{0, 0}) {\n\t\t\t\t\tcontinue\n\t\t\t\t}\n\t\t\t\tif policy == \"scope\" && depth != 0 {\n\t\t\t\t\tcontinue\n\t\t\t\t}\n\t\t\t\tif policy == \"depth\" && scope != 0 {\n\t\t\t\t\tcontinue\n\t\t\t\t}\n\t\t\t\tcandidates = append(candidates, v)\n\t\t\t}\n\t\t}\n\t\tif len(candidates) == 0 {\n\t\t\tresult.Stop = \"no_affordable_view\"\n\t\t\tbreak\n\t\t}\n\t\tchosen := candidates[0]\n\t\tif policy == \"random\" {\n\t\t\tchosen = candidates[rng.Intn(len(candidates))]\n\t\t}\n\t\tif policy == \"breadth\" || policy == \"scope\" {\n\t\t\tfor _, v := range candidates {\n\t\t\t\tif v.Depth < chosen.Depth || (v.Depth == chosen.Depth && v.Scope < chosen.Scope) {\n\t\t\t\t\tchosen = v\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif policy == \"mmm\" {\n\t\t\tbest := -1.0\n\t\t\tfor _, v := range candidates {\n\t\t\t\tadded := v.Mask() &^ attempted\n\t\t\t\tscore := m.value(mask, values, added) / float64(bits.OnesCount16(added))\n\t\t\t\tif score > best+1e-12 {\n\t\t\t\t\tbest = score\n\t\t\t\t\tchosen = v\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tnewMask, newValues, err := reader.Read(chosen)\n\t\tif err != nil {\n\t\t\treturn Result{}, err\n\t\t}\n\t\tif reader.Epoch() != epoch {\n\t\t\treturn Result{}, errors.New(\"snapshot changed during observation\")\n\t\t}\n\t\tif newMask&^chosen.Mask() != 0 || newValues&^newMask != 0 {\n\t\t\treturn Result{}, errors.New(\"reader returned undeclared coordinates\")\n\t\t}\n\t\tif (newValues^values)&(newMask&mask) != 0 {\n\t\t\treturn Result{}, errors.New(\"snapshot changed observed values\")\n\t\t}\n\t\tresult.Cost += bits.OnesCount16(chosen.Mask() &^ attempted)\n\t\tattempted |= chosen.Mask()\n\t\tmask |= newMask\n\t\tvalues |= newValues\n\t\tresult.Probability = m.predict(mask, values)\n\t\tresult.Trace = append(result.Trace, Step{chosen, attempted, mask, values, result.Probability})\n\t}\n\tif result.Stop == \"\" {\n\t\tresult.Stop = \"budget\"\n\t}\n\tresult.Observed = bits.OnesCount16(mask)\n\treturn result, nil\n}\n",
+    "internal/observation/forecast.go": "package observation\n\nimport \"errors\"\n\n// ForecastObserved lets research experts share one acquired observation budget.\n// It cannot inspect any coordinate outside the caller's recorded observed mask.\nfunc (m *Model) ForecastObserved(mask, values uint16) (float64, error) {\n\tif m == nil || mask >= Universe || values&^mask != 0 {\n\t\treturn 0, errors.New(\"invalid observed forecast input\")\n\t}\n\treturn m.predict(mask, values), nil\n}\n",
+    "docs/experiments/mmm-coherent-count-v1-contract.md": "# Coherent count component and finite-sample screen\n\nTest-only alternative: total Dirichlet mass2, uniform full inputs, binary\noutcome symmetry. Aggregate full-cell masses to all3^9 partial states. No\nparameter sweep. Root forecast matches old Beta(1,1), fine masks intentionally\ndo not. Literal enumeration and every parent-child identity must hold.\n\nFinite quality screen:192 independent fits, two input laws (uniform/copybit2to0),\ntwo targets(bit2/paritybits1..4), n64/128/4096,16 fits per cell. Noise.05.\nSeed2026092170+dep*1000000+target*100000+n*20+index. Exact expected Brier over\n512raw inputs at masks0,1,31,511. Same samples in both estimators. No selected\nmask, current-label input, oracle fitted weight, adaptive path or task result.\n\nPurpose: distinguish mathematical coherence from predictive benefit. Retain\nall masks and regressions; do not promote from a favorable mask. Finite\ncomponent comparison, no new whole-goal gate. Benchmark fit separately from\nquality collection; neither proves daemon latency. Original estimator untouched.\n",
+    "research/coherent-count-summary.mjs": "import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';\nconst [input,output]=process.argv.slice(2);assert(input&&output);\nconst bytes=fs.readFileSync(input),rows=JSON.parse(bytes),hash=b=>crypto.createHash('sha256').update(b).digest('hex');\nassert.equal(rows.length,192);assert.equal(new Set(rows.map(r=>r.Seed)).size,192);\nconst mean=a=>a.reduce((s,x)=>s+x,0)/a.length;\nconst ci=a=>{const m=mean(a),se=Math.sqrt(a.reduce((s,x)=>s+(x-m)**2,0)/(a.length-1)/a.length);return {mean:m,lower:m-3.5*se,upper:m+3.5*se};};\nconst cells=[];\nfor(const dep of [false,true])for(const target of ['bit','parity4'])for(const n of [64,128,4096]) {\n const rs=rows.filter(r=>r.Dependent===dep&&r.Target===target&&r.N===n);assert.equal(rs.length,16);\n assert.deepEqual(rs.map(r=>r.Index).sort((a,b)=>a-b),Array.from({length:16},(_,i)=>i));\n for(const r of rs){assert.equal(r.Seed,2026092170+Number(dep)*1000000+Number(target==='parity4')*100000+n*20+r.Index);for(const a of [r.Old,r.Coherent]){assert.equal(a.length,4);for(const v of a)assert(Number.isFinite(v)&&v>=.0475-1e-12&&v<=1);}assert.equal(r.Old[0],r.Coherent[0]);}\n cells.push({dependent:dep,target,n,masks:[0,1,31,511].map((mask,i)=>({mask,old:mean(rs.map(r=>r.Old[i])),coherent:mean(rs.map(r=>r.Coherent[i])),gain:ci(rs.map(r=>r.Old[i]-r.Coherent[i]))}))});\n}\nconst sources={},hashes={};for(const name of ['internal/observationlearners/coherent_count_test.go','internal/observationlearners/conditional.go','internal/observation/controller.go','internal/observation/forecast.go','docs/experiments/mmm-coherent-count-v1-contract.md','research/coherent-count-summary.mjs']){const b=fs.readFileSync(name);sources[name]=b.toString();hashes[name]=hash(b);}\nconst out={sourceHash:hash(bytes),sources,hashes,cells,limits:'Fixed-mask finite-population diagnostic, descriptive paired mean +/-3.5SE over training fits; no adaptive or real-task benefit established.'};\nfs.writeFileSync(output,JSON.stringify(out,null,2)+'\\n',{flag:'wx'});console.log(JSON.stringify({sourceHash:out.sourceHash,cells},null,2));\n"
+  },
+  "hashes": {
+    "internal/observationlearners/coherent_count_test.go": "6bf54a5da597e905b9236107cbafdae4f32035fcf7c928794d75c4765d6a41ac",
+    "internal/observationlearners/conditional.go": "25f157a5dfe6fc4c99a8f509625de4652a68bed760e7020430529528c800c6f0",
+    "internal/observation/controller.go": "3d742564146015b10c74c4a9c63e0bcf3f499ea53180ebefe634c2fbcf7e3b72",
+    "internal/observation/forecast.go": "59d63d232ac772ca6b3b44f35ac549002074a11e88b0a96477b5ed82a5fb05c0",
+    "docs/experiments/mmm-coherent-count-v1-contract.md": "c8fce4a4f60aedf0b5a0c133e3352dd1cac2562da9ca447c73a2c4ddaaa38985",
+    "research/coherent-count-summary.mjs": "64ebdc2271fa8628f816cf6aa834b4f7fd63abe027400e34f3535f7861448194"
+  },
+  "cells": [
+    {
+      "dependent": false,
+      "target": "bit",
+      "n": 64,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.2514204545454548,
+          "coherent": 0.2514204545454548,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.2553149197156443,
+          "coherent": 0.255659422157958,
+          "gain": {
+            "mean": -0.0003445024423137377,
+            "lower": -0.0007239254254679094,
+            "upper": 0.00003492054084043393
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.12414927818277202,
+          "coherent": 0.08954530195996131,
+          "gain": {
+            "mean": 0.03460397622281071,
+            "lower": 0.02842940827607414,
+            "upper": 0.04077854416954728
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.23709662543402799,
+          "coherent": 0.23145391133854315,
+          "gain": {
+            "mean": 0.005642714095484771,
+            "lower": 0.003925557221067926,
+            "upper": 0.007359870969901617
+          }
+        }
+      ]
+    },
+    {
+      "dependent": false,
+      "target": "bit",
+      "n": 128,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.2519378698224849,
+          "coherent": 0.2519378698224849,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.2537708114419273,
+          "coherent": 0.25388862248245947,
+          "gain": {
+            "mean": -0.00011781104053215294,
+            "lower": -0.00020352928022650417,
+            "upper": -0.0000320928008378017
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.08627390258619011,
+          "coherent": 0.06634159834648681,
+          "gain": {
+            "mean": 0.019932304239703304,
+            "lower": 0.01474350982292436,
+            "upper": 0.025121098656482245
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.2256405978732642,
+          "coherent": 0.21638723629936643,
+          "gain": {
+            "mean": 0.009253361573897773,
+            "lower": 0.006986746315026279,
+            "upper": 0.011519976832769268
+          }
+        }
+      ]
+    },
+    {
+      "dependent": false,
+      "target": "bit",
+      "n": 4096,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.2500841428974977,
+          "coherent": 0.2500841428974977,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.2502206350382532,
+          "coherent": 0.2502208523335573,
+          "gain": {
+            "mean": -2.1729530409742015e-7,
+            "lower": -3.7247779212923356e-7,
+            "upper": -6.211281606560674e-8
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.047945790900060736,
+          "coherent": 0.047911579986040134,
+          "gain": {
+            "mean": 0.00003421091402059772,
+            "lower": -0.000005057875633615369,
+            "upper": 0.00007347970367481081
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.06218738054318672,
+          "coherent": 0.054354082379031214,
+          "gain": {
+            "mean": 0.007833298164155515,
+            "lower": 0.0074774693723235666,
+            "upper": 0.008189126955987463
+          }
+        }
+      ]
+    },
+    {
+      "dependent": false,
+      "target": "parity4",
+      "n": 64,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.2518939393939402,
+          "coherent": 0.2518939393939402,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.25594245973263396,
+          "coherent": 0.25633704689291636,
+          "gain": {
+            "mean": -0.0003945871602823309,
+            "lower": -0.0007613401511291354,
+            "upper": -0.000027834169435526446
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.12698915457575063,
+          "coherent": 0.09710489065457767,
+          "gain": {
+            "mean": 0.02988426392117294,
+            "lower": 0.01827310273064632,
+            "upper": 0.04149542511169956
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.2371084933810765,
+          "coherent": 0.2316353582985082,
+          "gain": {
+            "mean": 0.005473135082568328,
+            "lower": 0.0035588264704698534,
+            "upper": 0.007387443694666802
+          }
+        }
+      ]
+    },
+    {
+      "dependent": false,
+      "target": "parity4",
+      "n": 128,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.2524334319526622,
+          "coherent": 0.2524334319526622,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.25371845917990044,
+          "coherent": 0.25383502715390904,
+          "gain": {
+            "mean": -0.00011656797400862867,
+            "lower": -0.00022728904046016857,
+            "upper": -0.000005846907557088778
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.08579119319994774,
+          "coherent": 0.06382665488940673,
+          "gain": {
+            "mean": 0.02196453831054103,
+            "lower": 0.019686040778832202,
+            "upper": 0.024243035842249856
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.22550520155164963,
+          "coherent": 0.21598348964002248,
+          "gain": {
+            "mean": 0.009521711911627104,
+            "lower": 0.007854142241635232,
+            "upper": 0.011189281581618976
+          }
+        }
+      ]
+    },
+    {
+      "dependent": false,
+      "target": "parity4",
+      "n": 4096,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.2500583741584,
+          "coherent": 0.2500583741584,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.25015319804456954,
+          "coherent": 0.25015334786734134,
+          "gain": {
+            "mean": -1.4982277180344838e-7,
+            "lower": -2.646067127859254e-7,
+            "upper": -3.503883082097138e-8
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.047920100111562926,
+          "coherent": 0.04787099280944934,
+          "gain": {
+            "mean": 0.00004910730211358247,
+            "lower": 0.000009220030545976477,
+            "upper": 0.00008899457368118847
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.06231943943774466,
+          "coherent": 0.054552994341743336,
+          "gain": {
+            "mean": 0.007766445096001321,
+            "lower": 0.007301730848895862,
+            "upper": 0.00823115934310678
+          }
+        }
+      ]
+    },
+    {
+      "dependent": true,
+      "target": "bit",
+      "n": 64,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.25154958677686,
+          "coherent": 0.25154958677686,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.05124323518738109,
+          "coherent": 0.05067014853955733,
+          "gain": {
+            "mean": 0.0005730866478237577,
+            "lower": -0.0001413284736212371,
+            "upper": 0.0012875017692687526
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.0882612884871555,
+          "coherent": 0.06820779216196635,
+          "gain": {
+            "mean": 0.020053496325189185,
+            "lower": 0.017215380309391914,
+            "upper": 0.022891612340986457
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.2261432562934031,
+          "coherent": 0.21729890770474253,
+          "gain": {
+            "mean": 0.008844348588660551,
+            "lower": 0.0048160594506818834,
+            "upper": 0.012872637726639219
+          }
+        }
+      ]
+    },
+    {
+      "dependent": true,
+      "target": "bit",
+      "n": 128,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.2513424556213014,
+          "coherent": 0.2513424556213014,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.04811687103481516,
+          "coherent": 0.04802817372626755,
+          "gain": {
+            "mean": 0.0000886973085476128,
+            "lower": -0.00006483101033045478,
+            "upper": 0.00024222562742568039
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.0632527776016427,
+          "coherent": 0.05575491111839387,
+          "gain": {
+            "mean": 0.0074978664832488235,
+            "lower": 0.004757747527998147,
+            "upper": 0.0102379854384995
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.20342482101890283,
+          "coherent": 0.18537188070864893,
+          "gain": {
+            "mean": 0.018052940310253944,
+            "lower": 0.014368743079310783,
+            "upper": 0.021737137541197105
+          }
+        }
+      ]
+    },
+    {
+      "dependent": true,
+      "target": "bit",
+      "n": 4096,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.2500407744519881,
+          "coherent": 0.2500407744519881,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.04752530224706958,
+          "coherent": 0.04752516746496857,
+          "gain": {
+            "mean": 1.347821010143184e-7,
+            "lower": -0.0000010961959679308287,
+            "upper": 0.0000013657601699594655
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.04769751576714132,
+          "coherent": 0.0476880442700511,
+          "gain": {
+            "mean": 0.00000947149709021539,
+            "lower": -0.00000913647944450459,
+            "upper": 0.00002807947362493537
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.05288091173213215,
+          "coherent": 0.050663299636639514,
+          "gain": {
+            "mean": 0.0022176120954926415,
+            "lower": 0.0020098967959701584,
+            "upper": 0.0024253273950151245
+          }
+        }
+      ]
+    },
+    {
+      "dependent": true,
+      "target": "parity4",
+      "n": 64,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.25152089072543665,
+          "coherent": 0.25152089072543665,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.2535322326169527,
+          "coherent": 0.25375618849561116,
+          "gain": {
+            "mean": -0.000223955878658446,
+            "lower": -0.00041736182131319464,
+            "upper": -0.000030549936003697315
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.08201110768887312,
+          "coherent": 0.05927717846189466,
+          "gain": {
+            "mean": 0.022733929226978464,
+            "lower": 0.019800046238863164,
+            "upper": 0.025667812215093764
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.2244879150390628,
+          "coherent": 0.21313529552591634,
+          "gain": {
+            "mean": 0.011352619513146457,
+            "lower": 0.008376215674871235,
+            "upper": 0.01432902335142168
+          }
+        }
+      ]
+    },
+    {
+      "dependent": true,
+      "target": "parity4",
+      "n": 128,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.25221523668638995,
+          "coherent": 0.25221523668638995,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.2542427595833024,
+          "coherent": 0.25437251834696684,
+          "gain": {
+            "mean": -0.00012975876366438932,
+            "lower": -0.00024137576008214143,
+            "upper": -0.00001814176724663721
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.061565413913506846,
+          "coherent": 0.05365279011729625,
+          "gain": {
+            "mean": 0.007912623796210593,
+            "lower": 0.005283003830673283,
+            "upper": 0.010542243761747902
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.2037819431157884,
+          "coherent": 0.18606098197899792,
+          "gain": {
+            "mean": 0.017720961136790538,
+            "lower": 0.013468130405728185,
+            "upper": 0.02197379186785289
+          }
+        }
+      ]
+    },
+    {
+      "dependent": true,
+      "target": "parity4",
+      "n": 4096,
+      "masks": [
+        {
+          "mask": 0,
+          "old": 0.25009224494039545,
+          "coherent": 0.25009224494039545,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "mask": 1,
+          "old": 0.25012248961731,
+          "coherent": 0.2501226094658709,
+          "gain": {
+            "mean": -1.1984856093660845e-7,
+            "lower": -2.3708069449763213e-7,
+            "upper": -2.616427375584774e-9
+          }
+        },
+        {
+          "mask": 31,
+          "old": 0.04772696358986868,
+          "coherent": 0.04771360314662357,
+          "gain": {
+            "mean": 0.000013360443245096464,
+            "lower": -0.000007654109234212592,
+            "upper": 0.00003437499572440552
+          }
+        },
+        {
+          "mask": 511,
+          "old": 0.05297747691130852,
+          "coherent": 0.050758022599919864,
+          "gain": {
+            "mean": 0.0022194543113886497,
+            "lower": 0.0019849099429246606,
+            "upper": 0.002453998679852639
+          }
+        }
+      ]
+    }
+  ],
+  "limits": "Fixed-mask finite-population diagnostic, descriptive paired mean +/-3.5SE over training fits; no adaptive or real-task benefit established."
+}

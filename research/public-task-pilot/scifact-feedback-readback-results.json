@@ -1,0 +1,30 @@
+{
+  "time": "2026-10-04T14:43:31.095Z",
+  "scriptSHA256": "714ebf0f7ee7bbd8c821d4394edb91c00ee4b72abe30d46475d7937619bb2cb0",
+  "reports": [
+    {
+      "root": "research/public-task-pilot/scifact-feedback-v1",
+      "auditSHA256": "e8b4a80fe03348ae8bce9ae6d8867ab5e17def8f032108e858b470785afd40e0",
+      "queryAnd221UnitMetricsRecomputed": true,
+      "serialCostRecomputed": true,
+      "screenPassed": false
+    },
+    {
+      "root": "research/public-task-pilot/scifact-feedback-union-v1",
+      "auditSHA256": "bc826227d37ad5ad20cf838d01eceeedbbc0945b4fd5da1addce3ebda9819b8d",
+      "queryAnd221UnitMetricsRecomputed": true,
+      "serialCostRecomputed": true,
+      "screenPassed": false,
+      "rawUnionRecall": 0.9506172839506173,
+      "rawUnionScoredAll": true,
+      "originalLostBeforeScoring": 0,
+      "finalIDFMeanOriginalEvictions": 3.658119658119658,
+      "rawExpandedLegMeanOriginalEvictions": 86.56410256410257,
+      "copyFieldClarification": "nomination.meanEvicted is expanded-leg versus original, NOT pre-scoring union loss",
+      "top10ExactControlParity": true,
+      "rawUnionVectors": 100584
+    }
+  ],
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

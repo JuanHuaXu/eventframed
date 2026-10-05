@@ -1,0 +1,106 @@
+package main
+
+import (
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/JuanHuaXu/eventframed/internal/epistemic"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/packing"
+	"github.com/JuanHuaXu/eventframed/research/originbinding"
+)
+
+type fact struct {
+	ID      string `json:"id"`
+	Mission string `json:"mission"`
+	Event   string `json:"event"`
+	Target  string `json:"target"`
+	Date    string `json:"date"`
+	Source  string `json:"source"`
+}
+type result struct {
+	ReviewNominations int    `json:"review_nominations"`
+	BindingsApplied   int    `json:"bindings_applied"`
+	Packed            int    `json:"packed"`
+	Suppressed        int    `json:"suppressed"`
+	Fact              string `json:"fact"`
+	Mode              string `json:"mode"`
+	SameGroup         bool   `json:"same_group"`
+	Correlated        bool   `json:"correlated"`
+}
+
+func check(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+func main() {
+	if len(os.Args) != 2 {
+		panic("expected public facts path")
+	}
+	input, err := os.ReadFile(os.Args[1])
+	check(err)
+	var facts []fact
+	check(json.Unmarshal(input, &facts))
+	field := func(s string) model.Field { return model.Field{Value: s, Source: model.SourceObserved, Confidence: 1} }
+	var results []result
+	for _, f := range facts {
+		origin := sha256.Sum256([]byte(f.Source))
+		base := model.Event{ID: f.ID, TenantID: "public-research", SessionID: "fetch-a", Kind: "external_observation",
+			Who: field(f.Mission), What: field(f.Event), Where: field(f.Target), When: field(f.Date), How: field("archive retrieval"),
+			Provenance: model.Provenance{Producer: "public-fixture-adapter", ToolCallID: "fetch-a", RunID: "run-a", SourceEventIDs: []string{"public-origin-" + hex.EncodeToString(origin[:])}}}
+		for _, mode := range []string{"stable_origin", "missing_origin", "producer_change", "per_fetch_origin"} {
+			left, right := base, base
+			right.ID = f.ID + "-repeat"
+			right.SessionID = "fetch-b"
+			right.Provenance.RunID = "run-b"
+			right.Provenance.ToolCallID = "fetch-b"
+			switch mode {
+			case "missing_origin":
+				left.Provenance.SourceEventIDs = nil
+				right.Provenance.SourceEventIDs = nil
+			case "producer_change":
+				right.Provenance.Producer = "second-fixture-adapter"
+			case "per_fetch_origin":
+				right.Provenance.SourceEventIDs = []string{"different-fetch-origin"}
+			}
+			a, b := epistemic.Describe(left), epistemic.Describe(right)
+
+			lb, err := originbinding.Record(left, "public-origin-"+hex.EncodeToString(origin[:]))
+			check(err)
+			rb, err := originbinding.Record(right, "public-origin-"+hex.EncodeToString(origin[:]))
+			check(err)
+			registry, err := originbinding.New([]originbinding.Binding{lb, rb})
+			check(err)
+			lc, okLeft := registry.Apply(model.Candidate{Event: left, EvidenceGroupKey: a.EvidenceGroupKey, EstimatedTokens: 100})
+			rc, okRight := registry.Apply(model.Candidate{Event: right, EvidenceGroupKey: b.EvidenceGroupKey, EstimatedTokens: 100})
+			if !okLeft || !okRight {
+				panic("fixture binding rejected")
+			}
+			report, err := registry.Conflicts([]model.Candidate{{Event: left, EvidenceGroupKey: a.EvidenceGroupKey}, {Event: right, EvidenceGroupKey: b.EvidenceGroupKey}}, nil, packing.DefaultPolicy().EvidenceSimilarity)
+			check(err)
+			packet := packing.Select([]model.Candidate{lc, rc}, nil, 2, 2, 1000, packing.DefaultPolicy())
+			results = append(results, result{ReviewNominations: len(report.Conflicts), BindingsApplied: 2, Packed: len(packet.Candidates), Suppressed: packet.CorrelatedSuppressed, Fact: f.ID, Mode: mode, SameGroup: lc.EvidenceGroupKey == rc.EvidenceGroupKey, Correlated: epistemic.Correlated(a, b, .8)})
+
+		}
+	}
+	hashes := map[string]string{}
+	for _, path := range []string{os.Args[1], "internal/epistemic/evidence.go", "research/public-provenance-review/main.go", "research/originbinding/conflicts.go", "research/public-task-pilot/ORIGIN_CONFLICT_PROTOCOL.md", "research/originbinding/binding.go", "research/public-task-pilot/ORIGIN_BINDING_PROTOCOL.md", "internal/packing/packing.go", "research/public-task-pilot/PUBLIC_PROVENANCE_PROTOCOL.md"} {
+		b, e := os.ReadFile(path)
+		check(e)
+		h := sha256.Sum256(b)
+		hashes[path] = hex.EncodeToString(h[:])
+	}
+	out := struct {
+		Scope   string            `json:"scope"`
+		Hashes  map[string]string `json:"hashes"`
+		Results []result          `json:"results"`
+	}{
+		"Conflict nomination plus unchanged registry-bound packing on public repeats; trusted fixture registry assumed; not AP certification", hashes, results}
+	b, err := json.MarshalIndent(out, "", "  ")
+	check(err)
+	fmt.Println(string(b))
+}

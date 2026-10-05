@@ -1,0 +1,18 @@
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkSnapshotV115WholeFixture$' -benchmem -benchtime=1x -count=3
+Benchmark SHA256: c6ac0e41d4d63278bedfac5c95df6319c486d035a7ff0269e6190c0e83b75abb
+All repeats retained; no concurrent research computation.
+One operation:256 frames, fitting and all eleven arms on consumed v113 design
+parity4. Not per-query serving latency or a confirmation trajectory selection.
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkSnapshotV115WholeFixture/immediate-10        1 176861584 ns/op 47873880 B/op 12566 allocs/op
+BenchmarkSnapshotV115WholeFixture/immediate-10        1 154212041 ns/op 47868848 B/op 12562 allocs/op
+BenchmarkSnapshotV115WholeFixture/immediate-10        1 155448042 ns/op 47873960 B/op 12566 allocs/op
+BenchmarkSnapshotV115WholeFixture/delayed_missing-10  1 195212000 ns/op 47817664 B/op 12376 allocs/op
+BenchmarkSnapshotV115WholeFixture/delayed_missing-10  1 195391334 ns/op 47817760 B/op 12376 allocs/op
+BenchmarkSnapshotV115WholeFixture/delayed_missing-10  1 194089042 ns/op 47817664 B/op 12376 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/observationlearners 1.282s

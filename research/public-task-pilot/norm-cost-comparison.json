@@ -1,0 +1,45 @@
+{
+  "rows": [
+    {
+      "name": "BenchmarkPrivateInsert/N800/new-0-4",
+      "controlNS": 4866601,
+      "candidateNS": 4580726,
+      "timeRatio": 0.9412577690260615,
+      "controlBytes": 550744,
+      "candidateBytes": 550744,
+      "bytesRatio": 1,
+      "pass": false
+    },
+    {
+      "name": "BenchmarkPrivateInsert/N800/new-7-4",
+      "controlNS": 2769159,
+      "candidateNS": 2638201,
+      "timeRatio": 0.9527083854701012,
+      "controlBytes": 381328,
+      "candidateBytes": 381328,
+      "bytesRatio": 1,
+      "pass": false
+    },
+    {
+      "name": "BenchmarkPrivateInsert/N6400/new-0-4",
+      "controlNS": 9429535,
+      "candidateNS": 8978529,
+      "timeRatio": 0.9521709182902445,
+      "controlBytes": 865088,
+      "candidateBytes": 865088,
+      "bytesRatio": 1,
+      "pass": false
+    },
+    {
+      "name": "BenchmarkPrivateInsert/N6400/new-7-4",
+      "controlNS": 6980323,
+      "candidateNS": 6616672,
+      "timeRatio": 0.9479034136385952,
+      "controlBytes": 606888,
+      "candidateBytes": 606888,
+      "bytesRatio": 1,
+      "pass": false
+    }
+  ],
+  "pass": false
+}

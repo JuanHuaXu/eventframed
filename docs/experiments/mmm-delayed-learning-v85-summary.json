@@ -1,0 +1,2853 @@
+{
+  "sha256": "79e22a74497140af2b75333bcc2701c43a2453181ddf7e377548ec4c60301d0a",
+  "sourceCount": 119,
+  "underlyingTrajectories": 640,
+  "scheduleRuns": 2560,
+  "overall": "FAIL",
+  "summaries": [
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.049273377355439116,
+      "postBrier": 0.050138141628269586,
+      "postAccuracy": 0.94757080078125,
+      "postLogLoss": 0.2089952835998544,
+      "foreground": 4.00177001953125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.04925945890104968,
+      "postBrier": 0.05012009279739212,
+      "postAccuracy": 0.94757080078125,
+      "postLogLoss": 0.20896842328934814,
+      "foreground": 4.00177001953125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.049826563777388894,
+      "postBrier": 0.05008493591117922,
+      "postAccuracy": 0.94757080078125,
+      "postLogLoss": 0.2089733420261411,
+      "foreground": 4.00030517578125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.049812653696316316,
+      "postBrier": 0.05005977334198577,
+      "postAccuracy": 0.94757080078125,
+      "postLogLoss": 0.20884171549224748,
+      "foreground": 4.00030517578125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.04939956202627242,
+      "postBrier": 0.050102128179058715,
+      "postAccuracy": 0.947509765625,
+      "postLogLoss": 0.20888301107295096,
+      "foreground": 4.0009765625,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.049381123464689335,
+      "postBrier": 0.05006969420629353,
+      "postAccuracy": 0.947509765625,
+      "postLogLoss": 0.20877767057661276,
+      "foreground": 4.00164794921875,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.05018345070249486,
+      "postBrier": 0.050356024068550116,
+      "postAccuracy": 0.94757080078125,
+      "postLogLoss": 0.2097887929250904,
+      "foreground": 4.0023193359375,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.05013538796614795,
+      "postBrier": 0.05026237227932285,
+      "postAccuracy": 0.94757080078125,
+      "postLogLoss": 0.2095169962678831,
+      "foreground": 4.0020751953125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.144471242914422,
+      "postBrier": 0.23930010879902328,
+      "postAccuracy": 0.58575439453125,
+      "postLogLoss": 0.6789838814620986,
+      "foreground": 4.727783203125,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.1285086412364112,
+      "postBrier": 0.20738636451013495,
+      "postAccuracy": 0.66192626953125,
+      "postLogLoss": 0.606356518479911,
+      "foreground": 4.622039794921875,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.15917645861157936,
+      "postBrier": 0.26721706580954324,
+      "postAccuracy": 0.56317138671875,
+      "postLogLoss": 0.7714464707116984,
+      "foreground": 4.603363037109375,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.15243282984259346,
+      "postBrier": 0.25372904536403873,
+      "postAccuracy": 0.60699462890625,
+      "postLogLoss": 0.7413624442164642,
+      "foreground": 4.495635986328125,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.15055388520644072,
+      "postBrier": 0.251049774030322,
+      "postAccuracy": 0.5556640625,
+      "postLogLoss": 0.706876043976066,
+      "foreground": 4.765716552734375,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.14276605818009339,
+      "postBrier": 0.23563290437705645,
+      "postAccuracy": 0.6036376953125,
+      "postLogLoss": 0.672837820120523,
+      "foreground": 4.666290283203125,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.1604723986913833,
+      "postBrier": 0.2701769250617026,
+      "postAccuracy": 0.53936767578125,
+      "postLogLoss": 0.7737508096294092,
+      "foreground": 4.66552734375,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.15974693580239382,
+      "postBrier": 0.2687274640131821,
+      "postAccuracy": 0.5526123046875,
+      "postLogLoss": 0.771573776823483,
+      "foreground": 4.53179931640625,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.14479435704839141,
+      "postBrier": 0.2387189275610574,
+      "postAccuracy": 0.60150146484375,
+      "postLogLoss": 0.6780027758627287,
+      "foreground": 4.75079345703125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.1268004881877574,
+      "postBrier": 0.2027381896437603,
+      "postAccuracy": 0.67877197265625,
+      "postLogLoss": 0.5951642906686643,
+      "foreground": 4.659515380859375,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.15732982630870732,
+      "postBrier": 0.2626218484736268,
+      "postAccuracy": 0.572998046875,
+      "postLogLoss": 0.7584701383068639,
+      "foreground": 4.61932373046875,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.15186818964804766,
+      "postBrier": 0.25168228547963417,
+      "postAccuracy": 0.6104736328125,
+      "postLogLoss": 0.7341373897030788,
+      "foreground": 4.513916015625,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.14932802766528722,
+      "postBrier": 0.24765584516858563,
+      "postAccuracy": 0.572021484375,
+      "postLogLoss": 0.6998467044474997,
+      "foreground": 4.787078857421875,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.14175638686423528,
+      "postBrier": 0.23251888543354296,
+      "postAccuracy": 0.61102294921875,
+      "postLogLoss": 0.6661883680636371,
+      "foreground": 4.705841064453125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.1580157500888311,
+      "postBrier": 0.26445665657390005,
+      "postAccuracy": 0.55828857421875,
+      "postLogLoss": 0.7590364579267598,
+      "foreground": 4.7156982421875,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.15685779074271583,
+      "postBrier": 0.2621435574575589,
+      "postAccuracy": 0.5694580078125,
+      "postLogLoss": 0.754535510396661,
+      "foreground": 4.61248779296875,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.15946527875452376,
+      "postBrier": 0.19578824725813357,
+      "postAccuracy": 0.6818440755208335,
+      "postLogLoss": 0.5757358693811948,
+      "foreground": 4.90850830078125,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.14499408385751233,
+      "postBrier": 0.17649334950515166,
+      "postAccuracy": 0.7395833333333335,
+      "postLogLoss": 0.5330944457887202,
+      "foreground": 4.901641845703125,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.18715786584453997,
+      "postBrier": 0.23199917868010073,
+      "postAccuracy": 0.6621907552083335,
+      "postLogLoss": 0.697438932977451,
+      "foreground": 4.771820068359375,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.1806705061263035,
+      "postBrier": 0.22334937108180541,
+      "postAccuracy": 0.6926269531249998,
+      "postLogLoss": 0.6784221251510949,
+      "foreground": 4.7679443359375,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.16356652882071443,
+      "postBrier": 0.20120800434874214,
+      "postAccuracy": 0.6677246093749998,
+      "postLogLoss": 0.5903003132954096,
+      "foreground": 4.87225341796875,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.14817947067536083,
+      "postBrier": 0.18069192903520445,
+      "postAccuracy": 0.7309570312499999,
+      "postLogLoss": 0.5450939915757437,
+      "foreground": 4.868865966796875,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.1889497908826269,
+      "postBrier": 0.23465114625146075,
+      "postAccuracy": 0.6402587890624999,
+      "postLogLoss": 0.6982578206189232,
+      "foreground": 4.797943115234375,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.1811076041407005,
+      "postBrier": 0.22419489757876113,
+      "postAccuracy": 0.6819254557291667,
+      "postLogLoss": 0.675542817960462,
+      "foreground": 4.80145263671875,
+      "splitRate": 1
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.25206065151270557,
+      "postBrier": 0.25132862895686603,
+      "postAccuracy": 0.5015869140625,
+      "postLogLoss": 0.6958691352571221,
+      "foreground": 5.99896240234375,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.252042160327368,
+      "postBrier": 0.251312656414075,
+      "postAccuracy": 0.50128173828125,
+      "postLogLoss": 0.6958349024856492,
+      "foreground": 5.99884033203125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.25265826026639004,
+      "postBrier": 0.25219318013231057,
+      "postAccuracy": 0.5042724609375,
+      "postLogLoss": 0.6977071076347284,
+      "foreground": 5.99725341796875,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.25251778438174705,
+      "postBrier": 0.2521417597749362,
+      "postAccuracy": 0.5008544921875,
+      "postLogLoss": 0.6975877737636788,
+      "foreground": 5.997222900390625,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.25230737532849734,
+      "postBrier": 0.25203728121135455,
+      "postAccuracy": 0.5030517578125,
+      "postLogLoss": 0.6973312918131601,
+      "foreground": 5.99871826171875,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.25231841650379655,
+      "postBrier": 0.25201336188116724,
+      "postAccuracy": 0.50537109375,
+      "postLogLoss": 0.6972721486741228,
+      "foreground": 5.99810791015625,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.2524038169640556,
+      "postBrier": 0.2523061706685104,
+      "postAccuracy": 0.5032958984375,
+      "postLogLoss": 0.6978781775388582,
+      "foreground": 5.997589111328125,
+      "splitRate": 0
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.252462828816922,
+      "postBrier": 0.2523827598662745,
+      "postAccuracy": 0.5042724609375,
+      "postLogLoss": 0.6980417281526052,
+      "foreground": 5.998321533203125,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.04835218382793539,
+      "postBrier": 0.0497085791383084,
+      "postAccuracy": 0.947998046875,
+      "postLogLoss": 0.2078729524286829,
+      "foreground": 4.002197265625,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.048330526634299126,
+      "postBrier": 0.049693374050018016,
+      "postAccuracy": 0.947998046875,
+      "postLogLoss": 0.20779035993564715,
+      "foreground": 4.003997802734375,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.04899496890191918,
+      "postBrier": 0.049786100803806736,
+      "postAccuracy": 0.947998046875,
+      "postLogLoss": 0.20828497433791648,
+      "foreground": 4.0029296875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.049013720151500614,
+      "postBrier": 0.04984588025416042,
+      "postAccuracy": 0.947998046875,
+      "postLogLoss": 0.208411235996549,
+      "foreground": 4.0067138671875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.04835393844966658,
+      "postBrier": 0.04969031059528531,
+      "postAccuracy": 0.94805908203125,
+      "postLogLoss": 0.20789408079219618,
+      "foreground": 4.000732421875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.04836074093674824,
+      "postBrier": 0.04966285335885995,
+      "postAccuracy": 0.94805908203125,
+      "postLogLoss": 0.20774213822396298,
+      "foreground": 4.00128173828125,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.04875926537995807,
+      "postBrier": 0.04972340198873633,
+      "postAccuracy": 0.947998046875,
+      "postLogLoss": 0.20802716515993885,
+      "foreground": 4.00115966796875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.048754098809033544,
+      "postBrier": 0.0497126945883079,
+      "postAccuracy": 0.947998046875,
+      "postLogLoss": 0.20794442024350018,
+      "foreground": 4.001220703125,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.1452075036826328,
+      "postBrier": 0.24030842002486466,
+      "postAccuracy": 0.5814208984375,
+      "postLogLoss": 0.681176645070076,
+      "foreground": 4.704620361328125,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.1274975388831592,
+      "postBrier": 0.2048913790343129,
+      "postAccuracy": 0.66680908203125,
+      "postLogLoss": 0.600274535587324,
+      "foreground": 4.611114501953125,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.15888122527816445,
+      "postBrier": 0.26624946824001494,
+      "postAccuracy": 0.5601806640625,
+      "postLogLoss": 0.7668686833971715,
+      "foreground": 4.578460693359375,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.15334508591912577,
+      "postBrier": 0.25518344737470594,
+      "postAccuracy": 0.5960693359375,
+      "postLogLoss": 0.7422610582187281,
+      "foreground": 4.450042724609375,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.15038225738360117,
+      "postBrier": 0.2505741738146774,
+      "postAccuracy": 0.55914306640625,
+      "postLogLoss": 0.7056214013782712,
+      "foreground": 4.761199951171875,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.14210535734196023,
+      "postBrier": 0.23401673776187232,
+      "postAccuracy": 0.60858154296875,
+      "postLogLoss": 0.6691229295651869,
+      "foreground": 4.66168212890625,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.15851553635644314,
+      "postBrier": 0.26647773132841074,
+      "postAccuracy": 0.546630859375,
+      "postLogLoss": 0.7622910920153305,
+      "foreground": 4.704559326171875,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.1575420822371918,
+      "postBrier": 0.26453610618915063,
+      "postAccuracy": 0.563232421875,
+      "postLogLoss": 0.7584763796597347,
+      "foreground": 4.574432373046875,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.14559166901461112,
+      "postBrier": 0.24238443700626588,
+      "postAccuracy": 0.5919189453125,
+      "postLogLoss": 0.6870167548311109,
+      "foreground": 4.740631103515625,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.12712953280325298,
+      "postBrier": 0.20546987875762449,
+      "postAccuracy": 0.66802978515625,
+      "postLogLoss": 0.602877917776263,
+      "foreground": 4.64166259765625,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.1569308768095528,
+      "postBrier": 0.26373256574003046,
+      "postAccuracy": 0.5689697265625,
+      "postLogLoss": 0.7597541230150564,
+      "foreground": 4.61865234375,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.14973791898851269,
+      "postBrier": 0.24935064496316678,
+      "postAccuracy": 0.6077880859375,
+      "postLogLoss": 0.7272778948948394,
+      "foreground": 4.51519775390625,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.14901492542782588,
+      "postBrier": 0.2492397052037021,
+      "postAccuracy": 0.567138671875,
+      "postLogLoss": 0.7049278116262434,
+      "foreground": 4.745208740234375,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.1415307448430642,
+      "postBrier": 0.23428161936246866,
+      "postAccuracy": 0.60235595703125,
+      "postLogLoss": 0.6719929376261209,
+      "foreground": 4.662628173828125,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.15880204261124478,
+      "postBrier": 0.2678424561235445,
+      "postAccuracy": 0.54974365234375,
+      "postLogLoss": 0.7681320855153644,
+      "foreground": 4.674652099609375,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.15762231966390236,
+      "postBrier": 0.26548732918034434,
+      "postAccuracy": 0.56109619140625,
+      "postLogLoss": 0.7638868903614796,
+      "foreground": 4.560516357421875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.15790056575551847,
+      "postBrier": 0.1935736818135849,
+      "postAccuracy": 0.6840413411458333,
+      "postLogLoss": 0.5691090791891859,
+      "foreground": 4.877777099609375,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.14324991749171007,
+      "postBrier": 0.17403937391688148,
+      "postAccuracy": 0.7438964843749998,
+      "postLogLoss": 0.5259707800714752,
+      "foreground": 4.8880615234375,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.18754300010711847,
+      "postBrier": 0.23222852360759116,
+      "postAccuracy": 0.6586100260416669,
+      "postLogLoss": 0.696811166150048,
+      "foreground": 4.76531982421875,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.180602770906941,
+      "postBrier": 0.2229748859858344,
+      "postAccuracy": 0.6944580078124999,
+      "postLogLoss": 0.6761492620579553,
+      "foreground": 4.767242431640625,
+      "splitRate": 1
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.16315228911274132,
+      "postBrier": 0.20047593604346803,
+      "postAccuracy": 0.6697591145833331,
+      "postLogLoss": 0.5872354757796745,
+      "foreground": 4.84808349609375,
+      "splitRate": 0.984375
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.1501788827168363,
+      "postBrier": 0.18317802689438095,
+      "postAccuracy": 0.725423177083333,
+      "postLogLoss": 0.5493302278940727,
+      "foreground": 4.859405517578125,
+      "splitRate": 0.984375
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.18890549123404352,
+      "postBrier": 0.23441704591272156,
+      "postAccuracy": 0.6395263671874999,
+      "postLogLoss": 0.6949364525349391,
+      "foreground": 4.807464599609375,
+      "splitRate": 0.953125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.18222806964937513,
+      "postBrier": 0.2255138171331635,
+      "postAccuracy": 0.6743977864583333,
+      "postLogLoss": 0.6758277350798383,
+      "foreground": 4.808441162109375,
+      "splitRate": 0.953125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "fullBrier": 0.25196863497760474,
+      "postBrier": 0.25128458638746565,
+      "postAccuracy": 0.505615234375,
+      "postLogLoss": 0.6957833574993059,
+      "foreground": 5.999786376953125,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.25198038624322794,
+      "postBrier": 0.25131507005867754,
+      "postAccuracy": 0.500732421875,
+      "postLogLoss": 0.6958404588967904,
+      "foreground": 5.999481201171875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "fullBrier": 0.25219344652657033,
+      "postBrier": 0.251584313310212,
+      "postAccuracy": 0.50238037109375,
+      "postLogLoss": 0.6964286709522852,
+      "foreground": 5.99847412109375,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.252138855307077,
+      "postBrier": 0.25148622964522205,
+      "postAccuracy": 0.5006103515625,
+      "postLogLoss": 0.6961735393621085,
+      "foreground": 5.99847412109375,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.25221523960637565,
+      "postBrier": 0.2516686432005873,
+      "postAccuracy": 0.506591796875,
+      "postLogLoss": 0.6965971157587625,
+      "foreground": 5.99951171875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.2521845302761041,
+      "postBrier": 0.25166790672565825,
+      "postAccuracy": 0.50421142578125,
+      "postLogLoss": 0.6965689215446791,
+      "foreground": 5.99951171875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "fullBrier": 0.25244685064320993,
+      "postBrier": 0.25222623497353036,
+      "postAccuracy": 0.50146484375,
+      "postLogLoss": 0.6977046680268417,
+      "foreground": 5.99951171875,
+      "splitRate": 0
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "fullBrier": 0.25237554261136025,
+      "postBrier": 0.2520707682898409,
+      "postAccuracy": 0.5001220703125,
+      "postLogLoss": 0.697379089821945,
+      "foreground": 5.99945068359375,
+      "splitRate": 0
+    }
+  ],
+  "comparisons": [
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.000013918454389452196,
+        "lower": -3.206346985571531e-7,
+        "upper": 0.000028157543477461546
+      },
+      "postGain": {
+        "mean": 0.000018048830877444863,
+        "lower": -0.000006320780095069017,
+        "upper": 0.00004241844184995875
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 129.234375,
+      "subsetFits": 6.59375,
+      "maxPending": 1,
+      "monitorCost": 8,
+      "auditCost": 4.54339599609375
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.000013910081072553192,
+        "lower": -0.000015357580978509275,
+        "upper": 0.00004317774312361566
+      },
+      "postGain": {
+        "mean": 0.000025162569193440333,
+        "lower": -0.000029914936144618054,
+        "upper": 0.00008024007453149872
+      },
+      "cellPass": true,
+      "applied": 396.015625,
+      "stale": 99.984375,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 125.546875,
+      "subsetFits": 6.34375,
+      "maxPending": 17,
+      "monitorCost": 8,
+      "auditCost": 4.54339599609375
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": 0.00001843856158308978,
+        "lower": -0.000003247701899920999,
+        "upper": 0.00004012482506610056
+      },
+      "postGain": {
+        "mean": 0.00003243397276518487,
+        "lower": -0.000011364402996262725,
+        "upper": 0.00007623234852663247
+      },
+      "cellPass": true,
+      "applied": 410.3125,
+      "stale": 0,
+      "censored": 101.6875,
+      "received": 410.3125,
+      "receivedAudits": 104.09375,
+      "subsetFits": 5.078125,
+      "maxPending": 23,
+      "monitorCost": 8,
+      "auditCost": 4.54339599609375
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.00004806273634690606,
+        "lower": -0.00006754569557245046,
+        "upper": 0.00016367116826626258
+      },
+      "postGain": {
+        "mean": 0.00009365178922725212,
+        "lower": -0.0001375047447017452,
+        "upper": 0.0003248083231562494
+      },
+      "cellPass": true,
+      "applied": 339.390625,
+      "stale": 58.625,
+      "censored": 113.984375,
+      "received": 398.015625,
+      "receivedAudits": 101.109375,
+      "subsetFits": 4.8125,
+      "maxPending": 36,
+      "monitorCost": 8,
+      "auditCost": 4.54339599609375
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.015962601678010856,
+        "lower": 0.012819874590721668,
+        "upper": 0.019105328765300043
+      },
+      "postGain": {
+        "mean": 0.03191374428888827,
+        "lower": 0.02562931467130807,
+        "upper": 0.038198173906468465
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 128.0625,
+      "subsetFits": 6.578125,
+      "maxPending": 1,
+      "monitorCost": 8,
+      "auditCost": 4.502197265625
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.006743628768985901,
+        "lower": 0.003952998786052758,
+        "upper": 0.009534258751919045
+      },
+      "postGain": {
+        "mean": 0.013488020445504503,
+        "lower": 0.007910281232950837,
+        "upper": 0.01906575965805817
+      },
+      "cellPass": true,
+      "applied": 383.5,
+      "stale": 112.5,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 123.84375,
+      "subsetFits": 6.3125,
+      "maxPending": 17,
+      "monitorCost": 8,
+      "auditCost": 4.502197265625
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": 0.007787827026347368,
+        "lower": 0.004774385877261529,
+        "upper": 0.010801268175433205
+      },
+      "postGain": {
+        "mean": 0.015416869653265611,
+        "lower": 0.009342768423715057,
+        "upper": 0.021490970882816166
+      },
+      "cellPass": true,
+      "applied": 410.15625,
+      "stale": 0,
+      "censored": 101.84375,
+      "received": 410.15625,
+      "receivedAudits": 102.875,
+      "subsetFits": 4.984375,
+      "maxPending": 21,
+      "monitorCost": 8,
+      "auditCost": 4.502197265625
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.0007254628889893132,
+        "lower": -0.0009443020742080353,
+        "upper": 0.0023952278521866617
+      },
+      "postGain": {
+        "mean": 0.0014494610485204294,
+        "lower": -0.001889456722482117,
+        "upper": 0.004788378819522976
+      },
+      "cellPass": false,
+      "applied": 330.53125,
+      "stale": 66.859375,
+      "censored": 114.609375,
+      "received": 397.390625,
+      "receivedAudits": 99.453125,
+      "subsetFits": 4.734375,
+      "maxPending": 33,
+      "monitorCost": 8,
+      "auditCost": 4.502197265625
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.01799386886063406,
+        "lower": 0.015082725848812342,
+        "upper": 0.02090501187245578
+      },
+      "postGain": {
+        "mean": 0.035980737917297057,
+        "lower": 0.030160783865219386,
+        "upper": 0.04180069196937473
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 126.546875,
+      "subsetFits": 6.453125,
+      "maxPending": 1,
+      "monitorCost": 8,
+      "auditCost": 4.44891357421875
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.005461636660659677,
+        "lower": 0.0025305299429888317,
+        "upper": 0.008392743378330523
+      },
+      "postGain": {
+        "mean": 0.010939562993992565,
+        "lower": 0.005071728060360778,
+        "upper": 0.016807397927624354
+      },
+      "cellPass": true,
+      "applied": 399.5625,
+      "stale": 96.4375,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 122.59375,
+      "subsetFits": 6.1875,
+      "maxPending": 17,
+      "monitorCost": 8,
+      "auditCost": 4.44891357421875
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": 0.007571640801051894,
+        "lower": 0.004308296872831167,
+        "upper": 0.01083498472927262
+      },
+      "postGain": {
+        "mean": 0.015136959735042742,
+        "lower": 0.008608676511924113,
+        "upper": 0.02166524295816137
+      },
+      "cellPass": true,
+      "applied": 410.078125,
+      "stale": 0,
+      "censored": 101.921875,
+      "received": 410.078125,
+      "receivedAudits": 101.984375,
+      "subsetFits": 4.875,
+      "maxPending": 21,
+      "monitorCost": 8,
+      "auditCost": 4.44891357421875
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.0011579593461152862,
+        "lower": -0.0006958252266135794,
+        "upper": 0.0030117439188441517
+      },
+      "postGain": {
+        "mean": 0.0023130991163411384,
+        "lower": -0.0013949222326593434,
+        "upper": 0.006021120465341621
+      },
+      "cellPass": false,
+      "applied": 342.203125,
+      "stale": 55.96875,
+      "censored": 113.828125,
+      "received": 398.171875,
+      "receivedAudits": 98.9375,
+      "subsetFits": 4.6875,
+      "maxPending": 34,
+      "monitorCost": 8,
+      "auditCost": 4.44891357421875
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.014471194897011437,
+        "lower": 0.009425201868448026,
+        "upper": 0.019517187925574848
+      },
+      "postGain": {
+        "mean": 0.019294897752981897,
+        "lower": 0.01256689732267997,
+        "upper": 0.026022898183283825
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 129.953125,
+      "subsetFits": 6.640625,
+      "maxPending": 1,
+      "monitorCost": 8,
+      "auditCost": 4.56866455078125
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.006487359718236597,
+        "lower": 0.0032198017502927364,
+        "upper": 0.009754917686180458
+      },
+      "postGain": {
+        "mean": 0.008649807598295409,
+        "lower": 0.00429306385795407,
+        "upper": 0.013006551338636747
+      },
+      "cellPass": true,
+      "applied": 381.453125,
+      "stale": 114.546875,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 126,
+      "subsetFits": 6.40625,
+      "maxPending": 17,
+      "monitorCost": 8,
+      "auditCost": 4.56866455078125
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": 0.015387058145353672,
+        "lower": 0.010652696540815822,
+        "upper": 0.020121419749891522
+      },
+      "postGain": {
+        "mean": 0.02051607531353777,
+        "lower": 0.014203591873867313,
+        "upper": 0.026828558753208227
+      },
+      "cellPass": true,
+      "applied": 410.25,
+      "stale": 0,
+      "censored": 101.75,
+      "received": 410.25,
+      "receivedAudits": 104.171875,
+      "subsetFits": 5.03125,
+      "maxPending": 20,
+      "monitorCost": 8,
+      "auditCost": 4.56866455078125
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.00784218674192647,
+        "lower": 0.003705342623491796,
+        "upper": 0.011979030860361142
+      },
+      "postGain": {
+        "mean": 0.010456248672699658,
+        "lower": 0.004940456395945639,
+        "upper": 0.015972040949453675
+      },
+      "cellPass": true,
+      "applied": 330.5625,
+      "stale": 67.078125,
+      "censored": 114.359375,
+      "received": 397.640625,
+      "receivedAudits": 101.1875,
+      "subsetFits": 4.875,
+      "maxPending": 34,
+      "monitorCost": 8,
+      "auditCost": 4.56866455078125
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.00001849118533759622,
+        "lower": -0.00007239553387968779,
+        "upper": 0.00010937790455488022
+      },
+      "postGain": {
+        "mean": 0.00001597254279097791,
+        "lower": -0.00014181389566746,
+        "upper": 0.00017375898124941583
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 128.75,
+      "subsetFits": 6.546875,
+      "maxPending": 1,
+      "monitorCost": 12,
+      "auditCost": 4.5263671875
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.00014047588464301828,
+        "lower": -0.0001048017001523286,
+        "upper": 0.00038575346943836515
+      },
+      "postGain": {
+        "mean": 0.00005142035737440778,
+        "lower": -0.0002628791733869127,
+        "upper": 0.0003657198881357283
+      },
+      "cellPass": true,
+      "applied": 396.78125,
+      "stale": 99.21875,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 125.125,
+      "subsetFits": 6.328125,
+      "maxPending": 17,
+      "monitorCost": 12,
+      "auditCost": 4.5263671875
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": -0.000011041175299207704,
+        "lower": -0.00017563962452431047,
+        "upper": 0.00015355727392589506
+      },
+      "postGain": {
+        "mean": 0.000023919330187330886,
+        "lower": -0.000321647230941276,
+        "upper": 0.0003694858913159378
+      },
+      "cellPass": true,
+      "applied": 407.828125,
+      "stale": 0,
+      "censored": 104.171875,
+      "received": 407.828125,
+      "receivedAudits": 103.578125,
+      "subsetFits": 4.984375,
+      "maxPending": 22,
+      "monitorCost": 12,
+      "auditCost": 4.5263671875
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": -0.000059011852866284846,
+        "lower": -0.0003672178900526994,
+        "upper": 0.0002491941843201297
+      },
+      "postGain": {
+        "mean": -0.00007658919776407352,
+        "lower": -0.0006307862071955786,
+        "upper": 0.0004776078116674315
+      },
+      "cellPass": true,
+      "applied": 337.140625,
+      "stale": 58.125,
+      "censored": 116.734375,
+      "received": 395.265625,
+      "receivedAudits": 100.703125,
+      "subsetFits": 4.859375,
+      "maxPending": 34,
+      "monitorCost": 12,
+      "auditCost": 4.5263671875
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.000021657193636254288,
+        "lower": -0.000023987880692992287,
+        "upper": 0.00006730226796550086
+      },
+      "postGain": {
+        "mean": 0.000015205088290354155,
+        "lower": -0.00002278589763686533,
+        "upper": 0.00005319607421757364
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 128.03125,
+      "subsetFits": 6.515625,
+      "maxPending": 1,
+      "monitorCost": 8,
+      "auditCost": 4.5010986328125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": -0.00001875124958142867,
+        "lower": -0.00010467418738206808,
+        "upper": 0.00006717168821921074
+      },
+      "postGain": {
+        "mean": -0.00005977945035367659,
+        "lower": -0.0002328252667267341,
+        "upper": 0.00011326636601938092
+      },
+      "cellPass": true,
+      "applied": 397.625,
+      "stale": 98.375,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 123.921875,
+      "subsetFits": 6.28125,
+      "maxPending": 17,
+      "monitorCost": 8,
+      "auditCost": 4.5010986328125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": -0.000006802487081640355,
+        "lower": -0.00007366169524496868,
+        "upper": 0.00006005672108168797
+      },
+      "postGain": {
+        "mean": 0.000027457236425366092,
+        "lower": -0.000005538253673799909,
+        "upper": 0.000060452726524532094
+      },
+      "cellPass": true,
+      "applied": 409.046875,
+      "stale": 0,
+      "censored": 102.953125,
+      "received": 409.046875,
+      "receivedAudits": 101.578125,
+      "subsetFits": 4.828125,
+      "maxPending": 21,
+      "monitorCost": 8,
+      "auditCost": 4.5010986328125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.000005166570924521334,
+        "lower": -0.000008484362441309818,
+        "upper": 0.000018817504290352484
+      },
+      "postGain": {
+        "mean": 0.00001070740042840581,
+        "lower": -0.000016965291150940133,
+        "upper": 0.000038380092007751754
+      },
+      "cellPass": true,
+      "applied": 340.046875,
+      "stale": 56.203125,
+      "censored": 115.75,
+      "received": 396.25,
+      "receivedAudits": 98.078125,
+      "subsetFits": 4.65625,
+      "maxPending": 34,
+      "monitorCost": 8,
+      "auditCost": 4.5010986328125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.017709964799473593,
+        "lower": 0.014604822594400099,
+        "upper": 0.020815107004547088
+      },
+      "postGain": {
+        "mean": 0.035417040990551846,
+        "lower": 0.029207878269933513,
+        "upper": 0.04162620371117018
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 128.890625,
+      "subsetFits": 6.578125,
+      "maxPending": 1,
+      "monitorCost": 8,
+      "auditCost": 4.53131103515625
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.005536139359038702,
+        "lower": 0.002920731238724277,
+        "upper": 0.008151547479353127
+      },
+      "postGain": {
+        "mean": 0.011066020865308949,
+        "lower": 0.005835842890656613,
+        "upper": 0.016296198839961286
+      },
+      "cellPass": true,
+      "applied": 382.765625,
+      "stale": 113.234375,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 125.09375,
+      "subsetFits": 6.375,
+      "maxPending": 17,
+      "monitorCost": 8,
+      "auditCost": 4.53131103515625
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": 0.008276900041640991,
+        "lower": 0.005052179977142361,
+        "upper": 0.011501620106139622
+      },
+      "postGain": {
+        "mean": 0.016557436052805182,
+        "lower": 0.010108659101727195,
+        "upper": 0.02300621300388317
+      },
+      "cellPass": true,
+      "applied": 410.703125,
+      "stale": 0,
+      "censored": 101.296875,
+      "received": 410.703125,
+      "receivedAudits": 102.9375,
+      "subsetFits": 4.859375,
+      "maxPending": 22,
+      "monitorCost": 8,
+      "auditCost": 4.53131103515625
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.0009734541192512893,
+        "lower": -0.0006999723132805893,
+        "upper": 0.0026468805517831677
+      },
+      "postGain": {
+        "mean": 0.0019416251392601106,
+        "lower": -0.0014031770077074634,
+        "upper": 0.005286427286227685
+      },
+      "cellPass": false,
+      "applied": 331.0625,
+      "stale": 67.75,
+      "censored": 113.1875,
+      "received": 398.8125,
+      "receivedAudits": 100.171875,
+      "subsetFits": 4.734375,
+      "maxPending": 34,
+      "monitorCost": 8,
+      "auditCost": 4.53131103515625
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.01846213621135811,
+        "lower": 0.015029397888911925,
+        "upper": 0.02189487453380429
+      },
+      "postGain": {
+        "mean": 0.03691455824864132,
+        "lower": 0.03005023677119458,
+        "upper": 0.043778879726088064
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 127.28125,
+      "subsetFits": 6.453125,
+      "maxPending": 1,
+      "monitorCost": 8,
+      "auditCost": 4.4747314453125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.007192957821040048,
+        "lower": 0.004519314474726588,
+        "upper": 0.009866601167353509
+      },
+      "postGain": {
+        "mean": 0.01438192077686384,
+        "lower": 0.009036319548410339,
+        "upper": 0.01972752200531734
+      },
+      "cellPass": true,
+      "applied": 398.171875,
+      "stale": 97.828125,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 123.4375,
+      "subsetFits": 6.1875,
+      "maxPending": 17,
+      "monitorCost": 8,
+      "auditCost": 4.4747314453125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": 0.007484180584761682,
+        "lower": 0.004415918609770326,
+        "upper": 0.010552442559753038
+      },
+      "postGain": {
+        "mean": 0.014958085841233312,
+        "lower": 0.008823686687549293,
+        "upper": 0.02109248499491733
+      },
+      "cellPass": true,
+      "applied": 409.9375,
+      "stale": 0,
+      "censored": 102.0625,
+      "received": 409.9375,
+      "receivedAudits": 102.6875,
+      "subsetFits": 4.890625,
+      "maxPending": 22,
+      "monitorCost": 8,
+      "auditCost": 4.4747314453125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.0011797229473424048,
+        "lower": -0.0006240039302157479,
+        "upper": 0.0029834498249005576
+      },
+      "postGain": {
+        "mean": 0.002355126943200141,
+        "lower": -0.0012516361382788094,
+        "upper": 0.005961890024679091
+      },
+      "cellPass": false,
+      "applied": 339.890625,
+      "stale": 57.484375,
+      "censored": 114.625,
+      "received": 397.375,
+      "receivedAudits": 99.59375,
+      "subsetFits": 4.65625,
+      "maxPending": 35,
+      "monitorCost": 8,
+      "auditCost": 4.4747314453125
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": 0.014650648263808451,
+        "lower": 0.009843325793211203,
+        "upper": 0.0194579707344057
+      },
+      "postGain": {
+        "mean": 0.01953430789670338,
+        "lower": 0.01312442044886939,
+        "upper": 0.025944195344537367
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 127.515625,
+      "subsetFits": 6.484375,
+      "maxPending": 1,
+      "monitorCost": 8,
+      "auditCost": 4.48297119140625
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.006940229200177543,
+        "lower": 0.0031713114829239808,
+        "upper": 0.010709146917431106
+      },
+      "postGain": {
+        "mean": 0.009253637621756875,
+        "lower": 0.004228412117239974,
+        "upper": 0.014278863126273777
+      },
+      "cellPass": true,
+      "applied": 383.546875,
+      "stale": 112.453125,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 123.5,
+      "subsetFits": 6.3125,
+      "maxPending": 17,
+      "monitorCost": 8,
+      "auditCost": 4.48297119140625
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": 0.01297340639590504,
+        "lower": 0.008223320579719171,
+        "upper": 0.017723492212090908
+      },
+      "postGain": {
+        "mean": 0.017297909149087107,
+        "lower": 0.010964474054961584,
+        "upper": 0.02363134424321263
+      },
+      "cellPass": true,
+      "applied": 411.625,
+      "stale": 0,
+      "censored": 100.375,
+      "received": 411.625,
+      "receivedAudits": 102.84375,
+      "subsetFits": 4.96875,
+      "maxPending": 21,
+      "monitorCost": 8,
+      "auditCost": 4.48297119140625
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.006677421584668404,
+        "lower": 0.0027244467179004684,
+        "upper": 0.01063039645143634
+      },
+      "postGain": {
+        "mean": 0.008903228779557902,
+        "lower": 0.003632595623867311,
+        "upper": 0.014173861935248493
+      },
+      "cellPass": true,
+      "applied": 333.921875,
+      "stale": 65.28125,
+      "censored": 112.796875,
+      "received": 399.203125,
+      "receivedAudits": 99.546875,
+      "subsetFits": 4.75,
+      "maxPending": 35,
+      "monitorCost": 8,
+      "auditCost": 4.48297119140625
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "immediate",
+      "fullGain": {
+        "mean": -0.0000117512656232408,
+        "lower": -0.0001332054995515167,
+        "upper": 0.00010970296830503511
+      },
+      "postGain": {
+        "mean": -0.000030483671211795765,
+        "lower": -0.0002637742192880123,
+        "upper": 0.0002028068768644208
+      },
+      "cellPass": true,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0,
+      "received": 512,
+      "receivedAudits": 127.546875,
+      "subsetFits": 6.453125,
+      "maxPending": 1,
+      "monitorCost": 12,
+      "auditCost": 4.48406982421875
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "delay16",
+      "fullGain": {
+        "mean": 0.000054591219493335934,
+        "lower": -0.00018647229630309165,
+        "upper": 0.00029565473528976355
+      },
+      "postGain": {
+        "mean": 0.00009808366499005662,
+        "lower": -0.0004024697152048668,
+        "upper": 0.0005986370451849801
+      },
+      "cellPass": true,
+      "applied": 398.625,
+      "stale": 97.375,
+      "censored": 16,
+      "received": 496,
+      "receivedAudits": 123.4375,
+      "subsetFits": 6.21875,
+      "maxPending": 17,
+      "monitorCost": 12,
+      "auditCost": 4.48406982421875
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "missing20",
+      "fullGain": {
+        "mean": 0.00003070933027150965,
+        "lower": -0.0002039960729161669,
+        "upper": 0.00026541473345918624
+      },
+      "postGain": {
+        "mean": 7.364749291683542e-7,
+        "lower": -0.00037275628611161066,
+        "upper": 0.00037422923596994737
+      },
+      "cellPass": true,
+      "applied": 409.375,
+      "stale": 0,
+      "censored": 102.625,
+      "received": 409.375,
+      "receivedAudits": 101.953125,
+      "subsetFits": 4.859375,
+      "maxPending": 21,
+      "monitorCost": 12,
+      "auditCost": 4.48406982421875
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "fullGain": {
+        "mean": 0.0000713080318496752,
+        "lower": -0.0001759417121787553,
+        "upper": 0.0003185577758781057
+      },
+      "postGain": {
+        "mean": 0.0001554666836895268,
+        "lower": -0.00023572361693549235,
+        "upper": 0.000546656984314546
+      },
+      "cellPass": true,
+      "applied": 340.984375,
+      "stale": 56.234375,
+      "censored": 114.78125,
+      "received": 397.21875,
+      "receivedAudits": 98.796875,
+      "subsetFits": 4.75,
+      "maxPending": 34,
+      "monitorCost": 12,
+      "auditCost": 4.48406982421875
+    }
+  ],
+  "versusImmediate": [
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": -0.000053205717090376895,
+        "lower": -0.00022984252098838686,
+        "upper": 0.00012343108680763307
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": -0.000060319455406372365,
+        "lower": -0.00020704242850133172,
+        "upper": 0.00008640351768858699
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": -0.00003601344921086994,
+        "lower": -0.00012136701947873458,
+        "upper": 0.000049340121056994695
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": -0.00005039859109860995,
+        "lower": -0.0001468733983748012,
+        "upper": 0.000046076216177581286
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.00021788244028051541,
+        "lower": -0.00034501830118515434,
+        "upper": 0.0007807831817461851
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.00014227948193070816,
+        "lower": -0.0002826511682417699,
+        "upper": 0.0005672101321031862
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.027916957010519904,
+        "lower": 0.022444770328034207,
+        "upper": 0.0333891436930056
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.04634268085390367,
+        "lower": 0.039924871241467624,
+        "upper": 0.05276049046633971
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.011749665231298766,
+        "lower": 0.006322278146596669,
+        "upper": 0.017177052316000863
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.028246539866921404,
+        "lower": 0.02033149701731428,
+        "upper": 0.03616158271652853
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.030876816262679258,
+        "lower": 0.024826110673801808,
+        "upper": 0.036927521851556705
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.06134109950304708,
+        "lower": 0.051958120704011235,
+        "upper": 0.07072407830208292
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.023902920912569386,
+        "lower": 0.018281230419224567,
+        "upper": 0.029524611405914204
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.04894409583587387,
+        "lower": 0.04269289814027944,
+        "upper": 0.0551952935314683
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.008936917607528306,
+        "lower": 0.003343462243579929,
+        "upper": 0.014530372971476684
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.0297806957897826,
+        "lower": 0.022649802464368818,
+        "upper": 0.03691158911519638
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.025737729012842714,
+        "lower": 0.019493096055573145,
+        "upper": 0.03198236197011228
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.05940536781379862,
+        "lower": 0.05084095747930106,
+        "upper": 0.06796977814829618
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.03621093142196717,
+        "lower": 0.030147365547517454,
+        "upper": 0.042274497296416885
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.04685602157665364,
+        "lower": 0.04075675249344448,
+        "upper": 0.0529552906598628
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.005419757090608547,
+        "lower": -0.0006840273888445358,
+        "upper": 0.011523541570061628
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.004198579530052679,
+        "lower": -0.003351165617129767,
+        "upper": 0.011748324677235125
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.03886289899332715,
+        "lower": 0.030733708320230625,
+        "upper": 0.046992089666423674
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.0477015480736094,
+        "lower": 0.03899001345274428,
+        "upper": 0.05641308269447452
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.0008645511754445667,
+        "lower": 0.00006946265027683895,
+        "upper": 0.0016596397006122944
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.0008291033608611369,
+        "lower": 0.00006192845893984494,
+        "upper": 0.0015962782627824286
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.0007086522544886317,
+        "lower": 0.000002827554588464079,
+        "upper": 0.0014144769543887993
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.0007007054670922787,
+        "lower": -0.00012830958502908101,
+        "upper": 0.0015297205192136385
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.000977541711644422,
+        "lower": 0.00005947906980335264,
+        "upper": 0.0018956043534854913
+      }
+    },
+    {
+      "split": "design",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.0010701034521994734,
+        "lower": 0.000051530473856714436,
+        "upper": 0.0020886764305422323
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.0000775216654983507,
+        "lower": -0.00016795000592117695,
+        "upper": 0.00032299333691787835
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.00015250620414238145,
+        "lower": -0.0001825191424536182,
+        "upper": 0.0004875315507383811
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": -0.000018268543023080002,
+        "lower": -0.00013252346422379732,
+        "upper": 0.00009598637817763733
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": -0.00003052069115809194,
+        "lower": -0.00015143581900569955,
+        "upper": 0.00009039443668951567
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.000014822850427937762,
+        "lower": -0.0002704111513258087,
+        "upper": 0.0003000568521816842
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "stable",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.000019320538289886106,
+        "lower": -0.0002578524045903404,
+        "upper": 0.0002964934811701126
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.025941048215150163,
+        "lower": 0.020145460499549378,
+        "upper": 0.03173663593075095
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.05029206834039304,
+        "lower": 0.04329819279315468,
+        "upper": 0.057285943887631405
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.010265753789812745,
+        "lower": 0.006113997268622721,
+        "upper": 0.01441751031100277
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.02912535872755939,
+        "lower": 0.022783267986451042,
+        "upper": 0.03546744946866774
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.02616931130354598,
+        "lower": 0.021153893498419753,
+        "upper": 0.031184729108672208
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "member_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.05964472715483769,
+        "lower": 0.052305906371963015,
+        "upper": 0.06698354793771237
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.02134812873376471,
+        "lower": 0.016849277908799157,
+        "upper": 0.025846979558730263
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.04388076620554219,
+        "lower": 0.03709175839150107,
+        "upper": 0.05066977401958331
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.0068552681974362335,
+        "lower": 0.0018171842051138334,
+        "upper": 0.011893352189758634
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.028811740604844246,
+        "lower": 0.021949777751212495,
+        "upper": 0.035673703458475994
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.025458019117278793,
+        "lower": 0.019116362874964765,
+        "upper": 0.03179967535959282
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "common_shift",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.06001745042271998,
+        "lower": 0.05039494187556688,
+        "upper": 0.06963995896987307
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.03865484179400634,
+        "lower": 0.0340437289109788,
+        "upper": 0.04326595467703388
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.048935512068952865,
+        "lower": 0.04240476515817103,
+        "upper": 0.0554662589797347
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.0069022542298832045,
+        "lower": 0.0016450773552266276,
+        "upper": 0.012159431104539781
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.00913865297749948,
+        "lower": 0.002740233851637957,
+        "upper": 0.015537072103361003
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.040843364099136636,
+        "lower": 0.0348635612256665,
+        "upper": 0.04682316697260677
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "recurring",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.05147444321628209,
+        "lower": 0.043698807697958614,
+        "upper": 0.05925007873460557
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "immediate",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "immediate",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "delay16",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.00029972692274629793,
+        "lower": -0.0004542111514462652,
+        "upper": 0.001053664996938861
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "delay16",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.00017115958654444555,
+        "lower": -0.0004723987411071665,
+        "upper": 0.0008147179141960576
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.0003840568131215985,
+        "lower": -0.00016454030522709178,
+        "upper": 0.0009326539314702888
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.0003528366669806344,
+        "lower": -0.00012154163230587212,
+        "upper": 0.0008272149662671409
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_count",
+      "postBrierIncrease": {
+        "mean": 0.0009416485860647274,
+        "lower": -0.00003209055729865224,
+        "upper": 0.001915387729428107
+      }
+    },
+    {
+      "split": "confirmation",
+      "scenario": "null",
+      "schedule": "jitter31_missing20",
+      "arm": "journal_retained_subset",
+      "postBrierIncrease": {
+        "mean": 0.0007556982311634048,
+        "lower": -0.00014054772692495923,
+        "upper": 0.0016519441892517688
+      }
+    }
+  ]
+}

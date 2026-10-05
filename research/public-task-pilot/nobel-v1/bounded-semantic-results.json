@@ -1,0 +1,6778 @@
+{
+  "Model": "openai-compatible:nomic-embed-text:latest:d768:rp85230b608c3f:repr=eventframe-5w1h-v1",
+  "Hashes": {
+    "cmd/public-semantic-bounded/main.go": "a3d2743acf446596c93fc8edab02f1524a812a670c32ca645d17d4cdc4313e5a",
+    "internal/embed/openai.go": "ab15a280cafc350ac7800d5f8a48118d8715a26916f25bf3eb7debfd5c2d1eef",
+    "internal/researchsparse/sparse.go": "ea7e0a3713081ed03ce11b646b020468a64f4bf9177fa058b75fbc8ed41450c4",
+    "internal/service/research_rank.go": "3d44b913a685ddb80d03845a3a8f78af5cfb6ed3e3825e1fcbcff9047942a942",
+    "research/public-task-pilot/BOUNDED_SEMANTIC_PROTOCOL.md": "7224de6b1322123520cfb6faeb611fe5f19cfdca7e0a8db4da2e65044377d7a2",
+    "research/public-task-pilot/nobel-v1/corpus.json": "387c8c49a5aa0136a2869e4de74214781df7e9d78aa4877032062e9c93e87610",
+    "research/public-task-pilot/nobel-v1/oracle.json": "ebabeb9e2a73de5945edcd97cc395eb53a7715e655e223e386c2dc11f39667f4",
+    "research/public-task-pilot/nobel-v1/queries.json": "4e635a19c41edcadbfd6db49beee758ce5953c12e81dffc8ef6f5de4b7fcaa1d",
+    "research/public-task-pilot/sparse-go-golden.json": "33fc2b941b92374a3bcba12f1f1f6885042134cc4fd151b121817ccdba897f07"
+  },
+  "Results": [
+    {
+      "Arm": "baseline",
+      "Case": "nobel-physics-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8496480546132059,
+          "Law": {
+            "useful": 0.8496480546132059,
+            "not_useful": 0.15035194538679408
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8083246373220706,
+          "Law": {
+            "useful": 0.8083246373220705,
+            "not_useful": 0.1916753626779295
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8077711282766022,
+          "Law": {
+            "useful": 0.8077711282766021,
+            "not_useful": 0.19222887172339786
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8070992592642673,
+          "Law": {
+            "useful": 0.8070992592642673,
+            "not_useful": 0.1929007407357327
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8054947258419061,
+          "Law": {
+            "useful": 0.8054947258419061,
+            "not_useful": 0.19450527415809393
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8021564023374509,
+          "Law": {
+            "useful": 0.8021564023374509,
+            "not_useful": 0.1978435976625491
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7775441355374463,
+          "Law": {
+            "useful": 0.7775441355374463,
+            "not_useful": 0.22245586446255372
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7763257560633516,
+          "Law": {
+            "useful": 0.7763257560633516,
+            "not_useful": 0.22367424393664836
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7739289319582109,
+          "Law": {
+            "useful": 0.7739289319582109,
+            "not_useful": 0.2260710680417891
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7725156284463454,
+          "Law": {
+            "useful": 0.7725156284463454,
+            "not_useful": 0.22748437155365464
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7724566817192116,
+          "Law": {
+            "useful": 0.7724566817192116,
+            "not_useful": 0.22754331828078844
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7699306676322739,
+          "Law": {
+            "useful": 0.7699306676322739,
+            "not_useful": 0.2300693323677261
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7697955391599095,
+          "Law": {
+            "useful": 0.7697955391599095,
+            "not_useful": 0.2302044608400905
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7695895135782631,
+          "Law": {
+            "useful": 0.7695895135782631,
+            "not_useful": 0.2304104864217369
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7693383116277662,
+          "Law": {
+            "useful": 0.7693383116277662,
+            "not_useful": 0.23066168837223378
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7693032425584446,
+          "Law": {
+            "useful": 0.7693032425584446,
+            "not_useful": 0.23069675744155538
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7688796373313638,
+          "Law": {
+            "useful": 0.7688796373313638,
+            "not_useful": 0.23112036266863623
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7686498534765751,
+          "Law": {
+            "useful": 0.7686498534765751,
+            "not_useful": 0.2313501465234249
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7666521905787771,
+          "Law": {
+            "useful": 0.7666521905787772,
+            "not_useful": 0.2333478094212228
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 19120167
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-physics-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8240967323349607,
+          "Law": {
+            "useful": 0.8240967323349606,
+            "not_useful": 0.1759032676650394
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8023637828646502,
+          "Law": {
+            "useful": 0.8023637828646502,
+            "not_useful": 0.19763621713534985
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8013181771194444,
+          "Law": {
+            "useful": 0.8013181771194444,
+            "not_useful": 0.19868182288055558
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.7992158256730125,
+          "Law": {
+            "useful": 0.7992158256730125,
+            "not_useful": 0.20078417432698747
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.7953517653565908,
+          "Law": {
+            "useful": 0.7953517653565908,
+            "not_useful": 0.2046482346434092
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.7952386700842679,
+          "Law": {
+            "useful": 0.7952386700842679,
+            "not_useful": 0.20476132991573215
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7809703440608343,
+          "Law": {
+            "useful": 0.7809703440608343,
+            "not_useful": 0.21902965593916568
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7803787140554584,
+          "Law": {
+            "useful": 0.7803787140554584,
+            "not_useful": 0.21962128594454156
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7761479549997345,
+          "Law": {
+            "useful": 0.7761479549997345,
+            "not_useful": 0.22385204500026545
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7758465265122515,
+          "Law": {
+            "useful": 0.7758465265122515,
+            "not_useful": 0.2241534734877485
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7752683623598046,
+          "Law": {
+            "useful": 0.7752683623598045,
+            "not_useful": 0.22473163764019555
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7752111202219942,
+          "Law": {
+            "useful": 0.7752111202219942,
+            "not_useful": 0.22478887977800577
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7748624015430717,
+          "Law": {
+            "useful": 0.7748624015430717,
+            "not_useful": 0.22513759845692827
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7745112194657912,
+          "Law": {
+            "useful": 0.7745112194657913,
+            "not_useful": 0.22548878053420873
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.774307962000851,
+          "Law": {
+            "useful": 0.774307962000851,
+            "not_useful": 0.22569203799914905
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7740254672479855,
+          "Law": {
+            "useful": 0.7740254672479854,
+            "not_useful": 0.22597453275201462
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.772156348385591,
+          "Law": {
+            "useful": 0.7721563483855909,
+            "not_useful": 0.22784365161440912
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7684367279477599,
+          "Law": {
+            "useful": 0.7684367279477599,
+            "not_useful": 0.23156327205224014
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7658640648414464,
+          "Law": {
+            "useful": 0.7658640648414464,
+            "not_useful": 0.23413593515855358
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 17806792
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-physics-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8610449532281915,
+          "Law": {
+            "useful": 0.8610449532281915,
+            "not_useful": 0.13895504677180848
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8301575991411215,
+          "Law": {
+            "useful": 0.8301575991411215,
+            "not_useful": 0.16984240085887847
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8208493463867325,
+          "Law": {
+            "useful": 0.8208493463867323,
+            "not_useful": 0.17915065361326765
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8165302631295276,
+          "Law": {
+            "useful": 0.8165302631295276,
+            "not_useful": 0.1834697368704724
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8163330359150928,
+          "Law": {
+            "useful": 0.8163330359150927,
+            "not_useful": 0.18366696408490735
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8119029449469176,
+          "Law": {
+            "useful": 0.8119029449469176,
+            "not_useful": 0.18809705505308238
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7849178265762383,
+          "Law": {
+            "useful": 0.7849178265762384,
+            "not_useful": 0.21508217342376157
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.784814603401518,
+          "Law": {
+            "useful": 0.784814603401518,
+            "not_useful": 0.21518539659848201
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7846893016233307,
+          "Law": {
+            "useful": 0.7846893016233306,
+            "not_useful": 0.21531069837666938
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7824124902419517,
+          "Law": {
+            "useful": 0.7824124902419518,
+            "not_useful": 0.2175875097580482
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7815294249615804,
+          "Law": {
+            "useful": 0.7815294249615804,
+            "not_useful": 0.2184705750384196
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7814876377110815,
+          "Law": {
+            "useful": 0.7814876377110814,
+            "not_useful": 0.21851236228891857
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7800567875493903,
+          "Law": {
+            "useful": 0.7800567875493903,
+            "not_useful": 0.21994321245060966
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7798172075688272,
+          "Law": {
+            "useful": 0.7798172075688272,
+            "not_useful": 0.22018279243117278
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7791959285184322,
+          "Law": {
+            "useful": 0.7791959285184322,
+            "not_useful": 0.22080407148156778
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7785776793466943,
+          "Law": {
+            "useful": 0.7785776793466942,
+            "not_useful": 0.2214223206533058
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7773639103858166,
+          "Law": {
+            "useful": 0.7773639103858166,
+            "not_useful": 0.22263608961418335
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7768670763995967,
+          "Law": {
+            "useful": 0.7768670763995967,
+            "not_useful": 0.22313292360040327
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7758235925551773,
+          "Law": {
+            "useful": 0.7758235925551773,
+            "not_useful": 0.2241764074448227
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 19766167
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-physics-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8229115155197126,
+          "Law": {
+            "useful": 0.8229115155197125,
+            "not_useful": 0.17708848448028747
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8149278759430938,
+          "Law": {
+            "useful": 0.8149278759430939,
+            "not_useful": 0.1850721240569061
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8037331460165017,
+          "Law": {
+            "useful": 0.8037331460165017,
+            "not_useful": 0.1962668539834983
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8014611172188303,
+          "Law": {
+            "useful": 0.8014611172188303,
+            "not_useful": 0.1985388827811697
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.7978081366690373,
+          "Law": {
+            "useful": 0.7978081366690374,
+            "not_useful": 0.20219186333096262
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.7953781397797486,
+          "Law": {
+            "useful": 0.7953781397797486,
+            "not_useful": 0.20462186022025142
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7685793533029418,
+          "Law": {
+            "useful": 0.7685793533029419,
+            "not_useful": 0.23142064669705809
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7684038835111414,
+          "Law": {
+            "useful": 0.7684038835111414,
+            "not_useful": 0.23159611648885858
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7680487986135435,
+          "Law": {
+            "useful": 0.7680487986135436,
+            "not_useful": 0.23195120138645642
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7677387717748375,
+          "Law": {
+            "useful": 0.7677387717748375,
+            "not_useful": 0.23226122822516249
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7673051991335026,
+          "Law": {
+            "useful": 0.7673051991335026,
+            "not_useful": 0.2326948008664974
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7670722721972758,
+          "Law": {
+            "useful": 0.7670722721972757,
+            "not_useful": 0.2329277278027243
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.766678653586371,
+          "Law": {
+            "useful": 0.766678653586371,
+            "not_useful": 0.233321346413629
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7645135579227322,
+          "Law": {
+            "useful": 0.7645135579227322,
+            "not_useful": 0.23548644207726777
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7639993339175103,
+          "Law": {
+            "useful": 0.7639993339175103,
+            "not_useful": 0.2360006660824897
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7627771157958677,
+          "Law": {
+            "useful": 0.7627771157958677,
+            "not_useful": 0.2372228842041323
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7621444571898247,
+          "Law": {
+            "useful": 0.7621444571898247,
+            "not_useful": 0.2378555428101753
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7609240356047288,
+          "Law": {
+            "useful": 0.7609240356047288,
+            "not_useful": 0.23907596439527123
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7597186002584037,
+          "Law": {
+            "useful": 0.7597186002584037,
+            "not_useful": 0.24028139974159635
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 18602958
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-chemistry-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8450152308496912,
+          "Law": {
+            "useful": 0.8450152308496913,
+            "not_useful": 0.15498476915030868
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8272697283800885,
+          "Law": {
+            "useful": 0.8272697283800885,
+            "not_useful": 0.1727302716199115
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8208151880038639,
+          "Law": {
+            "useful": 0.8208151880038639,
+            "not_useful": 0.17918481199613612
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8187054970615785,
+          "Law": {
+            "useful": 0.8187054970615785,
+            "not_useful": 0.18129450293842153
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8184993992997638,
+          "Law": {
+            "useful": 0.8184993992997638,
+            "not_useful": 0.18150060070023621
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8163183877835459,
+          "Law": {
+            "useful": 0.8163183877835459,
+            "not_useful": 0.18368161221645407
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7814456202056408,
+          "Law": {
+            "useful": 0.7814456202056408,
+            "not_useful": 0.2185543797943592
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7801242728009429,
+          "Law": {
+            "useful": 0.7801242728009429,
+            "not_useful": 0.21987572719905712
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7798114920746785,
+          "Law": {
+            "useful": 0.7798114920746785,
+            "not_useful": 0.22018850792532152
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7797843815229873,
+          "Law": {
+            "useful": 0.7797843815229873,
+            "not_useful": 0.22021561847701265
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7792963019278403,
+          "Law": {
+            "useful": 0.7792963019278403,
+            "not_useful": 0.22070369807215973
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.777410605396542,
+          "Law": {
+            "useful": 0.777410605396542,
+            "not_useful": 0.22258939460345795
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7753196249470037,
+          "Law": {
+            "useful": 0.7753196249470037,
+            "not_useful": 0.22468037505299632
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7750382172143798,
+          "Law": {
+            "useful": 0.7750382172143799,
+            "not_useful": 0.22496178278562007
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7739976994808883,
+          "Law": {
+            "useful": 0.7739976994808883,
+            "not_useful": 0.22600230051911174
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7732732536519742,
+          "Law": {
+            "useful": 0.7732732536519741,
+            "not_useful": 0.22672674634802592
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7728139405539015,
+          "Law": {
+            "useful": 0.7728139405539015,
+            "not_useful": 0.2271860594460985
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7715027034212493,
+          "Law": {
+            "useful": 0.7715027034212493,
+            "not_useful": 0.22849729657875073
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7706984959796203,
+          "Law": {
+            "useful": 0.7706984959796203,
+            "not_useful": 0.22930150402037974
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 19614542
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-chemistry-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.825511843668851,
+          "Law": {
+            "useful": 0.825511843668851,
+            "not_useful": 0.174488156331149
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8241085678513062,
+          "Law": {
+            "useful": 0.8241085678513062,
+            "not_useful": 0.17589143214869385
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8160836037980563,
+          "Law": {
+            "useful": 0.8160836037980564,
+            "not_useful": 0.18391639620194355
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8122479487364246,
+          "Law": {
+            "useful": 0.8122479487364247,
+            "not_useful": 0.1877520512635753
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8119355358144968,
+          "Law": {
+            "useful": 0.8119355358144968,
+            "not_useful": 0.18806446418550316
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8076651400392619,
+          "Law": {
+            "useful": 0.8076651400392619,
+            "not_useful": 0.19233485996073807
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7783291513918703,
+          "Law": {
+            "useful": 0.7783291513918704,
+            "not_useful": 0.22167084860812958
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7780881957875396,
+          "Law": {
+            "useful": 0.7780881957875396,
+            "not_useful": 0.22191180421246037
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7759646517783481,
+          "Law": {
+            "useful": 0.7759646517783481,
+            "not_useful": 0.22403534822165194
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7759060998292625,
+          "Law": {
+            "useful": 0.7759060998292625,
+            "not_useful": 0.2240939001707375
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7747969411866743,
+          "Law": {
+            "useful": 0.7747969411866742,
+            "not_useful": 0.2252030588133258
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.773036884902519,
+          "Law": {
+            "useful": 0.7730368849025191,
+            "not_useful": 0.2269631150974809
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7712873887598201,
+          "Law": {
+            "useful": 0.7712873887598201,
+            "not_useful": 0.22871261124017994
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7712012971659741,
+          "Law": {
+            "useful": 0.771201297165974,
+            "not_useful": 0.22879870283402604
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.770976199159173,
+          "Law": {
+            "useful": 0.770976199159173,
+            "not_useful": 0.22902380084082696
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7698977015103118,
+          "Law": {
+            "useful": 0.7698977015103118,
+            "not_useful": 0.23010229848968822
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7693439254836352,
+          "Law": {
+            "useful": 0.7693439254836352,
+            "not_useful": 0.23065607451636483
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7691078990370837,
+          "Law": {
+            "useful": 0.7691078990370835,
+            "not_useful": 0.23089210096291646
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7685171301410896,
+          "Law": {
+            "useful": 0.7685171301410896,
+            "not_useful": 0.23148286985891042
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 2,
+      "RecallNS": 16777584
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-chemistry-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8435233796450062,
+          "Law": {
+            "useful": 0.8435233796450062,
+            "not_useful": 0.15647662035499377
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8180400224695961,
+          "Law": {
+            "useful": 0.8180400224695961,
+            "not_useful": 0.18195997753040394
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8163873266651107,
+          "Law": {
+            "useful": 0.8163873266651106,
+            "not_useful": 0.1836126733348894
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8159458770223946,
+          "Law": {
+            "useful": 0.8159458770223947,
+            "not_useful": 0.18405412297760526
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8113332032165317,
+          "Law": {
+            "useful": 0.8113332032165317,
+            "not_useful": 0.18866679678346832
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.7984353794257957,
+          "Law": {
+            "useful": 0.7984353794257957,
+            "not_useful": 0.20156462057420432
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7745525659945962,
+          "Law": {
+            "useful": 0.7745525659945962,
+            "not_useful": 0.2254474340054038
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7712054021746473,
+          "Law": {
+            "useful": 0.7712054021746473,
+            "not_useful": 0.22879459782535272
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7707883911643476,
+          "Law": {
+            "useful": 0.7707883911643477,
+            "not_useful": 0.22921160883565228
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7702728539332855,
+          "Law": {
+            "useful": 0.7702728539332855,
+            "not_useful": 0.22972714606671452
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7697679796642887,
+          "Law": {
+            "useful": 0.7697679796642887,
+            "not_useful": 0.23023202033571133
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7684660005079894,
+          "Law": {
+            "useful": 0.7684660005079894,
+            "not_useful": 0.2315339994920106
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7679907940023747,
+          "Law": {
+            "useful": 0.7679907940023747,
+            "not_useful": 0.2320092059976253
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7674528226921628,
+          "Law": {
+            "useful": 0.7674528226921629,
+            "not_useful": 0.23254717730783714
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7672289662092715,
+          "Law": {
+            "useful": 0.7672289662092715,
+            "not_useful": 0.2327710337907285
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7666249817204273,
+          "Law": {
+            "useful": 0.7666249817204273,
+            "not_useful": 0.23337501827957274
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7665918843993129,
+          "Law": {
+            "useful": 0.7665918843993129,
+            "not_useful": 0.23340811560068708
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7660854733932314,
+          "Law": {
+            "useful": 0.7660854733932314,
+            "not_useful": 0.2339145266067686
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7641370177150612,
+          "Law": {
+            "useful": 0.7641370177150612,
+            "not_useful": 0.23586298228493885
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16747958
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-chemistry-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8300133777881356,
+          "Law": {
+            "useful": 0.8300133777881356,
+            "not_useful": 0.16998662221186445
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8276475398056363,
+          "Law": {
+            "useful": 0.8276475398056363,
+            "not_useful": 0.17235246019436368
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.824634124524418,
+          "Law": {
+            "useful": 0.824634124524418,
+            "not_useful": 0.17536587547558202
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8237613752759648,
+          "Law": {
+            "useful": 0.8237613752759648,
+            "not_useful": 0.17623862472403518
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8223448263218444,
+          "Law": {
+            "useful": 0.8223448263218444,
+            "not_useful": 0.17765517367815564
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8053557893670531,
+          "Law": {
+            "useful": 0.8053557893670532,
+            "not_useful": 0.1946442106329468
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7793415521764578,
+          "Law": {
+            "useful": 0.7793415521764577,
+            "not_useful": 0.22065844782354227
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7786668640706008,
+          "Law": {
+            "useful": 0.7786668640706007,
+            "not_useful": 0.2213331359293993
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7783467395118211,
+          "Law": {
+            "useful": 0.7783467395118211,
+            "not_useful": 0.2216532604881789
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7776498927961419,
+          "Law": {
+            "useful": 0.7776498927961419,
+            "not_useful": 0.22235010720385806
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7773087767331905,
+          "Law": {
+            "useful": 0.7773087767331904,
+            "not_useful": 0.22269122326680957
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7761386705246931,
+          "Law": {
+            "useful": 0.776138670524693,
+            "not_useful": 0.223861329475307
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7748431180706052,
+          "Law": {
+            "useful": 0.7748431180706052,
+            "not_useful": 0.22515688192939476
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7742766234857869,
+          "Law": {
+            "useful": 0.7742766234857869,
+            "not_useful": 0.22572337651421315
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7734247340583777,
+          "Law": {
+            "useful": 0.7734247340583777,
+            "not_useful": 0.22657526594162225
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7728101895480132,
+          "Law": {
+            "useful": 0.7728101895480132,
+            "not_useful": 0.22718981045198683
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7728030382327551,
+          "Law": {
+            "useful": 0.7728030382327552,
+            "not_useful": 0.2271969617672448
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7726496376530282,
+          "Law": {
+            "useful": 0.7726496376530281,
+            "not_useful": 0.22735036234697192
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7699061186759512,
+          "Law": {
+            "useful": 0.7699061186759512,
+            "not_useful": 0.23009388132404884
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 18047125
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-medicine-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8490601237331764,
+          "Law": {
+            "useful": 0.8490601237331764,
+            "not_useful": 0.1509398762668236
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8088287724811348,
+          "Law": {
+            "useful": 0.8088287724811347,
+            "not_useful": 0.19117122751886528
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8071780560356304,
+          "Law": {
+            "useful": 0.8071780560356304,
+            "not_useful": 0.19282194396436958
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.807012726652399,
+          "Law": {
+            "useful": 0.807012726652399,
+            "not_useful": 0.19298727334760102
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8035113811801492,
+          "Law": {
+            "useful": 0.8035113811801491,
+            "not_useful": 0.1964886188198509
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.7957302758469073,
+          "Law": {
+            "useful": 0.7957302758469074,
+            "not_useful": 0.20426972415309264
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.765715037123207,
+          "Law": {
+            "useful": 0.765715037123207,
+            "not_useful": 0.234284962876793
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7641985231025672,
+          "Law": {
+            "useful": 0.7641985231025672,
+            "not_useful": 0.2358014768974328
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7629998927320357,
+          "Law": {
+            "useful": 0.7629998927320357,
+            "not_useful": 0.23700010726796428
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7629939601397892,
+          "Law": {
+            "useful": 0.7629939601397893,
+            "not_useful": 0.23700603986021074
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7624569120734723,
+          "Law": {
+            "useful": 0.7624569120734723,
+            "not_useful": 0.23754308792652767
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7617267439578838,
+          "Law": {
+            "useful": 0.7617267439578838,
+            "not_useful": 0.23827325604211624
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7615807455856937,
+          "Law": {
+            "useful": 0.7615807455856937,
+            "not_useful": 0.23841925441430634
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7613749127150882,
+          "Law": {
+            "useful": 0.7613749127150882,
+            "not_useful": 0.23862508728491183
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7612132490341997,
+          "Law": {
+            "useful": 0.7612132490341997,
+            "not_useful": 0.23878675096580027
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.760507823183725,
+          "Law": {
+            "useful": 0.760507823183725,
+            "not_useful": 0.239492176816275
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7601433237462379,
+          "Law": {
+            "useful": 0.7601433237462379,
+            "not_useful": 0.23985667625376206
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7588543183677826,
+          "Law": {
+            "useful": 0.7588543183677826,
+            "not_useful": 0.2411456816322174
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7572293174746338,
+          "Law": {
+            "useful": 0.7572293174746338,
+            "not_useful": 0.24277068252536615
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 17978542
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-medicine-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8340211959676367,
+          "Law": {
+            "useful": 0.8340211959676367,
+            "not_useful": 0.16597880403236331
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8107095620202148,
+          "Law": {
+            "useful": 0.8107095620202148,
+            "not_useful": 0.18929043797978518
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8076598908089117,
+          "Law": {
+            "useful": 0.8076598908089118,
+            "not_useful": 0.19234010919108824
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8072698119678231,
+          "Law": {
+            "useful": 0.8072698119678231,
+            "not_useful": 0.1927301880321769
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8064784609552563,
+          "Law": {
+            "useful": 0.8064784609552563,
+            "not_useful": 0.19352153904474367
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8007833336351106,
+          "Law": {
+            "useful": 0.8007833336351106,
+            "not_useful": 0.19921666636488944
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7637348009882805,
+          "Law": {
+            "useful": 0.7637348009882805,
+            "not_useful": 0.2362651990117195
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7623588293294301,
+          "Law": {
+            "useful": 0.7623588293294301,
+            "not_useful": 0.2376411706705699
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7612338380715084,
+          "Law": {
+            "useful": 0.7612338380715084,
+            "not_useful": 0.23876616192849165
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7602164628111227,
+          "Law": {
+            "useful": 0.7602164628111227,
+            "not_useful": 0.23978353718887735
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7599419935058255,
+          "Law": {
+            "useful": 0.7599419935058255,
+            "not_useful": 0.24005800649417453
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7596237382764512,
+          "Law": {
+            "useful": 0.7596237382764514,
+            "not_useful": 0.24037626172354865
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7593376929433374,
+          "Law": {
+            "useful": 0.7593376929433374,
+            "not_useful": 0.24066230705666258
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7588856977198774,
+          "Law": {
+            "useful": 0.7588856977198774,
+            "not_useful": 0.24111430228012265
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7587266170188108,
+          "Law": {
+            "useful": 0.7587266170188108,
+            "not_useful": 0.24127338298118917
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7583421593642689,
+          "Law": {
+            "useful": 0.758342159364269,
+            "not_useful": 0.24165784063573104
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7577558584239872,
+          "Law": {
+            "useful": 0.7577558584239872,
+            "not_useful": 0.24224414157601282
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7576086254077053,
+          "Law": {
+            "useful": 0.7576086254077053,
+            "not_useful": 0.24239137459229465
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7543552875341348,
+          "Law": {
+            "useful": 0.7543552875341348,
+            "not_useful": 0.24564471246586517
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 17842500
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-medicine-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.845863950962278,
+          "Law": {
+            "useful": 0.845863950962278,
+            "not_useful": 0.15413604903772204
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8132698813732575,
+          "Law": {
+            "useful": 0.8132698813732575,
+            "not_useful": 0.1867301186267425
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8129581736941736,
+          "Law": {
+            "useful": 0.8129581736941736,
+            "not_useful": 0.18704182630582644
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8117883016046435,
+          "Law": {
+            "useful": 0.8117883016046435,
+            "not_useful": 0.18821169839535645
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8100992500558666,
+          "Law": {
+            "useful": 0.8100992500558666,
+            "not_useful": 0.18990074994413342
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8030810889437668,
+          "Law": {
+            "useful": 0.8030810889437668,
+            "not_useful": 0.19691891105623316
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7879554695778463,
+          "Law": {
+            "useful": 0.7879554695778463,
+            "not_useful": 0.21204453042215365
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7862980720954811,
+          "Law": {
+            "useful": 0.786298072095481,
+            "not_useful": 0.21370192790451903
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7843729459522542,
+          "Law": {
+            "useful": 0.7843729459522542,
+            "not_useful": 0.21562705404774585
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7839329969025931,
+          "Law": {
+            "useful": 0.7839329969025931,
+            "not_useful": 0.2160670030974069
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7827700527428862,
+          "Law": {
+            "useful": 0.7827700527428862,
+            "not_useful": 0.21722994725711375
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7822510340388362,
+          "Law": {
+            "useful": 0.7822510340388362,
+            "not_useful": 0.21774896596116378
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7819719138345063,
+          "Law": {
+            "useful": 0.7819719138345063,
+            "not_useful": 0.21802808616549374
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7816823458332522,
+          "Law": {
+            "useful": 0.7816823458332522,
+            "not_useful": 0.21831765416674775
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.779264433695743,
+          "Law": {
+            "useful": 0.779264433695743,
+            "not_useful": 0.22073556630425695
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7786941062170706,
+          "Law": {
+            "useful": 0.7786941062170706,
+            "not_useful": 0.22130589378292942
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7770072422451137,
+          "Law": {
+            "useful": 0.7770072422451137,
+            "not_useful": 0.22299275775488625
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7759986999589736,
+          "Law": {
+            "useful": 0.7759986999589736,
+            "not_useful": 0.22400130004102636
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7753668549023188,
+          "Law": {
+            "useful": 0.7753668549023189,
+            "not_useful": 0.22463314509768106
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 18446167
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-medicine-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8324797468197587,
+          "Law": {
+            "useful": 0.8324797468197587,
+            "not_useful": 0.16752025318024133
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.813168898818562,
+          "Law": {
+            "useful": 0.813168898818562,
+            "not_useful": 0.18683110118143798
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8129993270416288,
+          "Law": {
+            "useful": 0.8129993270416288,
+            "not_useful": 0.1870006729583712
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8126492096448839,
+          "Law": {
+            "useful": 0.812649209644884,
+            "not_useful": 0.18735079035511604
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8116229074811451,
+          "Law": {
+            "useful": 0.8116229074811451,
+            "not_useful": 0.18837709251885493
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.800688438125018,
+          "Law": {
+            "useful": 0.800688438125018,
+            "not_useful": 0.199311561874982
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7890468788057607,
+          "Law": {
+            "useful": 0.7890468788057607,
+            "not_useful": 0.21095312119423926
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7827588140275349,
+          "Law": {
+            "useful": 0.7827588140275349,
+            "not_useful": 0.2172411859724651
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7827534855297517,
+          "Law": {
+            "useful": 0.7827534855297517,
+            "not_useful": 0.21724651447024834
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7799551461271655,
+          "Law": {
+            "useful": 0.7799551461271657,
+            "not_useful": 0.22004485387283435
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.77951178114536,
+          "Law": {
+            "useful": 0.77951178114536,
+            "not_useful": 0.22048821885463998
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7794680891516855,
+          "Law": {
+            "useful": 0.7794680891516855,
+            "not_useful": 0.22053191084831447
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7791268861786833,
+          "Law": {
+            "useful": 0.7791268861786833,
+            "not_useful": 0.2208731138213167
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.778066645848602,
+          "Law": {
+            "useful": 0.778066645848602,
+            "not_useful": 0.22193335415139803
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7777029640020915,
+          "Law": {
+            "useful": 0.7777029640020915,
+            "not_useful": 0.2222970359979085
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7773035564277382,
+          "Law": {
+            "useful": 0.7773035564277381,
+            "not_useful": 0.22269644357226193
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7760164731452842,
+          "Law": {
+            "useful": 0.7760164731452842,
+            "not_useful": 0.2239835268547158
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7752434212753325,
+          "Law": {
+            "useful": 0.7752434212753326,
+            "not_useful": 0.22475657872466737
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7747414704090849,
+          "Law": {
+            "useful": 0.7747414704090849,
+            "not_useful": 0.22525852959091508
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 18565916
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-absent-0",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8137235379052402,
+          "Law": {
+            "useful": 0.8137235379052402,
+            "not_useful": 0.1862764620947598
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8110206569898555,
+          "Law": {
+            "useful": 0.8110206569898555,
+            "not_useful": 0.18897934301014452
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8082338820341933,
+          "Law": {
+            "useful": 0.8082338820341933,
+            "not_useful": 0.19176611796580667
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8052468330591757,
+          "Law": {
+            "useful": 0.8052468330591757,
+            "not_useful": 0.19475316694082434
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8001994508487925,
+          "Law": {
+            "useful": 0.8001994508487925,
+            "not_useful": 0.19980054915120748
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.7976861600212215,
+          "Law": {
+            "useful": 0.7976861600212215,
+            "not_useful": 0.2023138399787785
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7945547364180567,
+          "Law": {
+            "useful": 0.7945547364180567,
+            "not_useful": 0.20544526358194326
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7930295159016636,
+          "Law": {
+            "useful": 0.7930295159016636,
+            "not_useful": 0.2069704840983364
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7922987657963366,
+          "Law": {
+            "useful": 0.7922987657963365,
+            "not_useful": 0.2077012342036635
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7916046426506462,
+          "Law": {
+            "useful": 0.7916046426506462,
+            "not_useful": 0.20839535734935377
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7915123772770852,
+          "Law": {
+            "useful": 0.7915123772770852,
+            "not_useful": 0.20848762272291477
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7905968974554984,
+          "Law": {
+            "useful": 0.7905968974554984,
+            "not_useful": 0.20940310254450156
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.787245553884178,
+          "Law": {
+            "useful": 0.7872455538841782,
+            "not_useful": 0.21275444611582184
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7868640968509674,
+          "Law": {
+            "useful": 0.7868640968509674,
+            "not_useful": 0.21313590314903264
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7867680161225802,
+          "Law": {
+            "useful": 0.7867680161225802,
+            "not_useful": 0.21323198387741982
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7864255185913527,
+          "Law": {
+            "useful": 0.7864255185913527,
+            "not_useful": 0.21357448140864732
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7858327261118633,
+          "Law": {
+            "useful": 0.7858327261118634,
+            "not_useful": 0.2141672738881366
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7853660916288273,
+          "Law": {
+            "useful": 0.7853660916288273,
+            "not_useful": 0.2146339083711727
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7852063014714918,
+          "Law": {
+            "useful": 0.7852063014714918,
+            "not_useful": 0.21479369852850816
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 0,
+      "RecallNS": 13968000
+    },
+    {
+      "Arm": "baseline",
+      "Case": "nobel-absent-1",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8227064001608826,
+          "Law": {
+            "useful": 0.8227064001608826,
+            "not_useful": 0.1772935998391174
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8181823001574652,
+          "Law": {
+            "useful": 0.8181823001574652,
+            "not_useful": 0.18181769984253482
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8174420920058619,
+          "Law": {
+            "useful": 0.8174420920058619,
+            "not_useful": 0.18255790799413807
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8161705750186743,
+          "Law": {
+            "useful": 0.8161705750186743,
+            "not_useful": 0.1838294249813257
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8114966840317213,
+          "Law": {
+            "useful": 0.8114966840317213,
+            "not_useful": 0.18850331596827874
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.81116461698224,
+          "Law": {
+            "useful": 0.8111646169822401,
+            "not_useful": 0.18883538301775993
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7932345062361562,
+          "Law": {
+            "useful": 0.7932345062361562,
+            "not_useful": 0.2067654937638438
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7922096269252284,
+          "Law": {
+            "useful": 0.7922096269252284,
+            "not_useful": 0.20779037307477155
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.791110600052462,
+          "Law": {
+            "useful": 0.7911106000524621,
+            "not_useful": 0.20888939994753786
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7909830868658446,
+          "Law": {
+            "useful": 0.7909830868658446,
+            "not_useful": 0.20901691313415538
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7903521584772939,
+          "Law": {
+            "useful": 0.7903521584772939,
+            "not_useful": 0.2096478415227061
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7897182642160193,
+          "Law": {
+            "useful": 0.7897182642160193,
+            "not_useful": 0.21028173578398068
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7895550873523098,
+          "Law": {
+            "useful": 0.7895550873523098,
+            "not_useful": 0.21044491264769016
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7881736520551675,
+          "Law": {
+            "useful": 0.7881736520551675,
+            "not_useful": 0.21182634794483246
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7879987391959706,
+          "Law": {
+            "useful": 0.7879987391959706,
+            "not_useful": 0.21200126080402937
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7876446513731948,
+          "Law": {
+            "useful": 0.7876446513731948,
+            "not_useful": 0.21235534862680516
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7865702843843634,
+          "Law": {
+            "useful": 0.7865702843843634,
+            "not_useful": 0.21342971561563662
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7863643979034322,
+          "Law": {
+            "useful": 0.7863643979034322,
+            "not_useful": 0.21363560209656784
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7863256610336601,
+          "Law": {
+            "useful": 0.7863256610336601,
+            "not_useful": 0.21367433896633992
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 0,
+      "RecallNS": 17487459
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-physics-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.4492905233729821,
+          "Law": {
+            "useful": 0.8496480546132059,
+            "not_useful": 0.15035194538679408
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.03455196905328657,
+          "Law": {
+            "useful": 0.8077711282766021,
+            "not_useful": 0.19222887172339786
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.033859535995048075,
+          "Law": {
+            "useful": 0.8083246373220705,
+            "not_useful": 0.1916753626779295
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.033859535995048075,
+          "Law": {
+            "useful": 0.8070992592642673,
+            "not_useful": 0.1929007407357327
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.033859535995048075,
+          "Law": {
+            "useful": 0.8054947258419061,
+            "not_useful": 0.19450527415809393
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.033859535995048075,
+          "Law": {
+            "useful": 0.8021564023374509,
+            "not_useful": 0.1978435976625491
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7775441355374463,
+            "not_useful": 0.22245586446255372
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7763257560633516,
+            "not_useful": 0.22367424393664836
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7739289319582109,
+            "not_useful": 0.2260710680417891
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7725156284463454,
+            "not_useful": 0.22748437155365464
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7724566817192116,
+            "not_useful": 0.22754331828078844
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7699306676322739,
+            "not_useful": 0.2300693323677261
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7697955391599095,
+            "not_useful": 0.2302044608400905
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7695895135782631,
+            "not_useful": 0.2304104864217369
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7693383116277662,
+            "not_useful": 0.23066168837223378
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7693032425584446,
+            "not_useful": 0.23069675744155538
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7688796373313638,
+            "not_useful": 0.23112036266863623
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7686498534765751,
+            "not_useful": 0.2313501465234249
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.02329622039322454,
+          "Law": {
+            "useful": 0.7666521905787772,
+            "not_useful": 0.2333478094212228
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 19024542
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-physics-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.037994837406179975,
+          "Law": {
+            "useful": 0.8013181771194444,
+            "not_useful": 0.19868182288055558
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.03723606920518413,
+          "Law": {
+            "useful": 0.8240967323349606,
+            "not_useful": 0.1759032676650394
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.03723606920518413,
+          "Law": {
+            "useful": 0.8023637828646502,
+            "not_useful": 0.19763621713534985
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.03723606920518413,
+          "Law": {
+            "useful": 0.7992158256730125,
+            "not_useful": 0.20078417432698747
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.03723606920518413,
+          "Law": {
+            "useful": 0.7953517653565908,
+            "not_useful": 0.2046482346434092
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.03723606920518413,
+          "Law": {
+            "useful": 0.7952386700842679,
+            "not_useful": 0.20476132991573215
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7809703440608343,
+            "not_useful": 0.21902965593916568
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7803787140554584,
+            "not_useful": 0.21962128594454156
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7761479549997345,
+            "not_useful": 0.22385204500026545
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7758465265122515,
+            "not_useful": 0.2241534734877485
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7752683623598045,
+            "not_useful": 0.22473163764019555
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7752111202219942,
+            "not_useful": 0.22478887977800577
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7748624015430717,
+            "not_useful": 0.22513759845692827
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7745112194657913,
+            "not_useful": 0.22548878053420873
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.774307962000851,
+            "not_useful": 0.22569203799914905
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7740254672479854,
+            "not_useful": 0.22597453275201462
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7721563483855909,
+            "not_useful": 0.22784365161440912
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7684367279477599,
+            "not_useful": 0.23156327205224014
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.025647324500630016,
+          "Law": {
+            "useful": 0.7658640648414464,
+            "not_useful": 0.23413593515855358
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 2,
+      "RecallNS": 20968625
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-physics-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.3649924820838806,
+          "Law": {
+            "useful": 0.8610449532281915,
+            "not_useful": 0.13895504677180848
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.04245820383145007,
+          "Law": {
+            "useful": 0.7815294249615804,
+            "not_useful": 0.2184705750384196
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.04136456965066098,
+          "Law": {
+            "useful": 0.8301575991411215,
+            "not_useful": 0.16984240085887847
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.04136456965066098,
+          "Law": {
+            "useful": 0.8208493463867323,
+            "not_useful": 0.17915065361326765
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.04136456965066098,
+          "Law": {
+            "useful": 0.8165302631295276,
+            "not_useful": 0.1834697368704724
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.04136456965066098,
+          "Law": {
+            "useful": 0.8163330359150927,
+            "not_useful": 0.18366696408490735
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.04136456965066098,
+          "Law": {
+            "useful": 0.8119029449469176,
+            "not_useful": 0.18809705505308238
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7849178265762384,
+            "not_useful": 0.21508217342376157
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.784814603401518,
+            "not_useful": 0.21518539659848201
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7846893016233306,
+            "not_useful": 0.21531069837666938
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7824124902419518,
+            "not_useful": 0.2175875097580482
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7814876377110814,
+            "not_useful": 0.21851236228891857
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7800567875493903,
+            "not_useful": 0.21994321245060966
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7798172075688272,
+            "not_useful": 0.22018279243117278
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7791959285184322,
+            "not_useful": 0.22080407148156778
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7785776793466942,
+            "not_useful": 0.2214223206533058
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7773639103858166,
+            "not_useful": 0.22263608961418335
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7768670763995967,
+            "not_useful": 0.22313292360040327
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.027367614650329667,
+          "Law": {
+            "useful": 0.7758235925551773,
+            "not_useful": 0.2241764074448227
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 20341208
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-physics-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.05222116018068089,
+          "Law": {
+            "useful": 0.8229115155197125,
+            "not_useful": 0.17708848448028747
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.04170285586580085,
+          "Law": {
+            "useful": 0.8149278759430939,
+            "not_useful": 0.1850721240569061
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.03221292204705243,
+          "Law": {
+            "useful": 0.8037331460165017,
+            "not_useful": 0.1962668539834983
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.03221292204705243,
+          "Law": {
+            "useful": 0.8014611172188303,
+            "not_useful": 0.1985388827811697
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.03221292204705243,
+          "Law": {
+            "useful": 0.7978081366690374,
+            "not_useful": 0.20219186333096262
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.03221292204705243,
+          "Law": {
+            "useful": 0.7953781397797486,
+            "not_useful": 0.20462186022025142
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7685793533029419,
+            "not_useful": 0.23142064669705809
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7684038835111414,
+            "not_useful": 0.23159611648885858
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7680487986135436,
+            "not_useful": 0.23195120138645642
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7677387717748375,
+            "not_useful": 0.23226122822516249
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7673051991335026,
+            "not_useful": 0.2326948008664974
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7670722721972757,
+            "not_useful": 0.2329277278027243
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.766678653586371,
+            "not_useful": 0.233321346413629
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7645135579227322,
+            "not_useful": 0.23548644207726777
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7639993339175103,
+            "not_useful": 0.2360006660824897
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7627771157958677,
+            "not_useful": 0.2372228842041323
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7621444571898247,
+            "not_useful": 0.2378555428101753
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7609240356047288,
+            "not_useful": 0.23907596439527123
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.025377897499400226,
+          "Law": {
+            "useful": 0.7597186002584037,
+            "not_useful": 0.24028139974159635
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 17747250
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-chemistry-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.3804875369906365,
+          "Law": {
+            "useful": 0.8450152308496913,
+            "not_useful": 0.15498476915030868
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.08729227422917839,
+          "Law": {
+            "useful": 0.8208151880038639,
+            "not_useful": 0.17918481199613612
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.04735772941523565,
+          "Law": {
+            "useful": 0.8272697283800885,
+            "not_useful": 0.1727302716199115
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.04735772941523565,
+          "Law": {
+            "useful": 0.8187054970615785,
+            "not_useful": 0.18129450293842153
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.04735772941523565,
+          "Law": {
+            "useful": 0.8184993992997638,
+            "not_useful": 0.18150060070023621
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.04735772941523565,
+          "Law": {
+            "useful": 0.8163183877835459,
+            "not_useful": 0.18368161221645407
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7814456202056408,
+            "not_useful": 0.2185543797943592
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7801242728009429,
+            "not_useful": 0.21987572719905712
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7798114920746785,
+            "not_useful": 0.22018850792532152
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7797843815229873,
+            "not_useful": 0.22021561847701265
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7792963019278403,
+            "not_useful": 0.22070369807215973
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.777410605396542,
+            "not_useful": 0.22258939460345795
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7753196249470037,
+            "not_useful": 0.22468037505299632
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7750382172143799,
+            "not_useful": 0.22496178278562007
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7739976994808883,
+            "not_useful": 0.22600230051911174
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7732732536519741,
+            "not_useful": 0.22672674634802592
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7728139405539015,
+            "not_useful": 0.2271860594460985
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7715027034212493,
+            "not_useful": 0.22849729657875073
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.025509870107272816,
+          "Law": {
+            "useful": 0.7706984959796203,
+            "not_useful": 0.22930150402037974
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18359125
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-chemistry-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.035611757186769635,
+          "Law": {
+            "useful": 0.825511843668851,
+            "not_useful": 0.174488156331149
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.035611757186769635,
+          "Law": {
+            "useful": 0.8241085678513062,
+            "not_useful": 0.17589143214869385
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.035611757186769635,
+          "Law": {
+            "useful": 0.8160836037980564,
+            "not_useful": 0.18391639620194355
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.035611757186769635,
+          "Law": {
+            "useful": 0.8122479487364247,
+            "not_useful": 0.1877520512635753
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.035611757186769635,
+          "Law": {
+            "useful": 0.8119355358144968,
+            "not_useful": 0.18806446418550316
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.035611757186769635,
+          "Law": {
+            "useful": 0.8076651400392619,
+            "not_useful": 0.19233485996073807
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7783291513918704,
+            "not_useful": 0.22167084860812958
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7780881957875396,
+            "not_useful": 0.22191180421246037
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7759646517783481,
+            "not_useful": 0.22403534822165194
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7759060998292625,
+            "not_useful": 0.2240939001707375
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7747969411866742,
+            "not_useful": 0.2252030588133258
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7730368849025191,
+            "not_useful": 0.2269631150974809
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7712873887598201,
+            "not_useful": 0.22871261124017994
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.771201297165974,
+            "not_useful": 0.22879870283402604
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.770976199159173,
+            "not_useful": 0.22902380084082696
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7698977015103118,
+            "not_useful": 0.23010229848968822
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7693439254836352,
+            "not_useful": 0.23065607451636483
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7691078990370835,
+            "not_useful": 0.23089210096291646
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.025740117010585456,
+          "Law": {
+            "useful": 0.7685171301410896,
+            "not_useful": 0.23148286985891042
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 2,
+      "RecallNS": 20683500
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-chemistry-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.36975375712674796,
+          "Law": {
+            "useful": 0.8435233796450062,
+            "not_useful": 0.15647662035499377
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.10482242523889664,
+          "Law": {
+            "useful": 0.8159458770223947,
+            "not_useful": 0.18405412297760526
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.05219759223000718,
+          "Law": {
+            "useful": 0.7984353794257957,
+            "not_useful": 0.20156462057420432
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.050162111754104774,
+          "Law": {
+            "useful": 0.8180400224695961,
+            "not_useful": 0.18195997753040394
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.050162111754104774,
+          "Law": {
+            "useful": 0.8163873266651106,
+            "not_useful": 0.1836126733348894
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.050162111754104774,
+          "Law": {
+            "useful": 0.8113332032165317,
+            "not_useful": 0.18866679678346832
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7745525659945962,
+            "not_useful": 0.2254474340054038
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7712054021746473,
+            "not_useful": 0.22879459782535272
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7707883911643477,
+            "not_useful": 0.22921160883565228
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7702728539332855,
+            "not_useful": 0.22972714606671452
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7697679796642887,
+            "not_useful": 0.23023202033571133
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7684660005079894,
+            "not_useful": 0.2315339994920106
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7679907940023747,
+            "not_useful": 0.2320092059976253
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7674528226921629,
+            "not_useful": 0.23254717730783714
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7672289662092715,
+            "not_useful": 0.2327710337907285
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7666249817204273,
+            "not_useful": 0.23337501827957274
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7665918843993129,
+            "not_useful": 0.23340811560068708
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7660854733932314,
+            "not_useful": 0.2339145266067686
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.02387779659538508,
+          "Law": {
+            "useful": 0.7641370177150612,
+            "not_useful": 0.23586298228493885
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 17648958
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-chemistry-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.04451544357540578,
+          "Law": {
+            "useful": 0.8053557893670532,
+            "not_useful": 0.1946442106329468
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.04355507673584425,
+          "Law": {
+            "useful": 0.8276475398056363,
+            "not_useful": 0.17235246019436368
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.03390556133150024,
+          "Law": {
+            "useful": 0.7786668640706007,
+            "not_useful": 0.2213331359293993
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.03288688187120024,
+          "Law": {
+            "useful": 0.8300133777881356,
+            "not_useful": 0.16998662221186445
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.03288688187120024,
+          "Law": {
+            "useful": 0.824634124524418,
+            "not_useful": 0.17536587547558202
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.03288688187120024,
+          "Law": {
+            "useful": 0.8237613752759648,
+            "not_useful": 0.17623862472403518
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.03288688187120024,
+          "Law": {
+            "useful": 0.8223448263218444,
+            "not_useful": 0.17765517367815564
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7793415521764577,
+            "not_useful": 0.22065844782354227
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7783467395118211,
+            "not_useful": 0.2216532604881789
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7776498927961419,
+            "not_useful": 0.22235010720385806
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7773087767331904,
+            "not_useful": 0.22269122326680957
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.776138670524693,
+            "not_useful": 0.223861329475307
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7748431180706052,
+            "not_useful": 0.22515688192939476
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7742766234857869,
+            "not_useful": 0.22572337651421315
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7734247340583777,
+            "not_useful": 0.22657526594162225
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7728101895480132,
+            "not_useful": 0.22718981045198683
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7728030382327552,
+            "not_useful": 0.2271969617672448
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7726496376530281,
+            "not_useful": 0.22735036234697192
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.024976121549900646,
+          "Law": {
+            "useful": 0.7699061186759512,
+            "not_useful": 0.23009388132404884
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 4,
+      "RecallNS": 18478333
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-medicine-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.43207050587133705,
+          "Law": {
+            "useful": 0.8490601237331764,
+            "not_useful": 0.1509398762668236
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.03413448113314344,
+          "Law": {
+            "useful": 0.7957302758469074,
+            "not_useful": 0.20426972415309264
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.0335117876754294,
+          "Law": {
+            "useful": 0.8088287724811347,
+            "not_useful": 0.19117122751886528
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.0335117876754294,
+          "Law": {
+            "useful": 0.8071780560356304,
+            "not_useful": 0.19282194396436958
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.0335117876754294,
+          "Law": {
+            "useful": 0.807012726652399,
+            "not_useful": 0.19298727334760102
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.0335117876754294,
+          "Law": {
+            "useful": 0.8035113811801491,
+            "not_useful": 0.1964886188198509
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.765715037123207,
+            "not_useful": 0.234284962876793
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7641985231025672,
+            "not_useful": 0.2358014768974328
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7629998927320357,
+            "not_useful": 0.23700010726796428
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7629939601397893,
+            "not_useful": 0.23700603986021074
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7624569120734723,
+            "not_useful": 0.23754308792652767
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7617267439578838,
+            "not_useful": 0.23827325604211624
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7615807455856937,
+            "not_useful": 0.23841925441430634
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7613749127150882,
+            "not_useful": 0.23862508728491183
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7612132490341997,
+            "not_useful": 0.23878675096580027
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.760507823183725,
+            "not_useful": 0.239492176816275
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7601433237462379,
+            "not_useful": 0.23985667625376206
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7588543183677826,
+            "not_useful": 0.2411456816322174
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.023855556140261427,
+          "Law": {
+            "useful": 0.7572293174746338,
+            "not_useful": 0.24277068252536615
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18759250
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-medicine-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.04783193995092061,
+          "Law": {
+            "useful": 0.8007833336351106,
+            "not_useful": 0.19921666636488944
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.03472440217971091,
+          "Law": {
+            "useful": 0.8340211959676367,
+            "not_useful": 0.16597880403236331
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.03472440217971091,
+          "Law": {
+            "useful": 0.8107095620202148,
+            "not_useful": 0.18929043797978518
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.03472440217971091,
+          "Law": {
+            "useful": 0.8076598908089118,
+            "not_useful": 0.19234010919108824
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.03472440217971091,
+          "Law": {
+            "useful": 0.8072698119678231,
+            "not_useful": 0.1927301880321769
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.03472440217971091,
+          "Law": {
+            "useful": 0.8064784609552563,
+            "not_useful": 0.19352153904474367
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7637348009882805,
+            "not_useful": 0.2362651990117195
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7623588293294301,
+            "not_useful": 0.2376411706705699
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7612338380715084,
+            "not_useful": 0.23876616192849165
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7602164628111227,
+            "not_useful": 0.23978353718887735
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7599419935058255,
+            "not_useful": 0.24005800649417453
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7596237382764514,
+            "not_useful": 0.24037626172354865
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7593376929433374,
+            "not_useful": 0.24066230705666258
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7588856977198774,
+            "not_useful": 0.24111430228012265
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7587266170188108,
+            "not_useful": 0.24127338298118917
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.758342159364269,
+            "not_useful": 0.24165784063573104
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7577558584239872,
+            "not_useful": 0.24224414157601282
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7576086254077053,
+            "not_useful": 0.24239137459229465
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.02509233829566215,
+          "Law": {
+            "useful": 0.7543552875341348,
+            "not_useful": 0.24564471246586517
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 2,
+      "RecallNS": 18694000
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-medicine-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.41280353938905134,
+          "Law": {
+            "useful": 0.845863950962278,
+            "not_useful": 0.15413604903772204
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.03674246271672331,
+          "Law": {
+            "useful": 0.8030810889437668,
+            "not_useful": 0.19691891105623316
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.03592701425135119,
+          "Law": {
+            "useful": 0.8132698813732575,
+            "not_useful": 0.1867301186267425
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.03592701425135119,
+          "Law": {
+            "useful": 0.8129581736941736,
+            "not_useful": 0.18704182630582644
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.03592701425135119,
+          "Law": {
+            "useful": 0.8117883016046435,
+            "not_useful": 0.18821169839535645
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.03592701425135119,
+          "Law": {
+            "useful": 0.8100992500558666,
+            "not_useful": 0.18990074994413342
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7879554695778463,
+            "not_useful": 0.21204453042215365
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.786298072095481,
+            "not_useful": 0.21370192790451903
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7843729459522542,
+            "not_useful": 0.21562705404774585
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7839329969025931,
+            "not_useful": 0.2160670030974069
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7827700527428862,
+            "not_useful": 0.21722994725711375
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7822510340388362,
+            "not_useful": 0.21774896596116378
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7819719138345063,
+            "not_useful": 0.21802808616549374
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7816823458332522,
+            "not_useful": 0.21831765416674775
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.779264433695743,
+            "not_useful": 0.22073556630425695
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7786941062170706,
+            "not_useful": 0.22130589378292942
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7770072422451137,
+            "not_useful": 0.22299275775488625
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7759986999589736,
+            "not_useful": 0.22400130004102636
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.023724485108658495,
+          "Law": {
+            "useful": 0.7753668549023189,
+            "not_useful": 0.22463314509768106
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 17374833
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-medicine-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.05132323069644146,
+          "Law": {
+            "useful": 0.8324797468197587,
+            "not_useful": 0.16752025318024133
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.03795929356840024,
+          "Law": {
+            "useful": 0.7799551461271657,
+            "not_useful": 0.22004485387283435
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.03795929356840024,
+          "Law": {
+            "useful": 0.7747414704090849,
+            "not_useful": 0.22525852959091508
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.03692213714654954,
+          "Law": {
+            "useful": 0.813168898818562,
+            "not_useful": 0.18683110118143798
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.03692213714654954,
+          "Law": {
+            "useful": 0.8129993270416288,
+            "not_useful": 0.1870006729583712
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.03692213714654954,
+          "Law": {
+            "useful": 0.812649209644884,
+            "not_useful": 0.18735079035511604
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.03692213714654954,
+          "Law": {
+            "useful": 0.8116229074811451,
+            "not_useful": 0.18837709251885493
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.03692213714654954,
+          "Law": {
+            "useful": 0.800688438125018,
+            "not_useful": 0.199311561874982
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7890468788057607,
+            "not_useful": 0.21095312119423926
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7827588140275349,
+            "not_useful": 0.2172411859724651
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7827534855297517,
+            "not_useful": 0.21724651447024834
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.77951178114536,
+            "not_useful": 0.22048821885463998
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7794680891516855,
+            "not_useful": 0.22053191084831447
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7791268861786833,
+            "not_useful": 0.2208731138213167
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.778066645848602,
+            "not_useful": 0.22193335415139803
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7777029640020915,
+            "not_useful": 0.2222970359979085
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7773035564277381,
+            "not_useful": 0.22269644357226193
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7760164731452842,
+            "not_useful": 0.2239835268547158
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.02669731301667375,
+          "Law": {
+            "useful": 0.7752434212753326,
+            "not_useful": 0.22475657872466737
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 21146875
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-absent-0",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.8137235379052402,
+            "not_useful": 0.1862764620947598
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.8110206569898555,
+            "not_useful": 0.18897934301014452
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.8082338820341933,
+            "not_useful": 0.19176611796580667
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.8052468330591757,
+            "not_useful": 0.19475316694082434
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.8001994508487925,
+            "not_useful": 0.19980054915120748
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7976861600212215,
+            "not_useful": 0.2023138399787785
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7945547364180567,
+            "not_useful": 0.20544526358194326
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7930295159016636,
+            "not_useful": 0.2069704840983364
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7922987657963365,
+            "not_useful": 0.2077012342036635
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7916046426506462,
+            "not_useful": 0.20839535734935377
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7915123772770852,
+            "not_useful": 0.20848762272291477
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7905968974554984,
+            "not_useful": 0.20940310254450156
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7872455538841782,
+            "not_useful": 0.21275444611582184
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7868640968509674,
+            "not_useful": 0.21313590314903264
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7867680161225802,
+            "not_useful": 0.21323198387741982
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7864255185913527,
+            "not_useful": 0.21357448140864732
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7858327261118634,
+            "not_useful": 0.2141672738881366
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7853660916288273,
+            "not_useful": 0.2146339083711727
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.025943335344381983,
+          "Law": {
+            "useful": 0.7852063014714918,
+            "not_useful": 0.21479369852850816
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 0,
+      "RecallNS": 15948833
+    },
+    {
+      "Arm": "sparse",
+      "Case": "nobel-absent-1",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.04622126561353209,
+          "Law": {
+            "useful": 0.8174420920058619,
+            "not_useful": 0.18255790799413807
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.8227064001608826,
+            "not_useful": 0.1772935998391174
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.8181823001574652,
+            "not_useful": 0.18181769984253482
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.8161705750186743,
+            "not_useful": 0.1838294249813257
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.8114966840317213,
+            "not_useful": 0.18850331596827874
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.8111646169822401,
+            "not_useful": 0.18883538301775993
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7932345062361562,
+            "not_useful": 0.2067654937638438
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7922096269252284,
+            "not_useful": 0.20779037307477155
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7911106000524621,
+            "not_useful": 0.20888939994753786
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7909830868658446,
+            "not_useful": 0.20901691313415538
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7903521584772939,
+            "not_useful": 0.2096478415227061
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7897182642160193,
+            "not_useful": 0.21028173578398068
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7895550873523098,
+            "not_useful": 0.21044491264769016
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7881736520551675,
+            "not_useful": 0.21182634794483246
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7879987391959706,
+            "not_useful": 0.21200126080402937
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7876446513731948,
+            "not_useful": 0.21235534862680516
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7865702843843634,
+            "not_useful": 0.21342971561563662
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7863643979034322,
+            "not_useful": 0.21363560209656784
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.02566323864045395,
+          "Law": {
+            "useful": 0.7863256610336601,
+            "not_useful": 0.21367433896633992
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 0,
+      "RecallNS": 18979333
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-physics-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8491409598469357,
+          "Law": {
+            "useful": 0.8496480546132059,
+            "not_useful": 0.15035194538679408
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8036632326820211,
+          "Law": {
+            "useful": 0.8083246373220705,
+            "not_useful": 0.1916753626779295
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8031166479671351,
+          "Law": {
+            "useful": 0.8077711282766021,
+            "not_useful": 0.19222887172339786
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8024378546242178,
+          "Law": {
+            "useful": 0.8070992592642673,
+            "not_useful": 0.1929007407357327
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8008333212018566,
+          "Law": {
+            "useful": 0.8054947258419061,
+            "not_useful": 0.19450527415809393
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.7974949976974014,
+          "Law": {
+            "useful": 0.8021564023374509,
+            "not_useful": 0.1978435976625491
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7727770977413785,
+          "Law": {
+            "useful": 0.7775441355374463,
+            "not_useful": 0.22245586446255372
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7715587182672838,
+          "Law": {
+            "useful": 0.7763257560633516,
+            "not_useful": 0.22367424393664836
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7691618941621431,
+          "Law": {
+            "useful": 0.7739289319582109,
+            "not_useful": 0.2260710680417891
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7677485906502776,
+          "Law": {
+            "useful": 0.7725156284463454,
+            "not_useful": 0.22748437155365464
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7676896439231438,
+          "Law": {
+            "useful": 0.7724566817192116,
+            "not_useful": 0.22754331828078844
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7651636298362061,
+          "Law": {
+            "useful": 0.7699306676322739,
+            "not_useful": 0.2300693323677261
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7650285013638417,
+          "Law": {
+            "useful": 0.7697955391599095,
+            "not_useful": 0.2302044608400905
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7648224757821953,
+          "Law": {
+            "useful": 0.7695895135782631,
+            "not_useful": 0.2304104864217369
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7645712738316984,
+          "Law": {
+            "useful": 0.7693383116277662,
+            "not_useful": 0.23066168837223378
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7645362047623768,
+          "Law": {
+            "useful": 0.7693032425584446,
+            "not_useful": 0.23069675744155538
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.764112599535296,
+          "Law": {
+            "useful": 0.7688796373313638,
+            "not_useful": 0.23112036266863623
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7638828156805073,
+          "Law": {
+            "useful": 0.7686498534765751,
+            "not_useful": 0.2313501465234249
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7618851527827093,
+          "Law": {
+            "useful": 0.7666521905787772,
+            "not_useful": 0.2333478094212228
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18765709
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-physics-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8194690930270125,
+          "Law": {
+            "useful": 0.8240967323349606,
+            "not_useful": 0.1759032676650394
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.797736143556702,
+          "Law": {
+            "useful": 0.8023637828646502,
+            "not_useful": 0.19763621713534985
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.7966981254935063,
+          "Law": {
+            "useful": 0.8013181771194444,
+            "not_useful": 0.19868182288055558
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.7945881863650643,
+          "Law": {
+            "useful": 0.7992158256730125,
+            "not_useful": 0.20078417432698747
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.7907241260486426,
+          "Law": {
+            "useful": 0.7953517653565908,
+            "not_useful": 0.2046482346434092
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.7906110307763197,
+          "Law": {
+            "useful": 0.7952386700842679,
+            "not_useful": 0.20476132991573215
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7762268173058406,
+          "Law": {
+            "useful": 0.7809703440608343,
+            "not_useful": 0.21902965593916568
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7756351873004648,
+          "Law": {
+            "useful": 0.7803787140554584,
+            "not_useful": 0.21962128594454156
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7714044282447409,
+          "Law": {
+            "useful": 0.7761479549997345,
+            "not_useful": 0.22385204500026545
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7711029997572578,
+          "Law": {
+            "useful": 0.7758465265122515,
+            "not_useful": 0.2241534734877485
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7705248356048109,
+          "Law": {
+            "useful": 0.7752683623598045,
+            "not_useful": 0.22473163764019555
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7704675934670006,
+          "Law": {
+            "useful": 0.7752111202219942,
+            "not_useful": 0.22478887977800577
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7701188747880781,
+          "Law": {
+            "useful": 0.7748624015430717,
+            "not_useful": 0.22513759845692827
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7697676927107975,
+          "Law": {
+            "useful": 0.7745112194657913,
+            "not_useful": 0.22548878053420873
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7695644352458573,
+          "Law": {
+            "useful": 0.774307962000851,
+            "not_useful": 0.22569203799914905
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7692819404929918,
+          "Law": {
+            "useful": 0.7740254672479854,
+            "not_useful": 0.22597453275201462
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7674128216305973,
+          "Law": {
+            "useful": 0.7721563483855909,
+            "not_useful": 0.22784365161440912
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7636932011927662,
+          "Law": {
+            "useful": 0.7684367279477599,
+            "not_useful": 0.23156327205224014
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7611205380864527,
+          "Law": {
+            "useful": 0.7658640648414464,
+            "not_useful": 0.23413593515855358
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18755083
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-physics-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8596948780490303,
+          "Law": {
+            "useful": 0.8610449532281915,
+            "not_useful": 0.13895504677180848
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8255712448376281,
+          "Law": {
+            "useful": 0.8301575991411215,
+            "not_useful": 0.16984240085887847
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.816262992083239,
+          "Law": {
+            "useful": 0.8208493463867323,
+            "not_useful": 0.17915065361326765
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8119439088260342,
+          "Law": {
+            "useful": 0.8165302631295276,
+            "not_useful": 0.1834697368704724
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8117466816115994,
+          "Law": {
+            "useful": 0.8163330359150927,
+            "not_useful": 0.18366696408490735
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8073165906434242,
+          "Law": {
+            "useful": 0.8119029449469176,
+            "not_useful": 0.18809705505308238
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7801915027227416,
+          "Law": {
+            "useful": 0.7849178265762384,
+            "not_useful": 0.21508217342376157
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7800882795480213,
+          "Law": {
+            "useful": 0.784814603401518,
+            "not_useful": 0.21518539659848201
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.779962977769834,
+          "Law": {
+            "useful": 0.7846893016233306,
+            "not_useful": 0.21531069837666938
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.777686166388455,
+          "Law": {
+            "useful": 0.7824124902419518,
+            "not_useful": 0.2175875097580482
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7769540069998949,
+          "Law": {
+            "useful": 0.7815294249615804,
+            "not_useful": 0.2184705750384196
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7767613138575848,
+          "Law": {
+            "useful": 0.7814876377110814,
+            "not_useful": 0.21851236228891857
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7753304636958936,
+          "Law": {
+            "useful": 0.7800567875493903,
+            "not_useful": 0.21994321245060966
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7750908837153305,
+          "Law": {
+            "useful": 0.7798172075688272,
+            "not_useful": 0.22018279243117278
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7744696046649355,
+          "Law": {
+            "useful": 0.7791959285184322,
+            "not_useful": 0.22080407148156778
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7738513554931976,
+          "Law": {
+            "useful": 0.7785776793466942,
+            "not_useful": 0.2214223206533058
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.77263758653232,
+          "Law": {
+            "useful": 0.7773639103858166,
+            "not_useful": 0.22263608961418335
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7721407525461,
+          "Law": {
+            "useful": 0.7768670763995967,
+            "not_useful": 0.22313292360040327
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7710972687016806,
+          "Law": {
+            "useful": 0.7758235925551773,
+            "not_useful": 0.2241764074448227
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18757500
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-physics-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8184337271215194,
+          "Law": {
+            "useful": 0.8229115155197125,
+            "not_useful": 0.17708848448028747
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8103449045017518,
+          "Law": {
+            "useful": 0.8149278759430939,
+            "not_useful": 0.1850721240569061
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.7990552752369722,
+          "Law": {
+            "useful": 0.8037331460165017,
+            "not_useful": 0.1962668539834983
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.7967832464393008,
+          "Law": {
+            "useful": 0.8014611172188303,
+            "not_useful": 0.1985388827811697
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.7931302658895077,
+          "Law": {
+            "useful": 0.7978081366690374,
+            "not_useful": 0.20219186333096262
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.7907002690002191,
+          "Law": {
+            "useful": 0.7953781397797486,
+            "not_useful": 0.20462186022025142
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7638331322779358,
+          "Law": {
+            "useful": 0.7685793533029419,
+            "not_useful": 0.23142064669705809
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7636576624861354,
+          "Law": {
+            "useful": 0.7684038835111414,
+            "not_useful": 0.23159611648885858
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7633025775885375,
+          "Law": {
+            "useful": 0.7680487986135436,
+            "not_useful": 0.23195120138645642
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7629925507498315,
+          "Law": {
+            "useful": 0.7677387717748375,
+            "not_useful": 0.23226122822516249
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7625589781084966,
+          "Law": {
+            "useful": 0.7673051991335026,
+            "not_useful": 0.2326948008664974
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7623260511722698,
+          "Law": {
+            "useful": 0.7670722721972757,
+            "not_useful": 0.2329277278027243
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.761932432561365,
+          "Law": {
+            "useful": 0.766678653586371,
+            "not_useful": 0.233321346413629
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7597673368977262,
+          "Law": {
+            "useful": 0.7645135579227322,
+            "not_useful": 0.23548644207726777
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7592531128925043,
+          "Law": {
+            "useful": 0.7639993339175103,
+            "not_useful": 0.2360006660824897
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7580308947708617,
+          "Law": {
+            "useful": 0.7627771157958677,
+            "not_useful": 0.2372228842041323
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7573982361648187,
+          "Law": {
+            "useful": 0.7621444571898247,
+            "not_useful": 0.2378555428101753
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7561778145797228,
+          "Law": {
+            "useful": 0.7609240356047288,
+            "not_useful": 0.23907596439527123
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7549723792333977,
+          "Law": {
+            "useful": 0.7597186002584037,
+            "not_useful": 0.24028139974159635
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 16648250
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-chemistry-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8438201062195976,
+          "Law": {
+            "useful": 0.8450152308496913,
+            "not_useful": 0.15498476915030868
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8227433056742408,
+          "Law": {
+            "useful": 0.8272697283800885,
+            "not_useful": 0.1727302716199115
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8166881107461557,
+          "Law": {
+            "useful": 0.8208151880038639,
+            "not_useful": 0.17918481199613612
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8141790743557308,
+          "Law": {
+            "useful": 0.8187054970615785,
+            "not_useful": 0.18129450293842153
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8139729765939161,
+          "Law": {
+            "useful": 0.8184993992997638,
+            "not_useful": 0.18150060070023621
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8117919650776982,
+          "Law": {
+            "useful": 0.8163183877835459,
+            "not_useful": 0.18368161221645407
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7767007189067135,
+          "Law": {
+            "useful": 0.7814456202056408,
+            "not_useful": 0.2185543797943592
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7753793715020156,
+          "Law": {
+            "useful": 0.7801242728009429,
+            "not_useful": 0.21987572719905712
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7750665907757512,
+          "Law": {
+            "useful": 0.7798114920746785,
+            "not_useful": 0.22018850792532152
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7750394802240601,
+          "Law": {
+            "useful": 0.7797843815229873,
+            "not_useful": 0.22021561847701265
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.774551400628913,
+          "Law": {
+            "useful": 0.7792963019278403,
+            "not_useful": 0.22070369807215973
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7726657040976148,
+          "Law": {
+            "useful": 0.777410605396542,
+            "not_useful": 0.22258939460345795
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7705747236480764,
+          "Law": {
+            "useful": 0.7753196249470037,
+            "not_useful": 0.22468037505299632
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7702933159154526,
+          "Law": {
+            "useful": 0.7750382172143799,
+            "not_useful": 0.22496178278562007
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.769252798181961,
+          "Law": {
+            "useful": 0.7739976994808883,
+            "not_useful": 0.22600230051911174
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.768528352353047,
+          "Law": {
+            "useful": 0.7732732536519741,
+            "not_useful": 0.22672674634802592
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7680690392549743,
+          "Law": {
+            "useful": 0.7728139405539015,
+            "not_useful": 0.2271860594460985
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.766757802122322,
+          "Law": {
+            "useful": 0.7715027034212493,
+            "not_useful": 0.22849729657875073
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.765953594680693,
+          "Law": {
+            "useful": 0.7706984959796203,
+            "not_useful": 0.22930150402037974
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 17929500
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-chemistry-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8208679612407187,
+          "Law": {
+            "useful": 0.825511843668851,
+            "not_useful": 0.174488156331149
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8194646854231739,
+          "Law": {
+            "useful": 0.8241085678513062,
+            "not_useful": 0.17589143214869385
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.811439721369924,
+          "Law": {
+            "useful": 0.8160836037980564,
+            "not_useful": 0.18391639620194355
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8076040663082923,
+          "Law": {
+            "useful": 0.8122479487364247,
+            "not_useful": 0.1877520512635753
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8072916533863645,
+          "Law": {
+            "useful": 0.8119355358144968,
+            "not_useful": 0.18806446418550316
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8030212576111296,
+          "Law": {
+            "useful": 0.8076651400392619,
+            "not_useful": 0.19233485996073807
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7735865525619762,
+          "Law": {
+            "useful": 0.7783291513918704,
+            "not_useful": 0.22167084860812958
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7733455969576455,
+          "Law": {
+            "useful": 0.7780881957875396,
+            "not_useful": 0.22191180421246037
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7712220529484539,
+          "Law": {
+            "useful": 0.7759646517783481,
+            "not_useful": 0.22403534822165194
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7711635009993684,
+          "Law": {
+            "useful": 0.7759060998292625,
+            "not_useful": 0.2240939001707375
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7700543423567802,
+          "Law": {
+            "useful": 0.7747969411866742,
+            "not_useful": 0.2252030588133258
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7682942860726248,
+          "Law": {
+            "useful": 0.7730368849025191,
+            "not_useful": 0.2269631150974809
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7665447899299259,
+          "Law": {
+            "useful": 0.7712873887598201,
+            "not_useful": 0.22871261124017994
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7664586983360799,
+          "Law": {
+            "useful": 0.771201297165974,
+            "not_useful": 0.22879870283402604
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7662336003292789,
+          "Law": {
+            "useful": 0.770976199159173,
+            "not_useful": 0.22902380084082696
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7651551026804176,
+          "Law": {
+            "useful": 0.7698977015103118,
+            "not_useful": 0.23010229848968822
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.764601326653741,
+          "Law": {
+            "useful": 0.7693439254836352,
+            "not_useful": 0.23065607451636483
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7643653002071895,
+          "Law": {
+            "useful": 0.7691078990370835,
+            "not_useful": 0.23089210096291646
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7637745313111954,
+          "Law": {
+            "useful": 0.7685171301410896,
+            "not_useful": 0.23148286985891042
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 2,
+      "RecallNS": 17577042
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-chemistry-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8422209172162737,
+          "Law": {
+            "useful": 0.8435233796450062,
+            "not_useful": 0.15647662035499377
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8135416435871371,
+          "Law": {
+            "useful": 0.8180400224695961,
+            "not_useful": 0.18195997753040394
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8119941012747836,
+          "Law": {
+            "useful": 0.8159458770223947,
+            "not_useful": 0.18405412297760526
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8118889477826517,
+          "Law": {
+            "useful": 0.8163873266651106,
+            "not_useful": 0.1836126733348894
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8068348243340727,
+          "Law": {
+            "useful": 0.8113332032165317,
+            "not_useful": 0.18866679678346832
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.7939573553480958,
+          "Law": {
+            "useful": 0.7984353794257957,
+            "not_useful": 0.20156462057420432
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.76979134396055,
+          "Law": {
+            "useful": 0.7745525659945962,
+            "not_useful": 0.2254474340054038
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7664441801406011,
+          "Law": {
+            "useful": 0.7712054021746473,
+            "not_useful": 0.22879459782535272
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7660271691303014,
+          "Law": {
+            "useful": 0.7707883911643477,
+            "not_useful": 0.22921160883565228
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7655116318992393,
+          "Law": {
+            "useful": 0.7702728539332855,
+            "not_useful": 0.22972714606671452
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7650067576302425,
+          "Law": {
+            "useful": 0.7697679796642887,
+            "not_useful": 0.23023202033571133
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7637047784739432,
+          "Law": {
+            "useful": 0.7684660005079894,
+            "not_useful": 0.2315339994920106
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7632295719683285,
+          "Law": {
+            "useful": 0.7679907940023747,
+            "not_useful": 0.2320092059976253
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7626916006581166,
+          "Law": {
+            "useful": 0.7674528226921629,
+            "not_useful": 0.23254717730783714
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7624677441752253,
+          "Law": {
+            "useful": 0.7672289662092715,
+            "not_useful": 0.2327710337907285
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7618637596863811,
+          "Law": {
+            "useful": 0.7666249817204273,
+            "not_useful": 0.23337501827957274
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7618306623652668,
+          "Law": {
+            "useful": 0.7665918843993129,
+            "not_useful": 0.23340811560068708
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7613242513591852,
+          "Law": {
+            "useful": 0.7660854733932314,
+            "not_useful": 0.2339145266067686
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.759375795681015,
+          "Law": {
+            "useful": 0.7641370177150612,
+            "not_useful": 0.23586298228493885
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18346875
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-chemistry-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8253422466068475,
+          "Law": {
+            "useful": 0.8300133777881356,
+            "not_useful": 0.16998662221186445
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8230830905729948,
+          "Law": {
+            "useful": 0.8276475398056363,
+            "not_useful": 0.17235246019436368
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8199629933431299,
+          "Law": {
+            "useful": 0.824634124524418,
+            "not_useful": 0.17536587547558202
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8190902440946768,
+          "Law": {
+            "useful": 0.8237613752759648,
+            "not_useful": 0.17623862472403518
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8176736951405563,
+          "Law": {
+            "useful": 0.8223448263218444,
+            "not_useful": 0.17765517367815564
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8008009438028072,
+          "Law": {
+            "useful": 0.8053557893670532,
+            "not_useful": 0.1946442106329468
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7745913133919569,
+          "Law": {
+            "useful": 0.7793415521764577,
+            "not_useful": 0.22065844782354227
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7740059196839159,
+          "Law": {
+            "useful": 0.7786668640706007,
+            "not_useful": 0.2213331359293993
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7735965007273201,
+          "Law": {
+            "useful": 0.7783467395118211,
+            "not_useful": 0.2216532604881789
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.772899654011641,
+          "Law": {
+            "useful": 0.7776498927961419,
+            "not_useful": 0.22235010720385806
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7725585379486896,
+          "Law": {
+            "useful": 0.7773087767331904,
+            "not_useful": 0.22269122326680957
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7713884317401921,
+          "Law": {
+            "useful": 0.776138670524693,
+            "not_useful": 0.223861329475307
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7700928792861043,
+          "Law": {
+            "useful": 0.7748431180706052,
+            "not_useful": 0.22515688192939476
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7695263847012859,
+          "Law": {
+            "useful": 0.7742766234857869,
+            "not_useful": 0.22572337651421315
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7686744952738768,
+          "Law": {
+            "useful": 0.7734247340583777,
+            "not_useful": 0.22657526594162225
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7680599507635122,
+          "Law": {
+            "useful": 0.7728101895480132,
+            "not_useful": 0.22718981045198683
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7680527994482541,
+          "Law": {
+            "useful": 0.7728030382327552,
+            "not_useful": 0.2271969617672448
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7678993988685272,
+          "Law": {
+            "useful": 0.7726496376530281,
+            "not_useful": 0.22735036234697192
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7651558798914502,
+          "Law": {
+            "useful": 0.7699061186759512,
+            "not_useful": 0.23009388132404884
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 19519292
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-medicine-2023-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8483808287918898,
+          "Law": {
+            "useful": 0.8490601237331764,
+            "not_useful": 0.1509398762668236
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8041638903578892,
+          "Law": {
+            "useful": 0.8088287724811347,
+            "not_useful": 0.19117122751886528
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8025131739123847,
+          "Law": {
+            "useful": 0.8071780560356304,
+            "not_useful": 0.19282194396436958
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8023478445291533,
+          "Law": {
+            "useful": 0.807012726652399,
+            "not_useful": 0.19298727334760102
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.7988464990569035,
+          "Law": {
+            "useful": 0.8035113811801491,
+            "not_useful": 0.1964886188198509
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.7910716206582387,
+          "Law": {
+            "useful": 0.7957302758469074,
+            "not_useful": 0.20426972415309264
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7609535926846096,
+          "Law": {
+            "useful": 0.765715037123207,
+            "not_useful": 0.234284962876793
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7594370786639698,
+          "Law": {
+            "useful": 0.7641985231025672,
+            "not_useful": 0.2358014768974328
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7582384482934383,
+          "Law": {
+            "useful": 0.7629998927320357,
+            "not_useful": 0.23700010726796428
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7582325157011918,
+          "Law": {
+            "useful": 0.7629939601397893,
+            "not_useful": 0.23700603986021074
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7576954676348749,
+          "Law": {
+            "useful": 0.7624569120734723,
+            "not_useful": 0.23754308792652767
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7569652995192864,
+          "Law": {
+            "useful": 0.7617267439578838,
+            "not_useful": 0.23827325604211624
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7568193011470963,
+          "Law": {
+            "useful": 0.7615807455856937,
+            "not_useful": 0.23841925441430634
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7566134682764908,
+          "Law": {
+            "useful": 0.7613749127150882,
+            "not_useful": 0.23862508728491183
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7564518045956024,
+          "Law": {
+            "useful": 0.7612132490341997,
+            "not_useful": 0.23878675096580027
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7557463787451276,
+          "Law": {
+            "useful": 0.760507823183725,
+            "not_useful": 0.239492176816275
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7553818793076406,
+          "Law": {
+            "useful": 0.7601433237462379,
+            "not_useful": 0.23985667625376206
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7540928739291852,
+          "Law": {
+            "useful": 0.7588543183677826,
+            "not_useful": 0.2411456816322174
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7524678730360365,
+          "Law": {
+            "useful": 0.7572293174746338,
+            "not_useful": 0.24277068252536615
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18546375
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-medicine-2023-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8293684399894338,
+          "Law": {
+            "useful": 0.8340211959676367,
+            "not_useful": 0.16597880403236331
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8060568060420119,
+          "Law": {
+            "useful": 0.8107095620202148,
+            "not_useful": 0.18929043797978518
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8030071348307087,
+          "Law": {
+            "useful": 0.8076598908089118,
+            "not_useful": 0.19234010919108824
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8026170559896202,
+          "Law": {
+            "useful": 0.8072698119678231,
+            "not_useful": 0.1927301880321769
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8018257049770534,
+          "Law": {
+            "useful": 0.8064784609552563,
+            "not_useful": 0.19352153904474367
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.7962616530346198,
+          "Law": {
+            "useful": 0.8007833336351106,
+            "not_useful": 0.19921666636488944
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7589857243712371,
+          "Law": {
+            "useful": 0.7637348009882805,
+            "not_useful": 0.2362651990117195
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7576097527123867,
+          "Law": {
+            "useful": 0.7623588293294301,
+            "not_useful": 0.2376411706705699
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.756484761454465,
+          "Law": {
+            "useful": 0.7612338380715084,
+            "not_useful": 0.23876616192849165
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7554673861940793,
+          "Law": {
+            "useful": 0.7602164628111227,
+            "not_useful": 0.23978353718887735
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7551929168887821,
+          "Law": {
+            "useful": 0.7599419935058255,
+            "not_useful": 0.24005800649417453
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7548746616594079,
+          "Law": {
+            "useful": 0.7596237382764514,
+            "not_useful": 0.24037626172354865
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.754588616326294,
+          "Law": {
+            "useful": 0.7593376929433374,
+            "not_useful": 0.24066230705666258
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.754136621102834,
+          "Law": {
+            "useful": 0.7588856977198774,
+            "not_useful": 0.24111430228012265
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7539775404017675,
+          "Law": {
+            "useful": 0.7587266170188108,
+            "not_useful": 0.24127338298118917
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7535930827472255,
+          "Law": {
+            "useful": 0.758342159364269,
+            "not_useful": 0.24165784063573104
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7530067818069438,
+          "Law": {
+            "useful": 0.7577558584239872,
+            "not_useful": 0.24224414157601282
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.752859548790662,
+          "Law": {
+            "useful": 0.7576086254077053,
+            "not_useful": 0.24239137459229465
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7496062109170915,
+          "Law": {
+            "useful": 0.7543552875341348,
+            "not_useful": 0.24564471246586517
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18968166
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-medicine-2022-literal",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8449919863561685,
+          "Law": {
+            "useful": 0.845863950962278,
+            "not_useful": 0.15413604903772204
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.808629151515771,
+          "Law": {
+            "useful": 0.8132698813732575,
+            "not_useful": 0.1867301186267425
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.808317443836687,
+          "Law": {
+            "useful": 0.8129581736941736,
+            "not_useful": 0.18704182630582644
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.807147571747157,
+          "Law": {
+            "useful": 0.8117883016046435,
+            "not_useful": 0.18821169839535645
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.80545852019838,
+          "Law": {
+            "useful": 0.8100992500558666,
+            "not_useful": 0.18990074994413342
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.798448513570934,
+          "Law": {
+            "useful": 0.8030810889437668,
+            "not_useful": 0.19691891105623316
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7831927144289329,
+          "Law": {
+            "useful": 0.7879554695778463,
+            "not_useful": 0.21204453042215365
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7815353169465676,
+          "Law": {
+            "useful": 0.786298072095481,
+            "not_useful": 0.21370192790451903
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7796101908033407,
+          "Law": {
+            "useful": 0.7843729459522542,
+            "not_useful": 0.21562705404774585
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7791702417536797,
+          "Law": {
+            "useful": 0.7839329969025931,
+            "not_useful": 0.2160670030974069
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7780072975939728,
+          "Law": {
+            "useful": 0.7827700527428862,
+            "not_useful": 0.21722994725711375
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7774882788899228,
+          "Law": {
+            "useful": 0.7822510340388362,
+            "not_useful": 0.21774896596116378
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7772091586855928,
+          "Law": {
+            "useful": 0.7819719138345063,
+            "not_useful": 0.21802808616549374
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7769195906843388,
+          "Law": {
+            "useful": 0.7816823458332522,
+            "not_useful": 0.21831765416674775
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7745016785468296,
+          "Law": {
+            "useful": 0.779264433695743,
+            "not_useful": 0.22073556630425695
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7739313510681571,
+          "Law": {
+            "useful": 0.7786941062170706,
+            "not_useful": 0.22130589378292942
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7722444870962003,
+          "Law": {
+            "useful": 0.7770072422451137,
+            "not_useful": 0.22299275775488625
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7712359448100602,
+          "Law": {
+            "useful": 0.7759986999589736,
+            "not_useful": 0.22400130004102636
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7706040997534054,
+          "Law": {
+            "useful": 0.7753668549023189,
+            "not_useful": 0.22463314509768106
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18001500
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-medicine-2022-paraphrase",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8279929791267231,
+          "Law": {
+            "useful": 0.8324797468197587,
+            "not_useful": 0.16752025318024133
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8085381201900275,
+          "Law": {
+            "useful": 0.813168898818562,
+            "not_useful": 0.18683110118143798
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8083685484130942,
+          "Law": {
+            "useful": 0.8129993270416288,
+            "not_useful": 0.1870006729583712
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8080184310163493,
+          "Law": {
+            "useful": 0.812649209644884,
+            "not_useful": 0.18735079035511604
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8069921288526105,
+          "Law": {
+            "useful": 0.8116229074811451,
+            "not_useful": 0.18837709251885493
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.7960576594964834,
+          "Law": {
+            "useful": 0.800688438125018,
+            "not_useful": 0.199311561874982
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7843138519359275,
+          "Law": {
+            "useful": 0.7890468788057607,
+            "not_useful": 0.21095312119423926
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7780257871577017,
+          "Law": {
+            "useful": 0.7827588140275349,
+            "not_useful": 0.2172411859724651
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7780204586599184,
+          "Law": {
+            "useful": 0.7827534855297517,
+            "not_useful": 0.21724651447024834
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7753347390628496,
+          "Law": {
+            "useful": 0.7799551461271657,
+            "not_useful": 0.22004485387283435
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7747787542755268,
+          "Law": {
+            "useful": 0.77951178114536,
+            "not_useful": 0.22048821885463998
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7747350622818523,
+          "Law": {
+            "useful": 0.7794680891516855,
+            "not_useful": 0.22053191084831447
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7743938593088501,
+          "Law": {
+            "useful": 0.7791268861786833,
+            "not_useful": 0.2208731138213167
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7733336189787687,
+          "Law": {
+            "useful": 0.778066645848602,
+            "not_useful": 0.22193335415139803
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7729699371322583,
+          "Law": {
+            "useful": 0.7777029640020915,
+            "not_useful": 0.2222970359979085
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.772570529557905,
+          "Law": {
+            "useful": 0.7773035564277381,
+            "not_useful": 0.22269644357226193
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.771283446275451,
+          "Law": {
+            "useful": 0.7760164731452842,
+            "not_useful": 0.2239835268547158
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7705103944054993,
+          "Law": {
+            "useful": 0.7752434212753326,
+            "not_useful": 0.22475657872466737
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7701210633447689,
+          "Law": {
+            "useful": 0.7747414704090849,
+            "not_useful": 0.22525852959091508
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 1,
+      "RecallNS": 18959583
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-absent-0",
+      "Candidates": [
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.808982971258684,
+          "Law": {
+            "useful": 0.8137235379052402,
+            "not_useful": 0.1862764620947598
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8062800903432993,
+          "Law": {
+            "useful": 0.8110206569898555,
+            "not_useful": 0.18897934301014452
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8034933153876371,
+          "Law": {
+            "useful": 0.8082338820341933,
+            "not_useful": 0.19176611796580667
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8005062664126195,
+          "Law": {
+            "useful": 0.8052468330591757,
+            "not_useful": 0.19475316694082434
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.7954588842022363,
+          "Law": {
+            "useful": 0.8001994508487925,
+            "not_useful": 0.19980054915120748
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.7929455933746653,
+          "Law": {
+            "useful": 0.7976861600212215,
+            "not_useful": 0.2023138399787785
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7898141697715005,
+          "Law": {
+            "useful": 0.7945547364180567,
+            "not_useful": 0.20544526358194326
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7882889492551074,
+          "Law": {
+            "useful": 0.7930295159016636,
+            "not_useful": 0.2069704840983364
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7875581991497804,
+          "Law": {
+            "useful": 0.7922987657963365,
+            "not_useful": 0.2077012342036635
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.78686407600409,
+          "Law": {
+            "useful": 0.7916046426506462,
+            "not_useful": 0.20839535734935377
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.786771810630529,
+          "Law": {
+            "useful": 0.7915123772770852,
+            "not_useful": 0.20848762272291477
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7858563308089422,
+          "Law": {
+            "useful": 0.7905968974554984,
+            "not_useful": 0.20940310254450156
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7825049872376219,
+          "Law": {
+            "useful": 0.7872455538841782,
+            "not_useful": 0.21275444611582184
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.7821235302044112,
+          "Law": {
+            "useful": 0.7868640968509674,
+            "not_useful": 0.21313590314903264
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.782027449476024,
+          "Law": {
+            "useful": 0.7867680161225802,
+            "not_useful": 0.21323198387741982
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7816849519447965,
+          "Law": {
+            "useful": 0.7864255185913527,
+            "not_useful": 0.21357448140864732
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7810921594653071,
+          "Law": {
+            "useful": 0.7858327261118634,
+            "not_useful": 0.2141672738881366
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7806255249822711,
+          "Law": {
+            "useful": 0.7853660916288273,
+            "not_useful": 0.2146339083711727
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7804657348249356,
+          "Law": {
+            "useful": 0.7852063014714918,
+            "not_useful": 0.21479369852850816
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 0,
+      "RecallNS": 16192125
+    },
+    {
+      "Arm": "bounded",
+      "Case": "nobel-absent-1",
+      "Candidates": [
+        {
+          "Fixture": "nobel-medicine-2022",
+          "Score": 0.8179630325472871,
+          "Law": {
+            "useful": 0.8227064001608826,
+            "not_useful": 0.1772935998391174
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2023",
+          "Score": 0.8134389325438697,
+          "Law": {
+            "useful": 0.8181823001574652,
+            "not_useful": 0.18181769984253482
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2023",
+          "Score": 0.8129043046619973,
+          "Law": {
+            "useful": 0.8174420920058619,
+            "not_useful": 0.18255790799413807
+          }
+        },
+        {
+          "Fixture": "nobel-physics-2022",
+          "Score": 0.8114272074050788,
+          "Law": {
+            "useful": 0.8161705750186743,
+            "not_useful": 0.1838294249813257
+          }
+        },
+        {
+          "Fixture": "nobel-chemistry-2022",
+          "Score": 0.8067533164181258,
+          "Law": {
+            "useful": 0.8114966840317213,
+            "not_useful": 0.18850331596827874
+          }
+        },
+        {
+          "Fixture": "nobel-medicine-2023",
+          "Score": 0.8064212493686445,
+          "Law": {
+            "useful": 0.8111646169822401,
+            "not_useful": 0.18883538301775993
+          }
+        },
+        {
+          "Fixture": "m10-contact",
+          "Score": 0.7884911386225607,
+          "Law": {
+            "useful": 0.7932345062361562,
+            "not_useful": 0.2067654937638438
+          }
+        },
+        {
+          "Fixture": "v1-jupiter",
+          "Score": 0.7874662593116329,
+          "Law": {
+            "useful": 0.7922096269252284,
+            "not_useful": 0.20779037307477155
+          }
+        },
+        {
+          "Fixture": "v1-launch",
+          "Score": 0.7863672324388665,
+          "Law": {
+            "useful": 0.7911106000524621,
+            "not_useful": 0.20888939994753786
+          }
+        },
+        {
+          "Fixture": "v2-jupiter",
+          "Score": 0.7862397192522491,
+          "Law": {
+            "useful": 0.7909830868658446,
+            "not_useful": 0.20901691313415538
+          }
+        },
+        {
+          "Fixture": "v1-saturn",
+          "Score": 0.7856087908636984,
+          "Law": {
+            "useful": 0.7903521584772939,
+            "not_useful": 0.2096478415227061
+          }
+        },
+        {
+          "Fixture": "v2-saturn",
+          "Score": 0.7849748966024238,
+          "Law": {
+            "useful": 0.7897182642160193,
+            "not_useful": 0.21028173578398068
+          }
+        },
+        {
+          "Fixture": "v2-neptune",
+          "Score": 0.7848117197387143,
+          "Law": {
+            "useful": 0.7895550873523098,
+            "not_useful": 0.21044491264769016
+          }
+        },
+        {
+          "Fixture": "v2-launch",
+          "Score": 0.783430284441572,
+          "Law": {
+            "useful": 0.7881736520551675,
+            "not_useful": 0.21182634794483246
+          }
+        },
+        {
+          "Fixture": "v2-uranus",
+          "Score": 0.7832553715823751,
+          "Law": {
+            "useful": 0.7879987391959706,
+            "not_useful": 0.21200126080402937
+          }
+        },
+        {
+          "Fixture": "m10-mercury2",
+          "Score": 0.7829012837595993,
+          "Law": {
+            "useful": 0.7876446513731948,
+            "not_useful": 0.21235534862680516
+          }
+        },
+        {
+          "Fixture": "m10-mercury1",
+          "Score": 0.7818269167707679,
+          "Law": {
+            "useful": 0.7865702843843634,
+            "not_useful": 0.21342971561563662
+          }
+        },
+        {
+          "Fixture": "m10-mercury3",
+          "Score": 0.7816210302898366,
+          "Law": {
+            "useful": 0.7863643979034322,
+            "not_useful": 0.21363560209656784
+          }
+        },
+        {
+          "Fixture": "m10-venus",
+          "Score": 0.7815822934200646,
+          "Law": {
+            "useful": 0.7863256610336601,
+            "not_useful": 0.21367433896633992
+          }
+        }
+      ],
+      "Frontier": 19,
+      "SupportRank": 0,
+      "RecallNS": 17517542
+    }
+  ]
+}

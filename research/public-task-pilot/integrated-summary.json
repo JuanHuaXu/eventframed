@@ -1,0 +1,116 @@
+{
+  "report": {
+    "design": {
+      "baseline": {
+        "positive_queries": 8,
+        "top1": 5,
+        "survived": 8,
+        "promoted_packed_records": 0,
+        "top_ties": [],
+        "absent": [
+          {
+            "case": "m10-absent",
+            "mean": 0.6711089742799594,
+            "maximum": 0.7092970199543774
+          }
+        ]
+      },
+      "lexical": {
+        "positive_queries": 8,
+        "top1": 8,
+        "survived": 8,
+        "promoted_packed_records": 5,
+        "top_ties": [],
+        "absent": [
+          {
+            "case": "m10-absent",
+            "mean": 0.38571428571428573,
+            "maximum": 0.7142857142857143
+          }
+        ]
+      },
+      "sparse": {
+        "positive_queries": 8,
+        "top1": 8,
+        "survived": 8,
+        "promoted_packed_records": 7,
+        "top_ties": [],
+        "absent": [
+          {
+            "case": "m10-absent",
+            "mean": 0.0994946184402215,
+            "maximum": 0.22065393707830125
+          }
+        ]
+      }
+    },
+    "confirmation": {
+      "baseline": {
+        "positive_queries": 5,
+        "top1": 4,
+        "survived": 5,
+        "promoted_packed_records": 0,
+        "top_ties": [
+          {
+            "case": "v2-saturn",
+            "top_tie": [
+              "v2-saturn",
+              "v2-uranus"
+            ],
+            "support_in_tie": true
+          }
+        ],
+        "absent": [
+          {
+            "case": "v2-absent",
+            "mean": 0.6640569256817178,
+            "maximum": 0.6805055926942629
+          }
+        ]
+      },
+      "lexical": {
+        "positive_queries": 5,
+        "top1": 5,
+        "survived": 5,
+        "promoted_packed_records": 6,
+        "top_ties": [],
+        "absent": [
+          {
+            "case": "v2-absent",
+            "mean": 0.4666666666666667,
+            "maximum": 0.5
+          }
+        ]
+      },
+      "sparse": {
+        "positive_queries": 5,
+        "top1": 5,
+        "survived": 5,
+        "promoted_packed_records": 10,
+        "top_ties": [],
+        "absent": [
+          {
+            "case": "v2-absent",
+            "mean": 0.09578558281515213,
+            "maximum": 0.11565215963862849
+          }
+        ]
+      }
+    }
+  },
+  "sha256": {
+    "research/public-task-pilot/integrated-design-baseline-full.json": "3445787ffe60872fc6f76119100c9fb22aed6d2792595bd4364f598cd57f965b",
+    "research/public-task-pilot/integrated-design-baseline.json": "04242cf3548b0efc3b8a4adbc45c66531c3ce2a44fed8d6685fc930ef5dffde8",
+    "research/public-task-pilot/integrated-design-lexical.json": "2674ba1af1580e33e766d48e92ce01a7883b169a6f4a56ffc9e81afb65fed6f4",
+    "research/public-task-pilot/integrated-design-sparse.json": "f6a5e6f2935ece9f625783acbad52be10a72ae95ef2976562e67a8c58b9c5878",
+    "research/public-task-pilot/integrated-confirmation-baseline-full.json": "cebb897af581a68df4f63970a08b4ae435a576b0385dbae19061b60f355a8e09",
+    "research/public-task-pilot/integrated-confirmation-baseline.json": "4b22a99d0d17f5e8806b4e7720209953ef0b71fb440f484a86737574d4f3d5f2",
+    "research/public-task-pilot/integrated-confirmation-lexical.json": "ea2abd5fd968071c378ca1b99ed77b729a0549594717c8232bb0cb07f6d0da1e",
+    "research/public-task-pilot/integrated-confirmation-sparse.json": "c93db0a2507b62ec8c6a495e5fb4e8d5823130a1601b8654afe3876eb9512867",
+    "research/public-task-pilot/check_integrated.py": "681235aeb6c674fd6693ecf32192c5df6d6e9162920998625ff5f5fa02db1d2a",
+    "research/public-task-pilot/INTEGRATED_PROTOCOL.md": "af9e6d8095c9bf7fbf4bae2fb322a6f655073a1302b905cf4912f1786e651281",
+    "cmd/public-pilot-preflight/main.go": "da5d6fd4039c55c801a0f5b491ab3e9b058a17788e8fc0b63ac3a7795b8a0e35",
+    "internal/researchsparse/sparse.go": "ea7e0a3713081ed03ce11b646b020468a64f4bf9177fa058b75fbc8ed41450c4",
+    "internal/service/research_rank.go": "3d44b913a685ddb80d03845a3a8f78af5cfb6ed3e3825e1fcbcff9047942a942"
+  }
+}

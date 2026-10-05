@@ -1,0 +1,26 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';import {audit} from './magnitude-v2-audit.mjs';
+const root='research/public-task-pilot/ecmascript-v1/',hash=b=>crypto.createHash('sha256').update(b).digest('hex'),read=p=>JSON.parse(fs.readFileSync(root+p));
+const save=(p,x)=>fs.writeFileSync(root+p,JSON.stringify(x,null,2)+'\n',{flag:'wx',mode:0o600});
+const priorFiles={...read('magnitude-runtime-freeze.json'),...read('magnitude-auditor-freeze.json'),...read('magnitude-supplement-freeze.json').files};
+for(const[p,h]of Object.entries(priorFiles))assert.equal(hash(fs.readFileSync(p)),h,'old source changed');
+const files={...read('magnitude-runtime-freeze.json')};for(const p of ['cmd/public-ecma-magnitude-v2/main.go',root+'MAGNITUDE_V2_MEASUREMENT.md'])files[p]=hash(fs.readFileSync(p));save('magnitude-v2-runtime-freeze.json',files);
+const auditFiles={};for(const p of ['magnitude-v2-audit.mjs','magnitude-v2-run.mjs','magnitude-fit-labels.json','prepared/oracle.json','magnitude-fit.jsonl','magnitude-failure.json','magnitude-supplement-freeze.json'])auditFiles[root+p]=hash(fs.readFileSync(root+p));save('magnitude-v2-auditor-freeze.json',{time:new Date().toISOString(),files:auditFiles,original_failures_preserved:true,design_and_confirmation_unseen:true});
+function unchanged(){for(const[p,h]of Object.entries({...files,...auditFiles,...priorFiles}))assert.equal(hash(fs.readFileSync(p)),h,'changed '+p)}
+const checks=[];function run(name,cmd,args){unchanged();let code=0,log='';const begin=performance.now();try{log=execFileSync(cmd,args,{encoding:'utf8',maxBuffer:16*1024*1024,timeout:600000})}catch(e){code=e.status??-1;log=(e.stdout??'')+'\n'+(e.stderr??'')+'\n'+e.message}fs.writeFileSync(root+'magnitude-v2-'+name+'.log',log,{flag:'wx',mode:0o600});checks.push({name,cmd,args,code,wall_ms:performance.now()-begin,log_sha256:hash(log)});console.log(log);if(code!==0)throw Error(name+' failed')}
+try{
+ run('race','go',['test','-race','./internal/researchmagnitude','./cmd/public-ecma-magnitude-v2','-count=1']);
+ run('vet','go',['vet','./internal/researchmagnitude','./cmd/public-ecma-magnitude-v2']);
+ run('fit','go',['run','./cmd/public-ecma-magnitude-v2','fit','unused',root+'magnitude-v2-fit.jsonl']);
+ const parse=p=>fs.readFileSync(root+p,'utf8').trim().split('\n').map(l=>JSON.parse(l)),raw=parse('magnitude-v2-fit.jsonl'),old=parse('magnitude-fit.jsonl');
+ const stable=r=>({Type:r.Type,Arm:r.Arm,Case:r.Case,Split:r.Split,Weight:r.Weight,Order:r.Order,Packed:r.Packed,Lexical:r.Lexical,HookScores:r.HookScores,HookCalls:r.HookCalls,JournalStored:r.JournalStored,Frames:r.Frames});
+ assert.deepEqual(raw.filter(r=>r.Type==='case').map(stable),old.filter(r=>r.Type==='case').map(stable),'FIT replay changed actual predictions');audit(raw,'fit');
+ const mutations=[['footer',r=>r.at(-1).complete++],['foreign_query',r=>r[1].Case='foreign'],['duplicate',r=>r[2]=structuredClone(r[1])],['journal',r=>r[1].JournalStored=false],['frame',r=>r.find(v=>v.Frames).Frames[Object.keys(r.find(v=>v.Frames).Frames)[0]][5]+='tamper'],['law',r=>r[1].JournalOrder[0].law.useful+=.01],['packet',r=>r[1].Packed[0].score+=.01],['lexical',r=>r.find(v=>v.HookCalls===1).Lexical[0]+=.01],['formula',r=>r.find(v=>v.HookCalls===1).HookScores[0]+=.01],['sort',r=>{const v=r.find(v=>v.HookCalls===1);[v.Order[0],v.Order[1]]=[v.Order[1],v.Order[0]]}],['missing',r=>r.splice(1,1)],['weight',r=>r.find(v=>v.HookCalls===1).Weight+=.01],['nomination',r=>r[1].JournalOrder[0].id='foreign'],['source',r=>r[0].files[Object.keys(r[0].files)[0]]='bad']];
+ const controls=[];for(const[name,mutate]of mutations){const r=structuredClone(raw);mutate(r);assert.notDeepEqual(r,raw);assert.throws(()=>audit(r,'fit'),undefined,'accepted '+name);controls.push(name)}save('magnitude-v2-controls.json',{time:new Date().toISOString(),normal_pass:true,rejected_controls:controls,fit_replay_equivalent:true});
+ run('fit-audit','node',[root+'magnitude-v2-audit.mjs','fit',root+'magnitude-v2-fit.jsonl',root+'magnitude-v2-model.json']);
+ const modelSHA=hash(fs.readFileSync(root+'magnitude-v2-model.json'));save('magnitude-v2-heldout-freeze.json',{time:new Date().toISOString(),model_sha256:modelSHA,design_and_confirmation_unseen:true});
+ run('heldout','go',['run','./cmd/public-ecma-magnitude-v2','heldout',root+'magnitude-v2-model.json',root+'magnitude-v2-heldout.jsonl']);
+ run('heldout-audit','node',[root+'magnitude-v2-audit.mjs','heldout',root+'magnitude-v2-heldout.jsonl',root+'magnitude-v2-results.json']);
+ assert.equal(parse('magnitude-v2-heldout.jsonl')[0].model_sha256,modelSHA);assert.equal(hash(fs.readFileSync(root+'magnitude-v2-model.json')),modelSHA);unchanged();
+ const artifacts={};for(const p of fs.readdirSync(root).filter(p=>p.startsWith('magnitude-v2-')&&/\.(json|jsonl|log)$/.test(p)))artifacts[p]=hash(fs.readFileSync(root+p));
+ save('magnitude-v2-completed.json',{time:new Date().toISOString(),checks,artifacts,controls:controls.length,source_unchanged:true,fit_replayed:true,fit_prediction_equivalent:true,original_failures_preserved:true,model_sha256:modelSHA,goal:'ACTIVE',whole_goal_complete:false});
+}catch(e){save('magnitude-v2-failure.json',{time:new Date().toISOString(),error:e.message,checks,whole_goal_complete:false});throw e}

@@ -1,0 +1,233 @@
+package originbinding
+
+import (
+	"fmt"
+	"reflect"
+	"strings"
+	"testing"
+
+	"github.com/JuanHuaXu/eventframed/internal/epistemic"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/packing"
+)
+
+func relationRegistry(t *testing.T, candidates []model.Candidate, origins, relations []string) *RelationRegistry {
+	t.Helper()
+	items := make([]RelationBinding, len(candidates))
+	for i, candidate := range candidates {
+		binding, err := Record(candidate.Event, origins[i])
+		if err != nil {
+			t.Fatal(err)
+		}
+		items[i] = RelationBinding{Binding: binding, RelationID: relations[i]}
+	}
+	r, err := NewRelationRegistry(items)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return r
+}
+
+func selectRelationPair(t *testing.T, r *RelationRegistry, left, right model.Candidate, ap map[string]string) packing.Result {
+	t.Helper()
+	result, err := r.SelectFixed([]model.Candidate{left, right}, ap, 2, 100, packing.DefaultPolicy())
+	if err != nil {
+		t.Fatal(err)
+	}
+	return result
+}
+
+func TestRelationWitnessPairDecisions(t *testing.T) {
+	for _, tc := range []struct {
+		name      string
+		what      string
+		leftID    string
+		rightID   string
+		rightFrom string
+		want      int
+	}{
+		{name: "formatting_repeat", what: "A  >  B", leftID: "gt", rightID: "gt", rightFrom: "origin", want: 1},
+		{name: "reversed_relation", what: "A < B", leftID: "gt", rightID: "lt", rightFrom: "origin", want: 2},
+		{name: "same_exact_claim_different_declared_ids", what: "A > B", leftID: "gt", rightID: "lt", rightFrom: "origin", want: 1},
+		{name: "different_origin_falls_back", what: "A < B", leftID: "gt", rightID: "lt", rightFrom: "other", want: 1},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			left, right := fixture("a", "same"), fixture("b", "same")
+			left.Event.Provenance.ToolCallID = "shared"
+			right.Event.Provenance.ToolCallID = "shared"
+			right.Event.What.Value = tc.what
+			r := relationRegistry(t, []model.Candidate{left, right}, []string{"origin", tc.rightFrom}, []string{tc.leftID, tc.rightID})
+			got := selectRelationPair(t, r, left, right, nil)
+			if len(got.Candidates) != tc.want {
+				t.Fatalf("packed %d, want %d", len(got.Candidates), tc.want)
+			}
+		})
+	}
+}
+
+func TestRelationWitnessFailClosedAndAP(t *testing.T) {
+	left, right := fixture("a", "same"), fixture("b", "same")
+	left.Event.Provenance.ToolCallID = "shared"
+	right.Event.Provenance.ToolCallID = "shared"
+	right.Event.What.Value = "A < B"
+	r := relationRegistry(t, []model.Candidate{left, right}, []string{"origin", "origin"}, []string{"gt", "lt"})
+	if got := selectRelationPair(t, r, left, right, nil); len(got.Candidates) != 2 {
+		t.Fatal("verified reversal was suppressed")
+	}
+	if got := selectRelationPair(t, nil, left, right, nil); len(got.Candidates) != 1 {
+		t.Fatal("nil registry asserted a relation distinction")
+	}
+	missing := relationRegistry(t, []model.Candidate{left}, []string{"origin"}, []string{"gt"})
+	if got := selectRelationPair(t, missing, left, right, nil); len(got.Candidates) != 1 {
+		t.Fatal("missing witness bypassed legacy correlation")
+	}
+	tampered := right
+	tampered.Event.What.Value = "A <= B"
+	if got := selectRelationPair(t, r, left, tampered, nil); len(got.Candidates) != 1 {
+		t.Fatal("tampered witness bypassed legacy correlation")
+	}
+	if got := selectRelationPair(t, r, left, right, map[string]string{"a": "ap:one", "b": "ap:two"}); len(got.Candidates) != 2 {
+		t.Fatal("certified AP split lost precedence")
+	}
+	left.Event.What.Value = "A > B"
+	right.Event.What.Value = "A  >  B"
+	matched := relationRegistry(t, []model.Candidate{left, right}, []string{"origin", "origin"}, []string{"gt", "gt"})
+	if got := selectRelationPair(t, matched, left, right, map[string]string{"a": "ap:one", "b": "ap:two"}); len(got.Candidates) != 2 {
+		t.Fatal("relation identity overrode certified AP split")
+	}
+}
+
+func TestRelationWitnessDistinctObservedOccurrences(t *testing.T) {
+	left, right := fixture("a", "same"), fixture("b", "same")
+	for _, candidate := range []*model.Candidate{&left, &right} {
+		candidate.Event.Provenance.ToolCallID = "shared"
+		candidate.Event.What.Source = model.SourceObserved
+		candidate.Event.When.Source = model.SourceObserved
+		candidate.Event.Attributes = map[string]string{epistemic.DistinctOccurrenceAttribute: "true"}
+	}
+	right.Event.When.Value = "1975-03-16"
+	r := relationRegistry(t, []model.Candidate{left, right}, []string{"origin", "origin"}, []string{"gt", "gt"})
+	if got := selectRelationPair(t, r, left, right, nil); len(got.Candidates) != 2 {
+		t.Fatal("observed occurrences were collapsed")
+	}
+}
+
+func TestRelationWitnessFixedParityAndValidation(t *testing.T) {
+	candidates := []model.Candidate{
+		fixture("a", "one"), fixture("b", "one"), fixture("c", "two"), fixture("d", "three"),
+	}
+	candidates[1].Event.Provenance.ToolCallID = candidates[0].Event.Provenance.ToolCallID
+	candidates[2].Event.What.Value = "different"
+	candidates[3].EstimatedTokens = 40
+	for _, packK := range []int{0, 1, 2, 4, 8} {
+		for _, budget := range []int{0, 10, 20, 50, 100} {
+			for _, keys := range []map[string]string{nil, {"a": "ap:one", "b": "ap:two"}} {
+				want := packing.Select(candidates, keys, packK, 4, budget, packing.DefaultPolicy())
+				got, err := (*RelationRegistry)(nil).SelectFixed(candidates, keys, packK, budget, packing.DefaultPolicy())
+				if err != nil || !reflect.DeepEqual(got, want) {
+					t.Fatalf("fixed parity pack=%d budget=%d keys=%v: got %+v, want %+v, err %v", packK, budget, keys, got, want, err)
+				}
+			}
+		}
+	}
+	duplicate := []model.Candidate{fixture("a", "one"), fixture("a", "two")}
+	if _, err := (*RelationRegistry)(nil).SelectFixed(duplicate, nil, 2, 100, packing.DefaultPolicy()); err == nil {
+		t.Fatal("duplicate event identity accepted")
+	}
+	for _, mutate := range []func(*model.Candidate){
+		func(c *model.Candidate) { c.Event.TenantID = "" },
+		func(c *model.Candidate) { c.Event.ID = "" },
+		func(c *model.Candidate) { c.EstimatedTokens = -1 },
+	} {
+		invalid := fixture("invalid", "one")
+		mutate(&invalid)
+		if _, err := (*RelationRegistry)(nil).SelectFixed([]model.Candidate{invalid}, nil, 1, 100, packing.DefaultPolicy()); err == nil {
+			t.Fatal("invalid packet candidate accepted")
+		}
+	}
+	for _, mutate := range []func(*packing.Policy){
+		func(p *packing.Policy) { p.AdaptiveEnabled = true },
+		func(p *packing.Policy) { p.DiversityEnabled = true },
+	} {
+		policy := packing.DefaultPolicy()
+		mutate(&policy)
+		if _, err := (*RelationRegistry)(nil).SelectFixed(candidates, nil, 2, 100, policy); err == nil {
+			t.Fatal("unsupported selector mode accepted")
+		}
+	}
+	for _, relation := range []string{"", " bad", "bad ", strings.Repeat("x", 257)} {
+		binding, _ := Record(candidates[0].Event, "origin")
+		if _, err := NewRelationRegistry([]RelationBinding{{Binding: binding, RelationID: relation}}); err == nil {
+			t.Fatal("invalid relation ID accepted")
+		}
+	}
+}
+
+func TestRelationWitnessBoundLegacyParity(t *testing.T) {
+	candidates := []model.Candidate{fixture("a", "one"), fixture("b", "one"), fixture("c", "two")}
+	candidates[1].Event.Provenance.ToolCallID = candidates[0].Event.Provenance.ToolCallID
+	r := relationRegistry(t, candidates, []string{"origin", "origin", "other"}, []string{"gt", "gt", "other"})
+	bound := make([]model.Candidate, len(candidates))
+	for i, candidate := range candidates {
+		applied, ok := r.base.Apply(candidate)
+		if !ok {
+			t.Fatal("fixture binding failed")
+		}
+		bound[i] = applied
+	}
+	for _, budget := range []int{10, 20, 100} {
+		want := packing.Select(bound, nil, 3, 3, budget, packing.DefaultPolicy())
+		got, err := r.SelectFixed(candidates, nil, 3, budget, packing.DefaultPolicy())
+		if err != nil || !reflect.DeepEqual(got, want) {
+			t.Fatalf("bound parity budget=%d: got %+v, want %+v, err %v", budget, got, want, err)
+		}
+	}
+}
+
+func BenchmarkRelationWitnessFixed(b *testing.B) {
+	for _, n := range []int{50, 200} {
+		candidates := make([]model.Candidate, n)
+		bindings := make([]RelationBinding, n)
+		for i := range candidates {
+			candidate := fixture(fmt.Sprintf("event-%d", i), "one")
+			candidate.Event.Provenance.ToolCallID = "shared"
+			candidate.Event.What.Value = fmt.Sprintf("relation %d", i)
+			candidates[i] = candidate
+			binding, err := Record(candidate.Event, "origin")
+			if err != nil {
+				b.Fatal(err)
+			}
+			bindings[i] = RelationBinding{Binding: binding, RelationID: fmt.Sprintf("relation-%d", i)}
+		}
+		r, err := NewRelationRegistry(bindings)
+		if err != nil {
+			b.Fatal(err)
+		}
+		for _, mode := range []string{"legacy_raw", "legacy_bound_all", "witness"} {
+			b.Run(fmt.Sprintf("n%d/%s", n, mode), func(b *testing.B) {
+				b.ReportAllocs()
+				for i := 0; i < b.N; i++ {
+					if mode == "legacy_raw" {
+						packing.Select(candidates, nil, 20, n, 1000, packing.DefaultPolicy())
+						continue
+					}
+					if mode == "legacy_bound_all" {
+						bound := make([]model.Candidate, n)
+						for j, candidate := range candidates {
+							applied, ok := r.base.Apply(candidate)
+							if !ok {
+								b.Fatal("fixture binding failed")
+							}
+							bound[j] = applied
+						}
+						packing.Select(bound, nil, 20, n, 1000, packing.DefaultPolicy())
+						continue
+					}
+					if _, err := r.SelectFixed(candidates, nil, 20, 1000, packing.DefaultPolicy()); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+		}
+	}
+}

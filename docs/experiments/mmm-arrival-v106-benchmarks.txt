@@ -1,0 +1,12 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkArrivalV106Fixture/immediate-10         	       1	 146439833 ns/op	26478224 B/op	    4470 allocs/op
+BenchmarkArrivalV106Fixture/immediate-10         	       1	 121331167 ns/op	26478096 B/op	    4469 allocs/op
+BenchmarkArrivalV106Fixture/immediate-10         	       1	 120179250 ns/op	26478096 B/op	    4469 allocs/op
+BenchmarkArrivalV106Fixture/delay_missing-10     	       1	 117786167 ns/op	26510768 B/op	    4612 allocs/op
+BenchmarkArrivalV106Fixture/delay_missing-10     	       1	 119694750 ns/op	26515976 B/op	    4617 allocs/op
+BenchmarkArrivalV106Fixture/delay_missing-10     	       1	 119175875 ns/op	26510656 B/op	    4611 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	0.959s

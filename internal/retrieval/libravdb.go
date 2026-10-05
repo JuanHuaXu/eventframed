@@ -121,6 +121,10 @@ func newContractGuard(config ContractClientConfig) *contractGuard {
 }
 
 func (r *LibraVDBRanker) invoke(ctx context.Context, method string, request, response oldproto.Message, write bool) error {
+	return r.invokeWithAttempts(ctx, method, request, response, write, r.guard.attempts)
+}
+
+func (r *LibraVDBRanker) invokeWithAttempts(ctx context.Context, method string, request, response oldproto.Message, write bool, attempts int) error {
 	if write {
 		r.writeMu.Lock()
 		defer r.writeMu.Unlock()
@@ -130,7 +134,7 @@ func (r *LibraVDBRanker) invoke(ctx context.Context, method string, request, res
 	}
 	defer r.guard.release()
 	var err error
-	for attempt := 0; attempt < r.guard.attempts; attempt++ {
+	for attempt := 0; attempt < attempts; attempt++ {
 		if attempt > 0 {
 			delay := time.Duration(25*(1<<(attempt-1))) * time.Millisecond
 			timer := time.NewTimer(delay)

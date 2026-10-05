@@ -1,0 +1,32 @@
+{
+  "command": [
+    "go",
+    "test",
+    "./internal/observationlearners",
+    "-run",
+    "^$",
+    "-bench",
+    "^BenchmarkRidgeComponent$",
+    "-benchtime=200ms",
+    "-count=3",
+    "-benchmem"
+  ],
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpu": "Apple M4",
+  "cpus": 10,
+  "totalMemory": 17179869184,
+  "elapsedSeconds": 9.710844167,
+  "hashes": {
+    "internal/observationlearners/ridge_logistic.go": "a871e638ec8cffc44e0eade985d6a4c212122cc78904c933c8bc028a222a5dde",
+    "internal/observationlearners/ridge_logistic_test.go": "fed873a7f315cec4607be4c72dae335255cca67f8bd4e5c5f0bfdc5fbb6f9f16",
+    "internal/observationlearners/ridge_logistic_benchmark_test.go": "9c32753561fa2a41c4f53bca18cffa70cb389e56571321312762a5688cfec510",
+    "internal/observationlearners/subset.go": "b33e2cbfeac2e8cbda8b596e519b777da40e7573d2b4347eaf21dc0706f321a3",
+    "internal/observationlearners/boolean_specialist.go": "9636ff1c80f27d92444c251b2638a9d55ee392b409038267d9d5997021aed66f",
+    "internal/observationlearners/context_tree.go": "27dbfc346121104feddc51e96ed03e3bbbba15307afe0192c38cfe1a41f13178",
+    "internal/observationlearners/conditional.go": "25f157a5dfe6fc4c99a8f509625de4652a68bed760e7020430529528c800c6f0",
+    "go.mod": "fa72235136c9ba87b6c33424e3e28c451a53901bd5198db1ee69fe9b4f654da6",
+    "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13"
+  },
+  "raw": "goos: darwin\ngoarch: arm64\npkg: github.com/JuanHuaXu/eventframed/internal/observationlearners\ncpu: Apple M4\nBenchmarkRidgeComponent/Fit32/Ridge-10         \t   10591\t     22622 ns/op\t         5.000 iterations/fit\t       120.0 model-bytes\t     128 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit32/Ridge-10         \t   10000\t     22571 ns/op\t         5.000 iterations/fit\t       120.0 model-bytes\t     128 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit32/Ridge-10         \t   10000\t     22653 ns/op\t         5.000 iterations/fit\t       120.0 model-bytes\t     128 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit32/Subset-10        \t      39\t   5846581 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkRidgeComponent/Fit32/Subset-10        \t      42\t   5779697 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkRidgeComponent/Fit32/Subset-10        \t      42\t   5782416 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkRidgeComponent/Fit32/Boolean-10       \t     705\t    338856 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit32/Boolean-10       \t     700\t    337161 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit32/Boolean-10       \t     720\t    336906 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit32/ContextTree-10   \t      39\t   6207766 ns/op\t  116088 B/op\t     839 allocs/op\nBenchmarkRidgeComponent/Fit32/ContextTree-10   \t      38\t   5807088 ns/op\t  116088 B/op\t     839 allocs/op\nBenchmarkRidgeComponent/Fit32/ContextTree-10   \t      40\t   5746242 ns/op\t  116088 B/op\t     839 allocs/op\nBenchmarkRidgeComponent/Fit64/Ridge-10         \t    6828\t     35674 ns/op\t         4.000 iterations/fit\t       120.0 model-bytes\t     128 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit64/Ridge-10         \t    6769\t     36022 ns/op\t         4.000 iterations/fit\t       120.0 model-bytes\t     128 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit64/Ridge-10         \t    6477\t     35855 ns/op\t         4.000 iterations/fit\t       120.0 model-bytes\t     128 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit64/Subset-10        \t      34\t   6307462 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkRidgeComponent/Fit64/Subset-10        \t      38\t   6253422 ns/op\t  331778 B/op\t       2 allocs/op\nBenchmarkRidgeComponent/Fit64/Subset-10        \t      37\t   6240401 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkRidgeComponent/Fit64/Boolean-10       \t     554\t    435082 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit64/Boolean-10       \t     558\t    423785 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit64/Boolean-10       \t     577\t    420805 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/Fit64/ContextTree-10   \t      40\t   5900124 ns/op\t  116088 B/op\t     839 allocs/op\nBenchmarkRidgeComponent/Fit64/ContextTree-10   \t      39\t   5887439 ns/op\t  116088 B/op\t     839 allocs/op\nBenchmarkRidgeComponent/Fit64/ContextTree-10   \t      39\t   5898536 ns/op\t  116088 B/op\t     839 allocs/op\nBenchmarkRidgeComponent/CompileOnly-10         \t    3301\t     72247 ns/op\t    314928 table-bytes\t  319490 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/CompileOnly-10         \t    3181\t     73217 ns/op\t    314928 table-bytes\t  319489 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/CompileOnly-10         \t    3370\t     73145 ns/op\t    314928 table-bytes\t  319488 B/op\t       1 allocs/op\nBenchmarkRidgeComponent/FullPrediction-10      \t 7959835\t        30.00 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkRidgeComponent/FullPrediction-10      \t 8104092\t        29.79 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkRidgeComponent/FullPrediction-10      \t 7961816\t        30.01 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkRidgeComponent/PartialLookup-10       \t36632602\t         7.262 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkRidgeComponent/PartialLookup-10       \t31062600\t         7.151 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkRidgeComponent/PartialLookup-10       \t32862644\t         7.109 ns/op\t       0 B/op\t       0 allocs/op\nPASS\nok  \tgithub.com/JuanHuaXu/eventframed/internal/observationlearners\t8.951s\n"
+}

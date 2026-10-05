@@ -1,0 +1,142 @@
+package researchswitch
+
+import (
+	"bufio"
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"io"
+	"os"
+	"testing"
+)
+
+func validScoredStudyStyleV51(style string) bool {
+	return style == "legacy" || validScoreModeV51(style)
+}
+
+func TestScoredV51Study(t *testing.T) {
+	input, out, style := os.Getenv("EVENTFRAME_SCORED_V51_FIXTURE"), os.Getenv("EVENTFRAME_SCORED_V51_OUT"), os.Getenv("EVENTFRAME_SCORED_V51_STYLE")
+	if out == "" {
+		t.Skip("explicit scored output required")
+	}
+	if !validScoredStudyStyleV51(style) {
+		t.Fatal("invalid study style")
+	}
+	f, err := os.Open(input)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer f.Close()
+	w, err := os.OpenFile(out, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0600)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer w.Close()
+	d := json.NewDecoder(bufio.NewReader(f))
+	b := bufio.NewWriter(w)
+	e := json.NewEncoder(b)
+	var manifest map[string]any
+	if err = d.Decode(&manifest); err != nil {
+		t.Fatal(err)
+	}
+	manifest["Kind"], manifest["Style"] = "hybrid_study_manifest", style
+	if err = e.Encode(manifest); err != nil {
+		t.Fatal(err)
+	}
+	count := 0
+	for {
+		var fixture studyFixture
+		if err = d.Decode(&fixture); err == io.EOF {
+			break
+		} else if err != nil {
+			t.Fatal(err)
+		}
+		r := hybridRecordV48{Seed: fixture.World.Population.Seed}
+		for s := 0; s < 3; s++ {
+			for _, mode := range hybridModesV48 {
+				var a hybridArmV48
+				if style == "legacy" {
+					a, err = collectMemoV49(fixture, mode, s)
+				} else {
+					a, err = collectScoredV51(fixture, mode, s, style)
+				}
+				if err != nil {
+					t.Fatal(err)
+				}
+				r.Arms = append(r.Arms, a)
+			}
+		}
+		if err = e.Encode(r); err != nil {
+			t.Fatal(err)
+		}
+		count++
+		t.Log(style, fixture.World.Population.Geometry+"/"+fixture.World.Population.Regime)
+	}
+	if float64(count) != manifest["Worlds"].(float64) {
+		t.Fatal("fixture count")
+	}
+	if err = b.Flush(); err != nil {
+		t.Fatal(err)
+	}
+	if err = w.Sync(); err != nil {
+		t.Fatal(err)
+	}
+}
+
+// Strip ONLY the validated style from the manifest. Decoder-buffered bytes
+// are preserved, so the unchanged bounded parallel reader audits all records.
+func auditScoredStreamV51(fixture, raw io.Reader, style string) (int, error) {
+	if !validScoredStudyStyleV51(style) {
+		return 0, fmt.Errorf("unknown scored stream style")
+	}
+	d := json.NewDecoder(raw)
+	var manifest map[string]any
+	if err := d.Decode(&manifest); err != nil {
+		return 0, err
+	}
+	if manifest["Style"] != style {
+		return 0, fmt.Errorf("scored stream identity")
+	}
+	delete(manifest, "Style")
+	header, err := json.Marshal(manifest)
+	if err != nil {
+		return 0, err
+	}
+	input := io.MultiReader(bytes.NewReader(append(header, '\n')), d.Buffered(), raw)
+	return parallelMemoAuditV49(fixture, input, 4, func(f studyFixture, r hybridRecordV48) error {
+		for j, a := range r.Arms {
+			var err error
+			if style == "legacy" {
+				err = auditHybridV48(f, a, j/3)
+			} else {
+				err = auditScoredV51(f, a, j/3, style)
+			}
+			if err != nil {
+				return fmt.Errorf("seed %d arm %d style %s: %w", r.Seed, j, style, err)
+			}
+		}
+		return nil
+	})
+}
+
+func TestScoredV51StudyAudit(t *testing.T) {
+	input, raw, style := os.Getenv("EVENTFRAME_SCORED_V51_FIXTURE"), os.Getenv("EVENTFRAME_SCORED_V51_AUDIT"), os.Getenv("EVENTFRAME_SCORED_V51_STYLE")
+	if raw == "" {
+		t.Skip("explicit scored audit required")
+	}
+	f, err := os.Open(input)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer f.Close()
+	r, err := os.Open(raw)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer r.Close()
+	count, err := auditScoredStreamV51(f, r, style)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log("independent dense state, original advice, every served law and receipt; worlds", count)
+}

@@ -1,0 +1,146 @@
+package scifactcache
+
+import (
+	"context"
+	"math"
+	"sync"
+	"testing"
+)
+
+type fake struct {
+	key        string
+	dim, calls int
+	bad        bool
+	cancel     context.CancelFunc
+	mutate     bool
+}
+
+func (f *fake) Name() string     { return "fake" }
+func (f *fake) ModelKey() string { return f.key }
+func (f *fake) Dimension() int   { return f.dim }
+func (f *fake) Embed(s string) ([]float32, error) {
+	return f.EmbedDocumentContext(context.Background(), s)
+}
+func (f *fake) EmbedDocumentContext(_ context.Context, _ string) ([]float32, error) {
+	return f.vector(1)
+}
+func (f *fake) EmbedQueryContext(_ context.Context, _ string) ([]float32, error) { return f.vector(2) }
+func (f *fake) vector(value float32) ([]float32, error) {
+	f.calls++
+	v := make([]float32, f.dim)
+	v[0] = value
+	if f.bad {
+		v[0] = float32(math.NaN())
+	}
+	if f.cancel != nil {
+		f.cancel()
+	}
+	if f.mutate {
+		f.key = "changed"
+	}
+	return v, nil
+}
+func newFake() *fake { return &fake{key: "frozen", dim: 2} }
+
+func TestRolesOwnershipAndWarmCapacity(t *testing.T) {
+	f := newFake()
+	m, err := New(f, 2, 64)
+	if err != nil {
+		t.Fatal(err)
+	}
+	d, err := m.EmbedDocument("same")
+	if err != nil {
+		t.Fatal(err)
+	}
+	d[0] = 99
+	q, err := m.EmbedQuery("same")
+	if err != nil || q[0] != 2 {
+		t.Fatalf("query role %v %v", q, err)
+	}
+	d, err = m.EmbedDocument("same")
+	if err != nil || d[0] != 1 {
+		t.Fatalf("cache ownership %v %v", d, err)
+	}
+	if _, err = m.EmbedDocument("new"); err == nil {
+		t.Fatal("entry bound")
+	}
+	if s := m.Stats(); s.Entries != 2 || s.Misses != 2 || s.Hits != 1 || s.PayloadBytes != 28 || f.calls != 2 {
+		t.Fatalf("stats %+v calls%d", s, f.calls)
+	}
+}
+
+func TestPayloadCancellationIdentityAndNonfinite(t *testing.T) {
+	f := newFake()
+	m, _ := New(f, 4, 10)
+	if _, err := m.EmbedDocument("x"); err == nil || f.calls != 0 {
+		t.Fatal("pre-acquisition byte bound")
+	}
+	for _, mode := range []string{"cancel", "identity", "nonfinite"} {
+		t.Run(mode, func(t *testing.T) {
+			f := newFake()
+			m, _ := New(f, 4, 256)
+			ctx, cancel := context.WithCancel(context.Background())
+			defer cancel()
+			switch mode {
+			case "cancel":
+				f.cancel = cancel
+			case "identity":
+				f.mutate = true
+			case "nonfinite":
+				f.bad = true
+			}
+			if _, err := m.EmbedDocumentContext(ctx, "x"); err == nil {
+				t.Fatal("invalid acquisition accepted")
+			}
+			if m.Stats().Entries != 0 || m.Stats().PayloadBytes != 0 {
+				t.Fatal("invalid vector retained")
+			}
+		})
+	}
+	f = newFake()
+	m, _ = New(f, 4, 256)
+	if _, err := m.EmbedDocument("x"); err != nil {
+		t.Fatal(err)
+	}
+	f.key = "changed"
+	if _, err := m.EmbedDocument("x"); err == nil {
+		t.Fatal("identity mismatch on warm hit")
+	}
+	f.key = "frozen"
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	if _, err := m.EmbedDocumentContext(ctx, "x"); err == nil {
+		t.Fatal("canceled warm hit")
+	}
+}
+
+func TestConcurrentSameKeyAndConfiguration(t *testing.T) {
+	f := newFake()
+	m, _ := New(f, 4, 256)
+	var wg sync.WaitGroup
+	for i := 0; i < 20; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			v, err := m.EmbedQuery("shared")
+			if err != nil || v[0] != 2 {
+				t.Errorf("concurrent read %v %v", v, err)
+			}
+		}()
+	}
+	wg.Wait()
+	if f.calls != 1 || m.Stats().Hits != 19 {
+		t.Fatal("duplicate cold acquisition")
+	}
+	for _, limit := range []int{0, MaxEntries + 1} {
+		if _, err := New(f, limit, 256); err == nil {
+			t.Fatal("entry configuration")
+		}
+	}
+	if _, err := New(f, 1, MaxPayloadBytes+1); err == nil {
+		t.Fatal("payload configuration")
+	}
+	if _, err := New(nil, 1, 256); err == nil {
+		t.Fatal("nil base")
+	}
+}

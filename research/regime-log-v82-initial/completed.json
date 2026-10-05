@@ -1,0 +1,36 @@
+{
+  "time": "2026-10-05T07:15:31.410Z",
+  "stage": "initial",
+  "checks": [
+    {
+      "name": "unit",
+      "args": [
+        "test",
+        "-v",
+        "-count=1",
+        "./internal/researchregimelog",
+        "-timeout=20m"
+      ],
+      "exitCode": 1,
+      "seconds": 7.200863375000001,
+      "logSHA256": "7fe43cc677edc2f5857ab64aa1a16f7c820a2caa0a6c9b54400999509375c090"
+    }
+  ],
+  "allJobsTerminal": true,
+  "allChecksPass": false,
+  "sourceUnchanged": true,
+  "scientificQualityRescueEstablished": false,
+  "scalableApproximationCertified": false,
+  "wholeCohortTested": false,
+  "loadedServingEstablished": false,
+  "goal": "ACTIVE",
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ]
+}

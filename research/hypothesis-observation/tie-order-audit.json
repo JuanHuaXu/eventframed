@@ -1,0 +1,330 @@
+{
+  "protocol": "TIE_ORDER_PROTOCOL.md",
+  "states": 752,
+  "posteriorChecks": 3760,
+  "maxPosteriorError": 2.220446049250313e-16,
+  "policies": {
+    "one": {
+      "comparisons": 752,
+      "canonicalDisagreements": 2,
+      "reversedDisagreements": 2,
+      "orderChanges": 2,
+      "maxCanonicalExcess": 1.1102230246251565e-16,
+      "aboveTolerance": 0
+    },
+    "two": {
+      "comparisons": 752,
+      "canonicalDisagreements": 1,
+      "reversedDisagreements": 1,
+      "orderChanges": 2,
+      "maxCanonicalExcess": 2.220446049250313e-16,
+      "aboveTolerance": 0
+    },
+    "entropy": {
+      "comparisons": 752,
+      "canonicalDisagreements": 3,
+      "reversedDisagreements": 14,
+      "orderChanges": 11,
+      "maxCanonicalExcess": 2.220446049250313e-16,
+      "aboveTolerance": 0
+    }
+  },
+  "examples": [
+    {
+      "roots": 0,
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "policy": "two",
+      "a": 1,
+      "z": 0,
+      "reference": 1,
+      "costs": [
+        0.9630491018750331,
+        0.9630491018750329,
+        1.0589593718618575,
+        1.058959371861857
+      ],
+      "excess": 2.220446049250313e-16
+    },
+    {
+      "roots": 3,
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "policy": "two",
+      "a": 1,
+      "z": 0,
+      "reference": 0,
+      "costs": [
+        0.9630491018750329,
+        0.9630491018750329,
+        1.0589593718618575,
+        1.0589593718618575
+      ],
+      "excess": 0
+    },
+    {
+      "roots": 3,
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "policy": "entropy",
+      "a": 0,
+      "z": 3,
+      "reference": 0,
+      "costs": [
+        -0.6592660418931647,
+        -0.5581323202467903,
+        -0.13897053296354703,
+        -0.6592660418931647
+      ],
+      "excess": 0
+    },
+    {
+      "roots": 4,
+      "counts": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "policy": "entropy",
+      "a": 0,
+      "z": 3,
+      "reference": 0,
+      "costs": [
+        -0.6595564473116631,
+        -0.6420939429836097,
+        -0.10705525233163053,
+        -0.6595564473116631
+      ],
+      "excess": 0
+    },
+    {
+      "roots": 5,
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "policy": "entropy",
+      "a": 2,
+      "z": 3,
+      "reference": 2,
+      "costs": [
+        -0.5871692218713989,
+        -0.5871692218713989,
+        -0.6931471805599452,
+        -0.6931471805599452
+      ],
+      "excess": 0
+    },
+    {
+      "roots": 6,
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "policy": "entropy",
+      "a": 3,
+      "z": 0,
+      "reference": 3,
+      "costs": [
+        -0.6931471805599453,
+        -0.5976160555251491,
+        -0.08408563589224582,
+        -0.6931471805599454
+      ],
+      "excess": 1.1102230246251565e-16
+    },
+    {
+      "roots": 6,
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "policy": "entropy",
+      "a": 0,
+      "z": 2,
+      "reference": 0,
+      "costs": [
+        -0.6931471805599454,
+        -0.5871692218713989,
+        -0.6931471805599454,
+        -0.5871692218713987
+      ],
+      "excess": 0
+    },
+    {
+      "roots": 8,
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "policy": "entropy",
+      "a": 3,
+      "z": 0,
+      "reference": 3,
+      "costs": [
+        -0.6592660418931646,
+        -0.5581323202467903,
+        -0.13897053296354725,
+        -0.6592660418931648
+      ],
+      "excess": 2.220446049250313e-16
+    },
+    {
+      "roots": 10,
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "policy": "entropy",
+      "a": 3,
+      "z": 0,
+      "reference": 3,
+      "costs": [
+        -0.6592660418931646,
+        -0.5581323202467903,
+        -0.13897053296354725,
+        -0.6592660418931648
+      ],
+      "excess": 2.220446049250313e-16
+    },
+    {
+      "roots": 10,
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "policy": "entropy",
+      "a": 0,
+      "z": 3,
+      "reference": 0,
+      "costs": [
+        -0.5302866829123336,
+        -0.31929414692825697,
+        -0.028961202807855455,
+        -0.5302866829123336
+      ],
+      "excess": 0
+    },
+    {
+      "roots": 11,
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "policy": "entropy",
+      "a": 2,
+      "z": 3,
+      "reference": 2,
+      "costs": [
+        -0.5871692218713986,
+        -0.5871692218713986,
+        -0.6931471805599452,
+        -0.6931471805599452
+      ],
+      "excess": 0
+    },
+    {
+      "roots": 12,
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "policy": "one",
+      "a": 1,
+      "z": 0,
+      "reference": 0,
+      "costs": [
+        0.5134274551671009,
+        0.5134274551671009,
+        0.5556721122679945,
+        0.5556721122679947
+      ],
+      "excess": 0
+    }
+  ],
+  "sourceHashes": {
+    "TIE_ORDER_PROTOCOL.md": "a7282e3dfaaa0230116185efcc218cc3b4a35e194c7282f8020f9e5947021169",
+    "tie-order-audit.mjs": "9644b76892e616ba9e5f6253433eb319fa2af0dc70ad2c53fd8ae23ad4ef91a8",
+    "count-planning.mjs": "b18c8cf4984abef3009c75005ce682d163e1257b86523a2c2b7aa6c59943d3a3",
+    "interval-acquisition.mjs": "220c010a4794a653bc606e119a139e3357fb1a30b4f7dfb3cd4b59001a11882a",
+    "interval-lookahead.mjs": "dc4304110d13c7ba62e1a97676c62ffe83f5ac6b3c1399be61554d36e4ee4988",
+    "noise-envelope.mjs": "d7218a5d5c83a33d03e153b549b7b87b9141f17780e9dcf5921b63821a4977d6"
+  }
+}

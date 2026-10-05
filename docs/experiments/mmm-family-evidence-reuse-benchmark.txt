@@ -1,0 +1,12 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkFamilyEvidence/aggregate-10         	      20	     16427 ns/op	    4864 B/op	       1 allocs/op
+BenchmarkFamilyEvidence/aggregate-10         	      20	     16160 ns/op	    4864 B/op	       1 allocs/op
+BenchmarkFamilyEvidence/aggregate-10         	      20	     15469 ns/op	    4864 B/op	       1 allocs/op
+BenchmarkFamilyEvidence/fit64-10             	      20	   7564042 ns/op	  353024 B/op	       4 allocs/op
+BenchmarkFamilyEvidence/fit64-10             	      20	   7293233 ns/op	  353024 B/op	       4 allocs/op
+BenchmarkFamilyEvidence/fit64-10             	      20	   7298379 ns/op	  353024 B/op	       4 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	0.841s

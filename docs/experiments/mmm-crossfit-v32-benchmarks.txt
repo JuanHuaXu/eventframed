@@ -1,0 +1,24 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchblend
+cpu: Apple M4
+BenchmarkCrossfit/Construct-10         	    4366	     51912 ns/op	   76249 B/op	     117 allocs/op
+BenchmarkCrossfit/Construct-10         	    4682	     51669 ns/op	   76248 B/op	     117 allocs/op
+BenchmarkCrossfit/Construct-10         	    4570	     50505 ns/op	   76248 B/op	     117 allocs/op
+BenchmarkCrossfit/Forecast150-10       	   24241	      9569 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Forecast150-10       	   25065	      9553 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Forecast150-10       	   25159	      9566 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit1-10            	  485260	       534.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit1-10            	  434254	       532.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit1-10            	  471909	       533.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit32-10           	   84088	      2830 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit32-10           	   85713	      2800 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit32-10           	   87964	      2756 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit64-10           	   48189	      4979 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit64-10           	   49272	      5000 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit64-10           	   48664	      5036 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit150-10          	   22120	     11042 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit150-10          	   21675	     11089 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCrossfit/Refit150-10          	   21897	     11110 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchblend	5.412s

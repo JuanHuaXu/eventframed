@@ -1,0 +1,35 @@
+{
+  "command": [
+    "go",
+    "test",
+    "./internal/observationlearners",
+    "-run",
+    "^$",
+    "-bench",
+    "^BenchmarkVariationalComponent$",
+    "-benchtime=200ms",
+    "-count=3",
+    "-benchmem"
+  ],
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpu": "Apple M4",
+  "cpus": 10,
+  "totalMemory": 17179869184,
+  "goVersion": "go version go1.27.1 darwin/arm64",
+  "gitHead": "1a7edb62b6be4031fd01ebeab8071b17303a7815",
+  "elapsedSeconds": 9.87582975,
+  "hashes": {
+    "internal/observationlearners/variational_logistic.go": "d973a77739d31b162721cd21a67adbe0ddf5bc05965cd7f490615e543b241e22",
+    "internal/observationlearners/variational_logistic_test.go": "214edb974bbc0239a509882e3450d5141b8a3cc00020188cec4ec70c674968de",
+    "internal/observationlearners/variational_predictive.go": "983fbbbeb5f2dc1e65704328069c6df64e43c420977f22ae383a073ba6b4ac25",
+    "internal/observationlearners/variational_predictive_test.go": "68bb6d89e9b8cf85c090a514495e4e88e453ac0ddc441e53b189b89202c635c7",
+    "internal/observationlearners/variational_benchmark_test.go": "1d58794dcc384bd7267db7c41f4fba99abb89e9851dc0ac745a3ed5d8e765708",
+    "internal/observationlearners/ridge_logistic.go": "a871e638ec8cffc44e0eade985d6a4c212122cc78904c933c8bc028a222a5dde",
+    "internal/observationlearners/ridge_logistic_test.go": "fed873a7f315cec4607be4c72dae335255cca67f8bd4e5c5f0bfdc5fbb6f9f16",
+    "internal/observationlearners/conditional.go": "25f157a5dfe6fc4c99a8f509625de4652a68bed760e7020430529528c800c6f0",
+    "go.mod": "fa72235136c9ba87b6c33424e3e28c451a53901bd5198db1ee69fe9b4f654da6",
+    "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13"
+  },
+  "raw": "goos: darwin\ngoarch: arm64\npkg: github.com/JuanHuaXu/eventframed/internal/observationlearners\ncpu: Apple M4\nBenchmarkVariationalComponent/Fit32/Variational-10         \t    1093\t    209696 ns/op\t        23.00 iterations/fit\t       904.0 model-bytes\t   23808 B/op\t      24 allocs/op\nBenchmarkVariationalComponent/Fit32/Variational-10         \t    1149\t    207335 ns/op\t        23.00 iterations/fit\t       904.0 model-bytes\t   23808 B/op\t      24 allocs/op\nBenchmarkVariationalComponent/Fit32/Variational-10         \t    1142\t    205007 ns/op\t        23.00 iterations/fit\t       904.0 model-bytes\t   23808 B/op\t      24 allocs/op\nBenchmarkVariationalComponent/Fit32/MAP-10                 \t   10000\t     22607 ns/op\t         5.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/Fit32/MAP-10                 \t   10000\t     22648 ns/op\t         5.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/Fit32/MAP-10                 \t   10000\t     22523 ns/op\t         5.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/Fit64/Variational-10         \t    1332\t    201208 ns/op\t        12.00 iterations/fit\t       904.0 model-bytes\t   12800 B/op\t      13 allocs/op\nBenchmarkVariationalComponent/Fit64/Variational-10         \t    1340\t    179996 ns/op\t        12.00 iterations/fit\t       904.0 model-bytes\t   12800 B/op\t      13 allocs/op\nBenchmarkVariationalComponent/Fit64/Variational-10         \t    1345\t    180088 ns/op\t        12.00 iterations/fit\t       904.0 model-bytes\t   12800 B/op\t      13 allocs/op\nBenchmarkVariationalComponent/Fit64/MAP-10                 \t    7100\t     35365 ns/op\t         4.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/Fit64/MAP-10                 \t    7071\t     35510 ns/op\t         4.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/Fit64/MAP-10                 \t    7220\t     35601 ns/op\t         4.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/Fit256/Variational-10        \t       8\t  27535005 ns/op\t       571.0 iterations/fit\t       904.0 model-bytes\t  586752 B/op\t     572 allocs/op\nBenchmarkVariationalComponent/Fit256/Variational-10        \t       8\t  27756562 ns/op\t       571.0 iterations/fit\t       904.0 model-bytes\t  586752 B/op\t     572 allocs/op\nBenchmarkVariationalComponent/Fit256/Variational-10        \t       8\t  27606901 ns/op\t       571.0 iterations/fit\t       904.0 model-bytes\t  586752 B/op\t     572 allocs/op\nBenchmarkVariationalComponent/Fit256/MAP-10                \t     894\t    268140 ns/op\t         9.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/Fit256/MAP-10                \t     898\t    266112 ns/op\t         9.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/Fit256/MAP-10                \t     873\t    270515 ns/op\t         9.000 iterations/fit\t     128 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/CompileOnly/Variational-10   \t     360\t    674083 ns/op\t    314928 table-bytes\t  319488 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/CompileOnly/Variational-10   \t     351\t    667459 ns/op\t    314928 table-bytes\t  319488 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/CompileOnly/Variational-10   \t     361\t    669230 ns/op\t    314928 table-bytes\t  319488 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/FullPrediction/Variational-10         \t  198372\t      1215 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkVariationalComponent/FullPrediction/Variational-10         \t  195612\t      1212 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkVariationalComponent/FullPrediction/Variational-10         \t  201190\t      1200 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkVariationalComponent/CompileOnly/MAP-10                    \t    3756\t     65531 ns/op\t    314928 table-bytes\t  319489 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/CompileOnly/MAP-10                    \t    3639\t     65199 ns/op\t    314928 table-bytes\t  319489 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/CompileOnly/MAP-10                    \t    3760\t     64968 ns/op\t    314928 table-bytes\t  319489 B/op\t       1 allocs/op\nBenchmarkVariationalComponent/FullPrediction/MAP-10                 \t 7959384\t        29.33 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkVariationalComponent/FullPrediction/MAP-10                 \t 8240295\t        29.36 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkVariationalComponent/FullPrediction/MAP-10                 \t 8098201\t        29.41 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkVariationalComponent/PartialLookup-10                      \t29608154\t         7.152 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkVariationalComponent/PartialLookup-10                      \t32925387\t         7.183 ns/op\t       0 B/op\t       0 allocs/op\nBenchmarkVariationalComponent/PartialLookup-10                      \t32871082\t         7.252 ns/op\t       0 B/op\t       0 allocs/op\nPASS\nok  \tgithub.com/JuanHuaXu/eventframed/internal/observationlearners\t8.932s\n"
+}

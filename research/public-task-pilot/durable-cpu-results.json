@@ -1,0 +1,2097 @@
+{
+  "Go": "go1.27.1",
+  "OS": "darwin",
+  "Arch": "arm64",
+  "Procs": 4,
+  "Hashes": {
+    "cmd/research-task-durable-profile/main.go": "f95354278ac291c126dfbea52f319125c6b888d91590083f6bfbaccbdbd7e4b7",
+    "internal/packing/packing.go": "850ff6f983a64bf11539c24659ecf48978183598ccac11b5c6d6b3b899d81146",
+    "internal/packing/research_incremental_diversity.go": "ed68dc820fd60cfb02a75f4577bec76e5d68ed55bd536bee3e2ba2785f1a2ed3",
+    "internal/researchcalendar/lexical.go": "22ba19d6db536d3f8130c7aaec12789e26ced9c8443af22fea34977abfb655d6",
+    "internal/researchcalendar/packing_lexical.go": "32e716e9386a8323aaeb76c1c91bef276951fbcec82845d001378e222e863b83",
+    "internal/researchcalendar/packing_task.go": "ca130c2f731a6db3d822546e4a141707e66a1ade300f5a6179775e5f365d310e",
+    "internal/researchcalendar/task_plan.go": "0097907472571ccc5cbee04abd39c695787b0379151302c171b6d96734bf399e",
+    "internal/service/calendar_task_lexical_overlay.go": "cb1a8eefd9dc46dc4c332b50f807f55b575c5d9c15f58a5a6c13435d9eacefb8",
+    "internal/store/libravdbstore/store.go": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974",
+    "research/public-task-pilot/DURABLE_CPU_PROTOCOL.md": "ebeb7cef973ad244821b6e67362b9457aebcd2a2526d12a66acc7ff4af70b434",
+    "research/public-task-pilot/durable-cpu-results.json.false.cpu.pprof": "fbe732e83afeeb3e97710c65cf42e626a54d37f8b38433e723c6d7ef750b5a9b",
+    "research/public-task-pilot/durable-cpu-results.json.true.cpu.pprof": "c7bffa26948c294e63e69ed4fb6dc27295d407aa47e36562b300069f46f4b719",
+    "research/public-task-pilot/incremental-overlay-v1/source-0.go.txt": "3cc61eb8f40a8ac17f14a8aa647dcba43ae0b5365ba26f347e51daf16fd1e82a",
+    "research/public-task-pilot/incremental-overlay-v1/source-1.go.txt": "4f7a01ca23f2c4b94e2df1f61334164979ebe5415dea919bf54686bdda9d3f22",
+    "research/public-task-pilot/incremental-overlay-v1/source-2.go.txt": "1a9f4174f56cc67138b31df9889d34c3e17b2a2f5711a1a271e78c71d7a3e9a0",
+    "research/public-task-pilot/incremental-overlay-v1/source-3.go.txt": "3024449fad3f7c5ebae5ff2b0422c69f19a3534aa5e8370059caf599eb88d18d",
+    "research/public-task-pilot/landing-transfer-v1/corpus.json": "0139a37068311efcf7e98eafe0dda4072c145ce10a8e94f5a15224b5edeb9321"
+  },
+  "Arms": [
+    {
+      "CPUProfile": "research/public-task-pilot/durable-cpu-results.json.false.cpu.pprof",
+      "N": 200,
+      "Workers": 1,
+      "Repeat": 0,
+      "Enabled": false,
+      "Samples": [
+        {
+          "NS": 14681334,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12731708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13697750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12052583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13660750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13489708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13647208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12600667,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12999083,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12356583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12890542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11847500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13735250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11968875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13796042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11923667,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12618416,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11342666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12558709,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11828583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12882375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12711625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13026500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12046583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12671250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11942125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13533292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12231750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13407000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11773417,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13190250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11402708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14089000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11823417,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13263000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12158666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12798834,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13356375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13509167,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11891875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14592583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12045000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13559459,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11817958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12739625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14391459,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13127917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12099250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13277875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11973375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13053250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12713500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13020208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12220584,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13208084,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11323958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13566917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11743792,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14222833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12331292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12959708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12035500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13228833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12315708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12889334,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12243750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12501083,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11950333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12515833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11725042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13049459,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12517333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13258000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12432959,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14124708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12181625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12768750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11217375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12554208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12780708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12756417,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12002875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12096458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12019916,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13204958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11439792,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13124041,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11416459,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12706625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11678084,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13696792,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12832458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13001000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11569875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12487042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12170541,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13116708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11572834,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13622916,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11543167,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13196292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12060334,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12759375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12480708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12751250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11408000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13341667,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12260959,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13788583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11987208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12992292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12706000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13592666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11694208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13355417,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11661542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12614917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13378625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13267375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11222583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13331333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11788041,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12804583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11713333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13584584,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 11812459,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13197709,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12749416,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 1683445041,
+      "AllocatedBytes": 1177629544
+    },
+    {
+      "CPUProfile": "research/public-task-pilot/durable-cpu-results.json.true.cpu.pprof",
+      "N": 200,
+      "Workers": 1,
+      "Repeat": 0,
+      "Enabled": true,
+      "Samples": [
+        {
+          "NS": 14954667,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 16886500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13966750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14533666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14973500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15598375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13998708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14546292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14906791,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14879459,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15567042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15350417,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13194084,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15389208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13424375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15768250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13614208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14449833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13882500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14337167,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14481541,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14507125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14383417,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14323458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14427833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14860625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13234917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14203833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13472375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14462084,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13916625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14282000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14512666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14327958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12923875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15028042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13257791,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15131083,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13179709,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15718583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15209750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14549625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13150208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14678000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14496750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14873000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13013333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15245875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14704000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14108291,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13848958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14299250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13159792,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14419333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12994584,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 16232833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14090792,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14196292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14035584,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14211958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13934041,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 16311916,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12975833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15850208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12933375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 16940125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12917333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15479292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14226042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15328709,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13611292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15073458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13018958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13993625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14062042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14519375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13724125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 16051250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13867916,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14536833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13731958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14957500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13232417,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15754542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13644291,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14391000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13096500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15538042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13108541,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14531334,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13399417,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14071541,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13450292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14172792,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14924166,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14157500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13088834,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15018458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12786625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15366542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12861583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13837375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14905875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13967542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15114583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14019625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13189333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14615875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13033833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14303958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14104334,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14214209,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12863167,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15861916,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13298458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15088458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 12940042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14418833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13510083,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14551208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 13240375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14480750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14388375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14085042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 15071541,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14013250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14494917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "NS": 14924750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 1906692375,
+      "AllocatedBytes": 1332578432
+    }
+  ]
+}

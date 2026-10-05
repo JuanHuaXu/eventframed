@@ -1,0 +1,315 @@
+{
+  "version": "v107",
+  "status": "CONSUMED_DIAGNOSTIC_NOT_A_QUALITY_GATE",
+  "artifactSHA256": "d2e2c65b6784695f3a23995dddc66d789b11f5cad56a9df8c065259a814c4c10",
+  "sourceHashes": 28,
+  "records": 128,
+  "publications": 512,
+  "maxNumericalGap": 2.508501795173146e-9,
+  "results": [
+    {
+      "key": "design/majority_to_parity/128",
+      "n": 32,
+      "pure": [
+        0.40315724048123325,
+        0.3156835943641818,
+        0.3420583992356684,
+        0.2903102719897303,
+        0.25
+      ],
+      "bestPure": 0.28408695935163525,
+      "rawOracle": 0.2803152669311451,
+      "neutralOracle": 0.2499998043174857,
+      "neutralGain": 0.03031546261365938,
+      "neutralWeight": 0.9992070037559974,
+      "rawWorseThanNeutral": 32,
+      "rawAbovePoint24": 32,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "design/majority_to_parity/160",
+      "n": 32,
+      "pure": [
+        0.33488837728010745,
+        0.27853302946685593,
+        0.2778688787006495,
+        0.25918864162627814,
+        0.25
+      ],
+      "bestPure": 0.24858822881154696,
+      "rawOracle": 0.24663346581878787,
+      "neutralOracle": 0.23988385026671483,
+      "neutralGain": 0.006749615552073076,
+      "neutralWeight": 0.614633885856014,
+      "rawWorseThanNeutral": 21,
+      "rawAbovePoint24": 27,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "design/majority_to_parity/192",
+      "n": 32,
+      "pure": [
+        0.200194712483076,
+        0.11224335812904461,
+        0.1505199889806003,
+        0.056636011387066185,
+        0.25
+      ],
+      "bestPure": 0.05579194579756209,
+      "rawOracle": 0.05549619601654292,
+      "neutralOracle": 0.0554959379945172,
+      "neutralGain": 2.58022025729273e-7,
+      "neutralWeight": 0.010302780390924927,
+      "rawWorseThanNeutral": 0,
+      "rawAbovePoint24": 0,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "design/majority_to_parity/224",
+      "n": 32,
+      "pure": [
+        0.07685080772800747,
+        0.04890163419252406,
+        0.1490395428280585,
+        0.04964644340369355,
+        0.25
+      ],
+      "bestPure": 0.048514968841323364,
+      "rawOracle": 0.0483936715126479,
+      "neutralOracle": 0.04837493313643724,
+      "neutralGain": 0.000018738376210671037,
+      "neutralWeight": 0.014785712230237457,
+      "rawWorseThanNeutral": 0,
+      "rawAbovePoint24": 0,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "design/parity_to_majority/128",
+      "n": 32,
+      "pure": [
+        0.37052616614235173,
+        0.44224112328477977,
+        0.29104484627236726,
+        0.43606991351885255,
+        0.25
+      ],
+      "bestPure": 0.29104484627236726,
+      "rawOracle": 0.29065763012219853,
+      "neutralOracle": 0.24839736428503972,
+      "neutralGain": 0.04226026583715865,
+      "neutralWeight": 0.8591690112614377,
+      "rawWorseThanNeutral": 29,
+      "rawAbovePoint24": 31,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "design/parity_to_majority/160",
+      "n": 32,
+      "pure": [
+        0.29005242675951787,
+        0.3538418581315291,
+        0.23337483861959524,
+        0.2563283318165135,
+        0.25
+      ],
+      "bestPure": 0.23031781310427818,
+      "rawOracle": 0.22723812648837505,
+      "neutralOracle": 0.22542079219465952,
+      "neutralGain": 0.0018173342937155444,
+      "neutralWeight": 0.20497327976722085,
+      "rawWorseThanNeutral": 5,
+      "rawAbovePoint24": 13,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "design/parity_to_majority/192",
+      "n": 32,
+      "pure": [
+        0.16398202285933886,
+        0.22377173571039283,
+        0.11181260532665138,
+        0.21288843476324745,
+        0.25
+      ],
+      "bestPure": 0.1095190346353631,
+      "rawOracle": 0.10745975225569182,
+      "neutralOracle": 0.10744959855937869,
+      "neutralGain": 0.000010153696313144889,
+      "neutralWeight": 0.0036479667578804458,
+      "rawWorseThanNeutral": 0,
+      "rawAbovePoint24": 0,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "design/parity_to_majority/224",
+      "n": 32,
+      "pure": [
+        0.06103841790817082,
+        0.19102015621155702,
+        0.10714215973602734,
+        0.20822656503861964,
+        0.25
+      ],
+      "bestPure": 0.06101309649452956,
+      "rawOracle": 0.06091405371159143,
+      "neutralOracle": 0.06091405371159143,
+      "neutralGain": 0,
+      "neutralWeight": 0,
+      "rawWorseThanNeutral": 0,
+      "rawAbovePoint24": 0,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "confirmation/majority_to_parity/128",
+      "n": 32,
+      "pure": [
+        0.41011028762233215,
+        0.31600800026501463,
+        0.3483935827588812,
+        0.2978847535001097,
+        0.25
+      ],
+      "bestPure": 0.28596334382706096,
+      "rawOracle": 0.28060888696687714,
+      "neutralOracle": 0.24995809298149646,
+      "neutralGain": 0.030650793985380648,
+      "neutralWeight": 0.980235708224355,
+      "rawWorseThanNeutral": 31,
+      "rawAbovePoint24": 32,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "confirmation/majority_to_parity/160",
+      "n": 32,
+      "pure": [
+        0.34747423997710186,
+        0.28489135314348657,
+        0.26989149383918537,
+        0.22628053255150704,
+        0.25
+      ],
+      "bestPure": 0.22594624268945607,
+      "rawOracle": 0.22536376714222198,
+      "neutralOracle": 0.2217351524955944,
+      "neutralGain": 0.003628614646627608,
+      "neutralWeight": 0.506040681263129,
+      "rawWorseThanNeutral": 18,
+      "rawAbovePoint24": 24,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "confirmation/majority_to_parity/192",
+      "n": 32,
+      "pure": [
+        0.19713802426765425,
+        0.11767603137103878,
+        0.15014842875503026,
+        0.05756907290640858,
+        0.25
+      ],
+      "bestPure": 0.05214896945021696,
+      "rawOracle": 0.05198945098716658,
+      "neutralOracle": 0.05198897689539651,
+      "neutralGain": 4.740917700701494e-7,
+      "neutralWeight": 0.012376191528234062,
+      "rawWorseThanNeutral": 0,
+      "rawAbovePoint24": 0,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "confirmation/majority_to_parity/224",
+      "n": 32,
+      "pure": [
+        0.07220206334633278,
+        0.048284029997908116,
+        0.13358582318147585,
+        0.04895313988335857,
+        0.25
+      ],
+      "bestPure": 0.04804592261706261,
+      "rawOracle": 0.047906771340709496,
+      "neutralOracle": 0.047886706823111004,
+      "neutralGain": 0.000020064517598462764,
+      "neutralWeight": 0.019875671434174763,
+      "rawWorseThanNeutral": 0,
+      "rawAbovePoint24": 0,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "confirmation/parity_to_majority/128",
+      "n": 32,
+      "pure": [
+        0.3787088327727096,
+        0.4488757358847421,
+        0.30137241332620907,
+        0.4500191110852176,
+        0.25
+      ],
+      "bestPure": 0.30137241332620907,
+      "rawOracle": 0.301341074414408,
+      "neutralOracle": 0.24853146753204436,
+      "neutralGain": 0.052809606882363656,
+      "neutralWeight": 0.900312510707525,
+      "rawWorseThanNeutral": 31,
+      "rawAbovePoint24": 31,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "confirmation/parity_to_majority/160",
+      "n": 32,
+      "pure": [
+        0.315924904058448,
+        0.3812381391381345,
+        0.239924604279413,
+        0.2710973012007505,
+        0.25
+      ],
+      "bestPure": 0.23535053666897607,
+      "rawOracle": 0.23256607254513598,
+      "neutralOracle": 0.2290092304480766,
+      "neutralGain": 0.003556842097059339,
+      "neutralWeight": 0.26410187549793585,
+      "rawWorseThanNeutral": 7,
+      "rawAbovePoint24": 13,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "confirmation/parity_to_majority/192",
+      "n": 32,
+      "pure": [
+        0.17296698226109752,
+        0.22958232263590547,
+        0.10279246354189774,
+        0.2033724600581648,
+        0.25
+      ],
+      "bestPure": 0.10232295744974702,
+      "rawOracle": 0.10175876028363504,
+      "neutralOracle": 0.10171638849897258,
+      "neutralGain": 0.00004237178466245852,
+      "neutralWeight": 0.004700226507000667,
+      "rawWorseThanNeutral": 0,
+      "rawAbovePoint24": 0,
+      "floor": 0.04749999999999966
+    },
+    {
+      "key": "confirmation/parity_to_majority/224",
+      "n": 32,
+      "pure": [
+        0.06175774559690226,
+        0.19185660528750714,
+        0.10872963406817389,
+        0.20664416096850077,
+        0.25
+      ],
+      "bestPure": 0.060389230488749404,
+      "rawOracle": 0.060297116586878606,
+      "neutralOracle": 0.060297116586878606,
+      "neutralGain": 0,
+      "neutralWeight": 0,
+      "rawWorseThanNeutral": 0,
+      "rawAbovePoint24": 0,
+      "floor": 0.04749999999999966
+    }
+  ]
+}

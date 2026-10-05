@@ -1,0 +1,15 @@
+Command:
+go test ./internal/store/libravdbstore -run '^$' -bench '^BenchmarkResearchPacketInnovationV24$' -benchmem -count=3 -benchtime=500ms
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/store/libravdbstore
+cpu: Apple M4
+BenchmarkResearchPacketInnovationV24-10     3035258   186.8 ns/op   0 B/op   0 allocs/op
+BenchmarkResearchPacketInnovationV24-10     3180072   187.4 ns/op   0 B/op   0 allocs/op
+BenchmarkResearchPacketInnovationV24-10     3198372   186.4 ns/op   0 B/op   0 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/store/libravdbstore 3.202s
+
+One operation computes both proposed formulas for 32 monitored members.
+This excludes posterior lookup, sorting, packing, persistence, queues and service work.

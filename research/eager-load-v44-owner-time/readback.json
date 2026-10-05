@@ -1,0 +1,267 @@
+{
+  "time": "2026-10-04T04:57:06.007Z",
+  "completedSHA256": "d2753f93ad2a873869162eb20c2803a17b5aa0fa2dd47613a1e016919ac0d70e",
+  "auditSHA256": "40a7a9d2930ccbe80fefa11a140738d598fc8933c108aed9445ad1d663a799f6",
+  "scriptSHA256": "5ac77530041084b8abe0428f9eae206bfd8b9f661eeb4c153be134aa36c42f43",
+  "rawSHA256": "58ddff59ceb0bc1f896dccb4a6782c7c7f23d66c3c11fca8df78ceac21682f28",
+  "cells": [
+    {
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "passed": 0,
+      "callP99MS": {
+        "minimum": 57.252,
+        "maximum": 59.544
+      },
+      "offerP99MS": {
+        "minimum": 181.204,
+        "maximum": 185.327
+      },
+      "outcomeP99MS": {
+        "minimum": 398.444,
+        "maximum": 403.149
+      },
+      "writeP99MS": {
+        "minimum": 87.373,
+        "maximum": 93.927
+      },
+      "physicalBytes": [
+        559260,
+        550229
+      ],
+      "unusedPublisherBuilds": [
+        0,
+        0
+      ]
+    },
+    {
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "passed": 0,
+      "callP99MS": {
+        "minimum": 50.258,
+        "maximum": 54.903
+      },
+      "offerP99MS": {
+        "minimum": 154.842,
+        "maximum": 180.579
+      },
+      "outcomeP99MS": {
+        "minimum": 364.011,
+        "maximum": 391.934
+      },
+      "writeP99MS": {
+        "minimum": 82.079,
+        "maximum": 90.372
+      },
+      "physicalBytes": [
+        905069,
+        943276
+      ],
+      "unusedPublisherBuilds": [
+        13,
+        14
+      ]
+    },
+    {
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "passed": 0,
+      "callP99MS": {
+        "minimum": 75.547,
+        "maximum": 77.576
+      },
+      "offerP99MS": {
+        "minimum": 261.196,
+        "maximum": 279.888
+      },
+      "outcomeP99MS": {
+        "minimum": 463.303,
+        "maximum": 470.317
+      },
+      "writeP99MS": {
+        "minimum": 105.218,
+        "maximum": 109.288
+      },
+      "physicalBytes": [
+        572884,
+        573637
+      ],
+      "unusedPublisherBuilds": [
+        0,
+        0
+      ]
+    },
+    {
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "passed": 0,
+      "callP99MS": {
+        "minimum": 84.312,
+        "maximum": 90.285
+      },
+      "offerP99MS": {
+        "minimum": 302.173,
+        "maximum": 306.864
+      },
+      "outcomeP99MS": {
+        "minimum": 417.915,
+        "maximum": 451.611
+      },
+      "writeP99MS": {
+        "minimum": 95.853,
+        "maximum": 99.099
+      },
+      "physicalBytes": [
+        918504,
+        913058
+      ],
+      "unusedPublisherBuilds": [
+        13,
+        13
+      ]
+    },
+    {
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "passed": 0,
+      "callP99MS": {
+        "minimum": 50.832,
+        "maximum": 56.842
+      },
+      "offerP99MS": {
+        "minimum": 147.511,
+        "maximum": 148.385
+      },
+      "outcomeP99MS": {
+        "minimum": 349.144,
+        "maximum": 364.171
+      },
+      "writeP99MS": {
+        "minimum": 81.084,
+        "maximum": 83.879
+      },
+      "physicalBytes": [
+        541775,
+        538205
+      ],
+      "unusedPublisherBuilds": [
+        0,
+        0
+      ]
+    },
+    {
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "passed": 0,
+      "callP99MS": {
+        "minimum": 45.213,
+        "maximum": 54.298
+      },
+      "offerP99MS": {
+        "minimum": 146.753,
+        "maximum": 158.711
+      },
+      "outcomeP99MS": {
+        "minimum": 359.239,
+        "maximum": 367.826
+      },
+      "writeP99MS": {
+        "minimum": 79.935,
+        "maximum": 84.683
+      },
+      "physicalBytes": [
+        989166,
+        941475
+      ],
+      "unusedPublisherBuilds": [
+        15,
+        14
+      ]
+    },
+    {
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "passed": 0,
+      "callP99MS": {
+        "minimum": 75.285,
+        "maximum": 75.832
+      },
+      "offerP99MS": {
+        "minimum": 247.89,
+        "maximum": 249.763
+      },
+      "outcomeP99MS": {
+        "minimum": 455.437,
+        "maximum": 460.105
+      },
+      "writeP99MS": {
+        "minimum": 97.766,
+        "maximum": 100.238
+      },
+      "physicalBytes": [
+        573553,
+        575782
+      ],
+      "unusedPublisherBuilds": [
+        0,
+        0
+      ]
+    },
+    {
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "passed": 0,
+      "callP99MS": {
+        "minimum": 87.125,
+        "maximum": 90.234
+      },
+      "offerP99MS": {
+        "minimum": 290.802,
+        "maximum": 302.242
+      },
+      "outcomeP99MS": {
+        "minimum": 407.292,
+        "maximum": 417.928
+      },
+      "writeP99MS": {
+        "minimum": 88.778,
+        "maximum": 90.457
+      },
+      "physicalBytes": [
+        955464,
+        960465
+      ],
+      "unusedPublisherBuilds": [
+        14,
+        14
+      ]
+    }
+  ],
+  "failedGates": {
+    "call": 0,
+    "offer": 16,
+    "write": 0,
+    "outcome": 16,
+    "outcomeMax": 16,
+    "view": 0
+  },
+  "preparations": 1270,
+  "reusedCores": 1024,
+  "actualBuildsDuringOwnerWait": 154,
+  "allReuseAvailableAtOwnerAcquisition": true,
+  "rowsRetained": 16,
+  "fixedOrderTwoRepeatsNotPopulationCertification": true,
+  "noGateChanges": true,
+  "passedFiniteTrials": 0,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

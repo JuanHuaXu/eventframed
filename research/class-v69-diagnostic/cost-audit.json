@@ -1,0 +1,363 @@
+{
+  "source": "research/class-v69-cost-audit.mjs",
+  "sourceSHA256": "ba686d45262bb38d9def9f93d08ad986bd43c2e836707c1a26ea692c45a23149",
+  "dataSHA256": "8732574de45d442ec007fd93211a4f20c011bd7a606c40bbc3b9aa734e6462f5",
+  "scope": "measured phase wall-time accounting only; no unique causal diagnosis,profiler or production benchmark",
+  "modelArms": 960,
+  "totals": {
+    "hybrid_no_pair": {
+      "arms": 120,
+      "elapsedNS": 33529625998,
+      "accountedNS": 33495660091,
+      "phases": {
+        "ScheduleNS": 6183205,
+        "SetupNS": 203296157,
+        "IssueNS": 9907128777,
+        "FirstResolveNS": 18233809240,
+        "ProposalNS": 0,
+        "RequestNS": 0,
+        "SecondResolveNS": 0,
+        "SnapshotNS": 5145242712
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "unrelated_noise10",
+        "schedule": "fixed150",
+        "elapsedNS": 342325292,
+        "phases": {
+          "ScheduleNS": 118208,
+          "SetupNS": 1665666,
+          "IssueNS": 95154994,
+          "FirstResolveNS": 194912938,
+          "ProposalNS": 0,
+          "RequestNS": 0,
+          "SecondResolveNS": 0,
+          "SnapshotNS": 50035375
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00018441019891986927,
+        "SetupNS": 0.006063179977376615,
+        "IssueNS": 0.29547388263713253,
+        "FirstResolveNS": 0.5438118886589318,
+        "ProposalNS": 0,
+        "RequestNS": 0,
+        "SecondResolveNS": 0,
+        "SnapshotNS": 0.15345362672124369
+      },
+      "unattributedFraction": 0.0010130118063955695,
+      "meanElapsedMS": 279.4135499833333
+    },
+    "hybrid_random": {
+      "arms": 120,
+      "elapsedNS": 43175393501,
+      "accountedNS": 43135496104,
+      "phases": {
+        "ScheduleNS": 5284082,
+        "SetupNS": 203837705,
+        "IssueNS": 9911418284,
+        "FirstResolveNS": 18152460556,
+        "ProposalNS": 1964302,
+        "RequestNS": 4163889981,
+        "SecondResolveNS": 5555190229,
+        "SnapshotNS": 5141450965
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "partial_noise20",
+        "schedule": "uniform299",
+        "elapsedNS": 429960625,
+        "phases": {
+          "ScheduleNS": 65208,
+          "SetupNS": 1657542,
+          "IssueNS": 88517386,
+          "FirstResolveNS": 181855292,
+          "ProposalNS": 12168,
+          "RequestNS": 46747460,
+          "SecondResolveNS": 63943880,
+          "SnapshotNS": 46777791
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00012238642364377324,
+        "SetupNS": 0.004721154538991725,
+        "IssueNS": 0.22956173598673602,
+        "FirstResolveNS": 0.42043532401342365,
+        "ProposalNS": 0.000045495867917324345,
+        "RequestNS": 0.09644127460942675,
+        "SecondResolveNS": 0.12866565371017022,
+        "SnapshotNS": 0.1190828976435598
+      },
+      "unattributedFraction": 0.0009240772061307467,
+      "meanElapsedMS": 359.7949458416666
+    },
+    "hybrid_uncertainty": {
+      "arms": 120,
+      "elapsedNS": 67904455546,
+      "accountedNS": 67864694757,
+      "phases": {
+        "ScheduleNS": 5571408,
+        "SetupNS": 203049792,
+        "IssueNS": 9891457376,
+        "FirstResolveNS": 18137793169,
+        "ProposalNS": 25003356085,
+        "RequestNS": 4053460297,
+        "SecondResolveNS": 5445257414,
+        "SnapshotNS": 5124749216
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "stationary_noise10",
+        "schedule": "uniform299",
+        "elapsedNS": 716883208,
+        "phases": {
+          "ScheduleNS": 53917,
+          "SetupNS": 1644958,
+          "IssueNS": 84015954,
+          "FirstResolveNS": 182489463,
+          "ProposalNS": 290528876,
+          "RequestNS": 48041407,
+          "SecondResolveNS": 65258457,
+          "SnapshotNS": 44444540
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00008204775305540597,
+        "SetupNS": 0.0029902278188866345,
+        "IssueNS": 0.14566728054095515,
+        "FirstResolveNS": 0.26710755609715553,
+        "ProposalNS": 0.3682137774900819,
+        "RequestNS": 0.059693583644950886,
+        "SecondResolveNS": 0.08018998709607886,
+        "SnapshotNS": 0.07546999935119691
+      },
+      "unattributedFraction": 0.0005855402076386795,
+      "meanElapsedMS": 565.8704628833333
+    },
+    "hybrid_information": {
+      "arms": 120,
+      "elapsedNS": 68176890418,
+      "accountedNS": 68136766152,
+      "phases": {
+        "ScheduleNS": 5087417,
+        "SetupNS": 202494208,
+        "IssueNS": 9899664482,
+        "FirstResolveNS": 18165349603,
+        "ProposalNS": 25331700784,
+        "RequestNS": 4005374046,
+        "SecondResolveNS": 5396714629,
+        "SnapshotNS": 5130380983
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "late",
+        "schedule": "uniform299",
+        "elapsedNS": 752907875,
+        "phases": {
+          "ScheduleNS": 56334,
+          "SetupNS": 1674583,
+          "IssueNS": 84999295,
+          "FirstResolveNS": 192714299,
+          "ProposalNS": 305810625,
+          "RequestNS": 51848705,
+          "SecondResolveNS": 70486881,
+          "SnapshotNS": 44936667
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00007462084247035158,
+        "SetupNS": 0.0029701297134334783,
+        "IssueNS": 0.14520557363798892,
+        "FirstResolveNS": 0.26644438447729496,
+        "ProposalNS": 0.3715584654666495,
+        "RequestNS": 0.058749732078459606,
+        "SecondResolveNS": 0.07915753558004993,
+        "SnapshotNS": 0.07525102643351832
+      },
+      "unattributedFraction": 0.000588531770134959,
+      "meanElapsedMS": 568.1407534833334
+    },
+    "hybrid_falsification": {
+      "arms": 120,
+      "elapsedNS": 68268022834,
+      "accountedNS": 68228051494,
+      "phases": {
+        "ScheduleNS": 5405415,
+        "SetupNS": 207351582,
+        "IssueNS": 9904398333,
+        "FirstResolveNS": 18160503819,
+        "ProposalNS": 25321211045,
+        "RequestNS": 4048306531,
+        "SecondResolveNS": 5451007095,
+        "SnapshotNS": 5129867674
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "early",
+        "schedule": "uniform299",
+        "elapsedNS": 720461084,
+        "phases": {
+          "ScheduleNS": 60959,
+          "SetupNS": 1709000,
+          "IssueNS": 82338115,
+          "FirstResolveNS": 186816539,
+          "ProposalNS": 289673250,
+          "RequestNS": 48050784,
+          "SecondResolveNS": 67951160,
+          "SnapshotNS": 43435251
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00007917931083406012,
+        "SetupNS": 0.0030373163509392165,
+        "IssueNS": 0.14508107781418336,
+        "FirstResolveNS": 0.2660177205242774,
+        "ProposalNS": 0.37090880904183887,
+        "RequestNS": 0.059300187158544654,
+        "SecondResolveNS": 0.07984715052103716,
+        "SnapshotNS": 0.07514305323407046
+      },
+      "unattributedFraction": 0.000585506044274875,
+      "meanElapsedMS": 568.9001902833332
+    },
+    "hybrid_predictive": {
+      "arms": 120,
+      "elapsedNS": 205198358079,
+      "accountedNS": 205155237913,
+      "phases": {
+        "ScheduleNS": 5671294,
+        "SetupNS": 199997836,
+        "IssueNS": 9884166196,
+        "FirstResolveNS": 18141374371,
+        "ProposalNS": 162516414020,
+        "RequestNS": 3948835748,
+        "SecondResolveNS": 5331209474,
+        "SnapshotNS": 5127568974
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "unrelated_noise10",
+        "schedule": "uniform299",
+        "elapsedNS": 2061143375,
+        "phases": {
+          "ScheduleNS": 56334,
+          "SetupNS": 1653750,
+          "IssueNS": 83452341,
+          "FirstResolveNS": 183296511,
+          "ProposalNS": 1636716249,
+          "RequestNS": 46744085,
+          "SecondResolveNS": 64354001,
+          "SnapshotNS": 44398629
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00002763810613833757,
+        "SetupNS": 0.0009746561223604049,
+        "IssueNS": 0.04816883667360858,
+        "FirstResolveNS": 0.08840896457863319,
+        "ProposalNS": 0.7919966589471065,
+        "RequestNS": 0.01924399290992243,
+        "SecondResolveNS": 0.02598076087893218,
+        "SnapshotNS": 0.024988352840649534
+      },
+      "unattributedFraction": 0.00021013894264887423,
+      "meanElapsedMS": 1709.986317325
+    },
+    "hybrid_model_class": {
+      "arms": 120,
+      "elapsedNS": 68422691043,
+      "accountedNS": 68381969654,
+      "phases": {
+        "ScheduleNS": 5847083,
+        "SetupNS": 199696282,
+        "IssueNS": 9861145102,
+        "FirstResolveNS": 18119458863,
+        "ProposalNS": 25110418890,
+        "RequestNS": 4281639579,
+        "SecondResolveNS": 5690984671,
+        "SnapshotNS": 5112779184
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "recurring",
+        "schedule": "uniform299",
+        "elapsedNS": 729208500,
+        "phases": {
+          "ScheduleNS": 58209,
+          "SetupNS": 1650750,
+          "IssueNS": 84475689,
+          "FirstResolveNS": 183301652,
+          "ProposalNS": 299098500,
+          "RequestNS": 48106922,
+          "SecondResolveNS": 67322914,
+          "SnapshotNS": 44811999
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00008545532060885213,
+        "SetupNS": 0.002918568079622907,
+        "IssueNS": 0.1441209772910393,
+        "FirstResolveNS": 0.2648165190055575,
+        "ProposalNS": 0.366989641992003,
+        "RequestNS": 0.06257631077838226,
+        "SecondResolveNS": 0.08317393812271313,
+        "SnapshotNS": 0.0747234448991036
+      },
+      "unattributedFraction": 0.0005951445109694253,
+      "meanElapsedMS": 570.1890920249999
+    },
+    "hybrid_noise_class": {
+      "arms": 120,
+      "elapsedNS": 68257446206,
+      "accountedNS": 68217931676,
+      "phases": {
+        "ScheduleNS": 5406961,
+        "SetupNS": 200301339,
+        "IssueNS": 9907111658,
+        "FirstResolveNS": 18150550534,
+        "ProposalNS": 25195046439,
+        "RequestNS": 4115957352,
+        "SecondResolveNS": 5511728919,
+        "SnapshotNS": 5131828474
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "aligned",
+        "schedule": "uniform299",
+        "elapsedNS": 720720291,
+        "phases": {
+          "ScheduleNS": 52334,
+          "SetupNS": 1685208,
+          "IssueNS": 81097739,
+          "FirstResolveNS": 187058265,
+          "ProposalNS": 290267709,
+          "RequestNS": 49329420,
+          "SecondResolveNS": 67978000,
+          "SnapshotNS": 42781290
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00007921422937040259,
+        "SetupNS": 0.0029344979944824394,
+        "IssueNS": 0.14514330975847645,
+        "FirstResolveNS": 0.2659131207344309,
+        "ProposalNS": 0.3691179181090618,
+        "RequestNS": 0.06030048852953126,
+        "SecondResolveNS": 0.08074912299481116,
+        "SnapshotNS": 0.07518342333687983
+      },
+      "unattributedFraction": 0.0005789043129558191,
+      "meanElapsedMS": 568.8120517166667
+    }
+  },
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ],
+  "goal": "ACTIVE"
+}

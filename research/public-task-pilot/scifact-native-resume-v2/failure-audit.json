@@ -1,0 +1,57 @@
+{
+  "time": "2026-10-04T11:50:15.893Z",
+  "manifestSHA256": "d4da028b65ec7e9fa1b7da9c9380b425336f0875bbe0df40ac4563bb6b0d30f2",
+  "nativeManifestSHA256": "1636824c86b5277bd63d21b001b637c1ce307fbc6fc2355b5522bdce80f23344",
+  "traceSHA256": "1f08b6621a707e412f6bba49c79c2906984776b6b92c7f46d3f85349984aa912",
+  "sources": 36,
+  "commands": 4,
+  "allCommandsTerminal": true,
+  "actualVerifiedPrefix": 4250,
+  "newAcknowledgedImports": 933,
+  "fullCorpusImported": 5183,
+  "fullPostResumeDurabilityUnverified": true,
+  "fitQueriesAttempted": 1,
+  "fitQueriesCompleted": 0,
+  "calibrationPredictions": 0,
+  "confirmationPredictions": 0,
+  "evaluatorLabelsRead": false,
+  "nativeRankFailure": {
+    "searchReturned200": true,
+    "nativeRankLogReturned0": true,
+    "rawResponseBytesNotJournaledBeforeGate": true,
+    "gateNotRelaxed": true
+  },
+  "cost": {
+    "verifyRPCNS": 22146736883,
+    "newImportRPCNS": 77165136212,
+    "processMS": 120960,
+    "sampledPeakRSSKiB": 1460320
+  },
+  "preservedStores": [
+    {
+      "path": "research/public-task-pilot/nativeresume-v2/store.libravdb",
+      "sha256": "edd60fdefafce369b6ce23400e36f7633b0ae389d479a9728f9b753320e50ed5",
+      "bytes": 82635392
+    },
+    {
+      "path": "research/public-task-pilot/nativeresume-v2/daemon.libravdb",
+      "sha256": "59b8068f5d2e7cd6e8024d6a718ba0587b31b516795807ab51a74b1f3c0be5e3",
+      "bytes": 24229
+    },
+    {
+      "path": "research/public-task-pilot/nativeresume-v2/store.libravdb.embedding.json",
+      "sha256": "c093430705b2f1a587c70799295ca663569c9bca23d272b9f47774a70feaf4b3",
+      "bytes": 715
+    },
+    {
+      "path": "research/public-task-pilot/nativeresume-v2/daemon.libravdb.embedding.json",
+      "sha256": "c093430705b2f1a587c70799295ca663569c9bca23d272b9f47774a70feaf4b3",
+      "bytes": 715
+    }
+  ],
+  "nativeMemoryLeakOrPanicRootCauseNotFixed": true,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE",
+  "weeklyUsage": 22,
+  "scriptSHA256": "d1dc03fc54c159beda0e1cd91189f8881739d6a898aaff4c0a9c9a82a27a295d"
+}

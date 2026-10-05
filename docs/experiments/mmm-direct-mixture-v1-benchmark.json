@@ -1,0 +1,74 @@
+{
+  "results": [
+    {
+      "name": "ridgeAll",
+      "rounds": [
+        {
+          "milliseconds": 115.43112500000001,
+          "microsecondsPerForecast": 0.6709863571893602
+        },
+        {
+          "milliseconds": 115.6546249999999,
+          "microsecondsPerForecast": 0.6722855340866809
+        },
+        {
+          "milliseconds": 115.38266699999997,
+          "microsecondsPerForecast": 0.6707046770368302
+        }
+      ]
+    },
+    {
+      "name": "ridge64",
+      "rounds": [
+        {
+          "milliseconds": 84.55683299999998,
+          "microsecondsPerForecast": 0.49151804896763385
+        },
+        {
+          "milliseconds": 83.78399999999988,
+          "microsecondsPerForecast": 0.4870256696428565
+        },
+        {
+          "milliseconds": 82.53137500000003,
+          "microsecondsPerForecast": 0.4797443208240329
+        }
+      ]
+    },
+    {
+      "name": "currentCovAll",
+      "rounds": [
+        {
+          "milliseconds": 121.2360000000001,
+          "microsecondsPerForecast": 0.7047293526785721
+        },
+        {
+          "milliseconds": 125.95425,
+          "microsecondsPerForecast": 0.7321559361049107
+        },
+        {
+          "milliseconds": 128.2299169999999,
+          "microsecondsPerForecast": 0.7453840971447165
+        }
+      ]
+    },
+    {
+      "name": "currentCov64",
+      "rounds": [
+        {
+          "milliseconds": 95.26383299999998,
+          "microsecondsPerForecast": 0.5537564697265625
+        },
+        {
+          "milliseconds": 94.11045799999988,
+          "microsecondsPerForecast": 0.5470520484561006
+        },
+        {
+          "milliseconds": 97.20516599999996,
+          "microsecondsPerForecast": 0.5650411900111605
+        }
+      ]
+    }
+  ],
+  "checksum": 1321945.1375342107,
+  "limitations": "Warm reference 256-step trajectory replay including proposal and pointwise guard, excluding fitting, I/O and loaded serving. History scans are O(T^2), with origin arrays materialized; no O(1) implementation claim."
+}

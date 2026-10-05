@@ -1,0 +1,64 @@
+{
+  "scope": "Exact known-copy-mode information ceiling; not fitted or confirmation data",
+  "results": {
+    "copied05": {
+      "states": 6561,
+      "distinctHypothesisLaws": 16,
+      "optimalKnownModeBrierByUniqueReports": [
+        0.75,
+        0.5475000000000001,
+        0.1809749999999997,
+        0.1322246662621363,
+        0.13222466626213564,
+        0.0947107661774894,
+        0.09471076617748928,
+        0.09419035604410193,
+        0.09419035604410193
+      ],
+      "fullReportBayesBrier": 0.09419035604410207,
+      "fullReportBayesError": 0.06259700000000007,
+      "mass": 1.0000000000000013
+    },
+    "copied20": {
+      "states": 6561,
+      "distinctHypothesisLaws": 16,
+      "optimalKnownModeBrierByUniqueReports": [
+        0.75,
+        0.6599999999999999,
+        0.5376000000000002,
+        0.5270200720535256,
+        0.4826052269741866,
+        0.47234665487005595,
+        0.4723466548700558,
+        0.4719098247109472,
+        0.4719098247109472
+      ],
+      "fullReportBayesBrier": 0.4719098247109479,
+      "fullReportBayesError": 0.33626080000000047,
+      "mass": 1
+    },
+    "null": {
+      "states": 6561,
+      "distinctHypothesisLaws": 1,
+      "optimalKnownModeBrierByUniqueReports": [
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75
+      ],
+      "fullReportBayesBrier": 0.75,
+      "fullReportBayesError": 0.75,
+      "mass": 1
+    }
+  },
+  "hashes": {
+    "research/hypothesis-observation/experiment.py": "721c511cc1bae3a177bc91dbcae4f7d5b5c9ead0f9cd7bbe6b9d5f290b81a938",
+    "research/hypothesis-observation/dependence_v3.py": "bd733af934e17fe59377fbac845106df83967281a6d54b400765228b7147027d",
+    "research/hypothesis-observation/identifiability-audit.mjs": "c6e5b536ed6d226988f9e4467d9c66744da60ba13cabfe21c54fc40919f3c401"
+  }
+}

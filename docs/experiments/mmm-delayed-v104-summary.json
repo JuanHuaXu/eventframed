@@ -1,0 +1,6568 @@
+{
+  "version": "v104",
+  "artifactSHA256": "73003cee91b7c7c8b16e6b859391fbeb7da3deb39e92d1bec118175f09f8f760",
+  "trajectories": 768,
+  "scheduleRuns": 1536,
+  "steps": 393216,
+  "uniqueEffectiveSeeds": 3840,
+  "sourceHashes": 21,
+  "passed": 206,
+  "total": 218,
+  "status": "FAIL",
+  "gates": [
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00019153471509824184,
+      "lower": -0.0003222196617532031,
+      "upper": -0.000060849768443280524,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00007444162742857347,
+      "lower": -0.0001428327405937492,
+      "upper": -0.000006050514263397733,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00019400179460123037,
+      "lower": -0.0003341445692535003,
+      "upper": -0.00005385901994896041,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.000019873193817657566,
+      "lower": -0.00005301365726768331,
+      "upper": 0.000013267269632368177,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00007732372881011059,
+      "lower": -0.00014172442852556846,
+      "upper": -0.00001292302909465271,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.000016647929571773348,
+      "lower": -0.00003797347530994365,
+      "upper": 0.000004677616166396954,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0006721813621797844,
+      "lower": -0.000985854127179942,
+      "upper": -0.00035850859717962693,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.000335672444877131,
+      "lower": -0.0005229717505290842,
+      "upper": -0.00014837313922517776,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0005994513549031149,
+      "lower": -0.0007933637458781386,
+      "upper": -0.0004055389639280912,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.00014383247941117112,
+      "lower": -0.00023186199526291004,
+      "upper": -0.0000558029635594322,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00031878410153681814,
+      "lower": -0.0004908528440401805,
+      "upper": -0.0001467153590334558,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.00015935999964002568,
+      "lower": -0.0002713776470255753,
+      "upper": -0.00004734235225447602,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.004800178259494943,
+      "lower": -0.0071549962711051785,
+      "upper": -0.0024453602478847077,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.004800178259494943,
+      "lower": 0.0024453602478847077,
+      "upper": 0.0071549962711051785,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.002692476966423967,
+      "lower": -0.004236986262557733,
+      "upper": -0.0011479676702902005,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0032769464827700568,
+      "lower": -0.0046080474058285605,
+      "upper": -0.0019458455597115532,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.0016301233147254872,
+      "lower": -0.002525036591829157,
+      "upper": -0.0007352100376218177,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.0032769464827700568,
+      "lower": 0.0019458455597115532,
+      "upper": 0.0046080474058285605,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.002266677365064226,
+      "lower": -0.0034268633319603048,
+      "upper": -0.0011064913981681476,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0017971448259503058,
+      "lower": -0.0028249298471466145,
+      "upper": -0.0007693598047539972,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.011431317463412274,
+      "lower": -0.016125295365413107,
+      "upper": -0.006737339561411442,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.011431317463412274,
+      "lower": 0.006737339561411442,
+      "upper": 0.016125295365413107,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.012574270473685407,
+      "lower": -0.01707664781906343,
+      "upper": -0.008071893128307387,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.008876571170048241,
+      "lower": -0.012407567393097289,
+      "upper": -0.005345574946999192,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.006202939338528657,
+      "lower": -0.00919961324990944,
+      "upper": -0.0032062654271478733,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.008876571170048241,
+      "lower": 0.005345574946999192,
+      "upper": 0.012407567393097289,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.010890236557533786,
+      "lower": -0.014771944608549598,
+      "upper": -0.007008528506517973,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.008813693701280377,
+      "lower": -0.012421978503405297,
+      "upper": -0.005205408899155457,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": 0.008813693701280377,
+      "lower": 0.005205408899155457,
+      "upper": 0.012421978503405297,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.007389826435170098,
+      "lower": -0.010690747933723474,
+      "upper": -0.0040889049366167225,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.007389826435170098,
+      "lower": 0.0040889049366167225,
+      "upper": 0.010690747933723474,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00993207523200734,
+      "lower": -0.014472634373478035,
+      "upper": -0.0053915160905366475,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.007424072715556674,
+      "lower": -0.010191092468051157,
+      "upper": -0.004657052963062191,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.004911251438680104,
+      "lower": -0.007232250517105656,
+      "upper": -0.002590252360254552,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.007424072715556674,
+      "lower": 0.004657052963062191,
+      "upper": 0.010191092468051157,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.009272796084437243,
+      "lower": -0.01300892834844301,
+      "upper": -0.005536663820431477,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.007603905007169184,
+      "lower": -0.011088624621083395,
+      "upper": -0.004119185393254973,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.0001770358134922721,
+      "lower": 0.00012524058576072198,
+      "upper": 0.00022883104122382224,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.000039877504504763064,
+      "lower": 0.000028045789375979797,
+      "upper": 0.00005170921963354633,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.0003775748601919566,
+      "lower": 0.00028769197092823475,
+      "upper": 0.00046745774945567846,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.0004367007343949415,
+      "lower": -0.0005471588191277316,
+      "upper": -0.00032624264966215136,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.00010652519452235124,
+      "lower": 0.00006080316511552499,
+      "upper": 0.0001522472239291775,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0005389182844513676,
+      "lower": -0.0007003895969516386,
+      "upper": -0.0003774469719510966,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.0002677195229072809,
+      "lower": 0.00007031076512106378,
+      "upper": 0.00046512828069349794,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.00003649754958668359,
+      "lower": 0.000024097184935389265,
+      "upper": 0.000048897914237977915,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.00043912371605215206,
+      "lower": 0.0003618297192843435,
+      "upper": 0.0005164177128199606,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.00039427593986227907,
+      "lower": -0.0005228460006502756,
+      "upper": -0.0002657058790742825,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.00010727963447382119,
+      "lower": 0.000059952534755618155,
+      "upper": 0.00015460673419202424,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0005029838099372341,
+      "lower": -0.0006715292850888279,
+      "upper": -0.0003344383347856402,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.000001784507318464048,
+      "lower": -0.00003182813146953451,
+      "upper": 0.000028259116832606417,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 8.837134949880518e-7,
+      "lower": -0.000010336083629447315,
+      "upper": 0.000012103510619423418,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0000062742069647273805,
+      "lower": -0.00006344414299697157,
+      "upper": 0.000050895729067516814,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": 0.0000024504297988386416,
+      "lower": -0.00000397324011405771,
+      "upper": 0.000008874099711734993,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0000012632698481542838,
+      "lower": -0.00000994122671031936,
+      "upper": 0.000007414687014010792,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": 0.0000013443535182020364,
+      "lower": -0.00000239697823054152,
+      "upper": 0.000005085685266945593,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0021480094100141227,
+      "lower": -0.0030052626669724494,
+      "upper": -0.0012907561530557958,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0026570547275158903,
+      "lower": -0.003894334978483705,
+      "upper": -0.0014197744765480757,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.001382263859374051,
+      "lower": -0.0017658354537398021,
+      "upper": -0.0009986922650082998,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.0004237566507722026,
+      "lower": -0.0006874884171333227,
+      "upper": -0.00016002488441108244,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0016704675954304568,
+      "lower": -0.0023177608949964653,
+      "upper": -0.0010231742958644481,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0007026117745352264,
+      "lower": -0.0011404114830902044,
+      "upper": -0.00026481206598024857,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.006694922268095847,
+      "lower": -0.010069949030732987,
+      "upper": -0.0033198955054587055,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.008247348394088678,
+      "lower": -0.012074226460428893,
+      "upper": -0.004420470327748462,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.006857438246754265,
+      "lower": -0.00980639602099087,
+      "upper": -0.003908480472517659,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.004752923469068079,
+      "lower": -0.006946441614428795,
+      "upper": -0.0025594053237073615,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.008966170966375411,
+      "lower": -0.013642664390287235,
+      "upper": -0.0042896775424635875,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.007224816104238184,
+      "lower": -0.01085076575294246,
+      "upper": -0.003598866455533909,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.008768937426012959,
+      "lower": -0.012653755780287846,
+      "upper": -0.004884119071738071,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.01788255086026614,
+      "lower": -0.025667124887255508,
+      "upper": -0.010097976833276772,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.01788255086026614,
+      "lower": 0.010097976833276772,
+      "upper": 0.025667124887255508,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00044103269034262167,
+      "lower": -0.0009286534427296817,
+      "upper": 0.00004658806204443835,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": 0.0006282495662673143,
+      "lower": -0.00038606003921956697,
+      "upper": 0.0016425591717541955,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0016377521686699393,
+      "lower": -0.0025630157618074783,
+      "upper": -0.0007124885755324003,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": 0.001607137132068272,
+      "lower": -0.0004798958806518589,
+      "upper": 0.0036941701447884027,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.0016377521686699393,
+      "lower": 0.0007124885755324003,
+      "upper": 0.0025630157618074783,
+      "pass": false
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.001607137132068272,
+      "lower": -0.0036941701447884027,
+      "upper": 0.0004798958806518589,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.008286529352214338,
+      "lower": -0.012133004447914712,
+      "upper": -0.004440054256513965,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.006252230871094412,
+      "lower": -0.011318874833228569,
+      "upper": -0.001185586908960255,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.006252230871094412,
+      "lower": 0.001185586908960255,
+      "upper": 0.011318874833228569,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0009154380710741988,
+      "lower": -0.0018686723075822319,
+      "upper": 0.00003779616543383426,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": 0.0011901831606308455,
+      "lower": 0.0003412105705064125,
+      "upper": 0.0020391557507552782,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.005254758982594883,
+      "lower": 0.0017204698942669622,
+      "upper": 0.008789048070922803,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": 0.005614623537478196,
+      "lower": 0.0022133567166428723,
+      "upper": 0.00901589035831352,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.005254758982594883,
+      "lower": -0.008789048070922803,
+      "upper": -0.0017204698942669622,
+      "pass": false
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.005614623537478196,
+      "lower": -0.00901589035831352,
+      "upper": -0.0022133567166428723,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00016611511501800802,
+      "lower": -0.00024232123119206656,
+      "upper": -0.00008990899884394947,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00011658101751656105,
+      "lower": -0.00017334277532511156,
+      "upper": -0.000059819259708010534,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00016685107425695213,
+      "lower": -0.000261980954157399,
+      "upper": -0.00007172119435650523,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.000005098309051981527,
+      "lower": -0.00003235931794978999,
+      "upper": 0.000022162699845826936,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00009919246348045704,
+      "lower": -0.00017317856543124825,
+      "upper": -0.000025206361529665826,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.00000845248086082679,
+      "lower": -0.00003968942879542154,
+      "upper": 0.00002278446707376796,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0007768728640741276,
+      "lower": -0.0015514297556310794,
+      "upper": -0.0000023159725171757522,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0006018337490561591,
+      "lower": -0.001079122664034456,
+      "upper": -0.0001245448340778622,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0007429091419907409,
+      "lower": -0.0010357184319724796,
+      "upper": -0.0004500998520090023,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.00021240666355224662,
+      "lower": -0.00035320858724784826,
+      "upper": -0.00007160473985664496,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0004859134260732207,
+      "lower": -0.0007980176257124579,
+      "upper": -0.00017380922643398346,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0002527559757579776,
+      "lower": -0.0004139928046801654,
+      "upper": -0.00009151914683578976,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.004200735731871491,
+      "lower": -0.006291019324500575,
+      "upper": -0.002110452139242407,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.004200735731871491,
+      "lower": 0.002110452139242407,
+      "upper": 0.006291019324500575,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0030395352063439032,
+      "lower": -0.004541400957272776,
+      "upper": -0.0015376694554150305,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0031064940523541735,
+      "lower": -0.004090186386269398,
+      "upper": -0.0021228017184389486,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.0015096438714159864,
+      "lower": -0.002160758311541117,
+      "upper": -0.0008585294312908555,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.0031064940523541735,
+      "lower": 0.0021228017184389486,
+      "upper": 0.004090186386269398,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.002356093382838543,
+      "lower": -0.0031877781233686448,
+      "upper": -0.0015244086423084413,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0018456041060667355,
+      "lower": -0.0025999016916938315,
+      "upper": -0.0010913065204396397,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.010653412121577036,
+      "lower": -0.015194435174017782,
+      "upper": -0.006112389069136289,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.010653412121577036,
+      "lower": 0.006112389069136289,
+      "upper": 0.015194435174017782,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.012793656651896617,
+      "lower": -0.017397284349846734,
+      "upper": -0.0081900289539465,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.009407666690956074,
+      "lower": -0.012473616536087527,
+      "upper": -0.006341716845824621,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.0065859488866863,
+      "lower": -0.009043646053655978,
+      "upper": -0.004128251719716623,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.009407666690956074,
+      "lower": 0.006341716845824621,
+      "upper": 0.012473616536087527,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.011619535010791727,
+      "lower": -0.015063364222495481,
+      "upper": -0.008175705799087973,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.009437261551653826,
+      "lower": -0.012542461355064526,
+      "upper": -0.006332061748243125,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": 0.009437261551653826,
+      "lower": 0.006332061748243125,
+      "upper": 0.012542461355064526,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.009572421770404188,
+      "lower": -0.013611500453500805,
+      "upper": -0.005533343087307571,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.009572421770404188,
+      "lower": 0.005533343087307571,
+      "upper": 0.013611500453500805,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.011690600530539256,
+      "lower": -0.01564766047159763,
+      "upper": -0.00773354058948088,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.008629203936014868,
+      "lower": -0.01146896979992412,
+      "upper": -0.005789438072105616,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.006089772228569384,
+      "lower": -0.008342848604930191,
+      "upper": -0.003836695852208577,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.008629203936014868,
+      "lower": 0.005789438072105616,
+      "upper": 0.01146896979992412,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.011081403416817636,
+      "lower": -0.01437368415102681,
+      "upper": -0.007789122682608463,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.008892769067082838,
+      "lower": -0.011907453182038615,
+      "upper": -0.00587808495212706,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.00016195968232348389,
+      "lower": 0.0000835574244419589,
+      "upper": 0.00024036194020500887,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.00004029888137926777,
+      "lower": 0.000027753919349897375,
+      "upper": 0.00005284384340863817,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.00040072495611595234,
+      "lower": 0.0002836720325834247,
+      "upper": 0.00051777787964848,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.0004266702042688758,
+      "lower": -0.0005296897068105491,
+      "upper": -0.0003236507017272025,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.00010126594546007017,
+      "lower": 0.00005048126990425057,
+      "upper": 0.00015205062101588976,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0004984422647073253,
+      "lower": -0.0006572153115619267,
+      "upper": -0.0003396692178527238,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.0001852731029855009,
+      "lower": 0.00012959239459724712,
+      "upper": 0.00024095381137375466,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.000047803954811697497,
+      "lower": 0.000032757793723973684,
+      "upper": 0.00006285011589942131,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": 0.0004443690492350605,
+      "lower": 0.0003649566845209134,
+      "upper": 0.0005237814139492076,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.0005890725867707426,
+      "lower": -0.0007638910303090963,
+      "upper": -0.0004142541432323889,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.00011674365106551583,
+      "lower": 0.00006639636694455621,
+      "upper": 0.00016709093518647546,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0007799093255832408,
+      "lower": -0.0010474574750690092,
+      "upper": -0.0005123611760974723,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.000012035283442938692,
+      "lower": -0.0000530798817092926,
+      "upper": 0.000029009314823415214,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0000020554835785820645,
+      "lower": -0.000026298048708731785,
+      "upper": 0.000022187081551567656,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00001541526588782669,
+      "lower": -0.00008258436611025897,
+      "upper": 0.000051753834334605586,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": 0.0000023420208429799153,
+      "lower": -0.0000045414244371032625,
+      "upper": 0.000009225466123063093,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.0000021949499238286835,
+      "lower": -0.00004041447168742614,
+      "upper": 0.00004480437153508351,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": 6.54038898813096e-7,
+      "lower": -0.000004704420588001097,
+      "upper": 0.000006012498385627289,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0021867864481888433,
+      "lower": -0.0031519322227927253,
+      "upper": -0.0012216406735849612,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.002619615075312491,
+      "lower": -0.003938785101215984,
+      "upper": -0.001300445049408999,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0019658731947271735,
+      "lower": -0.0027206686096602024,
+      "upper": -0.0012110777797941447,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.0008059103856355495,
+      "lower": -0.0013890167353068437,
+      "upper": -0.00022280403596425529,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00266209016737067,
+      "lower": -0.003927085922044819,
+      "upper": -0.0013970944126965206,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0013676506604665094,
+      "lower": -0.0023789564264923846,
+      "upper": -0.0003563448944406344,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.010509222494989392,
+      "lower": -0.014857017918597136,
+      "upper": -0.006161427071381647,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.014572382005633407,
+      "lower": -0.020742258972901065,
+      "upper": -0.008402505038365751,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.007342434288506217,
+      "lower": -0.010473870592363136,
+      "upper": -0.004210997984649299,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": -0.005397358212554545,
+      "lower": -0.007955509208375577,
+      "upper": -0.002839207216733512,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.01028154394000283,
+      "lower": -0.015129297493393465,
+      "upper": -0.0054337903866121945,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.008899442944669673,
+      "lower": -0.013162821668835785,
+      "upper": -0.00463606422050356,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.009629900623459586,
+      "lower": -0.014437624474606524,
+      "upper": -0.00482217677231265,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.019594338442231473,
+      "lower": -0.02925598251555627,
+      "upper": -0.009932694368906675,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.019594338442231473,
+      "lower": 0.009932694368906675,
+      "upper": 0.02925598251555627,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0004734916338558397,
+      "lower": -0.000858649736615697,
+      "upper": -0.00008833353109598241,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": 0.0013010186233950232,
+      "lower": 0.0005423323255422862,
+      "upper": 0.0020597049212477602,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0017499219733650888,
+      "lower": -0.0024865578193379763,
+      "upper": -0.0010132861273922011,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": 0.0029507486717965025,
+      "lower": 0.0014179799917678178,
+      "upper": 0.004483517351825187,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.0017499219733650888,
+      "lower": 0.0010132861273922011,
+      "upper": 0.0024865578193379763,
+      "pass": false
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0029507486717965025,
+      "lower": -0.004483517351825187,
+      "upper": -0.0014179799917678178,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00611621742720815,
+      "lower": -0.00930356377091482,
+      "upper": -0.00292887108350148,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 0,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0054303890546392826,
+      "lower": -0.010150031721587042,
+      "upper": -0.0007107463876915229,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 1,
+      "control": 1,
+      "mean": 0,
+      "lower": 0,
+      "upper": 0,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.0054303890546392826,
+      "lower": 0.0007107463876915229,
+      "upper": 0.010150031721587042,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0013317116320715472,
+      "lower": -0.002854327081364379,
+      "upper": 0.00019090381722128465,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 0,
+      "control": 1,
+      "mean": 0.0007122516909487033,
+      "lower": -0.0006120010063294123,
+      "upper": 0.002036504388226819,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": 0.0038156949009150653,
+      "lower": 0.0003964173186978351,
+      "upper": 0.0072349724831322956,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": 0.0047334189164793955,
+      "lower": 0.001490952402698672,
+      "upper": 0.00797588543026012,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0038156949009150653,
+      "lower": -0.0072349724831322956,
+      "upper": -0.0003964173186978351,
+      "pass": false
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": 1,
+      "control": 1,
+      "mean": -0.0047334189164793955,
+      "lower": -0.00797588543026012,
+      "upper": -0.001490952402698672,
+      "pass": false
+    }
+  ],
+  "groups": [
+    {
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.054367635730026204,
+          "accuracy": 0.9471435546874958,
+          "cost": 3.2501220703125
+        },
+        {
+          "brier": 0.05417610101492795,
+          "accuracy": 0.9473632812499957,
+          "cost": 3.227783203125
+        },
+        {
+          "brier": 0.05417610101492795,
+          "accuracy": 0.9473632812499957,
+          "cost": 3.227783203125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.04934493251885204,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.820556640625
+        },
+        {
+          "brier": 0.049270490891423484,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.7919921875
+        },
+        {
+          "brier": 0.049270490891423484,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.7919921875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.0549575978531166,
+          "accuracy": 0.9468139648437457,
+          "cost": 3.363525390625
+        },
+        {
+          "brier": 0.05478346925233304,
+          "accuracy": 0.9470336914062457,
+          "cost": 3.3463134765625
+        },
+        {
+          "brier": 0.05476359605851537,
+          "accuracy": 0.9470336914062457,
+          "cost": 3.343994140625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.40625,
+          "BankOnly": 0,
+          "Stale": 154.78125,
+          "Censored": 50.8125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.40625,
+          "BankOnly": 154.78125,
+          "Stale": 0,
+          "Censored": 50.8125
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.0492852234600958,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.80908203125
+        },
+        {
+          "brier": 0.04922454766085745,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.78662109375
+        },
+        {
+          "brier": 0.04920789973128567,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.784423828125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.40625,
+          "BankOnly": 0,
+          "Stale": 154.78125,
+          "Censored": 50.8125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.40625,
+          "BankOnly": 154.78125,
+          "Stale": 0,
+          "Censored": 50.8125
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.061464532555699565,
+          "accuracy": 0.9379150390624956,
+          "cost": 4.8939208984375
+        },
+        {
+          "brier": 0.0607923511935198,
+          "accuracy": 0.9382446289062457,
+          "cost": 4.8780517578125
+        },
+        {
+          "brier": 0.0607923511935198,
+          "accuracy": 0.9382446289062457,
+          "cost": 4.8780517578125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.0526798333593207,
+          "accuracy": 0.9471435546875026,
+          "cost": 4.677001953125
+        },
+        {
+          "brier": 0.05234416091444357,
+          "accuracy": 0.9471435546875026,
+          "cost": 4.6484375
+        },
+        {
+          "brier": 0.05234416091444357,
+          "accuracy": 0.9471435546875026,
+          "cost": 4.6484375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.06265926548511795,
+          "accuracy": 0.9385742187499958,
+          "cost": 4.9329833984375
+        },
+        {
+          "brier": 0.062203646609626,
+          "accuracy": 0.9389038085937458,
+          "cost": 4.9210205078125
+        },
+        {
+          "brier": 0.06205981413021483,
+          "accuracy": 0.9389038085937458,
+          "cost": 4.9107666015625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.875,
+          "BankOnly": 0,
+          "Stale": 153.96875,
+          "Censored": 52.15625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.875,
+          "BankOnly": 153.96875,
+          "Stale": 0,
+          "Censored": 52.15625
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.051512440327646146,
+          "accuracy": 0.9500000000000026,
+          "cost": 4.65478515625
+        },
+        {
+          "brier": 0.051353016225749344,
+          "accuracy": 0.9500000000000026,
+          "cost": 4.646240234375
+        },
+        {
+          "brier": 0.05119365622610932,
+          "accuracy": 0.9500000000000026,
+          "cost": 4.6376953125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.875,
+          "BankOnly": 0,
+          "Stale": 153.96875,
+          "Censored": 52.15625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.875,
+          "BankOnly": 153.96875,
+          "Stale": 0,
+          "Censored": 52.15625
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.08035234619427567,
+          "accuracy": 0.9023193359374961,
+          "cost": 5.39990234375
+        },
+        {
+          "brier": 0.07555216793478073,
+          "accuracy": 0.9105590820312461,
+          "cost": 5.3101806640625
+        },
+        {
+          "brier": 0.07555216793478073,
+          "accuracy": 0.9105590820312461,
+          "cost": 5.3101806640625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05685360306658252,
+          "accuracy": 0.9458251953125024,
+          "cost": 5.260986328125
+        },
+        {
+          "brier": 0.05416112610015857,
+          "accuracy": 0.9469238281250025,
+          "cost": 5.160400390625
+        },
+        {
+          "brier": 0.05416112610015857,
+          "accuracy": 0.9469238281250025,
+          "cost": 5.160400390625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.0837733409420614,
+          "accuracy": 0.8995727539062461,
+          "cost": 5.453369140625
+        },
+        {
+          "brier": 0.0821265177740168,
+          "accuracy": 0.9033081054687463,
+          "cost": 5.439453125
+        },
+        {
+          "brier": 0.08049639445929133,
+          "accuracy": 0.9035278320312462,
+          "cost": 5.393310546875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.34375,
+          "BankOnly": 0,
+          "Stale": 154.65625,
+          "Censored": 50
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.34375,
+          "BankOnly": 154.65625,
+          "Stale": 0,
+          "Censored": 50
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05535977233595877,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.281494140625
+        },
+        {
+          "brier": 0.05489023979684486,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.26123046875
+        },
+        {
+          "brier": 0.053093094970894546,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.1806640625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.34375,
+          "BankOnly": 0,
+          "Stale": 154.65625,
+          "Censored": 50
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.34375,
+          "BankOnly": 154.65625,
+          "Stale": 0,
+          "Censored": 50
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.09961380676534726,
+          "accuracy": 0.8619995117187467,
+          "cost": 5.885498046875
+        },
+        {
+          "brier": 0.08818248930193497,
+          "accuracy": 0.8947387695312466,
+          "cost": 5.7589111328125
+        },
+        {
+          "brier": 0.08818248930193497,
+          "accuracy": 0.8947387695312466,
+          "cost": 5.7589111328125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07194958699956777,
+          "accuracy": 0.9236328125000016,
+          "cost": 5.868896484375
+        },
+        {
+          "brier": 0.059375316525882384,
+          "accuracy": 0.9471435546875024,
+          "cost": 5.701904296875
+        },
+        {
+          "brier": 0.059375316525882384,
+          "accuracy": 0.9471435546875024,
+          "cost": 5.701904296875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.110623198754366,
+          "accuracy": 0.8410156249999969,
+          "cost": 5.8919677734375
+        },
+        {
+          "brier": 0.10794956692284645,
+          "accuracy": 0.8665039062499966,
+          "cost": 5.876953125
+        },
+        {
+          "brier": 0.10174662758431778,
+          "accuracy": 0.8688110351562466,
+          "cost": 5.8046875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52.25,
+          "BankOnly": 0,
+          "Stale": 154.125,
+          "Censored": 49.625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52.25,
+          "BankOnly": 154.125,
+          "Stale": 0,
+          "Censored": 49.625
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07116512502908712,
+          "accuracy": 0.9264892578125019,
+          "cost": 5.858154296875
+        },
+        {
+          "brier": 0.0690885821728337,
+          "accuracy": 0.9440673828125021,
+          "cost": 5.830322265625
+        },
+        {
+          "brier": 0.060274888471553295,
+          "accuracy": 0.9462646484375025,
+          "cost": 5.715576171875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52.25,
+          "BankOnly": 0,
+          "Stale": 154.125,
+          "Censored": 49.625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52.25,
+          "BankOnly": 154.125,
+          "Stale": 0,
+          "Censored": 49.625
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.09882018765775837,
+          "accuracy": 0.865515136718747,
+          "cost": 5.865966796875
+        },
+        {
+          "brier": 0.09143036122258828,
+          "accuracy": 0.8889160156249963,
+          "cost": 5.797607421875
+        },
+        {
+          "brier": 0.09143036122258828,
+          "accuracy": 0.8889160156249963,
+          "cost": 5.797607421875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07313999452251903,
+          "accuracy": 0.918139648437502,
+          "cost": 5.84130859375
+        },
+        {
+          "brier": 0.06320791929051169,
+          "accuracy": 0.9442871093750024,
+          "cost": 5.732421875
+        },
+        {
+          "brier": 0.06320791929051169,
+          "accuracy": 0.9442871093750024,
+          "cost": 5.732421875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1116336975586913,
+          "accuracy": 0.8394775390624971,
+          "cost": 5.8897705078125
+        },
+        {
+          "brier": 0.10912087628181476,
+          "accuracy": 0.8630981445312469,
+          "cost": 5.86669921875
+        },
+        {
+          "brier": 0.10420962484313465,
+          "accuracy": 0.8650756835937466,
+          "cost": 5.82861328125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52.21875,
+          "BankOnly": 0,
+          "Stale": 152,
+          "Censored": 51.78125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52.21875,
+          "BankOnly": 152,
+          "Stale": 0,
+          "Censored": 51.78125
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07011069801356969,
+          "accuracy": 0.9251708984375018,
+          "cost": 5.844482421875
+        },
+        {
+          "brier": 0.06844180693630164,
+          "accuracy": 0.9436279296875025,
+          "cost": 5.806884765625
+        },
+        {
+          "brier": 0.06083790192913247,
+          "accuracy": 0.9458251953125024,
+          "cost": 5.743896484375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52.21875,
+          "BankOnly": 0,
+          "Stale": 152,
+          "Censored": 51.78125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52.21875,
+          "BankOnly": 152,
+          "Stale": 0,
+          "Censored": 51.78125
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07500578713935269,
+          "accuracy": 0.9195678710937462,
+          "cost": 5.03564453125
+        },
+        {
+          "brier": 0.07518282295284498,
+          "accuracy": 0.9195678710937462,
+          "cost": 5.0413818359375
+        },
+        {
+          "brier": 0.07518282295284498,
+          "accuracy": 0.9195678710937462,
+          "cost": 5.0413818359375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.056175116824501735,
+          "accuracy": 0.9497802734375026,
+          "cost": 4.882568359375
+        },
+        {
+          "brier": 0.056214994329006486,
+          "accuracy": 0.9497802734375026,
+          "cost": 4.882568359375
+        },
+        {
+          "brier": 0.056214994329006486,
+          "accuracy": 0.9497802734375026,
+          "cost": 4.882568359375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.08339409838730244,
+          "accuracy": 0.9057250976562463,
+          "cost": 5.1302490234375
+        },
+        {
+          "brier": 0.08420837398188934,
+          "accuracy": 0.9050659179687464,
+          "cost": 5.1693115234375
+        },
+        {
+          "brier": 0.08377167324749438,
+          "accuracy": 0.9052856445312463,
+          "cost": 5.142333984375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.21875,
+          "BankOnly": 0,
+          "Stale": 153.84375,
+          "Censored": 51.9375
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.21875,
+          "BankOnly": 153.84375,
+          "Stale": 0,
+          "Censored": 51.9375
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.056945286626334225,
+          "accuracy": 0.9478027343750025,
+          "cost": 4.84228515625
+        },
+        {
+          "brier": 0.057590730105307936,
+          "accuracy": 0.9478027343750025,
+          "cost": 4.8857421875
+        },
+        {
+          "brier": 0.057051811820856564,
+          "accuracy": 0.9478027343750025,
+          "cost": 4.84375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.21875,
+          "BankOnly": 0,
+          "Stale": 153.84375,
+          "Censored": 51.9375
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.21875,
+          "BankOnly": 153.84375,
+          "Stale": 0,
+          "Censored": 51.9375
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07500450050424348,
+          "accuracy": 0.9186889648437461,
+          "cost": 4.9091796875
+        },
+        {
+          "brier": 0.0752722200271508,
+          "accuracy": 0.9180297851562461,
+          "cost": 4.92041015625
+        },
+        {
+          "brier": 0.0752722200271508,
+          "accuracy": 0.9180297851562461,
+          "cost": 4.92041015625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.054744590262298345,
+          "accuracy": 0.9489013671875026,
+          "cost": 4.6513671875
+        },
+        {
+          "brier": 0.05478108781188503,
+          "accuracy": 0.9489013671875026,
+          "cost": 4.6572265625
+        },
+        {
+          "brier": 0.05478108781188503,
+          "accuracy": 0.9489013671875026,
+          "cost": 4.6572265625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.08337571447336788,
+          "accuracy": 0.9057250976562463,
+          "cost": 4.953369140625
+        },
+        {
+          "brier": 0.08420911412928228,
+          "accuracy": 0.9045166015624962,
+          "cost": 5.01611328125
+        },
+        {
+          "brier": 0.08381483818942,
+          "accuracy": 0.9045166015624962,
+          "cost": 4.9775390625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52,
+          "BankOnly": 0,
+          "Stale": 154.09375,
+          "Censored": 49.90625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52,
+          "BankOnly": 154.09375,
+          "Stale": 0,
+          "Censored": 49.90625
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05599327190003749,
+          "accuracy": 0.9467041015625024,
+          "cost": 4.57666015625
+        },
+        {
+          "brier": 0.056603535344448556,
+          "accuracy": 0.9456054687500024,
+          "cost": 4.64013671875
+        },
+        {
+          "brier": 0.056100551534511316,
+          "accuracy": 0.9456054687500024,
+          "cost": 4.588623046875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52,
+          "BankOnly": 0,
+          "Stale": 154.09375,
+          "Censored": 49.90625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52,
+          "BankOnly": 154.09375,
+          "Stale": 0,
+          "Censored": 49.90625
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.04997788327427082,
+          "accuracy": 0.9492309570312456,
+          "cost": 1.6279296875
+        },
+        {
+          "brier": 0.04997609876695236,
+          "accuracy": 0.9492309570312456,
+          "cost": 1.6396484375
+        },
+        {
+          "brier": 0.04997609876695236,
+          "accuracy": 0.9492309570312456,
+          "cost": 1.6396484375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.04823306460448799,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.281005859375
+        },
+        {
+          "brier": 0.048233948317982965,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.30419921875
+        },
+        {
+          "brier": 0.048233948317982965,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.30419921875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.05026053402128971,
+          "accuracy": 0.9492309570312456,
+          "cost": 1.672119140625
+        },
+        {
+          "brier": 0.05025180938452615,
+          "accuracy": 0.9492309570312456,
+          "cost": 1.6739501953125
+        },
+        {
+          "brier": 0.05025425981432499,
+          "accuracy": 0.9492309570312456,
+          "cost": 1.67578125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 53.0625,
+          "BankOnly": 0,
+          "Stale": 151.9375,
+          "Censored": 51
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 53.0625,
+          "BankOnly": 151.9375,
+          "Stale": 0,
+          "Censored": 51
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.04822531654468532,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.205322265625
+        },
+        {
+          "brier": 0.04822270892131897,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.206787109375
+        },
+        {
+          "brier": 0.048224053274837156,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.21044921875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 53.0625,
+          "BankOnly": 0,
+          "Stale": 151.9375,
+          "Censored": 51
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 53.0625,
+          "BankOnly": 151.9375,
+          "Stale": 0,
+          "Censored": 51
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.2657454398747556,
+          "accuracy": 0.5,
+          "cost": 5.99853515625
+        },
+        {
+          "brier": 0.2635974304647414,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2635974304647414,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.2637055114931778,
+          "accuracy": 0.5,
+          "cost": 5.9970703125
+        },
+        {
+          "brier": 0.2610484567656619,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2610484567656619,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.26522108815888307,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.26426258095028127,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.263838824299509,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.15625,
+          "BankOnly": 0,
+          "Stale": 153.53125,
+          "Censored": 51.3125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.15625,
+          "BankOnly": 153.53125,
+          "Stale": 0,
+          "Censored": 51.3125
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.26298427814025815,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.262016422319363,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.26131381054482766,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.15625,
+          "BankOnly": 0,
+          "Stale": 153.53125,
+          "Censored": 51.3125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.15625,
+          "BankOnly": 153.53125,
+          "Stale": 0,
+          "Censored": 51.3125
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1216419570110076,
+          "accuracy": 0.8535400390624972,
+          "cost": 5.880859375
+        },
+        {
+          "brier": 0.11494703474291171,
+          "accuracy": 0.8751831054687467,
+          "cost": 5.8997802734375
+        },
+        {
+          "brier": 0.11494703474291171,
+          "accuracy": 0.8751831054687467,
+          "cost": 5.8997802734375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.10153785308994584,
+          "accuracy": 0.9010009765625017,
+          "cost": 5.855224609375
+        },
+        {
+          "brier": 0.09329050469585716,
+          "accuracy": 0.9247314453125022,
+          "cost": 5.87939453125
+        },
+        {
+          "brier": 0.09329050469585716,
+          "accuracy": 0.9247314453125022,
+          "cost": 5.87939453125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.13142212568462247,
+          "accuracy": 0.8282714843749971,
+          "cost": 5.893798828125
+        },
+        {
+          "brier": 0.1293176109069363,
+          "accuracy": 0.8493652343749972,
+          "cost": 5.8953857421875
+        },
+        {
+          "brier": 0.12456468743786821,
+          "accuracy": 0.8568359374999969,
+          "cost": 5.9188232421875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.125,
+          "BankOnly": 0,
+          "Stale": 153.59375,
+          "Censored": 51.28125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.125,
+          "BankOnly": 153.59375,
+          "Stale": 0,
+          "Censored": 51.28125
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.1017051533653417,
+          "accuracy": 0.9003417968750016,
+          "cost": 5.857421875
+        },
+        {
+          "brier": 0.09996379850320446,
+          "accuracy": 0.9187988281250021,
+          "cost": 5.85888671875
+        },
+        {
+          "brier": 0.09273898239896627,
+          "accuracy": 0.9311035156250023,
+          "cost": 5.88916015625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.125,
+          "BankOnly": 0,
+          "Stale": 153.59375,
+          "Censored": 51.28125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.125,
+          "BankOnly": 153.59375,
+          "Stale": 0,
+          "Censored": 51.28125
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.14613541345634923,
+          "accuracy": 0.809265136718748,
+          "cost": 5.407958984375
+        },
+        {
+          "brier": 0.13736647603033628,
+          "accuracy": 0.8167358398437476,
+          "cost": 5.4598388671875
+        },
+        {
+          "brier": 0.13736647603033628,
+          "accuracy": 0.8167358398437476,
+          "cost": 5.4598388671875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.1992607477399788,
+          "accuracy": 0.7267578125000013,
+          "cost": 5.63330078125
+        },
+        {
+          "brier": 0.1813781968797126,
+          "accuracy": 0.7416992187500014,
+          "cost": 5.718017578125
+        },
+        {
+          "brier": 0.1813781968797126,
+          "accuracy": 0.7416992187500014,
+          "cost": 5.718017578125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1828305946143205,
+          "accuracy": 0.754443359374999,
+          "cost": 5.433837890625
+        },
+        {
+          "brier": 0.18176131235771056,
+          "accuracy": 0.759167480468749,
+          "cost": 5.4598388671875
+        },
+        {
+          "brier": 0.18238956192397787,
+          "accuracy": 0.7589477539062489,
+          "cost": 5.444091796875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.03125,
+          "BankOnly": 0,
+          "Stale": 154.71875,
+          "Censored": 50.25
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.03125,
+          "BankOnly": 154.71875,
+          "Stale": 0,
+          "Censored": 50.25
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.25866459198833275,
+          "accuracy": 0.6406250000000009,
+          "cost": 5.54345703125
+        },
+        {
+          "brier": 0.2554197026875946,
+          "accuracy": 0.649853515625001,
+          "cost": 5.548828125
+        },
+        {
+          "brier": 0.25702683981966284,
+          "accuracy": 0.649633789062501,
+          "cost": 5.542724609375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.03125,
+          "BankOnly": 0,
+          "Stale": 154.71875,
+          "Censored": 50.25
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.03125,
+          "BankOnly": 154.71875,
+          "Stale": 0,
+          "Censored": 50.25
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.14646066217877865,
+          "accuracy": 0.7916870117187476,
+          "cost": 5.5931396484375
+        },
+        {
+          "brier": 0.1381741328265643,
+          "accuracy": 0.8134399414062473,
+          "cost": 5.5731201171875
+        },
+        {
+          "brier": 0.1381741328265643,
+          "accuracy": 0.8134399414062473,
+          "cost": 5.5731201171875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.16920236979056674,
+          "accuracy": 0.7788330078125013,
+          "cost": 5.2939453125
+        },
+        {
+          "brier": 0.16295013891947233,
+          "accuracy": 0.7821289062500013,
+          "cost": 5.351806640625
+        },
+        {
+          "brier": 0.16295013891947233,
+          "accuracy": 0.7821289062500013,
+          "cost": 5.351806640625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.18228360310290673,
+          "accuracy": 0.7290649414062483,
+          "cost": 5.7808837890625
+        },
+        {
+          "brier": 0.18017798187120168,
+          "accuracy": 0.7436767578124983,
+          "cost": 5.7813720703125
+        },
+        {
+          "brier": 0.18136816503183253,
+          "accuracy": 0.7425781249999983,
+          "cost": 5.7965087890625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.375,
+          "BankOnly": 0,
+          "Stale": 153.65625,
+          "Censored": 51.96875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.375,
+          "BankOnly": 153.65625,
+          "Stale": 0,
+          "Censored": 51.96875
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.21580282125506195,
+          "accuracy": 0.7045654296875012,
+          "cost": 5.64208984375
+        },
+        {
+          "brier": 0.21544295670017868,
+          "accuracy": 0.7028076171875013,
+          "cost": 5.65869140625
+        },
+        {
+          "brier": 0.22105758023765687,
+          "accuracy": 0.6970947265625013,
+          "cost": 5.7177734375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.375,
+          "BankOnly": 0,
+          "Stale": 153.65625,
+          "Censored": 51.96875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.375,
+          "BankOnly": 153.65625,
+          "Stale": 0,
+          "Censored": 51.96875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.05359562144067383,
+          "accuracy": 0.9482421874999957,
+          "cost": 3.570556640625
+        },
+        {
+          "brier": 0.053429506325655816,
+          "accuracy": 0.9482421874999957,
+          "cost": 3.56005859375
+        },
+        {
+          "brier": 0.053429506325655816,
+          "accuracy": 0.9482421874999957,
+          "cost": 3.56005859375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05002882670156543,
+          "accuracy": 0.9500000000000026,
+          "cost": 3.285400390625
+        },
+        {
+          "brier": 0.04991224568404888,
+          "accuracy": 0.9500000000000026,
+          "cost": 3.274658203125
+        },
+        {
+          "brier": 0.04991224568404888,
+          "accuracy": 0.9500000000000026,
+          "cost": 3.274658203125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.05435289486999611,
+          "accuracy": 0.9474731445312456,
+          "cost": 3.683349609375
+        },
+        {
+          "brier": 0.05419114210479114,
+          "accuracy": 0.9474731445312456,
+          "cost": 3.6669921875
+        },
+        {
+          "brier": 0.054186043795739165,
+          "accuracy": 0.9474731445312456,
+          "cost": 3.662841796875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52,
+          "BankOnly": 0,
+          "Stale": 152.78125,
+          "Censored": 51.21875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52,
+          "BankOnly": 152.78125,
+          "Stale": 0,
+          "Censored": 51.21875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05011387645277785,
+          "accuracy": 0.9500000000000026,
+          "cost": 3.311279296875
+        },
+        {
+          "brier": 0.05002313647015823,
+          "accuracy": 0.9500000000000026,
+          "cost": 3.29931640625
+        },
+        {
+          "brier": 0.0500146839892974,
+          "accuracy": 0.9500000000000026,
+          "cost": 3.295166015625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52,
+          "BankOnly": 0,
+          "Stale": 152.78125,
+          "Censored": 51.21875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 52,
+          "BankOnly": 152.78125,
+          "Stale": 0,
+          "Censored": 51.21875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.06398850022761703,
+          "accuracy": 0.9337402343749958,
+          "cost": 4.8502197265625
+        },
+        {
+          "brier": 0.06321162736354288,
+          "accuracy": 0.9356079101562459,
+          "cost": 4.82763671875
+        },
+        {
+          "brier": 0.06321162736354288,
+          "accuracy": 0.9356079101562459,
+          "cost": 4.82763671875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05409550830124317,
+          "accuracy": 0.9451660156250026,
+          "cost": 4.701416015625
+        },
+        {
+          "brier": 0.053493674552186996,
+          "accuracy": 0.9451660156250026,
+          "cost": 4.691650390625
+        },
+        {
+          "brier": 0.053493674552186996,
+          "accuracy": 0.9451660156250026,
+          "cost": 4.691650390625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.06479252520930291,
+          "accuracy": 0.9343994140624958,
+          "cost": 4.891357421875
+        },
+        {
+          "brier": 0.06426202273086443,
+          "accuracy": 0.9365966796874957,
+          "cost": 4.884033203125
+        },
+        {
+          "brier": 0.06404961606731219,
+          "accuracy": 0.9367065429687458,
+          "cost": 4.86962890625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.75,
+          "BankOnly": 0,
+          "Stale": 151.375,
+          "Censored": 52.875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.75,
+          "BankOnly": 151.375,
+          "Stale": 0,
+          "Censored": 52.875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.053964067485350826,
+          "accuracy": 0.9469238281250025,
+          "cost": 4.69775390625
+        },
+        {
+          "brier": 0.05373091003503559,
+          "accuracy": 0.9471435546875026,
+          "cost": 4.68798828125
+        },
+        {
+          "brier": 0.05347815405927761,
+          "accuracy": 0.9473632812500026,
+          "cost": 4.66748046875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.75,
+          "BankOnly": 0,
+          "Stale": 151.375,
+          "Censored": 52.875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.75,
+          "BankOnly": 151.375,
+          "Stale": 0,
+          "Censored": 52.875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07799007179892839,
+          "accuracy": 0.9104492187499961,
+          "cost": 5.46484375
+        },
+        {
+          "brier": 0.07378933606705688,
+          "accuracy": 0.9174804687499962,
+          "cost": 5.4229736328125
+        },
+        {
+          "brier": 0.07378933606705688,
+          "accuracy": 0.9174804687499962,
+          "cost": 5.4229736328125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05646150080557657,
+          "accuracy": 0.9475830078125025,
+          "cost": 5.39208984375
+        },
+        {
+          "brier": 0.05342196559923267,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.342041015625
+        },
+        {
+          "brier": 0.05342196559923267,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.342041015625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.08109573227032345,
+          "accuracy": 0.9042968749999962,
+          "cost": 5.5103759765625
+        },
+        {
+          "brier": 0.07949888208938527,
+          "accuracy": 0.9111083984374962,
+          "cost": 5.496826171875
+        },
+        {
+          "brier": 0.07798923821796927,
+          "accuracy": 0.9113281249999963,
+          "cost": 5.468017578125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.28125,
+          "BankOnly": 0,
+          "Stale": 153.75,
+          "Censored": 51.96875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.28125,
+          "BankOnly": 153.75,
+          "Stale": 0,
+          "Censored": 51.96875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05502909811088455,
+          "accuracy": 0.9495605468750026,
+          "cost": 5.36865234375
+        },
+        {
+          "brier": 0.05451860883411275,
+          "accuracy": 0.9495605468750026,
+          "cost": 5.353759765625
+        },
+        {
+          "brier": 0.05267300472804601,
+          "accuracy": 0.9497802734375026,
+          "cost": 5.321533203125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.28125,
+          "BankOnly": 0,
+          "Stale": 153.75,
+          "Censored": 51.96875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.28125,
+          "BankOnly": 153.75,
+          "Stale": 0,
+          "Censored": 51.96875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.09794514427184609,
+          "accuracy": 0.8648559570312468,
+          "cost": 5.879638671875
+        },
+        {
+          "brier": 0.08729173215026902,
+          "accuracy": 0.8919921874999963,
+          "cost": 5.785400390625
+        },
+        {
+          "brier": 0.08729173215026902,
+          "accuracy": 0.8919921874999963,
+          "cost": 5.785400390625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07335628972709705,
+          "accuracy": 0.9187988281250019,
+          "cost": 5.850830078125
+        },
+        {
+          "brier": 0.06056263307520044,
+          "accuracy": 0.9429687500000024,
+          "cost": 5.715576171875
+        },
+        {
+          "brier": 0.06056263307520044,
+          "accuracy": 0.9429687500000024,
+          "cost": 5.715576171875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.11036371458523453,
+          "accuracy": 0.842663574218747,
+          "cost": 5.9033203125
+        },
+        {
+          "brier": 0.10754199678096475,
+          "accuracy": 0.8633178710937468,
+          "cost": 5.8795166015625
+        },
+        {
+          "brier": 0.10095604789427848,
+          "accuracy": 0.8676025390624967,
+          "cost": 5.818115234375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 55.4375,
+          "BankOnly": 0,
+          "Stale": 151.125,
+          "Censored": 49.4375
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 55.4375,
+          "BankOnly": 151.125,
+          "Stale": 0,
+          "Censored": 49.4375
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07202231353805366,
+          "accuracy": 0.9214355468750017,
+          "cost": 5.866455078125
+        },
+        {
+          "brier": 0.06984004007891577,
+          "accuracy": 0.9409912109375019,
+          "cost": 5.825927734375
+        },
+        {
+          "brier": 0.06040277852726195,
+          "accuracy": 0.9447265625000023,
+          "cost": 5.72607421875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 55.4375,
+          "BankOnly": 0,
+          "Stale": 151.125,
+          "Censored": 49.4375
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 55.4375,
+          "BankOnly": 151.125,
+          "Stale": 0,
+          "Censored": 49.4375
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.09885849809241412,
+          "accuracy": 0.8657348632812466,
+          "cost": 5.8961181640625
+        },
+        {
+          "brier": 0.08928607632200994,
+          "accuracy": 0.8905639648437464,
+          "cost": 5.8006591796875
+        },
+        {
+          "brier": 0.08928607632200994,
+          "accuracy": 0.8905639648437464,
+          "cost": 5.8006591796875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07238772096071232,
+          "accuracy": 0.9231933593750017,
+          "cost": 5.868408203125
+        },
+        {
+          "brier": 0.060697120430173085,
+          "accuracy": 0.9447265625000023,
+          "cost": 5.727783203125
+        },
+        {
+          "brier": 0.060697120430173085,
+          "accuracy": 0.9447265625000023,
+          "cost": 5.727783203125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.11218722896324661,
+          "accuracy": 0.8377197265624973,
+          "cost": 5.8980712890625
+        },
+        {
+          "brier": 0.10964779725580111,
+          "accuracy": 0.8613403320312468,
+          "cost": 5.876953125
+        },
+        {
+          "brier": 0.10355802502723173,
+          "accuracy": 0.8644165039062467,
+          "cost": 5.8131103515625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.6875,
+          "BankOnly": 0,
+          "Stale": 154.96875,
+          "Censored": 51.34375
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.6875,
+          "BankOnly": 154.96875,
+          "Stale": 0,
+          "Censored": 51.34375
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07307702519804449,
+          "accuracy": 0.9207763671875018,
+          "cost": 5.851318359375
+        },
+        {
+          "brier": 0.07088839084830965,
+          "accuracy": 0.9449462890625024,
+          "cost": 5.81298828125
+        },
+        {
+          "brier": 0.061995621781226834,
+          "accuracy": 0.9464843750000025,
+          "cost": 5.710693359375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.6875,
+          "BankOnly": 0,
+          "Stale": 154.96875,
+          "Censored": 51.34375
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.6875,
+          "BankOnly": 154.96875,
+          "Stale": 0,
+          "Censored": 51.34375
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07399168272276078,
+          "accuracy": 0.9207763671874963,
+          "cost": 4.930908203125
+        },
+        {
+          "brier": 0.07415364240508428,
+          "accuracy": 0.9206665039062463,
+          "cost": 4.94140625
+        },
+        {
+          "brier": 0.07415364240508428,
+          "accuracy": 0.9206665039062463,
+          "cost": 4.94140625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05727898861595932,
+          "accuracy": 0.9464843750000025,
+          "cost": 4.7724609375
+        },
+        {
+          "brier": 0.05731928749733861,
+          "accuracy": 0.9467041015625024,
+          "cost": 4.7724609375
+        },
+        {
+          "brier": 0.05731928749733861,
+          "accuracy": 0.9467041015625024,
+          "cost": 4.7724609375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.08247378430866295,
+          "accuracy": 0.9071533203124962,
+          "cost": 5.0394287109375
+        },
+        {
+          "brier": 0.08330117946904779,
+          "accuracy": 0.9066040039062461,
+          "cost": 5.0885009765625
+        },
+        {
+          "brier": 0.08287450926477889,
+          "accuracy": 0.9064941406249961,
+          "cost": 5.0570068359375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.09375,
+          "BankOnly": 0,
+          "Stale": 154.34375,
+          "Censored": 51.5625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.09375,
+          "BankOnly": 154.34375,
+          "Stale": 0,
+          "Censored": 51.5625
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05817847182920617,
+          "accuracy": 0.9464843750000024,
+          "cost": 4.762939453125
+        },
+        {
+          "brier": 0.05877818003937358,
+          "accuracy": 0.9460449218750023,
+          "cost": 4.791259765625
+        },
+        {
+          "brier": 0.05827973777466626,
+          "accuracy": 0.9460449218750023,
+          "cost": 4.776611328125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.09375,
+          "BankOnly": 0,
+          "Stale": 154.34375,
+          "Censored": 51.5625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.09375,
+          "BankOnly": 154.34375,
+          "Stale": 0,
+          "Censored": 51.5625
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07622336410158231,
+          "accuracy": 0.9175903320312462,
+          "cost": 4.8218994140625
+        },
+        {
+          "brier": 0.07640863720456781,
+          "accuracy": 0.9175903320312462,
+          "cost": 4.8477783203125
+        },
+        {
+          "brier": 0.07640863720456781,
+          "accuracy": 0.9175903320312462,
+          "cost": 4.8477783203125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.059171991608237204,
+          "accuracy": 0.9464843750000023,
+          "cost": 4.716552734375
+        },
+        {
+          "brier": 0.059219795563048926,
+          "accuracy": 0.9464843750000023,
+          "cost": 4.72412109375
+        },
+        {
+          "brier": 0.059219795563048926,
+          "accuracy": 0.9464843750000023,
+          "cost": 4.72412109375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.08249585554530595,
+          "accuracy": 0.9123168945312463,
+          "cost": 4.96923828125
+        },
+        {
+          "brier": 0.0835292971813117,
+          "accuracy": 0.9119873046874961,
+          "cost": 5.051513671875
+        },
+        {
+          "brier": 0.08294022459454096,
+          "accuracy": 0.9120971679687463,
+          "cost": 4.99951171875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.375,
+          "BankOnly": 0,
+          "Stale": 155.84375,
+          "Censored": 50.78125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.375,
+          "BankOnly": 155.84375,
+          "Stale": 0,
+          "Censored": 50.78125
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.06017918208761184,
+          "accuracy": 0.9458251953125024,
+          "cost": 4.6982421875
+        },
+        {
+          "brier": 0.06107583506426061,
+          "accuracy": 0.9453857421875024,
+          "cost": 4.77490234375
+        },
+        {
+          "brier": 0.06029592573867734,
+          "accuracy": 0.9458251953125024,
+          "cost": 4.70849609375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.375,
+          "BankOnly": 0,
+          "Stale": 155.84375,
+          "Censored": 50.78125
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.375,
+          "BankOnly": 155.84375,
+          "Stale": 0,
+          "Censored": 50.78125
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.0509921670603112,
+          "accuracy": 0.9499999999999956,
+          "cost": 2.0509033203125
+        },
+        {
+          "brier": 0.05098013177686827,
+          "accuracy": 0.9499999999999956,
+          "cost": 2.0390625
+        },
+        {
+          "brier": 0.05098013177686827,
+          "accuracy": 0.9499999999999956,
+          "cost": 2.0390625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.048987684930237786,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.74951171875
+        },
+        {
+          "brier": 0.0489856294466592,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.7421875
+        },
+        {
+          "brier": 0.0489856294466592,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.7421875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.05153099259416031,
+          "accuracy": 0.9499999999999956,
+          "cost": 2.2293701171875
+        },
+        {
+          "brier": 0.051513235307429496,
+          "accuracy": 0.9499999999999956,
+          "cost": 2.2176513671875
+        },
+        {
+          "brier": 0.05151557732827249,
+          "accuracy": 0.9499999999999956,
+          "cost": 2.21826171875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 53.15625,
+          "BankOnly": 0,
+          "Stale": 154.6875,
+          "Censored": 48.15625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 53.15625,
+          "BankOnly": 154.6875,
+          "Stale": 0,
+          "Censored": 48.15625
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.04929841247306831,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.90478515625
+        },
+        {
+          "brier": 0.049299953384093334,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.89990234375
+        },
+        {
+          "brier": 0.04930060742299213,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.901123046875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 53.15625,
+          "BankOnly": 0,
+          "Stale": 154.6875,
+          "Censored": 48.15625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 53.15625,
+          "BankOnly": 154.6875,
+          "Stale": 0,
+          "Censored": 48.15625
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.26512206199317406,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2629352755449852,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2629352755449852,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.263761262881884,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2611416478065715,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2611416478065715,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.2670111126558792,
+          "accuracy": 0.5,
+          "cost": 5.998779296875
+        },
+        {
+          "brier": 0.2658511498467875,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.26504523946115194,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.1875,
+          "BankOnly": 0,
+          "Stale": 154.625,
+          "Censored": 52.1875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.1875,
+          "BankOnly": 154.625,
+          "Stale": 0,
+          "Censored": 52.1875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.2657051488667287,
+          "accuracy": 0.5,
+          "cost": 5.997802734375
+        },
+        {
+          "brier": 0.2644107093598245,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.26304305869935796,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.1875,
+          "BankOnly": 0,
+          "Stale": 154.625,
+          "Censored": 52.1875
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 49.1875,
+          "BankOnly": 154.625,
+          "Stale": 0,
+          "Censored": 52.1875
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1306859826841971,
+          "accuracy": 0.8482666015624972,
+          "cost": 5.7735595703125
+        },
+        {
+          "brier": 0.12017676018920767,
+          "accuracy": 0.8748535156249967,
+          "cost": 5.7845458984375
+        },
+        {
+          "brier": 0.12017676018920767,
+          "accuracy": 0.8748535156249967,
+          "cost": 5.7845458984375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.11418496527462751,
+          "accuracy": 0.8882568359375018,
+          "cost": 5.74560546875
+        },
+        {
+          "brier": 0.09961258326899408,
+          "accuracy": 0.9212158203125023,
+          "cost": 5.761474609375
+        },
+        {
+          "brier": 0.09961258326899408,
+          "accuracy": 0.9212158203125023,
+          "cost": 5.761474609375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.13892115993188356,
+          "accuracy": 0.8304687499999974,
+          "cost": 5.78369140625
+        },
+        {
+          "brier": 0.13697608385593188,
+          "accuracy": 0.8413452148437474,
+          "cost": 5.792236328125
+        },
+        {
+          "brier": 0.13157872564337736,
+          "accuracy": 0.8467285156249971,
+          "cost": 5.7950439453125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.3125,
+          "BankOnly": 0,
+          "Stale": 153.28125,
+          "Censored": 51.40625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.3125,
+          "BankOnly": 153.28125,
+          "Stale": 0,
+          "Censored": 51.40625
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.11504353631686978,
+          "accuracy": 0.8864990234375016,
+          "cost": 5.753173828125
+        },
+        {
+          "brier": 0.11366143532153662,
+          "accuracy": 0.897485351562502,
+          "cost": 5.765869140625
+        },
+        {
+          "brier": 0.10476199237686698,
+          "accuracy": 0.9069335937500022,
+          "cost": 5.77001953125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.3125,
+          "BankOnly": 0,
+          "Stale": 153.28125,
+          "Censored": 51.40625
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 51.3125,
+          "BankOnly": 153.28125,
+          "Stale": 0,
+          "Censored": 51.40625
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.15092848820961097,
+          "accuracy": 0.8026733398437482,
+          "cost": 5.445068359375
+        },
+        {
+          "brier": 0.14129858758615138,
+          "accuracy": 0.8120117187499982,
+          "cost": 5.490966796875
+        },
+        {
+          "brier": 0.14129858758615138,
+          "accuracy": 0.8120117187499982,
+          "cost": 5.490966796875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.20572992136674026,
+          "accuracy": 0.7214843750000014,
+          "cost": 5.6728515625
+        },
+        {
+          "brier": 0.18613558292450874,
+          "accuracy": 0.7397216796875014,
+          "cost": 5.744873046875
+        },
+        {
+          "brier": 0.18613558292450874,
+          "accuracy": 0.7397216796875014,
+          "cost": 5.744873046875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.18118563238816618,
+          "accuracy": 0.758947753906249,
+          "cost": 5.5372314453125
+        },
+        {
+          "brier": 0.17941112213091523,
+          "accuracy": 0.7640014648437489,
+          "cost": 5.5595703125
+        },
+        {
+          "brier": 0.1807121407543103,
+          "accuracy": 0.7625732421874989,
+          "cost": 5.5426025390625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.3125,
+          "BankOnly": 0,
+          "Stale": 154.9375,
+          "Censored": 50.75
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.3125,
+          "BankOnly": 154.9375,
+          "Stale": 0,
+          "Censored": 50.75
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.2542907155969609,
+          "accuracy": 0.6474365234375009,
+          "cost": 5.63037109375
+        },
+        {
+          "brier": 0.24959004495179932,
+          "accuracy": 0.659082031250001,
+          "cost": 5.6484375
+        },
+        {
+          "brier": 0.25254079362359577,
+          "accuracy": 0.6562255859375009,
+          "cost": 5.63623046875
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.3125,
+          "BankOnly": 0,
+          "Stale": 154.9375,
+          "Censored": 50.75
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.3125,
+          "BankOnly": 154.9375,
+          "Stale": 0,
+          "Censored": 50.75
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1477090675517917,
+          "accuracy": 0.7954223632812475,
+          "cost": 5.6865234375
+        },
+        {
+          "brier": 0.14159285012458353,
+          "accuracy": 0.8092651367187473,
+          "cost": 5.697509765625
+        },
+        {
+          "brier": 0.14159285012458353,
+          "accuracy": 0.8092651367187473,
+          "cost": 5.697509765625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 0,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.17427633379437088,
+          "accuracy": 0.7715820312500015,
+          "cost": 5.488037109375
+        },
+        {
+          "brier": 0.16884594473973155,
+          "accuracy": 0.7713623046875014,
+          "cost": 5.564453125
+        },
+        {
+          "brier": 0.16884594473973155,
+          "accuracy": 0.7713623046875014,
+          "cost": 5.564453125
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 256,
+          "BankOnly": 0,
+          "Stale": 0,
+          "Censored": 0
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.18863121694145218,
+          "accuracy": 0.7218139648437485,
+          "cost": 5.8238525390625
+        },
+        {
+          "brier": 0.18658725361843184,
+          "accuracy": 0.7333496093749984,
+          "cost": 5.8232421875
+        },
+        {
+          "brier": 0.18729950530938055,
+          "accuracy": 0.7344482421874983,
+          "cost": 5.84130859375
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.96875,
+          "BankOnly": 0,
+          "Stale": 153.6875,
+          "Censored": 51.34375
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.96875,
+          "BankOnly": 153.6875,
+          "Stale": 0,
+          "Censored": 51.34375
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "schedule": 1,
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.2277870191610006,
+          "accuracy": 0.6887451171875011,
+          "cost": 5.720458984375
+        },
+        {
+          "brier": 0.22686929514543624,
+          "accuracy": 0.6858886718750011,
+          "cost": 5.73388671875
+        },
+        {
+          "brier": 0.23160271406191574,
+          "accuracy": 0.6852294921875012,
+          "cost": 5.7978515625
+        }
+      ],
+      "final": [
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.96875,
+          "BankOnly": 0,
+          "Stale": 153.6875,
+          "Censored": 51.34375
+        },
+        {
+          "Issued": 256,
+          "Pending": 0,
+          "Applied": 50.96875,
+          "BankOnly": 153.6875,
+          "Stale": 0,
+          "Censored": 51.34375
+        }
+      ]
+    }
+  ]
+}

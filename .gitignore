@@ -21,3 +21,12 @@ evidence/**/*-dataset.json
 
 # Local agent workflow notes are not release artifacts.
 .learnings/LEARNINGS.md
+
+# Local research recovery/build records and private replay inputs.
+research/checkpoint-*/
+research/codex-fresh-*/
+research/publication-*/audit-local*.json
+research/publication-*/**/freeze-local.json
+research/**/*-dataset.json
+research/**/*.stores/
+*.test

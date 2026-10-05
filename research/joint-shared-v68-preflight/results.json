@@ -1,0 +1,537 @@
+{
+  "stage": "mathematical component only, NOT integrated controller or empirical rescue",
+  "checks": 5285,
+  "maxDifference": 6.661338147750939e-16,
+  "contexts": 16,
+  "queries": 64,
+  "latentStates": 30,
+  "originalYPathsPerState": 16,
+  "maxNonlocalValue": 0.0011318528539885878,
+  "cases": [
+    {
+      "firstPattern": 0,
+      "member": 0,
+      "secondProbability": 0.06877280727592604,
+      "globalPredictionValue": 0.0003317441258267919,
+      "localOnlyShortcut": 0.000029461325103462944,
+      "omittedNonlocalValue": 0.00030228280072332897
+    },
+    {
+      "firstPattern": 0,
+      "member": 1,
+      "secondProbability": 0.08486402054802693,
+      "globalPredictionValue": 0.000573807420012864,
+      "localOnlyShortcut": 0.0001847776065859032,
+      "omittedNonlocalValue": 0.00038902981342696076
+    },
+    {
+      "firstPattern": 0,
+      "member": 2,
+      "secondProbability": 0.11844985735323384,
+      "globalPredictionValue": 0.0010308264680443891,
+      "localOnlyShortcut": 0.0006110577924296852,
+      "omittedNonlocalValue": 0.000419768675614704
+    },
+    {
+      "firstPattern": 0,
+      "member": 3,
+      "secondProbability": 0.2126376674068412,
+      "globalPredictionValue": 0.0012443040783224359,
+      "localOnlyShortcut": 0.00011245122433384811,
+      "omittedNonlocalValue": 0.0011318528539885878
+    },
+    {
+      "firstPattern": 1,
+      "member": 0,
+      "secondProbability": 0.783983208643074,
+      "globalPredictionValue": 0.0004956154189929604,
+      "localOnlyShortcut": 0.0002855420231616645,
+      "omittedNonlocalValue": 0.00021007339583129587
+    },
+    {
+      "firstPattern": 1,
+      "member": 1,
+      "secondProbability": 0.13217841286437026,
+      "globalPredictionValue": 0.00005103890798677352,
+      "localOnlyShortcut": 0.0000010291655398639046,
+      "omittedNonlocalValue": 0.00005000974244690961
+    },
+    {
+      "firstPattern": 1,
+      "member": 2,
+      "secondProbability": 0.17956660320580725,
+      "globalPredictionValue": 0.0001651093176929507,
+      "localOnlyShortcut": 0.00009623512059600752,
+      "omittedNonlocalValue": 0.00006887419709694318
+    },
+    {
+      "firstPattern": 1,
+      "member": 3,
+      "secondProbability": 0.3051146781509736,
+      "globalPredictionValue": 0.00029416592933160504,
+      "localOnlyShortcut": 0.00003288996195210081,
+      "omittedNonlocalValue": 0.00026127596737950424
+    },
+    {
+      "firstPattern": 2,
+      "member": 0,
+      "secondProbability": 0.09080503465492812,
+      "globalPredictionValue": 0.0000023947228476235595,
+      "localOnlyShortcut": 2.173601677335957e-9,
+      "omittedNonlocalValue": 0.0000023925492459462237
+    },
+    {
+      "firstPattern": 2,
+      "member": 1,
+      "secondProbability": 0.8675306970127535,
+      "globalPredictionValue": 0.00015648350595634766,
+      "localOnlyShortcut": 0.00006775918873035223,
+      "omittedNonlocalValue": 0.00008872431722599543
+    },
+    {
+      "firstPattern": 2,
+      "member": 2,
+      "secondProbability": 0.16289619590704923,
+      "globalPredictionValue": 0.000058245906124265094,
+      "localOnlyShortcut": 0.00004427852174995655,
+      "omittedNonlocalValue": 0.000013967384374308543
+    },
+    {
+      "firstPattern": 2,
+      "member": 3,
+      "secondProbability": 0.27293733649135904,
+      "globalPredictionValue": 0.00005630379299817433,
+      "localOnlyShortcut": 0.000007384604257968393,
+      "omittedNonlocalValue": 0.000048919188740205936
+    },
+    {
+      "firstPattern": 3,
+      "member": 0,
+      "secondProbability": 0.8043420841161397,
+      "globalPredictionValue": 0.0002693721960489426,
+      "localOnlyShortcut": 0.00016836042259912783,
+      "omittedNonlocalValue": 0.00010101177344981475
+    },
+    {
+      "firstPattern": 3,
+      "member": 1,
+      "secondProbability": 0.8584633484505868,
+      "globalPredictionValue": 0.0001243451590583453,
+      "localOnlyShortcut": 0.000022093968862370306,
+      "omittedNonlocalValue": 0.00010225119019597498
+    },
+    {
+      "firstPattern": 3,
+      "member": 2,
+      "secondProbability": 0.1915966586875038,
+      "globalPredictionValue": 0.00037033377181172627,
+      "localOnlyShortcut": 0.0002709988533423472,
+      "omittedNonlocalValue": 0.00009933491846937908
+    },
+    {
+      "firstPattern": 3,
+      "member": 3,
+      "secondProbability": 0.3024671337652762,
+      "globalPredictionValue": 0.00038591228222475136,
+      "localOnlyShortcut": 0.000050928898936809184,
+      "omittedNonlocalValue": 0.00033498338328794214
+    },
+    {
+      "firstPattern": 4,
+      "member": 0,
+      "secondProbability": 0.07243596756172568,
+      "globalPredictionValue": 0.000006383077901790104,
+      "localOnlyShortcut": 1.482711446059072e-7,
+      "omittedNonlocalValue": 0.0000062348067571841965
+    },
+    {
+      "firstPattern": 4,
+      "member": 1,
+      "secondProbability": 0.09351823675323263,
+      "globalPredictionValue": 0.000026901967791043477,
+      "localOnlyShortcut": 0.000009098045957536803,
+      "omittedNonlocalValue": 0.000017803921833506676
+    },
+    {
+      "firstPattern": 4,
+      "member": 2,
+      "secondProbability": 0.919696692677639,
+      "globalPredictionValue": 0.000024735265925398058,
+      "localOnlyShortcut": 0.000009007813454777184,
+      "omittedNonlocalValue": 0.000015727452470620874
+    },
+    {
+      "firstPattern": 4,
+      "member": 3,
+      "secondProbability": 0.23337234906332333,
+      "globalPredictionValue": 0.0000516472674733622,
+      "localOnlyShortcut": 0.000007534507831013927,
+      "omittedNonlocalValue": 0.00004411275964234827
+    },
+    {
+      "firstPattern": 5,
+      "member": 0,
+      "secondProbability": 0.8134126676462567,
+      "globalPredictionValue": 0.00006111540766016687,
+      "localOnlyShortcut": 0.00004134876682890722,
+      "omittedNonlocalValue": 0.000019766640831259646
+    },
+    {
+      "firstPattern": 5,
+      "member": 1,
+      "secondProbability": 0.12582664747296346,
+      "globalPredictionValue": 0.00008938164762701705,
+      "localOnlyShortcut": 0.00004153424054497892,
+      "omittedNonlocalValue": 0.000047847407082038134
+    },
+    {
+      "firstPattern": 5,
+      "member": 2,
+      "secondProbability": 0.9001652834870462,
+      "globalPredictionValue": 0.000009156116475812119,
+      "localOnlyShortcut": 0.000001921928174532925,
+      "omittedNonlocalValue": 0.000007234188301279194
+    },
+    {
+      "firstPattern": 5,
+      "member": 3,
+      "secondProbability": 0.285434429480375,
+      "globalPredictionValue": 0.0000525189547706195,
+      "localOnlyShortcut": 0.000007714649265346028,
+      "omittedNonlocalValue": 0.00004480430550527347
+    },
+    {
+      "firstPattern": 6,
+      "member": 0,
+      "secondProbability": 0.07577913872225646,
+      "globalPredictionValue": 0.000004060439815161668,
+      "localOnlyShortcut": 8.304552410163927e-7,
+      "omittedNonlocalValue": 0.0000032299845741452756
+    },
+    {
+      "firstPattern": 6,
+      "member": 1,
+      "secondProbability": 0.8986596948252126,
+      "globalPredictionValue": 0.00005254935981974495,
+      "localOnlyShortcut": 0.000026362804385158606,
+      "omittedNonlocalValue": 0.000026186555434586345
+    },
+    {
+      "firstPattern": 6,
+      "member": 2,
+      "secondProbability": 0.9233337744317968,
+      "globalPredictionValue": 0.000020090200072443495,
+      "localOnlyShortcut": 0.0000031742387994307945,
+      "omittedNonlocalValue": 0.0000169159612730127
+    },
+    {
+      "firstPattern": 6,
+      "member": 3,
+      "secondProbability": 0.23367383685118817,
+      "globalPredictionValue": 0.00005440419651856589,
+      "localOnlyShortcut": 0.000009870240153960607,
+      "omittedNonlocalValue": 0.00004453395636460528
+    },
+    {
+      "firstPattern": 7,
+      "member": 0,
+      "secondProbability": 0.8419081598582814,
+      "globalPredictionValue": 0.00042653932217017176,
+      "localOnlyShortcut": 0.00017051280275743946,
+      "omittedNonlocalValue": 0.0002560265194127323
+    },
+    {
+      "firstPattern": 7,
+      "member": 1,
+      "secondProbability": 0.8895691479742963,
+      "globalPredictionValue": 0.0002445325672069331,
+      "localOnlyShortcut": 0.0001294760018310834,
+      "omittedNonlocalValue": 0.0001150565653758497
+    },
+    {
+      "firstPattern": 7,
+      "member": 2,
+      "secondProbability": 0.9126921354244335,
+      "globalPredictionValue": 0.00011010902647756677,
+      "localOnlyShortcut": 0.000014778298409974612,
+      "omittedNonlocalValue": 0.00009533072806759216
+    },
+    {
+      "firstPattern": 7,
+      "member": 3,
+      "secondProbability": 0.26244886220314995,
+      "globalPredictionValue": 0.00019180945545546526,
+      "localOnlyShortcut": 0.000060498026639908476,
+      "omittedNonlocalValue": 0.0001313114288155568
+    },
+    {
+      "firstPattern": 8,
+      "member": 0,
+      "secondProbability": 0.03153714551006883,
+      "globalPredictionValue": 0.00003807261753759601,
+      "localOnlyShortcut": 0.000004661070584455585,
+      "omittedNonlocalValue": 0.00003341154695314042
+    },
+    {
+      "firstPattern": 8,
+      "member": 1,
+      "secondProbability": 0.039600898070642085,
+      "globalPredictionValue": 0.00008008595053007017,
+      "localOnlyShortcut": 0.000030865259945405665,
+      "omittedNonlocalValue": 0.000049220690584664506
+    },
+    {
+      "firstPattern": 8,
+      "member": 2,
+      "secondProbability": 0.0573704816467474,
+      "globalPredictionValue": 0.00016122443215203276,
+      "localOnlyShortcut": 0.00009768410030657703,
+      "omittedNonlocalValue": 0.00006354033184545573
+    },
+    {
+      "firstPattern": 8,
+      "member": 3,
+      "secondProbability": 0.972174748328377,
+      "globalPredictionValue": 0.00001375901224385992,
+      "localOnlyShortcut": 3.071181305361077e-8,
+      "omittedNonlocalValue": 0.000013728300430806309
+    },
+    {
+      "firstPattern": 9,
+      "member": 0,
+      "secondProbability": 0.8930097342889177,
+      "globalPredictionValue": 0.00012290008254873467,
+      "localOnlyShortcut": 0.00004547905174471516,
+      "omittedNonlocalValue": 0.00007742103080401951
+    },
+    {
+      "firstPattern": 9,
+      "member": 1,
+      "secondProbability": 0.06436465761592071,
+      "globalPredictionValue": 0.0000028410479875561674,
+      "localOnlyShortcut": 9.101520796175588e-7,
+      "omittedNonlocalValue": 0.0000019308959079386087
+    },
+    {
+      "firstPattern": 9,
+      "member": 2,
+      "secondProbability": 0.09030486562811811,
+      "globalPredictionValue": 0.000014087497124434807,
+      "localOnlyShortcut": 0.000009904140506542669,
+      "omittedNonlocalValue": 0.000004183356617892138
+    },
+    {
+      "firstPattern": 9,
+      "member": 3,
+      "secondProbability": 0.9568765867745449,
+      "globalPredictionValue": 0.000005859409560542074,
+      "localOnlyShortcut": 4.341399395556855e-12,
+      "omittedNonlocalValue": 0.000005859405219142678
+    },
+    {
+      "firstPattern": 10,
+      "member": 0,
+      "secondProbability": 0.03807808097895433,
+      "globalPredictionValue": 0.0000012143948695608098,
+      "localOnlyShortcut": 8.035485260010664e-7,
+      "omittedNonlocalValue": 4.1084634355974343e-7
+    },
+    {
+      "firstPattern": 10,
+      "member": 1,
+      "secondProbability": 0.9442258604256084,
+      "globalPredictionValue": 0.000041932405276768665,
+      "localOnlyShortcut": 0.000017498275417443203,
+      "omittedNonlocalValue": 0.000024434129859325462
+    },
+    {
+      "firstPattern": 10,
+      "member": 2,
+      "secondProbability": 0.07161326521256128,
+      "globalPredictionValue": 0.000009001255452756163,
+      "localOnlyShortcut": 0.000006156132503956169,
+      "omittedNonlocalValue": 0.0000028451229487999937
+    },
+    {
+      "firstPattern": 10,
+      "member": 3,
+      "secondProbability": 0.9677746200261879,
+      "globalPredictionValue": 6.475857682585043e-7,
+      "localOnlyShortcut": 2.0599525905837253e-8,
+      "omittedNonlocalValue": 6.26986242352667e-7
+    },
+    {
+      "firstPattern": 11,
+      "member": 0,
+      "secondProbability": 0.8985321975998297,
+      "globalPredictionValue": 0.00002220180623378004,
+      "localOnlyShortcut": 0.000013450172559075044,
+      "omittedNonlocalValue": 0.000008751633674704997
+    },
+    {
+      "firstPattern": 11,
+      "member": 1,
+      "secondProbability": 0.9287956338541404,
+      "globalPredictionValue": 0.000006991355692243379,
+      "localOnlyShortcut": 0.0000020191007561907388,
+      "omittedNonlocalValue": 0.00000497225493605264
+    },
+    {
+      "firstPattern": 11,
+      "member": 2,
+      "secondProbability": 0.10028579144927248,
+      "globalPredictionValue": 0.00015091000306223892,
+      "localOnlyShortcut": 0.00006750972858313074,
+      "omittedNonlocalValue": 0.00008340027447910818
+    },
+    {
+      "firstPattern": 11,
+      "member": 3,
+      "secondProbability": 0.9558349226533304,
+      "globalPredictionValue": 0.000005071124968345594,
+      "localOnlyShortcut": 1.901383947579014e-7,
+      "omittedNonlocalValue": 0.0000048809865735876925
+    },
+    {
+      "firstPattern": 12,
+      "member": 0,
+      "secondProbability": 0.02649018724195099,
+      "globalPredictionValue": 0.00000199602904926382,
+      "localOnlyShortcut": 0.0000013013575869258117,
+      "omittedNonlocalValue": 6.946714623380084e-7
+    },
+    {
+      "firstPattern": 12,
+      "member": 1,
+      "secondProbability": 0.03465379139135868,
+      "globalPredictionValue": 0.000005245486420478354,
+      "localOnlyShortcut": 0.000002406265496365427,
+      "omittedNonlocalValue": 0.000002839220924112927
+    },
+    {
+      "firstPattern": 12,
+      "member": 2,
+      "secondProbability": 0.9710259008692306,
+      "globalPredictionValue": 0.00000969864051408328,
+      "localOnlyShortcut": 0.000007251041409894667,
+      "omittedNonlocalValue": 0.0000024475991041886124
+    },
+    {
+      "firstPattern": 12,
+      "member": 3,
+      "secondProbability": 0.9772505524412411,
+      "globalPredictionValue": 6.10326533261033e-7,
+      "localOnlyShortcut": 6.40136755101621e-8,
+      "omittedNonlocalValue": 5.463128577508709e-7
+    },
+    {
+      "firstPattern": 13,
+      "member": 0,
+      "secondProbability": 0.9166963636960386,
+      "globalPredictionValue": 0.000010400818859308326,
+      "localOnlyShortcut": 0.000006844545916014939,
+      "omittedNonlocalValue": 0.0000035562729432933876
+    },
+    {
+      "firstPattern": 13,
+      "member": 1,
+      "secondProbability": 0.05458209983104209,
+      "globalPredictionValue": 0.00004779080366271955,
+      "localOnlyShortcut": 0.000022431238241940982,
+      "omittedNonlocalValue": 0.00002535956542077857
+    },
+    {
+      "firstPattern": 13,
+      "member": 2,
+      "secondProbability": 0.9577244132943998,
+      "globalPredictionValue": 0.0000014204128198500217,
+      "localOnlyShortcut": 9.870187909459124e-7,
+      "omittedNonlocalValue": 4.333940289041093e-7
+    },
+    {
+      "firstPattern": 13,
+      "member": 3,
+      "secondProbability": 0.966031305559823,
+      "globalPredictionValue": 4.2753827200416873e-7,
+      "localOnlyShortcut": 1.598375399979558e-9,
+      "omittedNonlocalValue": 4.259398966041892e-7
+    },
+    {
+      "firstPattern": 14,
+      "member": 0,
+      "secondProbability": 0.028546569601394813,
+      "globalPredictionValue": 0.000006823422394965227,
+      "localOnlyShortcut": 0.000004102369521952152,
+      "omittedNonlocalValue": 0.0000027210528730130754
+    },
+    {
+      "firstPattern": 14,
+      "member": 1,
+      "secondProbability": 0.9612371219705809,
+      "globalPredictionValue": 0.000007324794498983543,
+      "localOnlyShortcut": 0.000003378656909154258,
+      "omittedNonlocalValue": 0.000003946137589829285
+    },
+    {
+      "firstPattern": 14,
+      "member": 2,
+      "secondProbability": 0.9712755094201485,
+      "globalPredictionValue": 0.0000029298938152985654,
+      "localOnlyShortcut": 0.0000020583701227121035,
+      "omittedNonlocalValue": 8.715236925864619e-7
+    },
+    {
+      "firstPattern": 14,
+      "member": 3,
+      "secondProbability": 0.9764868450045814,
+      "globalPredictionValue": 3.0575325229862987e-7,
+      "localOnlyShortcut": 2.1768020679195063e-8,
+      "omittedNonlocalValue": 2.839852316194348e-7
+    },
+    {
+      "firstPattern": 15,
+      "member": 0,
+      "secondProbability": 0.9324553672462643,
+      "globalPredictionValue": 0.00029835084711031637,
+      "localOnlyShortcut": 0.00013948044360369592,
+      "omittedNonlocalValue": 0.00015887040350662045
+    },
+    {
+      "firstPattern": 15,
+      "member": 1,
+      "secondProbability": 0.9540618518870367,
+      "globalPredictionValue": 0.00016828541457542117,
+      "localOnlyShortcut": 0.00007786760135029996,
+      "omittedNonlocalValue": 0.00009041781322512121
+    },
+    {
+      "firstPattern": 15,
+      "member": 2,
+      "secondProbability": 0.9642824236357536,
+      "globalPredictionValue": 0.00008499707770860612,
+      "localOnlyShortcut": 0.000013971261945749217,
+      "omittedNonlocalValue": 0.0000710258157628569
+    },
+    {
+      "firstPattern": 15,
+      "member": 3,
+      "secondProbability": 0.9700482198490793,
+      "globalPredictionValue": 0.000039456495308717967,
+      "localOnlyShortcut": 3.197768360820583e-8,
+      "omittedNonlocalValue": 0.00003942451762510976
+    }
+  ],
+  "baselineMeanPreserved": true,
+  "towerIdentityPassed": true,
+  "efficientVersusEnumerationPassed": true,
+  "allSevenGoalsValidated": false,
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ]
+}

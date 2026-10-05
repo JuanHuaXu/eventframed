@@ -1,0 +1,130 @@
+{
+  "rawHash": "724b875a11c66cede4fff445c515315ffd1da46e2a179969b0fa588d1c0c2794",
+  "sourceCount": 41,
+  "verified": 48000,
+  "means": [
+    {
+      "trial": 0,
+      "size": 50,
+      "candidate": false,
+      "appendMS": 0.9603346875,
+      "readUS": 25.294483749999998
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "candidate": true,
+      "appendMS": 0.74816921875,
+      "readUS": 14.221645624999999
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "candidate": false,
+      "appendMS": 2.6381445625,
+      "readUS": 22.731154218750003
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "candidate": true,
+      "appendMS": 2.70197390625,
+      "readUS": 14.21848234375
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "candidate": true,
+      "appendMS": 0.737988375,
+      "readUS": 14.534611875000001
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "candidate": false,
+      "appendMS": 0.7364909375,
+      "readUS": 24.2044725
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "candidate": true,
+      "appendMS": 2.75179684375,
+      "readUS": 14.81816625
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "candidate": false,
+      "appendMS": 2.699737,
+      "readUS": 23.76966390625
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "candidate": false,
+      "appendMS": 0.71918228125,
+      "readUS": 23.663235625000002
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "candidate": true,
+      "appendMS": 0.7348866875,
+      "readUS": 14.52162875
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "candidate": false,
+      "appendMS": 2.68475121875,
+      "readUS": 23.616558125
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "candidate": true,
+      "appendMS": 2.81750115625,
+      "readUS": 14.09832171875
+    }
+  ],
+  "pairs": [
+    {
+      "trial": 0,
+      "size": 50,
+      "appendRatio": 0.7790713263702661,
+      "readRatio": 0.562242968291456
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "appendRatio": 1.0241947862362453,
+      "readRatio": 0.6255063956242818
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "appendRatio": 1.0020332056020715,
+      "readRatio": 0.6004928169783498
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "appendRatio": 1.0192833019475602,
+      "readRatio": 0.6234066374873609
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "appendRatio": 1.0218364754797689,
+      "readRatio": 0.6136789144193799
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "appendRatio": 1.049445898961844,
+      "readRatio": 0.5969676717550898
+    }
+  ],
+  "limits": "Admission-only isolated table. No feedback, migration, crash, concurrency, or whole-goal validity claim."
+}

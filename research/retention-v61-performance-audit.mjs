@@ -1,0 +1,20 @@
+// Preserve the original microbench; independently observe public API outputs.
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+const root='research/retention-v61-component',hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const freeze=JSON.parse(fs.readFileSync(root+'/freeze.json')),complete=JSON.parse(fs.readFileSync(root+'/completed.json'));
+assert(complete.checks.every(x=>x.exitCode===0));
+for (const [p,h] of Object.entries({...freeze.files,...freeze.protectedFiles})) assert.equal(hash(fs.readFileSync(p)),h,p);
+const paths=['cmd/research-retention-bench/main.go','research/retention-v61-performance-audit.mjs'];
+const files=Object.fromEntries(paths.map(p=>[p,hash(fs.readFileSync(p))]));
+fs.writeFileSync(root+'/performance-audit-freeze.json',JSON.stringify({files,mainClosure:'imports only frozen selector and standard library',mainPackageValidatedByVet:true,stage:'post-component benchmark readback, no scientific gate',baseModelsNotIncluded:true},null,2)+'\n',{flag:'wx',mode:0o600});
+const env={...process.env};for(const k of Object.keys(env))if(k.startsWith('EVENTFRAME_'))delete env[k];
+execFileSync('go',['vet','./cmd/research-retention-bench'],{env,stdio:'pipe'});
+const raw=execFileSync('go',['run','./cmd/research-retention-bench'],{env,maxBuffer:4*1024*1024,timeout:120000});
+const result=JSON.parse(raw);assert.equal(result.Timings.length,12);
+for(const row of result.Timings)assert(row.NSPerOp>0&&row.BytesPerOp>=0&&row.AllocsPerOp>=0);
+for (const [p,h] of Object.entries({...freeze.files,...freeze.protectedFiles,...files})) assert.equal(hash(fs.readFileSync(p)),h,p);
+fs.writeFileSync(root+'/performance-audit.json',JSON.stringify({...result,sources:files,originalBenchmarkUnmodified:true,noScientificAdoption:true},null,2)+'\n',{flag:'wx',mode:0o600});
+console.log(JSON.stringify(result,null,2));

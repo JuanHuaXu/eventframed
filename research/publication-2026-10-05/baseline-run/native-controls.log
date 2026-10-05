@@ -1,0 +1,5 @@
+=== RUN   TestResearchBaselinePolicy20261005
+    baseline_policy_20261005_test.go:87: 240 control arms; 576000 independently recomputed losses; frozen risks retained
+--- PASS: TestResearchBaselinePolicy20261005 (29.69s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchdispersion	29.891s

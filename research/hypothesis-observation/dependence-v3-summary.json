@@ -1,0 +1,1282 @@
+{
+  "summaries": [
+    {
+      "split": 0,
+      "case": "independent05",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.1001749047803526,
+      "final_brier": 4.274241718433782e-05,
+      "correct": 1,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.10599943402313544,
+      "final_brier": 0.014250854458518928,
+      "correct": 0.9921875,
+      "confident_wrong": 0.0078125,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.1405673746133568,
+      "final_brier": 0.0075161456703601165,
+      "correct": 0.9921875,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.272002003407641,
+      "final_brier": 0.028658635588970978,
+      "correct": 0.9765625,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.14934655682066372,
+      "final_brier": 0.07528225017743265,
+      "correct": 0.953125,
+      "confident_wrong": 0,
+      "queries": 8
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.2998562079439312,
+      "final_brier": 0.11636247555470314,
+      "correct": 0.9140625,
+      "confident_wrong": 0.0234375,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.3349628008238866,
+      "final_brier": 0.14920072659246103,
+      "correct": 0.9140625,
+      "confident_wrong": 0.0078125,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.47716239421473583,
+      "final_brier": 0.2866791919720619,
+      "correct": 0.8203125,
+      "confident_wrong": 0.0078125,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.5351486693065833,
+      "final_brier": 0.31801001034522414,
+      "correct": 0.7734375,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.5337509409806462,
+      "final_brier": 0.49854411139295324,
+      "correct": 0.65625,
+      "confident_wrong": 0,
+      "queries": 8
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.20232811490153907,
+      "final_brier": 0.14311681020356043,
+      "correct": 0.921875,
+      "confident_wrong": 0.078125,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.1829010719237568,
+      "final_brier": 0.10825070079308559,
+      "correct": 0.921875,
+      "confident_wrong": 0.0078125,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.1881504294548023,
+      "final_brier": 0.10287280047938659,
+      "correct": 0.921875,
+      "confident_wrong": 0.015625,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.308804308462396,
+      "final_brier": 0.1263197500282031,
+      "correct": 0.9140625,
+      "confident_wrong": 0.0234375,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.17430006193275366,
+      "final_brier": 0.1012564900044545,
+      "correct": 0.921875,
+      "confident_wrong": 0.0078125,
+      "queries": 8
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.7424089212704885,
+      "final_brier": 0.6556115096440898,
+      "correct": 0.59375,
+      "confident_wrong": 0.265625,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.5967505478024763,
+      "final_brier": 0.5320238356061937,
+      "correct": 0.6328125,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.5670702918001397,
+      "final_brier": 0.5321279627709513,
+      "correct": 0.6328125,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.6520137467701622,
+      "final_brier": 0.5643397999749505,
+      "correct": 0.59375,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.5563905592754241,
+      "final_brier": 0.5237869092747043,
+      "correct": 0.6328125,
+      "confident_wrong": 0,
+      "queries": 8
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.6086245201981321,
+      "final_brier": 0.5186452124746274,
+      "correct": 0.6640625,
+      "confident_wrong": 0.1484375,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.5381953447540112,
+      "final_brier": 0.3464596636239113,
+      "correct": 0.75,
+      "confident_wrong": 0.015625,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.5107323547094901,
+      "final_brier": 0.33078242606181446,
+      "correct": 0.78125,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.5706575608662158,
+      "final_brier": 0.4176029211858901,
+      "correct": 0.6796875,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.5395720202924534,
+      "final_brier": 0.4967185135850226,
+      "correct": 0.625,
+      "confident_wrong": 0,
+      "queries": 8
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.10727411722817541,
+      "final_brier": 1.428397128251139e-10,
+      "correct": 1,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.10583582163153146,
+      "final_brier": 0.00012637944610790447,
+      "correct": 1,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.15774207915661112,
+      "final_brier": 0.00016421310595417964,
+      "correct": 1,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.2842270775116005,
+      "final_brier": 0.051255270903871476,
+      "correct": 0.9765625,
+      "confident_wrong": 0.0078125,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.15842291001120135,
+      "final_brier": 0.07888332254705809,
+      "correct": 0.9453125,
+      "confident_wrong": 0.0078125,
+      "queries": 8
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.3535730298757467,
+      "final_brier": 0.15685093684200543,
+      "correct": 0.8828125,
+      "confident_wrong": 0.0078125,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.3836862182040919,
+      "final_brier": 0.22670858928018747,
+      "correct": 0.8515625,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.47803029262864943,
+      "final_brier": 0.3257861238489566,
+      "correct": 0.765625,
+      "confident_wrong": 0.015625,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.5465290892663225,
+      "final_brier": 0.3460762210479889,
+      "correct": 0.765625,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.5032433558768161,
+      "final_brier": 0.46383765353645506,
+      "correct": 0.6640625,
+      "confident_wrong": 0,
+      "queries": 8
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.15443717088706496,
+      "final_brier": 0.05743260024135034,
+      "correct": 0.96875,
+      "confident_wrong": 0.03125,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.13655750675662912,
+      "final_brier": 0.059816597751335,
+      "correct": 0.96875,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.13923136296419852,
+      "final_brier": 0.06091684256937539,
+      "correct": 0.96875,
+      "confident_wrong": 0.015625,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.2644367408667621,
+      "final_brier": 0.06808795798426684,
+      "correct": 0.9609375,
+      "confident_wrong": 0.0078125,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.13432071442033047,
+      "final_brier": 0.059797661580964924,
+      "correct": 0.96875,
+      "confident_wrong": 0,
+      "queries": 8
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.7091612816774638,
+      "final_brier": 0.6889911639687111,
+      "correct": 0.6171875,
+      "confident_wrong": 0.3046875,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.5802717945079269,
+      "final_brier": 0.5416647207961468,
+      "correct": 0.609375,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.5610641866642561,
+      "final_brier": 0.5422267841785301,
+      "correct": 0.609375,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.6070401174556126,
+      "final_brier": 0.5511190548751961,
+      "correct": 0.609375,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.5507462325018124,
+      "final_brier": 0.5226186502480338,
+      "correct": 0.6015625,
+      "confident_wrong": 0,
+      "queries": 8
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "arm": "independent",
+      "n": 128,
+      "curve_brier": 0.522715575678084,
+      "final_brier": 0.41063655715060793,
+      "correct": 0.734375,
+      "confident_wrong": 0.109375,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "arm": "joint_gini",
+      "n": 128,
+      "curve_brier": 0.4756454287432416,
+      "final_brier": 0.28915609177682366,
+      "correct": 0.765625,
+      "confident_wrong": 0.0078125,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "arm": "joint_entropy",
+      "n": 128,
+      "curve_brier": 0.4977520044064921,
+      "final_brier": 0.2845594417899808,
+      "correct": 0.796875,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "arm": "joint_random",
+      "n": 128,
+      "curve_brier": 0.5510167540275027,
+      "final_brier": 0.43625673964325556,
+      "correct": 0.6953125,
+      "confident_wrong": 0,
+      "queries": 16
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "arm": "once",
+      "n": 128,
+      "curve_brier": 0.5367130928471513,
+      "final_brier": 0.49636758903239603,
+      "correct": 0.609375,
+      "confident_wrong": 0,
+      "queries": 8
+    }
+  ],
+  "comparisons": [
+    {
+      "split": 0,
+      "case": "independent05",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": -0.01420811204133459,
+      "lower": -0.06083632434860397,
+      "upper": 0.03242010026593479
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": -0.0058245292427828435,
+      "lower": -0.021382137081376932,
+      "upper": 0.009733078595811247
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.014407781130452048,
+      "lower": -0.05293387575635658,
+      "upper": 0.08174943801726067
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.16600256938450555,
+      "lower": 0.10228615830912619,
+      "upper": 0.22971898045988492
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": -0.0067347087881588115,
+      "lower": -0.029339168368745613,
+      "upper": 0.01586975079242799
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": 0.03456794059022136,
+      "lower": -0.010197816599263505,
+      "upper": 0.07933369777970622
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": 0.061031395718913715,
+      "lower": -0.00566470560574394,
+      "upper": 0.12772749704357136
+    },
+    {
+      "split": 0,
+      "case": "independent05",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": 0.043347122797528274,
+      "lower": -0.0001703882131538076,
+      "upper": 0.08686463380821036
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": -0.03283825103775791,
+      "lower": -0.07309025406495698,
+      "upper": 0.007413751989441164
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": -0.03510659287995535,
+      "lower": -0.052747078633862646,
+      "upper": -0.017466107126048052
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.16880928375276308,
+      "lower": 0.06187698708399253,
+      "upper": 0.2757415804215336
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.20018586848269673,
+      "lower": 0.1150677482537349,
+      "upper": 0.2853039887116586
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": 0.13747846537960084,
+      "lower": 0.02803387244554509,
+      "upper": 0.2469230583136566
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": 0.14219959339084925,
+      "lower": 0.04885301996415997,
+      "upper": 0.23554616681753854
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": 0.3493433848004922,
+      "lower": 0.20713879868193233,
+      "upper": 0.4915479709190521
+    },
+    {
+      "split": 0,
+      "case": "independent20",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": 0.19878814015675972,
+      "lower": 0.09670089534739877,
+      "upper": 0.30087538496612065
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": 0.03486610941047485,
+      "lower": -0.024626404851705037,
+      "upper": 0.09435862367265474
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": 0.019427042977782256,
+      "lower": 0.00533716796299097,
+      "upper": 0.033516917992573544
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.01806904923511751,
+      "lower": -0.015925670735797145,
+      "upper": 0.05206376920603216
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.12590323653863916,
+      "lower": 0.06866455779555689,
+      "upper": 0.18314191528172144
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": -0.0053779003136990074,
+      "lower": -0.022529203184152212,
+      "upper": 0.011773402556754199
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": 0.005249357531045475,
+      "lower": -0.01313962764303446,
+      "upper": 0.02363834270512541
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": -0.006994210788631091,
+      "lower": -0.027389455540658428,
+      "upper": 0.013401033963396244
+    },
+    {
+      "split": 0,
+      "case": "copied05",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": -0.008601009991003144,
+      "lower": -0.039757970190208575,
+      "upper": 0.02255595020820229
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": 0.12358767403789603,
+      "lower": 0.01299218325326576,
+      "upper": 0.2341831648225263
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": 0.14565837346801225,
+      "lower": 0.05738881052688208,
+      "upper": 0.23392793640914242
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.03231596436875681,
+      "lower": -0.030602959511369883,
+      "upper": 0.09523488824888351
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.055263198967686035,
+      "lower": -0.033690216016453216,
+      "upper": 0.14421661395182528
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": 0.00010412716475763305,
+      "lower": -0.002410219168428356,
+      "upper": 0.002618473497943622
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": -0.029680256002336532,
+      "lower": -0.07896366493808302,
+      "upper": 0.019603152933409956
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": -0.008236926331489453,
+      "lower": -0.03839219039064573,
+      "upper": 0.021918337727666822
+    },
+    {
+      "split": 0,
+      "case": "copied20",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": -0.040359988527052096,
+      "lower": -0.10071219261340852,
+      "upper": 0.019992215559304333
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": 0.17218554885071607,
+      "lower": 0.03928834742683729,
+      "upper": 0.30508275027459486
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": 0.07042917544412088,
+      "lower": 0.006695653914442129,
+      "upper": 0.13416269697379962
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.0711432575619788,
+      "lower": -0.04145295526155521,
+      "upper": 0.1837394703855128
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.032462216112204574,
+      "lower": -0.07885103109869254,
+      "upper": 0.1437754633231017
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": -0.01567723756209684,
+      "lower": -0.08165099751284852,
+      "upper": 0.05029652238865484
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": -0.02746299004452117,
+      "lower": -0.1012484844650739,
+      "upper": 0.046322504376031554
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": 0.15025884996111133,
+      "lower": 0.03023141625597961,
+      "upper": 0.2702862836662431
+    },
+    {
+      "split": 0,
+      "case": "mixed20",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": 0.0013766755384422415,
+      "lower": -0.09822952797356904,
+      "upper": 0.10098287905045353
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": -0.00012637930326819165,
+      "lower": -0.0002490835526513863,
+      "upper": -3.6750538849970177e-06
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": 0.0014382955966439482,
+      "lower": -0.008566104782865364,
+      "upper": 0.011442695976153262
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.05112889145776357,
+      "lower": -0.01769731561736551,
+      "upper": 0.11995509853289266
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.17839125588006902,
+      "lower": 0.11759060748021688,
+      "upper": 0.23919190427992115
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": 3.783365984627518e-05,
+      "lower": -5.8529832060127377e-05,
+      "upper": 0.00013419715175267774
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": 0.05190625752507965,
+      "lower": 0.0027082342715890953,
+      "upper": 0.1011042807785702
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": 0.07875694310095017,
+      "lower": 0.0029457976370605016,
+      "upper": 0.15456808856483983
+    },
+    {
+      "split": 1,
+      "case": "independent05",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": 0.05258708837966989,
+      "lower": 0.002669883835398748,
+      "upper": 0.10250429292394103
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": -0.06985765243818202,
+      "lower": -0.12062856818323045,
+      "upper": -0.019086736693133592
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": -0.030113188328345183,
+      "lower": -0.04838900055952389,
+      "upper": -0.011837376097166483
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.11936763176780145,
+      "lower": 0.028259306897476785,
+      "upper": 0.21047595663812613
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.16284287106223058,
+      "lower": 0.08102758802701153,
+      "upper": 0.24465815409744962
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": 0.09907753456876918,
+      "lower": -0.009469840231475887,
+      "upper": 0.20762490936901423
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": 0.09434407442455754,
+      "lower": 0.003573656836177816,
+      "upper": 0.18511449201293728
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": 0.2371290642562676,
+      "lower": 0.09469624874004073,
+      "upper": 0.37956187977249445
+    },
+    {
+      "split": 1,
+      "case": "independent20",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": 0.1195571376727243,
+      "lower": 0.01654352366961101,
+      "upper": 0.2225707516758376
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": -0.002383997509984661,
+      "lower": -0.030657923538859044,
+      "upper": 0.025889928518889722
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": 0.017879664130435857,
+      "lower": 0.0031650996925272363,
+      "upper": 0.03259422856834448
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.008271360232931842,
+      "lower": -0.04681830111947882,
+      "upper": 0.0633610215853425
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.127879234110133,
+      "lower": 0.07414374292359063,
+      "upper": 0.18161472529667536
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": 0.00110024481804039,
+      "lower": -0.0007697430931029945,
+      "upper": 0.0029702327291837747
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": 0.002673856207569423,
+      "lower": -0.016991844797870918,
+      "upper": 0.022339557213009762
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": -1.8936170370077573e-05,
+      "lower": -0.00547261053898401,
+      "upper": 0.005434738198243856
+    },
+    {
+      "split": 1,
+      "case": "copied05",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": -0.002236792336298625,
+      "lower": -0.03800879368419592,
+      "upper": 0.03353520901159868
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": 0.14732644317256424,
+      "lower": 0.03132906555583874,
+      "upper": 0.26332382078928973
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": 0.12888948716953696,
+      "lower": 0.04818324345077776,
+      "upper": 0.20959573088829617
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.009454334079049298,
+      "lower": -0.04129947109562655,
+      "upper": 0.060208139253725146
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.026768322947685726,
+      "lower": -0.057106654444940515,
+      "upper": 0.11064330034031197
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": 0.0005620633823832812,
+      "lower": -0.0021845441383548025,
+      "upper": 0.0033086709031213647
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": -0.01920760784367081,
+      "lower": -0.06428795633737602,
+      "upper": 0.0258727406500344
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": -0.019046070548112966,
+      "lower": -0.0482686572912818,
+      "upper": 0.01017651619505586
+    },
+    {
+      "split": 1,
+      "case": "copied20",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": -0.0295255620061144,
+      "lower": -0.08273593325613013,
+      "upper": 0.02368480924390133
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "control": "independent",
+      "metric": "final_brier",
+      "gain": 0.12148046537378429,
+      "lower": 0.005816765085417952,
+      "upper": 0.23714416566215063
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "control": "independent",
+      "metric": "curve_brier",
+      "gain": 0.0470701469348424,
+      "lower": -0.011661492604069193,
+      "upper": 0.10580178647375399
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "control": "joint_random",
+      "metric": "final_brier",
+      "gain": 0.1471006478664319,
+      "lower": 0.036627261275291104,
+      "upper": 0.2575740344575727
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "control": "joint_random",
+      "metric": "curve_brier",
+      "gain": 0.07537132528426103,
+      "lower": -0.021530658356532145,
+      "upper": 0.1722733089250542
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "control": "joint_entropy",
+      "metric": "final_brier",
+      "gain": -0.004596649986842839,
+      "lower": -0.05539547125484776,
+      "upper": 0.04620217128116209
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "control": "joint_entropy",
+      "metric": "curve_brier",
+      "gain": 0.022106575663250454,
+      "lower": -0.04844836942457677,
+      "upper": 0.09266152075107768
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "control": "once",
+      "metric": "final_brier",
+      "gain": 0.20721149725557236,
+      "lower": 0.09066164254043065,
+      "upper": 0.3237613519707141
+    },
+    {
+      "split": 1,
+      "case": "mixed20",
+      "control": "once",
+      "metric": "curve_brier",
+      "gain": 0.061067664103909666,
+      "lower": -0.0397537088355224,
+      "upper": 0.16188903704334173
+    }
+  ],
+  "screen_passed": false,
+  "hashes": {
+    "dependence_v3.py": "bd733af934e17fe59377fbac845106df83967281a6d54b400765228b7147027d",
+    "DEPENDENCE_PROTOCOL.md": "3a99f72f12eea2b420a659eb004d7a506c6db36caf5d0a0b2a114515379c2041",
+    "experiment.py": "721c511cc1bae3a177bc91dbcae4f7d5b5c9ead0f9cd7bbe6b9d5f290b81a938"
+  }
+}

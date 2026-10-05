@@ -1,0 +1,39 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkStackingLOO/n16/shortcut-10         	      75	   7337970 ns/op	  677379 B/op	       6 allocs/op
+BenchmarkStackingLOO/n16/shortcut-10         	      81	   7320350 ns/op	  677377 B/op	       6 allocs/op
+BenchmarkStackingLOO/n16/shortcut-10         	      81	   7340307 ns/op	  677378 B/op	       6 allocs/op
+BenchmarkStackingLOO/n16/explicit_refits-10  	       5	 102199008 ns/op	 5572320 B/op	      77 allocs/op
+BenchmarkStackingLOO/n16/explicit_refits-10  	       5	 102122383 ns/op	 5572320 B/op	      77 allocs/op
+BenchmarkStackingLOO/n16/explicit_refits-10  	       5	 102052808 ns/op	 5572320 B/op	      77 allocs/op
+BenchmarkStackingLOO/n64/shortcut-10         	      51	  11276096 ns/op	  678144 B/op	       6 allocs/op
+BenchmarkStackingLOO/n64/shortcut-10         	      52	  11277834 ns/op	  678144 B/op	       6 allocs/op
+BenchmarkStackingLOO/n64/shortcut-10         	      52	  11291462 ns/op	  678144 B/op	       6 allocs/op
+BenchmarkStackingLOO/n64/explicit_refits-10  	       2	 477147416 ns/op	22310880 B/op	     317 allocs/op
+BenchmarkStackingLOO/n64/explicit_refits-10  	       2	 478475166 ns/op	22310880 B/op	     317 allocs/op
+BenchmarkStackingLOO/n64/explicit_refits-10  	       2	 477703146 ns/op	22310880 B/op	     317 allocs/op
+BenchmarkStackingBuild/n16/skeptical-10      	      91	   6467051 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkStackingBuild/n16/skeptical-10      	      92	   6429745 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkStackingBuild/n16/skeptical-10      	      92	   6426634 ns/op	  667649 B/op	       4 allocs/op
+BenchmarkStackingBuild/n16/stacking-10       	      80	   7372121 ns/op	  996864 B/op	       7 allocs/op
+BenchmarkStackingBuild/n16/stacking-10       	      81	   7464905 ns/op	  996865 B/op	       7 allocs/op
+BenchmarkStackingBuild/n16/stacking-10       	      80	   7495508 ns/op	  996864 B/op	       7 allocs/op
+BenchmarkStackingBuild/n64/skeptical-10      	      78	   7518578 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkStackingBuild/n64/skeptical-10      	      79	   7523563 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkStackingBuild/n64/skeptical-10      	      79	   7525781 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkStackingBuild/n64/stacking-10       	      51	  11382193 ns/op	  997632 B/op	       7 allocs/op
+BenchmarkStackingBuild/n64/stacking-10       	      52	  11375059 ns/op	  997632 B/op	       7 allocs/op
+BenchmarkStackingBuild/n64/stacking-10       	      51	  11357373 ns/op	  997632 B/op	       7 allocs/op
+BenchmarkStackingBuild/n256/skeptical-10     	      50	  11828932 ns/op	  667650 B/op	       4 allocs/op
+BenchmarkStackingBuild/n256/skeptical-10     	      50	  11709143 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkStackingBuild/n256/skeptical-10     	      51	  11762531 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkStackingBuild/n256/stacking-10      	      21	  26886369 ns/op	 1000704 B/op	       7 allocs/op
+BenchmarkStackingBuild/n256/stacking-10      	      21	  26996498 ns/op	 1000704 B/op	       7 allocs/op
+BenchmarkStackingBuild/n256/stacking-10      	      21	  26917732 ns/op	 1000704 B/op	       7 allocs/op
+BenchmarkStackingForecast-10                 	75693063	         6.713 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStackingForecast-10                 	84003223	         6.725 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStackingForecast-10                 	77004108	         6.889 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	24.010s

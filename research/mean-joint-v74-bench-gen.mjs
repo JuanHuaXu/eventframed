@@ -1,0 +1,5 @@
+// Mechanical benchmark reuse; full learned mean grid is charged, not pruned.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const source='internal/researchdynvarcache/benchmark_test.go',raw=fs.readFileSync(source),hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+let s=raw.toString().replaceAll('researchdynvarcache','researchmeanjoint').replaceAll('EVENTFRAME_DYNVARCACHE_V72','EVENTFRAME_MEANJOINT_V74');assert.equal(s.split('Config{"noise", "learn", 1. / 16}').length-1,2);s=s.replaceAll('Config{"noise", "learn", 1. / 16}','Config{"noise", "learn", "learn", 1. / 16}');
+const out='internal/researchmeanjoint/benchmark_test.go';fs.writeFileSync(out,s,{flag:'wx',mode:0o600});fs.writeFileSync('research/mean-joint-v74-bench-generation.json',JSON.stringify({source,sourceSHA256:hash(raw),out,initialSHA256:hash(s),scope:'all27 mean maps/three families/three noise states; original150/200 constructor allocation and serial query benchmarks'},null,2)+'\n',{flag:'wx',mode:0o600});

@@ -1,0 +1,1167 @@
+{
+  "comparisons": [
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "delta": -0.0003348139011758104,
+      "pointwise95": [
+        -0.0003980522890291606,
+        -0.0002750153066749472
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "delta": -0.0002891724027441068,
+      "pointwise95": [
+        -0.00033896164732599146,
+        -0.00022726456623290328
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "delta": -0.0008569424173047153,
+      "pointwise95": [
+        -0.0009729077975264151,
+        -0.00075876221740322
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "delta": -0.0007729634243694352,
+      "pointwise95": [
+        -0.0008984239816127637,
+        -0.0006459204623061514
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "delta": -0.00011881467077298316,
+      "pointwise95": [
+        -0.00019828934275369114,
+        -0.000038795949886650846
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "delta": -0.00017914206530637907,
+      "pointwise95": [
+        -0.00025744062386194393,
+        -0.00011284219463452204
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "delta": -0.0005712465409554437,
+      "pointwise95": [
+        -0.0006838382599886801,
+        -0.000456153084989615
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "delta": -0.0007369829815570475,
+      "pointwise95": [
+        -0.0008991505830510038,
+        -0.0005912347789762514
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "delta": 0.0003681150166043682,
+      "pointwise95": [
+        0.0003038901568862278,
+        0.0004257579509537707
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "delta": 0.0003732432501244845,
+      "pointwise95": [
+        0.0003068841721011006,
+        0.0004445518406262426
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "delta": 0.00036467855707032244,
+      "pointwise95": [
+        0.0002827950655209102,
+        0.00044661896165919815
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "delta": 0.0003156252853395825,
+      "pointwise95": [
+        0.00017555633233855213,
+        0.00044737395985857835
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "delta": 0.00032641891950790187,
+      "pointwise95": [
+        0.00016251011363126446,
+        0.00047098744405677255
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "delta": 0.0003235879913278065,
+      "pointwise95": [
+        0.00016141377323438533,
+        0.0004645106144877093
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "delta": 0.0003328978509022935,
+      "pointwise95": [
+        0.0001316821375448797,
+        0.0005205811635586729
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "delta": 0.0003196223549344208,
+      "pointwise95": [
+        0.00013012839751045746,
+        0.0004940088626710762
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "delta": -0.0014770733925686006,
+      "pointwise95": [
+        -0.0015849779588598585,
+        -0.0013703202791199233
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "delta": -0.0013655978386555676,
+      "pointwise95": [
+        -0.0014841017951807856,
+        -0.0012522216079232636
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "delta": -0.002842076500664152,
+      "pointwise95": [
+        -0.003082185314626645,
+        -0.0026432486776585317
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "delta": -0.0025419200776465897,
+      "pointwise95": [
+        -0.0028201689952088347,
+        -0.0023280814937065783
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "delta": -0.0008423192549794213,
+      "pointwise95": [
+        -0.0010655392329583992,
+        -0.0005985721533007452
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "delta": -0.0009960784073369305,
+      "pointwise95": [
+        -0.0012088123251698612,
+        -0.0007534454477479322
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "delta": -0.0020404811777242665,
+      "pointwise95": [
+        -0.002518887890687788,
+        -0.0015398540504134742
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "delta": -0.002453966653355684,
+      "pointwise95": [
+        -0.002976591794066841,
+        -0.0019005202432479907
+      ]
+    }
+  ],
+  "recoveryMeans": [
+    {
+      "key": "0:1:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0007110050555705072,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:1:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0007955660803200884,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:1:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0006555742719369234,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:1:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.000764549243525578,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:1:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0001861555247084385,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:1:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.00018974762427913065,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:1:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0006451315540909539,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:1:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0007541658712819123,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:2:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0008558377163133991,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:2:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.000999165428573947,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:2:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.000979786100381793,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:2:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0017236431956512942,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:2:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0014064030309163984,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:2:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0015196028009299076,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:2:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0020577817153499232,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:2:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0020632203513679392,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:4:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0004912649568041445,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:4:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.000456057802684446,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:4:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0005021611604431025,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:4:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": -0.00019459466132378152,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:4:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0010087576788603437,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:4:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0013853556489100988,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:4:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0012423457215893982,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:4:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0019041072358501644,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:5:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.00029483460339183205,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:5:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0008321078636794339,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:5:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0015127348066630002,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:5:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.002033157711406228,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:5:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0014851128644397804,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:5:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0013389658283508646,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:5:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.00232814751479821,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:5:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0021915521680391896,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:7:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0008070315726276377,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:7:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0005300898444119909,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:7:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0009457691231099553,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:7:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.00036034982971729426,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:7:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0006638093845496591,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:7:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0008583615535861459,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:7:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0012954277169889353,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:7:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0015481432616298411,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:8:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0006412352091942266,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:8:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0012906571374011952,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:8:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0006405428246659076,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:8:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0013234048600931896,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:8:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.002740162019524756,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:8:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0025879134178957135,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:8:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.004441039162336246,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:8:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0039766430687105565,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:19:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": -0.0005452036380695197,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:19:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": -0.000533192655676936,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:19:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": -0.0009056551152701498,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:19:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": -0.0008788692912429954,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:19:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.00022154030929441137,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:19:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": -0.0010623679598512374,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:19:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0009904436611523943,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:19:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": -0.0008710994015969577,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:20:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": -0.00016366700508048523,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:20:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0003985771342769483,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:20:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.010221420692161205,
+      "meetsOriginalPoint005Mean": true
+    },
+    {
+      "key": "0:20:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.012612505346089195,
+      "meetsOriginalPoint005Mean": true
+    },
+    {
+      "key": "0:20:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0019463212987845375,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:20:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0015770121904640703,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:20:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0032092748817402553,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "0:20:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0037752661264056388,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:1:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0004576560370472063,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:1:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0009385933858007192,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:1:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.000856026208997402,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:1:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0026516598594165247,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:1:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0008657369141908938,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:1:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0009973456830072152,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:1:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0010517370013012183,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:1:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.001494349908147433,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:2:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0012594244922479823,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:2:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0015442426789952137,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:2:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0038931819548796535,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:2:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.004777145932284671,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:2:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0011524883127771429,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:2:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.001386160684237846,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:2:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0016926954006461683,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:2:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0019299725928652086,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:4:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0005597392365457483,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:4:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0007993008281298626,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:4:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.001308434165589227,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:4:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0014903625603728855,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:4:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0009990571376398607,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:4:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0013241385399920518,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:4:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0016087480405993608,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:4:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.002316061233291398,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:5:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0013726939063877196,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:5:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0012561451800693069,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:5:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.004870267323295754,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:5:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0042191322969562794,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:5:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0015195163534633474,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:5:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0015456165570315802,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:5:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0026493979945694784,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:5:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0024470436423937193,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:7:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": -0.000055593639886976354,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:7:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0007994780615226543,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:7:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": -0.0006313774207617837,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:7:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.001939381585636871,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:7:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0006092091203372604,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:7:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0014338019849962618,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:7:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.00121259388252494,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:7:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0022693229208993644,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:8:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.00022427470089291836,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:8:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0005906099743581226,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:8:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": -0.00017301346069643724,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:8:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0006886802814173084,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:8:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.001741386427804352,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:8:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0021336887458180374,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:8:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0026358900688680884,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:8:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0028526360659290196,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:19:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.0020778154190513706,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:19:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0016686296659092696,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:19:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.008373946761143685,
+      "meetsOriginalPoint005Mean": true
+    },
+    {
+      "key": "1:19:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.00706424100496535,
+      "meetsOriginalPoint005Mean": true
+    },
+    {
+      "key": "1:19:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": 0.002696721307785608,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:19:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.001968825155792504,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:19:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0032807622916539232,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:19:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0026373948753587203,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:20:0",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": -0.0009545563652248591,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:20:0",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": -0.00006475545476871585,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:20:0",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.0018869492758916994,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:20:0",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.004889113281659646,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:20:1",
+      "arm": "segmentPoint",
+      "reference": "staticPoint",
+      "gain": -0.0003219537835481329,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:20:1",
+      "arm": "segmentPoint",
+      "reference": "Markov",
+      "gain": 0.0003890676236540671,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:20:1",
+      "arm": "segmentLocal",
+      "reference": "staticLocal",
+      "gain": 0.00001723240653612795,
+      "meetsOriginalPoint005Mean": false
+    },
+    {
+      "key": "1:20:1",
+      "arm": "segmentLocal",
+      "reference": "Markov",
+      "gain": 0.0017742899501832277,
+      "meetsOriginalPoint005Mean": false
+    }
+  ],
+  "limitations": "Consumed-data pointwise8-index intervals. Recovery mean screen retains original .005 effect requirement descriptively, not the original32-index confidence protocol. Not full validation of768 criteria."
+}

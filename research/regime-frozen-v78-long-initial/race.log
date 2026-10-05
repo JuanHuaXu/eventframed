@@ -1,0 +1,5 @@
+=== RUN   TestFull64FrozenSupportBranches
+    long_test.go:146: 36 full64 pair cases; 2589 scalar checks; max oracle 1.887379141862766e-14; tower 1.887379141862766e-14; independently verified zero branches 3
+--- PASS: TestFull64FrozenSupportBranches (1.20s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregimefrozencheck	2.382s

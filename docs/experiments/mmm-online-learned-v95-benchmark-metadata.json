@@ -1,0 +1,10 @@
+{
+  "runtime": "go1.27.1 darwin/arm64",
+  "cpu": "Apple M4",
+  "gomaxprocs": 10,
+  "command": "go test ./internal/observationlearners -run '^$' -bench '^BenchmarkOnlineV95Stream$' -benchmem -benchtime=1x -count=3",
+  "boundary": "Entire 256-step research stream, 8 refit rounds, three constructed models, five comparison arms, two views, scoring and tape hashing; not serving latency",
+  "sourceManifest": "mmm-online-learned-v95.json:Hashes",
+  "artifactSHA256": "eebf1f49311b5009f710a78590bf5969f9ee4d64ac19b57dd0d257ae9210ff36",
+  "benchmarkSHA256": "3972e7a9c037233d63253914bff3527dee5a3b639159dd3bdd14517ac6376708"
+}

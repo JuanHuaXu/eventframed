@@ -1,0 +1,2053 @@
+{
+  "comparisons": [
+    {
+      "control": "frozen32",
+      "improved": 41,
+      "harmGreaterThanPoint01": 5,
+      "meanDelta": -0.007186894571653409,
+      "rows": [
+        {
+          "phase": 0,
+          "scenario": 0,
+          "schedule": 0,
+          "delta": -0.003906916790296144
+        },
+        {
+          "phase": 0,
+          "scenario": 0,
+          "schedule": 1,
+          "delta": 0.008344679761855378
+        },
+        {
+          "phase": 0,
+          "scenario": 1,
+          "schedule": 0,
+          "delta": 0.001984001892886944
+        },
+        {
+          "phase": 0,
+          "scenario": 1,
+          "schedule": 1,
+          "delta": 0.00023634056040272577
+        },
+        {
+          "phase": 0,
+          "scenario": 2,
+          "schedule": 0,
+          "delta": -0.0010139207680364415
+        },
+        {
+          "phase": 0,
+          "scenario": 2,
+          "schedule": 1,
+          "delta": -0.004167444083766014
+        },
+        {
+          "phase": 0,
+          "scenario": 3,
+          "schedule": 0,
+          "delta": -0.002648061875686336
+        },
+        {
+          "phase": 0,
+          "scenario": 3,
+          "schedule": 1,
+          "delta": 0.0022025561955036355
+        },
+        {
+          "phase": 0,
+          "scenario": 4,
+          "schedule": 0,
+          "delta": -0.030149980517816866
+        },
+        {
+          "phase": 0,
+          "scenario": 4,
+          "schedule": 1,
+          "delta": -0.003359484130209478
+        },
+        {
+          "phase": 0,
+          "scenario": 5,
+          "schedule": 0,
+          "delta": -0.002549352331227883
+        },
+        {
+          "phase": 0,
+          "scenario": 5,
+          "schedule": 1,
+          "delta": 0.003992220609765673
+        },
+        {
+          "phase": 0,
+          "scenario": 6,
+          "schedule": 0,
+          "delta": 0.002751164353299085
+        },
+        {
+          "phase": 0,
+          "scenario": 6,
+          "schedule": 1,
+          "delta": -0.0016672401843627338
+        },
+        {
+          "phase": 0,
+          "scenario": 7,
+          "schedule": 0,
+          "delta": 0.0004044072502781826
+        },
+        {
+          "phase": 0,
+          "scenario": 7,
+          "schedule": 1,
+          "delta": -0.023999193934927388
+        },
+        {
+          "phase": 0,
+          "scenario": 8,
+          "schedule": 0,
+          "delta": 0.0007649194822692273
+        },
+        {
+          "phase": 0,
+          "scenario": 8,
+          "schedule": 1,
+          "delta": -0.0010548881099963492
+        },
+        {
+          "phase": 0,
+          "scenario": 9,
+          "schedule": 0,
+          "delta": 0.00015597729527778992
+        },
+        {
+          "phase": 0,
+          "scenario": 9,
+          "schedule": 1,
+          "delta": 0.00044842745209587587
+        },
+        {
+          "phase": 0,
+          "scenario": 10,
+          "schedule": 0,
+          "delta": 0.0011427119423070495
+        },
+        {
+          "phase": 0,
+          "scenario": 10,
+          "schedule": 1,
+          "delta": 0.001056625409564367
+        },
+        {
+          "phase": 0,
+          "scenario": 11,
+          "schedule": 0,
+          "delta": 0.0000010332882751235006
+        },
+        {
+          "phase": 0,
+          "scenario": 11,
+          "schedule": 1,
+          "delta": -0.00024632752859318763
+        },
+        {
+          "phase": 0,
+          "scenario": 12,
+          "schedule": 0,
+          "delta": 0.0009636345578895866
+        },
+        {
+          "phase": 0,
+          "scenario": 12,
+          "schedule": 1,
+          "delta": -0.0002487926074968838
+        },
+        {
+          "phase": 0,
+          "scenario": 13,
+          "schedule": 0,
+          "delta": -0.0009867302104917264
+        },
+        {
+          "phase": 0,
+          "scenario": 13,
+          "schedule": 1,
+          "delta": 0.001511376689906259
+        },
+        {
+          "phase": 0,
+          "scenario": 14,
+          "schedule": 0,
+          "delta": -0.08291737915929628
+        },
+        {
+          "phase": 0,
+          "scenario": 14,
+          "schedule": 1,
+          "delta": 0.008423203845882604
+        },
+        {
+          "phase": 0,
+          "scenario": 15,
+          "schedule": 0,
+          "delta": 0.03120416926272765
+        },
+        {
+          "phase": 0,
+          "scenario": 15,
+          "schedule": 1,
+          "delta": -0.05528896198589153
+        },
+        {
+          "phase": 0,
+          "scenario": 16,
+          "schedule": 0,
+          "delta": 0.0011618500220948874
+        },
+        {
+          "phase": 0,
+          "scenario": 16,
+          "schedule": 1,
+          "delta": 0.0012296600212227393
+        },
+        {
+          "phase": 0,
+          "scenario": 17,
+          "schedule": 0,
+          "delta": 0.0004811457853818313
+        },
+        {
+          "phase": 0,
+          "scenario": 17,
+          "schedule": 1,
+          "delta": -0.0033004761555864848
+        },
+        {
+          "phase": 0,
+          "scenario": 18,
+          "schedule": 0,
+          "delta": 0.004041082144718343
+        },
+        {
+          "phase": 0,
+          "scenario": 18,
+          "schedule": 1,
+          "delta": -0.0002905974040819173
+        },
+        {
+          "phase": 0,
+          "scenario": 19,
+          "schedule": 0,
+          "delta": -0.03786392624365059
+        },
+        {
+          "phase": 0,
+          "scenario": 19,
+          "schedule": 1,
+          "delta": -0.054817423177132396
+        },
+        {
+          "phase": 0,
+          "scenario": 20,
+          "schedule": 0,
+          "delta": -0.05771702970546233
+        },
+        {
+          "phase": 0,
+          "scenario": 20,
+          "schedule": 1,
+          "delta": -0.021096179751712185
+        },
+        {
+          "phase": 1,
+          "scenario": 0,
+          "schedule": 0,
+          "delta": -0.004883775237827903
+        },
+        {
+          "phase": 1,
+          "scenario": 0,
+          "schedule": 1,
+          "delta": 0.012725901611437218
+        },
+        {
+          "phase": 1,
+          "scenario": 1,
+          "schedule": 0,
+          "delta": 0.006350931798656451
+        },
+        {
+          "phase": 1,
+          "scenario": 1,
+          "schedule": 1,
+          "delta": 0.0013669101437176479
+        },
+        {
+          "phase": 1,
+          "scenario": 2,
+          "schedule": 0,
+          "delta": 0.000036124494661227136
+        },
+        {
+          "phase": 1,
+          "scenario": 2,
+          "schedule": 1,
+          "delta": -0.02387177421242992
+        },
+        {
+          "phase": 1,
+          "scenario": 3,
+          "schedule": 0,
+          "delta": 0.005192925456106334
+        },
+        {
+          "phase": 1,
+          "scenario": 3,
+          "schedule": 1,
+          "delta": 0.01621029184171982
+        },
+        {
+          "phase": 1,
+          "scenario": 4,
+          "schedule": 0,
+          "delta": 0.0017004730926963307
+        },
+        {
+          "phase": 1,
+          "scenario": 4,
+          "schedule": 1,
+          "delta": 0.006821227373667471
+        },
+        {
+          "phase": 1,
+          "scenario": 5,
+          "schedule": 0,
+          "delta": -0.006354002483693333
+        },
+        {
+          "phase": 1,
+          "scenario": 5,
+          "schedule": 1,
+          "delta": -0.03446713217761127
+        },
+        {
+          "phase": 1,
+          "scenario": 6,
+          "schedule": 0,
+          "delta": -0.005922752917237761
+        },
+        {
+          "phase": 1,
+          "scenario": 6,
+          "schedule": 1,
+          "delta": -0.0043527456356047545
+        },
+        {
+          "phase": 1,
+          "scenario": 7,
+          "schedule": 0,
+          "delta": -0.0027526094622545294
+        },
+        {
+          "phase": 1,
+          "scenario": 7,
+          "schedule": 1,
+          "delta": -0.005614116106655076
+        },
+        {
+          "phase": 1,
+          "scenario": 8,
+          "schedule": 0,
+          "delta": -0.007724689494346182
+        },
+        {
+          "phase": 1,
+          "scenario": 8,
+          "schedule": 1,
+          "delta": 0.007367851110758661
+        },
+        {
+          "phase": 1,
+          "scenario": 9,
+          "schedule": 0,
+          "delta": -0.003371146653503243
+        },
+        {
+          "phase": 1,
+          "scenario": 9,
+          "schedule": 1,
+          "delta": -0.006699557535780706
+        },
+        {
+          "phase": 1,
+          "scenario": 10,
+          "schedule": 0,
+          "delta": -0.002115498718260035
+        },
+        {
+          "phase": 1,
+          "scenario": 10,
+          "schedule": 1,
+          "delta": -0.0003322135835254203
+        },
+        {
+          "phase": 1,
+          "scenario": 11,
+          "schedule": 0,
+          "delta": -0.0005549666578245141
+        },
+        {
+          "phase": 1,
+          "scenario": 11,
+          "schedule": 1,
+          "delta": -0.0012287762703673058
+        },
+        {
+          "phase": 1,
+          "scenario": 12,
+          "schedule": 0,
+          "delta": 0.0036352809108742487
+        },
+        {
+          "phase": 1,
+          "scenario": 12,
+          "schedule": 1,
+          "delta": 0.0011294558054656054
+        },
+        {
+          "phase": 1,
+          "scenario": 13,
+          "schedule": 0,
+          "delta": 0.005713524745770374
+        },
+        {
+          "phase": 1,
+          "scenario": 13,
+          "schedule": 1,
+          "delta": 0.0034458613804948524
+        },
+        {
+          "phase": 1,
+          "scenario": 14,
+          "schedule": 0,
+          "delta": 0.037882824642780304
+        },
+        {
+          "phase": 1,
+          "scenario": 14,
+          "schedule": 1,
+          "delta": 0.0014292280293542875
+        },
+        {
+          "phase": 1,
+          "scenario": 15,
+          "schedule": 0,
+          "delta": 0.05061263210654697
+        },
+        {
+          "phase": 1,
+          "scenario": 15,
+          "schedule": 1,
+          "delta": 0.0012661179585585006
+        },
+        {
+          "phase": 1,
+          "scenario": 16,
+          "schedule": 0,
+          "delta": 7.009905710897435e-7
+        },
+        {
+          "phase": 1,
+          "scenario": 16,
+          "schedule": 1,
+          "delta": 0.00010644164285310981
+        },
+        {
+          "phase": 1,
+          "scenario": 17,
+          "schedule": 0,
+          "delta": -0.00442489878632385
+        },
+        {
+          "phase": 1,
+          "scenario": 17,
+          "schedule": 1,
+          "delta": 0.0015095829174212594
+        },
+        {
+          "phase": 1,
+          "scenario": 18,
+          "schedule": 0,
+          "delta": 0.0007385269464434754
+        },
+        {
+          "phase": 1,
+          "scenario": 18,
+          "schedule": 1,
+          "delta": 0.00006073099420435962
+        },
+        {
+          "phase": 1,
+          "scenario": 19,
+          "schedule": 0,
+          "delta": -0.1714123047421522
+        },
+        {
+          "phase": 1,
+          "scenario": 19,
+          "schedule": 1,
+          "delta": -0.09453865774058456
+        },
+        {
+          "phase": 1,
+          "scenario": 20,
+          "schedule": 0,
+          "delta": -0.04968523724684215
+        },
+        {
+          "phase": 1,
+          "scenario": 20,
+          "schedule": 1,
+          "delta": -0.0219067155187051
+        }
+      ]
+    },
+    {
+      "control": "generic64",
+      "improved": 50,
+      "harmGreaterThanPoint01": 17,
+      "meanDelta": -0.008928246088406136,
+      "rows": [
+        {
+          "phase": 0,
+          "scenario": 0,
+          "schedule": 0,
+          "delta": 0.04522942213683212
+        },
+        {
+          "phase": 0,
+          "scenario": 0,
+          "schedule": 1,
+          "delta": 0.06546335146929008
+        },
+        {
+          "phase": 0,
+          "scenario": 1,
+          "schedule": 0,
+          "delta": 0.020417745869955706
+        },
+        {
+          "phase": 0,
+          "scenario": 1,
+          "schedule": 1,
+          "delta": -0.010492176665910097
+        },
+        {
+          "phase": 0,
+          "scenario": 2,
+          "schedule": 0,
+          "delta": -0.08776690142380486
+        },
+        {
+          "phase": 0,
+          "scenario": 2,
+          "schedule": 1,
+          "delta": -0.04015551000972445
+        },
+        {
+          "phase": 0,
+          "scenario": 3,
+          "schedule": 0,
+          "delta": 0.007475808427495012
+        },
+        {
+          "phase": 0,
+          "scenario": 3,
+          "schedule": 1,
+          "delta": 0.002648716538065643
+        },
+        {
+          "phase": 0,
+          "scenario": 4,
+          "schedule": 0,
+          "delta": -0.06334473857815004
+        },
+        {
+          "phase": 0,
+          "scenario": 4,
+          "schedule": 1,
+          "delta": -0.02106519915484667
+        },
+        {
+          "phase": 0,
+          "scenario": 5,
+          "schedule": 0,
+          "delta": 0.0023940904001936714
+        },
+        {
+          "phase": 0,
+          "scenario": 5,
+          "schedule": 1,
+          "delta": -0.008319937420967705
+        },
+        {
+          "phase": 0,
+          "scenario": 6,
+          "schedule": 0,
+          "delta": -0.009812354505268739
+        },
+        {
+          "phase": 0,
+          "scenario": 6,
+          "schedule": 1,
+          "delta": -0.0019247265724524343
+        },
+        {
+          "phase": 0,
+          "scenario": 7,
+          "schedule": 0,
+          "delta": 0.0043324972038146226
+        },
+        {
+          "phase": 0,
+          "scenario": 7,
+          "schedule": 1,
+          "delta": -0.030024359089746655
+        },
+        {
+          "phase": 0,
+          "scenario": 8,
+          "schedule": 0,
+          "delta": 0.012900596706705014
+        },
+        {
+          "phase": 0,
+          "scenario": 8,
+          "schedule": 1,
+          "delta": 0.005797292174057944
+        },
+        {
+          "phase": 0,
+          "scenario": 9,
+          "schedule": 0,
+          "delta": 0.0006768281009316701
+        },
+        {
+          "phase": 0,
+          "scenario": 9,
+          "schedule": 1,
+          "delta": 0.0009802386666106014
+        },
+        {
+          "phase": 0,
+          "scenario": 10,
+          "schedule": 0,
+          "delta": 0.0008797042640437541
+        },
+        {
+          "phase": 0,
+          "scenario": 10,
+          "schedule": 1,
+          "delta": 0.0008025655796727454
+        },
+        {
+          "phase": 0,
+          "scenario": 11,
+          "schedule": 0,
+          "delta": -0.005815368635964595
+        },
+        {
+          "phase": 0,
+          "scenario": 11,
+          "schedule": 1,
+          "delta": -0.004079235575552162
+        },
+        {
+          "phase": 0,
+          "scenario": 12,
+          "schedule": 0,
+          "delta": -0.013516381933316626
+        },
+        {
+          "phase": 0,
+          "scenario": 12,
+          "schedule": 1,
+          "delta": -0.02790589997279743
+        },
+        {
+          "phase": 0,
+          "scenario": 13,
+          "schedule": 0,
+          "delta": -0.03893395690674279
+        },
+        {
+          "phase": 0,
+          "scenario": 13,
+          "schedule": 1,
+          "delta": -0.01625623964317803
+        },
+        {
+          "phase": 0,
+          "scenario": 14,
+          "schedule": 0,
+          "delta": 0.0476719993834862
+        },
+        {
+          "phase": 0,
+          "scenario": 14,
+          "schedule": 1,
+          "delta": 0.014706493307775188
+        },
+        {
+          "phase": 0,
+          "scenario": 15,
+          "schedule": 0,
+          "delta": 0.1251790298181097
+        },
+        {
+          "phase": 0,
+          "scenario": 15,
+          "schedule": 1,
+          "delta": 0.12571760275263638
+        },
+        {
+          "phase": 0,
+          "scenario": 16,
+          "schedule": 0,
+          "delta": 0.0008134852523092248
+        },
+        {
+          "phase": 0,
+          "scenario": 16,
+          "schedule": 1,
+          "delta": 0.0008790467515136791
+        },
+        {
+          "phase": 0,
+          "scenario": 17,
+          "schedule": 0,
+          "delta": -0.015468061472894756
+        },
+        {
+          "phase": 0,
+          "scenario": 17,
+          "schedule": 1,
+          "delta": -0.0035122178841048846
+        },
+        {
+          "phase": 0,
+          "scenario": 18,
+          "schedule": 0,
+          "delta": -0.016982869416247527
+        },
+        {
+          "phase": 0,
+          "scenario": 18,
+          "schedule": 1,
+          "delta": -0.024144630252392586
+        },
+        {
+          "phase": 0,
+          "scenario": 19,
+          "schedule": 0,
+          "delta": -0.13258276981586337
+        },
+        {
+          "phase": 0,
+          "scenario": 19,
+          "schedule": 1,
+          "delta": -0.08223000974709371
+        },
+        {
+          "phase": 0,
+          "scenario": 20,
+          "schedule": 0,
+          "delta": 0.007386323906028669
+        },
+        {
+          "phase": 0,
+          "scenario": 20,
+          "schedule": 1,
+          "delta": 0.03408548717865906
+        },
+        {
+          "phase": 1,
+          "scenario": 0,
+          "schedule": 0,
+          "delta": 0.012599283694918945
+        },
+        {
+          "phase": 1,
+          "scenario": 0,
+          "schedule": 1,
+          "delta": 0.07936753727685888
+        },
+        {
+          "phase": 1,
+          "scenario": 1,
+          "schedule": 0,
+          "delta": -0.0184165438717189
+        },
+        {
+          "phase": 1,
+          "scenario": 1,
+          "schedule": 1,
+          "delta": -0.02719990674692732
+        },
+        {
+          "phase": 1,
+          "scenario": 2,
+          "schedule": 0,
+          "delta": -0.12419310975140774
+        },
+        {
+          "phase": 1,
+          "scenario": 2,
+          "schedule": 1,
+          "delta": -0.12688796679178083
+        },
+        {
+          "phase": 1,
+          "scenario": 3,
+          "schedule": 0,
+          "delta": -0.04434596800382418
+        },
+        {
+          "phase": 1,
+          "scenario": 3,
+          "schedule": 1,
+          "delta": 0.021853940493107987
+        },
+        {
+          "phase": 1,
+          "scenario": 4,
+          "schedule": 0,
+          "delta": -0.04878073406082928
+        },
+        {
+          "phase": 1,
+          "scenario": 4,
+          "schedule": 1,
+          "delta": -0.004184252814613709
+        },
+        {
+          "phase": 1,
+          "scenario": 5,
+          "schedule": 0,
+          "delta": -0.04978530224640382
+        },
+        {
+          "phase": 1,
+          "scenario": 5,
+          "schedule": 1,
+          "delta": -0.04115555067777271
+        },
+        {
+          "phase": 1,
+          "scenario": 6,
+          "schedule": 0,
+          "delta": 0.06020498977440775
+        },
+        {
+          "phase": 1,
+          "scenario": 6,
+          "schedule": 1,
+          "delta": 0.05549947821308071
+        },
+        {
+          "phase": 1,
+          "scenario": 7,
+          "schedule": 0,
+          "delta": -0.02110527142489016
+        },
+        {
+          "phase": 1,
+          "scenario": 7,
+          "schedule": 1,
+          "delta": 0.0035474134473535424
+        },
+        {
+          "phase": 1,
+          "scenario": 8,
+          "schedule": 0,
+          "delta": -0.026618133382652842
+        },
+        {
+          "phase": 1,
+          "scenario": 8,
+          "schedule": 1,
+          "delta": -0.017433268746838093
+        },
+        {
+          "phase": 1,
+          "scenario": 9,
+          "schedule": 0,
+          "delta": -0.00558993689109788
+        },
+        {
+          "phase": 1,
+          "scenario": 9,
+          "schedule": 1,
+          "delta": -0.006312142880119068
+        },
+        {
+          "phase": 1,
+          "scenario": 10,
+          "schedule": 0,
+          "delta": -0.002061555701331305
+        },
+        {
+          "phase": 1,
+          "scenario": 10,
+          "schedule": 1,
+          "delta": -0.0006229027817394386
+        },
+        {
+          "phase": 1,
+          "scenario": 11,
+          "schedule": 0,
+          "delta": -0.002607120767712995
+        },
+        {
+          "phase": 1,
+          "scenario": 11,
+          "schedule": 1,
+          "delta": -0.008865771137232872
+        },
+        {
+          "phase": 1,
+          "scenario": 12,
+          "schedule": 0,
+          "delta": -0.0008461381793750736
+        },
+        {
+          "phase": 1,
+          "scenario": 12,
+          "schedule": 1,
+          "delta": -0.025134591026248862
+        },
+        {
+          "phase": 1,
+          "scenario": 13,
+          "schedule": 0,
+          "delta": -0.01037742490291061
+        },
+        {
+          "phase": 1,
+          "scenario": 13,
+          "schedule": 1,
+          "delta": -0.0137603233812182
+        },
+        {
+          "phase": 1,
+          "scenario": 14,
+          "schedule": 0,
+          "delta": 0.042922388484781894
+        },
+        {
+          "phase": 1,
+          "scenario": 14,
+          "schedule": 1,
+          "delta": 0.006738874565236433
+        },
+        {
+          "phase": 1,
+          "scenario": 15,
+          "schedule": 0,
+          "delta": 0.06387264871998558
+        },
+        {
+          "phase": 1,
+          "scenario": 15,
+          "schedule": 1,
+          "delta": 0.007170959170238481
+        },
+        {
+          "phase": 1,
+          "scenario": 16,
+          "schedule": 0,
+          "delta": 0.00044691866867659774
+        },
+        {
+          "phase": 1,
+          "scenario": 16,
+          "schedule": 1,
+          "delta": -0.00023848532950503792
+        },
+        {
+          "phase": 1,
+          "scenario": 17,
+          "schedule": 0,
+          "delta": -0.0033388992599225342
+        },
+        {
+          "phase": 1,
+          "scenario": 17,
+          "schedule": 1,
+          "delta": 0.000003992701733679382
+        },
+        {
+          "phase": 1,
+          "scenario": 18,
+          "schedule": 0,
+          "delta": -0.014852499582623635
+        },
+        {
+          "phase": 1,
+          "scenario": 18,
+          "schedule": 1,
+          "delta": -0.011131853447632338
+        },
+        {
+          "phase": 1,
+          "scenario": 19,
+          "schedule": 0,
+          "delta": -0.21039425323865757
+        },
+        {
+          "phase": 1,
+          "scenario": 19,
+          "schedule": 1,
+          "delta": -0.13966454921764848
+        },
+        {
+          "phase": 1,
+          "scenario": 20,
+          "schedule": 0,
+          "delta": -0.010299639093230728
+        },
+        {
+          "phase": 1,
+          "scenario": 20,
+          "schedule": 1,
+          "delta": 0.039898217490203836
+        }
+      ]
+    },
+    {
+      "control": "Boolean64",
+      "improved": 33,
+      "harmGreaterThanPoint01": 8,
+      "meanDelta": -0.008693759742330423,
+      "rows": [
+        {
+          "phase": 0,
+          "scenario": 0,
+          "schedule": 0,
+          "delta": 0.01748073974012984
+        },
+        {
+          "phase": 0,
+          "scenario": 0,
+          "schedule": 1,
+          "delta": 0.02382480339663931
+        },
+        {
+          "phase": 0,
+          "scenario": 1,
+          "schedule": 0,
+          "delta": 0.0008770636360125594
+        },
+        {
+          "phase": 0,
+          "scenario": 1,
+          "schedule": 1,
+          "delta": -0.0004814099514716952
+        },
+        {
+          "phase": 0,
+          "scenario": 2,
+          "schedule": 0,
+          "delta": -0.030066664027297768
+        },
+        {
+          "phase": 0,
+          "scenario": 2,
+          "schedule": 1,
+          "delta": -0.013785477362415532
+        },
+        {
+          "phase": 0,
+          "scenario": 3,
+          "schedule": 0,
+          "delta": -0.0015405388319388313
+        },
+        {
+          "phase": 0,
+          "scenario": 3,
+          "schedule": 1,
+          "delta": 0.004937893634720719
+        },
+        {
+          "phase": 0,
+          "scenario": 4,
+          "schedule": 0,
+          "delta": -0.07128963673746375
+        },
+        {
+          "phase": 0,
+          "scenario": 4,
+          "schedule": 1,
+          "delta": -0.006157199213554898
+        },
+        {
+          "phase": 0,
+          "scenario": 5,
+          "schedule": 0,
+          "delta": 0.0020216410697256326
+        },
+        {
+          "phase": 0,
+          "scenario": 5,
+          "schedule": 1,
+          "delta": 0.015607453562593104
+        },
+        {
+          "phase": 0,
+          "scenario": 6,
+          "schedule": 0,
+          "delta": 0.00360607322321016
+        },
+        {
+          "phase": 0,
+          "scenario": 6,
+          "schedule": 1,
+          "delta": -0.000873855204777757
+        },
+        {
+          "phase": 0,
+          "scenario": 7,
+          "schedule": 0,
+          "delta": 0.005821383214576814
+        },
+        {
+          "phase": 0,
+          "scenario": 7,
+          "schedule": 1,
+          "delta": 0.005588901106374777
+        },
+        {
+          "phase": 0,
+          "scenario": 8,
+          "schedule": 0,
+          "delta": 0.002533163411674866
+        },
+        {
+          "phase": 0,
+          "scenario": 8,
+          "schedule": 1,
+          "delta": -0.0002863907761530282
+        },
+        {
+          "phase": 0,
+          "scenario": 9,
+          "schedule": 0,
+          "delta": 0.000588560309524068
+        },
+        {
+          "phase": 0,
+          "scenario": 9,
+          "schedule": 1,
+          "delta": 0.0008793248361007172
+        },
+        {
+          "phase": 0,
+          "scenario": 10,
+          "schedule": 0,
+          "delta": 0.0053472189067294215
+        },
+        {
+          "phase": 0,
+          "scenario": 10,
+          "schedule": 1,
+          "delta": 0.0014955392758564182
+        },
+        {
+          "phase": 0,
+          "scenario": 11,
+          "schedule": 0,
+          "delta": 0.00041055440290640316
+        },
+        {
+          "phase": 0,
+          "scenario": 11,
+          "schedule": 1,
+          "delta": -0.0003504635836543424
+        },
+        {
+          "phase": 0,
+          "scenario": 12,
+          "schedule": 0,
+          "delta": 0.0029968811900203465
+        },
+        {
+          "phase": 0,
+          "scenario": 12,
+          "schedule": 1,
+          "delta": 0.0018714395481417428
+        },
+        {
+          "phase": 0,
+          "scenario": 13,
+          "schedule": 0,
+          "delta": 0.00257891882331817
+        },
+        {
+          "phase": 0,
+          "scenario": 13,
+          "schedule": 1,
+          "delta": 0.0028833346783286654
+        },
+        {
+          "phase": 0,
+          "scenario": 14,
+          "schedule": 0,
+          "delta": -0.05800656794168116
+        },
+        {
+          "phase": 0,
+          "scenario": 14,
+          "schedule": 1,
+          "delta": -0.1339551567630018
+        },
+        {
+          "phase": 0,
+          "scenario": 15,
+          "schedule": 0,
+          "delta": 0.005763134700267403
+        },
+        {
+          "phase": 0,
+          "scenario": 15,
+          "schedule": 1,
+          "delta": -0.0719292370832903
+        },
+        {
+          "phase": 0,
+          "scenario": 16,
+          "schedule": 0,
+          "delta": 0.0005403332787409024
+        },
+        {
+          "phase": 0,
+          "scenario": 16,
+          "schedule": 1,
+          "delta": 0.0006091246176070583
+        },
+        {
+          "phase": 0,
+          "scenario": 17,
+          "schedule": 0,
+          "delta": -0.000602212210228048
+        },
+        {
+          "phase": 0,
+          "scenario": 17,
+          "schedule": 1,
+          "delta": -0.0017732908175383533
+        },
+        {
+          "phase": 0,
+          "scenario": 18,
+          "schedule": 0,
+          "delta": 0.006423366530463499
+        },
+        {
+          "phase": 0,
+          "scenario": 18,
+          "schedule": 1,
+          "delta": 0.003476728356221613
+        },
+        {
+          "phase": 0,
+          "scenario": 19,
+          "schedule": 0,
+          "delta": -0.036869825184211114
+        },
+        {
+          "phase": 0,
+          "scenario": 19,
+          "schedule": 1,
+          "delta": 0.042208307642522536
+        },
+        {
+          "phase": 0,
+          "scenario": 20,
+          "schedule": 0,
+          "delta": -0.08086852971430902
+        },
+        {
+          "phase": 0,
+          "scenario": 20,
+          "schedule": 1,
+          "delta": -0.04386187223347926
+        },
+        {
+          "phase": 1,
+          "scenario": 0,
+          "schedule": 0,
+          "delta": 0.014128011100653731
+        },
+        {
+          "phase": 1,
+          "scenario": 0,
+          "schedule": 1,
+          "delta": 0.035138396842114394
+        },
+        {
+          "phase": 1,
+          "scenario": 1,
+          "schedule": 0,
+          "delta": 0.008396198067495031
+        },
+        {
+          "phase": 1,
+          "scenario": 1,
+          "schedule": 1,
+          "delta": 0.00967923475912938
+        },
+        {
+          "phase": 1,
+          "scenario": 2,
+          "schedule": 0,
+          "delta": -0.014216853184226719
+        },
+        {
+          "phase": 1,
+          "scenario": 2,
+          "schedule": 1,
+          "delta": -0.070960906133118
+        },
+        {
+          "phase": 1,
+          "scenario": 3,
+          "schedule": 0,
+          "delta": -0.01728217429393228
+        },
+        {
+          "phase": 1,
+          "scenario": 3,
+          "schedule": 1,
+          "delta": 0.006547540505700805
+        },
+        {
+          "phase": 1,
+          "scenario": 4,
+          "schedule": 0,
+          "delta": 0.005622330617302718
+        },
+        {
+          "phase": 1,
+          "scenario": 4,
+          "schedule": 1,
+          "delta": 0.007693488314450991
+        },
+        {
+          "phase": 1,
+          "scenario": 5,
+          "schedule": 0,
+          "delta": 0.007230077269033908
+        },
+        {
+          "phase": 1,
+          "scenario": 5,
+          "schedule": 1,
+          "delta": 0.015174413087877398
+        },
+        {
+          "phase": 1,
+          "scenario": 6,
+          "schedule": 0,
+          "delta": 0.00842048634805237
+        },
+        {
+          "phase": 1,
+          "scenario": 6,
+          "schedule": 1,
+          "delta": 0.007220706407503441
+        },
+        {
+          "phase": 1,
+          "scenario": 7,
+          "schedule": 0,
+          "delta": -0.005943321496776899
+        },
+        {
+          "phase": 1,
+          "scenario": 7,
+          "schedule": 1,
+          "delta": -0.0005280833869664991
+        },
+        {
+          "phase": 1,
+          "scenario": 8,
+          "schedule": 0,
+          "delta": 0.010968284298820186
+        },
+        {
+          "phase": 1,
+          "scenario": 8,
+          "schedule": 1,
+          "delta": 0.003318775198873025
+        },
+        {
+          "phase": 1,
+          "scenario": 9,
+          "schedule": 0,
+          "delta": 0.0006547420786615493
+        },
+        {
+          "phase": 1,
+          "scenario": 9,
+          "schedule": 1,
+          "delta": -0.0016028459166608083
+        },
+        {
+          "phase": 1,
+          "scenario": 10,
+          "schedule": 0,
+          "delta": 0.0022820270038062113
+        },
+        {
+          "phase": 1,
+          "scenario": 10,
+          "schedule": 1,
+          "delta": 0.0021216559499286566
+        },
+        {
+          "phase": 1,
+          "scenario": 11,
+          "schedule": 0,
+          "delta": 0.0010642397562805536
+        },
+        {
+          "phase": 1,
+          "scenario": 11,
+          "schedule": 1,
+          "delta": 0.002131445991703035
+        },
+        {
+          "phase": 1,
+          "scenario": 12,
+          "schedule": 0,
+          "delta": 0.004337487554627775
+        },
+        {
+          "phase": 1,
+          "scenario": 12,
+          "schedule": 1,
+          "delta": 0.004028797082116578
+        },
+        {
+          "phase": 1,
+          "scenario": 13,
+          "schedule": 0,
+          "delta": 0.0061566905663644825
+        },
+        {
+          "phase": 1,
+          "scenario": 13,
+          "schedule": 1,
+          "delta": 0.007456768252025556
+        },
+        {
+          "phase": 1,
+          "scenario": 14,
+          "schedule": 0,
+          "delta": -0.07938818481943336
+        },
+        {
+          "phase": 1,
+          "scenario": 14,
+          "schedule": 1,
+          "delta": -0.056764988101905896
+        },
+        {
+          "phase": 1,
+          "scenario": 15,
+          "schedule": 0,
+          "delta": -0.041773088601526814
+        },
+        {
+          "phase": 1,
+          "scenario": 15,
+          "schedule": 1,
+          "delta": -0.1157253026544835
+        },
+        {
+          "phase": 1,
+          "scenario": 16,
+          "schedule": 0,
+          "delta": 0.0003957584996840541
+        },
+        {
+          "phase": 1,
+          "scenario": 16,
+          "schedule": 1,
+          "delta": -0.0005137636260065942
+        },
+        {
+          "phase": 1,
+          "scenario": 17,
+          "schedule": 0,
+          "delta": 0.005527346700257563
+        },
+        {
+          "phase": 1,
+          "scenario": 17,
+          "schedule": 1,
+          "delta": -0.00008802038563043846
+        },
+        {
+          "phase": 1,
+          "scenario": 18,
+          "schedule": 0,
+          "delta": 0.0002302370065659018
+        },
+        {
+          "phase": 1,
+          "scenario": 18,
+          "schedule": 1,
+          "delta": -0.0003047900365444542
+        },
+        {
+          "phase": 1,
+          "scenario": 19,
+          "schedule": 0,
+          "delta": -0.0075582487937354
+        },
+        {
+          "phase": 1,
+          "scenario": 19,
+          "schedule": 1,
+          "delta": 0.0023029693515568272
+        },
+        {
+          "phase": 1,
+          "scenario": 20,
+          "schedule": 0,
+          "delta": -0.06605321165177436
+        },
+        {
+          "phase": 1,
+          "scenario": 20,
+          "schedule": 1,
+          "delta": -0.037473699339559574
+        }
+      ]
+    },
+    {
+      "control": "Markov",
+      "improved": 30,
+      "harmGreaterThanPoint01": 15,
+      "meanDelta": -0.00006037165693449642,
+      "rows": [
+        {
+          "phase": 0,
+          "scenario": 0,
+          "schedule": 0,
+          "delta": 0.04527489601807169
+        },
+        {
+          "phase": 0,
+          "scenario": 0,
+          "schedule": 1,
+          "delta": 0.06544309085691255
+        },
+        {
+          "phase": 0,
+          "scenario": 1,
+          "schedule": 0,
+          "delta": 0.018207260410039228
+        },
+        {
+          "phase": 0,
+          "scenario": 1,
+          "schedule": 1,
+          "delta": -0.009180827894182425
+        },
+        {
+          "phase": 0,
+          "scenario": 2,
+          "schedule": 0,
+          "delta": -0.07185266580448404
+        },
+        {
+          "phase": 0,
+          "scenario": 2,
+          "schedule": 1,
+          "delta": -0.03958655254797694
+        },
+        {
+          "phase": 0,
+          "scenario": 3,
+          "schedule": 0,
+          "delta": 0.007669655825157828
+        },
+        {
+          "phase": 0,
+          "scenario": 3,
+          "schedule": 1,
+          "delta": 0.0021919421316179966
+        },
+        {
+          "phase": 0,
+          "scenario": 4,
+          "schedule": 0,
+          "delta": -0.06080803931934481
+        },
+        {
+          "phase": 0,
+          "scenario": 4,
+          "schedule": 1,
+          "delta": -0.020660636202440408
+        },
+        {
+          "phase": 0,
+          "scenario": 5,
+          "schedule": 0,
+          "delta": 0.004992717494088195
+        },
+        {
+          "phase": 0,
+          "scenario": 5,
+          "schedule": 1,
+          "delta": -0.0074399034159446376
+        },
+        {
+          "phase": 0,
+          "scenario": 6,
+          "schedule": 0,
+          "delta": -0.008074794946362818
+        },
+        {
+          "phase": 0,
+          "scenario": 6,
+          "schedule": 1,
+          "delta": 0.0007993134520274947
+        },
+        {
+          "phase": 0,
+          "scenario": 7,
+          "schedule": 0,
+          "delta": 0.006341269551800782
+        },
+        {
+          "phase": 0,
+          "scenario": 7,
+          "schedule": 1,
+          "delta": -0.017857062540491297
+        },
+        {
+          "phase": 0,
+          "scenario": 8,
+          "schedule": 0,
+          "delta": 0.012920322632131609
+        },
+        {
+          "phase": 0,
+          "scenario": 8,
+          "schedule": 1,
+          "delta": 0.005572161250944702
+        },
+        {
+          "phase": 0,
+          "scenario": 9,
+          "schedule": 0,
+          "delta": 0.0006761375761450625
+        },
+        {
+          "phase": 0,
+          "scenario": 9,
+          "schedule": 1,
+          "delta": 0.0010009626360643897
+        },
+        {
+          "phase": 0,
+          "scenario": 10,
+          "schedule": 0,
+          "delta": 0.005096309623688101
+        },
+        {
+          "phase": 0,
+          "scenario": 10,
+          "schedule": 1,
+          "delta": 0.0015822064406084482
+        },
+        {
+          "phase": 0,
+          "scenario": 11,
+          "schedule": 0,
+          "delta": 0.000518724514913943
+        },
+        {
+          "phase": 0,
+          "scenario": 11,
+          "schedule": 1,
+          "delta": 0.00006449153723804557
+        },
+        {
+          "phase": 0,
+          "scenario": 12,
+          "schedule": 0,
+          "delta": 0.0031479518222115865
+        },
+        {
+          "phase": 0,
+          "scenario": 12,
+          "schedule": 1,
+          "delta": 0.0005826447862454648
+        },
+        {
+          "phase": 0,
+          "scenario": 13,
+          "schedule": 0,
+          "delta": 0.002831678426701831
+        },
+        {
+          "phase": 0,
+          "scenario": 13,
+          "schedule": 1,
+          "delta": 0.0006165419751356233
+        },
+        {
+          "phase": 0,
+          "scenario": 14,
+          "schedule": 0,
+          "delta": 0.047666132855976026
+        },
+        {
+          "phase": 0,
+          "scenario": 14,
+          "schedule": 1,
+          "delta": 0.014666638303062925
+        },
+        {
+          "phase": 0,
+          "scenario": 15,
+          "schedule": 0,
+          "delta": 0.12516060333404627
+        },
+        {
+          "phase": 0,
+          "scenario": 15,
+          "schedule": 1,
+          "delta": 0.1256909532275007
+        },
+        {
+          "phase": 0,
+          "scenario": 16,
+          "schedule": 0,
+          "delta": 0.0009617340450284381
+        },
+        {
+          "phase": 0,
+          "scenario": 16,
+          "schedule": 1,
+          "delta": 0.0011349020173769195
+        },
+        {
+          "phase": 0,
+          "scenario": 17,
+          "schedule": 0,
+          "delta": -0.0002678366001827581
+        },
+        {
+          "phase": 0,
+          "scenario": 17,
+          "schedule": 1,
+          "delta": 0.0008572160548882546
+        },
+        {
+          "phase": 0,
+          "scenario": 18,
+          "schedule": 0,
+          "delta": 0.0017709959308528297
+        },
+        {
+          "phase": 0,
+          "scenario": 18,
+          "schedule": 1,
+          "delta": 0.003060883979157568
+        },
+        {
+          "phase": 0,
+          "scenario": 19,
+          "schedule": 0,
+          "delta": -0.12765341279929898
+        },
+        {
+          "phase": 0,
+          "scenario": 19,
+          "schedule": 1,
+          "delta": -0.07864722370642874
+        },
+        {
+          "phase": 0,
+          "scenario": 20,
+          "schedule": 0,
+          "delta": -0.009136440563172255
+        },
+        {
+          "phase": 0,
+          "scenario": 20,
+          "schedule": 1,
+          "delta": -0.0009404388043818268
+        },
+        {
+          "phase": 1,
+          "scenario": 0,
+          "schedule": 0,
+          "delta": 0.01293244346327771
+        },
+        {
+          "phase": 1,
+          "scenario": 0,
+          "schedule": 1,
+          "delta": 0.079349709628625
+        },
+        {
+          "phase": 1,
+          "scenario": 1,
+          "schedule": 0,
+          "delta": -0.01446389145981572
+        },
+        {
+          "phase": 1,
+          "scenario": 1,
+          "schedule": 1,
+          "delta": -0.026936243762060913
+        },
+        {
+          "phase": 1,
+          "scenario": 2,
+          "schedule": 0,
+          "delta": -0.060809345135325155
+        },
+        {
+          "phase": 1,
+          "scenario": 2,
+          "schedule": 1,
+          "delta": -0.08572493063468806
+        },
+        {
+          "phase": 1,
+          "scenario": 3,
+          "schedule": 0,
+          "delta": -0.036709217795100724
+        },
+        {
+          "phase": 1,
+          "scenario": 3,
+          "schedule": 1,
+          "delta": 0.021905708836720744
+        },
+        {
+          "phase": 1,
+          "scenario": 4,
+          "schedule": 0,
+          "delta": 0.0025358904148889416
+        },
+        {
+          "phase": 1,
+          "scenario": 4,
+          "schedule": 1,
+          "delta": -0.003270720562512097
+        },
+        {
+          "phase": 1,
+          "scenario": 5,
+          "schedule": 0,
+          "delta": -0.0096012456307355
+        },
+        {
+          "phase": 1,
+          "scenario": 5,
+          "schedule": 1,
+          "delta": 0.0011534984065246778
+        },
+        {
+          "phase": 1,
+          "scenario": 6,
+          "schedule": 0,
+          "delta": 0.051054490695683824
+        },
+        {
+          "phase": 1,
+          "scenario": 6,
+          "schedule": 1,
+          "delta": 0.055361534433821774
+        },
+        {
+          "phase": 1,
+          "scenario": 7,
+          "schedule": 0,
+          "delta": -0.005070925884590127
+        },
+        {
+          "phase": 1,
+          "scenario": 7,
+          "schedule": 1,
+          "delta": 0.0027802646437793954
+        },
+        {
+          "phase": 1,
+          "scenario": 8,
+          "schedule": 0,
+          "delta": -0.0004890923553470539
+        },
+        {
+          "phase": 1,
+          "scenario": 8,
+          "schedule": 1,
+          "delta": -0.011928875334329514
+        },
+        {
+          "phase": 1,
+          "scenario": 9,
+          "schedule": 0,
+          "delta": -0.004415781137053022
+        },
+        {
+          "phase": 1,
+          "scenario": 9,
+          "schedule": 1,
+          "delta": -0.005140158984577009
+        },
+        {
+          "phase": 1,
+          "scenario": 10,
+          "schedule": 0,
+          "delta": 0.003332075677782563
+        },
+        {
+          "phase": 1,
+          "scenario": 10,
+          "schedule": 1,
+          "delta": 0.0008298808495720428
+        },
+        {
+          "phase": 1,
+          "scenario": 11,
+          "schedule": 0,
+          "delta": 0.0009652453570064209
+        },
+        {
+          "phase": 1,
+          "scenario": 11,
+          "schedule": 1,
+          "delta": 0.002098326280918071
+        },
+        {
+          "phase": 1,
+          "scenario": 12,
+          "schedule": 0,
+          "delta": 0.004441803167782116
+        },
+        {
+          "phase": 1,
+          "scenario": 12,
+          "schedule": 1,
+          "delta": 0.0031450913080569437
+        },
+        {
+          "phase": 1,
+          "scenario": 13,
+          "schedule": 0,
+          "delta": 0.006039231906476247
+        },
+        {
+          "phase": 1,
+          "scenario": 13,
+          "schedule": 1,
+          "delta": 0.00730479637685983
+        },
+        {
+          "phase": 1,
+          "scenario": 14,
+          "schedule": 0,
+          "delta": 0.04291896937247863
+        },
+        {
+          "phase": 1,
+          "scenario": 14,
+          "schedule": 1,
+          "delta": 0.006736150243483313
+        },
+        {
+          "phase": 1,
+          "scenario": 15,
+          "schedule": 0,
+          "delta": 0.06386858634100573
+        },
+        {
+          "phase": 1,
+          "scenario": 15,
+          "schedule": 1,
+          "delta": 0.007156913825647183
+        },
+        {
+          "phase": 1,
+          "scenario": 16,
+          "schedule": 0,
+          "delta": 0.0004427618277858328
+        },
+        {
+          "phase": 1,
+          "scenario": 16,
+          "schedule": 1,
+          "delta": -0.00023413322585263963
+        },
+        {
+          "phase": 1,
+          "scenario": 17,
+          "schedule": 0,
+          "delta": -0.0021047778346641732
+        },
+        {
+          "phase": 1,
+          "scenario": 17,
+          "schedule": 1,
+          "delta": 0.0004290281203807589
+        },
+        {
+          "phase": 1,
+          "scenario": 18,
+          "schedule": 0,
+          "delta": 0.000419903437112866
+        },
+        {
+          "phase": 1,
+          "scenario": 18,
+          "schedule": 1,
+          "delta": 0.00021044401083897962
+        },
+        {
+          "phase": 1,
+          "scenario": 19,
+          "schedule": 0,
+          "delta": -0.0746165439005741
+        },
+        {
+          "phase": 1,
+          "scenario": 19,
+          "schedule": 1,
+          "delta": -0.09296344199696527
+        },
+        {
+          "phase": 1,
+          "scenario": 20,
+          "schedule": 0,
+          "delta": 0.007182649828584242
+        },
+        {
+          "phase": 1,
+          "scenario": 20,
+          "schedule": 1,
+          "delta": -0.009581795568343043
+        }
+      ]
+    }
+  ],
+  "limitations": "One-index descriptive differences, not confidence-certified non-harm or fresh confirmation."
+}

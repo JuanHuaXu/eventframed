@@ -1,0 +1,36 @@
+✔ verifies the exact signed proposal and rejects tampering (2.906ms)
+✔ accepts a still-valid contract-6 proposal after contract-7 queue migration (0.278291ms)
+✔ requires consent, capability, session scope, and an inactive kill switch (1.358209ms)
+✔ rejects duplicate evidence identifiers in a signed payload (0.751583ms)
+✔ defers non-critical delivery through UTC quiet hours (0.203041ms)
+✔ schedules an authorized proposal and records durable approval (0.481125ms)
+✔ rolls back a scheduled turn before rejecting a failed durable handoff (0.323708ms)
+✔ rolls back an ambiguous scheduler failure before recording rejection (0.2785ms)
+✔ rolls back a turn when authority stops during scheduling (0.289458ms)
+✔ capture sends only the raw turn contract to eventframed (10.459375ms)
+✔ recall rejects a daemon response with the wrong protocol (3.066417ms)
+✔ recall retries a bounded snapshot conflict with the identical as_of (8.017875ms)
+✔ recall rejects malformed candidates before prompt formatting (1.158542ms)
+✔ recall rejects a candidate without a finite rank delta (1.005625ms)
+✔ explicit outcome feedback preserves the recall journal and trusted signal (1.325958ms)
+✔ agency claims reject a lease assigned to another consumer (1.002208ms)
+✔ agency claim sends the private authority credential (0.810708ms)
+✔ agency resolution rejects a terminal state that differs from the request (1.366ms)
+✔ buildTurnCapture is deterministic and exposes no semantic fields (1.750708ms)
+✔ extractLatestText handles structured OpenClaw messages (0.130917ms)
+✔ formatContext escapes records so they cannot close the trust envelope (0.17625ms)
+✔ identity transport stays raw and session bindings are exact (1.565625ms)
+✔ opaque profiles and hostile property names do not become bindings (0.1145ms)
+✔ capture hook forwards trusted session identity and preceding successful capture only (45.159375ms)
+✔ before_prompt_build fails open when eventframed is unavailable (0.887667ms)
+✔ registers operator-scoped exact-journal outcome feedback (0.630084ms)
+✔ TraceWriter appends ordered mode-0600 JSONL records (5.983167ms)
+✔ TraceWriter is a no-op when no path is configured (0.111541ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 405.110166

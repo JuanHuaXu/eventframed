@@ -1,0 +1,33 @@
+{
+  "command": [
+    "go",
+    "test",
+    "./internal/observationlearners",
+    "-run",
+    "^$",
+    "-bench",
+    "^BenchmarkSegmentComponent$",
+    "-benchtime=200ms",
+    "-count=3",
+    "-benchmem"
+  ],
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpu": "Apple M4",
+  "cpus": 10,
+  "totalMemory": 17179869184,
+  "goVersion": "go version go1.27.1 darwin/arm64",
+  "elapsedSeconds": 13.305531625,
+  "hashes": {
+    "internal/observationlearners/segment_posterior.go": "16e4a6281a64ceed920acf5c29ae2bcdfa70b246b37740d9f44f57eb22f2ec3e",
+    "internal/observationlearners/segment_posterior_test.go": "2f236f730d2aa5b760d2f63a9a0e00523df95d34232aa7ac9c9813d1afc84a59",
+    "internal/observationlearners/segment_benchmark_test.go": "0f27f358720ec431a32a59024fafdbb2fe30cabcfa1fa7f35e1c0fc8b8a785a0",
+    "internal/observationlearners/subset.go": "b33e2cbfeac2e8cbda8b596e519b777da40e7573d2b4347eaf21dc0706f321a3",
+    "internal/observationlearners/boolean_specialist.go": "9636ff1c80f27d92444c251b2638a9d55ee392b409038267d9d5997021aed66f",
+    "internal/observationlearners/conditional.go": "25f157a5dfe6fc4c99a8f509625de4652a68bed760e7020430529528c800c6f0",
+    "internal/observationlearners/ridge_logistic_test.go": "fed873a7f315cec4607be4c72dae335255cca67f8bd4e5c5f0bfdc5fbb6f9f16",
+    "go.mod": "fa72235136c9ba87b6c33424e3e28c451a53901bd5198db1ee69fe9b4f654da6",
+    "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13"
+  },
+  "raw": "goos: darwin\ngoarch: arm64\npkg: github.com/JuanHuaXu/eventframed/internal/observationlearners\ncpu: Apple M4\nBenchmarkSegmentComponent/Likelihoods16-10         \t      27\t   7497046 ns/op\t    300040 workspace-bytes\t  303104 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Likelihoods16-10         \t      32\t   7461211 ns/op\t    300040 workspace-bytes\t  303104 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Likelihoods16-10         \t      31\t   7474337 ns/op\t    300040 workspace-bytes\t  303104 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/FullFit16-10             \t      31\t   7484034 ns/op\t  308416 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/FullFit16-10             \t      32\t   7478822 ns/op\t  308416 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/FullFit16-10             \t      32\t   7476051 ns/op\t  308416 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/Generic16-10             \t      38\t   6059397 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Generic16-10             \t      38\t   6077286 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Generic16-10             \t      39\t   6137377 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Boolean16-10             \t     783\t    301295 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Boolean16-10             \t     798\t    298575 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Boolean16-10             \t     790\t    299296 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Likelihoods32-10         \t      10\t  20313925 ns/op\t    300040 workspace-bytes\t  303104 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Likelihoods32-10         \t      10\t  20280242 ns/op\t    300040 workspace-bytes\t  303105 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Likelihoods32-10         \t      12\t  20685347 ns/op\t    300040 workspace-bytes\t  303104 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/FullFit32-10             \t      10\t  20497317 ns/op\t  308864 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/FullFit32-10             \t      10\t  20437562 ns/op\t  308864 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/FullFit32-10             \t      10\t  20523688 ns/op\t  308864 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/Generic32-10             \t      37\t   6434078 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Generic32-10             \t      37\t   6383876 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Generic32-10             \t      37\t   6347605 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Boolean32-10             \t     708\t    343617 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Boolean32-10             \t     702\t    342112 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Boolean32-10             \t     706\t    344293 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Likelihoods64-10         \t       4\t  63493698 ns/op\t    300040 workspace-bytes\t  303104 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Likelihoods64-10         \t       4\t  62877146 ns/op\t    300040 workspace-bytes\t  303104 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Likelihoods64-10         \t       4\t  62406562 ns/op\t    300040 workspace-bytes\t  303104 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/FullFit64-10             \t       4\t  63011073 ns/op\t  309760 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/FullFit64-10             \t       4\t  62622802 ns/op\t  309760 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/FullFit64-10             \t       4\t  63218073 ns/op\t  309760 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/Generic64-10             \t      33\t   6933720 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Generic64-10             \t      34\t   6864971 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Generic64-10             \t      34\t   6869362 ns/op\t  331776 B/op\t       2 allocs/op\nBenchmarkSegmentComponent/Boolean64-10             \t     526\t    455145 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Boolean64-10             \t     525\t    453854 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/Boolean64-10             \t     534\t    434713 ns/op\t   16384 B/op\t       1 allocs/op\nBenchmarkSegmentComponent/FullHistory272Cap64-10   \t       4\t  65485864 ns/op\t  313344 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/FullHistory272Cap64-10   \t       4\t  65417948 ns/op\t  313344 B/op\t       6 allocs/op\nBenchmarkSegmentComponent/FullHistory272Cap64-10   \t       4\t  65677021 ns/op\t  313344 B/op\t       6 allocs/op\nPASS\nok  \tgithub.com/JuanHuaXu/eventframed/internal/observationlearners\t12.399s\n"
+}

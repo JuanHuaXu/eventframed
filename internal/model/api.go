@@ -88,6 +88,7 @@ type Candidate struct {
 	PredictiveScore                float64 `json:"predictive_score"`
 	RetrievalScore                 float64 `json:"retrieval_score"`
 	RankDelta                      float64 `json:"rank_delta"`
+	ResearchRankDelta              float64 `json:"research_rank_delta,omitempty"`
 	RankDeltaScale                 float64 `json:"rank_delta_scale,omitempty"`
 	RankDeltaAnswerCertainty       float64 `json:"rank_delta_answer_certainty,omitempty"`
 	RankDeltaCorrectionReliability float64 `json:"rank_delta_correction_reliability,omitempty"`

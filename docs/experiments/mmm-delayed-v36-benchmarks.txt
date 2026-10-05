@@ -1,0 +1,22 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchdispersion
+cpu: Apple M4
+BenchmarkDelayedShapeIssue-10      4486418 263.2 ns/op 0 B/op 0 allocs/op
+BenchmarkDelayedShapeIssue-10      4859629 247.1 ns/op 0 B/op 0 allocs/op
+BenchmarkDelayedShapeIssue-10      4852102 244.9 ns/op 0 B/op 0 allocs/op
+BenchmarkDelayedShapeResolve-10    120891 10037 ns/op 0 B/op 0 allocs/op
+BenchmarkDelayedShapeResolve-10    120315 10094 ns/op 0 B/op 0 allocs/op
+BenchmarkDelayedShapeResolve-10    118592 10104 ns/op 0 B/op 0 allocs/op
+BenchmarkDelayedShapeNew-10        15489 77510 ns/op 740277 B/op 10 allocs/op
+BenchmarkDelayedShapeNew-10        15075 80044 ns/op 740276 B/op 10 allocs/op
+BenchmarkDelayedShapeNew-10        15472 77416 ns/op 740276 B/op 10 allocs/op
+BenchmarkDelayedShapeEpoch-10      18072 66654 ns/op 500997 B/op 6 allocs/op
+BenchmarkDelayedShapeEpoch-10      17532 67829 ns/op 500997 B/op 6 allocs/op
+BenchmarkDelayedShapeEpoch-10      17751 67203 ns/op 500997 B/op 6 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/researchdispersion 14.531s
+
+Captured from the completed precollection benchmark tool output; whitespace
+normalized here only. Issue/Resolve include benchmark state restoration.
+Constructor/epoch allocations are real. No serving/acquisition claim.

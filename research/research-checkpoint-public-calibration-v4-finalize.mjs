@@ -1,0 +1,22 @@
+// Repair only the new checkpoint's stale usage metadata; preserve its original.
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+const root='research/checkpoint-2026-10-04-public-calibration-v4';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const sha=async p=>{const h=crypto.createHash('sha256');for await(const b of fs.createReadStream(p))h.update(b);return h.digest('hex');};
+const before=fs.readFileSync(root+'/manifest.json'),m=JSON.parse(before);
+assert.equal(m.weeklyUsage,23);assert(m.allRequiredJobsTerminal);assert.equal(m.goal,'ACTIVE');assert.equal(m.confirmationPredictions,0);
+const observed=Number(process.env.EVENTFRAME_WEEKLY_USAGE);assert.equal(observed,24);
+fs.writeFileSync(root+'/manifest-as-generated.json',before,{flag:'wx',mode:0o600});
+const script='research/research-checkpoint-public-calibration-v4-finalize.mjs',copy='saved/'+script;
+fs.copyFileSync(script,root+'/'+copy,fs.constants.COPYFILE_EXCL);fs.chmodSync(root+'/'+copy,0o600);
+m.copies.push({path:script,copy,sha256:await sha(script),bytes:fs.statSync(script).size});
+m.weeklyUsageAtInvocation=23;m.weeklyUsage=observed;
+m.usageCorrection={source:'get_usage_limits observed before checkpoint launch',usedPercent:24,windowDurationMins:10080,resetsAt:1791586313,originalManifest:{path:'manifest-as-generated.json',sha256:hash(before)},reason:'checkpoint was invoked with stale environment value23 after fresh tool read24',scientificArtifactsChanged:false};
+for(const c of m.copies)assert.equal(await sha(root+'/'+c.copy),c.sha256);for(const l of m.links)assert.equal(await sha(l.path),l.sha256);
+assert.equal(await sha(root+'/manifest-as-generated.json'),hash(before));
+fs.writeFileSync(root+'/manifest.json',JSON.stringify(m,null,2)+'\n',{mode:0o600});
+const after=JSON.parse(fs.readFileSync(root+'/manifest.json'));
+for(const k of ['goals','goal','coreTerminalCommands','calibrationPredictions','calibrationOutcomesConsumed','confirmationPredictions','nativeCalibrationPromotionPassed','allRequiredJobsTerminal','trackedHashes'])assert.deepEqual(after[k],JSON.parse(before)[k]);
+console.log(JSON.stringify({root,copies:m.copies.length,links:m.links.length,weeklyUsage:observed,manifestSHA256:await sha(root+'/manifest.json'),scientificArtifactsChanged:false,allSevenWholeGoals:'OPEN',goal:'ACTIVE'}));

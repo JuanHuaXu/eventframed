@@ -58,6 +58,10 @@ type persistentState struct {
 }
 
 func Open(config Config) (*Store, error) {
+	return openWithWriteConcurrency(config, 2)
+}
+
+func openWithWriteConcurrency(config Config, writers int) (*Store, error) {
 	if config.Path == "" {
 		return nil, errors.New("database path is required")
 	}
@@ -69,7 +73,7 @@ func Open(config Config) (*Store, error) {
 	}
 	db, err := libra.Open(
 		libra.WithStoragePath(config.Path),
-		libra.WithMaxConcurrentWrites(2),
+		libra.WithMaxConcurrentWrites(writers),
 		libra.WithMaxWriteQueueDepth(64),
 	)
 	if err != nil {

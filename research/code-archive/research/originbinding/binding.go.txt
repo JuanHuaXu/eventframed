@@ -1,0 +1,76 @@
+// Package originbinding is an offline research adapter, not an authentication
+// service. Its registry must be supplied by a trusted external capture process.
+package originbinding
+
+import (
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"errors"
+
+	"github.com/JuanHuaXu/eventframed/internal/model"
+)
+
+type Binding struct {
+	Tenant  string
+	EventID string
+	Origin  string
+	Digest  [32]byte
+}
+type Registry struct{ entries map[[32]byte]Binding }
+
+func key(tenant, id string) [32]byte {
+	b, _ := json.Marshal([2]string{tenant, id})
+	return sha256.Sum256(b)
+}
+
+// Record constructs fixture bindings. Calling it is NOT proof of provenance.
+// In an integration, only the trusted capture boundary may create entries.
+func Record(event model.Event, origin string) (Binding, error) {
+	b, err := json.Marshal(event)
+	if err != nil {
+		return Binding{}, err
+	}
+	return Binding{Tenant: event.TenantID, EventID: event.ID, Origin: origin, Digest: sha256.Sum256(b)}, nil
+}
+
+func New(bindings []Binding) (*Registry, error) {
+	if len(bindings) > 256 {
+		return nil, errors.New("registry exceeds offline cap")
+	}
+	r := &Registry{entries: make(map[[32]byte]Binding, len(bindings))}
+	for _, b := range bindings {
+		if b.Tenant == "" || b.EventID == "" || b.Origin == "" || len(b.Tenant) > 256 || len(b.EventID) > 256 || len(b.Origin) > 256 {
+			return nil, errors.New("invalid binding identity")
+		}
+		k := key(b.Tenant, b.EventID)
+		if _, exists := r.entries[k]; exists {
+			return nil, errors.New("duplicate binding identity")
+		}
+		r.entries[k] = b
+	}
+	return r, nil
+}
+
+// Apply changes only the packet correlation key. Missing/mismatched bindings
+// leave the candidate unchanged; they never create an assertion of independence.
+func (r *Registry) Apply(c model.Candidate) (model.Candidate, bool) {
+	if r == nil || c.Event.Kind != "external_observation" {
+		return c, false
+	}
+	b, ok := r.entries[key(c.Event.TenantID, c.Event.ID)]
+	if !ok {
+		return c, false
+	}
+	raw, err := json.Marshal(c.Event)
+	if err != nil || sha256.Sum256(raw) != b.Digest {
+		return c, false
+	}
+	e := c.Event
+	// Exact field values avoid punctuation-erasing semantic equivalence. Semantic
+	// time is included so distinct historical occurrences do not collapse.
+	material, _ := json.Marshal([]string{e.TenantID, b.Origin, e.Kind, e.Who.Value, e.What.Value, e.Where.Value, e.When.Value, e.Why.Value, e.How.Value})
+	digest := sha256.Sum256(material)
+	c.EvidenceGroupKey = "research-origin-v1:" + hex.EncodeToString(digest[:])
+	return c, true
+}

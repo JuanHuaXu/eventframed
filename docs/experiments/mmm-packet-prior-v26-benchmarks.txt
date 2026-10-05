@@ -1,0 +1,16 @@
+Command: go test ./internal/store/libravdbstore -run '^$' -bench '^BenchmarkResearchContextPriorV26Scope$' -benchmem -count=3 -benchtime=500ms
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/store/libravdbstore
+cpu: Apple M4
+BenchmarkResearchContextPriorV26Scope-10       32491       17225 ns/op       4531 B/op       20 allocs/op
+BenchmarkResearchContextPriorV26Scope-10       34700       17199 ns/op       4520 B/op       20 allocs/op
+BenchmarkResearchContextPriorV26Scope-10       34671       17271 ns/op       4529 B/op       20 allocs/op
+PASS
+ok  github.com/JuanHuaXu/eventframed/internal/store/libravdbstore  2.664s
+
+One operation constructs the canonical context scope for the short fixture
+query and 256D supplied embedding, including frame extraction, JSON, SHA256
+and context allocation. It excludes storage, posterior reads, Recall and
+packing. The sequential Recall timer in v26 starts after scope construction.
+Do not add this average microbenchmark to Recall maxima and call it loaded p99.

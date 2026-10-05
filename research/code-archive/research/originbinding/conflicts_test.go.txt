@@ -1,0 +1,75 @@
+package originbinding
+
+import (
+	"fmt"
+	"math"
+	"reflect"
+	"testing"
+
+	"github.com/JuanHuaXu/eventframed/internal/model"
+)
+
+func TestConflictNominationDoesNotCertifyOrMutate(t *testing.T) {
+	a, b := fixture("a", "same"), fixture("b", "same")
+	a.Event.Provenance.ToolCallID = "same"
+	b.Event.Provenance.ToolCallID = "same"
+	b.Event.What.Value = "A < B"
+	input := []model.Candidate{a, b}
+	r := registry(t, input, []string{"origin", "origin"})
+	out, err := r.Conflicts(input, nil, .85)
+	if err != nil || len(out.Conflicts) != 1 || out.PairsChecked != 1 || out.Truncated {
+		t.Fatalf("nomination: %+v %v", out, err)
+	}
+	if !reflect.DeepEqual(input, []model.Candidate{a, b}) {
+		t.Fatal("inputs mutated")
+	}
+	keys := map[string]string{"a": "ap:first", "b": "ap:second"}
+	out, err = r.Conflicts(input, keys, .85)
+	if err != nil || len(out.Conflicts) != 0 || keys["a"] != "ap:first" {
+		t.Fatal("AP decision altered or ignored")
+	}
+}
+func TestRepeatsUnboundAndTenantBoundaries(t *testing.T) {
+	a, b := fixture("a", "one"), fixture("b", "two")
+	r := registry(t, []model.Candidate{a, b}, []string{"origin", "origin"})
+	out, err := r.Conflicts([]model.Candidate{a, b}, nil, .85)
+	if err != nil || len(out.Conflicts) != 0 {
+		t.Fatal("repeat nominated")
+	}
+	b.Event.What.Value = "tampered"
+	out, err = r.Conflicts([]model.Candidate{a, b}, nil, .85)
+	if err != nil || out.Unbound != 1 || len(out.Conflicts) != 0 {
+		t.Fatal("unbound payload used")
+	}
+	b = fixture("b", "one")
+	b.Event.TenantID = "other"
+	r = registry(t, []model.Candidate{a, b}, []string{"origin", "other"})
+	out, err = r.Conflicts([]model.Candidate{a, b}, nil, .85)
+	if err != nil || len(out.Conflicts) != 0 {
+		t.Fatal("cross-tenant nomination")
+	}
+}
+func TestConflictBoundsAndUnresolvedCoverage(t *testing.T) {
+	var candidates []model.Candidate
+	var origins []string
+	for i := 0; i < 12; i++ {
+		candidates = append(candidates, fixture(fmt.Sprint(i), "same"))
+		origins = append(origins, fmt.Sprintf("origin-%d", i))
+	}
+	r := registry(t, candidates, origins)
+	out, err := r.Conflicts(candidates, nil, .85)
+	if err != nil || len(out.Conflicts) != 32 || out.PairsChecked != 66 || !out.Truncated {
+		t.Fatalf("bounds: %+v %v", out, err)
+	}
+	for _, threshold := range []float64{-1, 2, math.NaN(), math.Inf(1)} {
+		if _, err = r.Conflicts(nil, nil, threshold); err == nil {
+			t.Fatal("invalid threshold accepted")
+		}
+	}
+	if _, err = r.Conflicts(make([]model.Candidate, 201), nil, .85); err == nil {
+		t.Fatal("oversized frontier accepted")
+	}
+	if _, err = r.Conflicts([]model.Candidate{candidates[0], candidates[0]}, nil, .85); err == nil {
+		t.Fatal("duplicate identity accepted")
+	}
+}

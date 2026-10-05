@@ -1,0 +1,898 @@
+{
+  "sourceHash": "1c9dd2478e8b4c075f079b0082a7f7cff8b8ddc3b82bdb5ec390ea0b939bf926",
+  "capturedSources": 809,
+  "trajectories": 160,
+  "summaries": [
+    {
+      "phase": "design",
+      "scenario": "stable",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.044512923965509495,
+          "fullBrier": 0.0477377840061183,
+          "cost": 4.0064697265625,
+          "splits": 0
+        },
+        "Mixture": {
+          "postBrier": 0.044512923965509495,
+          "fullBrier": 0.0477377840061183,
+          "cost": 4.0064697265625,
+          "splits": 0
+        },
+        "BirthOld": {
+          "postBrier": 0.044512923965509495,
+          "fullBrier": 0.0477377840061183,
+          "cost": 4.0064697265625,
+          "splits": 0
+        },
+        "BirthMixture": {
+          "postBrier": 0.044512923965509495,
+          "fullBrier": 0.0477377840061183,
+          "cost": 4.0064697265625,
+          "splits": 0
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "member_shift",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.20384863454075752,
+          "fullBrier": 0.125576897169424,
+          "cost": 4.637939453125,
+          "splits": 16
+        },
+        "Mixture": {
+          "postBrier": 0.20360403523782133,
+          "fullBrier": 0.1254545975179559,
+          "cost": 4.6446533203125,
+          "splits": 16
+        },
+        "BirthOld": {
+          "postBrier": 0.20480237407437338,
+          "fullBrier": 0.1260537669362319,
+          "cost": 4.666015625,
+          "splits": 16
+        },
+        "BirthMixture": {
+          "postBrier": 0.20545323407135346,
+          "fullBrier": 0.12637919693472188,
+          "cost": 4.6934814453125,
+          "splits": 16
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": -0.0018491988335321164,
+            "lower": -0.004523192001545559,
+            "upper": 0.0008247943344813261
+          },
+          "full": {
+            "mean": -0.0009245994167660096,
+            "lower": -0.0022615960007727485,
+            "upper": 0.0004123971672407294
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": -0.0009537395336158393,
+            "lower": -0.004363594779258956,
+            "upper": 0.002456115712027277
+          },
+          "full": {
+            "mean": -0.0004768697668078867,
+            "lower": -0.0021817973896294416,
+            "upper": 0.0012280578560136684
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": -0.0006508599969800993,
+            "lower": -0.003197223839864478,
+            "upper": 0.0018955038459042796
+          },
+          "full": {
+            "mean": -0.0003254299984900115,
+            "lower": -0.001598611919932206,
+            "upper": 0.0009477519229521829
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0.00024459930293617774,
+            "lower": -0.0007564602822527761,
+            "upper": 0.0012456588881251316
+          },
+          "full": {
+            "mean": 0.00012229965146811142,
+            "lower": -0.00037823014112636094,
+            "upper": 0.0006228294440625838
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "common_shift",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.1929226614735099,
+          "fullBrier": 0.11926781826635219,
+          "cost": 4.70849609375,
+          "splits": 0
+        },
+        "Mixture": {
+          "postBrier": 0.1929226614735099,
+          "fullBrier": 0.11926781826635219,
+          "cost": 4.70849609375,
+          "splits": 0
+        },
+        "BirthOld": {
+          "postBrier": 0.1929226614735099,
+          "fullBrier": 0.11926781826635219,
+          "cost": 4.70849609375,
+          "splits": 0
+        },
+        "BirthMixture": {
+          "postBrier": 0.1929226614735099,
+          "fullBrier": 0.11926781826635219,
+          "cost": 4.70849609375,
+          "splits": 0
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "recurring",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.1769908081931471,
+          "fullBrier": 0.1442049308299074,
+          "cost": 4.89990234375,
+          "splits": 16
+        },
+        "Mixture": {
+          "postBrier": 0.17646580815736096,
+          "fullBrier": 0.1438111808030678,
+          "cost": 4.89697265625,
+          "splits": 16
+        },
+        "BirthOld": {
+          "postBrier": 0.17735599960047696,
+          "fullBrier": 0.14447882438540474,
+          "cost": 4.911865234375,
+          "splits": 16
+        },
+        "BirthMixture": {
+          "postBrier": 0.17852357262417567,
+          "fullBrier": 0.14535450415317883,
+          "cost": 4.9384765625,
+          "splits": 16
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": -0.0020577644668147137,
+            "lower": -0.006140561964984708,
+            "upper": 0.0020250330313552802
+          },
+          "full": {
+            "mean": -0.0015433233501110383,
+            "lower": -0.004605421473738538,
+            "upper": 0.001518774773516461
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": -0.0003651914073298113,
+            "lower": -0.0016041523535063195,
+            "upper": 0.0008737695388466968
+          },
+          "full": {
+            "mean": -0.0002738935554973763,
+            "lower": -0.001203114265129792,
+            "upper": 0.0006553271541350394
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": -0.00116757302369872,
+            "lower": -0.004021797759830075,
+            "upper": 0.0016866517124326354
+          },
+          "full": {
+            "mean": -0.0008756797677740352,
+            "lower": -0.003016348319872543,
+            "upper": 0.0012649887843244724
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0.0005250000357861825,
+            "lower": -0.00047760045701798716,
+            "upper": 0.001527600528590352
+          },
+          "full": {
+            "mean": 0.0003937500268396269,
+            "lower": -0.0003582003427635014,
+            "upper": 0.0011457003964427553
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.2512619798332992,
+          "fullBrier": 0.2520613567446534,
+          "cost": 5.9990234375,
+          "splits": 0
+        },
+        "Mixture": {
+          "postBrier": 0.2512619798332992,
+          "fullBrier": 0.2520613567446534,
+          "cost": 5.9990234375,
+          "splits": 0
+        },
+        "BirthOld": {
+          "postBrier": 0.2512619798332992,
+          "fullBrier": 0.2520613567446534,
+          "cost": 5.9990234375,
+          "splits": 0
+        },
+        "BirthMixture": {
+          "postBrier": 0.2512619798332992,
+          "fullBrier": 0.2520613567446534,
+          "cost": 5.9990234375,
+          "splits": 0
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "stable",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.04755935484093017,
+          "fullBrier": 0.048514592244923105,
+          "cost": 4.001953125,
+          "splits": 0
+        },
+        "Mixture": {
+          "postBrier": 0.04755935484093017,
+          "fullBrier": 0.048514592244923105,
+          "cost": 4.001953125,
+          "splits": 0
+        },
+        "BirthOld": {
+          "postBrier": 0.04755935484093017,
+          "fullBrier": 0.048514592244923105,
+          "cost": 4.001953125,
+          "splits": 0
+        },
+        "BirthMixture": {
+          "postBrier": 0.04755935484093017,
+          "fullBrier": 0.048514592244923105,
+          "cost": 4.001953125,
+          "splits": 0
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "member_shift",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.20334614027392692,
+          "fullBrier": 0.12356585664716364,
+          "cost": 4.6036376953125,
+          "splits": 16
+        },
+        "Mixture": {
+          "postBrier": 0.2034951302323719,
+          "fullBrier": 0.12364035162638612,
+          "cost": 4.603271484375,
+          "splits": 16
+        },
+        "BirthOld": {
+          "postBrier": 0.2021962832492337,
+          "fullBrier": 0.12299092813481706,
+          "cost": 4.65380859375,
+          "splits": 16
+        },
+        "BirthMixture": {
+          "postBrier": 0.20265650322238882,
+          "fullBrier": 0.12322103812139462,
+          "cost": 4.665771484375,
+          "splits": 16
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": 0.0008386270099830992,
+            "lower": -0.0013450063329839821,
+            "upper": 0.0030222603529501805
+          },
+          "full": {
+            "mean": 0.000419313504991501,
+            "lower": -0.0006725031664920442,
+            "upper": 0.0015111301764750462
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": 0.0011498570246931752,
+            "lower": -0.0013373101578241205,
+            "upper": 0.003637024207210471
+          },
+          "full": {
+            "mean": 0.000574928512346585,
+            "lower": -0.0006686550789120475,
+            "upper": 0.0018185121036052175
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": -0.00046021997315510293,
+            "lower": -0.0025615277351756357,
+            "upper": 0.0016410877888654299
+          },
+          "full": {
+            "mean": -0.00023010998657755927,
+            "lower": -0.0012807638675877775,
+            "upper": 0.000820543894432659
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": -0.00014898995844502688,
+            "lower": -0.000934376789872301,
+            "upper": 0.0006363968729822473
+          },
+          "full": {
+            "mean": -0.00007449497922247528,
+            "lower": -0.0004671883949361295,
+            "upper": 0.0003181984364911789
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "common_shift",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.2020956362070093,
+          "fullBrier": 0.12506040647749547,
+          "cost": 4.6441650390625,
+          "splits": 0
+        },
+        "Mixture": {
+          "postBrier": 0.2020956362070093,
+          "fullBrier": 0.12506040647749547,
+          "cost": 4.6441650390625,
+          "splits": 0
+        },
+        "BirthOld": {
+          "postBrier": 0.2020956362070093,
+          "fullBrier": 0.12506040647749547,
+          "cost": 4.6441650390625,
+          "splits": 0
+        },
+        "BirthMixture": {
+          "postBrier": 0.2020956362070093,
+          "fullBrier": 0.12506040647749547,
+          "cost": 4.6441650390625,
+          "splits": 0
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "recurring",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.168257228292151,
+          "fullBrier": 0.13789759082884068,
+          "cost": 4.8597412109375,
+          "splits": 15
+        },
+        "Mixture": {
+          "postBrier": 0.16803264281822702,
+          "fullBrier": 0.13772915172339767,
+          "cost": 4.8646240234375,
+          "splits": 16
+        },
+        "BirthOld": {
+          "postBrier": 0.16932119906365464,
+          "fullBrier": 0.13869556890746843,
+          "cost": 4.8778076171875,
+          "splits": 15
+        },
+        "BirthMixture": {
+          "postBrier": 0.16881482307599896,
+          "fullBrier": 0.13831578691672664,
+          "cost": 4.8936767578125,
+          "splits": 16
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": -0.0007821802577719274,
+            "lower": -0.0023342884368394642,
+            "upper": 0.0007699279212956094
+          },
+          "full": {
+            "mean": -0.0005866351933289443,
+            "lower": -0.0017507163276295986,
+            "upper": 0.00057744594097171
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": -0.0010639707715036327,
+            "lower": -0.0030339532052330947,
+            "upper": 0.0009060116622258293
+          },
+          "full": {
+            "mean": -0.0007979780786277202,
+            "lower": -0.0022754649039248027,
+            "upper": 0.0006795087466693625
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": 0.0005063759876557002,
+            "lower": -0.0019251494211490823,
+            "upper": 0.0029379013964604826
+          },
+          "full": {
+            "mean": 0.00037978199074178553,
+            "lower": -0.0014438620658618066,
+            "upper": 0.0022034260473453777
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0.0002245854739239949,
+            "lower": -0.0006399116941652769,
+            "upper": 0.0010890826420132667
+          },
+          "full": {
+            "mean": 0.00016843910544300962,
+            "lower": -0.00047993377062393867,
+            "upper": 0.0008168119815099579
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "n": 16,
+      "arms": {
+        "Old": {
+          "postBrier": 0.2515317453410209,
+          "fullBrier": 0.2518581969996391,
+          "cost": 5.999267578125,
+          "splits": 0
+        },
+        "Mixture": {
+          "postBrier": 0.2515317453410209,
+          "fullBrier": 0.2518581969996391,
+          "cost": 5.999267578125,
+          "splits": 0
+        },
+        "BirthOld": {
+          "postBrier": 0.2515317453410209,
+          "fullBrier": 0.2518581969996391,
+          "cost": 5.999267578125,
+          "splits": 0
+        },
+        "BirthMixture": {
+          "postBrier": 0.2515317453410209,
+          "fullBrier": 0.2518581969996391,
+          "cost": 5.999267578125,
+          "splits": 0
+        }
+      },
+      "comparisons": {
+        "actionMixture": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "actionOld": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateBirth": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    }
+  ],
+  "limits": "Small exploratory factorial pilot, mean +/-3.5SE screens; no rare-error coverage, delayed/dependent-data, calibration or daemon performance proof."
+}

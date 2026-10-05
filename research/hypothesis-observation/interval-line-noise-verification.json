@@ -1,0 +1,86 @@
+{
+  "scope": "Byte-exact replay, all-world control parity, alternate conditional-risk identity; not an independent inference implementation",
+  "inputSHA256": "4ba874a2593a69d2dd3bfaa8f7477bdd30ee60602873bc784cba7938208fecd6",
+  "verifierSHA256": "bd49011dfe2cb2895583eb448f439bd185e4d723f788d28cf1b1427c8373d8af",
+  "replay": true,
+  "allWorldControlsExact": true,
+  "checks": 3200,
+  "maxError": 6.106226635438361e-16,
+  "componentTests": {
+    "checks": 107100,
+    "maxError": 5.551115123125783e-16,
+    "negativeTests": 5
+  },
+  "summary": [
+    {
+      "noise": 0.1,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": -0.0009713619914745175,
+      "genuineGainRange": [
+        0.006526000008666377,
+        0.007161360859496396
+      ]
+    },
+    {
+      "noise": 0.15,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.0016780465840775527,
+      "genuineGainRange": [
+        0.00565156930525787,
+        0.0065129568918114444
+      ]
+    },
+    {
+      "noise": 0.2,
+      "passed": 173,
+      "failures": {
+        "nonharm": 0,
+        "gain": 7,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.004257074381995352,
+      "genuineGainRange": [
+        0.004073037357565423,
+        0.005470878671973711
+      ]
+    },
+    {
+      "noise": 0.25,
+      "passed": 170,
+      "failures": {
+        "nonharm": 0,
+        "gain": 10,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.006967120169660501,
+      "genuineGainRange": [
+        0.0018123637701321638,
+        0.0038395290914955416
+      ]
+    },
+    {
+      "noise": 0.3,
+      "passed": 170,
+      "failures": {
+        "nonharm": 0,
+        "gain": 10,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.009706733634326947,
+      "genuineGainRange": [
+        -0.0010629750198145604,
+        0.0014555908887190494
+      ]
+    }
+  ]
+}

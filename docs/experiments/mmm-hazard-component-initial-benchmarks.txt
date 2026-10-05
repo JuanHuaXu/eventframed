@@ -1,0 +1,33 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkHazardAdviceJournal/immediate/log-10         	     184	   1749609 ns/op	  158200 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/immediate/log-10         	     208	   1732283 ns/op	  158200 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/immediate/log-10         	     193	   1755297 ns/op	  158201 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/immediate/markov-10      	     168	   2124671 ns/op	  174576 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/immediate/markov-10      	     165	   2136419 ns/op	  174576 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/immediate/markov-10      	     169	   2128124 ns/op	  174576 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/immediate/hazard-10      	      67	   5185735 ns/op	  174578 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/immediate/hazard-10      	      67	   5207374 ns/op	  174576 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/immediate/hazard-10      	      69	   5187239 ns/op	  174577 B/op	    1276 allocs/op
+BenchmarkHazardAdviceJournal/delay31/log-10           	     265	   1348929 ns/op	  146040 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/delay31/log-10           	     267	   1355033 ns/op	  146040 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/delay31/log-10           	     264	   1360110 ns/op	  146040 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/delay31/markov-10        	     100	   3178822 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/delay31/markov-10        	     100	   3151931 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/delay31/markov-10        	     100	   3156492 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/delay31/hazard-10        	       7	  47828821 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/delay31/hazard-10        	       7	  47913143 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/delay31/hazard-10        	       7	  48027155 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/log-10   	     223	   1600296 ns/op	  146040 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/log-10   	     224	   1594457 ns/op	  146040 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/log-10   	     223	   1597877 ns/op	  146040 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/markov-10         	     100	   3297034 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/markov-10         	     100	   3283797 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/markov-10         	     100	   3265488 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/hazard-10         	       8	  38677880 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/hazard-10         	       8	  38364964 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkHazardAdviceJournal/reverse_batch31/hazard-10         	       8	  38451474 ns/op	  162416 B/op	    1191 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	11.760s

@@ -1,0 +1,14 @@
+{
+  "runtime": "go1.27.1 darwin/arm64",
+  "cpu": "Apple M4",
+  "gomaxprocs": 10,
+  "commands": [
+    "go test ./internal/observationlearners -run '^$' -bench '^BenchmarkFalsificationV99Stream$' -benchmem -benchtime=1x -count=3",
+    "go test ./internal/observationlearners -run '^$' -bench '^BenchmarkForecastFalsification$' -benchmem -benchtime=500ms -count=3"
+  ],
+  "boundary": "Gate kernel operation covers256 prediction/update pairs, four experts per view. Full-stream operation includes256 steps, ten arms, eight refit rounds, five constructed models, two views, scoring and hashing. Neither is a serving request.",
+  "sourceManifest": "mmm-falsification-v99.json:Hashes",
+  "artifactSHA256": "97e2102c8247b4f387eee818bbea5acf158a56b5398db0ce576452c461b37785",
+  "fullBenchmarkSHA256": "e4394e2d58219ac8db189df83c69b10d13084b9c119a201fa8a2e2ee61c5fe4e",
+  "kernelBenchmarkSHA256": "732ea659cb80063a88bafea48910635f478f26c412b0dda59bd3f345190f87bf"
+}

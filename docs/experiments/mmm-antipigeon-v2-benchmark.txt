@@ -1,0 +1,18 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationrescueexperiment
+cpu: Apple M4
+BenchmarkRecoveryStep/frozen         	   92353	     11497 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkRecoveryStep/frozen         	  109744	     10951 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkRecoveryStep/frozen         	  109443	     10967 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkRecoveryStep/cp_audit       	  109185	     11032 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkRecoveryStep/cp_audit       	  109678	     10952 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkRecoveryStep/cp_audit       	  109635	     11002 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkRecoveryStep/ap_audit       	  109119	     11036 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkRecoveryStep/ap_audit       	  105841	     11615 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkRecoveryStep/ap_audit       	  105264	     11120 ns/op	    7871 B/op	      12 allocs/op
+BenchmarkAuditFit128                 	    3582	    335901 ns/op	 2097152 B/op	       1 allocs/op
+BenchmarkAuditFit128                 	    3524	    338504 ns/op	 2097152 B/op	       1 allocs/op
+BenchmarkAuditFit128                 	    3571	    336832 ns/op	 2097152 B/op	       1 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationrescueexperiment	15.620s

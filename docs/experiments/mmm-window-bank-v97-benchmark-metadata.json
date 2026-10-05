@@ -1,0 +1,14 @@
+{
+  "runtime": "go1.27.1 darwin/arm64",
+  "cpu": "Apple M4",
+  "gomaxprocs": 10,
+  "commands": [
+    "go test ./internal/observationlearners -run '^$' -bench '^BenchmarkWindowV97Stream$' -benchmem -benchtime=1x -count=3",
+    "go test ./internal/observationlearners -run '^$' -bench '^BenchmarkBrierBank$' -benchmem -benchtime=500ms -count=3"
+  ],
+  "boundary": "Kernel operation is one four-expert predict/update cycle. Full-stream operation includes 256 steps, all nine arms, eight refit rounds, five constructed models, two views, scoring and hashing. Neither is a serving request.",
+  "sourceManifest": "mmm-window-bank-v97.json:Hashes",
+  "artifactSHA256": "6b4559a63d7b6c1e1b2603513a90dcf4c82281b27e48430405522a1fb48380e5",
+  "fullBenchmarkSHA256": "290d4a63530135bf0a8e63a22b3374fd8dde69caf27cf4082ae1743875174ffd",
+  "kernelBenchmarkSHA256": "23f52f7815e95c8db2adb4b95c3d6433278c6206c3cc5933bb803803ad1b45aa"
+}

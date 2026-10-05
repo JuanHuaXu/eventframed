@@ -1,0 +1,11 @@
+import {readFileSync,openSync,writeFileSync,closeSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const fd=openSync('research/public-task-pilot/index-scaling-results.json','wx',0o600);
+const files=['internal/store/libravdbstore/research_index_scaling_test.go','internal/store/libravdbstore/research_event_batch.go','internal/store/libravdbstore/research_event_batch_test.go','internal/store/libravdbstore/store.go','go.mod','research/public-task-pilot/INDEX_SCALING_PROTOCOL.md'];
+const hashes=Object.fromEntries(files.map(p=>[p,createHash('sha256').update(readFileSync(p)).digest('hex')]));
+const args=['test','./internal/store/libravdbstore','-run','^$','-bench','^BenchmarkResearchIndexScaling$','-benchmem','-benchtime=1x','-count=2','-cpu=4','-timeout=600s'];
+const started=new Date().toISOString();
+const r=spawnSync('go',args,{encoding:'utf8',timeout:620000});
+writeFileSync(fd,JSON.stringify({started,ended:new Date().toISOString(),hashes,command:['go',...args],status:r.status,signal:r.signal,error:r.error?.message,stdout:r.stdout,stderr:r.stderr},null,2)+'\n');closeSync(fd);
+process.stdout.write(r.stdout??'');process.stderr.write(r.stderr??'');process.exitCode=r.status??1;

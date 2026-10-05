@@ -1,0 +1,719 @@
+{
+  "sourceHash": "2f675e9d854d67475a039053c70868ddf6293175804b1c61309fe5ba9f9e8347",
+  "archiveHash": "1c9dd2478e8b4c075f079b0082a7f7cff8b8ddc3b82bdb5ec390ea0b939bf926",
+  "capturedSources": 811,
+  "trajectories": 160,
+  "summaries": [
+    {
+      "phase": "design",
+      "scenario": "stable",
+      "n": 16,
+      "arms": {
+        "Old": 0.044512923965509495,
+        "Mixture": 0.044512923965509495,
+        "BirthOld": 0.044512923965509495,
+        "BirthMixture": 0.044512923965509495,
+        "FixedOld": 0.044512923965509495,
+        "FixedMixture": 0.044512923965509495
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "member_shift",
+      "n": 16,
+      "arms": {
+        "Old": 0.20384863454075752,
+        "Mixture": 0.20360403523782133,
+        "BirthOld": 0.20480237407437338,
+        "BirthMixture": 0.20545323407135346,
+        "FixedOld": 0.20396090050571228,
+        "FixedMixture": 0.20375434576536486
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": -0.00015031052754359113,
+            "lower": -0.0002465432031142813,
+            "upper": -0.00005407785197290094
+          },
+          "full": {
+            "mean": -0.00007515526377176174,
+            "lower": -0.00012327160155708457,
+            "upper": -0.000027038925986438888
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0.0016988883059885253,
+            "lower": -0.0009742236842883618,
+            "upper": 0.004372000296265412
+          },
+          "full": {
+            "mean": 0.0008494441529942479,
+            "lower": -0.00048711184214419653,
+            "upper": 0.0021860001481326923
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": -0.00011226596495476221,
+            "lower": -0.00023438725868016127,
+            "upper": 0.000009855328770636847
+          },
+          "full": {
+            "mean": -0.00005613298247734641,
+            "lower": -0.00011719362933999598,
+            "upper": 0.000004927664385303163
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0.00020655474034734882,
+            "lower": -0.0007250595902897568,
+            "upper": 0.0011381690709844545
+          },
+          "full": {
+            "mean": 0.00010327737017369609,
+            "lower": -0.0003625297951448352,
+            "upper": 0.0005690845354922275
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "common_shift",
+      "n": 16,
+      "arms": {
+        "Old": 0.1929226614735099,
+        "Mixture": 0.1929226614735099,
+        "BirthOld": 0.1929226614735099,
+        "BirthMixture": 0.1929226614735099,
+        "FixedOld": 0.1929226614735099,
+        "FixedMixture": 0.1929226614735099
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "recurring",
+      "n": 16,
+      "arms": {
+        "Old": 0.1769908081931471,
+        "Mixture": 0.17646580815736096,
+        "BirthOld": 0.17735599960047696,
+        "BirthMixture": 0.17852357262417567,
+        "FixedOld": 0.1770250212923591,
+        "FixedMixture": 0.17648241970019707
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": -0.000016611542836122983,
+            "lower": -0.00010494283931281386,
+            "upper": 0.00007171975364056789
+          },
+          "full": {
+            "mean": -0.000012458657127087033,
+            "lower": -0.00007870712948460266,
+            "upper": 0.0000537898152304286
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0.0020411529239785908,
+            "lower": -0.0020545123070088104,
+            "upper": 0.006136818154965992
+          },
+          "full": {
+            "mean": 0.0015308646929839513,
+            "lower": -0.0015408842302565996,
+            "upper": 0.004602613616224502
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": -0.000034213099211968453,
+            "lower": -0.00009393577606209537,
+            "upper": 0.00002550957763815846
+          },
+          "full": {
+            "mean": -0.00002565982440897157,
+            "lower": -0.00007045183204657042,
+            "upper": 0.000019132183228627284
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0.0005426015921620279,
+            "lower": -0.0004627508967258271,
+            "upper": 0.001547954081049883
+          },
+          "full": {
+            "mean": 0.0004069511941215114,
+            "lower": -0.0003470631725443992,
+            "upper": 0.001160965560787422
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "n": 16,
+      "arms": {
+        "Old": 0.2512619798332992,
+        "Mixture": 0.2512619798332992,
+        "BirthOld": 0.2512619798332992,
+        "BirthMixture": 0.2512619798332992,
+        "FixedOld": 0.2512619798332992,
+        "FixedMixture": 0.2512619798332992
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "stable",
+      "n": 16,
+      "arms": {
+        "Old": 0.04755935484093017,
+        "Mixture": 0.04755935484093017,
+        "BirthOld": 0.04755935484093017,
+        "BirthMixture": 0.04755935484093017,
+        "FixedOld": 0.04755935484093017,
+        "FixedMixture": 0.04755935484093017
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "member_shift",
+      "n": 16,
+      "arms": {
+        "Old": 0.20334614027392692,
+        "Mixture": 0.2034951302323719,
+        "BirthOld": 0.2021962832492337,
+        "BirthMixture": 0.20265650322238882,
+        "FixedOld": 0.20340925424903566,
+        "FixedMixture": 0.2036586313906993
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": -0.00016350115832741534,
+            "lower": -0.00020551156617590284,
+            "upper": -0.00012149075047892784
+          },
+          "full": {
+            "mean": -0.00008175057916373456,
+            "lower": -0.00010275578308798123,
+            "upper": -0.00006074537523948789
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": -0.0010021281683105145,
+            "lower": -0.0031969686665541393,
+            "upper": 0.0011927123299331102
+          },
+          "full": {
+            "mean": -0.0005010640841552356,
+            "lower": -0.001598484333277028,
+            "upper": 0.0005963561649665568
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": -0.00006311397510877156,
+            "lower": -0.00023932824069808649,
+            "upper": 0.00011310029048054336
+          },
+          "full": {
+            "mean": -0.00003155698755437104,
+            "lower": -0.00011966412034901008,
+            "upper": 0.000056550145240268006
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": -0.00024937714166367066,
+            "lower": -0.0010333216790540146,
+            "upper": 0.0005345673957266733
+          },
+          "full": {
+            "mean": -0.0001246885708318388,
+            "lower": -0.0005166608395270078,
+            "upper": 0.00026728369786333016
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "common_shift",
+      "n": 16,
+      "arms": {
+        "Old": 0.2020956362070093,
+        "Mixture": 0.2020956362070093,
+        "BirthOld": 0.2020956362070093,
+        "BirthMixture": 0.2020956362070093,
+        "FixedOld": 0.2020956362070093,
+        "FixedMixture": 0.2020956362070093
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "recurring",
+      "n": 16,
+      "arms": {
+        "Old": 0.168257228292151,
+        "Mixture": 0.16803264281822702,
+        "BirthOld": 0.16932119906365464,
+        "BirthMixture": 0.16881482307599896,
+        "FixedOld": 0.16822136906698637,
+        "FixedMixture": 0.16788422547389284
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": 0.00014841734433419275,
+            "lower": -0.0002209059329944659,
+            "upper": 0.0005177406216628514
+          },
+          "full": {
+            "mean": 0.00011131300825064066,
+            "lower": -0.00016567944974584973,
+            "upper": 0.00038830546624713105
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0.0009305976021061202,
+            "lower": -0.0009588756176020089,
+            "upper": 0.0028200708218142495
+          },
+          "full": {
+            "mean": 0.0006979482015795849,
+            "lower": -0.0007191567132015075,
+            "upper": 0.0021150531163606776
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": 0.00003585922516467256,
+            "lower": -0.00011533551194982714,
+            "upper": 0.00018705396227917227
+          },
+          "full": {
+            "mean": 0.000026894418873504855,
+            "lower": -0.0000865016339623605,
+            "upper": 0.00014029047170937021
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0.0003371435930935151,
+            "lower": -0.0007240157794407003,
+            "upper": 0.0013983029656277305
+          },
+          "full": {
+            "mean": 0.0002528576948201454,
+            "lower": -0.000543011834580499,
+            "upper": 0.0010487272242207899
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "n": 16,
+      "arms": {
+        "Old": 0.2515317453410209,
+        "Mixture": 0.2515317453410209,
+        "BirthOld": 0.2515317453410209,
+        "BirthMixture": 0.2515317453410209,
+        "FixedOld": 0.2515317453410209,
+        "FixedMixture": 0.2515317453410209
+      },
+      "contrasts": {
+        "fixedVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedVsCoupled": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "fixedOldVsInherited": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "gateWithinFixed": {
+          "post": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "full": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    }
+  ],
+  "limits": "Consumed fixed-observer diagnostic, not fresh confirmation; paired trajectory mean +/-3.5SE, no rare-error or broad deployment claim."
+}

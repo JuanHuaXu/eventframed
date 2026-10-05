@@ -1,0 +1,29 @@
+{
+  "records": 672,
+  "forecastsPerRound": 172032,
+  "rounds": [
+    {
+      "milliseconds": 242.59995799999996,
+      "amortizedMicrosecondsPerForecast": 1.4102025088355652,
+      "trajectoryP50ms": 0.3458340000000817,
+      "trajectoryP95ms": 0.43508299999996325,
+      "trajectoryMaxMs": 0.5130829999999378
+    },
+    {
+      "milliseconds": 243.61575000000005,
+      "amortizedMicrosecondsPerForecast": 1.4161071777343754,
+      "trajectoryP50ms": 0.35170800000003055,
+      "trajectoryP95ms": 0.43591700000001765,
+      "trajectoryMaxMs": 0.47212500000000546
+    },
+    {
+      "milliseconds": 242.481625,
+      "amortizedMicrosecondsPerForecast": 1.409514654250372,
+      "trajectoryP50ms": 0.34583299999985684,
+      "trajectoryP95ms": 0.43804099999999835,
+      "trajectoryMaxMs": 0.6652919999999085
+    }
+  ],
+  "checksum": 10189.025057792058,
+  "limitations": "Warm in-memory 256-step trajectory replay of the frozen filter and local guard only. Includes reference O(T^2) filtering, excludes all model fits, retrieval, persistence, network and loaded serving. Amortized per-forecast values are not online tail latency."
+}

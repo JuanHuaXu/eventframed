@@ -1,0 +1,14 @@
+{
+  "args": [
+    "test",
+    "./internal/researchretentioncoherence",
+    "-run",
+    "^TestOperationalMixtureTowerDiagnostic$",
+    "-count=1",
+    "-v"
+  ],
+  "start": "2026-10-04T22:07:40.330Z",
+  "end": "2026-10-04T22:07:40.743Z",
+  "exitCode": 0,
+  "logSHA256": "6767bce0cbda0115c023827a7ec6b730f8c6ec666192bdd865d149340cb70916"
+}

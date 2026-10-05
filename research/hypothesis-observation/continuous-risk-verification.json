@@ -1,0 +1,14 @@
+{
+  "scope": "Known polynomial identities, archived direct-likelihood score parity, frozen hashes and byte-exact replay; not rigorous floating-point error enclosure",
+  "polynomialChecks": 330,
+  "maxPolynomialError": 2.220446049250313e-16,
+  "scoreChecks": 1408,
+  "maxScoreError": 1.4876988529977098e-14,
+  "archHashes": {
+    "risk-budget-evaluation.json": "ed39d584507221931a840928d758a09d1473cd81315c10e5e04615ac9f1bcea4",
+    "risk-budget-offgrid.json": "3431eb9942c808451206dae5faf77ef18b642e437f5500ed493af01a373bdb61"
+  },
+  "replay": true,
+  "inputSHA256": "94a9113f1e50a2cc6122828ed522b90ac45e1205d3736dbffeca7adf6ab9cfcd",
+  "verifierSHA256": "6a20f8adda0c04470e223ed6967a79acd177c57aa288ef7751c0c84ac472a7b2"
+}

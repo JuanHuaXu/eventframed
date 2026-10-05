@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "cohort": "native-v60-consumed-development-2026105407",
+  "primary": "adaptive",
+  "speed_control": "full",
+  "performance_unit": "Entire serial synthetic core for 2400 issued events, not one daemon request",
+  "core_budget_ms": 400,
+  "scope": "Prospective research registry; daemon defaults and historical protocols unchanged",
+  "numerical_candidate": "internal/researchregimelogsummary (V83); broad-cohort promotion still pending",
+  "candidates": [
+    {
+      "name": "full",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.22469909643330058,
+      "mean_core_ms": 49.28540350833335,
+      "worst_core_ms": 73.61425,
+      "comparable": true
+    },
+    {
+      "name": "adaptive",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.214747854798067,
+      "mean_core_ms": 197.73084341666666,
+      "worst_core_ms": 246.689542,
+      "comparable": true
+    }
+  ],
+  "evidence": "research/publication-2026-10-05/selection-results.json"
+}

@@ -1,0 +1,123 @@
+package originbinding
+
+import (
+	"errors"
+	"strings"
+
+	"github.com/JuanHuaXu/eventframed/internal/epistemic"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/packing"
+)
+
+// RelationBinding is fixture-supplied metadata, not self-authenticating evidence.
+// RelationID names a proposition across harmless surface-form changes.
+type RelationBinding struct {
+	Binding    Binding
+	RelationID string
+}
+
+type relationEntry struct {
+	origin string
+	id     string
+}
+
+type RelationRegistry struct {
+	base    *Registry
+	entries map[[32]byte]relationEntry
+}
+
+func NewRelationRegistry(bindings []RelationBinding) (*RelationRegistry, error) {
+	plain := make([]Binding, len(bindings))
+	entries := make(map[[32]byte]relationEntry, len(bindings))
+	for i, item := range bindings {
+		if item.RelationID == "" || len(item.RelationID) > 256 || strings.TrimSpace(item.RelationID) != item.RelationID {
+			return nil, errors.New("invalid research relation ID")
+		}
+		plain[i] = item.Binding
+		entries[key(item.Binding.Tenant, item.Binding.EventID)] = relationEntry{origin: item.Binding.Origin, id: item.RelationID}
+	}
+	base, err := New(plain)
+	if err != nil {
+		return nil, err
+	}
+	return &RelationRegistry{base: base, entries: entries}, nil
+}
+
+type relationCandidate struct {
+	candidate model.Candidate
+	described epistemic.Descriptor
+	verified  bool
+	relation  relationEntry
+}
+
+// SelectFixed is a research-only fixed-order packet selector. A source witness
+// can retain conflicting relations, but cannot certify independent corroboration.
+func (r *RelationRegistry) SelectFixed(candidates []model.Candidate, posteriorKeys map[string]string, packK, tokenBudget int, policy packing.Policy) (packing.Result, error) {
+	if packK < 0 || tokenBudget < 0 || len(candidates) > 256 || policy.AdaptiveEnabled || policy.DiversityEnabled {
+		return packing.Result{}, errors.New("unsupported research packet selection")
+	}
+	seen := make(map[[32]byte]struct{}, len(candidates))
+	for _, candidate := range candidates {
+		if candidate.Event.TenantID == "" || candidate.Event.ID == "" || candidate.EstimatedTokens < 0 {
+			return packing.Result{}, errors.New("invalid research packet candidate")
+		}
+		identity := key(candidate.Event.TenantID, candidate.Event.ID)
+		if _, exists := seen[identity]; exists {
+			return packing.Result{}, errors.New("duplicate research packet identity")
+		}
+		seen[identity] = struct{}{}
+	}
+	limit := min(packK, len(candidates))
+	selected := make([]model.Candidate, 0, limit)
+	selectedPrepared := make([]relationCandidate, 0, limit)
+	usedTokens, suppressed := 0, 0
+	for _, offered := range candidates {
+		if len(selected) >= limit {
+			break
+		}
+		if offered.EstimatedTokens > tokenBudget-usedTokens {
+			continue
+		}
+		candidate := relationCandidate{candidate: offered}
+		if r != nil && r.base != nil {
+			if applied, ok := r.base.Apply(offered); ok {
+				candidate.candidate = applied
+				candidate.verified = true
+				candidate.relation = r.entries[key(offered.Event.TenantID, offered.Event.ID)]
+			}
+		}
+		candidate.described = epistemic.Describe(candidate.candidate.Event)
+		correlated := 0
+		for _, prior := range selectedPrepared {
+			if relationCorrelated(candidate, prior, posteriorKeys, policy.EvidenceSimilarity) {
+				correlated++
+			}
+		}
+		if policy.EvidenceOccupancyLimit > 0 && correlated >= policy.EvidenceOccupancyLimit {
+			suppressed++
+			continue
+		}
+		selected = append(selected, candidate.candidate)
+		selectedPrepared = append(selectedPrepared, candidate)
+		usedTokens += candidate.candidate.EstimatedTokens
+	}
+	return packing.Result{Candidates: selected, UsedTokens: usedTokens, CorrelatedSuppressed: suppressed}, nil
+}
+
+func relationCorrelated(left, right relationCandidate, posteriorKeys map[string]string, similarity float64) bool {
+	leftAP, rightAP := posteriorKeys[left.candidate.Event.ID], posteriorKeys[right.candidate.Event.ID]
+	if strings.HasPrefix(leftAP, "ap:") && strings.HasPrefix(rightAP, "ap:") && leftAP != rightAP {
+		return false
+	}
+	if left.verified && right.verified {
+		if left.candidate.EvidenceGroupKey == right.candidate.EvidenceGroupKey {
+			return true
+		}
+		if left.relation.origin == right.relation.origin && left.described.LineageKey == right.described.LineageKey &&
+			!left.described.DistinctOccurrence && !right.described.DistinctOccurrence {
+			return left.relation.id == right.relation.id
+		}
+	}
+	sameGroup := left.candidate.EvidenceGroupKey != "" && left.candidate.EvidenceGroupKey == right.candidate.EvidenceGroupKey
+	return sameGroup || epistemic.Correlated(left.described, right.described, similarity)
+}

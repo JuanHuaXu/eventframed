@@ -1,0 +1,154 @@
+{
+  "sourceHash": "b3038f9799e08f4fbeeaedd55c386c0e58fb95c67aa8bdac48f571866bef6d88",
+  "capturedSources": 30,
+  "verified": 48000,
+  "results": [
+    {
+      "trial": 0,
+      "size": 50,
+      "envelope": false,
+      "verified": 1600,
+      "appendMeanMS": 0.981539,
+      "appendP95MS": 1.21775,
+      "lookupMeanUS": 25.500075000000002
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "envelope": true,
+      "verified": 1600,
+      "appendMeanMS": 0.75677465625,
+      "appendP95MS": 0.899709,
+      "lookupMeanUS": 25.731255
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "envelope": false,
+      "verified": 6400,
+      "appendMeanMS": 2.63411059375,
+      "appendP95MS": 5.860166,
+      "lookupMeanUS": 23.01212265625
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "envelope": true,
+      "verified": 6400,
+      "appendMeanMS": 2.2953033125,
+      "appendP95MS": 5.361708,
+      "lookupMeanUS": 47.61531125
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "envelope": true,
+      "verified": 1600,
+      "appendMeanMS": 0.740770875,
+      "appendP95MS": 0.843042,
+      "lookupMeanUS": 25.277818749999998
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "envelope": false,
+      "verified": 1600,
+      "appendMeanMS": 0.7181393125,
+      "appendP95MS": 0.922208,
+      "lookupMeanUS": 22.852116875
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "envelope": true,
+      "verified": 6400,
+      "appendMeanMS": 2.29948040625,
+      "appendP95MS": 5.311333,
+      "lookupMeanUS": 48.059499375
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "envelope": false,
+      "verified": 6400,
+      "appendMeanMS": 2.65323953125,
+      "appendP95MS": 5.909375,
+      "lookupMeanUS": 23.15569421875
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "envelope": false,
+      "verified": 1600,
+      "appendMeanMS": 0.718703125,
+      "appendP95MS": 0.932833,
+      "lookupMeanUS": 22.823963125
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "envelope": true,
+      "verified": 1600,
+      "appendMeanMS": 0.7417708125,
+      "appendP95MS": 0.866709,
+      "lookupMeanUS": 25.451288124999998
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "envelope": false,
+      "verified": 6400,
+      "appendMeanMS": 2.6318555625,
+      "appendP95MS": 5.941959,
+      "lookupMeanUS": 23.2666453125
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "envelope": true,
+      "verified": 6400,
+      "appendMeanMS": 2.29384509375,
+      "appendP95MS": 5.590958,
+      "lookupMeanUS": 47.608314687500005
+    }
+  ],
+  "pairs": [
+    {
+      "trial": 0,
+      "size": 50,
+      "appendRatio": 0.7710082393567652,
+      "lookupRatio": 1.0090658556886596
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "appendRatio": 0.8713769717741184,
+      "lookupRatio": 2.0691403379543463
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "appendRatio": 1.0315141673851758,
+      "lookupRatio": 1.1061477975221496
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "appendRatio": 0.8666689830173997,
+      "lookupRatio": 2.0754937822630466
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "appendRatio": 1.0320962671478575,
+      "lookupRatio": 1.115112567682086
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "appendRatio": 0.87156952168419,
+      "lookupRatio": 2.0462045150068304
+    }
+  ],
+  "limits": "Storage prototype only; no learner, feedback, service guard or complete crash/replay contract. Read paths differ in defensive JSON validation. No serving promotion."
+}

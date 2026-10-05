@@ -1,0 +1,2749 @@
+{
+  "time": "2026-10-04T04:54:07.336Z",
+  "rawSHA256": "58ddff59ceb0bc1f896dccb4a6782c7c7f23d66c3c11fca8df78ceac21682f28",
+  "controls": [
+    "missing-write",
+    "future-nominee",
+    "future-label",
+    "chain-prior",
+    "retagged-source",
+    "wire-proof",
+    "hidden-queue",
+    "premature-ack",
+    "capsule-wire",
+    "timing-fabrication",
+    "gate-fabrication",
+    "projection-root",
+    "projection-digest",
+    "projection-head",
+    "projection-source",
+    "projection-future-log",
+    "projection-late",
+    "copy-byte-count",
+    "getter-counter",
+    "trace-missing",
+    "trace-native-result",
+    "trace-key",
+    "factor-relabelling",
+    "missing-core-build",
+    "core-root",
+    "core-fields",
+    "core-late",
+    "hidden-copy",
+    "hit-count",
+    "owner-count",
+    "core-factor",
+    "missing-preparation",
+    "publisher-bytes",
+    "publisher-root",
+    "publisher-time",
+    "owner-domain",
+    "overlapping-dispositions",
+    "publisher-factor",
+    "operation-id",
+    "operation-id-duplicate",
+    "preparation-after-ack",
+    "preparation-before-durability",
+    "missing-write-id",
+    "missing-warm-use",
+    "warm-root",
+    "warm-counter",
+    "warm-late-check",
+    "warm-first-nil",
+    "warm-factor",
+    "owner-time-missing",
+    "owner-time-before-call",
+    "owner-time-after-return"
+  ],
+  "trials": [
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1007,
+      "cross_epoch": 852,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 58449000,
+        "call_p99_ns": 57252000,
+        "learned_decisions": 1007,
+        "offer_max_ns": 190113000,
+        "offer_p99_ns": 185327000,
+        "outcome_max_ns": 403149000,
+        "outcome_p99_ns": 403149000,
+        "view_max_ns": 45407000,
+        "view_p99_ns": 40142000,
+        "write_max_ns": 89489000,
+        "write_p99_ns": 87373000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 46103000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 68949000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 94353000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 117053000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 142973000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 175059000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 201987000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 225717000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 257658000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 282219000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 314618000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 338999000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 362856000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 386681000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 398395000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 415385000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4977000,
+        "write_max_gap_ns": 4975000,
+        "outcome_max_gap_ns": 16732000
+      },
+      "mutations": 144,
+      "commits": 71,
+      "archived": false,
+      "journal_batches": 42,
+      "batch_histogram": [
+        7,
+        7,
+        4,
+        24
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1266,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 559260
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1266,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 44,
+        "PhysicalBytes": 559260
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1023,
+      "cross_epoch": 864,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 58686000,
+        "call_p99_ns": 54903000,
+        "learned_decisions": 1023,
+        "offer_max_ns": 183665000,
+        "offer_p99_ns": 180579000,
+        "outcome_max_ns": 391934000,
+        "outcome_p99_ns": 391934000,
+        "view_max_ns": 43216000,
+        "view_p99_ns": 37866000,
+        "write_max_ns": 91081000,
+        "write_p99_ns": 90372000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 40554000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 70742000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 92523000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 120828000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 146803000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 169038000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 197813000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 229034000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 260133000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 286426000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 307998000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 344652000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 371499000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 383932000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 393245000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 405423000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4978000,
+        "write_max_gap_ns": 4977000,
+        "outcome_max_gap_ns": 16797000
+      },
+      "mutations": 144,
+      "commits": 72,
+      "archived": false,
+      "journal_batches": 43,
+      "batch_histogram": [
+        9,
+        5,
+        6,
+        23
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1281,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 905069
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1281,
+      "eager": true,
+      "warm": {
+        "Fast": 20,
+        "Cold": 109
+      },
+      "core": {
+        "Builds": 31,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 905069
+      },
+      "publication": {
+        "attempts": 158,
+        "owners": 158,
+        "built": 30,
+        "unused": 13,
+        "aggregateNS": "346947000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 13
+        }
+      }
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1023,
+      "cross_epoch": 836,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 79391000,
+        "call_p99_ns": 75547000,
+        "learned_decisions": 1023,
+        "offer_max_ns": 265283000,
+        "offer_p99_ns": 261196000,
+        "outcome_max_ns": 463303000,
+        "outcome_p99_ns": 463303000,
+        "view_max_ns": 50303000,
+        "view_p99_ns": 50300000,
+        "write_max_ns": 108737000,
+        "write_p99_ns": 105218000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 48702000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 68238000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 103291000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 142554000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 171050000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 198875000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 237422000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 274097000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 303882000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 344491000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 378253000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 411841000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 432690000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 450384000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 473513000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 489982000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5404000,
+        "write_max_gap_ns": 5013000,
+        "outcome_max_gap_ns": 16945000
+      },
+      "mutations": 144,
+      "commits": 72,
+      "archived": true,
+      "journal_batches": 44,
+      "batch_histogram": [
+        10,
+        6,
+        5,
+        23
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 44,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 24338500,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1282,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 572884
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1282,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 50,
+        "PhysicalBytes": 572884
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1156,
+      "cross_epoch": 954,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 88185000,
+        "call_p99_ns": 84312000,
+        "learned_decisions": 1156,
+        "offer_max_ns": 305891000,
+        "offer_p99_ns": 302173000,
+        "outcome_max_ns": 451611000,
+        "outcome_p99_ns": 451611000,
+        "view_max_ns": 56282000,
+        "view_p99_ns": 53154000,
+        "write_max_ns": 103168000,
+        "write_p99_ns": 99099000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 56729000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 79119000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 102726000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 126964000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 154697000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 179394000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 207701000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 250547000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 278293000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 306033000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 349416000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 377235000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 408833000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 431515000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 450917000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 470133000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4990000,
+        "write_max_gap_ns": 5019000,
+        "outcome_max_gap_ns": 16727000
+      },
+      "mutations": 144,
+      "commits": 74,
+      "archived": true,
+      "journal_batches": 45,
+      "batch_histogram": [
+        12,
+        1,
+        13,
+        19
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 45,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 24624459,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1415,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 918504
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1415,
+      "eager": true,
+      "warm": {
+        "Fast": 33,
+        "Cold": 96
+      },
+      "core": {
+        "Builds": 31,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 918504
+      },
+      "publication": {
+        "attempts": 158,
+        "owners": 158,
+        "built": 30,
+        "unused": 13,
+        "aggregateNS": "519394000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 13
+        }
+      }
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 54529000,
+        "call_p99_ns": 50832000,
+        "learned_decisions": 0,
+        "offer_max_ns": 155457000,
+        "offer_p99_ns": 147511000,
+        "outcome_max_ns": 364171000,
+        "outcome_p99_ns": 364171000,
+        "view_max_ns": 43963000,
+        "view_p99_ns": 36879000,
+        "write_max_ns": 81435000,
+        "write_p99_ns": 81084000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5000000,
+        "write_max_gap_ns": 5002000,
+        "outcome_max_gap_ns": 16600000
+      },
+      "mutations": 144,
+      "commits": 68,
+      "archived": false,
+      "journal_batches": 37,
+      "batch_histogram": [
+        5,
+        1,
+        2,
+        29
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 541775
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 47,
+        "PhysicalBytes": 541775
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 52667000,
+        "call_p99_ns": 45213000,
+        "learned_decisions": 0,
+        "offer_max_ns": 150596000,
+        "offer_p99_ns": 146753000,
+        "outcome_max_ns": 359239000,
+        "outcome_p99_ns": 359239000,
+        "view_max_ns": 46555000,
+        "view_p99_ns": 39056000,
+        "write_max_ns": 80208000,
+        "write_p99_ns": 79935000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4919000,
+        "write_max_gap_ns": 4910000,
+        "outcome_max_gap_ns": 16836000
+      },
+      "mutations": 144,
+      "commits": 69,
+      "archived": false,
+      "journal_batches": 38,
+      "batch_histogram": [
+        4,
+        5,
+        1,
+        28
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 989166
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 18,
+        "Cold": 111
+      },
+      "core": {
+        "Builds": 33,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 989166
+      },
+      "publication": {
+        "attempts": 160,
+        "owners": 160,
+        "built": 32,
+        "unused": 15,
+        "aggregateNS": "411468000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 15
+        }
+      }
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 75378000,
+        "call_p99_ns": 75285000,
+        "learned_decisions": 0,
+        "offer_max_ns": 251319000,
+        "offer_p99_ns": 247890000,
+        "outcome_max_ns": 455437000,
+        "outcome_p99_ns": 455437000,
+        "view_max_ns": 48744000,
+        "view_p99_ns": 47384000,
+        "write_max_ns": 98727000,
+        "write_p99_ns": 97766000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4998000,
+        "write_max_gap_ns": 5002000,
+        "outcome_max_gap_ns": 16766000
+      },
+      "mutations": 144,
+      "commits": 69,
+      "archived": true,
+      "journal_batches": 41,
+      "batch_histogram": [
+        6,
+        8,
+        1,
+        26
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 41,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23238500,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 573553
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 52,
+        "PhysicalBytes": 573553
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 91084000,
+        "call_p99_ns": 90234000,
+        "learned_decisions": 0,
+        "offer_max_ns": 305131000,
+        "offer_p99_ns": 302242000,
+        "outcome_max_ns": 417928000,
+        "outcome_p99_ns": 417928000,
+        "view_max_ns": 49671000,
+        "view_p99_ns": 49664000,
+        "write_max_ns": 90866000,
+        "write_p99_ns": 90457000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4994000,
+        "write_max_gap_ns": 4942000,
+        "outcome_max_gap_ns": 16758000
+      },
+      "mutations": 144,
+      "commits": 76,
+      "archived": true,
+      "journal_batches": 46,
+      "batch_histogram": [
+        10,
+        10,
+        5,
+        21
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 46,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23120500,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 955464
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 38,
+        "Cold": 91
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 955464
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "491658000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1022,
+      "cross_epoch": 884,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 63545000,
+        "call_p99_ns": 59544000,
+        "learned_decisions": 1022,
+        "offer_max_ns": 187634000,
+        "offer_p99_ns": 181204000,
+        "outcome_max_ns": 398444000,
+        "outcome_p99_ns": 398444000,
+        "view_max_ns": 41978000,
+        "view_p99_ns": 36970000,
+        "write_max_ns": 98042000,
+        "write_p99_ns": 93927000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 35418000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 57648000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 79745000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 100590000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 127450000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 153747000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 184991000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 209045000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 233720000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 262907000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 301546000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 329143000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 357752000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 383882000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 393265000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 412080000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4993000,
+        "write_max_gap_ns": 4994000,
+        "outcome_max_gap_ns": 16839000
+      },
+      "mutations": 144,
+      "commits": 72,
+      "archived": false,
+      "journal_batches": 42,
+      "batch_histogram": [
+        6,
+        9,
+        3,
+        24
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1281,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 550229
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1281,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 45,
+        "PhysicalBytes": 550229
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1023,
+      "cross_epoch": 884,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 58836000,
+        "call_p99_ns": 50258000,
+        "learned_decisions": 1023,
+        "offer_max_ns": 157772000,
+        "offer_p99_ns": 154842000,
+        "outcome_max_ns": 364011000,
+        "outcome_p99_ns": 364011000,
+        "view_max_ns": 46723000,
+        "view_p99_ns": 39029000,
+        "write_max_ns": 82443000,
+        "write_p99_ns": 82079000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 43161000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 70800000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 91735000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 106890000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 133740000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 160884000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 189598000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 212548000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 236914000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 260989000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 284303000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 310415000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 336046000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 353834000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 374771000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 376375000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4988000,
+        "write_max_gap_ns": 5011000,
+        "outcome_max_gap_ns": 16855000
+      },
+      "mutations": 144,
+      "commits": 69,
+      "archived": false,
+      "journal_batches": 39,
+      "batch_histogram": [
+        7,
+        1,
+        4,
+        27
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1281,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 943276
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1281,
+      "eager": true,
+      "warm": {
+        "Fast": 18,
+        "Cold": 111
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 943276
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "404148000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1014,
+      "cross_epoch": 825,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 83304000,
+        "call_p99_ns": 77576000,
+        "learned_decisions": 1014,
+        "offer_max_ns": 280554000,
+        "offer_p99_ns": 279888000,
+        "outcome_max_ns": 470317000,
+        "outcome_p99_ns": 470317000,
+        "view_max_ns": 49966000,
+        "view_p99_ns": 49960000,
+        "write_max_ns": 113122000,
+        "write_p99_ns": 109288000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 46855000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 69924000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 103050000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 142114000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 170210000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 206830000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 235322000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 272196000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 315269000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 349599000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 385696000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 421084000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 438821000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 467017000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 480902000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 497089000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5042000,
+        "write_max_gap_ns": 5046000,
+        "outcome_max_gap_ns": 16903000
+      },
+      "mutations": 144,
+      "commits": 71,
+      "archived": true,
+      "journal_batches": 43,
+      "batch_histogram": [
+        8,
+        7,
+        5,
+        23
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 43,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 25356333,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1272,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 573637
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1272,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 45,
+        "PhysicalBytes": 573637
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1194,
+      "cross_epoch": 972,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 90306000,
+        "call_p99_ns": 90285000,
+        "learned_decisions": 1194,
+        "offer_max_ns": 310366000,
+        "offer_p99_ns": 306864000,
+        "outcome_max_ns": 417915000,
+        "outcome_p99_ns": 417915000,
+        "view_max_ns": 52351000,
+        "view_p99_ns": 52262000,
+        "write_max_ns": 100405000,
+        "write_p99_ns": 95853000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 52356000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 76128000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 101850000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 125108000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 151570000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 173587000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 220812000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 249521000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 272916000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 303063000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 331009000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 361160000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 401600000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 409884000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 418005000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 433848000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5022000,
+        "write_max_gap_ns": 5018000,
+        "outcome_max_gap_ns": 16965000
+      },
+      "mutations": 144,
+      "commits": 77,
+      "archived": true,
+      "journal_batches": 48,
+      "batch_histogram": [
+        12,
+        8,
+        11,
+        17
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 48,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 24351708,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1453,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 913058
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1453,
+      "eager": true,
+      "warm": {
+        "Fast": 45,
+        "Cold": 84
+      },
+      "core": {
+        "Builds": 31,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 913058
+      },
+      "publication": {
+        "attempts": 158,
+        "owners": 158,
+        "built": 30,
+        "unused": 13,
+        "aggregateNS": "537845000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 13
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 56852000,
+        "call_p99_ns": 56842000,
+        "learned_decisions": 0,
+        "offer_max_ns": 149682000,
+        "offer_p99_ns": 148385000,
+        "outcome_max_ns": 349144000,
+        "outcome_p99_ns": 349144000,
+        "view_max_ns": 37777000,
+        "view_p99_ns": 37772000,
+        "write_max_ns": 84856000,
+        "write_p99_ns": 83879000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5009000,
+        "write_max_gap_ns": 5039000,
+        "outcome_max_gap_ns": 16876000
+      },
+      "mutations": 144,
+      "commits": 69,
+      "archived": false,
+      "journal_batches": 39,
+      "batch_histogram": [
+        3,
+        9,
+        0,
+        27
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 538205
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 49,
+        "PhysicalBytes": 538205
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 55039000,
+        "call_p99_ns": 54298000,
+        "learned_decisions": 0,
+        "offer_max_ns": 163050000,
+        "offer_p99_ns": 158711000,
+        "outcome_max_ns": 367826000,
+        "outcome_p99_ns": 367826000,
+        "view_max_ns": 45109000,
+        "view_p99_ns": 38112000,
+        "write_max_ns": 87730000,
+        "write_p99_ns": 84683000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5002000,
+        "write_max_gap_ns": 5003000,
+        "outcome_max_gap_ns": 16854000
+      },
+      "mutations": 144,
+      "commits": 71,
+      "archived": false,
+      "journal_batches": 41,
+      "batch_histogram": [
+        10,
+        0,
+        5,
+        26
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1008,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 941475
+      },
+      "metadata_calls": 1008,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 17,
+        "Cold": 112
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 941475
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "411349000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 79288000,
+        "call_p99_ns": 75832000,
+        "learned_decisions": 0,
+        "offer_max_ns": 253913000,
+        "offer_p99_ns": 249763000,
+        "outcome_max_ns": 460105000,
+        "outcome_p99_ns": 460105000,
+        "view_max_ns": 58337000,
+        "view_p99_ns": 49725000,
+        "write_max_ns": 101378000,
+        "write_p99_ns": 100238000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5016000,
+        "write_max_gap_ns": 5050000,
+        "outcome_max_gap_ns": 16938000
+      },
+      "mutations": 144,
+      "commits": 66,
+      "archived": true,
+      "journal_batches": 38,
+      "batch_histogram": [
+        5,
+        3,
+        2,
+        28
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 38,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23095084,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 575782
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 52,
+        "PhysicalBytes": 575782
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 87168000,
+        "call_p99_ns": 87125000,
+        "learned_decisions": 0,
+        "offer_max_ns": 295345000,
+        "offer_p99_ns": 290802000,
+        "outcome_max_ns": 407292000,
+        "outcome_p99_ns": 407292000,
+        "view_max_ns": 50190000,
+        "view_p99_ns": 47362000,
+        "write_max_ns": 93578000,
+        "write_p99_ns": 88778000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5022000,
+        "write_max_gap_ns": 5017000,
+        "outcome_max_gap_ns": 16987000
+      },
+      "mutations": 144,
+      "commits": 75,
+      "archived": true,
+      "journal_batches": 45,
+      "batch_histogram": [
+        12,
+        3,
+        9,
+        21
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 45,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23198333,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 960465
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 37,
+        "Cold": 92
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 960465
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "488409000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      }
+    }
+  ],
+  "allSevenWholeGoals": "OPEN"
+}

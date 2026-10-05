@@ -1,0 +1,79 @@
+package originbinding
+
+import (
+	"errors"
+	"math"
+	"strings"
+
+	"github.com/JuanHuaXu/eventframed/internal/epistemic"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+)
+
+// Conflict requests review of incompatible grouping signals, not a conclusion
+// that the claims are contradictory, independent, false, or safe to split.
+type Conflict struct {
+	LeftID  string `json:"left_id"`
+	RightID string `json:"right_id"`
+	Reason  string `json:"reason"`
+}
+type ConflictReport struct {
+	PairsChecked int        `json:"pairs_checked"`
+	Unbound      int        `json:"unbound"`
+	Truncated    bool       `json:"truncated"`
+	Conflicts    []Conflict `json:"conflicts"`
+}
+
+// Conflicts is a bounded offline/slow-path nomination pass. Nothing is enqueued,
+// certified, reweighted or changed in the serving path by this research helper.
+func (r *Registry) Conflicts(candidates []model.Candidate, posteriorKeys map[string]string, similarity float64) (ConflictReport, error) {
+	var out ConflictReport
+	if len(candidates) > 200 || math.IsNaN(similarity) || math.IsInf(similarity, 0) || similarity < 0 || similarity > 1 {
+		return out, errors.New("invalid conflict scan contract")
+	}
+	type item struct {
+		original   model.Candidate
+		bound      model.Candidate
+		descriptor epistemic.Descriptor
+	}
+	items := make([]item, 0, len(candidates))
+	seen := map[string]bool{}
+	for _, c := range candidates {
+		// Packing's descriptor/AP maps use event IDs. Reject ambiguous reuse rather
+		// than allowing an ID collision to select the wrong metadata or certificate.
+		if c.Event.ID == "" || seen[c.Event.ID] {
+			return ConflictReport{}, errors.New("empty or repeated event identity")
+		}
+		seen[c.Event.ID] = true
+		bound, ok := r.Apply(c)
+		if !ok {
+			out.Unbound++
+			continue
+		}
+		items = append(items, item{c, bound, epistemic.Describe(c.Event)})
+	}
+	for i, left := range items {
+		for _, right := range items[i+1:] {
+			out.PairsChecked++
+			if left.original.Event.TenantID != right.original.Event.TenantID {
+				continue
+			}
+			lk, rk := posteriorKeys[left.original.Event.ID], posteriorKeys[right.original.Event.ID]
+			if strings.HasPrefix(lk, "ap:") && strings.HasPrefix(rk, "ap:") && lk != rk {
+				continue
+			}
+			if left.bound.EvidenceGroupKey == right.bound.EvidenceGroupKey {
+				continue
+			}
+			declared := left.original.EvidenceGroupKey != "" && left.original.EvidenceGroupKey == right.original.EvidenceGroupKey
+			if !declared && !epistemic.Correlated(left.descriptor, right.descriptor, similarity) {
+				continue
+			}
+			if len(out.Conflicts) == 32 {
+				out.Truncated = true
+				continue
+			}
+			out.Conflicts = append(out.Conflicts, Conflict{left.original.Event.ID, right.original.Event.ID, "bound_distinction_legacy_correlation"})
+		}
+	}
+	return out, nil
+}

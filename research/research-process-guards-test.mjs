@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';import{v43TimedProcesses,v43AuditProcesses,v43NormalRunners}from'./research-process-guards.mjs';
+const fake=['99 1 node --input-type=module -e const audit="go test ./internal/researchswitch -run ^TestSwitchStudyAuditV43$";','100 1 /bin/sh -c pgrep -alf TestSwitchStudyV43','101 1 rg TestSwitchFixtureV43','102 1 go test ./internal/other -run TestOther'];
+assert.deepEqual(v43TimedProcesses(fake),[]);assert.deepEqual(v43AuditProcesses(fake),[]);assert.deepEqual(v43NormalRunners(fake),[]);
+const timed='103 1 go test ./internal/researchswitch -run ^TestSwitchStudyV43$ -v',fixture='104 103 /tmp/go-build/b001/researchdispersion.test -test.run=^TestSwitchFixtureV43$ -test.v=true',audit='105 1 /tmp/go-build/b001/researchswitch.test -test.run=^TestSwitchStudyAuditV43$ -test.v=true',runner='106 1 node research/switch-v43-study.mjs normal';
+assert.deepEqual(v43TimedProcesses([...fake,timed,fixture,audit,runner]),[timed,fixture]);assert.deepEqual(v43AuditProcesses([...fake,timed,fixture,audit,runner]),[audit]);assert.deepEqual(v43NormalRunners([...fake,timed,fixture,audit,runner]),[runner]);
+console.log(JSON.stringify({controls:4,positiveProcessKinds:4,selfMatchingWatcherRejected:true,timedAndAuditDistinguished:true}));

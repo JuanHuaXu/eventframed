@@ -1,0 +1,22 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-race",
+    "-count=1",
+    "-v",
+    "./internal/researchpublicframe",
+    "-run",
+    "^TestPublicFrameV1StrictJSONIdentity$"
+  ],
+  "code": 1,
+  "signal": null,
+  "sources": {
+    "internal/researchpublicframe/document.go": "5cac8b2ae8785db5d5dfa72220c7dee7511c73d37be123313e346baff12adbfa",
+    "internal/researchpublicframe/document_test.go": "941537367c169f625c76bda3e3c5255eadf2d7006275a6feaec891fdc6018342",
+    "cmd/research-public-frames/main.go": "0bfc94b8a91f45c390e992e9b49c24b9cbf07de997a197cd9b17e6aed31addf5",
+    "docs/experiments/scifact-frame-v1-protocol.md": "85e7822c65fe6aa2bc5b21d5f57d0f494ff9e73438a7560d1920a916fe9f7b47"
+  },
+  "logSHA256": "6e39ef9d3a5dc8c00db0c926c6a14d5dc07903dfa4e050ee5a6cb3e5b8e18c57",
+  "expectedRegression": true
+}

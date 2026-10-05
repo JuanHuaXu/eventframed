@@ -1,0 +1,244 @@
+{
+  "rawHash": "40d4b8e1f89b101a3094fd22fddf9c1ef2bbdae03c58e82b24af2052339dd625",
+  "sourceCount": 35,
+  "verified": 48000,
+  "means": [
+    {
+      "trial": 0,
+      "size": 50,
+      "indexed": false,
+      "meanMS": {
+        "TotalNS": 0.575099,
+        "PreflightNS": 0.04715359375,
+        "BeginNS": 0.00638275,
+        "PrepareNS": 0.01613140625,
+        "RowsNS": 0.2530039375,
+        "CommitNS": 0.25197003125
+      }
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "indexed": true,
+      "meanMS": {
+        "TotalNS": 0.764766875,
+        "PreflightNS": 0.04266534375,
+        "BeginNS": 0.0025611875,
+        "PrepareNS": 0.0156875,
+        "RowsNS": 0.486638,
+        "CommitNS": 0.216851625
+      }
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "indexed": false,
+      "meanMS": {
+        "TotalNS": 1.6777161875,
+        "PreflightNS": 0.1439583125,
+        "BeginNS": 0.0036914375,
+        "PrepareNS": 0.0116211875,
+        "RowsNS": 0.88636984375,
+        "CommitNS": 0.6317213125
+      }
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "indexed": true,
+      "meanMS": {
+        "TotalNS": 2.64311978125,
+        "PreflightNS": 0.1352186875,
+        "BeginNS": 0.00317703125,
+        "PrepareNS": 0.01555740625,
+        "RowsNS": 1.83791671875,
+        "CommitNS": 0.65087765625
+      }
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "indexed": true,
+      "meanMS": {
+        "TotalNS": 0.7173893125,
+        "PreflightNS": 0.03599871875,
+        "BeginNS": 0.00228259375,
+        "PrepareNS": 0.0143099375,
+        "RowsNS": 0.45627209375,
+        "CommitNS": 0.2081991875
+      }
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "indexed": false,
+      "meanMS": {
+        "TotalNS": 0.46467071875,
+        "PreflightNS": 0.0383580625,
+        "BeginNS": 0.00282815625,
+        "PrepareNS": 0.012028625,
+        "RowsNS": 0.22510809375,
+        "CommitNS": 0.18600659375
+      }
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "indexed": true,
+      "meanMS": {
+        "TotalNS": 2.62798428125,
+        "PreflightNS": 0.14226175,
+        "BeginNS": 0.00376690625,
+        "PrepareNS": 0.01664459375,
+        "RowsNS": 1.82965890625,
+        "CommitNS": 0.635303375
+      }
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "indexed": false,
+      "meanMS": {
+        "TotalNS": 1.71842315625,
+        "PreflightNS": 0.15901571875,
+        "BeginNS": 0.0032995625,
+        "PrepareNS": 0.0115495625,
+        "RowsNS": 0.87744790625,
+        "CommitNS": 0.66675915625
+      }
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "indexed": false,
+      "meanMS": {
+        "TotalNS": 0.473403625,
+        "PreflightNS": 0.03870440625,
+        "BeginNS": 0.00286709375,
+        "PrepareNS": 0.01194140625,
+        "RowsNS": 0.23589584375,
+        "CommitNS": 0.183598875
+      }
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "indexed": true,
+      "meanMS": {
+        "TotalNS": 0.7069296875,
+        "PreflightNS": 0.03760790625,
+        "BeginNS": 0.00269125,
+        "PrepareNS": 0.01428375,
+        "RowsNS": 0.449806,
+        "CommitNS": 0.20219928125
+      }
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "indexed": false,
+      "meanMS": {
+        "TotalNS": 1.7231731875,
+        "PreflightNS": 0.150282625,
+        "BeginNS": 0.004125,
+        "PrepareNS": 0.01430984375,
+        "RowsNS": 0.88383853125,
+        "CommitNS": 0.67026565625
+      }
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "indexed": true,
+      "meanMS": {
+        "TotalNS": 2.64727078125,
+        "PreflightNS": 0.14435409375,
+        "BeginNS": 0.00394009375,
+        "PrepareNS": 0.0165000625,
+        "RowsNS": 1.82825009375,
+        "CommitNS": 0.65386709375
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "trial": 0,
+      "size": 50,
+      "extraMS": {
+        "TotalNS": 0.18966787499999993,
+        "PreflightNS": -0.004488249999999999,
+        "BeginNS": -0.0038215625000000003,
+        "PrepareNS": -0.0004439062500000007,
+        "RowsNS": 0.23363406250000002,
+        "CommitNS": -0.03511840625000001
+      },
+      "totalRatio": 1.3298003908892206
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "extraMS": {
+        "TotalNS": 0.9654035937499998,
+        "PreflightNS": -0.008739625,
+        "BeginNS": -0.0005144062499999997,
+        "PrepareNS": 0.00393621875,
+        "RowsNS": 0.951546875,
+        "CommitNS": 0.019156343750000082
+      },
+      "totalRatio": 1.5754272390901634
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "extraMS": {
+        "TotalNS": 0.25271859375000005,
+        "PreflightNS": -0.0023593437499999995,
+        "BeginNS": -0.0005455625,
+        "PrepareNS": 0.0022813125000000004,
+        "RowsNS": 0.231164,
+        "CommitNS": 0.02219259374999999
+      },
+      "totalRatio": 1.5438659755231243
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "extraMS": {
+        "TotalNS": 0.9095611249999997,
+        "PreflightNS": -0.016753968750000015,
+        "BeginNS": 0.0004673437499999999,
+        "PrepareNS": 0.005095031249999998,
+        "RowsNS": 0.9522109999999999,
+        "CommitNS": -0.03145578125000004
+      },
+      "totalRatio": 1.5292998535848843
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "extraMS": {
+        "TotalNS": 0.23352606249999996,
+        "PreflightNS": -0.0010964999999999933,
+        "BeginNS": -0.00017584374999999978,
+        "PrepareNS": 0.00234234375,
+        "RowsNS": 0.21391015624999998,
+        "CommitNS": 0.018600406250000007
+      },
+      "totalRatio": 1.4932916652254193
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "extraMS": {
+        "TotalNS": 0.92409759375,
+        "PreflightNS": -0.005928531250000008,
+        "BeginNS": -0.00018490625000000017,
+        "PrepareNS": 0.0021902187499999986,
+        "RowsNS": 0.9444115624999999,
+        "CommitNS": -0.016398562500000047
+      },
+      "totalRatio": 1.5362766786608906
+    }
+  ],
+  "limits": "Absent index violates source uniqueness. Diagnostic only, no valid rescue or serving-speedup claim."
+}

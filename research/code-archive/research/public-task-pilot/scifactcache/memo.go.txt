@@ -1,0 +1,108 @@
+// Package scifactcache holds an experiment-only, role-separated embedding cache.
+// Cold acquisition is serialized and measured separately from warm Recall.
+package scifactcache
+
+import (
+	"context"
+	"errors"
+	"math"
+	"strings"
+	"sync"
+	"time"
+
+	"github.com/JuanHuaXu/eventframed/internal/embed"
+)
+
+const MaxEntries = 12000
+const MaxPayloadBytes = 64 << 20
+
+type Stats struct {
+	Hits, Misses, Entries int
+	PayloadBytes          int64
+	AcquisitionNS         int64
+}
+
+type Memo struct {
+	mu     sync.Mutex
+	base   embed.Embedder
+	key    string
+	dim    int
+	limit  int
+	bytes  int64
+	values map[string][]float32
+	stats  Stats
+}
+
+func New(base embed.Embedder, limit int, payloadBytes int64) (*Memo, error) {
+	if base == nil || limit < 1 || limit > MaxEntries || payloadBytes < 1 || payloadBytes > MaxPayloadBytes || base.Dimension() < 1 || base.Dimension() > 4096 || base.ModelKey() == "" {
+		return nil, errors.New("invalid experiment memo configuration")
+	}
+	return &Memo{base: base, key: base.ModelKey(), dim: base.Dimension(), limit: limit, bytes: payloadBytes, values: make(map[string][]float32)}, nil
+}
+
+func (m *Memo) Dimension() int                       { return m.dim }
+func (m *Memo) Name() string                         { return "scifact-experiment-memo:" + m.base.Name() }
+func (m *Memo) ModelKey() string                     { return m.key }
+func (m *Memo) Stats() Stats                         { m.mu.Lock(); defer m.mu.Unlock(); return m.stats }
+func (m *Memo) Embed(text string) ([]float32, error) { return m.EmbedDocument(text) }
+func (m *Memo) EmbedDocument(text string) ([]float32, error) {
+	return m.EmbedDocumentContext(context.Background(), text)
+}
+func (m *Memo) EmbedQuery(text string) ([]float32, error) {
+	return m.EmbedQueryContext(context.Background(), text)
+}
+func (m *Memo) EmbedDocumentContext(ctx context.Context, text string) ([]float32, error) {
+	return m.get(ctx, "d", text)
+}
+func (m *Memo) EmbedQueryContext(ctx context.Context, text string) ([]float32, error) {
+	return m.get(ctx, "q", text)
+}
+
+func (m *Memo) get(ctx context.Context, role, text string) ([]float32, error) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if len(text) > 16384 || m.base.ModelKey() != m.key || m.base.Dimension() != m.dim {
+		return nil, errors.New("embedding contract changed or text exceeds bound")
+	}
+	key := role + "\x00" + text
+	if vector, ok := m.values[key]; ok {
+		m.stats.Hits++
+		return append([]float32(nil), vector...), nil
+	}
+	// This bounds retained key/vector payload, not map/runtime overhead or RSS.
+	cost := int64(len(key)) + int64(m.dim)*4
+	if len(m.values) >= m.limit || cost > m.bytes-m.stats.PayloadBytes {
+		return nil, errors.New("experiment memo capacity exhausted")
+	}
+	start := time.Now()
+	var vector []float32
+	var err error
+	if role == "d" {
+		vector, err = embed.DocumentContext(ctx, m.base, text)
+	} else {
+		vector, err = embed.QueryContext(ctx, m.base, text)
+	}
+	m.stats.AcquisitionNS += time.Since(start).Nanoseconds()
+	if err != nil {
+		return nil, err
+	}
+	if err = ctx.Err(); err != nil {
+		return nil, err
+	}
+	if m.base.ModelKey() != m.key || m.base.Dimension() != m.dim || len(vector) != m.dim {
+		return nil, errors.New("embedding identity or output dimension changed")
+	}
+	for _, value := range vector {
+		if math.IsNaN(float64(value)) || math.IsInf(float64(value), 0) {
+			return nil, errors.New("nonfinite embedding")
+		}
+	}
+	m.values[strings.Clone(key)] = append([]float32(nil), vector...)
+	m.stats.Misses++
+	m.stats.Entries = len(m.values)
+	m.stats.PayloadBytes += cost
+	return append([]float32(nil), vector...), nil
+}

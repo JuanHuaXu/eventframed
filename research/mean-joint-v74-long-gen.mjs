@@ -1,0 +1,9 @@
+// Preserve full64-history external audit; all27 means are active in every case.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex'),source='internal/researchdynvarcachecheck/long_test.go',raw=fs.readFileSync(source);
+let s=raw.toString().replaceAll('researchdynvarcachecheck','researchmeanjointcheck').replaceAll('researchdynvarcache','researchmeanjoint').replaceAll('researchdynvarianceref','researchmeanjointref');
+assert(s.includes('Family: family, Hazard: hazard'));s=s.replace('Family: family, Hazard: hazard','Family: family, Means: "learn", Hazard: hazard');assert(s.includes('ref.New(base, mode, family, hazard)'));s=s.replace('ref.New(base, mode, family, hazard)','ref.New(base, mode, family, "learn", hazard)');
+const out='internal/researchmeanjointcheck/long_test.go';fs.mkdirSync('internal/researchmeanjointcheck',{mode:0o700});fs.writeFileSync(out,s,{flag:'wx',mode:0o600});
+const runnerSource='research/mean-joint-v74-preflight.mjs',runnerRaw=fs.readFileSync(runnerSource);let r=runnerRaw.toString().replace("const packages=['./internal/researchmeanjoint','./internal/researchmeanjointref']","const packages=['./internal/researchmeanjointcheck']").replaceAll("'research/mean-joint-v74-preflight.mjs'","'research/mean-joint-v74-long-preflight.mjs'");
+assert(r!==runnerRaw.toString());const runner='research/mean-joint-v74-long-preflight.mjs';fs.writeFileSync(runner,r,{flag:'wx',mode:0o600});
+fs.writeFileSync('research/mean-joint-v74-long-generation.json',JSON.stringify({source,sourceSHA256:hash(raw),out,initialOutputSHA256:hash(s),runnerSource,runnerSourceSHA256:hash(runnerRaw),runner,runnerSHA256:hash(r),scope:'36 full64 configurations unchanged family/hazard coverage; complete27 mean grid and all queries on old trials; explicit independence'},null,2)+'\n',{flag:'wx',mode:0o600});

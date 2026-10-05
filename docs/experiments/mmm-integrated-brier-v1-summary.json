@@ -1,0 +1,548 @@
+{
+  "sourceHash": "a4ea7bf070eaf25b09e6588c91edad8899bc9f262f451260b67d1e10d7ee6199",
+  "capturedSources": 813,
+  "trajectories": 160,
+  "summaries": [
+    {
+      "phase": "design",
+      "scenario": "stable",
+      "n": 16,
+      "arms": {
+        "Control": 0.04873158805678518,
+        "Strong": 0.048576837342385645,
+        "Linear": 0.0485738411082773
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": 0.00015475071439953643,
+            "lower": -0.00014043476521545891,
+            "upper": 0.00044993619401453177
+          },
+          "full": {
+            "mean": 0.000023789137679294803,
+            "lower": -0.00014343279914025736,
+            "upper": 0.00019101107449884697
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": 0.00015774694850787647,
+            "lower": -0.00012392188668941973,
+            "upper": 0.00043941578370517266
+          },
+          "full": {
+            "mean": 0.00011995744474841297,
+            "lower": -0.00003671545247930372,
+            "upper": 0.00027663034197612964
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": -0.000002996234108340037,
+            "lower": -0.000020869366674196837,
+            "upper": 0.000014876898457516763
+          },
+          "full": {
+            "mean": -0.00009616830706911817,
+            "lower": -0.00010901123365954899,
+            "upper": -0.00008332538047868735
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "member_shift",
+      "n": 16,
+      "arms": {
+        "Control": 0.19703293007393285,
+        "Strong": 0.20172945935639577,
+        "Linear": 0.20243182633426415
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": -0.004696529282462924,
+            "lower": -0.006590404649789591,
+            "upper": -0.002802653915136257
+          },
+          "full": {
+            "mean": -0.0024458765652830457,
+            "lower": -0.0033966349619962725,
+            "upper": -0.001495118168569819
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": -0.005398896260331279,
+            "lower": -0.007238602040343856,
+            "upper": -0.0035591904803187026
+          },
+          "full": {
+            "mean": -0.002696575466271685,
+            "lower": -0.0036181163257403524,
+            "upper": -0.0017750346068030175
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": 0.0007023669778683551,
+            "lower": 0.0006032439353853656,
+            "upper": 0.0008014900203513447
+          },
+          "full": {
+            "mean": 0.0002506989009886393,
+            "lower": 0.00019835889390621786,
+            "upper": 0.0003030389080710608
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "common_shift",
+      "n": 16,
+      "arms": {
+        "Control": 0.20570237006740233,
+        "Strong": 0.21078387445166274,
+        "Linear": 0.21140086291786858
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": -0.005081504384260456,
+            "lower": -0.006058023205482933,
+            "upper": -0.0041049855630379785
+          },
+          "full": {
+            "mean": -0.0025070749437769227,
+            "lower": -0.003059254142162283,
+            "upper": -0.001954895745391562
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": -0.005698492850466256,
+            "lower": -0.006703262441655852,
+            "upper": -0.0046937232592766595
+          },
+          "full": {
+            "mean": -0.002726669510407082,
+            "lower": -0.003285965961578525,
+            "upper": -0.002167373059235639
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": 0.0006169884662058003,
+            "lower": 0.0005333563214333054,
+            "upper": 0.0007006206109782951
+          },
+          "full": {
+            "mean": 0.0002195945666301595,
+            "lower": 0.00017631757909722953,
+            "upper": 0.00026287155416308947
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "recurring",
+      "n": 16,
+      "arms": {
+        "Control": 0.1778393765136215,
+        "Strong": 0.18351945605585668,
+        "Linear": 0.18412031536235207
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": -0.0056800795422352335,
+            "lower": -0.0068474512140407956,
+            "upper": -0.004512707870429671
+          },
+          "full": {
+            "mean": -0.004205740255241735,
+            "lower": -0.005069942553461913,
+            "upper": -0.0033415379570215582
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": -0.0062809388487305995,
+            "lower": -0.007377577599456529,
+            "upper": -0.00518430009800467
+          },
+          "full": {
+            "mean": -0.0045689280808784115,
+            "lower": -0.005377659380689617,
+            "upper": -0.0037601967810672056
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": 0.000600859306495366,
+            "lower": 0.00042511757190809394,
+            "upper": 0.0007766010410826381
+          },
+          "full": {
+            "mean": 0.0003631878256366763,
+            "lower": 0.00023161908635108434,
+            "upper": 0.0004947565649222682
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "n": 16,
+      "arms": {
+        "Control": 0.25125078805366163,
+        "Strong": 0.25126276334662345,
+        "Linear": 0.2513265672222284
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": -0.000011975292961754688,
+            "lower": -0.000039888329909229785,
+            "upper": 0.00001593774398572041
+          },
+          "full": {
+            "mean": 0.000017846834553764818,
+            "lower": 0.000004111304917501242,
+            "upper": 0.00003158236419002839
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": -0.00007577916856671939,
+            "lower": -0.0001613530942212604,
+            "upper": 0.000009794757087821628
+          },
+          "full": {
+            "mean": -0.00005493071441861272,
+            "lower": -0.00009747230311807157,
+            "upper": -0.00001238912571915387
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": 0.0000638038756049647,
+            "lower": -0.000008804403919453852,
+            "upper": 0.00013641215512938325
+          },
+          "full": {
+            "mean": 0.00007277754897237754,
+            "lower": 0.00003158685464772819,
+            "upper": 0.00011396824329702688
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "stable",
+      "n": 16,
+      "arms": {
+        "Control": 0.047394695455299715,
+        "Strong": 0.04736514689131116,
+        "Linear": 0.047357502106446486
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": 0.000029548563988561483,
+            "lower": -0.00005727586331610767,
+            "upper": 0.00011637299129323064
+          },
+          "full": {
+            "mean": -0.000018879098147805713,
+            "lower": -0.00015218349043681715,
+            "upper": 0.00011442529414120573
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": 0.00003719334885323518,
+            "lower": -0.000055454525849030065,
+            "upper": 0.00012984122355550042
+          },
+          "full": {
+            "mean": 0.00007914266647066287,
+            "lower": -0.000047291755190411486,
+            "upper": 0.00020557708813173723
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": -0.000007644784864673697,
+            "lower": -0.000024638823162737846,
+            "upper": 0.000009349253433390452
+          },
+          "full": {
+            "mean": -0.00009802176461846859,
+            "lower": -0.00011041336306469086,
+            "upper": -0.00008563016617224631
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "member_shift",
+      "n": 16,
+      "arms": {
+        "Control": 0.20675852432576752,
+        "Strong": 0.21201907501108397,
+        "Linear": 0.21268769077241523
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": -0.0052605506853165025,
+            "lower": -0.006379150030955089,
+            "upper": -0.004141951339677916
+          },
+          "full": {
+            "mean": -0.002662877744564731,
+            "lower": -0.003242894397802425,
+            "upper": -0.002082861091327037
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": -0.005929166446647725,
+            "lower": -0.007052355774494791,
+            "upper": -0.00480597711880066
+          },
+          "full": {
+            "mean": -0.002903481667784505,
+            "lower": -0.0034801564651182892,
+            "upper": -0.002326806870450721
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": 0.0006686157613312229,
+            "lower": 0.0005529360937943772,
+            "upper": 0.0007842954288680686
+          },
+          "full": {
+            "mean": 0.0002406039232197739,
+            "lower": 0.00017782242057387153,
+            "upper": 0.00030338542586567626
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "common_shift",
+      "n": 16,
+      "arms": {
+        "Control": 0.20958351632736114,
+        "Strong": 0.21440658733817125,
+        "Linear": 0.2151097315172541
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": -0.004823071010810167,
+            "lower": -0.005725675185901849,
+            "upper": -0.003920466835718485
+          },
+          "full": {
+            "mean": -0.002293335868694444,
+            "lower": -0.0028418337091850217,
+            "upper": -0.0017448380282038666
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": -0.005526215189892953,
+            "lower": -0.006354553490087865,
+            "upper": -0.004697876889698041
+          },
+          "full": {
+            "mean": -0.002553858785054171,
+            "lower": -0.0030550995626277594,
+            "upper": -0.0020526180074805825
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": 0.0007031441790827861,
+            "lower": 0.0005633974094364907,
+            "upper": 0.0008428909487290815
+          },
+          "full": {
+            "mean": 0.0002605229163597268,
+            "lower": 0.00018725757644089087,
+            "upper": 0.0003337882562785628
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "recurring",
+      "n": 16,
+      "arms": {
+        "Control": 0.17326494095382539,
+        "Strong": 0.17942708144127778,
+        "Linear": 0.17994094782295073
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": -0.0061621404874523476,
+            "lower": -0.007076362191088082,
+            "upper": -0.005247918783816613
+          },
+          "full": {
+            "mean": -0.004658234598684835,
+            "lower": -0.0053317442019530596,
+            "upper": -0.0039847249954166105
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": -0.006676006869125249,
+            "lower": -0.0076663277927033185,
+            "upper": -0.00568568594554718
+          },
+          "full": {
+            "mean": -0.0049527154148392896,
+            "lower": -0.005679044681814448,
+            "upper": -0.004226386147864131
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": 0.0005138663816729016,
+            "lower": 0.00034605054279830097,
+            "upper": 0.0006816822205475022
+          },
+          "full": {
+            "mean": 0.0002944808161544545,
+            "lower": 0.00016590301285277593,
+            "upper": 0.0004230586194561331
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "n": 16,
+      "arms": {
+        "Control": 0.2511987620891091,
+        "Strong": 0.25121426175522044,
+        "Linear": 0.2512666290649906
+      },
+      "contrasts": {
+        "strongVsControl": {
+          "post": {
+            "mean": -0.00001549966611142338,
+            "lower": -0.00006224586012735402,
+            "upper": 0.000031246527904507264
+          },
+          "full": {
+            "mean": 0.000007890352822434443,
+            "lower": -0.000077161366916652,
+            "upper": 0.00009294207256152088
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "linearVsControl": {
+          "post": {
+            "mean": -0.00006786697588156282,
+            "lower": -0.00014115025069175245,
+            "upper": 0.000005416298928626796
+          },
+          "full": {
+            "mean": -0.00006658694035325749,
+            "lower": -0.00016377624390040028,
+            "upper": 0.00003060236319388529
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        },
+        "strongVsLinear": {
+          "post": {
+            "mean": 0.00005236730977013944,
+            "lower": 0.000008834016763741969,
+            "upper": 0.00009590060277653691
+          },
+          "full": {
+            "mean": 0.00007447729317569193,
+            "lower": 0.00004306925509843641,
+            "upper": 0.00010588533125294746
+          },
+          "gainScreen": false,
+          "nonHarmScreen": true
+        }
+      }
+    }
+  ],
+  "limits": "Frozen exploratory synthetic pilot; mean +/-3.5SE over trajectories, not an anytime confidence sequence or broad robustness certificate. Observations fixed to control."
+}

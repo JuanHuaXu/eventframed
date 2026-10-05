@@ -1,0 +1,92 @@
+{
+  "time": "2026-10-04T05:55:58.382Z",
+  "summary": {
+    "static": {
+      "cells": 84,
+      "issuedVsFull": {
+        "positive": 65,
+        "macroMean": 0.005026212550669805
+      },
+      "issuedVsAdaptive": {
+        "positive": 21,
+        "macroMean": -0.007384185784330268
+      },
+      "shiftedIssuedVsFull": {
+        "cells": 54,
+        "macroMean": 0.00785630993686146,
+        "atLeastOnePoint": 17
+      },
+      "stationaryIssuedVsFull": {
+        "cells": 30,
+        "macroMean": -0.0000679627444751719,
+        "worst": -0.0006736578395715453
+      },
+      "finalUsefulnessVsAdaptive": {
+        "macroMean": -0.009463162502936034,
+        "worseByMoreThanOnePoint": 6
+      },
+      "nPerCell": 1,
+      "intervals": null,
+      "adoption": false
+    },
+    "local": {
+      "cells": 84,
+      "issuedVsFull": {
+        "positive": 67,
+        "macroMean": 0.004794458529454777
+      },
+      "issuedVsAdaptive": {
+        "positive": 22,
+        "macroMean": -0.007615939805545295
+      },
+      "shiftedIssuedVsFull": {
+        "cells": 54,
+        "macroMean": 0.0074587442955958635,
+        "atLeastOnePoint": 14
+      },
+      "stationaryIssuedVsFull": {
+        "cells": 30,
+        "macroMean": -0.0000012558495991775906,
+        "worst": -0.0006189395372826478
+      },
+      "finalUsefulnessVsAdaptive": {
+        "macroMean": -0.017929076834766775,
+        "worseByMoreThanOnePoint": 6
+      },
+      "nPerCell": 1,
+      "intervals": null,
+      "adoption": false
+    },
+    "reset": {
+      "cells": 84,
+      "issuedVsFull": {
+        "positive": 69,
+        "macroMean": 0.0034016282633442967
+      },
+      "issuedVsAdaptive": {
+        "positive": 25,
+        "macroMean": -0.009008770071655776
+      },
+      "shiftedIssuedVsFull": {
+        "cells": 54,
+        "macroMean": 0.005232556375055371,
+        "atLeastOnePoint": 0
+      },
+      "stationaryIssuedVsFull": {
+        "cells": 30,
+        "macroMean": 0.00010595766226436329,
+        "worst": -0.0004603917608544117
+      },
+      "finalUsefulnessVsAdaptive": {
+        "macroMean": -0.036543624161073825,
+        "worseByMoreThanOnePoint": 6
+      },
+      "nPerCell": 1,
+      "intervals": null,
+      "adoption": false
+    }
+  },
+  "maximumMeasuredLoopNS": 394375042,
+  "wholeGoals": "OPEN",
+  "interpretation": "Equal-cell descriptive means only, no new gates or policy selection. Normal cohorts remain required."
+}

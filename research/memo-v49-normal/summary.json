@@ -1,0 +1,139 @@
+{
+  "time": "2026-10-04T09:03:06.826Z",
+  "readbackSHA256": "d2495e6528fc4de66fa46e9031f1d10d80346d869378b95938d9af271befe3e5",
+  "summaries": {
+    "design": {
+      "maxMS": 432.736167,
+      "workFailedCells": 5,
+      "policies": {
+        "static": {
+          "wholeFailedCells": 29,
+          "qualityOnlyFailedCells": 27,
+          "failedChecks": {
+            "adaptive/FinalUsefulness": 13,
+            "adaptive/IssuedBrier": 3,
+            "adaptive/IssuedPriority": 3,
+            "Recovery": 17,
+            "full/IssuedBrier": 11,
+            "full/IssuedPriority": 11,
+            "adaptive/FinalBrier": 2,
+            "adaptive/FinalPriority": 2,
+            "full/FinalUsefulness": 8
+          },
+          "macroIssuedBrierVsFull": 0.011712878713922993,
+          "macroIssuedBrierVsAdaptive": -0.0007642585695958162,
+          "shiftedIssuedBrierVsFull": 0.01805169190488685,
+          "macroFinalUsefulnessVsAdaptive": -0.0020722834219309367
+        },
+        "slow": {
+          "wholeFailedCells": 28,
+          "qualityOnlyFailedCells": 26,
+          "failedChecks": {
+            "adaptive/FinalUsefulness": 12,
+            "Recovery": 17,
+            "adaptive/IssuedBrier": 2,
+            "adaptive/IssuedPriority": 2,
+            "full/IssuedBrier": 11,
+            "full/IssuedPriority": 11,
+            "adaptive/FinalBrier": 2,
+            "adaptive/FinalPriority": 2,
+            "full/FinalUsefulness": 9
+          },
+          "macroIssuedBrierVsFull": 0.011751195148814928,
+          "macroIssuedBrierVsAdaptive": -0.0007259421347038852,
+          "shiftedIssuedBrierVsFull": 0.018104418975676145,
+          "macroFinalUsefulnessVsAdaptive": -0.0017033082985511967
+        },
+        "round": {
+          "wholeFailedCells": 28,
+          "qualityOnlyFailedCells": 26,
+          "failedChecks": {
+            "Recovery": 17,
+            "full/IssuedBrier": 10,
+            "full/IssuedPriority": 10,
+            "adaptive/FinalBrier": 2,
+            "adaptive/FinalPriority": 2,
+            "adaptive/FinalUsefulness": 14,
+            "full/FinalUsefulness": 9
+          },
+          "macroIssuedBrierVsFull": 0.011889462132286047,
+          "macroIssuedBrierVsAdaptive": -0.0005876751512327689,
+          "shiftedIssuedBrierVsFull": 0.018301277579366112,
+          "macroFinalUsefulnessVsAdaptive": -0.0015335256203792573
+        }
+      }
+    },
+    "confirmation": {
+      "maxMS": 426.83425,
+      "workFailedCells": 13,
+      "policies": {
+        "static": {
+          "wholeFailedCells": 30,
+          "qualityOnlyFailedCells": 21,
+          "failedChecks": {
+            "Recovery": 17,
+            "adaptive/IssuedBrier": 2,
+            "adaptive/IssuedPriority": 2,
+            "full/IssuedBrier": 11,
+            "full/IssuedPriority": 10,
+            "adaptive/FinalBrier": 2,
+            "adaptive/FinalPriority": 2,
+            "adaptive/FinalUsefulness": 4,
+            "full/FinalUsefulness": 1
+          },
+          "macroIssuedBrierVsFull": 0.011880814013237147,
+          "macroIssuedBrierVsAdaptive": -0.000714678334120162,
+          "shiftedIssuedBrierVsFull": 0.01832820321172383,
+          "macroFinalUsefulnessVsAdaptive": -0.0015791692171950372
+        },
+        "slow": {
+          "wholeFailedCells": 29,
+          "qualityOnlyFailedCells": 20,
+          "failedChecks": {
+            "Recovery": 17,
+            "adaptive/IssuedBrier": 2,
+            "full/IssuedBrier": 10,
+            "full/IssuedPriority": 11,
+            "adaptive/FinalBrier": 2,
+            "adaptive/FinalPriority": 2,
+            "adaptive/FinalUsefulness": 4,
+            "full/FinalUsefulness": 1
+          },
+          "macroIssuedBrierVsFull": 0.011885830779643525,
+          "macroIssuedBrierVsAdaptive": -0.000709661567713787,
+          "shiftedIssuedBrierVsFull": 0.01832984097712612,
+          "macroFinalUsefulnessVsAdaptive": -0.0015107682571704137
+        },
+        "round": {
+          "wholeFailedCells": 29,
+          "qualityOnlyFailedCells": 19,
+          "failedChecks": {
+            "Recovery": 17,
+            "full/IssuedBrier": 9,
+            "full/IssuedPriority": 9,
+            "adaptive/FinalBrier": 2,
+            "adaptive/FinalPriority": 2,
+            "adaptive/FinalUsefulness": 4,
+            "full/FinalUsefulness": 1
+          },
+          "macroIssuedBrierVsFull": 0.01201066009948897,
+          "macroIssuedBrierVsAdaptive": -0.000584832247868336,
+          "shiftedIssuedBrierVsFull": 0.01850604722359967,
+          "macroFinalUsefulnessVsAdaptive": -0.001519681930176125
+        }
+      }
+    }
+  },
+  "costScreen": {
+    "allocationBytes": {
+      "memo": 7886136,
+      "original": 7891440
+    },
+    "originalMaxMS": 407.523625,
+    "memoMaxMS": 372.115584
+  },
+  "macroIntervalsClaimed": false,
+  "qualityAdoption": false,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

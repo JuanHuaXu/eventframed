@@ -1,0 +1,5 @@
+// Isolated mechanical original-model clone; exact memoization is patched next.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';import path from 'node:path';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex'),sources={},initialOutputs={};
+for(const name of['model.go','model_test.go','reference_test.go','paths_test.go']){const src='internal/researchpaired/'+name,dest='internal/researchpairedmemo/'+name,b=fs.readFileSync(src);assert(!fs.existsSync(dest));sources[src]=hash(b);const s=b.toString().replace(/^package researchpaired(_test)?$/m,(_,suffix)=>'package researchpairedmemo'+(suffix??'')).replaceAll('"github.com/JuanHuaXu/eventframed/internal/researchpaired"','"github.com/JuanHuaXu/eventframed/internal/researchpairedmemo"');fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,s,{flag:'wx',mode:0o600});initialOutputs[dest]=hash(s);}
+fs.writeFileSync('research/paired-v56-module-generation.json',JSON.stringify({sources,initialOutputs,manualMemoizationSeparate:true},null,2)+'\n',{flag:'wx',mode:0o600});console.log(JSON.stringify({copies:4}));

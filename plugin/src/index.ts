@@ -1,7 +1,7 @@
 import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
 import { isAgencyAction, registerAgencyService } from "./agency.js";
 import { EventFrameClient } from "./client.js";
-import { buildTurnCapture, extractLatestText } from "./event.js";
+import { buildTurnCapture, extractLatestText, parseIdentityBindings } from "./event.js";
 import { formatContext } from "./format.js";
 import { TraceWriter } from "./trace.js";
 import type { AdapterConfig, AgencyAction, OutcomeObservation, OutcomeSignal } from "./types.js";
@@ -43,6 +43,8 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
     const client = new EventFrameClient({ socketPath: config.socketPath });
     const trace = new TraceWriter(config.tracePath);
     const recallByRun = new Map<string, RecallState>();
+    const previousCaptureBySession = new Map<string, { id: string; sequence: number }>();
+    const pendingCapturesBySession = new Map<string, number>();
 
     registerAgencyService(api, client, config);
     api.registerGatewayMethod("eventframe.outcome.observe", async ({ params, respond }) => {
@@ -117,17 +119,49 @@ const plugin: ReturnType<typeof definePluginEntry> = definePluginEntry({
         return;
       }
       try {
+        const sid = sessionId(context);
+        const identity = sid === "openclaw:unknown-session" ? undefined : config.identityBySession?.[sid];
         const turnCapture = buildTurnCapture({
           tenantId: config.tenantId,
-          sessionId: sessionId(context),
+          sessionId: sid,
           runId: event.runId ?? context.runId,
           agentId: context.agentId,
+          userId: identity?.userId,
+          participantUserIds: identity?.participantUserIds,
           userText,
           assistantText,
           retrievedIds: state?.recalledIds ?? [],
           occurredAt: state?.occurredAt,
         });
-        await client.captureTurn(turnCapture);
+        // The daemon validates session, sequence and as-of availability; this
+        // pointer supplies context, not a semantic frame or a pronoun decision.
+        const previous = previousCaptureBySession.get(sid);
+        if (previous?.id === turnCapture.id) return;
+        const pending = pendingCapturesBySession.get(sid) ?? 0;
+        if (sid !== "openclaw:unknown-session" && pending === 0 && previous && previous.sequence < turnCapture.sequence) {
+          turnCapture.previous_turn_id = previous.id;
+        }
+        pendingCapturesBySession.set(sid, pending + 1);
+        try {
+          await client.captureTurn(turnCapture);
+          if (sid !== "openclaw:unknown-session") {
+            const latest = previousCaptureBySession.get(sid);
+            if (!latest || turnCapture.sequence > latest.sequence) {
+              previousCaptureBySession.set(sid, { id: turnCapture.id, sequence: turnCapture.sequence });
+            } else if (turnCapture.sequence === latest.sequence && turnCapture.id !== latest.id) {
+              // Millisecond ties cannot establish a unique immediate predecessor.
+              previousCaptureBySession.set(sid, { id: "", sequence: latest.sequence });
+            }
+            if (previousCaptureBySession.size > 10_000) {
+              const oldest = previousCaptureBySession.keys().next().value;
+              if (oldest) previousCaptureBySession.delete(oldest);
+            }
+          }
+        } finally {
+          const remaining = (pendingCapturesBySession.get(sid) ?? 1) - 1;
+          if (remaining > 0) pendingCapturesBySession.set(sid, remaining);
+          else pendingCapturesBySession.delete(sid);
+        }
         await trace.write({
           type: "observe",
           run_id: event.runId ?? context.runId,
@@ -161,6 +195,7 @@ function resolveConfig(value: Record<string, unknown> | undefined): AdapterConfi
     packK: Math.min(recallK, readInteger(value?.packK, DEFAULTS.packK, 1, 100)),
     tokenBudget: readInteger(value?.tokenBudget, DEFAULTS.tokenBudget, 1, 1_000_000),
     capture: typeof value?.capture === "boolean" ? value.capture : DEFAULTS.capture,
+    identityBySession: parseIdentityBindings(value?.identityBySession),
     tracePath: readOptionalString(value?.tracePath),
     agencyEnabled: typeof value?.agencyEnabled === "boolean" ? value.agencyEnabled : DEFAULTS.agencyEnabled,
     agencyKillSwitch: typeof value?.agencyKillSwitch === "boolean" ? value.agencyKillSwitch : DEFAULTS.agencyKillSwitch,

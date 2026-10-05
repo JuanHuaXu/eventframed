@@ -1,0 +1,30 @@
+{
+  "started": "2026-09-14T09:53:18.905Z",
+  "ended": "2026-09-14T09:53:42.671Z",
+  "hashes": {
+    "internal/store/libravdbstore/research_index_scaling_test.go": "c758ff6be2d4381474eb072d7bfdfa487186f76a3925e956526ae665ab0d123c",
+    "internal/store/libravdbstore/research_event_batch.go": "ac4d79fda3b0f95f78b917676520f2d9085773766af6fdef7ccb0313c72892ec",
+    "internal/store/libravdbstore/research_event_batch_test.go": "6d69338578344475391685dc317c0f21da91254a5911da80fc1cf82af9fcbe11",
+    "internal/store/libravdbstore/store.go": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974",
+    "go.mod": "fa72235136c9ba87b6c33424e3e28c451a53901bd5198db1ee69fe9b4f654da6",
+    "research/public-task-pilot/INDEX_SCALING_PROTOCOL.md": "e2cef8fc675e69948a9fb396ca4a5986b1a75b87f64217de2c2b067e8d58a1e3"
+  },
+  "command": [
+    "go",
+    "test",
+    "./internal/store/libravdbstore",
+    "-run",
+    "^$",
+    "-bench",
+    "^BenchmarkResearchIndexScaling$",
+    "-benchmem",
+    "-benchtime=1x",
+    "-count=2",
+    "-cpu=4",
+    "-timeout=600s"
+  ],
+  "status": 0,
+  "signal": null,
+  "stdout": "goos: darwin\ngoarch: arm64\npkg: github.com/JuanHuaXu/eventframed/internal/store/libravdbstore\ncpu: Apple M4\nBenchmarkResearchIndexScaling/n200/flatfalse/batch1-4         \t       1\t 144830459 ns/op\t     83070 search-ns/query\t         1.000 self-recall@10\t16274224 B/op\t   26671 allocs/op\nBenchmarkResearchIndexScaling/n200/flatfalse/batch1-4         \t       1\t 143995791 ns/op\t     89120 search-ns/query\t         1.000 self-recall@10\t16279376 B/op\t   26698 allocs/op\nBenchmarkResearchIndexScaling/n200/flatfalse/batch16-4        \t       1\t  10055667 ns/op\t    100406 search-ns/query\t         1.000 self-recall@10\t 1134336 B/op\t    2530 allocs/op\nBenchmarkResearchIndexScaling/n200/flatfalse/batch16-4        \t       1\t  10018626 ns/op\t    101248 search-ns/query\t         1.000 self-recall@10\t 1132008 B/op\t    2527 allocs/op\nBenchmarkResearchIndexScaling/n200/flattrue/batch1-4          \t       1\t  63912416 ns/op\t    201576 search-ns/query\t         1.000 self-recall@10\t  594736 B/op\t    4883 allocs/op\nBenchmarkResearchIndexScaling/n200/flattrue/batch1-4          \t       1\t  79095417 ns/op\t    370047 search-ns/query\t         1.000 self-recall@10\t  597376 B/op\t    4900 allocs/op\nBenchmarkResearchIndexScaling/n200/flattrue/batch16-4         \t       1\t   5716833 ns/op\t    282362 search-ns/query\t         1.000 self-recall@10\t  162528 B/op\t    1266 allocs/op\nBenchmarkResearchIndexScaling/n200/flattrue/batch16-4         \t       1\t   5111209 ns/op\t    340781 search-ns/query\t         1.000 self-recall@10\t  163088 B/op\t    1268 allocs/op\nBenchmarkResearchIndexScaling/n800/flatfalse/batch1-4         \t       1\t 402935250 ns/op\t    234349 search-ns/query\t         1.000 self-recall@10\t24583960 B/op\t   84282 allocs/op\nBenchmarkResearchIndexScaling/n800/flatfalse/batch1-4         \t       1\t 395950333 ns/op\t    233414 search-ns/query\t         1.000 self-recall@10\t24574592 B/op\t   84231 allocs/op\nBenchmarkResearchIndexScaling/n800/flatfalse/batch16-4        \t       1\t  25007125 ns/op\t    250690 search-ns/query\t         1.000 self-recall@10\t 1657280 B/op\t    6148 allocs/op\nBenchmarkResearchIndexScaling/n800/flatfalse/batch16-4        \t       1\t  24918750 ns/op\t    251128 search-ns/query\t         1.000 self-recall@10\t 1652208 B/op\t    6129 allocs/op\nBenchmarkResearchIndexScaling/n800/flattrue/batch1-4          \t       1\t  80864125 ns/op\t    505359 search-ns/query\t         1.000 self-recall@10\t  593664 B/op\t    4881 allocs/op\nBenchmarkResearchIndexScaling/n800/flattrue/batch1-4          \t       1\t  79987251 ns/op\t    536755 search-ns/query\t         1.000 self-recall@10\t  593664 B/op\t    4881 allocs/op\nBenchmarkResearchIndexScaling/n800/flattrue/batch16-4         \t       1\t   5785875 ns/op\t    533146 search-ns/query\t         1.000 self-recall@10\t  162528 B/op\t    1266 allocs/op\nBenchmarkResearchIndexScaling/n800/flattrue/batch16-4         \t       1\t   5844209 ns/op\t    522925 search-ns/query\t         1.000 self-recall@10\t  162528 B/op\t    1266 allocs/op\nBenchmarkResearchIndexScaling/n1600/flatfalse/batch1-4        \t       1\t 826034083 ns/op\t    349518 search-ns/query\t         1.000 self-recall@10\t35909640 B/op\t  161145 allocs/op\nBenchmarkResearchIndexScaling/n1600/flatfalse/batch1-4        \t       1\t 826832375 ns/op\t    350594 search-ns/query\t         1.000 self-recall@10\t35920080 B/op\t  161169 allocs/op\nBenchmarkResearchIndexScaling/n1600/flatfalse/batch16-4       \t       1\t  52019666 ns/op\t    347958 search-ns/query\t         1.000 self-recall@10\t 2363088 B/op\t   10939 allocs/op\nBenchmarkResearchIndexScaling/n1600/flatfalse/batch16-4       \t       1\t  51027208 ns/op\t    348318 search-ns/query\t         1.000 self-recall@10\t 2364512 B/op\t   10951 allocs/op\nBenchmarkResearchIndexScaling/n1600/flattrue/batch1-4         \t       1\t  79657667 ns/op\t    806484 search-ns/query\t         1.000 self-recall@10\t  591616 B/op\t    4880 allocs/op\nBenchmarkResearchIndexScaling/n1600/flattrue/batch1-4         \t       1\t  79856458 ns/op\t    744315 search-ns/query\t         1.000 self-recall@10\t  591616 B/op\t    4880 allocs/op\nBenchmarkResearchIndexScaling/n1600/flattrue/batch16-4        \t       1\t   5874668 ns/op\t    774888 search-ns/query\t         1.000 self-recall@10\t  162528 B/op\t    1266 allocs/op\nBenchmarkResearchIndexScaling/n1600/flattrue/batch16-4        \t       1\t   5840083 ns/op\t    793857 search-ns/query\t         1.000 self-recall@10\t  162528 B/op\t    1266 allocs/op\nPASS\nok  \tgithub.com/JuanHuaXu/eventframed/internal/store/libravdbstore\t23.183s\n",
+  "stderr": ""
+}

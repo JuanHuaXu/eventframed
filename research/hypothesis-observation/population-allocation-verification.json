@@ -1,0 +1,88 @@
+{
+  "scope": "Full solver replay, alternate scoring with frozen lambdas, analytic and feasible-grid solver checks; not an independently implemented optimizer",
+  "inputSHA256": "e8b54d3c44da17a65d90214e97bb13e240a2fdfe460eb7297f5d1280e16cadbe",
+  "verifierSHA256": "11df230e5f784dc364fcabaa3dd54d96a967da5b5769b321d2e9aca3c512d1fd",
+  "replay": true,
+  "checks": 3200,
+  "maxError": 8.881784197001252e-16,
+  "componentTests": {
+    "analyticChecks": 6,
+    "gridChecks": 20,
+    "negativeTests": 1
+  },
+  "maxPointwiseHarm": 0.334452459794475,
+  "coefficientChecks": 800,
+  "maxCoefficientError": 7.060541387660102e-15,
+  "summary": [
+    {
+      "noise": 0.1,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.00023870387362845413,
+      "genuineGainRange": [
+        0.008909276037733227,
+        0.010317104416726675
+      ]
+    },
+    {
+      "noise": 0.15,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.0038338216702332173,
+      "genuineGainRange": [
+        0.007821662859311795,
+        0.009373893015880597
+      ]
+    },
+    {
+      "noise": 0.2,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.007132956293532999,
+      "genuineGainRange": [
+        0.005340804660928955,
+        0.00919407316498927
+      ]
+    },
+    {
+      "noise": 0.25,
+      "passed": 176,
+      "failures": {
+        "nonharm": 0,
+        "gain": 4,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.00937680512039385,
+      "genuineGainRange": [
+        0.002009144650500172,
+        0.007625933286724729
+      ]
+    },
+    {
+      "noise": 0.3,
+      "passed": 172,
+      "failures": {
+        "nonharm": 0,
+        "gain": 8,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.010000000000000675,
+      "genuineGainRange": [
+        -0.0022411708507757977,
+        0.006007393884814638
+      ]
+    }
+  ]
+}

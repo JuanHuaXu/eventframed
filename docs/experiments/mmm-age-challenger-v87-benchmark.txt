@@ -1,0 +1,24 @@
+Command: go test ./internal/observationgate -run '^$' -bench '^BenchmarkAgeChallenger$' -benchmem -benchtime=1s -count=3
+go version go1.27.1 darwin/arm64
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationgate
+cpu: Apple M4
+BenchmarkAgeChallenger/fit16-10                  210       5593214 ns/op     651289 B/op     3 allocs/op
+BenchmarkAgeChallenger/fit16-10                  214       5566509 ns/op     651264 B/op     3 allocs/op
+BenchmarkAgeChallenger/fit16-10                  216       5562422 ns/op     651265 B/op     3 allocs/op
+BenchmarkAgeChallenger/fit64-10                  189       6269161 ns/op     651264 B/op     3 allocs/op
+BenchmarkAgeChallenger/fit64-10                  189       6252332 ns/op     651264 B/op     3 allocs/op
+BenchmarkAgeChallenger/fit64-10                  189       6322633 ns/op     651264 B/op     3 allocs/op
+BenchmarkAgeChallenger/active_age_false-10   1889490         633.0 ns/op        224 B/op     2 allocs/op
+BenchmarkAgeChallenger/active_age_false-10   1885401         635.3 ns/op        224 B/op     2 allocs/op
+BenchmarkAgeChallenger/active_age_false-10   1892701         715.3 ns/op        224 B/op     2 allocs/op
+BenchmarkAgeChallenger/active_age_true-10     376287          3170 ns/op        416 B/op     4 allocs/op
+BenchmarkAgeChallenger/active_age_true-10     316822          3164 ns/op        416 B/op     4 allocs/op
+BenchmarkAgeChallenger/active_age_true-10     320594          3163 ns/op        416 B/op     4 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/observationgate 19.913s
+
+Forced active-guide fixture, not serving latency. The two models may select
+different views or stopping depths. No network, embedding, persistence or
+concurrent refit is included. Benchmark ran after generation and before replay.

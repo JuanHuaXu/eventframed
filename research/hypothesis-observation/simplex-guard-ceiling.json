@@ -1,0 +1,118 @@
+{
+  "scope": "Numerical projection-gap upper bounds for the matched .20 all-genuine world only; not interval-arithmetic formal certificates",
+  "reason": "In the matched genuine world proposal=q, and conditional Brier risk differs from squared distance to q by a constant. Projection gap uses half squared distance, hence the factor two. Expectation preserves the global gap bound. Added 1e-10 is a reporting cushion, not a formal rounding-error proof.",
+  "inputSHA256": "53929454b5b11d5836168b9b4dd2525e8c9354bc4b55c07e7e6e4e85965248ec",
+  "maxHalfSquaredProjectionGap": 9.92761428619815e-13,
+  "ceilings": [
+    {
+      "counts": [
+        1,
+        1,
+        1,
+        3
+      ],
+      "achievedGain": 0.0014882745389366847,
+      "numericalUpperGain": 0.0014882746409222076,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "achievedGain": 0.001475304982657799,
+      "numericalUpperGain": 0.001475305084643322,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "achievedGain": 0.0012103811556531396,
+      "numericalUpperGain": 0.0012103812576386625,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "achievedGain": 0.0015466471373565271,
+      "numericalUpperGain": 0.00154664723934205,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "achievedGain": 0.0012828263722969302,
+      "numericalUpperGain": 0.001282826474282453,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        1,
+        3,
+        1,
+        1
+      ],
+      "achievedGain": 0.0012183084572693348,
+      "numericalUpperGain": 0.0012183085592548577,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        2,
+        1,
+        1,
+        2
+      ],
+      "achievedGain": 0.0014626371862476728,
+      "numericalUpperGain": 0.0014626372882331957,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        2,
+        1,
+        2,
+        1
+      ],
+      "achievedGain": 0.0014740842889222616,
+      "numericalUpperGain": 0.0014740843909077845,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "achievedGain": 0.001546246540795937,
+      "numericalUpperGain": 0.0015462466427814598,
+      "required": 0.005
+    },
+    {
+      "counts": [
+        3,
+        1,
+        1,
+        1
+      ],
+      "achievedGain": 0.0015137998901721406,
+      "numericalUpperGain": 0.0015137999921576635,
+      "required": 0.005
+    }
+  ]
+}

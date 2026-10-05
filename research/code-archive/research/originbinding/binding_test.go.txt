@@ -1,0 +1,118 @@
+package originbinding
+
+import (
+	"reflect"
+	"testing"
+
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/packing"
+)
+
+func fixture(id, producer string) model.Candidate {
+	return model.Candidate{Event: model.Event{ID: id, TenantID: "t", Kind: "external_observation", What: model.Field{Value: "A > B"}, When: model.Field{Value: "1974-02-05"}, Provenance: model.Provenance{Producer: producer, ToolCallID: id}}, EstimatedTokens: 10, EvidenceGroupKey: "original"}
+}
+func registry(t *testing.T, candidates []model.Candidate, origins []string) *Registry {
+	t.Helper()
+	var bs []Binding
+	for i, c := range candidates {
+		b, e := Record(c.Event, origins[i])
+		if e != nil {
+			t.Fatal(e)
+		}
+		bs = append(bs, b)
+	}
+	r, e := New(bs)
+	if e != nil {
+		t.Fatal(e)
+	}
+	return r
+}
+func TestVerifiedRepeatAndAPSeparation(t *testing.T) {
+	a, b := fixture("a", "one"), fixture("b", "two")
+	r := registry(t, []model.Candidate{a, b}, []string{"origin", "origin"})
+	left, ok := r.Apply(a)
+	if !ok {
+		t.Fatal("missing left")
+	}
+	right, ok := r.Apply(b)
+	if !ok {
+		t.Fatal("missing right")
+	}
+	if left.EvidenceGroupKey != right.EvidenceGroupKey {
+		t.Fatal("repeat not grouped")
+	}
+	if !reflect.DeepEqual(left.Event, a.Event) {
+		t.Fatal("event changed")
+	}
+	got := packing.Select([]model.Candidate{left, right}, nil, 2, 2, 100, packing.DefaultPolicy())
+	if len(got.Candidates) != 1 {
+		t.Fatal("repeat not suppressed")
+	}
+	got = packing.Select([]model.Candidate{left, right}, map[string]string{"a": "ap:first", "b": "ap:second"}, 2, 2, 100, packing.DefaultPolicy())
+	if len(got.Candidates) != 2 {
+		t.Fatal("AP split overridden")
+	}
+}
+func TestMissingTamperedAndWrongTenant(t *testing.T) {
+	c := fixture("a", "one")
+	r := registry(t, []model.Candidate{c}, []string{"origin"})
+	for _, mutate := range []func(*model.Candidate){func(x *model.Candidate) { x.Event.ID = "unknown" }, func(x *model.Candidate) { x.Event.What.Value = "different" }, func(x *model.Candidate) { x.Event.TenantID = "other" }, func(x *model.Candidate) { x.Event.Kind = "agent_turn" }} {
+		x := c
+		mutate(&x)
+		got, ok := r.Apply(x)
+		if ok || !reflect.DeepEqual(got, x) {
+			t.Fatal("unbound payload accepted or changed")
+		}
+	}
+	var absent *Registry
+	if _, ok := absent.Apply(c); ok {
+		t.Fatal("nil registry accepted")
+	}
+}
+func TestDistinctOriginsClaimsAndOccurrences(t *testing.T) {
+	for _, variant := range []string{"origin", "claim", "time"} {
+		a, b := fixture("a", "one"), fixture("b", "two")
+		origins := []string{"origin", "origin"}
+		switch variant {
+		case "origin":
+			origins[1] = "independent"
+		case "claim":
+			b.Event.What.Value = "A < B"
+		case "time":
+			b.Event.When.Value = "1975-03-16"
+		}
+		r := registry(t, []model.Candidate{a, b}, origins)
+		left, _ := r.Apply(a)
+		right, _ := r.Apply(b)
+		if left.EvidenceGroupKey == right.EvidenceGroupKey {
+			t.Fatal("distinct records collapsed", variant)
+		}
+		if len(packing.Select([]model.Candidate{left, right}, nil, 2, 2, 100, packing.DefaultPolicy()).Candidates) != 2 {
+			t.Fatal("distinct records suppressed", variant)
+		}
+	}
+}
+func TestRegistryRejectsAmbiguityAndCopiesEntries(t *testing.T) {
+	c := fixture("a", "one")
+	b, _ := Record(c.Event, "origin")
+	if _, err := New([]Binding{b, b}); err == nil {
+		t.Fatal("duplicate accepted")
+	}
+	if _, err := New(make([]Binding, 257)); err == nil {
+		t.Fatal("cap ignored")
+	}
+	bad := b
+	bad.Origin = ""
+	if _, err := New([]Binding{bad}); err == nil {
+		t.Fatal("empty origin accepted")
+	}
+	entries := []Binding{b}
+	r, _ := New(entries)
+	entries[0].Origin = "changed"
+	got, ok := r.Apply(c)
+	fresh := registry(t, []model.Candidate{c}, []string{"origin"})
+	want, _ := fresh.Apply(c)
+	if !ok || got.EvidenceGroupKey != want.EvidenceGroupKey {
+		t.Fatal("mutable registry entries")
+	}
+}

@@ -117,6 +117,111 @@ func TestRunCodexAllowsSingleClusterOnlyForExplicitHoldoutPilot(t *testing.T) {
 	}
 }
 
+func TestReadCodexSessionCurrentEnvelopeBindsOnlyCompletedCalls(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "current.jsonl")
+	file, err := os.Create(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	start := time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)
+	writeCodexRecord(t, file, start.Add(-time.Minute), "session_meta", map[string]any{"type": "session_meta", "id": "current-format"})
+	writeCodexRecord(t, file, start, "event_msg", map[string]any{"type": "task_started"})
+	writeCodexRecord(t, file, start.Add(time.Second), "response_item", map[string]any{"type": "message", "role": "user", "content": []any{map[string]any{"type": "input_text", "text": "inspect /private/current.go"}}})
+	writeCodexRecord(t, file, start.Add(2*time.Second), "response_item", map[string]any{"type": "custom_tool_call", "call_id": "matched", "input": `{"cmd":"inspect /private/current.go"}`})
+	writeCodexRecord(t, file, start.Add(3*time.Second), "response_item", map[string]any{"type": "custom_tool_call_output", "call_id": "matched", "output": "ok"})
+	writeCodexRecord(t, file, start.Add(4*time.Second), "response_item", map[string]any{"type": "custom_tool_call", "call_id": "unfinished", "input": `{"cmd":"inspect /private/unseen.go"}`})
+	writeCodexRecord(t, file, start.Add(5*time.Second), "response_item", map[string]any{"type": "message", "role": "assistant", "phase": "final_answer", "content": []any{map[string]any{"type": "output_text", "text": "inspected current.go"}}})
+	writeCodexRecord(t, file, start.Add(6*time.Second), "event_msg", map[string]any{"type": "task_complete", "last_agent_message": ""})
+	if err := file.Close(); err != nil {
+		t.Fatal(err)
+	}
+	current, _, err := readCodexSession(path, start, start.Add(time.Hour))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(current.turns) != 1 || current.turns[0].user != "inspect /private/current.go" || current.turns[0].assistant != "inspected current.go" {
+		t.Fatalf("current envelope did not yield one completed turn: %d", len(current.turns))
+	}
+	if _, ok := current.turns[0].downstreamUsage["path:/private/current.go"]; !ok {
+		t.Fatal("matching tool output did not bind completed tool input")
+	}
+	if _, ok := current.turns[0].downstreamUsage["path:/private/unseen.go"]; ok {
+		t.Fatal("unfinished tool input became outcome evidence")
+	}
+}
+
+func TestReadCodexSessionRejectsAmbiguousOrFailedTurn(t *testing.T) {
+	for _, mode := range []string{"multiple-user", "failed-task"} {
+		t.Run(mode, func(t *testing.T) {
+			path := filepath.Join(t.TempDir(), "session.jsonl")
+			file, err := os.Create(path)
+			if err != nil {
+				t.Fatal(err)
+			}
+			start := time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC)
+			writeCodexRecord(t, file, start, "session_meta", map[string]any{"type": "session_meta", "id": mode})
+			writeCodexRecord(t, file, start.Add(time.Second), "event_msg", map[string]any{"type": "user_message", "message": "first request"})
+			if mode == "multiple-user" {
+				writeCodexRecord(t, file, start.Add(2*time.Second), "event_msg", map[string]any{"type": "user_message", "message": "later request"})
+			}
+			completion := map[string]any{"type": "task_complete", "last_agent_message": "done"}
+			if mode == "failed-task" {
+				completion["error"] = "failed"
+			}
+			writeCodexRecord(t, file, start.Add(3*time.Second), "event_msg", completion)
+			if err := file.Close(); err != nil {
+				t.Fatal(err)
+			}
+			current, _, err := readCodexSession(path, start, start.Add(time.Hour))
+			if err != nil || len(current.turns) != 0 {
+				t.Fatalf("accepted %s turn: count=%d err=%v", mode, len(current.turns), err)
+			}
+		})
+	}
+}
+
+func TestRunCodexCurrentEnvelopeStillExportsNoTranscriptText(t *testing.T) {
+	dir := t.TempDir()
+	for sessionIndex := 0; sessionIndex < 2; sessionIndex++ {
+		start := time.Date(2026, 9, 1+sessionIndex, 0, 0, 0, 0, time.UTC)
+		path := filepath.Join(dir, fmt.Sprintf("current-%d.jsonl", sessionIndex))
+		file, err := os.Create(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		writeCodexRecord(t, file, start, "session_meta", map[string]any{"type": "session_meta", "id": fmt.Sprintf("current-%d", sessionIndex)})
+		for turn := 0; turn < 12; turn++ {
+			base := start.Add(time.Duration(turn) * time.Minute)
+			secret := "/private/work/current/service.go"
+			writeCodexRecord(t, file, base, "event_msg", map[string]any{"type": "task_started"})
+			writeCodexRecord(t, file, base.Add(time.Second), "response_item", map[string]any{"type": "message", "role": "user", "content": []any{map[string]any{"type": "input_text", "text": "inspect " + secret}}})
+			callID := fmt.Sprintf("current-%d", turn)
+			writeCodexRecord(t, file, base.Add(2*time.Second), "response_item", map[string]any{"type": "custom_tool_call", "call_id": callID, "input": `{"cmd":"inspect ` + secret + `"}`})
+			writeCodexRecord(t, file, base.Add(3*time.Second), "response_item", map[string]any{"type": "custom_tool_call_output", "call_id": callID, "output": "ok"})
+			writeCodexRecord(t, file, base.Add(4*time.Second), "event_msg", map[string]any{"type": "task_complete", "last_agent_message": "inspected " + secret})
+		}
+		if err := file.Close(); err != nil {
+			t.Fatal(err)
+		}
+	}
+	result, err := RunCodex(context.Background(), CodexConfig{
+		SessionDirs: []string{dir}, DataStart: time.Date(2026, 9, 1, 0, 0, 0, 0, time.UTC),
+		DataEnd: time.Date(2026, 9, 4, 0, 0, 0, 0, time.UTC), RuleFrozenAt: time.Date(2026, 9, 5, 0, 0, 0, 0, time.UTC),
+	})
+	if err != nil || len(result.Design.Cases) == 0 || len(result.Confirmation.Cases) == 0 {
+		t.Fatalf("current-format replay design=%d confirmation=%d err=%v", len(result.Design.Cases), len(result.Confirmation.Cases), err)
+	}
+	payload, err := json.Marshal(result)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, forbidden := range []string{"/private/work", "service.go", "2026-09-01T00:00:01Z", "2026-09-02T00:00:01Z"} {
+		if strings.Contains(string(payload), forbidden) {
+			t.Fatalf("current-format artifact leaked %q", forbidden)
+		}
+	}
+}
+
 func writeCodexRecord(t *testing.T, file *os.File, timestamp time.Time, recordType string, payload map[string]any) {
 	t.Helper()
 	encoded, err := json.Marshal(map[string]any{"type": recordType, "timestamp": timestamp.Format(time.RFC3339Nano), "payload": payload})

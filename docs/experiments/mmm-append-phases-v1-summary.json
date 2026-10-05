@@ -1,0 +1,356 @@
+{
+  "sourceHash": "9c4a998cfa1986cd0ffeb73d937c4af967ed3d30d41c6405924092ffb7543c6b",
+  "capturedSources": 35,
+  "verifiedOriginals": 48000,
+  "cells": [
+    {
+      "trial": 0,
+      "size": 50,
+      "measured": false,
+      "meanMS": 1.030514375,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "BeginNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "PrepareNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "RowsNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "CommitNS": {
+          "meanMS": 0,
+          "fraction": 0
+        }
+      },
+      "cleanupAndGapsFraction": 1
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "measured": true,
+      "meanMS": 0.80778778125,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0.03717046875,
+          "fraction": 0.046015141120952674
+        },
+        "BeginNS": {
+          "meanMS": 0.002885375,
+          "fraction": 0.003571946824368978
+        },
+        "PrepareNS": {
+          "meanMS": 0.01468484375,
+          "fraction": 0.018179086253664475
+        },
+        "RowsNS": {
+          "meanMS": 0.46779290625,
+          "fraction": 0.5791037164812277
+        },
+        "CommitNS": {
+          "meanMS": 0.2849063125,
+          "fraction": 0.35269945784414525
+        }
+      },
+      "cleanupAndGapsFraction": 0.00043065147564091966
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "measured": false,
+      "meanMS": 2.7104688125,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "BeginNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "PrepareNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "RowsNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "CommitNS": {
+          "meanMS": 0,
+          "fraction": 0
+        }
+      },
+      "cleanupAndGapsFraction": 1
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "measured": true,
+      "meanMS": 2.75724346875,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0.15295696875,
+          "fraction": 0.05547459645242835
+        },
+        "BeginNS": {
+          "meanMS": 0.005078125,
+          "fraction": 0.0018417397874197067
+        },
+        "PrepareNS": {
+          "meanMS": 0.02226171875,
+          "fraction": 0.008073903883465315
+        },
+        "RowsNS": {
+          "meanMS": 1.84570575,
+          "fraction": 0.6694025286191913
+        },
+        "CommitNS": {
+          "meanMS": 0.73084121875,
+          "fraction": 0.2650622721689963
+        }
+      },
+      "cleanupAndGapsFraction": 0.000144959088499097
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "measured": true,
+      "meanMS": 0.7386888125,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0.03866928125,
+          "fraction": 0.05234854054324804
+        },
+        "BeginNS": {
+          "meanMS": 0.00268621875,
+          "fraction": 0.003636468705825973
+        },
+        "PrepareNS": {
+          "meanMS": 0.01499615625,
+          "fraction": 0.020301046931044456
+        },
+        "RowsNS": {
+          "meanMS": 0.45624734375,
+          "fraction": 0.6176448540027131
+        },
+        "CommitNS": {
+          "meanMS": 0.2257253125,
+          "fraction": 0.30557564793226105
+        }
+      },
+      "cleanupAndGapsFraction": 0.0004934418849074085
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "measured": false,
+      "meanMS": 0.72037890625,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "BeginNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "PrepareNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "RowsNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "CommitNS": {
+          "meanMS": 0,
+          "fraction": 0
+        }
+      },
+      "cleanupAndGapsFraction": 1
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "measured": true,
+      "meanMS": 2.69452875,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0.13366290625,
+          "fraction": 0.04960529972077678
+        },
+        "BeginNS": {
+          "meanMS": 0.0033111875,
+          "fraction": 0.0012288558806433222
+        },
+        "PrepareNS": {
+          "meanMS": 0.01776815625,
+          "fraction": 0.006594160945582785
+        },
+        "RowsNS": {
+          "meanMS": 1.8711106875,
+          "fraction": 0.6944111052813966
+        },
+        "CommitNS": {
+          "meanMS": 0.6683098125,
+          "fraction": 0.24802474737001787
+        }
+      },
+      "cleanupAndGapsFraction": 0.00013583080158263705
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "measured": false,
+      "meanMS": 2.71014834375,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "BeginNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "PrepareNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "RowsNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "CommitNS": {
+          "meanMS": 0,
+          "fraction": 0
+        }
+      },
+      "cleanupAndGapsFraction": 1
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "measured": false,
+      "meanMS": 0.72857953125,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "BeginNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "PrepareNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "RowsNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "CommitNS": {
+          "meanMS": 0,
+          "fraction": 0
+        }
+      },
+      "cleanupAndGapsFraction": 1
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "measured": true,
+      "meanMS": 0.73385934375,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0.03903246875,
+          "fraction": 0.05318794273374679
+        },
+        "BeginNS": {
+          "meanMS": 0.0026640625,
+          "fraction": 0.003630208598812298
+        },
+        "PrepareNS": {
+          "meanMS": 0.0166691875,
+          "fraction": 0.022714417472455874
+        },
+        "RowsNS": {
+          "meanMS": 0.45467446875,
+          "fraction": 0.6195662324426185
+        },
+        "CommitNS": {
+          "meanMS": 0.2204726875,
+          "fraction": 0.3004290800106066
+        }
+      },
+      "cleanupAndGapsFraction": 0.0004721187417598971
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "measured": false,
+      "meanMS": 2.68848953125,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "BeginNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "PrepareNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "RowsNS": {
+          "meanMS": 0,
+          "fraction": 0
+        },
+        "CommitNS": {
+          "meanMS": 0,
+          "fraction": 0
+        }
+      },
+      "cleanupAndGapsFraction": 1
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "measured": true,
+      "meanMS": 2.7072355625,
+      "phases": {
+        "PreflightNS": {
+          "meanMS": 0.1377095,
+          "fraction": 0.05086720265776651
+        },
+        "BeginNS": {
+          "meanMS": 0.0031055625,
+          "fraction": 0.001147134199556748
+        },
+        "PrepareNS": {
+          "meanMS": 0.01576834375,
+          "fraction": 0.005824518548891514
+        },
+        "RowsNS": {
+          "meanMS": 1.8826549375,
+          "fraction": 0.6954160042731782
+        },
+        "CommitNS": {
+          "meanMS": 0.66762765625,
+          "fraction": 0.24660863114308326
+        }
+      },
+      "cleanupAndGapsFraction": 0.00013650917752372482
+    }
+  ],
+  "limits": "Rotated isolated timing attribution. No serving latency, concurrency, model freshness or production speedup claim. Payload generation and owner stages are excluded."
+}

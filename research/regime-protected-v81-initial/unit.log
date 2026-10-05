@@ -1,0 +1,30 @@
+=== RUN   TestCacheBoundariesLateEvidenceAndRefresh
+--- PASS: TestCacheBoundariesLateEvidenceAndRefresh (0.88s)
+=== RUN   TestUncappedCachedPrefixAndAtomicHistoryLimit
+--- PASS: TestUncappedCachedPrefixAndAtomicHistoryLimit (0.45s)
+=== RUN   TestFullWorkloadReferenceAndResourceShape
+    cache_test.go:188: M150 T2400 support payload 1381968 bytes, cached component payload 233856 bytes; excludes heap/scratch/headers/publication/RSS
+    cache_test.go:188: M200 T3200 support payload 1842768 bytes, cached component payload 233856 bytes; excludes heap/scratch/headers/publication/RSS
+--- PASS: TestFullWorkloadReferenceAndResourceShape (2.01s)
+=== RUN   TestColdUnknownSetupMatchesIssuedPrefix
+--- PASS: TestColdUnknownSetupMatchesIssuedPrefix (0.03s)
+=== RUN   TestCanonicalIssueRevealAndRefresh
+    ledger_test.go:297: 108 configurations, 2376 publications, 138699 checks, max oracle 1.4210854715202004e-14, tower 5.551115123125783e-15, receipt 1.4432899320127035e-15, explicit query abstentions 0
+--- PASS: TestCanonicalIssueRevealAndRefresh (2.31s)
+=== RUN   TestFull64DelayedAndFutureForks
+--- PASS: TestFull64DelayedAndFutureForks (0.50s)
+=== RUN   TestOwnershipBindingsAndFailedOperations
+--- PASS: TestOwnershipBindingsAndFailedOperations (0.00s)
+=== RUN   TestEmptySnapshotAndRefreshIdentity
+--- PASS: TestEmptySnapshotAndRefreshIdentity (0.00s)
+=== RUN   TestJointDimensionBindingAndRescuedLatestPair
+--- PASS: TestJointDimensionBindingAndRescuedLatestPair (0.02s)
+=== RUN   TestProtectedKeysAndRestartOnlyNegativeControl
+--- PASS: TestProtectedKeysAndRestartOnlyNegativeControl (0.07s)
+=== RUN   TestProtectedOldAndLatestContradictions
+--- PASS: TestProtectedOldAndLatestContradictions (0.26s)
+=== RUN   TestNoResetLongUnderflowNegativeControl
+    protect_test.go:137: NEGATIVE: real pair probability is positive, logp=-1321.2095576498039; linear filtering rejects through underflow, not true impossible evidence
+--- PASS: TestNoResetLongUnderflowNegativeControl (0.09s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregimeprotected	6.835s

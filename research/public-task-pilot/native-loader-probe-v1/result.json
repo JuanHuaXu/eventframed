@@ -1,0 +1,45 @@
+{
+  "time": "2026-10-04T11:07:13.423Z",
+  "env": {
+    "HOME": "<LOCAL_ROOT>/research/public-task-pilot/native-loader-probe-v1",
+    "PATH": "/usr/bin:/bin",
+    "DYLD_LIBRARY_PATH": "/owned-test-library-path"
+  },
+  "results": [
+    {
+      "name": "direct",
+      "command": [
+        "<LOCAL_ROOT>/homebrew/Cellar/node/26.8.1/bin/node",
+        "-e",
+        "console.log(JSON.stringify({dyld:process.env.DYLD_LIBRARY_PATH??null}))"
+      ],
+      "code": 0,
+      "signal": null,
+      "stdout": "{\"dyld\":\"/owned-test-library-path\"}\n",
+      "stderr": "",
+      "parsed": {
+        "dyld": "/owned-test-library-path"
+      }
+    },
+    {
+      "name": "nice-wrapper",
+      "command": [
+        "/usr/bin/nice",
+        "-n",
+        "10",
+        "<LOCAL_ROOT>/homebrew/Cellar/node/26.8.1/bin/node",
+        "-e",
+        "console.log(JSON.stringify({dyld:process.env.DYLD_LIBRARY_PATH??null}))"
+      ],
+      "code": 0,
+      "signal": null,
+      "stdout": "{\"dyld\":null}\n",
+      "stderr": "",
+      "parsed": {
+        "dyld": null
+      }
+    }
+  ],
+  "wrapperDropsDyldVerified": true,
+  "noProtectedProgramLibraryInjection": true
+}

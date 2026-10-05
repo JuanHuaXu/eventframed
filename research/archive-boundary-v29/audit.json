@@ -1,0 +1,19 @@
+{
+  "scope": "technical-only",
+  "pass": true,
+  "cases": 5,
+  "source_files": 1140,
+  "raw_sha256": "75a0a1ec8017972253879498d9cede86a69e04602fdcd9c146660208fea28b44",
+  "corruption_controls": [
+    "wire",
+    "snapshot",
+    "timing",
+    "validity",
+    "selection",
+    "lateRead",
+    "law"
+  ],
+  "generated_persistence": "Go inverse-AST test",
+  "authority_controls": "six live Go controls",
+  "adoption": false
+}

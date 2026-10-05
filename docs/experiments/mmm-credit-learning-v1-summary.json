@@ -1,0 +1,8303 @@
+{
+  "rawSHA256": "4b148306f6fc1fa0f4e8ae5f1db3b878e3f1fd20b628f305313387a91f9af655",
+  "sources": 878,
+  "screens": {
+    "gains": 0,
+    "gainTotal": 4,
+    "nonharm": 16,
+    "nonharmTotal": 16
+  },
+  "cells": [
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "schedule": "Immediate",
+      "post": [
+        0.04866667559625939,
+        0.04866667559625939
+      ],
+      "accuracy": [
+        0.949462890625,
+        0.949462890625
+      ],
+      "foreground": [
+        4.104248046875,
+        4.104248046875
+      ],
+      "totalCoordinates": [
+        16.669921875,
+        16.652587890625
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "schedule": "Delayed",
+      "post": [
+        0.04853463045137661,
+        0.04853463045137661
+      ],
+      "accuracy": [
+        0.949462890625,
+        0.949462890625
+      ],
+      "foreground": [
+        4.0965576171875,
+        4.0965576171875
+      ],
+      "totalCoordinates": [
+        16.6622314453125,
+        16.6448974609375
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "schedule": "Immediate",
+      "post": [
+        0.1453128173790615,
+        0.1453128173790615
+      ],
+      "accuracy": [
+        0.7412109375,
+        0.7412109375
+      ],
+      "foreground": [
+        5.705810546875,
+        5.705810546875
+      ],
+      "totalCoordinates": [
+        21.496337890625,
+        21.46728515625
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "schedule": "Delayed",
+      "post": [
+        0.1448823677670121,
+        0.1448823677670121
+      ],
+      "accuracy": [
+        0.742431640625,
+        0.742431640625
+      ],
+      "foreground": [
+        5.7060546875,
+        5.7060546875
+      ],
+      "totalCoordinates": [
+        21.49658203125,
+        21.467529296875
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "schedule": "Immediate",
+      "post": [
+        0.2434198256926512,
+        0.24341983340745926
+      ],
+      "accuracy": [
+        0.549072265625,
+        0.549072265625
+      ],
+      "foreground": [
+        4.3359375,
+        4.3359375
+      ],
+      "totalCoordinates": [
+        16.2415771484375,
+        16.2315673828125
+      ],
+      "gain": {
+        "mean": -7.714808045872212e-9,
+        "lower": -3.471663620642496e-8,
+        "upper": 1.9287020114680538e-8
+      },
+      "harmFull": {
+        "mean": 3.857404015997212e-9,
+        "lower": -9.64351003999303e-9,
+        "upper": 1.7358318071987455e-8
+      },
+      "harmPost": {
+        "mean": 7.714808045872212e-9,
+        "lower": -1.9287020114680538e-8,
+        "upper": 3.471663620642496e-8
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "schedule": "Delayed",
+      "post": [
+        0.27370620847512783,
+        0.27370620847512783
+      ],
+      "accuracy": [
+        0.50439453125,
+        0.50439453125
+      ],
+      "foreground": [
+        4.238525390625,
+        4.238525390625
+      ],
+      "totalCoordinates": [
+        16.1441650390625,
+        16.1341552734375
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "schedule": "Immediate",
+      "post": [
+        0.23138224501513843,
+        0.23133816154741774
+      ],
+      "accuracy": [
+        0.602783203125,
+        0.605224609375
+      ],
+      "foreground": [
+        5.6888427734375,
+        5.6890869140625
+      ],
+      "totalCoordinates": [
+        21.18359375,
+        21.158447265625
+      ],
+      "gain": {
+        "mean": 0.0000440834677207496,
+        "lower": -0.000047102472008517745,
+        "upper": 0.00013526940745001696
+      },
+      "harmFull": {
+        "mean": -0.00002204173386038087,
+        "lower": -0.00006763470372499341,
+        "upper": 0.000023551236004231672
+      },
+      "harmPost": {
+        "mean": -0.0000440834677207496,
+        "lower": -0.00013526940745001696,
+        "upper": 0.000047102472008517745
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "schedule": "Delayed",
+      "post": [
+        0.25942266405432124,
+        0.2597482510576536
+      ],
+      "accuracy": [
+        0.533203125,
+        0.53125
+      ],
+      "foreground": [
+        5.6649169921875,
+        5.664794921875
+      ],
+      "totalCoordinates": [
+        21.15966796875,
+        21.1341552734375
+      ],
+      "gain": {
+        "mean": -0.0003255870033323175,
+        "lower": -0.002724932404686461,
+        "upper": 0.002073758398021826
+      },
+      "harmFull": {
+        "mean": 0.00016279350166620646,
+        "lower": -0.0010368791990108147,
+        "upper": 0.0013624662023432276
+      },
+      "harmPost": {
+        "mean": 0.0003255870033323175,
+        "lower": -0.002073758398021826,
+        "upper": 0.002724932404686461
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "schedule": "Immediate",
+      "post": [
+        0.05100999573577568,
+        0.05100999573577568
+      ],
+      "accuracy": [
+        0.94677734375,
+        0.94677734375
+      ],
+      "foreground": [
+        4.396240234375,
+        4.396240234375
+      ],
+      "totalCoordinates": [
+        17.78173828125,
+        17.768310546875
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "schedule": "Delayed",
+      "post": [
+        0.05126133359313092,
+        0.05126133359313092
+      ],
+      "accuracy": [
+        0.94677734375,
+        0.94677734375
+      ],
+      "foreground": [
+        4.39697265625,
+        4.39697265625
+      ],
+      "totalCoordinates": [
+        17.782470703125,
+        17.76904296875
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "schedule": "Immediate",
+      "post": [
+        0.18304056911759842,
+        0.18304056911759842
+      ],
+      "accuracy": [
+        0.650390625,
+        0.650390625
+      ],
+      "foreground": [
+        5.8824462890625,
+        5.8824462890625
+      ],
+      "totalCoordinates": [
+        22.308837890625,
+        22.2774658203125
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "schedule": "Delayed",
+      "post": [
+        0.18308274975103386,
+        0.18308274975103386
+      ],
+      "accuracy": [
+        0.655517578125,
+        0.655517578125
+      ],
+      "foreground": [
+        5.8824462890625,
+        5.8824462890625
+      ],
+      "totalCoordinates": [
+        22.308837890625,
+        22.2774658203125
+      ],
+      "gain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmFull": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "harmPost": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "schedule": "Immediate",
+      "post": [
+        0.24042178428672795,
+        0.24040287170637908
+      ],
+      "accuracy": [
+        0.572021484375,
+        0.5732421875
+      ],
+      "foreground": [
+        4.689453125,
+        4.689453125
+      ],
+      "totalCoordinates": [
+        17.5125732421875,
+        17.494873046875
+      ],
+      "gain": {
+        "mean": 0.000018912580348875996,
+        "lower": -0.00004728138975147656,
+        "upper": 0.00008510655044922855
+      },
+      "harmFull": {
+        "mean": -0.000009456290174444937,
+        "lower": -0.00004255327522463904,
+        "upper": 0.00002364069487574917
+      },
+      "harmPost": {
+        "mean": -0.000018912580348875996,
+        "lower": -0.00008510655044922855,
+        "upper": 0.00004728138975147656
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "schedule": "Delayed",
+      "post": [
+        0.2702562891434936,
+        0.2702353708402073
+      ],
+      "accuracy": [
+        0.50439453125,
+        0.50537109375
+      ],
+      "foreground": [
+        4.5284423828125,
+        4.5257568359375
+      ],
+      "totalCoordinates": [
+        17.3515625,
+        17.3311767578125
+      ],
+      "gain": {
+        "mean": 0.000020918303286224238,
+        "lower": -0.00005229575821556058,
+        "upper": 0.00009413236478800906
+      },
+      "harmFull": {
+        "mean": -0.000010459151643115588,
+        "lower": -0.00004706618239402015,
+        "upper": 0.00002614787910778897
+      },
+      "harmPost": {
+        "mean": -0.000020918303286224238,
+        "lower": -0.00009413236478800906,
+        "upper": 0.00005229575821556058
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "schedule": "Immediate",
+      "post": [
+        0.21791455272842952,
+        0.2189894895454141
+      ],
+      "accuracy": [
+        0.633056640625,
+        0.627197265625
+      ],
+      "foreground": [
+        5.96533203125,
+        5.9652099609375
+      ],
+      "totalCoordinates": [
+        22.35546875,
+        22.3077392578125
+      ],
+      "gain": {
+        "mean": -0.0010749368169846226,
+        "lower": -0.0034945717201038022,
+        "upper": 0.001344698086134557
+      },
+      "harmFull": {
+        "mean": 0.0005374684084923365,
+        "lower": -0.0006723490430672128,
+        "upper": 0.0017472858600518857
+      },
+      "harmPost": {
+        "mean": 0.0010749368169846226,
+        "lower": -0.001344698086134557,
+        "upper": 0.0034945717201038022
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "schedule": "Delayed",
+      "post": [
+        0.2532768126511093,
+        0.2524574497253984
+      ],
+      "accuracy": [
+        0.5498046875,
+        0.55029296875
+      ],
+      "foreground": [
+        5.9952392578125,
+        5.99462890625
+      ],
+      "totalCoordinates": [
+        22.3853759765625,
+        22.337158203125
+      ],
+      "gain": {
+        "mean": 0.0008193629257109009,
+        "lower": -0.002018028984875775,
+        "upper": 0.0036567548362975767
+      },
+      "harmFull": {
+        "mean": -0.00040968146285542614,
+        "lower": -0.0018283774181487558,
+        "upper": 0.0010090144924379035
+      },
+      "harmPost": {
+        "mean": -0.0008193629257109009,
+        "lower": -0.0036567548362975767,
+        "upper": 0.002018028984875775
+      },
+      "gainPass": false,
+      "nonharmPass": true
+    }
+  ],
+  "records": [
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.06338751403529874,
+        0.06338751403529874
+      ],
+      "post": [
+        0.07765022414925107,
+        0.07765022414925107
+      ],
+      "accuracy": [
+        0.91796875,
+        0.91796875
+      ],
+      "foreground": [
+        4.126953125,
+        4.126953125
+      ],
+      "totalCoordinates": [
+        17.185546875,
+        17.173828125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.06361352577657174,
+        0.06361352577657174
+      ],
+      "post": [
+        0.07741170530561703,
+        0.07741170530561703
+      ],
+      "accuracy": [
+        0.91796875,
+        0.91796875
+      ],
+      "foreground": [
+        4.00390625,
+        4.00390625
+      ],
+      "totalCoordinates": [
+        17.0625,
+        17.05078125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.023958881558951914,
+        0.023958881558951914
+      ],
+      "post": [
+        0.03075122153939743,
+        0.03075122153939743
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "foreground": [
+        3.484375,
+        3.484375
+      ],
+      "totalCoordinates": [
+        14.560546875,
+        14.55078125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.024385201881425466,
+        0.024385201881425466
+      ],
+      "post": [
+        0.030732895610820637,
+        0.030732895610820637
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "foreground": [
+        3.484375,
+        3.484375
+      ],
+      "totalCoordinates": [
+        14.560546875,
+        14.55078125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.046907640281038866,
+        0.046907640281038866
+      ],
+      "post": [
+        0.045945826062922746,
+        0.045945826062922746
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        4.04296875,
+        4.04296875
+      ],
+      "totalCoordinates": [
+        16.60546875,
+        16.58203125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.048221773654427556,
+        0.048221773654427556
+      ],
+      "post": [
+        0.04548666476165571,
+        0.04548666476165571
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        4.04296875,
+        4.04296875
+      ],
+      "totalCoordinates": [
+        16.60546875,
+        16.58203125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.054364198529846176,
+        0.054364198529846176
+      ],
+      "post": [
+        0.0557145145598364,
+        0.0557145145598364
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "foreground": [
+        4.95703125,
+        4.95703125
+      ],
+      "totalCoordinates": [
+        19.09375,
+        19.05859375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.054038546789319436,
+        0.054038546789319436
+      ],
+      "post": [
+        0.0551269589167238,
+        0.0551269589167238
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "foreground": [
+        4.95703125,
+        4.95703125
+      ],
+      "totalCoordinates": [
+        19.09375,
+        19.05859375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.03239895976833882,
+        0.03239895976833882
+      ],
+      "post": [
+        0.028998047163122067,
+        0.028998047163122067
+      ],
+      "accuracy": [
+        0.97265625,
+        0.97265625
+      ],
+      "foreground": [
+        5.03125,
+        5.03125
+      ],
+      "totalCoordinates": [
+        19.234375,
+        19.234375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.03289748344723494,
+        0.03289748344723494
+      ],
+      "post": [
+        0.028998744558225292,
+        0.028998744558225292
+      ],
+      "accuracy": [
+        0.97265625,
+        0.97265625
+      ],
+      "foreground": [
+        5.03125,
+        5.03125
+      ],
+      "totalCoordinates": [
+        19.234375,
+        19.234375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.061785701392153024,
+        0.061785701392153024
+      ],
+      "post": [
+        0.055915320162981716,
+        0.055915320162981716
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "foreground": [
+        4.5703125,
+        4.5703125
+      ],
+      "totalCoordinates": [
+        17.61328125,
+        17.595703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.062152209591366345,
+        0.062152209591366345
+      ],
+      "post": [
+        0.05606833730624438,
+        0.05606833730624438
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "foreground": [
+        4.5703125,
+        4.5703125
+      ],
+      "totalCoordinates": [
+        17.61328125,
+        17.595703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.0413678306699276,
+        0.0413678306699276
+      ],
+      "post": [
+        0.03989574346185294,
+        0.03989574346185294
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "foreground": [
+        5.0546875,
+        5.0546875
+      ],
+      "totalCoordinates": [
+        19.73046875,
+        19.70703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.04165606347172217,
+        0.04165606347172217
+      ],
+      "post": [
+        0.03968004507539592,
+        0.03968004507539592
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "foreground": [
+        5.0546875,
+        5.0546875
+      ],
+      "totalCoordinates": [
+        19.73046875,
+        19.70703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.04913876600972599,
+        0.04913876600972599
+      ],
+      "post": [
+        0.04585262049188696,
+        0.04585262049188696
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        5.015625,
+        5.015625
+      ],
+      "totalCoordinates": [
+        19.5,
+        19.43359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.049525467231351705,
+        0.049525467231351705
+      ],
+      "post": [
+        0.04582320484807438,
+        0.04582320484807438
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        5.015625,
+        5.015625
+      ],
+      "totalCoordinates": [
+        19.5,
+        19.43359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.04823448417000216,
+        0.04823448417000216
+      ],
+      "post": [
+        0.04453696035308263,
+        0.04453696035308263
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        3.01953125,
+        3.01953125
+      ],
+      "totalCoordinates": [
+        13.3203125,
+        13.30859375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.04886084521718414,
+        0.04886084521718414
+      ],
+      "post": [
+        0.044498491488988316,
+        0.044498491488988316
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        3.01953125,
+        3.01953125
+      ],
+      "totalCoordinates": [
+        13.3203125,
+        13.30859375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.05718887219075205,
+        0.05718887219075205
+      ],
+      "post": [
+        0.059065060323518735,
+        0.059065060323518735
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "foreground": [
+        3.5,
+        3.5
+      ],
+      "totalCoordinates": [
+        14.7109375,
+        14.69140625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.057256133035843024,
+        0.057256133035843024
+      ],
+      "post": [
+        0.058801264630910115,
+        0.058801264630910115
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "foreground": [
+        3.5,
+        3.5
+      ],
+      "totalCoordinates": [
+        14.7109375,
+        14.69140625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.06592707742813292,
+        0.06592707742813292
+      ],
+      "post": [
+        0.0869239204843444,
+        0.0869239204843444
+      ],
+      "accuracy": [
+        0.90625,
+        0.90625
+      ],
+      "foreground": [
+        4,
+        4
+      ],
+      "totalCoordinates": [
+        16.46875,
+        16.46875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.06612405131264186,
+        0.06612405131264186
+      ],
+      "post": [
+        0.08689839068767591,
+        0.08689839068767591
+      ],
+      "accuracy": [
+        0.90625,
+        0.90625
+      ],
+      "foreground": [
+        4,
+        4
+      ],
+      "totalCoordinates": [
+        16.46875,
+        16.46875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.05255323212979237,
+        0.05255323212979237
+      ],
+      "post": [
+        0.06623391116896914,
+        0.06623391116896914
+      ],
+      "accuracy": [
+        0.9296875,
+        0.9296875
+      ],
+      "foreground": [
+        4.46484375,
+        4.46484375
+      ],
+      "totalCoordinates": [
+        17.90625,
+        17.90625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.052689954949507484,
+        0.052689954949507484
+      ],
+      "post": [
+        0.06577129153480658,
+        0.06577129153480658
+      ],
+      "accuracy": [
+        0.9296875,
+        0.9296875
+      ],
+      "foreground": [
+        4.46484375,
+        4.46484375
+      ],
+      "totalCoordinates": [
+        17.90625,
+        17.90625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.0447241578142641,
+        0.0447241578142641
+      ],
+      "post": [
+        0.03757268700393859,
+        0.03757268700393859
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "foreground": [
+        3.75390625,
+        3.75390625
+      ],
+      "totalCoordinates": [
+        15.232421875,
+        15.224609375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.044941398882033634,
+        0.044941398882033634
+      ],
+      "post": [
+        0.037558175726678356,
+        0.037558175726678356
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "foreground": [
+        3.75390625,
+        3.75390625
+      ],
+      "totalCoordinates": [
+        15.232421875,
+        15.224609375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.05180928753425478,
+        0.05180928753425478
+      ],
+      "post": [
+        0.034745988524421664,
+        0.034745988524421664
+      ],
+      "accuracy": [
+        0.96484375,
+        0.96484375
+      ],
+      "foreground": [
+        3.447265625,
+        3.447265625
+      ],
+      "totalCoordinates": [
+        15.59765625,
+        15.57421875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.05271530132513156,
+        0.05271530132513156
+      ],
+      "post": [
+        0.03473954244550766,
+        0.03473954244550766
+      ],
+      "accuracy": [
+        0.96484375,
+        0.96484375
+      ],
+      "foreground": [
+        3.447265625,
+        3.447265625
+      ],
+      "totalCoordinates": [
+        15.59765625,
+        15.57421875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.027773886666703655,
+        0.027773886666703655
+      ],
+      "post": [
+        0.027527234320628632,
+        0.027527234320628632
+      ],
+      "accuracy": [
+        0.97265625,
+        0.97265625
+      ],
+      "foreground": [
+        3.546875,
+        3.546875
+      ],
+      "totalCoordinates": [
+        14.84765625,
+        14.833984375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.02791952258686894,
+        0.02791952258686894
+      ],
+      "post": [
+        0.027531891878387064,
+        0.027531891878387064
+      ],
+      "accuracy": [
+        0.97265625,
+        0.97265625
+      ],
+      "foreground": [
+        3.546875,
+        3.546875
+      ],
+      "totalCoordinates": [
+        14.84765625,
+        14.833984375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.048295089056440255,
+        0.048295089056440255
+      ],
+      "post": [
+        0.041337529769995024,
+        0.041337529769995024
+      ],
+      "accuracy": [
+        0.95703125,
+        0.95703125
+      ],
+      "foreground": [
+        3.65234375,
+        3.65234375
+      ],
+      "totalCoordinates": [
+        15.111328125,
+        15.09765625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.04897412702287542,
+        0.04897412702287542
+      ],
+      "post": [
+        0.041426482446314625,
+        0.041426482446314625
+      ],
+      "accuracy": [
+        0.95703125,
+        0.95703125
+      ],
+      "foreground": [
+        3.65234375,
+        3.65234375
+      ],
+      "totalCoordinates": [
+        15.111328125,
+        15.09765625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.05213262054874039,
+        0.05213262054874039
+      ],
+      "post": [
+        0.052053431960377684,
+        0.052053431960377684
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "foreground": [
+        5.5078125,
+        5.5078125
+      ],
+      "totalCoordinates": [
+        21.01171875,
+        21.00390625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.052207064598784714,
+        0.052207064598784714
+      ],
+      "post": [
+        0.05203061885655444,
+        0.05203061885655444
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "foreground": [
+        5.5078125,
+        5.5078125
+      ],
+      "totalCoordinates": [
+        21.01171875,
+        21.00390625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.13550505124486392,
+        0.13550505124486392
+      ],
+      "post": [
+        0.14353647478897955,
+        0.14353647478897955
+      ],
+      "accuracy": [
+        0.75,
+        0.75
+      ],
+      "foreground": [
+        5.486328125,
+        5.486328125
+      ],
+      "totalCoordinates": [
+        21.02734375,
+        20.998046875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.13702230415792666,
+        0.13702230415792666
+      ],
+      "post": [
+        0.1434926233689765,
+        0.1434926233689765
+      ],
+      "accuracy": [
+        0.75,
+        0.75
+      ],
+      "foreground": [
+        5.486328125,
+        5.486328125
+      ],
+      "totalCoordinates": [
+        21.02734375,
+        20.998046875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.23449339474410805,
+        0.23449339474410805
+      ],
+      "post": [
+        0.23668842055888079,
+        0.23668842055888079
+      ],
+      "accuracy": [
+        0.5390625,
+        0.5390625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.359375,
+        22.359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.2280652414088228,
+        0.2280652414088228
+      ],
+      "post": [
+        0.22357270391674236,
+        0.22357270391674236
+      ],
+      "accuracy": [
+        0.57421875,
+        0.57421875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.359375,
+        22.359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.15623085168142206,
+        0.15623085168142206
+      ],
+      "post": [
+        0.15605488665823222,
+        0.15605488665823222
+      ],
+      "accuracy": [
+        0.71484375,
+        0.71484375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.1953125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.1564915017829891,
+        0.1564915017829891
+      ],
+      "post": [
+        0.155965595608539,
+        0.155965595608539
+      ],
+      "accuracy": [
+        0.71484375,
+        0.71484375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.1953125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.20865055527834261,
+        0.20865055527834261
+      ],
+      "post": [
+        0.2010978888166385,
+        0.2010978888166385
+      ],
+      "accuracy": [
+        0.62890625,
+        0.62890625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.5,
+        22.46484375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.20855797280374735,
+        0.20855797280374735
+      ],
+      "post": [
+        0.2010784432495954,
+        0.2010784432495954
+      ],
+      "accuracy": [
+        0.62890625,
+        0.62890625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.5,
+        22.46484375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.15200645175913616,
+        0.15200645175913616
+      ],
+      "post": [
+        0.15377734515911856,
+        0.15377734515911856
+      ],
+      "accuracy": [
+        0.7265625,
+        0.7265625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.2890625,
+        22.1953125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.15152307739615717,
+        0.15152307739615717
+      ],
+      "post": [
+        0.1538014000517127,
+        0.1538014000517127
+      ],
+      "accuracy": [
+        0.73046875,
+        0.73046875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.2890625,
+        22.1953125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.25139971188029886,
+        0.25139971188029886
+      ],
+      "post": [
+        0.2519003226540417,
+        0.2519003226540417
+      ],
+      "accuracy": [
+        0.5,
+        0.5
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.67578125,
+        22.67578125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.25173815911201675,
+        0.25173815911201675
+      ],
+      "post": [
+        0.25180551252605443,
+        0.25180551252605443
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.67578125,
+        22.67578125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.035020402966950755,
+        0.035020402966950755
+      ],
+      "post": [
+        0.03128267457788297,
+        0.03128267457788297
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "foreground": [
+        4,
+        4
+      ],
+      "totalCoordinates": [
+        16.2890625,
+        16.27734375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.03519533398744952,
+        0.03519533398744952
+      ],
+      "post": [
+        0.03127364742312128,
+        0.03127364742312128
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "foreground": [
+        4,
+        4
+      ],
+      "totalCoordinates": [
+        16.2890625,
+        16.27734375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.10789302800432454,
+        0.10789302800432454
+      ],
+      "post": [
+        0.10024522502910595,
+        0.10024522502910595
+      ],
+      "accuracy": [
+        0.8515625,
+        0.8515625
+      ],
+      "foreground": [
+        5.296875,
+        5.296875
+      ],
+      "totalCoordinates": [
+        19.833984375,
+        19.82421875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.10771993049167154,
+        0.10771993049167154
+      ],
+      "post": [
+        0.10030441622855434,
+        0.10030441622855434
+      ],
+      "accuracy": [
+        0.83984375,
+        0.83984375
+      ],
+      "foreground": [
+        5.296875,
+        5.296875
+      ],
+      "totalCoordinates": [
+        19.833984375,
+        19.82421875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.15390384807917903,
+        0.15390384807917903
+      ],
+      "post": [
+        0.15252812622597936,
+        0.15252812622597936
+      ],
+      "accuracy": [
+        0.73046875,
+        0.73046875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.078125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.15420589235577614,
+        0.15420589235577614
+      ],
+      "post": [
+        0.1524945452107079,
+        0.1524945452107079
+      ],
+      "accuracy": [
+        0.73046875,
+        0.73046875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.078125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.04502243379803677,
+        0.04502243379803677
+      ],
+      "post": [
+        0.03850002528771807,
+        0.03850002528771807
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.21875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.045348526599330724,
+        0.045348526599330724
+      ],
+      "post": [
+        0.03850510398104917,
+        0.03850510398104917
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.21875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.10068289112594984,
+        0.10068289112594984
+      ],
+      "post": [
+        0.10795168268489218,
+        0.10795168268489218
+      ],
+      "accuracy": [
+        0.8203125,
+        0.8203125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.5,
+        22.5
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.10085847309587222,
+        0.10085847309587222
+      ],
+      "post": [
+        0.10765155198415755,
+        0.10765155198415755
+      ],
+      "accuracy": [
+        0.81640625,
+        0.81640625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.5,
+        22.5
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.18673418029507968,
+        0.18673418029507968
+      ],
+      "post": [
+        0.18385452737828434,
+        0.18385452737828434
+      ],
+      "accuracy": [
+        0.67578125,
+        0.67578125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        21.83203125,
+        21.83203125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.1868951987600987,
+        0.1868951987600987
+      ],
+      "post": [
+        0.18386293470042403,
+        0.18386293470042403
+      ],
+      "accuracy": [
+        0.67578125,
+        0.67578125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        21.83203125,
+        21.83203125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.14448266924568093,
+        0.14448266924568093
+      ],
+      "post": [
+        0.13976373670930772,
+        0.13976373670930772
+      ],
+      "accuracy": [
+        0.73828125,
+        0.73828125
+      ],
+      "foreground": [
+        5.466796875,
+        5.466796875
+      ],
+      "totalCoordinates": [
+        20.916015625,
+        20.826171875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.1446010784000041,
+        0.1446010784000041
+      ],
+      "post": [
+        0.13972498312861448,
+        0.13972498312861448
+      ],
+      "accuracy": [
+        0.73828125,
+        0.73828125
+      ],
+      "foreground": [
+        5.466796875,
+        5.466796875
+      ],
+      "totalCoordinates": [
+        20.916015625,
+        20.826171875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.24454932205614985,
+        0.24454932205614985
+      ],
+      "post": [
+        0.23882000826728705,
+        0.23882000826728705
+      ],
+      "accuracy": [
+        0.5625,
+        0.5625
+      ],
+      "foreground": [
+        5.99609375,
+        5.99609375
+      ],
+      "totalCoordinates": [
+        22.671875,
+        22.671875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.246309380143344,
+        0.246309380143344
+      ],
+      "post": [
+        0.24546076122711477,
+        0.24546076122711477
+      ],
+      "accuracy": [
+        0.5390625,
+        0.5390625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.67578125,
+        22.67578125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.14695762641536655,
+        0.14695762641536655
+      ],
+      "post": [
+        0.13695030130825753,
+        0.13695030130825753
+      ],
+      "accuracy": [
+        0.74609375,
+        0.74609375
+      ],
+      "foreground": [
+        5.5390625,
+        5.5390625
+      ],
+      "totalCoordinates": [
+        21.37890625,
+        21.35546875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.14731853651554516,
+        0.14731853651554516
+      ],
+      "post": [
+        0.1370930428102753,
+        0.1370930428102753
+      ],
+      "accuracy": [
+        0.74609375,
+        0.74609375
+      ],
+      "foreground": [
+        5.5390625,
+        5.5390625
+      ],
+      "totalCoordinates": [
+        21.37890625,
+        21.35546875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.15803151002665644,
+        0.15803151002665644
+      ],
+      "post": [
+        0.2604482737676211,
+        0.2604482737676211
+      ],
+      "accuracy": [
+        0.4921875,
+        0.4921875
+      ],
+      "foreground": [
+        4.6328125,
+        4.6328125
+      ],
+      "totalCoordinates": [
+        17.09765625,
+        17.0859375
+      ],
+      "splits": [
+        371,
+        371
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.1626855086819861,
+        0.1626855086819861
+      ],
+      "post": [
+        0.26875774690399956,
+        0.26875774690399956
+      ],
+      "accuracy": [
+        0.49609375,
+        0.49609375
+      ],
+      "foreground": [
+        4.62109375,
+        4.62109375
+      ],
+      "totalCoordinates": [
+        17.0859375,
+        17.07421875
+      ],
+      "splits": [
+        446,
+        446
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.1479646156983517,
+        0.1479646156983517
+      ],
+      "post": [
+        0.2473364837250889,
+        0.2473364837250889
+      ],
+      "accuracy": [
+        0.55859375,
+        0.55859375
+      ],
+      "foreground": [
+        3.634765625,
+        3.634765625
+      ],
+      "totalCoordinates": [
+        14.240234375,
+        14.228515625
+      ],
+      "splits": [
+        333,
+        333
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.16185893334209422,
+        0.16185893334209422
+      ],
+      "post": [
+        0.2724684861008487,
+        0.2724684861008487
+      ],
+      "accuracy": [
+        0.52734375,
+        0.52734375
+      ],
+      "foreground": [
+        3.279296875,
+        3.279296875
+      ],
+      "totalCoordinates": [
+        13.884765625,
+        13.873046875
+      ],
+      "splits": [
+        360,
+        360
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.1466617421627012,
+        0.1466617421627012
+      ],
+      "post": [
+        0.24802870973287758,
+        0.24802870973287758
+      ],
+      "accuracy": [
+        0.59375,
+        0.59375
+      ],
+      "foreground": [
+        3.662109375,
+        3.662109375
+      ],
+      "totalCoordinates": [
+        14.119140625,
+        14.115234375
+      ],
+      "splits": [
+        428,
+        428
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.15814627337834916,
+        0.15814627337834916
+      ],
+      "post": [
+        0.27009091941307223,
+        0.27009091941307223
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "foreground": [
+        3.490234375,
+        3.490234375
+      ],
+      "totalCoordinates": [
+        13.947265625,
+        13.943359375
+      ],
+      "splits": [
+        464,
+        464
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.15344345437257137,
+        0.15344345437257137
+      ],
+      "post": [
+        0.2540799750293267,
+        0.2540799750293267
+      ],
+      "accuracy": [
+        0.46484375,
+        0.46484375
+      ],
+      "foreground": [
+        5.259765625,
+        5.259765625
+      ],
+      "totalCoordinates": [
+        19.541015625,
+        19.513671875
+      ],
+      "splits": [
+        292,
+        292
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.16686215003923496,
+        0.16686215003923496
+      ],
+      "post": [
+        0.2791943774903611,
+        0.2791943774903611
+      ],
+      "accuracy": [
+        0.4609375,
+        0.4609375
+      ],
+      "foreground": [
+        5.220703125,
+        5.220703125
+      ],
+      "totalCoordinates": [
+        19.501953125,
+        19.474609375
+      ],
+      "splits": [
+        356,
+        356
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.14005777166110664,
+        0.14005777166110664
+      ],
+      "post": [
+        0.24480008603824768,
+        0.24480008603824768
+      ],
+      "accuracy": [
+        0.48828125,
+        0.48828125
+      ],
+      "foreground": [
+        4.86328125,
+        4.86328125
+      ],
+      "totalCoordinates": [
+        18.099609375,
+        18.099609375
+      ],
+      "splits": [
+        342,
+        342
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.15266456363858286,
+        0.15266456363858286
+      ],
+      "post": [
+        0.26831114720187343,
+        0.26831114720187343
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "foreground": [
+        4.712890625,
+        4.712890625
+      ],
+      "totalCoordinates": [
+        17.94921875,
+        17.94921875
+      ],
+      "splits": [
+        368,
+        368
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.13802715036127786,
+        0.13802715036127786
+      ],
+      "post": [
+        0.224223059765781,
+        0.224223059765781
+      ],
+      "accuracy": [
+        0.5859375,
+        0.5859375
+      ],
+      "foreground": [
+        4.705078125,
+        4.705078125
+      ],
+      "totalCoordinates": [
+        17.04296875,
+        17.0390625
+      ],
+      "splits": [
+        308,
+        308
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.1643531462159053,
+        0.1643531462159053
+      ],
+      "post": [
+        0.27618315198026777,
+        0.27618315198026777
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "foreground": [
+        4.578125,
+        4.578125
+      ],
+      "totalCoordinates": [
+        16.916015625,
+        16.912109375
+      ],
+      "splits": [
+        334,
+        334
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.15510934973701274,
+        0.15510934973701274
+      ],
+      "post": [
+        0.2578983981729449,
+        0.2578983981729449
+      ],
+      "accuracy": [
+        0.52734375,
+        0.52734375
+      ],
+      "foreground": [
+        3.9765625,
+        3.9765625
+      ],
+      "totalCoordinates": [
+        15.216796875,
+        15.216796875
+      ],
+      "splits": [
+        352,
+        352
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.16385426871710107,
+        0.16385426871710107
+      ],
+      "post": [
+        0.2749146050354029,
+        0.2749146050354029
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "foreground": [
+        4.1015625,
+        4.1015625
+      ],
+      "totalCoordinates": [
+        15.341796875,
+        15.341796875
+      ],
+      "splits": [
+        408,
+        408
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.14325709812962906,
+        0.1432571598480933
+      ],
+      "post": [
+        0.21608437817383994,
+        0.21608450161076867
+      ],
+      "accuracy": [
+        0.6171875,
+        0.6171875
+      ],
+      "foreground": [
+        5.423828125,
+        5.423828125
+      ],
+      "totalCoordinates": [
+        20.138671875,
+        20.123046875
+      ],
+      "splits": [
+        328,
+        338
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.17025332664314882,
+        0.17025332664314882
+      ],
+      "post": [
+        0.2688007701257338,
+        0.2688007701257338
+      ],
+      "accuracy": [
+        0.48046875,
+        0.48046875
+      ],
+      "foreground": [
+        5.306640625,
+        5.306640625
+      ],
+      "totalCoordinates": [
+        20.021484375,
+        20.005859375
+      ],
+      "splits": [
+        370,
+        370
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.1581368337905603,
+        0.1581368337905603
+      ],
+      "post": [
+        0.22987176677783647,
+        0.22987176677783647
+      ],
+      "accuracy": [
+        0.58984375,
+        0.58984375
+      ],
+      "foreground": [
+        4.7734375,
+        4.7734375
+      ],
+      "totalCoordinates": [
+        17.79296875,
+        17.78125
+      ],
+      "splits": [
+        305,
+        305
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.1797873065726192,
+        0.1797873065726192
+      ],
+      "post": [
+        0.27255749519692707,
+        0.27255749519692707
+      ],
+      "accuracy": [
+        0.50390625,
+        0.50390625
+      ],
+      "foreground": [
+        4.49609375,
+        4.49609375
+      ],
+      "totalCoordinates": [
+        17.515625,
+        17.50390625
+      ],
+      "splits": [
+        337,
+        337
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.1494174502466891,
+        0.1494174502466891
+      ],
+      "post": [
+        0.2527124515534377,
+        0.2527124515534377
+      ],
+      "accuracy": [
+        0.58203125,
+        0.58203125
+      ],
+      "foreground": [
+        4.4765625,
+        4.4765625
+      ],
+      "totalCoordinates": [
+        16.58984375,
+        16.58203125
+      ],
+      "splits": [
+        346,
+        346
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.1562661580989352,
+        0.1562661580989352
+      ],
+      "post": [
+        0.26694792336685463,
+        0.26694792336685463
+      ],
+      "accuracy": [
+        0.55078125,
+        0.55078125
+      ],
+      "foreground": [
+        4.35546875,
+        4.35546875
+      ],
+      "totalCoordinates": [
+        16.46875,
+        16.4609375
+      ],
+      "splits": [
+        397,
+        397
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.12214893584882278,
+        0.12214893584882278
+      ],
+      "post": [
+        0.19893419001083074,
+        0.19893419001083074
+      ],
+      "accuracy": [
+        0.62890625,
+        0.62890625
+      ],
+      "foreground": [
+        4.61328125,
+        4.61328125
+      ],
+      "totalCoordinates": [
+        17.5234375,
+        17.5078125
+      ],
+      "splits": [
+        301,
+        301
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.15773970832433187,
+        0.15773970832433187
+      ],
+      "post": [
+        0.2713770234301096,
+        0.2713770234301096
+      ],
+      "accuracy": [
+        0.52734375,
+        0.52734375
+      ],
+      "foreground": [
+        4.447265625,
+        4.447265625
+      ],
+      "totalCoordinates": [
+        17.357421875,
+        17.341796875
+      ],
+      "splits": [
+        365,
+        365
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.15004040329353538,
+        0.15004040329353538
+      ],
+      "post": [
+        0.24820084004905676,
+        0.24820084004905676
+      ],
+      "accuracy": [
+        0.5703125,
+        0.5703125
+      ],
+      "foreground": [
+        3.873046875,
+        3.873046875
+      ],
+      "totalCoordinates": [
+        13.884765625,
+        13.880859375
+      ],
+      "splits": [
+        318,
+        318
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.16042284755704553,
+        0.16042284755704553
+      ],
+      "post": [
+        0.26776644610651773,
+        0.26776644610651773
+      ],
+      "accuracy": [
+        0.48046875,
+        0.48046875
+      ],
+      "foreground": [
+        4.12109375,
+        4.12109375
+      ],
+      "totalCoordinates": [
+        14.1328125,
+        14.12890625
+      ],
+      "splits": [
+        362,
+        362
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.148880268393315,
+        0.148880268393315
+      ],
+      "post": [
+        0.24867727853215807,
+        0.24867727853215807
+      ],
+      "accuracy": [
+        0.54296875,
+        0.54296875
+      ],
+      "foreground": [
+        3.814453125,
+        3.814453125
+      ],
+      "totalCoordinates": [
+        14.349609375,
+        14.337890625
+      ],
+      "splits": [
+        336,
+        336
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.1646236037611996,
+        0.1646236037611996
+      ],
+      "post": [
+        0.2800036862574536,
+        0.2800036862574536
+      ],
+      "accuracy": [
+        0.48046875,
+        0.48046875
+      ],
+      "foreground": [
+        3.7265625,
+        3.7265625
+      ],
+      "totalCoordinates": [
+        14.26171875,
+        14.25
+      ],
+      "splits": [
+        392,
+        392
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.1434123284803869,
+        0.1434123284803869
+      ],
+      "post": [
+        0.25932302453962225,
+        0.25932302453962225
+      ],
+      "accuracy": [
+        0.515625,
+        0.515625
+      ],
+      "foreground": [
+        4.306640625,
+        4.306640625
+      ],
+      "totalCoordinates": [
+        16.712890625,
+        16.701171875
+      ],
+      "splits": [
+        316,
+        316
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.1541303768321928,
+        0.1541303768321928
+      ],
+      "post": [
+        0.2799168855899239,
+        0.2799168855899239
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "foreground": [
+        4.220703125,
+        4.220703125
+      ],
+      "totalCoordinates": [
+        16.626953125,
+        16.615234375
+      ],
+      "splits": [
+        395,
+        395
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.14950297990690845,
+        0.14950297990690845
+      ],
+      "post": [
+        0.25034296988485205,
+        0.25034296988485205
+      ],
+      "accuracy": [
+        0.5390625,
+        0.5390625
+      ],
+      "foreground": [
+        3.70703125,
+        3.70703125
+      ],
+      "totalCoordinates": [
+        13.8203125,
+        13.80859375
+      ],
+      "splits": [
+        322,
+        322
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.1643401451751557,
+        0.1643401451751557
+      ],
+      "post": [
+        0.2780006401443882,
+        0.2780006401443882
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "foreground": [
+        3.7578125,
+        3.7578125
+      ],
+      "totalCoordinates": [
+        13.87109375,
+        13.859375
+      ],
+      "splits": [
+        353,
+        353
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.15808345961656262,
+        0.15808345961656262
+      ],
+      "post": [
+        0.2537553253288979,
+        0.2537553253288979
+      ],
+      "accuracy": [
+        0.48828125,
+        0.48828125
+      ],
+      "foreground": [
+        3.65234375,
+        3.65234375
+      ],
+      "totalCoordinates": [
+        13.6953125,
+        13.68359375
+      ],
+      "splits": [
+        330,
+        330
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.17357986897563354,
+        0.17357986897563354
+      ],
+      "post": [
+        0.28400803125831153,
+        0.28400803125831153
+      ],
+      "accuracy": [
+        0.4453125,
+        0.4453125
+      ],
+      "foreground": [
+        3.380859375,
+        3.380859375
+      ],
+      "totalCoordinates": [
+        13.423828125,
+        13.412109375
+      ],
+      "splits": [
+        372,
+        372
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.14950832424335186,
+        0.14947438203938496
+      ],
+      "post": [
+        0.23007294095508188,
+        0.2300050565471483
+      ],
+      "accuracy": [
+        0.60546875,
+        0.609375
+      ],
+      "foreground": [
+        5.421875,
+        5.421875
+      ],
+      "totalCoordinates": [
+        20.20703125,
+        20.203125
+      ],
+      "splits": [
+        309,
+        324
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.16963749213226442,
+        0.16925949858390182
+      ],
+      "post": [
+        0.26925444730941306,
+        0.26849846021268786
+      ],
+      "accuracy": [
+        0.49609375,
+        0.5
+      ],
+      "foreground": [
+        5.30859375,
+        5.306640625
+      ],
+      "totalCoordinates": [
+        20.09375,
+        20.087890625
+      ],
+      "splits": [
+        357,
+        364
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.1890001082189683,
+        0.18899182715537766
+      ],
+      "post": [
+        0.22843751401582654,
+        0.2284209518886455
+      ],
+      "accuracy": [
+        0.5703125,
+        0.58203125
+      ],
+      "foreground": [
+        5.93359375,
+        5.93359375
+      ],
+      "totalCoordinates": [
+        22.46875,
+        22.38671875
+      ],
+      "splits": [
+        -1,
+        349
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.20643689866969953,
+        0.20643689866969953
+      ],
+      "post": [
+        0.2626982053109525,
+        0.2626982053109525
+      ],
+      "accuracy": [
+        0.44921875,
+        0.44921875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.53515625,
+        22.453125
+      ],
+      "splits": [
+        -1,
+        538
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.20642799449194743,
+        0.20642799449194743
+      ],
+      "post": [
+        0.22575790231782636,
+        0.22575790231782636
+      ],
+      "accuracy": [
+        0.62109375,
+        0.62109375
+      ],
+      "foreground": [
+        5.9375,
+        5.9375
+      ],
+      "totalCoordinates": [
+        21.6640625,
+        21.640625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.2245799170143955,
+        0.2245799170143955
+      ],
+      "post": [
+        0.26188380704772335,
+        0.26188380704772335
+      ],
+      "accuracy": [
+        0.52734375,
+        0.52734375
+      ],
+      "foreground": [
+        5.98828125,
+        5.98828125
+      ],
+      "totalCoordinates": [
+        21.71484375,
+        21.69140625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.2155025655417371,
+        0.21550013550088906
+      ],
+      "post": [
+        0.21857049808948098,
+        0.21856563800778517
+      ],
+      "accuracy": [
+        0.62109375,
+        0.62109375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.1484375,
+        22.125
+      ],
+      "splits": [
+        -1,
+        422
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.23666097963563915,
+        0.23654434130081822
+      ],
+      "post": [
+        0.2610983965085175,
+        0.26086511983887567
+      ],
+      "accuracy": [
+        0.515625,
+        0.515625
+      ],
+      "foreground": [
+        5.99609375,
+        5.99609375
+      ],
+      "totalCoordinates": [
+        22.14453125,
+        22.12109375
+      ],
+      "splits": [
+        -1,
+        472
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.1330751034906832,
+        0.1330751034906832
+      ],
+      "post": [
+        0.21994830675455526,
+        0.21994830675455526
+      ],
+      "accuracy": [
+        0.671875,
+        0.671875
+      ],
+      "foreground": [
+        5.904296875,
+        5.904296875
+      ],
+      "totalCoordinates": [
+        22.685546875,
+        22.662109375
+      ],
+      "splits": [
+        385,
+        385
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.14414875014025763,
+        0.14414875014025763
+      ],
+      "post": [
+        0.24137227141875403,
+        0.24137227141875403
+      ],
+      "accuracy": [
+        0.6328125,
+        0.6328125
+      ],
+      "foreground": [
+        5.994140625,
+        5.994140625
+      ],
+      "totalCoordinates": [
+        22.775390625,
+        22.751953125
+      ],
+      "splits": [
+        456,
+        456
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.2128688950850943,
+        0.21286151161764447
+      ],
+      "post": [
+        0.22727541649808938,
+        0.2272606495631905
+      ],
+      "accuracy": [
+        0.625,
+        0.62890625
+      ],
+      "foreground": [
+        5.99609375,
+        5.99609375
+      ],
+      "totalCoordinates": [
+        22.390625,
+        22.3671875
+      ],
+      "splits": [
+        -1,
+        347
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.23003363369312432,
+        0.2300153116380378
+      ],
+      "post": [
+        0.26113769435638107,
+        0.2611010502462076
+      ],
+      "accuracy": [
+        0.5,
+        0.50390625
+      ],
+      "foreground": [
+        5.9765625,
+        5.9765625
+      ],
+      "totalCoordinates": [
+        22.37109375,
+        22.34765625
+      ],
+      "splits": [
+        -1,
+        423
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.20258899397166066,
+        0.20241074388151575
+      ],
+      "post": [
+        0.25567008413273695,
+        0.255313583952447
+      ],
+      "accuracy": [
+        0.55859375,
+        0.57421875
+      ],
+      "foreground": [
+        5.67578125,
+        5.6796875
+      ],
+      "totalCoordinates": [
+        20.916015625,
+        20.916015625
+      ],
+      "splits": [
+        -1,
+        420
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.2058771723183498,
+        0.2057236613647284
+      ],
+      "post": [
+        0.26212890247411147,
+        0.2618218805668687
+      ],
+      "accuracy": [
+        0.51171875,
+        0.51953125
+      ],
+      "foreground": [
+        5.638671875,
+        5.630859375
+      ],
+      "totalCoordinates": [
+        20.87890625,
+        20.8671875
+      ],
+      "splits": [
+        -1,
+        451
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.18383361635263099,
+        0.1837095922725394
+      ],
+      "post": [
+        0.2329456542747959,
+        0.23269760611461252
+      ],
+      "accuracy": [
+        0.640625,
+        0.62890625
+      ],
+      "foreground": [
+        5.9921875,
+        5.9921875
+      ],
+      "totalCoordinates": [
+        22.10546875,
+        22.10546875
+      ],
+      "splits": [
+        -1,
+        344
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.19261189329100598,
+        0.19283460520193899
+      ],
+      "post": [
+        0.2500744110237109,
+        0.2505198348455769
+      ],
+      "accuracy": [
+        0.6171875,
+        0.61328125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.11328125,
+        22.11328125
+      ],
+      "splits": [
+        -1,
+        415
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.1727706399887777,
+        0.172770582207223
+      ],
+      "post": [
+        0.1846241881248817,
+        0.18462407256177193
+      ],
+      "accuracy": [
+        0.73828125,
+        0.73828125
+      ],
+      "foreground": [
+        5.6875,
+        5.6875
+      ],
+      "totalCoordinates": [
+        22.78515625,
+        22.71484375
+      ],
+      "splits": [
+        -1,
+        416
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.20013015284066882,
+        0.2043292844290655
+      ],
+      "post": [
+        0.23868831060420112,
+        0.24708657378099458
+      ],
+      "accuracy": [
+        0.62890625,
+        0.62890625
+      ],
+      "foreground": [
+        5.947265625,
+        5.947265625
+      ],
+      "totalCoordinates": [
+        23.044921875,
+        22.974609375
+      ],
+      "splits": [
+        -1,
+        463
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.24146268623260977,
+        0.24146240428696528
+      ],
+      "post": [
+        0.23491790575942303,
+        0.23491734186813368
+      ],
+      "accuracy": [
+        0.6171875,
+        0.62109375
+      ],
+      "foreground": [
+        5.98046875,
+        5.98046875
+      ],
+      "totalCoordinates": [
+        22.515625,
+        22.515625
+      ],
+      "splits": [
+        -1,
+        348
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.24566892304020027,
+        0.24576954442378726
+      ],
+      "post": [
+        0.2452870029374419,
+        0.24548824570461594
+      ],
+      "accuracy": [
+        0.5390625,
+        0.53515625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.53515625,
+        22.53515625
+      ],
+      "splits": [
+        -1,
+        381
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.13954023698684276,
+        0.13954023698684276
+      ],
+      "post": [
+        0.24780340416456514,
+        0.24780340416456514
+      ],
+      "accuracy": [
+        0.5234375,
+        0.5234375
+      ],
+      "foreground": [
+        4.7578125,
+        4.7578125
+      ],
+      "totalCoordinates": [
+        17.046875,
+        17.03515625
+      ],
+      "splits": [
+        330,
+        330
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.15154365980886686,
+        0.15154365980886686
+      ],
+      "post": [
+        0.27026537856643396,
+        0.27026537856643396
+      ],
+      "accuracy": [
+        0.48828125,
+        0.48828125
+      ],
+      "foreground": [
+        4.56640625,
+        4.56640625
+      ],
+      "totalCoordinates": [
+        16.85546875,
+        16.84375
+      ],
+      "splits": [
+        366,
+        366
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.1384081621428441,
+        0.1384081621428441
+      ],
+      "post": [
+        0.2347426229043891,
+        0.2347426229043891
+      ],
+      "accuracy": [
+        0.58984375,
+        0.58984375
+      ],
+      "foreground": [
+        4.8046875,
+        4.8046875
+      ],
+      "totalCoordinates": [
+        17.3203125,
+        17.29296875
+      ],
+      "splits": [
+        293,
+        293
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.15784248715558888,
+        0.15784248715558888
+      ],
+      "post": [
+        0.2729614061067829,
+        0.2729614061067829
+      ],
+      "accuracy": [
+        0.55078125,
+        0.55078125
+      ],
+      "foreground": [
+        4.5390625,
+        4.5390625
+      ],
+      "totalCoordinates": [
+        17.0546875,
+        17.02734375
+      ],
+      "splits": [
+        323,
+        323
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.24584614631722235,
+        0.24584040595489498
+      ],
+      "post": [
+        0.2381775264375887,
+        0.23816604571293393
+      ],
+      "accuracy": [
+        0.51171875,
+        0.51953125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.81640625,
+        22.72265625
+      ],
+      "splits": [
+        -1,
+        348
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.25614190846950385,
+        0.25619282013590017
+      ],
+      "post": [
+        0.26874226472045515,
+        0.2688440880532472
+      ],
+      "accuracy": [
+        0.47265625,
+        0.45703125
+      ],
+      "foreground": [
+        5.99609375,
+        5.99609375
+      ],
+      "totalCoordinates": [
+        22.8125,
+        22.71875
+      ],
+      "splits": [
+        -1,
+        383
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.1863556018034008,
+        0.1863598718698509
+      ],
+      "post": [
+        0.2379548696421795,
+        0.23796340977507957
+      ],
+      "accuracy": [
+        0.5703125,
+        0.57421875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.18359375,
+        22.171875
+      ],
+      "splits": [
+        -1,
+        321
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.1990436753770528,
+        0.19616797841145334
+      ],
+      "post": [
+        0.26271994334219434,
+        0.25696854941099473
+      ],
+      "accuracy": [
+        0.546875,
+        0.546875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.18359375,
+        22.171875
+      ],
+      "splits": [
+        -1,
+        388
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.1608651042857687,
+        0.1608651042857687
+      ],
+      "post": [
+        0.25140882365800965,
+        0.25140882365800965
+      ],
+      "accuracy": [
+        0.58984375,
+        0.58984375
+      ],
+      "foreground": [
+        4.9296875,
+        4.9296875
+      ],
+      "totalCoordinates": [
+        17.25390625,
+        17.24609375
+      ],
+      "splits": [
+        390,
+        390
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.16574629313358907,
+        0.16574629313358907
+      ],
+      "post": [
+        0.2643474263666616,
+        0.2643474263666616
+      ],
+      "accuracy": [
+        0.53515625,
+        0.53515625
+      ],
+      "foreground": [
+        4.6953125,
+        4.6953125
+      ],
+      "totalCoordinates": [
+        17.01953125,
+        17.01171875
+      ],
+      "splits": [
+        369,
+        369
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.20278226375511144,
+        0.20278571698251371
+      ],
+      "post": [
+        0.2338082625127853,
+        0.23381516896758975
+      ],
+      "accuracy": [
+        0.58984375,
+        0.58984375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.4296875,
+        22.4296875
+      ],
+      "splits": [
+        -1,
+        430
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.21511197615293123,
+        0.21668545748776846
+      ],
+      "post": [
+        0.25810275677540595,
+        0.26124971944508035
+      ],
+      "accuracy": [
+        0.51953125,
+        0.49609375
+      ],
+      "foreground": [
+        5.9921875,
+        6
+      ],
+      "totalCoordinates": [
+        22.421875,
+        22.4296875
+      ],
+      "splits": [
+        -1,
+        458
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.051444245739679595,
+        0.051444245739679595
+      ],
+      "post": [
+        0.047993141432806724,
+        0.047993141432806724
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "foreground": [
+        4,
+        4
+      ],
+      "totalCoordinates": [
+        17.166015625,
+        17.166015625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.05173355201419501,
+        0.05173355201419501
+      ],
+      "post": [
+        0.04788782378577253,
+        0.04788782378577253
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "foreground": [
+        4,
+        4
+      ],
+      "totalCoordinates": [
+        17.166015625,
+        17.166015625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.05719608204851542,
+        0.05719608204851542
+      ],
+      "post": [
+        0.03776255863318347,
+        0.03776255863318347
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "foreground": [
+        3.0234375,
+        3.0234375
+      ],
+      "totalCoordinates": [
+        13.73828125,
+        13.73828125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.05667764475631342,
+        0.05667764475631342
+      ],
+      "post": [
+        0.03774308996523796,
+        0.03774308996523796
+      ],
+      "accuracy": [
+        0.9609375,
+        0.9609375
+      ],
+      "foreground": [
+        3.0234375,
+        3.0234375
+      ],
+      "totalCoordinates": [
+        13.73828125,
+        13.73828125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.06148323171651765,
+        0.06148323171651765
+      ],
+      "post": [
+        0.0807467375540196,
+        0.0807467375540196
+      ],
+      "accuracy": [
+        0.9140625,
+        0.9140625
+      ],
+      "foreground": [
+        3.517578125,
+        3.517578125
+      ],
+      "totalCoordinates": [
+        15.205078125,
+        15.189453125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.06181864052098458,
+        0.06181864052098458
+      ],
+      "post": [
+        0.08058994063701755,
+        0.08058994063701755
+      ],
+      "accuracy": [
+        0.9140625,
+        0.9140625
+      ],
+      "foreground": [
+        3.39453125,
+        3.39453125
+      ],
+      "totalCoordinates": [
+        15.08203125,
+        15.06640625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.04942363638389985,
+        0.04942363638389985
+      ],
+      "post": [
+        0.04888931540396357,
+        0.04888931540396357
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "foreground": [
+        3.078125,
+        3.078125
+      ],
+      "totalCoordinates": [
+        13.39453125,
+        13.38671875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.05224282335978512,
+        0.05224282335978512
+      ],
+      "post": [
+        0.04879546266808331,
+        0.04879546266808331
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "foreground": [
+        3.078125,
+        3.078125
+      ],
+      "totalCoordinates": [
+        13.39453125,
+        13.38671875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.04851191603764287,
+        0.04851191603764287
+      ],
+      "post": [
+        0.05520601995094861,
+        0.05520601995094861
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "foreground": [
+        4.98828125,
+        4.98828125
+      ],
+      "totalCoordinates": [
+        19.8671875,
+        19.83984375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.047733712555709316,
+        0.047733712555709316
+      ],
+      "post": [
+        0.05493745788838705,
+        0.05493745788838705
+      ],
+      "accuracy": [
+        0.94140625,
+        0.94140625
+      ],
+      "foreground": [
+        4.98828125,
+        4.98828125
+      ],
+      "totalCoordinates": [
+        19.8671875,
+        19.83984375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.038647518385480514,
+        0.038647518385480514
+      ],
+      "post": [
+        0.041443621835124025,
+        0.041443621835124025
+      ],
+      "accuracy": [
+        0.95703125,
+        0.95703125
+      ],
+      "foreground": [
+        5.0546875,
+        5.0546875
+      ],
+      "totalCoordinates": [
+        19.39453125,
+        19.38671875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.038442484759352684,
+        0.038442484759352684
+      ],
+      "post": [
+        0.04139579005757455,
+        0.04139579005757455
+      ],
+      "accuracy": [
+        0.95703125,
+        0.95703125
+      ],
+      "foreground": [
+        5.0546875,
+        5.0546875
+      ],
+      "totalCoordinates": [
+        19.39453125,
+        19.38671875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.05106393794900645,
+        0.05106393794900645
+      ],
+      "post": [
+        0.04450121581269807,
+        0.04450121581269807
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        4.48828125,
+        4.48828125
+      ],
+      "totalCoordinates": [
+        17.994140625,
+        17.970703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.049764788583557144,
+        0.049764788583557144
+      ],
+      "post": [
+        0.04455126912074377,
+        0.04455126912074377
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        4.48828125,
+        4.48828125
+      ],
+      "totalCoordinates": [
+        17.994140625,
+        17.970703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.048086982529974516,
+        0.048086982529974516
+      ],
+      "post": [
+        0.0641070426542046,
+        0.0641070426542046
+      ],
+      "accuracy": [
+        0.93359375,
+        0.93359375
+      ],
+      "foreground": [
+        4.53515625,
+        4.53515625
+      ],
+      "totalCoordinates": [
+        18.580078125,
+        18.5625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.048010425775101444,
+        0.048010425775101444
+      ],
+      "post": [
+        0.06320864575541171,
+        0.06320864575541171
+      ],
+      "accuracy": [
+        0.93359375,
+        0.93359375
+      ],
+      "foreground": [
+        4.58203125,
+        4.58203125
+      ],
+      "totalCoordinates": [
+        18.626953125,
+        18.609375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.05076741194905202,
+        0.05076741194905202
+      ],
+      "post": [
+        0.049192701583742865,
+        0.049192701583742865
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "foreground": [
+        5.029296875,
+        5.029296875
+      ],
+      "totalCoordinates": [
+        19.798828125,
+        19.787109375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.05108048843387905,
+        0.05108048843387905
+      ],
+      "post": [
+        0.049122221415957505,
+        0.049122221415957505
+      ],
+      "accuracy": [
+        0.94921875,
+        0.94921875
+      ],
+      "foreground": [
+        5.029296875,
+        5.029296875
+      ],
+      "totalCoordinates": [
+        19.798828125,
+        19.787109375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.03829673646191546,
+        0.03829673646191546
+      ],
+      "post": [
+        0.052666763425712075,
+        0.052666763425712075
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "foreground": [
+        5.02734375,
+        5.02734375
+      ],
+      "totalCoordinates": [
+        19.875,
+        19.8515625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.03879131154591353,
+        0.03879131154591353
+      ],
+      "post": [
+        0.052433223430968026,
+        0.052433223430968026
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "foreground": [
+        5.02734375,
+        5.02734375
+      ],
+      "totalCoordinates": [
+        19.875,
+        19.8515625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.051983775583672204,
+        0.051983775583672204
+      ],
+      "post": [
+        0.05923004489163503,
+        0.05923004489163503
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "foreground": [
+        5.015625,
+        5.015625
+      ],
+      "totalCoordinates": [
+        18.91796875,
+        18.90625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.054387909552549234,
+        0.054387909552549234
+      ],
+      "post": [
+        0.06258632610826143,
+        0.06258632610826143
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "foreground": [
+        5.04296875,
+        5.04296875
+      ],
+      "totalCoordinates": [
+        18.9453125,
+        18.93359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.05125070825987433,
+        0.05125070825987433
+      ],
+      "post": [
+        0.045963748375467815,
+        0.045963748375467815
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        4.96875,
+        4.96875
+      ],
+      "totalCoordinates": [
+        19.515625,
+        19.48828125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.05317439524479889,
+        0.05317439524479889
+      ],
+      "post": [
+        0.045998531708058496,
+        0.045998531708058496
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        4.96875,
+        4.96875
+      ],
+      "totalCoordinates": [
+        19.515625,
+        19.48828125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.056308107494710095,
+        0.056308107494710095
+      ],
+      "post": [
+        0.059535424244286594,
+        0.059535424244286594
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "foreground": [
+        4.009765625,
+        4.009765625
+      ],
+      "totalCoordinates": [
+        16.708984375,
+        16.708984375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.05872794217178772,
+        0.05872794217178772
+      ],
+      "post": [
+        0.05939738385025444,
+        0.05939738385025444
+      ],
+      "accuracy": [
+        0.9375,
+        0.9375
+      ],
+      "foreground": [
+        4.0078125,
+        4.0078125
+      ],
+      "totalCoordinates": [
+        16.70703125,
+        16.70703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.03884997592155087,
+        0.03884997592155087
+      ],
+      "post": [
+        0.045827550729220755,
+        0.045827550729220755
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        5.01953125,
+        5.01953125
+      ],
+      "totalCoordinates": [
+        19.8203125,
+        19.79296875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.04107140577042102,
+        0.04107140577042102
+      ],
+      "post": [
+        0.04578243358690449,
+        0.04578243358690449
+      ],
+      "accuracy": [
+        0.953125,
+        0.953125
+      ],
+      "foreground": [
+        5.01953125,
+        5.01953125
+      ],
+      "totalCoordinates": [
+        19.8203125,
+        19.79296875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.053897855285796756,
+        0.053897855285796756
+      ],
+      "post": [
+        0.05179361327921911,
+        0.05179361327921911
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "foreground": [
+        4.04296875,
+        4.04296875
+      ],
+      "totalCoordinates": [
+        16.30859375,
+        16.30078125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.0558800420313915,
+        0.0558800420313915
+      ],
+      "post": [
+        0.05445940876960578,
+        0.05445940876960578
+      ],
+      "accuracy": [
+        0.9453125,
+        0.9453125
+      ],
+      "foreground": [
+        4.10546875,
+        4.10546875
+      ],
+      "totalCoordinates": [
+        16.37109375,
+        16.36328125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.04204656736352501,
+        0.04204656736352501
+      ],
+      "post": [
+        0.0313004319661781,
+        0.0313004319661781
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "foreground": [
+        4.541015625,
+        4.541015625
+      ],
+      "totalCoordinates": [
+        18.22265625,
+        18.216796875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.04200799936513372,
+        0.04200799936513372
+      ],
+      "post": [
+        0.03129232874185613,
+        0.03129232874185613
+      ],
+      "accuracy": [
+        0.96875,
+        0.96875
+      ],
+      "foreground": [
+        4.541015625,
+        4.541015625
+      ],
+      "totalCoordinates": [
+        18.22265625,
+        18.216796875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.25099770360895424,
+        0.25099770360895424
+      ],
+      "post": [
+        0.2507166436565821,
+        0.2507166436565821
+      ],
+      "accuracy": [
+        0.4921875,
+        0.4921875
+      ],
+      "foreground": [
+        5.994140625,
+        5.994140625
+      ],
+      "totalCoordinates": [
+        22.353515625,
+        22.330078125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.2512691254388907,
+        0.2512691254388907
+      ],
+      "post": [
+        0.25606958515738565,
+        0.25606958515738565
+      ],
+      "accuracy": [
+        0.46875,
+        0.46875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.359375,
+        22.3359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.16768578431739703,
+        0.16768578431739703
+      ],
+      "post": [
+        0.1618429610596424,
+        0.1618429610596424
+      ],
+      "accuracy": [
+        0.71484375,
+        0.71484375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        23.02734375,
+        22.9453125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.16781411278050692,
+        0.16781411278050692
+      ],
+      "post": [
+        0.1617575913769572,
+        0.1617575913769572
+      ],
+      "accuracy": [
+        0.71484375,
+        0.71484375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        23.02734375,
+        22.9453125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.14427344717351248,
+        0.14427344717351248
+      ],
+      "post": [
+        0.15409413609140163,
+        0.15409413609140163
+      ],
+      "accuracy": [
+        0.70703125,
+        0.70703125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        23.34375,
+        23.25
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.14468283410559257,
+        0.14468283410559257
+      ],
+      "post": [
+        0.1541485310486075,
+        0.1541485310486075
+      ],
+      "accuracy": [
+        0.70703125,
+        0.70703125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        23.34375,
+        23.25
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.21723324648895365,
+        0.21723324648895365
+      ],
+      "post": [
+        0.2223251694215979,
+        0.2223251694215979
+      ],
+      "accuracy": [
+        0.57421875,
+        0.57421875
+      ],
+      "foreground": [
+        5.86328125,
+        5.86328125
+      ],
+      "totalCoordinates": [
+        21.5859375,
+        21.583984375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.21738540268427356,
+        0.21738540268427356
+      ],
+      "post": [
+        0.2221357828539646,
+        0.2221357828539646
+      ],
+      "accuracy": [
+        0.58203125,
+        0.58203125
+      ],
+      "foreground": [
+        5.86328125,
+        5.86328125
+      ],
+      "totalCoordinates": [
+        21.5859375,
+        21.583984375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.25026697418780525,
+        0.25026697418780525
+      ],
+      "post": [
+        0.255937640502162,
+        0.255937640502162
+      ],
+      "accuracy": [
+        0.4765625,
+        0.4765625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.18359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.2520163780068311,
+        0.2520163780068311
+      ],
+      "post": [
+        0.25279976511281327,
+        0.25279976511281327
+      ],
+      "accuracy": [
+        0.5,
+        0.5
+      ],
+      "foreground": [
+        5.994140625,
+        5.994140625
+      ],
+      "totalCoordinates": [
+        22.212890625,
+        22.177734375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.10203229085407492,
+        0.10203229085407492
+      ],
+      "post": [
+        0.11331443873601658,
+        0.11331443873601658
+      ],
+      "accuracy": [
+        0.82421875,
+        0.82421875
+      ],
+      "foreground": [
+        5.513671875,
+        5.513671875
+      ],
+      "totalCoordinates": [
+        20.810546875,
+        20.802734375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.10315113520436839,
+        0.10315113520436839
+      ],
+      "post": [
+        0.1151004445256057,
+        0.1151004445256057
+      ],
+      "accuracy": [
+        0.82421875,
+        0.82421875
+      ],
+      "foreground": [
+        5.513671875,
+        5.513671875
+      ],
+      "totalCoordinates": [
+        20.810546875,
+        20.802734375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.10838593909930004,
+        0.10838593909930004
+      ],
+      "post": [
+        0.10509552706863118,
+        0.10509552706863118
+      ],
+      "accuracy": [
+        0.828125,
+        0.828125
+      ],
+      "foreground": [
+        5.509765625,
+        5.509765625
+      ],
+      "totalCoordinates": [
+        21.962890625,
+        21.919921875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.11058197348852113,
+        0.11058197348852113
+      ],
+      "post": [
+        0.10548648043567109,
+        0.10548648043567109
+      ],
+      "accuracy": [
+        0.828125,
+        0.828125
+      ],
+      "foreground": [
+        5.509765625,
+        5.509765625
+      ],
+      "totalCoordinates": [
+        21.962890625,
+        21.919921875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.06387714519895037,
+        0.06387714519895037
+      ],
+      "post": [
+        0.06290027110289168,
+        0.06290027110289168
+      ],
+      "accuracy": [
+        0.93359375,
+        0.93359375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.921875,
+        22.921875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.06385893378742358,
+        0.06385893378742358
+      ],
+      "post": [
+        0.06279809684486484,
+        0.06279809684486484
+      ],
+      "accuracy": [
+        0.93359375,
+        0.93359375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.921875,
+        22.921875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.24793668531078675,
+        0.24793668531078675
+      ],
+      "post": [
+        0.25381838930220724,
+        0.25381838930220724
+      ],
+      "accuracy": [
+        0.49609375,
+        0.49609375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.5703125,
+        22.5703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.24788322771091942,
+        0.24788322771091942
+      ],
+      "post": [
+        0.24664353050587487,
+        0.24664353050587487
+      ],
+      "accuracy": [
+        0.50390625,
+        0.50390625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.5703125,
+        22.5703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.08735328527483179,
+        0.08735328527483179
+      ],
+      "post": [
+        0.0803732623047566,
+        0.0803732623047566
+      ],
+      "accuracy": [
+        0.84765625,
+        0.84765625
+      ],
+      "foreground": [
+        5.4765625,
+        5.4765625
+      ],
+      "totalCoordinates": [
+        20.947265625,
+        20.91796875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.08866730600761402,
+        0.08866730600761402
+      ],
+      "post": [
+        0.08033795288974227,
+        0.08033795288974227
+      ],
+      "accuracy": [
+        0.84765625,
+        0.84765625
+      ],
+      "foreground": [
+        5.4765625,
+        5.4765625
+      ],
+      "totalCoordinates": [
+        20.947265625,
+        20.91796875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.2520451142155779,
+        0.2520451142155779
+      ],
+      "post": [
+        0.2530469581823776,
+        0.2530469581823776
+      ],
+      "accuracy": [
+        0.4765625,
+        0.4765625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.67578125,
+        22.640625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.25087112734899514,
+        0.25087112734899514
+      ],
+      "post": [
+        0.2515653524096554,
+        0.2515653524096554
+      ],
+      "accuracy": [
+        0.51171875,
+        0.51171875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.67578125,
+        22.640625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.2491524357638125,
+        0.2491524357638125
+      ],
+      "post": [
+        0.24664034215439054,
+        0.24664034215439054
+      ],
+      "accuracy": [
+        0.52734375,
+        0.52734375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        23.37890625,
+        23.296875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.2521282286540676,
+        0.2521282286540676
+      ],
+      "post": [
+        0.2516794517842173,
+        0.2516794517842173
+      ],
+      "accuracy": [
+        0.53125,
+        0.53125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        23.37890625,
+        23.296875
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.21224274238529714,
+        0.21224274238529714
+      ],
+      "post": [
+        0.2068994673121974,
+        0.2068994673121974
+      ],
+      "accuracy": [
+        0.59375,
+        0.59375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.7109375,
+        22.7109375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.21228822803789416,
+        0.21228822803789416
+      ],
+      "post": [
+        0.20685171034368874,
+        0.20685171034368874
+      ],
+      "accuracy": [
+        0.6015625,
+        0.6015625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.7109375,
+        22.7109375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.24753067399188433,
+        0.24753067399188433
+      ],
+      "post": [
+        0.2490359608826627,
+        0.2490359608826627
+      ],
+      "accuracy": [
+        0.5390625,
+        0.5390625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.18359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.24984894538562064,
+        0.24984894538562064
+      ],
+      "post": [
+        0.24924897948341543,
+        0.24924897948341543
+      ],
+      "accuracy": [
+        0.54296875,
+        0.54296875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.21875,
+        22.18359375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.11391954161378934,
+        0.11391954161378934
+      ],
+      "post": [
+        0.09906817097918905,
+        0.09906817097918905
+      ],
+      "accuracy": [
+        0.828125,
+        0.828125
+      ],
+      "foreground": [
+        5.76171875,
+        5.76171875
+      ],
+      "totalCoordinates": [
+        21.75,
+        21.740234375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.1139526403244597,
+        0.1139526403244597
+      ],
+      "post": [
+        0.09895323396330163,
+        0.09895323396330163
+      ],
+      "accuracy": [
+        0.8359375,
+        0.8359375
+      ],
+      "foreground": [
+        5.76171875,
+        5.76171875
+      ],
+      "totalCoordinates": [
+        21.75,
+        21.740234375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.2079653056941154,
+        0.2079653056941154
+      ],
+      "post": [
+        0.2135397671248686,
+        0.2135397671248686
+      ],
+      "accuracy": [
+        0.546875,
+        0.546875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.46484375,
+        22.44140625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.20814216961674673,
+        0.20814216961674673
+      ],
+      "post": [
+        0.21374750728077652,
+        0.21374750728077652
+      ],
+      "accuracy": [
+        0.5546875,
+        0.5546875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.46484375,
+        22.44140625
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.15119838155791762,
+        0.15119838155791762
+      ],
+      "post": [
+        0.26026049615775776,
+        0.26026049615775776
+      ],
+      "accuracy": [
+        0.49609375,
+        0.49609375
+      ],
+      "foreground": [
+        5.310546875,
+        5.310546875
+      ],
+      "totalCoordinates": [
+        19.646484375,
+        19.646484375
+      ],
+      "splits": [
+        305,
+        305
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.16158637291400033,
+        0.16158637291400033
+      ],
+      "post": [
+        0.2782005843614958,
+        0.2782005843614958
+      ],
+      "accuracy": [
+        0.47265625,
+        0.47265625
+      ],
+      "foreground": [
+        5.228515625,
+        5.228515625
+      ],
+      "totalCoordinates": [
+        19.564453125,
+        19.564453125
+      ],
+      "splits": [
+        378,
+        378
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.1369335708920826,
+        0.1369335708920826
+      ],
+      "post": [
+        0.22436441936474594,
+        0.22436441936474594
+      ],
+      "accuracy": [
+        0.625,
+        0.625
+      ],
+      "foreground": [
+        3.408203125,
+        3.408203125
+      ],
+      "totalCoordinates": [
+        12.7734375,
+        12.75390625
+      ],
+      "splits": [
+        321,
+        321
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.15800201622510698,
+        0.15800201622510698
+      ],
+      "post": [
+        0.26681695617788176,
+        0.26681695617788176
+      ],
+      "accuracy": [
+        0.53515625,
+        0.53515625
+      ],
+      "foreground": [
+        3.25,
+        3.25
+      ],
+      "totalCoordinates": [
+        12.615234375,
+        12.595703125
+      ],
+      "splits": [
+        355,
+        355
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.1276396373992896,
+        0.1276396373992896
+      ],
+      "post": [
+        0.2172761710423513,
+        0.2172761710423513
+      ],
+      "accuracy": [
+        0.62890625,
+        0.62890625
+      ],
+      "foreground": [
+        3.39453125,
+        3.39453125
+      ],
+      "totalCoordinates": [
+        13.01953125,
+        13.01953125
+      ],
+      "splits": [
+        314,
+        314
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.15347372127883013,
+        0.15347372127883013
+      ],
+      "post": [
+        0.26811179229923265,
+        0.26811179229923265
+      ],
+      "accuracy": [
+        0.47265625,
+        0.47265625
+      ],
+      "foreground": [
+        2.9140625,
+        2.9140625
+      ],
+      "totalCoordinates": [
+        12.5390625,
+        12.5390625
+      ],
+      "splits": [
+        369,
+        369
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.12352997631338362,
+        0.12352997631338362
+      ],
+      "post": [
+        0.22044876758583787,
+        0.22044876758583787
+      ],
+      "accuracy": [
+        0.6171875,
+        0.6171875
+      ],
+      "foreground": [
+        5.283203125,
+        5.283203125
+      ],
+      "totalCoordinates": [
+        20.583984375,
+        20.529296875
+      ],
+      "splits": [
+        310,
+        310
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.15114136548476173,
+        0.15114136548476173
+      ],
+      "post": [
+        0.2750298012416009,
+        0.2750298012416009
+      ],
+      "accuracy": [
+        0.484375,
+        0.484375
+      ],
+      "foreground": [
+        5.3125,
+        5.3125
+      ],
+      "totalCoordinates": [
+        20.61328125,
+        20.55859375
+      ],
+      "splits": [
+        387,
+        387
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.14408671526448838,
+        0.14408671526448838
+      ],
+      "post": [
+        0.22851400759968252,
+        0.22851400759968252
+      ],
+      "accuracy": [
+        0.55859375,
+        0.55859375
+      ],
+      "foreground": [
+        3.748046875,
+        3.748046875
+      ],
+      "totalCoordinates": [
+        13.560546875,
+        13.544921875
+      ],
+      "splits": [
+        348,
+        348
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.1657221561688724,
+        0.1657221561688724
+      ],
+      "post": [
+        0.27051178697724215,
+        0.27051178697724215
+      ],
+      "accuracy": [
+        0.47265625,
+        0.47265625
+      ],
+      "foreground": [
+        3.46484375,
+        3.46484375
+      ],
+      "totalCoordinates": [
+        13.27734375,
+        13.26171875
+      ],
+      "splits": [
+        388,
+        388
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.14166650066296113,
+        0.14166650066296113
+      ],
+      "post": [
+        0.23759603354330153,
+        0.23759603354330153
+      ],
+      "accuracy": [
+        0.625,
+        0.625
+      ],
+      "foreground": [
+        5.41015625,
+        5.41015625
+      ],
+      "totalCoordinates": [
+        19.88671875,
+        19.83203125
+      ],
+      "splits": [
+        326,
+        326
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.16201253775904256,
+        0.16201253775904256
+      ],
+      "post": [
+        0.2767958234107298,
+        0.2767958234107298
+      ],
+      "accuracy": [
+        0.55859375,
+        0.55859375
+      ],
+      "foreground": [
+        5.28125,
+        5.28125
+      ],
+      "totalCoordinates": [
+        19.7578125,
+        19.703125
+      ],
+      "splits": [
+        486,
+        486
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.1595244382021502,
+        0.1595244382021502
+      ],
+      "post": [
+        0.23864685572616182,
+        0.23864685572616182
+      ],
+      "accuracy": [
+        0.63671875,
+        0.63671875
+      ],
+      "foreground": [
+        5.306640625,
+        5.306640625
+      ],
+      "totalCoordinates": [
+        19.771484375,
+        19.759765625
+      ],
+      "splits": [
+        319,
+        319
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.17488351250852344,
+        0.17488351250852344
+      ],
+      "post": [
+        0.2675106298544673,
+        0.2675106298544673
+      ],
+      "accuracy": [
+        0.5390625,
+        0.5390625
+      ],
+      "foreground": [
+        5.2734375,
+        5.2734375
+      ],
+      "totalCoordinates": [
+        19.73828125,
+        19.7265625
+      ],
+      "splits": [
+        367,
+        367
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.15877966185445425,
+        0.15862836134263616
+      ],
+      "post": [
+        0.2572868666831333,
+        0.2569842656594973
+      ],
+      "accuracy": [
+        0.515625,
+        0.53515625
+      ],
+      "foreground": [
+        5.33984375,
+        5.33984375
+      ],
+      "totalCoordinates": [
+        20.525390625,
+        20.484375
+      ],
+      "splits": [
+        361,
+        376
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.1601975598967106,
+        0.16003021347042076
+      ],
+      "post": [
+        0.2584712028047521,
+        0.2581365099521725
+      ],
+      "accuracy": [
+        0.46875,
+        0.484375
+      ],
+      "foreground": [
+        5.33203125,
+        5.2890625
+      ],
+      "totalCoordinates": [
+        20.517578125,
+        20.43359375
+      ],
+      "splits": [
+        402,
+        425
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.14430109580751777,
+        0.14430109580751777
+      ],
+      "post": [
+        0.22605919999367585,
+        0.22605919999367585
+      ],
+      "accuracy": [
+        0.640625,
+        0.640625
+      ],
+      "foreground": [
+        5.404296875,
+        5.404296875
+      ],
+      "totalCoordinates": [
+        20.037109375,
+        20.005859375
+      ],
+      "splits": [
+        327,
+        327
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.16287568032806382,
+        0.16287568032806382
+      ],
+      "post": [
+        0.2624337946942735,
+        0.2624337946942735
+      ],
+      "accuracy": [
+        0.5625,
+        0.5625
+      ],
+      "foreground": [
+        5.375,
+        5.375
+      ],
+      "totalCoordinates": [
+        20.0078125,
+        19.9765625
+      ],
+      "splits": [
+        358,
+        358
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.15473390109208987,
+        0.15473390109208987
+      ],
+      "post": [
+        0.25641101063393124,
+        0.25641101063393124
+      ],
+      "accuracy": [
+        0.4921875,
+        0.4921875
+      ],
+      "foreground": [
+        5.30078125,
+        5.30078125
+      ],
+      "totalCoordinates": [
+        19.77734375,
+        19.765625
+      ],
+      "splits": [
+        321,
+        321
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.16096215632118724,
+        0.16096215632118724
+      ],
+      "post": [
+        0.26785347963481165,
+        0.26785347963481165
+      ],
+      "accuracy": [
+        0.48828125,
+        0.48828125
+      ],
+      "foreground": [
+        5.203125,
+        5.203125
+      ],
+      "totalCoordinates": [
+        19.6796875,
+        19.66796875
+      ],
+      "splits": [
+        363,
+        363
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.14156489601932978,
+        0.14156489601932978
+      ],
+      "post": [
+        0.23858516341474628,
+        0.23858516341474628
+      ],
+      "accuracy": [
+        0.5390625,
+        0.5390625
+      ],
+      "foreground": [
+        4.201171875,
+        4.201171875
+      ],
+      "totalCoordinates": [
+        15.291015625,
+        15.291015625
+      ],
+      "splits": [
+        292,
+        292
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.16052922552898533,
+        0.16052922552898533
+      ],
+      "post": [
+        0.27577411376760225,
+        0.27577411376760225
+      ],
+      "accuracy": [
+        0.48828125,
+        0.48828125
+      ],
+      "foreground": [
+        4.07421875,
+        4.07421875
+      ],
+      "totalCoordinates": [
+        15.1640625,
+        15.1640625
+      ],
+      "splits": [
+        325,
+        325
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.14646014245453276,
+        0.14646014245453276
+      ],
+      "post": [
+        0.24044320480431672,
+        0.24044320480431672
+      ],
+      "accuracy": [
+        0.5859375,
+        0.5859375
+      ],
+      "foreground": [
+        5.26953125,
+        5.26953125
+      ],
+      "totalCoordinates": [
+        20.015625,
+        20.01171875
+      ],
+      "splits": [
+        326,
+        326
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.164053866343643,
+        0.164053866343643
+      ],
+      "post": [
+        0.27549424578918624,
+        0.27549424578918624
+      ],
+      "accuracy": [
+        0.48828125,
+        0.48828125
+      ],
+      "foreground": [
+        5.203125,
+        5.203125
+      ],
+      "totalCoordinates": [
+        19.94921875,
+        19.9453125
+      ],
+      "splits": [
+        423,
+        423
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.1406843495288321,
+        0.1406843495288321
+      ],
+      "post": [
+        0.2570313039496383,
+        0.2570313039496383
+      ],
+      "accuracy": [
+        0.52734375,
+        0.52734375
+      ],
+      "foreground": [
+        4.701171875,
+        4.701171875
+      ],
+      "totalCoordinates": [
+        17.361328125,
+        17.353515625
+      ],
+      "splits": [
+        335,
+        335
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.15241967750242152,
+        0.15241967750242152
+      ],
+      "post": [
+        0.2792138635195202,
+        0.2792138635195202
+      ],
+      "accuracy": [
+        0.4921875,
+        0.4921875
+      ],
+      "foreground": [
+        4.392578125,
+        4.392578125
+      ],
+      "totalCoordinates": [
+        17.052734375,
+        17.044921875
+      ],
+      "splits": [
+        400,
+        400
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.14334574870072653,
+        0.14334574870072653
+      ],
+      "post": [
+        0.2476408129006117,
+        0.2476408129006117
+      ],
+      "accuracy": [
+        0.52734375,
+        0.52734375
+      ],
+      "foreground": [
+        5.015625,
+        5.015625
+      ],
+      "totalCoordinates": [
+        17.958984375,
+        17.958984375
+      ],
+      "splits": [
+        336,
+        336
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.14853231070749992,
+        0.14853231070749992
+      ],
+      "post": [
+        0.2573503495027754,
+        0.2573503495027754
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51953125
+      ],
+      "foreground": [
+        4.865234375,
+        4.865234375
+      ],
+      "totalCoordinates": [
+        17.80859375,
+        17.80859375
+      ],
+      "splits": [
+        414,
+        414
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.14882953716803093,
+        0.14882953716803093
+      ],
+      "post": [
+        0.2485751928365848,
+        0.2485751928365848
+      ],
+      "accuracy": [
+        0.5703125,
+        0.5703125
+      ],
+      "foreground": [
+        3.296875,
+        3.296875
+      ],
+      "totalCoordinates": [
+        12.88671875,
+        12.88671875
+      ],
+      "splits": [
+        302,
+        302
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.15963890318102592,
+        0.15963890318102592
+      ],
+      "post": [
+        0.2694047613910766,
+        0.2694047613910766
+      ],
+      "accuracy": [
+        0.546875,
+        0.546875
+      ],
+      "foreground": [
+        2.84765625,
+        2.84765625
+      ],
+      "totalCoordinates": [
+        12.4375,
+        12.4375
+      ],
+      "splits": [
+        335,
+        335
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.14645080087351314,
+        0.1464508007425401
+      ],
+      "post": [
+        0.24760904235117054,
+        0.24760904208922452
+      ],
+      "accuracy": [
+        0.56640625,
+        0.56640625
+      ],
+      "foreground": [
+        4.640625,
+        4.640625
+      ],
+      "totalCoordinates": [
+        17.10546875,
+        17.07421875
+      ],
+      "splits": [
+        313,
+        311
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.1604572372259661,
+        0.1604572372259661
+      ],
+      "post": [
+        0.27512744086924873,
+        0.27512744086924873
+      ],
+      "accuracy": [
+        0.48046875,
+        0.48046875
+      ],
+      "foreground": [
+        4.4375,
+        4.4375
+      ],
+      "totalCoordinates": [
+        16.90234375,
+        16.87109375
+      ],
+      "splits": [
+        363,
+        363
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Immediate",
+      "full": [
+        0.20020163720768552,
+        0.20019920301303828
+      ],
+      "post": [
+        0.2415851093671977,
+        0.24158024097790343
+      ],
+      "accuracy": [
+        0.5859375,
+        0.5859375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        21.9375,
+        21.9140625
+      ],
+      "splits": [
+        -1,
+        484
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Delayed",
+      "full": [
+        0.21514665437465547,
+        0.21514665437465547
+      ],
+      "post": [
+        0.2697688660293421,
+        0.2697688660293421
+      ],
+      "accuracy": [
+        0.4609375,
+        0.4609375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        21.9375,
+        21.9140625
+      ],
+      "splits": [
+        -1,
+        532
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Immediate",
+      "full": [
+        0.2240733899143971,
+        0.2240793825440793
+      ],
+      "post": [
+        0.19885478524524833,
+        0.19886677050461254
+      ],
+      "accuracy": [
+        0.65625,
+        0.6484375
+      ],
+      "foreground": [
+        5.9140625,
+        5.9140625
+      ],
+      "totalCoordinates": [
+        22.765625,
+        22.68359375
+      ],
+      "splits": [
+        -1,
+        308
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Delayed",
+      "full": [
+        0.24324355225520575,
+        0.24299851161173824
+      ],
+      "post": [
+        0.2382332304389169,
+        0.23774314915198233
+      ],
+      "accuracy": [
+        0.54296875,
+        0.55078125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.8515625,
+        22.76953125
+      ],
+      "splits": [
+        -1,
+        353
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Immediate",
+      "full": [
+        0.23550789702556155,
+        0.23550789702556155
+      ],
+      "post": [
+        0.21671266123813648,
+        0.21671266123813648
+      ],
+      "accuracy": [
+        0.62109375,
+        0.62109375
+      ],
+      "foreground": [
+        5.947265625,
+        5.947265625
+      ],
+      "totalCoordinates": [
+        21.744140625,
+        21.720703125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Delayed",
+      "full": [
+        0.2528167519850402,
+        0.2528167519850402
+      ],
+      "post": [
+        0.2534384325166361,
+        0.2534384325166361
+      ],
+      "accuracy": [
+        0.5,
+        0.5
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        21.796875,
+        21.7734375
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Immediate",
+      "full": [
+        0.23654368911410253,
+        0.23776266804537066
+      ],
+      "post": [
+        0.22126889179148254,
+        0.2237068496540183
+      ],
+      "accuracy": [
+        0.6015625,
+        0.59375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.67578125,
+        22.67578125
+      ],
+      "splits": [
+        -1,
+        390
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Delayed",
+      "full": [
+        0.2495868070757661,
+        0.2495868070757661
+      ],
+      "post": [
+        0.2487477209134965,
+        0.2487477209134965
+      ],
+      "accuracy": [
+        0.53125,
+        0.53125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.67578125,
+        22.67578125
+      ],
+      "splits": [
+        -1,
+        541
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Immediate",
+      "full": [
+        0.18408814687079153,
+        0.18408674168800748
+      ],
+      "post": [
+        0.241256978327224,
+        0.2412541679616559
+      ],
+      "accuracy": [
+        0.58984375,
+        0.58984375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.18359375,
+        22.078125
+      ],
+      "splits": [
+        -1,
+        495
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Delayed",
+      "full": [
+        0.19673945829660117,
+        0.19673945829660117
+      ],
+      "post": [
+        0.2661361106737721,
+        0.2661361106737721
+      ],
+      "accuracy": [
+        0.53125,
+        0.53125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.18359375,
+        22.078125
+      ],
+      "splits": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Immediate",
+      "full": [
+        0.23509193725838845,
+        0.2350925654630969
+      ],
+      "post": [
+        0.2179195884210564,
+        0.2179208448304729
+      ],
+      "accuracy": [
+        0.64453125,
+        0.64453125
+      ],
+      "foreground": [
+        5.98828125,
+        5.98828125
+      ],
+      "totalCoordinates": [
+        22.62890625,
+        22.53515625
+      ],
+      "splits": [
+        -1,
+        369
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Delayed",
+      "full": [
+        0.2513032324684533,
+        0.251311809397703
+      ],
+      "post": [
+        0.2511149063472008,
+        0.2511320602056999
+      ],
+      "accuracy": [
+        0.55078125,
+        0.55078125
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.640625,
+        22.546875
+      ],
+      "splits": [
+        -1,
+        422
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Immediate",
+      "full": [
+        0.17430979269934505,
+        0.1742925504763336
+      ],
+      "post": [
+        0.21769964879790685,
+        0.21766516435188407
+      ],
+      "accuracy": [
+        0.6328125,
+        0.62109375
+      ],
+      "foreground": [
+        5.99609375,
+        5.99609375
+      ],
+      "totalCoordinates": [
+        22.49609375,
+        22.47265625
+      ],
+      "splits": [
+        453,
+        335
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Delayed",
+      "full": [
+        0.19583937991801134,
+        0.19307389632293812
+      ],
+      "post": [
+        0.2631009339845887,
+        0.25756996679444216
+      ],
+      "accuracy": [
+        0.51171875,
+        0.546875
+      ],
+      "foreground": [
+        5.99609375,
+        5.99609375
+      ],
+      "totalCoordinates": [
+        22.49609375,
+        22.47265625
+      ],
+      "splits": [
+        488,
+        370
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Immediate",
+      "full": [
+        0.20796439635812222,
+        0.2075135698224237
+      ],
+      "post": [
+        0.21052920769247205,
+        0.20962755462107477
+      ],
+      "accuracy": [
+        0.66015625,
+        0.6484375
+      ],
+      "foreground": [
+        5.970703125,
+        5.970703125
+      ],
+      "totalCoordinates": [
+        22.646484375,
+        22.646484375
+      ],
+      "splits": [
+        -1,
+        371
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Delayed",
+      "full": [
+        0.2313659633591225,
+        0.2313728214566991
+      ],
+      "post": [
+        0.25772677566710805,
+        0.2577404918622612
+      ],
+      "accuracy": [
+        0.51953125,
+        0.51171875
+      ],
+      "foreground": [
+        5.97265625,
+        5.966796875
+      ],
+      "totalCoordinates": [
+        22.6484375,
+        22.642578125
+      ],
+      "splits": [
+        -1,
+        490
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Immediate",
+      "full": [
+        0.24748243413447144,
+        0.2474347649284857
+      ],
+      "post": [
+        0.2435086059110119,
+        0.24341326749904063
+      ],
+      "accuracy": [
+        0.55859375,
+        0.5546875
+      ],
+      "foreground": [
+        5.966796875,
+        5.966796875
+      ],
+      "totalCoordinates": [
+        22.607421875,
+        22.419921875
+      ],
+      "splits": [
+        -1,
+        472
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Delayed",
+      "full": [
+        0.251547246025327,
+        0.25166424909309226
+      ],
+      "post": [
+        0.2513826889846192,
+        0.25161669512014945
+      ],
+      "accuracy": [
+        0.5078125,
+        0.50390625
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.640625,
+        22.453125
+      ],
+      "splits": [
+        -1,
+        505
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Immediate",
+      "full": [
+        0.1899124241590646,
+        0.1898969395096629
+      ],
+      "post": [
+        0.2256554902440294,
+        0.22562452094522603
+      ],
+      "accuracy": [
+        0.6015625,
+        0.59375
+      ],
+      "foreground": [
+        5.845703125,
+        5.845703125
+      ],
+      "totalCoordinates": [
+        22.837890625,
+        22.814453125
+      ],
+      "splits": [
+        -1,
+        320
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Delayed",
+      "full": [
+        0.2032938299763375,
+        0.2000663056248567
+      ],
+      "post": [
+        0.2528003653888666,
+        0.24634531668590473
+      ],
+      "accuracy": [
+        0.5859375,
+        0.59375
+      ],
+      "foreground": [
+        5.99609375,
+        5.99609375
+      ],
+      "totalCoordinates": [
+        22.98828125,
+        22.96484375
+      ],
+      "splits": [
+        -1,
+        397
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Immediate",
+      "full": [
+        0.19538179019742719,
+        0.19537789166678332
+      ],
+      "post": [
+        0.19525584012867442,
+        0.19524804306738675
+      ],
+      "accuracy": [
+        0.671875,
+        0.67578125
+      ],
+      "foreground": [
+        5.966796875,
+        5.966796875
+      ],
+      "totalCoordinates": [
+        22.501953125,
+        22.501953125
+      ],
+      "splits": [
+        -1,
+        413
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Delayed",
+      "full": [
+        0.21241981185421555,
+        0.20903017340659893
+      ],
+      "post": [
+        0.22920314990093033,
+        0.2224238730056969
+      ],
+      "accuracy": [
+        0.6328125,
+        0.6328125
+      ],
+      "foreground": [
+        5.9765625,
+        5.9765625
+      ],
+      "totalCoordinates": [
+        22.51171875,
+        22.51171875
+      ],
+      "splits": [
+        -1,
+        454
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Immediate",
+      "full": [
+        0.1541397617670275,
+        0.1584781798528396
+      ],
+      "post": [
+        0.168809867577428,
+        0.17748670374905248
+      ],
+      "accuracy": [
+        0.75,
+        0.73828125
+      ],
+      "foreground": [
+        5.96484375,
+        5.96875
+      ],
+      "totalCoordinates": [
+        21.8671875,
+        21.87109375
+      ],
+      "splits": [
+        -1,
+        323
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Delayed",
+      "full": [
+        0.20134786875439847,
+        0.20008585307248444
+      ],
+      "post": [
+        0.26236740514948437,
+        0.2598433737856565
+      ],
+      "accuracy": [
+        0.60546875,
+        0.58984375
+      ],
+      "foreground": [
+        5.99609375,
+        6
+      ],
+      "totalCoordinates": [
+        21.8984375,
+        21.90234375
+      ],
+      "splits": [
+        -1,
+        431
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Immediate",
+      "full": [
+        0.2238803665545488,
+        0.22388061743201504
+      ],
+      "post": [
+        0.20576981617256657,
+        0.20577031792749867
+      ],
+      "accuracy": [
+        0.6015625,
+        0.6015625
+      ],
+      "foreground": [
+        5.9921875,
+        5.9921875
+      ],
+      "totalCoordinates": [
+        22.3515625,
+        22.29296875
+      ],
+      "splits": [
+        -1,
+        440
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Delayed",
+      "full": [
+        0.2437293913677361,
+        0.24497840508868687
+      ],
+      "post": [
+        0.24546927650184344,
+        0.24796730394374505
+      ],
+      "accuracy": [
+        0.53515625,
+        0.53125
+      ],
+      "foreground": [
+        5.9921875,
+        5.9921875
+      ],
+      "totalCoordinates": [
+        22.3515625,
+        22.29296875
+      ],
+      "splits": [
+        -1,
+        470
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Immediate",
+      "full": [
+        0.20299742817563593,
+        0.20657287430929142
+      ],
+      "post": [
+        0.21256705743547352,
+        0.2197179497027847
+      ],
+      "accuracy": [
+        0.68359375,
+        0.65234375
+      ],
+      "foreground": [
+        5.9140625,
+        5.908203125
+      ],
+      "totalCoordinates": [
+        22.23828125,
+        22.173828125
+      ],
+      "splits": [
+        -1,
+        322
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Delayed",
+      "full": [
+        0.21666189831367094,
+        0.2197158657326105
+      ],
+      "post": [
+        0.23957964877568685,
+        0.24568758361356574
+      ],
+      "accuracy": [
+        0.62890625,
+        0.60546875
+      ],
+      "foreground": [
+        5.994140625,
+        5.986328125
+      ],
+      "totalCoordinates": [
+        22.318359375,
+        22.251953125
+      ],
+      "splits": [
+        -1,
+        428
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Immediate",
+      "full": [
+        0.2052467871763452,
+        0.2052461866552231
+      ],
+      "post": [
+        0.24165301395228916,
+        0.24165181291004484
+      ],
+      "accuracy": [
+        0.640625,
+        0.640625
+      ],
+      "foreground": [
+        5.990234375,
+        5.990234375
+      ],
+      "totalCoordinates": [
+        21.927734375,
+        21.880859375
+      ],
+      "splits": [
+        -1,
+        491
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Delayed",
+      "full": [
+        0.21711853588937352,
+        0.21711853588937352
+      ],
+      "post": [
+        0.2651419645192959,
+        0.2651419645192959
+      ],
+      "accuracy": [
+        0.54296875,
+        0.54296875
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        21.9375,
+        21.890625
+      ],
+      "splits": [
+        -1,
+        529
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Immediate",
+      "full": [
+        0.19304425117502721,
+        0.19304359189160664
+      ],
+      "post": [
+        0.22758628135267475,
+        0.22758496278583357
+      ],
+      "accuracy": [
+        0.62890625,
+        0.625
+      ],
+      "foreground": [
+        5.98828125,
+        5.98828125
+      ],
+      "totalCoordinates": [
+        22.27734375,
+        22.2421875
+      ],
+      "splits": [
+        -1,
+        415
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Delayed",
+      "full": [
+        0.2086685763250345,
+        0.208567956404418
+      ],
+      "post": [
+        0.25821752662596115,
+        0.258016286784728
+      ],
+      "accuracy": [
+        0.609375,
+        0.62109375
+      ],
+      "foreground": [
+        6,
+        6
+      ],
+      "totalCoordinates": [
+        22.2890625,
+        22.25390625
+      ],
+      "splits": [
+        -1,
+        464
+      ]
+    }
+  ],
+  "limits": "Consumed closed-loop comparison; descriptive fixed-sample intervals, not research-wide coverage. Credit protects monitoring, not altered foreground cost. No fresh/agent/service validation."
+}

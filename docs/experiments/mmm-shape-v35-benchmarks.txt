@@ -1,0 +1,17 @@
+Apple M4, Go1.27.1 darwin/arm64, 2026-10-03; before outcomes.
+Command: go test ./internal/researchdispersion -run '^$' -bench '^BenchmarkShape' -benchmem -count=3
+
+BenchmarkShapePredict150-10      80830  14727 ns/op       0 B/op  0 allocs/op
+BenchmarkShapePredict150-10      86373  13907 ns/op       0 B/op  0 allocs/op
+BenchmarkShapePredict150-10      86424  13908 ns/op       0 B/op  0 allocs/op
+BenchmarkShapeUpdate16-10       123012   9650 ns/op       0 B/op  0 allocs/op
+BenchmarkShapeUpdate16-10       124201   9687 ns/op       0 B/op  0 allocs/op
+BenchmarkShapeUpdate16-10       124344   9678 ns/op       0 B/op  0 allocs/op
+BenchmarkShapeConstruct150-10    18178  66812 ns/op  500994 B/op  6 allocs/op
+BenchmarkShapeConstruct150-10    17917  66444 ns/op  500993 B/op  6 allocs/op
+BenchmarkShapeConstruct150-10    17955  66393 ns/op  500993 B/op  6 allocs/op
+
+The timed update includes restoring log/probability weights, this member's
+counts and cached row. No I/O, source authentication, frontier acquisition,
+sorting/packing, persistence, queue or agent latency is included. Shape-unit
+race checks also ran during part of the microbenchmark collection.

@@ -1,0 +1,27 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkFamilyComparison/n16/subset-10         	      93	   6190706 ns/op	  651265 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n16/subset-10         	      94	   6161202 ns/op	  651266 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n16/subset-10         	      94	   6135074 ns/op	  651264 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n16/family-10         	      87	   6458432 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkFamilyComparison/n16/family-10         	      91	   6456169 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkFamilyComparison/n16/family-10         	      93	   6485651 ns/op	  667649 B/op	       4 allocs/op
+BenchmarkFamilyComparison/n64/subset-10         	      86	   6974900 ns/op	  651264 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n64/subset-10         	      85	   6984963 ns/op	  651264 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n64/subset-10         	      84	   6976383 ns/op	  651264 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n64/family-10         	      80	   7539965 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkFamilyComparison/n64/family-10         	      78	   7537869 ns/op	  667650 B/op	       4 allocs/op
+BenchmarkFamilyComparison/n64/family-10         	      76	   7555578 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkFamilyComparison/n256/subset-10        	      57	  10209724 ns/op	  651265 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n256/subset-10        	      58	  10187368 ns/op	  651265 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n256/subset-10        	      57	  10575367 ns/op	  651264 B/op	       3 allocs/op
+BenchmarkFamilyComparison/n256/family-10        	      50	  11727799 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkFamilyComparison/n256/family-10        	      51	  11730591 ns/op	  667650 B/op	       4 allocs/op
+BenchmarkFamilyComparison/n256/family-10        	      49	  11751463 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkFamilyForecast-10                      	85140087	         7.061 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFamilyForecast-10                      	82579701	         7.048 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFamilyForecast-10                      	76457469	         7.253 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	13.107s

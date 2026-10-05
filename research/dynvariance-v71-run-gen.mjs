@@ -1,0 +1,31 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const outputs={};
+let source='research/class-v69-readback.mjs',raw=fs.readFileSync(source),s=raw.toString().replaceAll('class-v69','dynvariance-v71');
+const modes=JSON.parse(fs.readFileSync('research/dynvariance-v71-generation.json')).modes;
+function replace(from,to){assert.equal(s.split(from).length-1,1,from);s=s.replace(from,to)}
+replace("load('research/shared-v68-diagnostic/diagnostic.jsonl')","load('research/class-v69-diagnostic/diagnostic.jsonl')");
+const a=s.indexOf('const modes='),b=s.indexOf('\n',a);assert(a>0);s=s.slice(0,a)+'const modes='+JSON.stringify(modes)+';'+s.slice(b);
+replace('w.Arms.length,30','w.Arms.length,54');
+replace('j<30','j<54');
+replace('i=j%10,schedule=Math.floor(j/10),mode=modes[i],full=w.Arms[schedule*10],adaptive=w.Arms[schedule*10+1],single=w.Arms[schedule*10+2],oldLocal=old.Arms[schedule*14+(i<8?i:6)]', 'i=j%18,schedule=Math.floor(j/18),mode=modes[i],full=w.Arms[schedule*18],adaptive=w.Arms[schedule*18+1],single=w.Arms[schedule*18+10],oldLocal=old.Arms[schedule*10+6]');
+replace('old.Arms[schedule*14].Schedule','old.Arms[schedule*10].Schedule');
+replace('if(i<8){assert.deepEqual(strip(a),strip(old.Arms[schedule*14+i]));controls++}', 'if(i<2){assert.deepEqual(strip(a),strip(old.Arms[schedule*10+i]));controls++}');
+replace('controls,960','controls,240');
+s=s.replaceAll('v68LatentGain','v69LatentGain');
+replace("['hybrid_model_class','hybrid_noise_class']","['learn_model_class','learn_noise_class']");
+replace("['hybrid_random','hybrid_uncertainty','hybrid_falsification']","['learn_random','learn_uncertainty','learn_falsification']");
+replace('1200-arm consumed-cohort class diagnostic','2160-arm consumed-cohort dispersion diagnostic');
+replace('arms:1200,modelArms:960','arms:2160,modelArms:1920');
+replace('independentIssuedPackets:2304000,scalarIssuedComparisons:4608000','independentIssuedPackets:4608000,scalarIssuedComparisons:9216000');
+let out='research/dynvariance-v71-readback.mjs';fs.writeFileSync(out,s,{flag:'wx',mode:0o600});outputs[out]={source,sourceSHA256:hash(raw),outputSHA256:hash(s)};
+
+source='research/class-v69-run.mjs';raw=fs.readFileSync(source);s=raw.toString().replaceAll('class-v69','dynvariance-v71').replaceAll('researchclasssequenceref','researchdynvarianceref').replaceAll('researchclasssequence','researchdynvariance').replaceAll('EVENTFRAME_CLASS_V69','EVENTFRAME_DYNVARIANCE_V71').replaceAll('TestClassV69','TestDynVarianceV71');
+replace('research/checkpoint-2026-10-04-shared-v68-dynvariance-v71/manifest.json','research/checkpoint-2026-10-04-class-v69-rate-v70/manifest.json');
+replace('409e55ab5208c107077a30957fd33720d7bbb3b6260ade01ee45e34a6bdd9d53','da8c45a0551b895cc578b919bae78d1776b662f6dccc5d946f4ff9e17c1480a3');
+const c=s.indexOf('const extras='),d=s.indexOf('const files=',c);assert(c>0&&d>c);
+s=s.slice(0,c)+`const extras=['go.mod','go.sum','research/dynvariance-v71-run.mjs','research/dynvariance-v71-run-gen.mjs','research/dynvariance-v71-run-generation.json','research/dynvariance-v71-readback.mjs','research/dynvariance-v71-gen.mjs','research/dynvariance-v71-generation.json','research/dynvariance-v71-preflight.mjs','docs/experiments/mmm-dynvariance-v71-protocol.md'];\n`+s.slice(d);
+replace("['research/shared-v68-diagnostic/diagnostic.jsonl','research/shared-v68-diagnostic/freeze.json','research/shared-v68-diagnostic/readback.json']", "['research/class-v69-diagnostic/diagnostic.jsonl','research/class-v69-diagnostic/freeze.json','research/class-v69-diagnostic/readback.json']");
+replace('full ten-arm consumed-cohort class-observation diagnostic','full eighteen-arm consumed-cohort dynamic-dispersion diagnostic');
+out='research/dynvariance-v71-run.mjs';fs.writeFileSync(out,s,{flag:'wx',mode:0o600});outputs[out]={source,sourceSHA256:hash(raw),outputSHA256:hash(s)};
+fs.writeFileSync('research/dynvariance-v71-run-generation.json',JSON.stringify({outputs,changes:'new frozen closure/run/readback; eighteen complete modes; full/adaptive immutable controls; unchanged scoring and scientific gates'},null,2)+'\n',{flag:'wx',mode:0o600});

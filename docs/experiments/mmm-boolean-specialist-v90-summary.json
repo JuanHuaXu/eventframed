@@ -1,0 +1,2652 @@
+{
+  "artifactSHA256": "bbc1dd6609fcd027b3fc5897239177b29b8cf61a268e7b22010a3cc2f006c51f",
+  "sourceCount": 11,
+  "evaluatorSHA256": "0d0f8b6348699aac1756b0abdfb25a07fa6d95f9b20789ebaccd4cece0010081",
+  "runtime": "go1.27.1 darwin/arm64",
+  "records": 3840,
+  "underlyingTrainingSets": 1280,
+  "advanceToIntegration": false,
+  "classification": "finite component evidence only; not delayed-stream rescue or adoption",
+  "summaries": [
+    {
+      "phase": "design",
+      "case": "parity1",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.08471923254308786,
+            "accuracy": 0.9274780273437416
+          },
+          "boolean": {
+            "brier": 0.07962197918903073,
+            "accuracy": 0.9047912597656165
+          },
+          "gain": {
+            "mean": 0.005097253354057158,
+            "lower": -0.008692331218079165,
+            "upper": 0.01888683792619348
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.117109375,
+          "subset": {
+            "brier": 0.14238743631709908,
+            "accuracy": 0.7825683593749946
+          },
+          "boolean": {
+            "brier": 0.13618017122880444,
+            "accuracy": 0.7895996093749944
+          },
+          "gain": {
+            "mean": 0.006207265088294576,
+            "lower": -0.0031125796343396952,
+            "upper": 0.015527109810928846
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity1",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.0546788331262417,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.049266901422548845,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.005411931703692833,
+            "lower": 0.002569932152888904,
+            "upper": 0.008253931254496763
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.117109375,
+          "subset": {
+            "brier": 0.12236883144597208,
+            "accuracy": 0.7953124999999943
+          },
+          "boolean": {
+            "brier": 0.11838072467440504,
+            "accuracy": 0.7953124999999941
+          },
+          "gain": {
+            "mean": 0.0039881067715670186,
+            "lower": 0.0014855696968936421,
+            "upper": 0.0064906438462403945
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity1",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.04992393431409767,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.04827847673522563,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.001645457578872045,
+            "lower": 0.0005800608335584376,
+            "upper": 0.0027108543241856527
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.117109375,
+          "subset": {
+            "brier": 0.11879466414914194,
+            "accuracy": 0.7953124999999943
+          },
+          "boolean": {
+            "brier": 0.11766272194661878,
+            "accuracy": 0.7953124999999943
+          },
+          "gain": {
+            "mean": 0.0011319422025230954,
+            "lower": 0.00044360139045646974,
+            "upper": 0.0018202830145897212
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.12733030287555533,
+            "accuracy": 0.8573303222656186
+          },
+          "boolean": {
+            "brier": 0.09080428311727143,
+            "accuracy": 0.8907836914062421
+          },
+          "gain": {
+            "mean": 0.03652601975828388,
+            "lower": 0.0155727792271447,
+            "upper": 0.05747926028942306
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.16457031249999995,
+          "subset": {
+            "brier": 0.2018713307823459,
+            "accuracy": 0.6555664062499973
+          },
+          "boolean": {
+            "brier": 0.18036616993765436,
+            "accuracy": 0.6828124999999965
+          },
+          "gain": {
+            "mean": 0.021505160844691496,
+            "lower": 0.009845785175948035,
+            "upper": 0.033164536513434956
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.06030939737781143,
+            "accuracy": 0.9447540283203033
+          },
+          "boolean": {
+            "brier": 0.049049353125246754,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.01126004425256466,
+            "lower": 0.005320782774302379,
+            "upper": 0.017199305730826942
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.16457031249999995,
+          "subset": {
+            "brier": 0.1727283127900796,
+            "accuracy": 0.6883056640624965
+          },
+          "boolean": {
+            "brier": 0.1655601216172315,
+            "accuracy": 0.6898437499999965
+          },
+          "gain": {
+            "mean": 0.007168191172848162,
+            "lower": 0.001932462060110023,
+            "upper": 0.0124039202855863
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05219629091533888,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.04844123250278548,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.0037550584125534098,
+            "lower": 0.0014955849131299461,
+            "upper": 0.006014531911976873
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.16457031249999995,
+          "subset": {
+            "brier": 0.16801426927505744,
+            "accuracy": 0.6898437499999965
+          },
+          "boolean": {
+            "brier": 0.16519049282128592,
+            "accuracy": 0.6898437499999965
+          },
+          "gain": {
+            "mean": 0.002823776453771515,
+            "lower": 0.0006274706694546646,
+            "upper": 0.005020082238088365
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.22299161527745795,
+            "accuracy": 0.6451019287109354
+          },
+          "boolean": {
+            "brier": 0.10509583927599474,
+            "accuracy": 0.8813903808593677
+          },
+          "gain": {
+            "mean": 0.11789577600146317,
+            "lower": 0.09477250091671724,
+            "upper": 0.1410190510862091
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.17089843749999994,
+          "subset": {
+            "brier": 0.2438857561908775,
+            "accuracy": 0.5711914062499989
+          },
+          "boolean": {
+            "brier": 0.18897612811556924,
+            "accuracy": 0.6505126953124971
+          },
+          "gain": {
+            "mean": 0.05490962807530815,
+            "lower": 0.027891205876770277,
+            "upper": 0.08192805027384603
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "n": 32,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.08532091300811188,
+            "accuracy": 0.9222869873046795
+          },
+          "boolean": {
+            "brier": 0.050606759821593766,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.034714153186518104,
+            "lower": 0.02280674413975715,
+            "upper": 0.046621562233279054
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.17089843749999994,
+          "subset": {
+            "brier": 0.18746969486457218,
+            "accuracy": 0.6630371093749969
+          },
+          "boolean": {
+            "brier": 0.17180899247022338,
+            "accuracy": 0.6757812499999964
+          },
+          "gain": {
+            "mean": 0.015660702394348767,
+            "lower": 0.006004039544598865,
+            "upper": 0.02531736524409867
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "n": 64,
+      "fits": 64,
+      "required": true,
+      "advancePass": false,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05717343684379526,
+            "accuracy": 0.9495605468749906
+          },
+          "boolean": {
+            "brier": 0.048555844880036406,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.008617591963758883,
+            "lower": 0.005590782440543297,
+            "upper": 0.011644401486974468
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.17089843749999994,
+          "subset": {
+            "brier": 0.17587940521609005,
+            "accuracy": 0.6757812499999962
+          },
+          "boolean": {
+            "brier": 0.171298077171793,
+            "accuracy": 0.6757812499999964
+          },
+          "gain": {
+            "mean": 0.004581328044297066,
+            "lower": 0.002254684763127288,
+            "upper": 0.006907971325466843
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.26225810780877357,
+            "accuracy": 0.5133758544921873
+          },
+          "boolean": {
+            "brier": 0.11144882344617832,
+            "accuracy": 0.8704315185546805
+          },
+          "gain": {
+            "mean": 0.1508092843625953,
+            "lower": 0.11786916318423568,
+            "upper": 0.18374940554095492
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.18039062499999992,
+          "subset": {
+            "brier": 0.2595573057366787,
+            "accuracy": 0.510546875
+          },
+          "boolean": {
+            "brier": 0.20391803486083065,
+            "accuracy": 0.6406249999999973
+          },
+          "gain": {
+            "mean": 0.055639270875847954,
+            "lower": 0.022636174582678227,
+            "upper": 0.08864236716901769
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "n": 32,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.15007326156561787,
+            "accuracy": 0.773696899414058
+          },
+          "boolean": {
+            "brier": 0.048996355767787096,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.10107690579783078,
+            "lower": 0.07903414722716384,
+            "upper": 0.12311966436849772
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.18039062499999992,
+          "subset": {
+            "brier": 0.21839456177206612,
+            "accuracy": 0.5999755859374983
+          },
+          "boolean": {
+            "brier": 0.18086850819352457,
+            "accuracy": 0.654687499999997
+          },
+          "gain": {
+            "mean": 0.0375260535785416,
+            "lower": 0.01721011398434188,
+            "upper": 0.057841993172741316
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "n": 64,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.0711020533919736,
+            "accuracy": 0.9235504150390547
+          },
+          "boolean": {
+            "brier": 0.04813054787516942,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.02297150551680417,
+            "lower": 0.018504624555990976,
+            "upper": 0.02743838647761736
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.18039062499999992,
+          "subset": {
+            "brier": 0.1919878154347039,
+            "accuracy": 0.6417236328124972
+          },
+          "boolean": {
+            "brier": 0.18070266324951825,
+            "accuracy": 0.654687499999997
+          },
+          "gain": {
+            "mean": 0.011285152185185589,
+            "lower": 0.005784690058514389,
+            "upper": 0.016785614311856788
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.26137124913196635,
+            "accuracy": 0.5147491455078125
+          },
+          "boolean": {
+            "brier": 0.1255305593697548,
+            "accuracy": 0.8546386718749933
+          },
+          "gain": {
+            "mean": 0.13584068976221142,
+            "lower": 0.10086822760461275,
+            "upper": 0.17081315191981009
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19621093749999993,
+          "subset": {
+            "brier": 0.2603427689240399,
+            "accuracy": 0.5041748046874999
+          },
+          "boolean": {
+            "brier": 0.21676593605439123,
+            "accuracy": 0.605908203124998
+          },
+          "gain": {
+            "mean": 0.043576832869648814,
+            "lower": 0.013692646882186969,
+            "upper": 0.07346101885711066
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "n": 32,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.1461373143039434,
+            "accuracy": 0.7872375488281202
+          },
+          "boolean": {
+            "brier": 0.05015420052903893,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.09598311377490445,
+            "lower": 0.07665108979540834,
+            "upper": 0.11531513775440057
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19621093749999993,
+          "subset": {
+            "brier": 0.22972029920117137,
+            "accuracy": 0.566357421874999
+          },
+          "boolean": {
+            "brier": 0.1969468564428252,
+            "accuracy": 0.6195312499999979
+          },
+          "gain": {
+            "mean": 0.03277344275834621,
+            "lower": 0.010657562835546655,
+            "upper": 0.05488932268114577
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "n": 64,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.06987645861905699,
+            "accuracy": 0.9288238525390544
+          },
+          "boolean": {
+            "brier": 0.048335802431181046,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.021540656187875918,
+            "lower": 0.01614284216854804,
+            "upper": 0.026938470207203795
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19621093749999993,
+          "subset": {
+            "brier": 0.20467197457718272,
+            "accuracy": 0.6135986328124978
+          },
+          "boolean": {
+            "brier": 0.19645155650390014,
+            "accuracy": 0.6195312499999979
+          },
+          "gain": {
+            "mean": 0.008220418073282547,
+            "lower": 0.0036256589243182325,
+            "upper": 0.01281517722224686
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.1881609096476152,
+            "accuracy": 0.7462310791015584
+          },
+          "boolean": {
+            "brier": 0.22501789817787646,
+            "accuracy": 0.6656188964843726
+          },
+          "gain": {
+            "mean": -0.03685698853026131,
+            "lower": -0.049433627670505284,
+            "upper": -0.02428034939001733
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.11710937499999996,
+          "subset": {
+            "brier": 0.20635850053240873,
+            "accuracy": 0.7023681640624968
+          },
+          "boolean": {
+            "brier": 0.23027059430619173,
+            "accuracy": 0.6611694335937475
+          },
+          "gain": {
+            "mean": -0.023912093773783,
+            "lower": -0.03364516265772634,
+            "upper": -0.014179024889839657
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.10490930773799252,
+            "accuracy": 0.8814453124999928
+          },
+          "boolean": {
+            "brier": 0.2025989262591745,
+            "accuracy": 0.7195343017578089
+          },
+          "gain": {
+            "mean": -0.09768961852118191,
+            "lower": -0.11203558930831396,
+            "upper": -0.08334364773404986
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.11710937499999996,
+          "subset": {
+            "brier": 0.15311469034664923,
+            "accuracy": 0.7878417968749949
+          },
+          "boolean": {
+            "brier": 0.21401905189086481,
+            "accuracy": 0.7147827148437463
+          },
+          "gain": {
+            "mean": -0.060904361544215614,
+            "lower": -0.07858803163158704,
+            "upper": -0.04322069145684419
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.056774659793479586,
+            "accuracy": 0.9482421874999907
+          },
+          "boolean": {
+            "brier": 0.1918885357270734,
+            "accuracy": 0.7460937499999958
+          },
+          "gain": {
+            "mean": -0.13511387593359378,
+            "lower": -0.1422835436424246,
+            "upper": -0.12794420822476296
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.11710937499999996,
+          "subset": {
+            "brier": 0.12259522344228466,
+            "accuracy": 0.8128906249999941
+          },
+          "boolean": {
+            "brier": 0.2063847051741618,
+            "accuracy": 0.735546874999996
+          },
+          "gain": {
+            "mean": -0.08378948173187722,
+            "lower": -0.10564600326609418,
+            "upper": -0.06193296019766027
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.19345666612386578,
+            "accuracy": 0.7227752685546842
+          },
+          "boolean": {
+            "brier": 0.23495199380267784,
+            "accuracy": 0.631121826171873
+          },
+          "gain": {
+            "mean": -0.04149532767881206,
+            "lower": -0.05945280551896508,
+            "upper": -0.023537849838659048
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.15666015624999996,
+          "subset": {
+            "brier": 0.22550873279122224,
+            "accuracy": 0.621508789062498
+          },
+          "boolean": {
+            "brier": 0.23876239075132882,
+            "accuracy": 0.6173339843749982
+          },
+          "gain": {
+            "mean": -0.013253657960106562,
+            "lower": -0.024921173555723646,
+            "upper": -0.0015861423644894807
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.11371844148660108,
+            "accuracy": 0.8708160400390559
+          },
+          "boolean": {
+            "brier": 0.20945430974862567,
+            "accuracy": 0.7155517578124964
+          },
+          "gain": {
+            "mean": -0.09573586826202447,
+            "lower": -0.11475836178406268,
+            "upper": -0.07671337473998627
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.15666015624999996,
+          "subset": {
+            "brier": 0.18565457013438666,
+            "accuracy": 0.6841308593749966
+          },
+          "boolean": {
+            "brier": 0.22917166808871176,
+            "accuracy": 0.6410644531249978
+          },
+          "gain": {
+            "mean": -0.04351709795432501,
+            "lower": -0.062394929979973944,
+            "upper": -0.02463926592867608
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.060302967108269476,
+            "accuracy": 0.9444793701171783
+          },
+          "boolean": {
+            "brier": 0.19174709605029952,
+            "accuracy": 0.7303009033203087
+          },
+          "gain": {
+            "mean": -0.13144412894203011,
+            "lower": -0.14005748833658935,
+            "upper": -0.12283076954747088
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.15666015624999996,
+          "subset": {
+            "brier": 0.1630159466305612,
+            "accuracy": 0.7034667968749961
+          },
+          "boolean": {
+            "brier": 0.22148035984333567,
+            "accuracy": 0.6476562499999977
+          },
+          "gain": {
+            "mean": -0.05846441321277437,
+            "lower": -0.0828842951640399,
+            "upper": -0.03404453126150883
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.06008887845709398,
+            "accuracy": 0.9469512939453031
+          },
+          "boolean": {
+            "brier": 0.060737976203494116,
+            "accuracy": 0.9378875732421783
+          },
+          "gain": {
+            "mean": -0.0006490977464001549,
+            "lower": -0.007681347139326994,
+            "upper": 0.006383151646526685
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.04749999999999992,
+          "subset": {
+            "brier": 0.059391918219876605,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.060480891656338694,
+            "accuracy": 0.9497802734374905
+          },
+          "gain": {
+            "mean": -0.0010889734364620744,
+            "lower": -0.00818940716388691,
+            "upper": 0.006011460290962762
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05141275069618543,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.04909175200792326,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.0023209986882621898,
+            "lower": 0.0003514901840314696,
+            "upper": 0.0042905071924929095
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.04749999999999992,
+          "subset": {
+            "brier": 0.051249225407914704,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.049091716869740856,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.002157508538173836,
+            "lower": 0.0002309313159088043,
+            "upper": 0.004084085760438868
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.048918562973311125,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.04822485219901112,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.0006937107743000495,
+            "lower": 0.00026915703024420494,
+            "upper": 0.0011182645183558941
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.04749999999999992,
+          "subset": {
+            "brier": 0.048813580089730725,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.048224852199011105,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.0005887278907196609,
+            "lower": 0.0001866234053341392,
+            "upper": 0.0009908323761051827
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.26822512791682007,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.2594983953210208,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.00872673259579931,
+            "lower": 0.0012799338488767818,
+            "upper": 0.01617353134272184
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.2621306814951393,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.25185599814884485,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.010274683346294486,
+            "lower": 0.006392116981615455,
+            "upper": 0.014157249710973516
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.27059582510501046,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.25598144664071654,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.014614378464293972,
+            "lower": 0.007402844828084988,
+            "upper": 0.021825912100502956
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.26147947549045997,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.2509336852457776,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.010545790244682437,
+            "lower": 0.006354222138188235,
+            "upper": 0.014737358351176639
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.26556011311442784,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.25319843438361794,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.012361678730809837,
+            "lower": 0.007513738994820648,
+            "upper": 0.017209618466799026
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.2573686850226799,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.250652197865815,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.006716487156864995,
+            "lower": 0.004237150191847106,
+            "upper": 0.009195824121882884
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999988,
+          "subset": {
+            "brier": 0.2505133520654051,
+            "accuracy": 0.5428466796874993
+          },
+          "boolean": {
+            "brier": 0.1018503041013727,
+            "accuracy": 0.890948486328117
+          },
+          "gain": {
+            "mean": 0.1486630479640324,
+            "lower": 0.11938616725051057,
+            "upper": 0.17793992867755423
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19304687499999998,
+          "subset": {
+            "brier": 0.25500872015297393,
+            "accuracy": 0.5177978515624997
+          },
+          "boolean": {
+            "brier": 0.21919387925666706,
+            "accuracy": 0.6265624999999977
+          },
+          "gain": {
+            "mean": 0.03581484089630696,
+            "lower": 0.012500101022221568,
+            "upper": 0.05912958077039235
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999988,
+          "subset": {
+            "brier": 0.1280186827969852,
+            "accuracy": 0.8123413085937445
+          },
+          "boolean": {
+            "brier": 0.04945389170437633,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.07856479109260889,
+            "lower": 0.06206720870784353,
+            "upper": 0.09506237347737424
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19304687499999998,
+          "subset": {
+            "brier": 0.22598677711858675,
+            "accuracy": 0.5848144531249985
+          },
+          "boolean": {
+            "brier": 0.20327884223711196,
+            "accuracy": 0.6265624999999977
+          },
+          "gain": {
+            "mean": 0.022707934881474864,
+            "lower": 0.008887696589534736,
+            "upper": 0.036528173173414995
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999988,
+          "subset": {
+            "brier": 0.07097001785719162,
+            "accuracy": 0.9240173339843671
+          },
+          "boolean": {
+            "brier": 0.04810281075439451,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.022867207102797115,
+            "lower": 0.016759888042216273,
+            "upper": 0.028974526163377957
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19304687499999998,
+          "subset": {
+            "brier": 0.21290686536547163,
+            "accuracy": 0.6173339843749979
+          },
+          "boolean": {
+            "brier": 0.20334807697622356,
+            "accuracy": 0.6265624999999977
+          },
+          "gain": {
+            "mean": 0.009558788389248042,
+            "lower": 0.00378697254899687,
+            "upper": 0.015330604229499214
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.07489286768963621,
+            "accuracy": 0.9370910644531165
+          },
+          "boolean": {
+            "brier": 0.07811112565025588,
+            "accuracy": 0.9250610351562414
+          },
+          "gain": {
+            "mean": -0.003218257960619634,
+            "lower": -0.020673527298598476,
+            "upper": 0.014237011377359207
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.08863281249999998,
+          "subset": {
+            "brier": 0.11260491357751876,
+            "accuracy": 0.851782226562493
+          },
+          "boolean": {
+            "brier": 0.11113570406572566,
+            "accuracy": 0.8585937499999927
+          },
+          "gain": {
+            "mean": 0.001469209511793094,
+            "lower": -0.006540894477274768,
+            "upper": 0.009479313500860957
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05426508412394723,
+            "accuracy": 0.9498901367187407
+          },
+          "boolean": {
+            "brier": 0.050176014376333816,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.004089069747613427,
+            "lower": 0.0018763675800331893,
+            "upper": 0.006301771915193664
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.08863281249999998,
+          "subset": {
+            "brier": 0.09457863995882733,
+            "accuracy": 0.8585937499999927
+          },
+          "boolean": {
+            "brier": 0.0909195083652307,
+            "accuracy": 0.8585937499999927
+          },
+          "gain": {
+            "mean": 0.0036591315935966097,
+            "lower": 0.0016384737714648912,
+            "upper": 0.005679789415728328
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.04965354788475159,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.04825074013389707,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.001402807750854515,
+            "lower": 0.0006324685616251552,
+            "upper": 0.0021731469400838744
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.08863281249999998,
+          "subset": {
+            "brier": 0.090316996617962,
+            "accuracy": 0.8585937499999927
+          },
+          "boolean": {
+            "brier": 0.08917159811461707,
+            "accuracy": 0.8585937499999927
+          },
+          "gain": {
+            "mean": 0.0011453985033449332,
+            "lower": 0.0005960392960991773,
+            "upper": 0.001694757710590689
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.11842164798313604,
+            "accuracy": 0.8796051025390558
+          },
+          "boolean": {
+            "brier": 0.07692755842194249,
+            "accuracy": 0.930471801757804
+          },
+          "gain": {
+            "mean": 0.04149408956119355,
+            "lower": 0.02644290271385364,
+            "upper": 0.056545276408533456
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.16140624999999997,
+          "subset": {
+            "brier": 0.19402721213754284,
+            "accuracy": 0.6757812499999969
+          },
+          "boolean": {
+            "brier": 0.17500127707297888,
+            "accuracy": 0.6962158203124962
+          },
+          "gain": {
+            "mean": 0.019025935064563924,
+            "lower": 0.008357417103974045,
+            "upper": 0.029694453025153805
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05777191415054682,
+            "accuracy": 0.9498901367187407
+          },
+          "boolean": {
+            "brier": 0.048679667442925414,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.009092246707621408,
+            "lower": 0.004896489836214745,
+            "upper": 0.01328800357902807
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.16140624999999997,
+          "subset": {
+            "brier": 0.1670981588219993,
+            "accuracy": 0.6968749999999961
+          },
+          "boolean": {
+            "brier": 0.1618313387351799,
+            "accuracy": 0.6968749999999961
+          },
+          "gain": {
+            "mean": 0.00526682008681936,
+            "lower": 0.0019897961746027496,
+            "upper": 0.008543843999035971
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.051323983954910196,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.04804363906926187,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.003280344885648315,
+            "lower": 0.0017875048200834225,
+            "upper": 0.004773184951213207
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.16140624999999997,
+          "subset": {
+            "brier": 0.16371353159184143,
+            "accuracy": 0.6968749999999961
+          },
+          "boolean": {
+            "brier": 0.16155510355130404,
+            "accuracy": 0.6968749999999961
+          },
+          "gain": {
+            "mean": 0.002158428040537386,
+            "lower": 0.0011412118553960494,
+            "upper": 0.0031756442256787223
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.2188594344433659,
+            "accuracy": 0.6574890136718724
+          },
+          "boolean": {
+            "brier": 0.0983828187025036,
+            "accuracy": 0.8959472656249923
+          },
+          "gain": {
+            "mean": 0.12047661574086221,
+            "lower": 0.09400828488226047,
+            "upper": 0.14694494659946394
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.17089843749999994,
+          "subset": {
+            "brier": 0.24205684916623843,
+            "accuracy": 0.5764648437499987
+          },
+          "boolean": {
+            "brier": 0.1853467940295179,
+            "accuracy": 0.6757812499999967
+          },
+          "gain": {
+            "mean": 0.05671005513672058,
+            "lower": 0.028598669936483873,
+            "upper": 0.0848214403369573
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "n": 32,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.08414055967101794,
+            "accuracy": 0.9097625732421795
+          },
+          "boolean": {
+            "brier": 0.051147203446565884,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.032993356224452076,
+            "lower": 0.02257341729190008,
+            "upper": 0.043413295157004074
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.17089843749999994,
+          "subset": {
+            "brier": 0.18490989607810068,
+            "accuracy": 0.6652343749999972
+          },
+          "boolean": {
+            "brier": 0.17169826881486655,
+            "accuracy": 0.6757812499999967
+          },
+          "gain": {
+            "mean": 0.013211627263234065,
+            "lower": 0.005837116515031766,
+            "upper": 0.020586138011436363
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "n": 64,
+      "fits": 64,
+      "required": true,
+      "advancePass": false,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05732195084049474,
+            "accuracy": 0.9465118408203033
+          },
+          "boolean": {
+            "brier": 0.04826184933244307,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.009060101508051676,
+            "lower": 0.005294672079575378,
+            "upper": 0.012825530936527975
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.17089843749999994,
+          "subset": {
+            "brier": 0.1755868556830545,
+            "accuracy": 0.6757812499999964
+          },
+          "boolean": {
+            "brier": 0.17114090240509794,
+            "accuracy": 0.6757812499999967
+          },
+          "gain": {
+            "mean": 0.004445953277956475,
+            "lower": 0.002272408215310031,
+            "upper": 0.00661949834060292
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.259950764759107,
+            "accuracy": 0.5119201660156248
+          },
+          "boolean": {
+            "brier": 0.14071014313170477,
+            "accuracy": 0.8300567626953059
+          },
+          "gain": {
+            "mean": 0.11924062162740232,
+            "lower": 0.07936917215316901,
+            "upper": 0.1591120711016356
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.20886718749999997,
+          "subset": {
+            "brier": 0.2589361511942925,
+            "accuracy": 0.5037353515624999
+          },
+          "boolean": {
+            "brier": 0.2251038038097371,
+            "accuracy": 0.5834960937499984
+          },
+          "gain": {
+            "mean": 0.033832347384555435,
+            "lower": 0.007461456745137256,
+            "upper": 0.060203238023973614
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "n": 32,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.15995047792008552,
+            "accuracy": 0.7735321044921828
+          },
+          "boolean": {
+            "brier": 0.05511871954499554,
+            "accuracy": 0.9429687499999908
+          },
+          "gain": {
+            "mean": 0.10483175837509005,
+            "lower": 0.08398022249575451,
+            "upper": 0.1256832942544256
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.20886718749999997,
+          "subset": {
+            "brier": 0.23611207313598045,
+            "accuracy": 0.563500976562499
+          },
+          "boolean": {
+            "brier": 0.2090827912103642,
+            "accuracy": 0.5914062499999984
+          },
+          "gain": {
+            "mean": 0.02702928192561625,
+            "lower": 0.007160879289293508,
+            "upper": 0.04689768456193899
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "n": 64,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.07565327839456423,
+            "accuracy": 0.9201995849609299
+          },
+          "boolean": {
+            "brier": 0.048703825261194364,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.02694945313336987,
+            "lower": 0.020149233234820613,
+            "upper": 0.03374967303191913
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.20886718749999997,
+          "subset": {
+            "brier": 0.2162810854901819,
+            "accuracy": 0.5883300781249985
+          },
+          "boolean": {
+            "brier": 0.2089940828765277,
+            "accuracy": 0.5914062499999984
+          },
+          "gain": {
+            "mean": 0.007287002613654156,
+            "lower": 0.0036980137116486697,
+            "upper": 0.010875991515659642
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.2624367102252262,
+            "accuracy": 0.5118377685546874
+          },
+          "boolean": {
+            "brier": 0.12471078783515875,
+            "accuracy": 0.8663116455078053
+          },
+          "gain": {
+            "mean": 0.13772592239006737,
+            "lower": 0.09822182540947753,
+            "upper": 0.1772300193706572
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.21835937499999997,
+          "subset": {
+            "brier": 0.2613955668531366,
+            "accuracy": 0.5021972656249999
+          },
+          "boolean": {
+            "brier": 0.2296712118199139,
+            "accuracy": 0.5703124999999988
+          },
+          "gain": {
+            "mean": 0.0317243550332228,
+            "lower": 0.004680550454238673,
+            "upper": 0.05876815961220693
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "n": 32,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.1511231638113293,
+            "accuracy": 0.782815551757808
+          },
+          "boolean": {
+            "brier": 0.0512240609897815,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.09989910282154785,
+            "lower": 0.08184456887014516,
+            "upper": 0.11795363677295054
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.21835937499999997,
+          "subset": {
+            "brier": 0.24128401295795543,
+            "accuracy": 0.5419677734374995
+          },
+          "boolean": {
+            "brier": 0.21911541268227533,
+            "accuracy": 0.5703124999999988
+          },
+          "gain": {
+            "mean": 0.022168600275679982,
+            "lower": 0.0060818115083878625,
+            "upper": 0.0382553890429721
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "n": 64,
+      "fits": 64,
+      "required": true,
+      "advancePass": true,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.07276194992687313,
+            "accuracy": 0.924841308593742
+          },
+          "boolean": {
+            "brier": 0.04817493060873147,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.024587019318141654,
+            "lower": 0.018875579631529506,
+            "upper": 0.0302984590047538
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.21835937499999997,
+          "subset": {
+            "brier": 0.22616163688572163,
+            "accuracy": 0.5683349609374988
+          },
+          "boolean": {
+            "brier": 0.21850776629949972,
+            "accuracy": 0.5703124999999988
+          },
+          "gain": {
+            "mean": 0.007653870586222013,
+            "lower": 0.003929033553262447,
+            "upper": 0.01137870761918158
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.19234919149290325,
+            "accuracy": 0.7248901367187464
+          },
+          "boolean": {
+            "brier": 0.232438868127066,
+            "accuracy": 0.6395812988281229
+          },
+          "gain": {
+            "mean": -0.04008967663416278,
+            "lower": -0.05737588999091543,
+            "upper": -0.02280346327741013
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.14163085937499992,
+          "subset": {
+            "brier": 0.21844660166031876,
+            "accuracy": 0.6505126953124978
+          },
+          "boolean": {
+            "brier": 0.23533276455172403,
+            "accuracy": 0.6415039062499979
+          },
+          "gain": {
+            "mean": -0.0168861628914053,
+            "lower": -0.024763931717989095,
+            "upper": -0.009008394064821505
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.10237638124164876,
+            "accuracy": 0.8901794433593675
+          },
+          "boolean": {
+            "brier": 0.20873222909649303,
+            "accuracy": 0.6975067138671841
+          },
+          "gain": {
+            "mean": -0.1063558478548443,
+            "lower": -0.12209192942926185,
+            "upper": -0.09061976628042674
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.14163085937499992,
+          "subset": {
+            "brier": 0.17033782487241317,
+            "accuracy": 0.7464233398437456
+          },
+          "boolean": {
+            "brier": 0.22446491749578068,
+            "accuracy": 0.6817138671874972
+          },
+          "gain": {
+            "mean": -0.05412709262336733,
+            "lower": -0.07211331188479715,
+            "upper": -0.03614087336193751
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05489410700248785,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.19060842469358374,
+            "accuracy": 0.7425781249999959
+          },
+          "gain": {
+            "mean": -0.13571431769109585,
+            "lower": -0.1424651075692293,
+            "upper": -0.1289635278129624
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.14163085937499992,
+          "subset": {
+            "brier": 0.14580957568369624,
+            "accuracy": 0.7671874999999952
+          },
+          "boolean": {
+            "brier": 0.2170219413908978,
+            "accuracy": 0.7148925781249966
+          },
+          "gain": {
+            "mean": -0.07121236570720164,
+            "lower": -0.08930004912511878,
+            "upper": -0.053124682289284506
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.18661109931528713,
+            "accuracy": 0.7457366943359338
+          },
+          "boolean": {
+            "brier": 0.2288722246828292,
+            "accuracy": 0.6541931152343728
+          },
+          "gain": {
+            "mean": -0.042261125367542014,
+            "lower": -0.05537427590972843,
+            "upper": -0.029147974825355596
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.13609374999999996,
+          "subset": {
+            "brier": 0.21089889317508867,
+            "accuracy": 0.6742431640624971
+          },
+          "boolean": {
+            "brier": 0.23209644935690407,
+            "accuracy": 0.6487548828124976
+          },
+          "gain": {
+            "mean": -0.021197556181815392,
+            "lower": -0.031847802718984936,
+            "upper": -0.010547309644645845
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.10268419296544751,
+            "accuracy": 0.8870483398437425
+          },
+          "boolean": {
+            "brier": 0.20383641072141542,
+            "accuracy": 0.7261535644531214
+          },
+          "gain": {
+            "mean": -0.10115221775596792,
+            "lower": -0.11749788934823233,
+            "upper": -0.0848065461637035
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.13609374999999996,
+          "subset": {
+            "brier": 0.16584854017723966,
+            "accuracy": 0.7375244140624959
+          },
+          "boolean": {
+            "brier": 0.21863494310554632,
+            "accuracy": 0.6764404296874971
+          },
+          "gain": {
+            "mean": -0.052786402928306705,
+            "lower": -0.07209700376775337,
+            "upper": -0.03347580208886004
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05619220083298711,
+            "accuracy": 0.9491210937499905
+          },
+          "boolean": {
+            "brier": 0.18790341386462028,
+            "accuracy": 0.739227294921871
+          },
+          "gain": {
+            "mean": -0.13171121303163322,
+            "lower": -0.13819436745947686,
+            "upper": -0.12522805860378958
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.13609374999999996,
+          "subset": {
+            "brier": 0.14121197256775658,
+            "accuracy": 0.7531249999999956
+          },
+          "boolean": {
+            "brier": 0.2110758945261221,
+            "accuracy": 0.682812499999997
+          },
+          "gain": {
+            "mean": -0.06986392195836555,
+            "lower": -0.09229437959211402,
+            "upper": -0.04743346432461708
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.05881320346497299,
+            "accuracy": 0.9490112304687406
+          },
+          "boolean": {
+            "brier": 0.059926292775095986,
+            "accuracy": 0.9464569091796784
+          },
+          "gain": {
+            "mean": -0.0011130893101229842,
+            "lower": -0.007591402907321968,
+            "upper": 0.005365224287076
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.04749999999999992,
+          "subset": {
+            "brier": 0.05820129430744124,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.05962843042525055,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": -0.0014271361178093062,
+            "lower": -0.007750859816515594,
+            "upper": 0.0048965875808969815
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.050626987426982954,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.048832805590499975,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.0017941818364829744,
+            "lower": 0.00028982928429391514,
+            "upper": 0.0032985343886720335
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.04749999999999992,
+          "subset": {
+            "brier": 0.05036001453945202,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.048832703444496105,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.0015273110949559222,
+            "lower": 0.0003352328248309637,
+            "upper": 0.0027193893650808805
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999973,
+          "subset": {
+            "brier": 0.048521563887016735,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.048075074198056164,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.000446489688960579,
+            "lower": 0.00014733401270196692,
+            "upper": 0.0007456453652191911
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.04749999999999992,
+          "subset": {
+            "brier": 0.048452375289595194,
+            "accuracy": 0.9499999999999906
+          },
+          "boolean": {
+            "brier": 0.048075074198056164,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.000377301091539064,
+            "lower": 0.00010477375507641324,
+            "upper": 0.0006498284280017148
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.26733640869415704,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.2664307206515029,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.0009056880426541866,
+            "lower": -0.014766073858499793,
+            "upper": 0.016577449943808168
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.26249203141141964,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.25303866090395727,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.009453370507462271,
+            "lower": 0.005825213690547877,
+            "upper": 0.013081527324376665
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.2715040879075787,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.2592604808697205,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.012243607037858328,
+            "lower": 0.004795542392219021,
+            "upper": 0.019691671683497634
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.2630375860399519,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.25311326338047685,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.009924322659475016,
+            "lower": 0.0059862192128761335,
+            "upper": 0.013862426106073897
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.26956311446638115,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.25326328627700745,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.016299828189373734,
+            "lower": 0.010403002196390626,
+            "upper": 0.02219665418235684
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.25,
+          "subset": {
+            "brier": 0.2584920108654006,
+            "accuracy": 0.5
+          },
+          "boolean": {
+            "brier": 0.2507534073924226,
+            "accuracy": 0.5
+          },
+          "gain": {
+            "mean": 0.007738603472978016,
+            "lower": 0.0038548578372178586,
+            "upper": 0.011622349108738174
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "n": 16,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999988,
+          "subset": {
+            "brier": 0.23024801664966044,
+            "accuracy": 0.5940429687499987
+          },
+          "boolean": {
+            "brier": 0.08459988873552036,
+            "accuracy": 0.9138000488281166
+          },
+          "gain": {
+            "mean": 0.14564812791413997,
+            "lower": 0.11450937718710053,
+            "upper": 0.17678687864117942
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19621093749999996,
+          "subset": {
+            "brier": 0.2544506347092418,
+            "accuracy": 0.5164794921874997
+          },
+          "boolean": {
+            "brier": 0.2141987401616586,
+            "accuracy": 0.6195312499999979
+          },
+          "gain": {
+            "mean": 0.04025189454758312,
+            "lower": 0.014426716275464827,
+            "upper": 0.06607707281970142
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "n": 32,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999988,
+          "subset": {
+            "brier": 0.11585635413781045,
+            "accuracy": 0.838763427734369
+          },
+          "boolean": {
+            "brier": 0.051018223030401974,
+            "accuracy": 0.9441223144531159
+          },
+          "gain": {
+            "mean": 0.06483813110740849,
+            "lower": 0.04701887657041866,
+            "upper": 0.08265738564439833
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19621093749999996,
+          "subset": {
+            "brier": 0.22819788328967625,
+            "accuracy": 0.5815185546874987
+          },
+          "boolean": {
+            "brier": 0.20623011609775282,
+            "accuracy": 0.6195312499999979
+          },
+          "gain": {
+            "mean": 0.021967767191923494,
+            "lower": 0.008048405974055825,
+            "upper": 0.035887128409791164
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "n": 64,
+      "fits": 64,
+      "required": false,
+      "advancePass": null,
+      "views": [
+        {
+          "name": "full",
+          "oracle": 0.04749999999999988,
+          "subset": {
+            "brier": 0.06740962674385018,
+            "accuracy": 0.9246765136718669
+          },
+          "boolean": {
+            "brier": 0.0483931346399526,
+            "accuracy": 0.9499999999999906
+          },
+          "gain": {
+            "mean": 0.01901649210389758,
+            "lower": 0.013118527831690938,
+            "upper": 0.024914456376104226
+          }
+        },
+        {
+          "name": "fixed_mask63",
+          "oracle": 0.19621093749999996,
+          "subset": {
+            "brier": 0.21450852590960826,
+            "accuracy": 0.6094238281249981
+          },
+          "boolean": {
+            "brier": 0.20562670123820181,
+            "accuracy": 0.6195312499999979
+          },
+          "gain": {
+            "mean": 0.008881824671406476,
+            "lower": 0.003003923189964311,
+            "upper": 0.01475972615284864
+          }
+        }
+      ]
+    }
+  ]
+}

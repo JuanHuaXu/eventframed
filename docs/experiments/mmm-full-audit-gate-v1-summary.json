@@ -1,0 +1,637 @@
+{
+  "rawSHA256": "4fa55842386feaed4bfbefeab975512a54dd9dfb595a0d22ab1bd757b34449f7",
+  "parentSHA256": "c21f8ba8014956beecdf4866fff87efab393ff7b5f0dbe233747fd03840c9775",
+  "sources": 870,
+  "screens": {
+    "reverseImproved": false,
+    "forwardRetained": false,
+    "noAddedStableSplits": true
+  },
+  "cells": [
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "schedule": "Immediate",
+      "n": 16,
+      "accuracyBefore": [
+        0.9499999999999922,
+        0.9481323242187423
+      ],
+      "accuracyAfter": [
+        0.9499999999999922,
+        0.9481323242187423
+      ],
+      "meanAuditPairs": 124.5,
+      "meanArrivedAuditPairs": 124.5,
+      "arms": [
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "schedule": "Delayed",
+      "n": 16,
+      "accuracyBefore": [
+        0.9499999999999922,
+        0.9481323242187423
+      ],
+      "accuracyAfter": [
+        0.9499999999999922,
+        0.9481323242187423
+      ],
+      "meanAuditPairs": 124.5,
+      "meanArrivedAuditPairs": 98,
+      "arms": [
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "schedule": "Immediate",
+      "n": 16,
+      "accuracyBefore": [
+        0.7320312499999962,
+        0.9482421874999922
+      ],
+      "accuracyAfter": [
+        0.7320312499999962,
+        0.9482421874999922
+      ],
+      "meanAuditPairs": 124.5,
+      "meanArrivedAuditPairs": 124.5,
+      "arms": [
+        {
+          "allowed": 0,
+          "nominated": 3,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "schedule": "Delayed",
+      "n": 16,
+      "accuracyBefore": [
+        0.7320312499999962,
+        0.9482421874999922
+      ],
+      "accuracyAfter": [
+        0.7320312499999962,
+        0.9482421874999922
+      ],
+      "meanAuditPairs": 124.5,
+      "meanArrivedAuditPairs": 99.75,
+      "arms": [
+        {
+          "allowed": 0,
+          "nominated": 3,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "schedule": "Immediate",
+      "n": 16,
+      "accuracyBefore": [
+        0.9499999999999922,
+        0.9489013671874923
+      ],
+      "accuracyAfter": [
+        0.5,
+        0.500439453125
+      ],
+      "meanAuditPairs": 124.5625,
+      "meanArrivedAuditPairs": 124.5625,
+      "arms": [
+        {
+          "allowed": 16,
+          "nominated": 16,
+          "split": 16,
+          "splitBy511": 16,
+          "meanDetectedClock": 333
+        },
+        {
+          "allowed": 4,
+          "nominated": 16,
+          "split": 4,
+          "splitBy511": 4,
+          "meanDetectedClock": 471.25
+        },
+        {
+          "allowed": 4,
+          "nominated": 16,
+          "split": 4,
+          "splitBy511": 4,
+          "meanDetectedClock": 472
+        }
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "schedule": "Delayed",
+      "n": 16,
+      "accuracyBefore": [
+        0.9499999999999922,
+        0.9489013671874923
+      ],
+      "accuracyAfter": [
+        0.5,
+        0.500439453125
+      ],
+      "meanAuditPairs": 124.5625,
+      "meanArrivedAuditPairs": 98.3125,
+      "arms": [
+        {
+          "allowed": 16,
+          "nominated": 16,
+          "split": 16,
+          "splitBy511": 16,
+          "meanDetectedClock": 379.9375
+        },
+        {
+          "allowed": 0,
+          "nominated": 16,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 16,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "schedule": "Immediate",
+      "n": 16,
+      "accuracyBefore": [
+        0.744335937499996,
+        0.9479125976562421
+      ],
+      "accuracyAfter": [
+        0.4973632812499997,
+        0.4994506835937499
+      ],
+      "meanAuditPairs": 125.4375,
+      "meanArrivedAuditPairs": 125.4375,
+      "arms": [
+        {
+          "allowed": 5,
+          "nominated": 12,
+          "split": 5,
+          "splitBy511": 5,
+          "meanDetectedClock": 341.4
+        },
+        {
+          "allowed": 1,
+          "nominated": 7,
+          "split": 1,
+          "splitBy511": 1,
+          "meanDetectedClock": 448
+        },
+        {
+          "allowed": 3,
+          "nominated": 16,
+          "split": 3,
+          "splitBy511": 3,
+          "meanDetectedClock": 470
+        }
+      ]
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "schedule": "Delayed",
+      "n": 16,
+      "accuracyBefore": [
+        0.744335937499996,
+        0.9479125976562421
+      ],
+      "accuracyAfter": [
+        0.4973632812499997,
+        0.4994506835937499
+      ],
+      "meanAuditPairs": 125.4375,
+      "meanArrivedAuditPairs": 101.6875,
+      "arms": [
+        {
+          "allowed": 5,
+          "nominated": 12,
+          "split": 5,
+          "splitBy511": 5,
+          "meanDetectedClock": 374.2
+        },
+        {
+          "allowed": 0,
+          "nominated": 6,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 1,
+          "nominated": 16,
+          "split": 1,
+          "splitBy511": 1,
+          "meanDetectedClock": 482
+        }
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "schedule": "Immediate",
+      "n": 16,
+      "accuracyBefore": [
+        0.9499999999999922,
+        0.9480224609374921
+      ],
+      "accuracyAfter": [
+        0.9499999999999922,
+        0.9480224609374921
+      ],
+      "meanAuditPairs": 131.8125,
+      "meanArrivedAuditPairs": 131.8125,
+      "arms": [
+        {
+          "allowed": 0,
+          "nominated": 2,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "schedule": "Delayed",
+      "n": 16,
+      "accuracyBefore": [
+        0.9499999999999922,
+        0.9480224609374921
+      ],
+      "accuracyAfter": [
+        0.9499999999999922,
+        0.9480224609374921
+      ],
+      "meanAuditPairs": 131.8125,
+      "meanArrivedAuditPairs": 104.4375,
+      "arms": [
+        {
+          "allowed": 0,
+          "nominated": 1,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "schedule": "Immediate",
+      "n": 16,
+      "accuracyBefore": [
+        0.6582031249999976,
+        0.9482421874999923
+      ],
+      "accuracyAfter": [
+        0.6582031249999976,
+        0.9482421874999923
+      ],
+      "meanAuditPairs": 132.6875,
+      "meanArrivedAuditPairs": 132.6875,
+      "arms": [
+        {
+          "allowed": 0,
+          "nominated": 2,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 2,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "schedule": "Delayed",
+      "n": 16,
+      "accuracyBefore": [
+        0.6582031249999976,
+        0.9482421874999923
+      ],
+      "accuracyAfter": [
+        0.6582031249999976,
+        0.9482421874999923
+      ],
+      "meanAuditPairs": 132.6875,
+      "meanArrivedAuditPairs": 105.5625,
+      "arms": [
+        {
+          "allowed": 0,
+          "nominated": 3,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 1,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 0,
+          "nominated": 0,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        }
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "schedule": "Immediate",
+      "n": 16,
+      "accuracyBefore": [
+        0.9499999999999922,
+        0.9485717773437423
+      ],
+      "accuracyAfter": [
+        0.5,
+        0.49967041015625
+      ],
+      "meanAuditPairs": 129.1875,
+      "meanArrivedAuditPairs": 129.1875,
+      "arms": [
+        {
+          "allowed": 16,
+          "nominated": 16,
+          "split": 16,
+          "splitBy511": 16,
+          "meanDetectedClock": 322.25
+        },
+        {
+          "allowed": 4,
+          "nominated": 16,
+          "split": 4,
+          "splitBy511": 4,
+          "meanDetectedClock": 474.5
+        },
+        {
+          "allowed": 4,
+          "nominated": 16,
+          "split": 4,
+          "splitBy511": 4,
+          "meanDetectedClock": 473.25
+        }
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "schedule": "Delayed",
+      "n": 16,
+      "accuracyBefore": [
+        0.9499999999999922,
+        0.9485717773437423
+      ],
+      "accuracyAfter": [
+        0.5,
+        0.49967041015625
+      ],
+      "meanAuditPairs": 129.1875,
+      "meanArrivedAuditPairs": 103.5625,
+      "arms": [
+        {
+          "allowed": 16,
+          "nominated": 16,
+          "split": 16,
+          "splitBy511": 16,
+          "meanDetectedClock": 382.0625
+        },
+        {
+          "allowed": 4,
+          "nominated": 16,
+          "split": 4,
+          "splitBy511": 0,
+          "meanDetectedClock": 529
+        },
+        {
+          "allowed": 4,
+          "nominated": 16,
+          "split": 4,
+          "splitBy511": 0,
+          "meanDetectedClock": 529
+        }
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "schedule": "Immediate",
+      "n": 16,
+      "accuracyBefore": [
+        0.6265624999999981,
+        0.9491210937499922
+      ],
+      "accuracyAfter": [
+        0.5004394531249998,
+        0.5002197265624999
+      ],
+      "meanAuditPairs": 124.875,
+      "meanArrivedAuditPairs": 124.875,
+      "arms": [
+        {
+          "allowed": 1,
+          "nominated": 8,
+          "split": 1,
+          "splitBy511": 1,
+          "meanDetectedClock": 453
+        },
+        {
+          "allowed": 0,
+          "nominated": 1,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 5,
+          "nominated": 16,
+          "split": 5,
+          "splitBy511": 5,
+          "meanDetectedClock": 465.8
+        }
+      ]
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "schedule": "Delayed",
+      "n": 16,
+      "accuracyBefore": [
+        0.6265624999999981,
+        0.9491210937499922
+      ],
+      "accuracyAfter": [
+        0.5004394531249998,
+        0.5002197265624999
+      ],
+      "meanAuditPairs": 124.875,
+      "meanArrivedAuditPairs": 102.6875,
+      "arms": [
+        {
+          "allowed": 1,
+          "nominated": 7,
+          "split": 1,
+          "splitBy511": 1,
+          "meanDetectedClock": 488
+        },
+        {
+          "allowed": 0,
+          "nominated": 2,
+          "split": 0,
+          "splitBy511": 0,
+          "meanDetectedClock": null
+        },
+        {
+          "allowed": 3,
+          "nominated": 16,
+          "split": 3,
+          "splitBy511": 1,
+          "meanDetectedClock": 514.6666666666666
+        }
+      ]
+    }
+  ],
+  "limits": "Consumed shadow gate comparison, not closed-loop recovery, fresh confirmation, or equal-cost observation-policy evidence. Detected-clock means exclude misses."
+}

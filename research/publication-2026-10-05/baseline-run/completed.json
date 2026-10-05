@@ -1,0 +1,56 @@
+{
+  "checks": [
+    {
+      "name": "selector",
+      "args": [
+        "test",
+        "./internal/researchbaseline",
+        "-count=1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.6640879580000001,
+      "logSHA256": "23d3d5d2eafca55dea0a3d262fd36bdc91f32d8664c3d815b6aa41711deed701"
+    },
+    {
+      "name": "native-controls",
+      "args": [
+        "test",
+        "./internal/researchdispersion",
+        "-run=^TestResearchBaselinePolicy20261005$",
+        "-v",
+        "-count=1",
+        "-timeout=10m"
+      ],
+      "exitCode": 0,
+      "seconds": 30.653897458,
+      "logSHA256": "48f95148d226274092b4172051381d834868a4e2713965d85874707dd715ac2a"
+    },
+    {
+      "name": "future-prefix",
+      "args": [
+        "test",
+        "./internal/researchdispersion",
+        "-run=^TestWindowCollectorFuturePrefixV37$",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "exitCode": 0,
+      "seconds": 1.9754955829999963,
+      "logSHA256": "db04e1adaf0b289a357a3b16f6ee3479d311b4d55cffeda27dc630bfd93698b1"
+    },
+    {
+      "name": "selector-race",
+      "args": [
+        "test",
+        "-race",
+        "./internal/researchbaseline",
+        "-count=1"
+      ],
+      "exitCode": 0,
+      "seconds": 1.5796394159999982,
+      "logSHA256": "034c920d73c079e487f3067e415d9b8af93f0984f6af008a3be671198f43634b"
+    }
+  ],
+  "allJobsTerminal": true,
+  "allPass": true
+}

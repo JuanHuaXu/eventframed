@@ -1,0 +1,37 @@
+{
+  "time": "2026-10-03T22:13:00.592Z",
+  "post_hoc_adjacent_checks": true,
+  "checks": [
+    {
+      "args": [
+        "test",
+        "-race",
+        "./internal/researchsparse",
+        "./internal/researchfusion",
+        "./internal/researchmagnitude",
+        "-count=1",
+        "-timeout=3m"
+      ],
+      "code": 0,
+      "wall_ms": 1686,
+      "log": "ok  \tgithub.com/JuanHuaXu/eventframed/internal/researchsparse\t1.247s\nok  \tgithub.com/JuanHuaXu/eventframed/internal/researchfusion\t1.404s\nok  \tgithub.com/JuanHuaXu/eventframed/internal/researchmagnitude\t1.376s\n",
+      "log_sha256": "6cddd2086e442c3d6566b5e72b19badded5d965e44b5623ee129047303bd05ed"
+    },
+    {
+      "args": [
+        "test",
+        "-race",
+        "./internal/service",
+        "-run",
+        "TestSparseDirectRankingBeforePacking|TestResearchRank",
+        "-count=1",
+        "-timeout=3m"
+      ],
+      "code": 0,
+      "wall_ms": 2017,
+      "log": "ok  \tgithub.com/JuanHuaXu/eventframed/internal/service\t1.437s\n",
+      "log_sha256": "3ccb6aff73494ca214dc325abff7b91e91f44a02f0b9c0f1f29aeffaf74fd3a3"
+    }
+  ],
+  "whole_goal_complete": false
+}

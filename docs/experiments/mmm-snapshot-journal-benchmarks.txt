@@ -1,0 +1,33 @@
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkSnapshotJournalLifecycle$' -benchmem -benchtime=300ms -count=3
+Benchmark SHA256: da23fb78fbe38d6c5a9942cfd34e725262b19f403fa3eb15d3ac7bdcf758b8f1
+All18 repeats retained; no concurrent research computation.
+Each operation includes256 frames, eight prebuilt publications, observation,
+feedback and expiry. Model fitting and persistence are excluded.
+Controls have four changing roles and their archived6400 gate; candidate has
+eight snapshots and12800 gate. This is a workload cost comparison, not an
+isolated gate-budget ablation or matched-budget quality experiment.
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkSnapshotJournalLifecycle/immediate/arrival_log-10   188   1664457 ns/op    150008 B/op  1244 allocs/op
+BenchmarkSnapshotJournalLifecycle/immediate/arrival_log-10   216   1641211 ns/op    150009 B/op  1244 allocs/op
+BenchmarkSnapshotJournalLifecycle/immediate/arrival_log-10   217   1649796 ns/op    150009 B/op  1244 allocs/op
+BenchmarkSnapshotJournalLifecycle/immediate/fixed_markov-10  181   1987198 ns/op    166385 B/op  1244 allocs/op
+BenchmarkSnapshotJournalLifecycle/immediate/fixed_markov-10  181   1989474 ns/op    166385 B/op  1244 allocs/op
+BenchmarkSnapshotJournalLifecycle/immediate/fixed_markov-10  181   1989401 ns/op    166385 B/op  1244 allocs/op
+BenchmarkSnapshotJournalLifecycle/immediate/snapshot-10       34   9385469 ns/op  10234688 B/op  1219 allocs/op
+BenchmarkSnapshotJournalLifecycle/immediate/snapshot-10       36   9646096 ns/op  10234688 B/op  1219 allocs/op
+BenchmarkSnapshotJournalLifecycle/immediate/snapshot-10       37   9701303 ns/op  10234691 B/op  1219 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/arrival_log-10     274   1294000 ns/op    146040 B/op  1191 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/arrival_log-10     274   1294982 ns/op    146040 B/op  1191 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/arrival_log-10     274   1299849 ns/op    146042 B/op  1191 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/fixed_markov-10    100   3051225 ns/op    162416 B/op  1191 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/fixed_markov-10    100   3041024 ns/op    162416 B/op  1191 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/fixed_markov-10    100   3064220 ns/op    162417 B/op  1191 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/snapshot-10         19  17767518 ns/op  10238400 B/op  1196 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/snapshot-10         19  17700783 ns/op  10238405 B/op  1196 allocs/op
+BenchmarkSnapshotJournalLifecycle/delay31/snapshot-10         19  17832423 ns/op  10238400 B/op  1196 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/observationlearners 7.903s

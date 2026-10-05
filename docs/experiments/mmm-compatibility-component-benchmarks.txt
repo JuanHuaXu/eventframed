@@ -1,0 +1,24 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkCompatibilityJournal/log_identity-10         	     192	   1574082 ns/op	  151480 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/log_identity-10         	     229	   1553447 ns/op	  151480 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/log_identity-10         	     230	   1552874 ns/op	  151483 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/handoff_identity-10     	     181	   1976183 ns/op	  165041 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/handoff_identity-10     	     181	   1963664 ns/op	  165040 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/handoff_identity-10     	     181	   1969775 ns/op	  165041 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/pending_identity-10     	     182	   1969132 ns/op	  165041 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/pending_identity-10     	     182	   1989834 ns/op	  165040 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/pending_identity-10     	     182	   1988868 ns/op	  165040 B/op	    1241 allocs/op
+BenchmarkCompatibilityJournal/log_moving-10           	     223	   1598878 ns/op	  155065 B/op	    1255 allocs/op
+BenchmarkCompatibilityJournal/log_moving-10           	     223	   1594238 ns/op	  155066 B/op	    1255 allocs/op
+BenchmarkCompatibilityJournal/log_moving-10           	     220	   1596423 ns/op	  155065 B/op	    1255 allocs/op
+BenchmarkCompatibilityJournal/handoff_moving-10       	     182	   1968483 ns/op	  155633 B/op	    1168 allocs/op
+BenchmarkCompatibilityJournal/handoff_moving-10       	     182	   1940295 ns/op	  155632 B/op	    1168 allocs/op
+BenchmarkCompatibilityJournal/handoff_moving-10       	     184	   1941370 ns/op	  155632 B/op	    1168 allocs/op
+BenchmarkCompatibilityJournal/pending_moving-10       	     182	   1942824 ns/op	  155636 B/op	    1168 allocs/op
+BenchmarkCompatibilityJournal/pending_moving-10       	     184	   1925336 ns/op	  155632 B/op	    1168 allocs/op
+BenchmarkCompatibilityJournal/pending_moving-10       	     187	   1947905 ns/op	  155632 B/op	    1168 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	9.921s

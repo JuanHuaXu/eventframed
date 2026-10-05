@@ -1,0 +1,9 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationgate
+cpu: Apple M4
+BenchmarkObserve 	  707340	      1769 ns/op	       0 B/op	       0 allocs/op
+BenchmarkObserve 	  606400	      1690 ns/op	       0 B/op	       0 allocs/op
+BenchmarkObserve 	  616500	      1700 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationgate	4.336s

@@ -1,0 +1,12 @@
+{
+  "scope": "Forced audit graph, probability/cost layers, separate pre-audit recursive oracle, mixture reconstruction and full replay; no outward rounding",
+  "graphChecks": 20295680,
+  "statesChecked": 41200,
+  "witnessRound": 128,
+  "independentLower": 0.000326081643280296,
+  "reportedLower": 0.0003260816432802405,
+  "mixtureChecks": 310,
+  "replay": true,
+  "inputSHA256": "d30d67409a27f921f0f9d2b7b75ea95bfd440247342f95cc2d22dae0959b77a9",
+  "verifierSHA256": "819ab900ead25d58fe5b70f6eb4e0babe945adb8053e390c9364abaa2f35bfc7"
+}

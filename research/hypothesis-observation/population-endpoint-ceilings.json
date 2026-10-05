@@ -1,0 +1,126 @@
+{
+  "scope": "Numerical dual lower bounds imply endpoint gain ceilings for the fixed line family and coefficient constraints only; not a formal rounding-error bound",
+  "inputSHA256": "a9fb1c4f127906d8263e80522054ccb1bc65e0659e81263146086dcc31f9ea09",
+  "ceilings": [
+    {
+      "counts": [
+        1,
+        1,
+        1,
+        3
+      ],
+      "achievedGain": 0.00597017844236243,
+      "upperGain": 0.005970188411015193,
+      "required": 0.005,
+      "excluded": false
+    },
+    {
+      "counts": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "achievedGain": 0.0032921070237293152,
+      "upperGain": 0.0032921170580782325,
+      "required": 0.005,
+      "excluded": true
+    },
+    {
+      "counts": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "achievedGain": 0.000001927588518066337,
+      "upperGain": 0.000001927688518066337,
+      "required": 0.005,
+      "excluded": true
+    },
+    {
+      "counts": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "achievedGain": 0.00664343837537152,
+      "upperGain": 0.006643448318441509,
+      "required": 0.005,
+      "excluded": false
+    },
+    {
+      "counts": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "achievedGain": 0.0018733714025921191,
+      "upperGain": 0.0018733814649704904,
+      "required": 0.005,
+      "excluded": true
+    },
+    {
+      "counts": [
+        1,
+        3,
+        1,
+        1
+      ],
+      "achievedGain": 0.0019336858750201834,
+      "upperGain": 0.0019336958808116997,
+      "required": 0.005,
+      "excluded": true
+    },
+    {
+      "counts": [
+        2,
+        1,
+        1,
+        2
+      ],
+      "achievedGain": 0.006863654051753031,
+      "upperGain": 0.00686366326644657,
+      "required": 0.005,
+      "excluded": false
+    },
+    {
+      "counts": [
+        2,
+        1,
+        2,
+        1
+      ],
+      "achievedGain": 0.0035768341265170517,
+      "upperGain": 0.0035768407363538884,
+      "required": 0.005,
+      "excluded": true
+    },
+    {
+      "counts": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "achievedGain": 0.007098200007080199,
+      "upperGain": 0.007098210068107023,
+      "required": 0.005,
+      "excluded": false
+    },
+    {
+      "counts": [
+        3,
+        1,
+        1,
+        1
+      ],
+      "achievedGain": 0.006870181997053763,
+      "upperGain": 0.006870191932980391,
+      "required": 0.005,
+      "excluded": false
+    }
+  ]
+}

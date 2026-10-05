@@ -1,0 +1,1334 @@
+{
+  "raw_sha256": "38898f8b016fdc90018d04145a03ff170cff7a033af3a4257bab3ed06c6a6d3d",
+  "records": 192,
+  "frames": 98304,
+  "comparisons": [
+    {
+      "generator": "biased",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.13452247477123247,
+        "candidate_brier": 0.1390622602313166,
+        "harm": 0.004539785460084128
+      },
+      "Post": {
+        "baseline_brier": 0.2213690549063979,
+        "candidate_brier": 0.23044830472159067,
+        "harm": 0.009079249815192758
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.13452247477123247,
+        "candidate_brier": 0.13125473587440248,
+        "harm": -0.0032677388968299914
+      },
+      "Post": {
+        "baseline_brier": 0.2213690549063979,
+        "candidate_brier": 0.21483366762498937,
+        "harm": -0.006535387281408539
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.13452247477123247,
+        "candidate_brier": 0.13546562624027986,
+        "harm": 0.0009431514690473874
+      },
+      "Post": {
+        "baseline_brier": 0.2213690549063979,
+        "candidate_brier": 0.22325519021008994,
+        "harm": 0.001886135303692027
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.13195218620324342,
+        "candidate_brier": 0.13768563000631662,
+        "harm": 0.005733443803073196
+      },
+      "Post": {
+        "baseline_brier": 0.22324115858977633,
+        "candidate_brier": 0.23470617855510817,
+        "harm": 0.011465019965331835
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.13195218620324342,
+        "candidate_brier": 0.12851100912366029,
+        "harm": -0.0034411770795831353
+      },
+      "Post": {
+        "baseline_brier": 0.22324115858977633,
+        "candidate_brier": 0.21635867707667478,
+        "harm": -0.006882481513101557
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.13195218620324342,
+        "candidate_brier": 0.13460160726029818,
+        "harm": 0.0026494210570547627
+      },
+      "Post": {
+        "baseline_brier": 0.22324115858977633,
+        "candidate_brier": 0.22853810016449463,
+        "harm": 0.0052969415747183
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15566586443767563,
+        "candidate_brier": 0.1587558987341147,
+        "harm": 0.0030900342964390592
+      },
+      "Post": {
+        "baseline_brier": 0.18907692629653083,
+        "candidate_brier": 0.19319382836068846,
+        "harm": 0.004116902064157629
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15566586443767563,
+        "candidate_brier": 0.1592660964529496,
+        "harm": 0.0036002320152739575
+      },
+      "Post": {
+        "baseline_brier": 0.18907692629653083,
+        "candidate_brier": 0.193876155762123,
+        "harm": 0.004799229465592164
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15566586443767563,
+        "candidate_brier": 0.1531472833845903,
+        "harm": -0.0025185810530853336
+      },
+      "Post": {
+        "baseline_brier": 0.18907692629653083,
+        "candidate_brier": 0.18571801255152132,
+        "harm": -0.0033589137450095174
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15552886778983607,
+        "candidate_brier": 0.15313058641452626,
+        "harm": -0.002398281375309813
+      },
+      "Post": {
+        "baseline_brier": 0.1917605475305631,
+        "candidate_brier": 0.18855899537933277,
+        "harm": -0.00320155215123033
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15552886778983607,
+        "candidate_brier": 0.15330643233775532,
+        "harm": -0.0022224354520807565
+      },
+      "Post": {
+        "baseline_brier": 0.1917605475305631,
+        "candidate_brier": 0.1887963476836266,
+        "harm": -0.002964199846936494
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15552886778983607,
+        "candidate_brier": 0.15142148656826376,
+        "harm": -0.004107381221572309
+      },
+      "Post": {
+        "baseline_brier": 0.1917605475305631,
+        "candidate_brier": 0.18628148494534053,
+        "harm": -0.005479062585222572
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15274174600038543,
+        "candidate_brier": 0.14648389791254274,
+        "harm": -0.006257848087842688
+      },
+      "Post": {
+        "baseline_brier": 0.1873304047670046,
+        "candidate_brier": 0.17898654477383522,
+        "harm": -0.008343859993169389
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15274174600038543,
+        "candidate_brier": 0.1443581291536204,
+        "harm": -0.00838361684676503
+      },
+      "Post": {
+        "baseline_brier": 0.1873304047670046,
+        "candidate_brier": 0.1761522363733887,
+        "harm": -0.011178168393615906
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15274174600038543,
+        "candidate_brier": 0.1458657422285231,
+        "harm": -0.006876003771862316
+      },
+      "Post": {
+        "baseline_brier": 0.1873304047670046,
+        "candidate_brier": 0.17816248673512336,
+        "harm": -0.009167918031881245
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1567998001122088,
+        "candidate_brier": 0.1496296247939625,
+        "harm": -0.007170175318246291
+      },
+      "Post": {
+        "baseline_brier": 0.18925533137652711,
+        "candidate_brier": 0.17969484283228865,
+        "harm": -0.009560488544238466
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1567998001122088,
+        "candidate_brier": 0.14774561517036625,
+        "harm": -0.009054184941842541
+      },
+      "Post": {
+        "baseline_brier": 0.18925533137652711,
+        "candidate_brier": 0.17718308233507815,
+        "harm": -0.012072249041448962
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1567998001122088,
+        "candidate_brier": 0.14993024397524604,
+        "harm": -0.006869556136962746
+      },
+      "Post": {
+        "baseline_brier": 0.18925533137652711,
+        "candidate_brier": 0.18009582494668602,
+        "harm": -0.009159506429841091
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.04188333969076027,
+        "candidate_brier": 0.04188535749881601,
+        "harm": 2.0178080557403666e-06
+      },
+      "Post": {
+        "baseline_brier": 0.041585669845280386,
+        "candidate_brier": 0.041589808306560304,
+        "harm": 4.138461279917793e-06
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.04188333969076027,
+        "candidate_brier": 0.041883336548185594,
+        "harm": -3.1425746727098414e-09
+      },
+      "Post": {
+        "baseline_brier": 0.041585669845280386,
+        "candidate_brier": 0.04158567894133551,
+        "harm": 9.096055124391267e-09
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.04188333969076027,
+        "candidate_brier": 0.04188421510044471,
+        "harm": 8.754096844434955e-07
+      },
+      "Post": {
+        "baseline_brier": 0.041585669845280386,
+        "candidate_brier": 0.04158759147711134,
+        "harm": 1.921631830950621e-06
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.044848103298500315,
+        "candidate_brier": 0.04485611650652377,
+        "harm": 8.013208023453788e-06
+      },
+      "Post": {
+        "baseline_brier": 0.039699128637541846,
+        "candidate_brier": 0.03970036686209331,
+        "harm": 1.2382245514613865e-06
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.044848103298500315,
+        "candidate_brier": 0.04484806691729596,
+        "harm": -3.638120435467407e-08
+      },
+      "Post": {
+        "baseline_brier": 0.039699128637541846,
+        "candidate_brier": 0.03969912272028218,
+        "harm": -5.917259668364316e-09
+      }
+    },
+    {
+      "generator": "biased",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.044848103298500315,
+        "candidate_brier": 0.044850518437740794,
+        "harm": 2.415139240478925e-06
+      },
+      "Post": {
+        "baseline_brier": 0.039699128637541846,
+        "candidate_brier": 0.03969925252454473,
+        "harm": 1.2388700288551435e-07
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.12334990671583872,
+        "candidate_brier": 0.13337288949295378,
+        "harm": 0.010022982777115066
+      },
+      "Post": {
+        "baseline_brier": 0.1963487320142774,
+        "candidate_brier": 0.2163812576474634,
+        "harm": 0.020032525633186
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.12334990671583872,
+        "candidate_brier": 0.12143804680797347,
+        "harm": -0.0019118599078652432
+      },
+      "Post": {
+        "baseline_brier": 0.1963487320142774,
+        "candidate_brier": 0.19252529185293624,
+        "harm": -0.003823440161341174
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.12334990671583872,
+        "candidate_brier": 0.12539061674263957,
+        "harm": 0.0020407100268008543
+      },
+      "Post": {
+        "baseline_brier": 0.1963487320142774,
+        "candidate_brier": 0.20042511965437046,
+        "harm": 0.004076387640093049
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.10939039603392392,
+        "candidate_brier": 0.11917263259466794,
+        "harm": 0.00978223656074402
+      },
+      "Post": {
+        "baseline_brier": 0.1725313657910327,
+        "candidate_brier": 0.19207891063399535,
+        "harm": 0.019547544842962644
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.10939039603392392,
+        "candidate_brier": 0.10846895398313064,
+        "harm": -0.0009214420507932808
+      },
+      "Post": {
+        "baseline_brier": 0.1725313657910327,
+        "candidate_brier": 0.17068827913269627,
+        "harm": -0.0018430866583364347
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.10939039603392392,
+        "candidate_brier": 0.11434089260702124,
+        "harm": 0.004950496573097318
+      },
+      "Post": {
+        "baseline_brier": 0.1725313657910327,
+        "candidate_brier": 0.18242717662524127,
+        "harm": 0.009895810834208568
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1148794582646247,
+        "candidate_brier": 0.11822785048183042,
+        "harm": 0.0033483922172057173
+      },
+      "Post": {
+        "baseline_brier": 0.13929888694607492,
+        "candidate_brier": 0.14376337564192454,
+        "harm": 0.004464488695849617
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1148794582646247,
+        "candidate_brier": 0.11484200544251341,
+        "harm": -3.7452822111289086e-05
+      },
+      "Post": {
+        "baseline_brier": 0.13929888694607492,
+        "candidate_brier": 0.13924894568238094,
+        "harm": -4.994126369398111e-05
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1148794582646247,
+        "candidate_brier": 0.11666874210584247,
+        "harm": 0.0017892838412177647
+      },
+      "Post": {
+        "baseline_brier": 0.13929888694607492,
+        "candidate_brier": 0.14168457708559407,
+        "harm": 0.002385690139519142
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.11811218765805652,
+        "candidate_brier": 0.12263368300384987,
+        "harm": 0.004521495345793353
+      },
+      "Post": {
+        "baseline_brier": 0.13930563923305123,
+        "candidate_brier": 0.14533420998794694,
+        "harm": 0.006028570754895712
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.11811218765805652,
+        "candidate_brier": 0.11929418431388433,
+        "harm": 0.0011819966558278133
+      },
+      "Post": {
+        "baseline_brier": 0.13930563923305123,
+        "candidate_brier": 0.14088161613853598,
+        "harm": 0.0015759769054847494
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.11811218765805652,
+        "candidate_brier": 0.12076332093379832,
+        "harm": 0.0026511332757418044
+      },
+      "Post": {
+        "baseline_brier": 0.13930563923305123,
+        "candidate_brier": 0.1428404484216512,
+        "harm": 0.003534809188599969
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.12188206454967891,
+        "candidate_brier": 0.1254510207830327,
+        "harm": 0.003568956233353779
+      },
+      "Post": {
+        "baseline_brier": 0.14693282165882596,
+        "candidate_brier": 0.1516911841236841,
+        "harm": 0.00475836246485814
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.12188206454967891,
+        "candidate_brier": 0.12201018801887904,
+        "harm": 0.00012812346920013096
+      },
+      "Post": {
+        "baseline_brier": 0.14693282165882596,
+        "candidate_brier": 0.14710364587262242,
+        "harm": 0.00017082421379646662
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.12188206454967891,
+        "candidate_brier": 0.12458795698926294,
+        "harm": 0.0027058924395840234
+      },
+      "Post": {
+        "baseline_brier": 0.14693282165882596,
+        "candidate_brier": 0.15054053283451435,
+        "harm": 0.003607711175688394
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.11774123619526417,
+        "candidate_brier": 0.12262309573108653,
+        "harm": 0.004881859535822361
+      },
+      "Post": {
+        "baseline_brier": 0.14016636406706603,
+        "candidate_brier": 0.1466765615612283,
+        "harm": 0.006510197494162262
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.11774123619526417,
+        "candidate_brier": 0.116541255351556,
+        "harm": -0.0011999808437081622
+      },
+      "Post": {
+        "baseline_brier": 0.14016636406706603,
+        "candidate_brier": 0.1385664004145124,
+        "harm": -0.001599963652553632
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.11774123619526417,
+        "candidate_brier": 0.12228686825697135,
+        "harm": 0.004545632061707189
+      },
+      "Post": {
+        "baseline_brier": 0.14016636406706603,
+        "candidate_brier": 0.14622781276915725,
+        "harm": 0.0060614487020912156
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.052005925155237796,
+        "candidate_brier": 0.0520019443288179,
+        "harm": -3.980826419898442e-06
+      },
+      "Post": {
+        "baseline_brier": 0.04812355679435275,
+        "candidate_brier": 0.04811798144260779,
+        "harm": -5.575351744960266e-06
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.052005925155237796,
+        "candidate_brier": 0.052005730561969964,
+        "harm": -1.9459326783266562e-07
+      },
+      "Post": {
+        "baseline_brier": 0.04812355679435275,
+        "candidate_brier": 0.048123468713513015,
+        "harm": -8.808083973299574e-08
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.052005925155237796,
+        "candidate_brier": 0.05200692101903093,
+        "harm": 9.958637931309355e-07
+      },
+      "Post": {
+        "baseline_brier": 0.04812355679435275,
+        "candidate_brier": 0.0481284163932377,
+        "harm": 4.859598884951466e-06
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.043691755313207375,
+        "candidate_brier": 0.04368457457082741,
+        "harm": -7.180742379965521e-06
+      },
+      "Post": {
+        "baseline_brier": 0.04427606678192209,
+        "candidate_brier": 0.04425983072548411,
+        "harm": -1.6236056437982094e-05
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.043691755313207375,
+        "candidate_brier": 0.043691593389598396,
+        "harm": -1.619236089794862e-07
+      },
+      "Post": {
+        "baseline_brier": 0.04427606678192209,
+        "candidate_brier": 0.04427578396785259,
+        "harm": -2.8281406950353416e-07
+      }
+    },
+    {
+      "generator": "clustered",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.043691755313207375,
+        "candidate_brier": 0.04368523267310054,
+        "harm": -6.522640106837452e-06
+      },
+      "Post": {
+        "baseline_brier": 0.04427606678192209,
+        "candidate_brier": 0.04426214460166456,
+        "harm": -1.392218025753067e-05
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1480276864399047,
+        "candidate_brier": 0.15120141902110198,
+        "harm": 0.003173732581197297
+      },
+      "Post": {
+        "baseline_brier": 0.24325316637747482,
+        "candidate_brier": 0.24959732908380067,
+        "harm": 0.0063441627063258454
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1480276864399047,
+        "candidate_brier": 0.14924346882496847,
+        "harm": 0.001215782385063785
+      },
+      "Post": {
+        "baseline_brier": 0.24325316637747482,
+        "candidate_brier": 0.24568453210918628,
+        "harm": 0.00243136573171146
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "interaction",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1480276864399047,
+        "candidate_brier": 0.14915790687309452,
+        "harm": 0.0011302204331898325
+      },
+      "Post": {
+        "baseline_brier": 0.24325316637747482,
+        "candidate_brier": 0.24551154218945423,
+        "harm": 0.0022583758119794073
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1424200000605005,
+        "candidate_brier": 0.14739553453764154,
+        "harm": 0.004975534477141025
+      },
+      "Post": {
+        "baseline_brier": 0.2388868677268195,
+        "candidate_brier": 0.24883670687891116,
+        "harm": 0.00994983915209166
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1424200000605005,
+        "candidate_brier": 0.14255203144063566,
+        "harm": 0.00013203138013515026
+      },
+      "Post": {
+        "baseline_brier": 0.2388868677268195,
+        "candidate_brier": 0.23915091644144973,
+        "harm": 0.00026404871463023283
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "interaction",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1424200000605005,
+        "candidate_brier": 0.1432492464803753,
+        "harm": 0.0008292464198747795
+      },
+      "Post": {
+        "baseline_brier": 0.2388868677268195,
+        "candidate_brier": 0.24054496901172356,
+        "harm": 0.0016581012849040677
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15982532889282516,
+        "candidate_brier": 0.17147393875803926,
+        "harm": 0.011648609865214099
+      },
+      "Post": {
+        "baseline_brier": 0.1954972672157553,
+        "candidate_brier": 0.2110287308987439,
+        "harm": 0.015531463682988605
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15982532889282516,
+        "candidate_brier": 0.15832969976503714,
+        "harm": -0.0014956291277880285
+      },
+      "Post": {
+        "baseline_brier": 0.1954972672157553,
+        "candidate_brier": 0.19350309895877024,
+        "harm": -0.0019941682569850627
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "recurring",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.15982532889282516,
+        "candidate_brier": 0.16346769419922993,
+        "harm": 0.003642365306404771
+      },
+      "Post": {
+        "baseline_brier": 0.1954972672157553,
+        "candidate_brier": 0.20035374011716706,
+        "harm": 0.004856472901411751
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1576129690416343,
+        "candidate_brier": 0.16707361906684967,
+        "harm": 0.009460650025215372
+      },
+      "Post": {
+        "baseline_brier": 0.19344318501672314,
+        "candidate_brier": 0.20605734344222,
+        "harm": 0.012614158425496846
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1576129690416343,
+        "candidate_brier": 0.16607523459605347,
+        "harm": 0.008462265554419174
+      },
+      "Post": {
+        "baseline_brier": 0.19344318501672314,
+        "candidate_brier": 0.20472620729582175,
+        "harm": 0.011283022279098609
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "recurring",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.1576129690416343,
+        "candidate_brier": 0.15755796366802635,
+        "harm": -5.5005373607946995e-05
+      },
+      "Post": {
+        "baseline_brier": 0.19344318501672314,
+        "candidate_brier": 0.19336982222575896,
+        "harm": -7.336279096417653e-05
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.16606935110126317,
+        "candidate_brier": 0.14202641719306514,
+        "harm": -0.024042933908198033
+      },
+      "Post": {
+        "baseline_brier": 0.2061681038648917,
+        "candidate_brier": 0.17411086758384853,
+        "harm": -0.03205723628104318
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.16606935110126317,
+        "candidate_brier": 0.14188680626971334,
+        "harm": -0.02418254483154983
+      },
+      "Post": {
+        "baseline_brier": 0.2061681038648917,
+        "candidate_brier": 0.17392471156208475,
+        "harm": -0.032243392302806956
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "shift128",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.16606935110126317,
+        "candidate_brier": 0.14967351732108483,
+        "harm": -0.016395833780178337
+      },
+      "Post": {
+        "baseline_brier": 0.2061681038648917,
+        "candidate_brier": 0.18430700093000318,
+        "harm": -0.02186110293488852
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.16856755626116882,
+        "candidate_brier": 0.14746743445185076,
+        "harm": -0.021100121809318056
+      },
+      "Post": {
+        "baseline_brier": 0.21014289580300305,
+        "candidate_brier": 0.182009214166728,
+        "harm": -0.028133681636275054
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.16856755626116882,
+        "candidate_brier": 0.14875974822273752,
+        "harm": -0.019807808038431296
+      },
+      "Post": {
+        "baseline_brier": 0.21014289580300305,
+        "candidate_brier": 0.18373245375187602,
+        "harm": -0.026410442051127025
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "shift128",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.16856755626116882,
+        "candidate_brier": 0.15209178232067846,
+        "harm": -0.01647577394049035
+      },
+      "Post": {
+        "baseline_brier": 0.21014289580300305,
+        "candidate_brier": 0.1881750789636937,
+        "harm": -0.021967816839309345
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.05066782833347609,
+        "candidate_brier": 0.05114468049749909,
+        "harm": 0.0004768521640229964
+      },
+      "Post": {
+        "baseline_brier": 0.0518174650347545,
+        "candidate_brier": 0.05274252816511305,
+        "harm": 0.0009250631303585541
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.05066782833347609,
+        "candidate_brier": 0.05066977606958769,
+        "harm": 1.947736111597431e-06
+      },
+      "Post": {
+        "baseline_brier": 0.0518174650347545,
+        "candidate_brier": 0.05181835172620591,
+        "harm": 8.866914514155111e-07
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "stable05",
+      "split": "confirmation",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.05066782833347609,
+        "candidate_brier": 0.05069173317024017,
+        "harm": 2.390483676407984e-05
+      },
+      "Post": {
+        "baseline_brier": 0.0518174650347545,
+        "candidate_brier": 0.051847434532308424,
+        "harm": 2.996949755392636e-05
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "replacement",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.046242966575634675,
+        "candidate_brier": 0.04625061562281255,
+        "harm": 7.649047177878121e-06
+      },
+      "Post": {
+        "baseline_brier": 0.0497700372750369,
+        "candidate_brier": 0.04978411499575694,
+        "harm": 1.4077720720040432e-05
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "adaptive_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.046242966575634675,
+        "candidate_brier": 0.04624305808836484,
+        "harm": 9.151273016455574e-08
+      },
+      "Post": {
+        "baseline_brier": 0.0497700372750369,
+        "candidate_brier": 0.04977019950995167,
+        "harm": 1.6223491477312946e-07
+      }
+    },
+    {
+      "generator": "fair",
+      "scenario": "stable05",
+      "split": "design",
+      "arm": "static_retained",
+      "streams": 8,
+      "Full": {
+        "baseline_brier": 0.046242966575634675,
+        "candidate_brier": 0.04624674291555386,
+        "harm": 3.7763399191870217e-06
+      },
+      "Post": {
+        "baseline_brier": 0.0497700372750369,
+        "candidate_brier": 0.049776581898399036,
+        "harm": 6.544623362136903e-06
+      }
+    }
+  ],
+  "verdicts": {
+    "adaptive_retained": {
+      "passed": false,
+      "failures": [
+        {
+          "kind": "insufficient_shift_gain",
+          "generator": "clustered",
+          "scenario": "shift128",
+          "split": "confirmation",
+          "arm": "adaptive_retained",
+          "streams": 8,
+          "Full": {
+            "baseline_brier": 0.12188206454967891,
+            "candidate_brier": 0.12201018801887904,
+            "harm": 0.00012812346920013096
+          },
+          "Post": {
+            "baseline_brier": 0.14693282165882596,
+            "candidate_brier": 0.14710364587262242,
+            "harm": 0.00017082421379646662
+          }
+        },
+        {
+          "kind": "insufficient_shift_gain",
+          "generator": "clustered",
+          "scenario": "shift128",
+          "split": "design",
+          "arm": "adaptive_retained",
+          "streams": 8,
+          "Full": {
+            "baseline_brier": 0.11774123619526417,
+            "candidate_brier": 0.116541255351556,
+            "harm": -0.0011999808437081622
+          },
+          "Post": {
+            "baseline_brier": 0.14016636406706603,
+            "candidate_brier": 0.1385664004145124,
+            "harm": -0.001599963652553632
+          }
+        },
+        {
+          "kind": "harm",
+          "generator": "fair",
+          "scenario": "recurring",
+          "split": "design",
+          "arm": "adaptive_retained",
+          "streams": 8,
+          "Full": {
+            "baseline_brier": 0.1576129690416343,
+            "candidate_brier": 0.16607523459605347,
+            "harm": 0.008462265554419174
+          },
+          "Post": {
+            "baseline_brier": 0.19344318501672314,
+            "candidate_brier": 0.20472620729582175,
+            "harm": 0.011283022279098609
+          },
+          "window": "Post"
+        }
+      ]
+    },
+    "static_retained": {
+      "passed": false,
+      "failures": [
+        {
+          "kind": "insufficient_shift_gain",
+          "generator": "clustered",
+          "scenario": "shift128",
+          "split": "confirmation",
+          "arm": "static_retained",
+          "streams": 8,
+          "Full": {
+            "baseline_brier": 0.12188206454967891,
+            "candidate_brier": 0.12458795698926294,
+            "harm": 0.0027058924395840234
+          },
+          "Post": {
+            "baseline_brier": 0.14693282165882596,
+            "candidate_brier": 0.15054053283451435,
+            "harm": 0.003607711175688394
+          }
+        },
+        {
+          "kind": "insufficient_shift_gain",
+          "generator": "clustered",
+          "scenario": "shift128",
+          "split": "design",
+          "arm": "static_retained",
+          "streams": 8,
+          "Full": {
+            "baseline_brier": 0.11774123619526417,
+            "candidate_brier": 0.12228686825697135,
+            "harm": 0.004545632061707189
+          },
+          "Post": {
+            "baseline_brier": 0.14016636406706603,
+            "candidate_brier": 0.14622781276915725,
+            "harm": 0.0060614487020912156
+          }
+        }
+      ]
+    }
+  }
+}

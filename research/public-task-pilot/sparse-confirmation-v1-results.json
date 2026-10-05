@@ -1,0 +1,564 @@
+{
+  "predictions": [
+    {
+      "case": "v2-launch",
+      "candidates": [
+        {
+          "fixture": "v2-launch",
+          "baseline": 0.7219584317059905,
+          "lexical": 0.8333333333333334,
+          "learned": 0.38366820531938883,
+          "blend": 0.5528133185126897,
+          "target": 1
+        },
+        {
+          "fixture": "v1-launch",
+          "baseline": 0.692205032956571,
+          "lexical": 0.6666666666666666,
+          "learned": 0.25349975756987203,
+          "blend": 0.47285239526322154,
+          "target": 0
+        },
+        {
+          "fixture": "v2-uranus",
+          "baseline": 0.6897708265935361,
+          "lexical": 0.3333333333333333,
+          "learned": 0.07195658607021026,
+          "blend": 0.38086370633187316,
+          "target": 0
+        },
+        {
+          "fixture": "v2-neptune",
+          "baseline": 0.6836966168191497,
+          "lexical": 0.3333333333333333,
+          "learned": 0.07195658607021026,
+          "blend": 0.37782660144468,
+          "target": 0
+        },
+        {
+          "fixture": "m10-contact",
+          "baseline": 0.6819911310944773,
+          "lexical": 0.16666666666666666,
+          "learned": 0.043665988900418,
+          "blend": 0.3628285599974476,
+          "target": 0
+        },
+        {
+          "fixture": "m10-venus",
+          "baseline": 0.6817231762372135,
+          "lexical": 0.0,
+          "learned": 0.021747071901744585,
+          "blend": 0.35173512406947904,
+          "target": 0
+        },
+        {
+          "fixture": "v2-saturn",
+          "baseline": 0.6767185123683995,
+          "lexical": 0.3333333333333333,
+          "learned": 0.07195658607021026,
+          "blend": 0.3743375492193049,
+          "target": 0
+        },
+        {
+          "fixture": "v1-saturn",
+          "baseline": 0.6725054643537506,
+          "lexical": 0.16666666666666666,
+          "learned": 0.040580478631232667,
+          "blend": 0.35654297149249164,
+          "target": 0
+        },
+        {
+          "fixture": "v2-jupiter",
+          "baseline": 0.6649964231983823,
+          "lexical": 0.3333333333333333,
+          "learned": 0.07195658607021026,
+          "blend": 0.36847650463429626,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury1",
+          "baseline": 0.6636661984911856,
+          "lexical": 0.0,
+          "learned": 0.021747071901744585,
+          "blend": 0.3427066351964651,
+          "target": 0
+        }
+      ],
+      "positive_task": true
+    },
+    {
+      "case": "v2-jupiter",
+      "candidates": [
+        {
+          "fixture": "v2-uranus",
+          "baseline": 0.7317325878887497,
+          "lexical": 0.7142857142857143,
+          "learned": 0.21986554330076213,
+          "blend": 0.47579906559475593,
+          "target": 0
+        },
+        {
+          "fixture": "v2-neptune",
+          "baseline": 0.7237055873670496,
+          "lexical": 0.7142857142857143,
+          "learned": 0.21986554330076213,
+          "blend": 0.47178556533390587,
+          "target": 0
+        },
+        {
+          "fixture": "v2-jupiter",
+          "baseline": 0.7204928398038699,
+          "lexical": 0.8571428571428571,
+          "learned": 0.33245196256971304,
+          "blend": 0.5264724011867915,
+          "target": 1
+        },
+        {
+          "fixture": "v1-jupiter",
+          "baseline": 0.7184645183160465,
+          "lexical": 0.7142857142857143,
+          "learned": 0.22854122451444542,
+          "blend": 0.47350287141524594,
+          "target": 0
+        },
+        {
+          "fixture": "v2-saturn",
+          "baseline": 0.7184645183160465,
+          "lexical": 0.7142857142857143,
+          "learned": 0.21986554330076213,
+          "blend": 0.4691650308084043,
+          "target": 0
+        },
+        {
+          "fixture": "v1-saturn",
+          "baseline": 0.7175513469124587,
+          "lexical": 0.5714285714285714,
+          "learned": 0.14357604003808674,
+          "blend": 0.43056369347527274,
+          "target": 0
+        },
+        {
+          "fixture": "m10-venus",
+          "baseline": 0.7099582313602572,
+          "lexical": 0.14285714285714285,
+          "learned": 0.032128461849853185,
+          "blend": 0.37104334660505517,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury1",
+          "baseline": 0.6786603107694813,
+          "lexical": 0.14285714285714285,
+          "learned": 0.032128461849853185,
+          "blend": 0.35539438630966724,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury3",
+          "baseline": 0.6757824749062824,
+          "lexical": 0.14285714285714285,
+          "learned": 0.032128461849853185,
+          "blend": 0.3539554683780678,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury2",
+          "baseline": 0.6731031547104642,
+          "lexical": 0.14285714285714285,
+          "learned": 0.032128461849853185,
+          "blend": 0.3526158082801587,
+          "target": 0
+        }
+      ],
+      "positive_task": true
+    },
+    {
+      "case": "v2-saturn",
+      "candidates": [
+        {
+          "fixture": "v2-uranus",
+          "baseline": 0.7317325878887497,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2197126098746097,
+          "blend": 0.4757225988816797,
+          "target": 0
+        },
+        {
+          "fixture": "v2-saturn",
+          "baseline": 0.7317325878887497,
+          "lexical": 0.8571428571428571,
+          "learned": 0.33460438978658014,
+          "blend": 0.5331684888376649,
+          "target": 1
+        },
+        {
+          "fixture": "v2-neptune",
+          "baseline": 0.7237055873670496,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2197126098746097,
+          "blend": 0.47170909862082966,
+          "target": 0
+        },
+        {
+          "fixture": "v1-saturn",
+          "baseline": 0.7103557260064536,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2302529425625894,
+          "blend": 0.4703043342845215,
+          "target": 0
+        },
+        {
+          "fixture": "v2-jupiter",
+          "baseline": 0.7070557436247198,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2197126098746097,
+          "blend": 0.46338417674966476,
+          "target": 0
+        },
+        {
+          "fixture": "v1-jupiter",
+          "baseline": 0.7051964487433433,
+          "lexical": 0.5714285714285714,
+          "learned": 0.14346641316556008,
+          "blend": 0.4243314309544517,
+          "target": 0
+        },
+        {
+          "fixture": "m10-venus",
+          "baseline": 0.6968529665162408,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03210074073144174,
+          "blend": 0.3644768536238413,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury1",
+          "baseline": 0.6786603107694813,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03210074073144174,
+          "blend": 0.35538052575046153,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury3",
+          "baseline": 0.6757824749062824,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03210074073144174,
+          "blend": 0.3539416078188621,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury2",
+          "baseline": 0.6731031547104642,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03210074073144174,
+          "blend": 0.352601947720953,
+          "target": 0
+        }
+      ],
+      "positive_task": true
+    },
+    {
+      "case": "v2-uranus",
+      "candidates": [
+        {
+          "fixture": "v2-uranus",
+          "baseline": 0.7391022272196641,
+          "lexical": 0.8571428571428571,
+          "learned": 0.33043555396877927,
+          "blend": 0.5347688905942217,
+          "target": 1
+        },
+        {
+          "fixture": "v2-neptune",
+          "baseline": 0.7184833642616782,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2244565759515672,
+          "blend": 0.4714699701066227,
+          "target": 0
+        },
+        {
+          "fixture": "v2-saturn",
+          "baseline": 0.7134087209739637,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2244565759515672,
+          "blend": 0.46893264846276544,
+          "target": 0
+        },
+        {
+          "fixture": "v1-saturn",
+          "baseline": 0.7125245465643816,
+          "lexical": 0.5714285714285714,
+          "learned": 0.14687397623345197,
+          "blend": 0.4296992613989168,
+          "target": 0
+        },
+        {
+          "fixture": "v2-jupiter",
+          "baseline": 0.7023622223789284,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2244565759515672,
+          "blend": 0.4634093991652478,
+          "target": 0
+        },
+        {
+          "fixture": "v1-jupiter",
+          "baseline": 0.7005619678511136,
+          "lexical": 0.5714285714285714,
+          "learned": 0.14687397623345197,
+          "blend": 0.4237179720422828,
+          "target": 0
+        },
+        {
+          "fixture": "m10-venus",
+          "baseline": 0.6924834259223771,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03296498742084019,
+          "blend": 0.36272420667160865,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury1",
+          "baseline": 0.674868462739756,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03296498742084019,
+          "blend": 0.3539167250802981,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury3",
+          "baseline": 0.6720820101469341,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03296498742084019,
+          "blend": 0.35252349878388717,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury2",
+          "baseline": 0.6694877695225439,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03296498742084019,
+          "blend": 0.351226378471692,
+          "target": 0
+        }
+      ],
+      "positive_task": true
+    },
+    {
+      "case": "v2-neptune",
+      "candidates": [
+        {
+          "fixture": "v2-neptune",
+          "baseline": 0.7490068028111578,
+          "lexical": 0.8571428571428571,
+          "learned": 0.33400093887872534,
+          "blend": 0.5415038708449416,
+          "target": 1
+        },
+        {
+          "fixture": "v2-uranus",
+          "baseline": 0.7450006574614529,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2344724293102718,
+          "blend": 0.48973654338586237,
+          "target": 0
+        },
+        {
+          "fixture": "v1-saturn",
+          "baseline": 0.7319425887244689,
+          "lexical": 0.5714285714285714,
+          "learned": 0.15411584300233713,
+          "blend": 0.44302921586340305,
+          "target": 0
+        },
+        {
+          "fixture": "v2-saturn",
+          "baseline": 0.7317325878887497,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2344724293102718,
+          "blend": 0.48310250859951076,
+          "target": 0
+        },
+        {
+          "fixture": "v2-jupiter",
+          "baseline": 0.7204928398038699,
+          "lexical": 0.7142857142857143,
+          "learned": 0.2344724293102718,
+          "blend": 0.47748263455707085,
+          "target": 0
+        },
+        {
+          "fixture": "v1-jupiter",
+          "baseline": 0.7184645183160465,
+          "lexical": 0.5714285714285714,
+          "learned": 0.15411584300233713,
+          "blend": 0.43629018065919184,
+          "target": 0
+        },
+        {
+          "fixture": "m10-venus",
+          "baseline": 0.7099582313602572,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03481961276391873,
+          "blend": 0.37238892206208796,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury2",
+          "baseline": 0.6920790671777298,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03481961276391873,
+          "blend": 0.3634493399708243,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury1",
+          "baseline": 0.6919283802758707,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03481961276391873,
+          "blend": 0.3633739965198947,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury3",
+          "baseline": 0.6887307848723163,
+          "lexical": 0.14285714285714285,
+          "learned": 0.03481961276391873,
+          "blend": 0.36177519881811754,
+          "target": 0
+        }
+      ],
+      "positive_task": true
+    },
+    {
+      "case": "v2-absent",
+      "candidates": [
+        {
+          "fixture": "v2-neptune",
+          "baseline": 0.6805055926942629,
+          "lexical": 0.5,
+          "learned": 0.09901695337688449,
+          "blend": 0.38976127303557373,
+          "target": 0
+        },
+        {
+          "fixture": "v2-jupiter",
+          "baseline": 0.6696446960876411,
+          "lexical": 0.5,
+          "learned": 0.09901695337688449,
+          "blend": 0.38433082473226277,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury1",
+          "baseline": 0.6682559996599153,
+          "lexical": 0.5,
+          "learned": 0.11565215963862846,
+          "blend": 0.39195407964927187,
+          "target": 0
+        },
+        {
+          "fixture": "v2-uranus",
+          "baseline": 0.6682559989940197,
+          "lexical": 0.5,
+          "learned": 0.09901695337688449,
+          "blend": 0.38363647618545205,
+          "target": 0
+        },
+        {
+          "fixture": "v2-saturn",
+          "baseline": 0.6682559989940197,
+          "lexical": 0.5,
+          "learned": 0.09901695337688449,
+          "blend": 0.38363647618545205,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury3",
+          "baseline": 0.6656289069614629,
+          "lexical": 0.5,
+          "learned": 0.11565215963862846,
+          "blend": 0.39064053330004567,
+          "target": 0
+        },
+        {
+          "fixture": "m10-mercury2",
+          "baseline": 0.6631830334447484,
+          "lexical": 0.5,
+          "learned": 0.11565215963862846,
+          "blend": 0.3894175965416884,
+          "target": 0
+        },
+        {
+          "fixture": "v1-saturn",
+          "baseline": 0.6577777835595656,
+          "lexical": 0.3333333333333333,
+          "learned": 0.056560513837793695,
+          "blend": 0.35716914869867966,
+          "target": 0
+        },
+        {
+          "fixture": "v1-jupiter",
+          "baseline": 0.6500879464952259,
+          "lexical": 0.3333333333333333,
+          "learned": 0.056560513837793695,
+          "blend": 0.3533242301665098,
+          "target": 0
+        },
+        {
+          "fixture": "m10-venus",
+          "baseline": 0.6489732999263166,
+          "lexical": 0.3333333333333333,
+          "learned": 0.05925406851341958,
+          "blend": 0.3541136842198681,
+          "target": 0
+        }
+      ],
+      "positive_task": false
+    }
+  ],
+  "metrics": {
+    "baseline": {
+      "top1": 3,
+      "queries": 5,
+      "missing_support": 0,
+      "mrr": 0.7666666666666667,
+      "brier": 0.44701649911720137,
+      "absent_mean_probability": 0.6640569256817178
+    },
+    "lexical": {
+      "top1": 5,
+      "queries": 5,
+      "missing_support": 0,
+      "mrr": 1.0,
+      "brier": 0.20964852607709752,
+      "absent_mean_probability": 0.45
+    },
+    "learned": {
+      "top1": 5,
+      "queries": 5,
+      "missing_support": 0,
+      "mrr": 1.0,
+      "brier": 0.06220073480287808,
+      "absent_mean_probability": 0.09153993886124304
+    },
+    "blend": {
+      "top1": 5,
+      "queries": 5,
+      "missing_support": 0,
+      "mrr": 1.0,
+      "brier": 0.173378726076358,
+      "absent_mean_probability": 0.3777984322714804
+    }
+  },
+  "screen_passed": true,
+  "sha256": {
+    "design-preflight-v1.json": "d515104a5aec538e274cdfb3564b0f05dce406cfda6f2a3485eb289971389ad0",
+    "confirmation-preflight-v1.json": "d89e0e255f2e9f631372dab98ade21bf3f778d7414668bbaf453139175207b52",
+    "prepared-v2/queries.json": "3361b676222e1ca45d934f0f8489d15a386c6f78b3f131459eff73a048545fea",
+    "prepared-v2/oracle.json": "cab4bc61e12f6742f687dfad9fcc7856fae40aae9006c0fad739ed725f9a2831",
+    "sparse_v1.py": "ba21c3451f34647762f691c872974d88bc292fd64e12543b984f7de7b1707728",
+    "sparse_confirmation.py": "47623134d7e55303b0c41d591319fccec8fe951dc18343a4bb9c7d22bd5950ce",
+    "SPARSE_CONFIRMATION_PROTOCOL.md": "783a7ed0e2fd0599d5fa10de18fe25f28dbf5b691d27612c6cf9ef46c70419b4"
+  }
+}

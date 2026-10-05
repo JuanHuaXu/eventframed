@@ -1,0 +1,33 @@
+{
+  "start": "2026-10-04T23:11:47.372Z",
+  "end": "2026-10-04T23:11:47.957Z",
+  "args": [
+    "test",
+    "./internal/researchsharedsequence",
+    "-run",
+    "^TestFullJournalRareOpposition$",
+    "-count=1",
+    "-v",
+    "-timeout=10m"
+  ],
+  "exitCode": 1,
+  "hashes": {
+    "internal/researchsharedsequence/boundary_test.go": "2304aa76fe5444c5a0470a17f34867a6d85e3adcbe9e86a3d7320602d2f85e52",
+    "internal/researchsharedsequence/inference.go": "52689bbe1a1ea5f40dcd3ceda75de0a5857bcaea64c969a06b72993ff08b46b5",
+    "internal/researchsharedsequence/lifecycle.go": "d2a08edc9ebfd62e56a4e0646fb14bcb759141261fa2f9c827983756aee293ba",
+    "internal/researchsharedsequence/model.go": "69f38f90e93369c3ebacbe56629e0773c437151a7a8b987c1ed3af32baf52bd9",
+    "internal/researchsharedsequence/model_test.go": "ffe00e8727a972153bf733eca52278cbe6b036ec27f07f16aec1540ce3f371f6",
+    "internal/researchsharedsequence/query.go": "4c030aab89bb2857798b2117db9bb62dbe4c2746ef15b7ceca22a64fb342c23a"
+  },
+  "logSHA256": "b7d6d6e7ddcc7d2ea874e575ac75589e10382bd40c27bba16550ee1096ec3b64",
+  "allJobsTerminal": true,
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "fits": 84,
+  "forecasts": 2688,
+  "stops": {
+    "bound-change": 57,
+    "iteration-cap": 27
+  },
+  "iterations": {
+    "min": 688,
+    "median": 949.5,
+    "max": 1024,
+    "mean": 942.2738095238095
+  },
+  "boundGain": {
+    "min": 2.601574244371477,
+    "median": 3.5815380439228193,
+    "max": 5.662933939368941,
+    "mean": 3.6253467551862233
+  },
+  "lastIncrement": {
+    "min": 9.870800568023697e-7,
+    "median": 9.971488452720223e-7,
+    "max": 0.00008837130417305161,
+    "mean": 0.0000025185544570506735
+  },
+  "groups": [
+    {
+      "phase": 0,
+      "schedule": 0,
+      "cappedBrier": 0.2645245575247851,
+      "extendedBrier": 0.2725520327293583,
+      "pluginBrier": 0.28200056638326415,
+      "genericBrier": 0.18434151797387258,
+      "booleanBrier": 0.18974099754489548,
+      "markovBrier": 0.1788982288669033,
+      "improvedCases": 10,
+      "worsenedCases": 11
+    },
+    {
+      "phase": 0,
+      "schedule": 1,
+      "cappedBrier": 0.26000134941869935,
+      "extendedBrier": 0.2584288143666572,
+      "pluginBrier": 0.2675281673381263,
+      "genericBrier": 0.18255261555289812,
+      "booleanBrier": 0.18974509911307605,
+      "markovBrier": 0.17931544169063998,
+      "improvedCases": 12,
+      "worsenedCases": 9
+    },
+    {
+      "phase": 1,
+      "schedule": 0,
+      "cappedBrier": 0.2652721362724653,
+      "extendedBrier": 0.2633968875837851,
+      "pluginBrier": 0.2731400717320198,
+      "genericBrier": 0.19527931611105448,
+      "booleanBrier": 0.18305240491857783,
+      "markovBrier": 0.17616410033141242,
+      "improvedCases": 12,
+      "worsenedCases": 9
+    },
+    {
+      "phase": 1,
+      "schedule": 1,
+      "cappedBrier": 0.2706378026343969,
+      "extendedBrier": 0.25811849053733116,
+      "pluginBrier": 0.266659731355688,
+      "genericBrier": 0.18921122597400294,
+      "booleanBrier": 0.18790822865097556,
+      "markovBrier": 0.18153540699698542,
+      "improvedCases": 18,
+      "worsenedCases": 3
+    }
+  ],
+  "interpretation": "Matched descriptive consumed pilot; no trajectory confidence intervals, general quality validation, or stationary-point guarantee."
+}

@@ -1,0 +1,52 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchregimeledger
+cpu: Apple M4
+BenchmarkLedgerOperations/M2/T32/Pending-10 	      81	   1388694 ns/op	 9987453 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M2/T32/Pending-10 	      86	   1392404 ns/op	 9987444 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M2/T32/Reveal-10  	     151	    782084 ns/op	 5122551 B/op	     384 allocs/op
+BenchmarkLedgerOperations/M2/T32/Reveal-10  	     147	    786723 ns/op	 5119940 B/op	     384 allocs/op
+BenchmarkLedgerOperations/M2/T32/Issue-10   	     142	    825859 ns/op	 5397138 B/op	     435 allocs/op
+BenchmarkLedgerOperations/M2/T32/Issue-10   	     146	    827077 ns/op	 5401383 B/op	     436 allocs/op
+--- FAIL: BenchmarkLedgerOperations/M2/T64/Pending
+    benchmark_test.go:45: regime conditional evidence support
+BenchmarkLedgerOperations/M2/T64/Reveal-10  	      76	   1577351 ns/op	10369862 B/op	     742 allocs/op
+BenchmarkLedgerOperations/M2/T64/Reveal-10  	      73	   1572332 ns/op	10369789 B/op	     742 allocs/op
+BenchmarkLedgerOperations/M2/T64/Issue-10   	      68	   1640658 ns/op	10662984 B/op	     825 allocs/op
+BenchmarkLedgerOperations/M2/T64/Issue-10   	      74	   1626465 ns/op	10665989 B/op	     825 allocs/op
+--- FAIL: BenchmarkLedgerOperations/M2/T64
+BenchmarkLedgerOperations/M150/T32/Pending-10         	      63	   1929741 ns/op	 9992517 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M150/T32/Pending-10         	      61	   1937708 ns/op	 9992504 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M150/T32/Reveal-10          	     100	   1076736 ns/op	 5167689 B/op	     386 allocs/op
+BenchmarkLedgerOperations/M150/T32/Reveal-10          	     100	   1069611 ns/op	 5170721 B/op	     386 allocs/op
+BenchmarkLedgerOperations/M150/T32/Issue-10           	     100	   1123747 ns/op	 5440078 B/op	     436 allocs/op
+BenchmarkLedgerOperations/M150/T32/Issue-10           	     100	   1124170 ns/op	 5452432 B/op	     438 allocs/op
+--- FAIL: BenchmarkLedgerOperations/M150/T64/Pending
+    benchmark_test.go:45: regime conditional evidence support
+BenchmarkLedgerOperations/M150/T64/Reveal-10          	      62	   1993677 ns/op	10350309 B/op	     740 allocs/op
+BenchmarkLedgerOperations/M150/T64/Reveal-10          	      60	   1934541 ns/op	10371055 B/op	     742 allocs/op
+BenchmarkLedgerOperations/M150/T64/Issue-10           	      58	   2014415 ns/op	10749287 B/op	     826 allocs/op
+BenchmarkLedgerOperations/M150/T64/Issue-10           	      61	   2013658 ns/op	10749294 B/op	     827 allocs/op
+--- FAIL: BenchmarkLedgerOperations/M150/T64
+BenchmarkLedgerOperations/M200/T32/Pending-10         	      56	   2118701 ns/op	 9994550 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M200/T32/Pending-10         	      57	   2146412 ns/op	 9994584 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M200/T32/Reveal-10          	     102	   1170153 ns/op	 5173055 B/op	     386 allocs/op
+BenchmarkLedgerOperations/M200/T32/Reveal-10          	     100	   1172898 ns/op	 5168168 B/op	     386 allocs/op
+BenchmarkLedgerOperations/M200/T32/Issue-10           	     100	   1221080 ns/op	 5443612 B/op	     437 allocs/op
+BenchmarkLedgerOperations/M200/T32/Issue-10           	     100	   1218983 ns/op	 5451453 B/op	     438 allocs/op
+--- FAIL: BenchmarkLedgerOperations/M200/T64/Pending
+    benchmark_test.go:45: regime conditional evidence support
+BenchmarkLedgerOperations/M200/T64/Reveal-10          	      56	   2123904 ns/op	10438313 B/op	     742 allocs/op
+BenchmarkLedgerOperations/M200/T64/Reveal-10          	      57	   2122360 ns/op	10453550 B/op	     743 allocs/op
+BenchmarkLedgerOperations/M200/T64/Issue-10           	      54	   2176249 ns/op	10749750 B/op	     826 allocs/op
+BenchmarkLedgerOperations/M200/T64/Issue-10           	      56	   2209375 ns/op	10719101 B/op	     824 allocs/op
+--- FAIL: BenchmarkLedgerOperations/M200/T64
+--- FAIL: BenchmarkLedgerOperations
+BenchmarkConstructor/M150-10                          	    2374	     50718 ns/op	   20338 B/op	       9 allocs/op
+BenchmarkConstructor/M150-10                          	    2368	     50725 ns/op	   20336 B/op	       9 allocs/op
+BenchmarkConstructor/M200-10                          	    1844	     67408 ns/op	   21628 B/op	       9 allocs/op
+BenchmarkConstructor/M200-10                          	    1802	     67425 ns/op	   21626 B/op	       9 allocs/op
+FAIL
+exit status 1
+FAIL	github.com/JuanHuaXu/eventframed/internal/researchregimeledger	5.099s
+FAIL

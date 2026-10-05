@@ -1,0 +1,51 @@
+{
+  "checks": 217333,
+  "maxDefect": 1.1879386363489175e-14,
+  "histories": 192,
+  "nonlocalWitness": 0.36337730839728744,
+  "initialMeanDifferences": [
+    [
+      {
+        "baseline": 0.25,
+        "jointPriorMean": 0.25000000000000006
+      },
+      {
+        "baseline": 0.925,
+        "jointPriorMean": 0.925
+      }
+    ],
+    [
+      {
+        "baseline": 0.47,
+        "jointPriorMean": 0.47000000000000003
+      },
+      {
+        "baseline": 0.7,
+        "jointPriorMean": 0.7
+      }
+    ]
+  ],
+  "payload": {
+    "naiveOneConditionalTable200": 8553600,
+    "compressedOneConditionalTable200": 5702400,
+    "capBytes": 8388608
+  },
+  "meanFamily": 27,
+  "hyperstates": 243,
+  "urnSize": 20,
+  "staticMeanField": true,
+  "naiveDenseLayoutFailsCap": true,
+  "compressedTableIsPayloadEstimateNotMeasuredAllocation": true,
+  "streamQualityRescueEstablished": false,
+  "performanceEstablished": false,
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ],
+  "goal": "ACTIVE"
+}

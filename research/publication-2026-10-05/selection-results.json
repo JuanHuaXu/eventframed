@@ -1,0 +1,213 @@
+{
+  "selected": "adaptive",
+  "speedControl": "full",
+  "selection": "Minimum expected issued Brier within original complete 400-ms core ceiling",
+  "historicalCandidates": [
+    {
+      "name": "full",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.2246990964333006,
+      "mean_core_ms": 50.30706183333335,
+      "worst_core_ms": 68.356416,
+      "comparable": true,
+      "second_requests": 0
+    },
+    {
+      "name": "adaptive",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.2147478547980669,
+      "mean_core_ms": 201.94405311666668,
+      "worst_core_ms": 211.951875,
+      "comparable": true,
+      "second_requests": 0
+    },
+    {
+      "name": "baseline_no_pair",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.34821236245452336,
+      "mean_core_ms": 31.191151408333344,
+      "worst_core_ms": 33.986167,
+      "comparable": true,
+      "second_requests": 0
+    },
+    {
+      "name": "current_no_pair",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.29188282762090434,
+      "mean_core_ms": 30.702666716666677,
+      "worst_core_ms": 42.1575,
+      "comparable": true,
+      "second_requests": 0
+    },
+    {
+      "name": "current_uncertainty",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.277368099767616,
+      "mean_core_ms": 56.41620766666665,
+      "worst_core_ms": 61.081542,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "free_no_pair",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.27135855892626953,
+      "mean_core_ms": 32.428865600000016,
+      "worst_core_ms": 33.437416,
+      "comparable": true,
+      "second_requests": 0
+    },
+    {
+      "name": "individual_no_pair",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.2624364063669882,
+      "mean_core_ms": 29.588117408333325,
+      "worst_core_ms": 30.58325,
+      "comparable": true,
+      "second_requests": 0
+    },
+    {
+      "name": "individual_uncertainty",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.25867115301531113,
+      "mean_core_ms": 55.05863985,
+      "worst_core_ms": 60.465334,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "local_no_pair",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.24864406477294812,
+      "mean_core_ms": 31.468084408333336,
+      "worst_core_ms": 32.613708,
+      "comparable": true,
+      "second_requests": 0
+    },
+    {
+      "name": "local_uncertainty",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.24590373899037357,
+      "mean_core_ms": 57.210405891666674,
+      "worst_core_ms": 61.835791,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "learn_no_pair",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.27185608639479925,
+      "mean_core_ms": 31.812503441666674,
+      "worst_core_ms": 33.024791,
+      "comparable": true,
+      "second_requests": 0
+    },
+    {
+      "name": "learn_random",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.2615422268201965,
+      "mean_core_ms": 38.87748503333334,
+      "worst_core_ms": 44.921208,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "learn_uncertainty",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.2569498226175554,
+      "mean_core_ms": 57.69796314166665,
+      "worst_core_ms": 63.889333,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "learn_information",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.25596808345546646,
+      "mean_core_ms": 59.45176010833334,
+      "worst_core_ms": 66.36375,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "learn_falsification",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.2552408159330698,
+      "mean_core_ms": 59.50377043333334,
+      "worst_core_ms": 72.2345,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "learn_predictive",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.25724184158369534,
+      "mean_core_ms": 280.55526389166664,
+      "worst_core_ms": 327.0895,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "learn_model_class",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.26146837209276175,
+      "mean_core_ms": 57.82702569999999,
+      "worst_core_ms": 62.435125,
+      "comparable": true,
+      "second_requests": 48000
+    },
+    {
+      "name": "learn_noise_class",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.25806877680974877,
+      "mean_core_ms": 57.77667467499998,
+      "worst_core_ms": 62.444334,
+      "comparable": true,
+      "second_requests": 48000
+    }
+  ],
+  "freshControls": [
+    {
+      "name": "full",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.22469909643330058,
+      "mean_core_ms": 49.28540350833335,
+      "worst_core_ms": 73.61425,
+      "comparable": true
+    },
+    {
+      "name": "adaptive",
+      "cohort": "native-v60-consumed-development-2026105407",
+      "cells": 120,
+      "expected_brier": 0.214747854798067,
+      "mean_core_ms": 197.73084341666666,
+      "worst_core_ms": 246.689542,
+      "comparable": true
+    }
+  ],
+  "consumedDevelopmentOnly": true,
+  "noUntouchedConfirmation": true,
+  "wholeGoalValidation": false,
+  "exactSyntheticServingEquivalenceNotClaimed": true,
+  "historicalArtifactSHA256": "afcc2636aefc741f64a8edb98698e00891251f436a0036adff018fb26be86a2b",
+  "freshArtifactSHA256": "6d6a754ef392839477f5105db3c2085501aab91571461b7bdc5a0f26d1cad43f"
+}

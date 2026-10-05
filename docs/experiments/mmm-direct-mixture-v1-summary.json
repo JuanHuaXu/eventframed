@@ -1,0 +1,533 @@
+{
+  "comparisons": [
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "ridgeAll",
+      "reference": "sharePointwise",
+      "delta": 0.00004476870802240298,
+      "pointwise95": [
+        0.00002348119001002888,
+        0.00006880233764516925
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "ridgeAll",
+      "reference": "Markov",
+      "delta": -0.0006247703967424183,
+      "pointwise95": [
+        -0.0007099138883118435,
+        -0.0005362007033680025
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "ridge64",
+      "reference": "sharePointwise",
+      "delta": -0.000008833151888151709,
+      "pointwise95": [
+        -0.00003160700824563945,
+        0.000011000388819614604
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "ridge64",
+      "reference": "Markov",
+      "delta": -0.000678372256652973,
+      "pointwise95": [
+        -0.0007605734125656387,
+        -0.0005994113783084139
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "currentCovAll",
+      "reference": "sharePointwise",
+      "delta": 0.000044381550487512034,
+      "pointwise95": [
+        0.00002315378983559159,
+        0.00006827897621014112
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "currentCovAll",
+      "reference": "Markov",
+      "delta": -0.0006251575542773092,
+      "pointwise95": [
+        -0.0007111188239101514,
+        -0.0005369766628261982
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "currentCov64",
+      "reference": "sharePointwise",
+      "delta": -0.000005852808666036677,
+      "pointwise95": [
+        -0.00002919010088130564,
+        0.000012902746499090939
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "whole",
+      "arm": "currentCov64",
+      "reference": "Markov",
+      "delta": -0.0006753919134308579,
+      "pointwise95": [
+        -0.0007533234318166083,
+        -0.0005962212949997487
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "ridgeAll",
+      "reference": "sharePointwise",
+      "delta": 0.0000372201893865132,
+      "pointwise95": [
+        -0.000014690128956917009,
+        0.00009871767934774356
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "ridgeAll",
+      "reference": "Markov",
+      "delta": -0.00018671688250283382,
+      "pointwise95": [
+        -0.00027617805442448,
+        -0.00009715070815140776
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "ridge64",
+      "reference": "sharePointwise",
+      "delta": -0.000016930935237085982,
+      "pointwise95": [
+        -0.00003755707880064855,
+        0.00000705278393248902
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "ridge64",
+      "reference": "Markov",
+      "delta": -0.000240868007126433,
+      "pointwise95": [
+        -0.0003285036054158785,
+        -0.00015902698600997426
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "currentCovAll",
+      "reference": "sharePointwise",
+      "delta": 0.000036974319047353846,
+      "pointwise95": [
+        -0.00001445739923344344,
+        0.00009778340667909003
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "currentCovAll",
+      "reference": "Markov",
+      "delta": -0.00018696275284199316,
+      "pointwise95": [
+        -0.00027885055846614234,
+        -0.00009788495487072165
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "currentCov64",
+      "reference": "sharePointwise",
+      "delta": -0.000009263398471715975,
+      "pointwise95": [
+        -0.000028587569026120713,
+        0.000012668737731931243
+      ]
+    },
+    {
+      "regime": "all",
+      "period": "terminal64",
+      "arm": "currentCov64",
+      "reference": "Markov",
+      "delta": -0.000233200470361063,
+      "pointwise95": [
+        -0.0003163177828614296,
+        -0.00015232230500278576
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "ridgeAll",
+      "reference": "sharePointwise",
+      "delta": -0.000007958979169887982,
+      "pointwise95": [
+        -0.000032051774145819635,
+        0.000020390962561797216
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "ridgeAll",
+      "reference": "Markov",
+      "delta": -0.0001478317288192171,
+      "pointwise95": [
+        -0.0002250060613957757,
+        -0.00005679779042687976
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "ridge64",
+      "reference": "sharePointwise",
+      "delta": -0.00006229356786159358,
+      "pointwise95": [
+        -0.0000834259853616775,
+        -0.00004260013633218897
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "ridge64",
+      "reference": "Markov",
+      "delta": -0.0002021663175109227,
+      "pointwise95": [
+        -0.0002764254599535909,
+        -0.00012465496788027596
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "currentCovAll",
+      "reference": "sharePointwise",
+      "delta": -0.00000475732293164383,
+      "pointwise95": [
+        -0.000029417843314080222,
+        0.00002287056727389078
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "currentCovAll",
+      "reference": "Markov",
+      "delta": -0.00014463007258097295,
+      "pointwise95": [
+        -0.0002221496452430237,
+        -0.00005899026698145989
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "currentCov64",
+      "reference": "sharePointwise",
+      "delta": -0.00005420899088724428,
+      "pointwise95": [
+        -0.000074234224015875,
+        -0.00003614574978475772
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "whole",
+      "arm": "currentCov64",
+      "reference": "Markov",
+      "delta": -0.0001940817405365734,
+      "pointwise95": [
+        -0.0002648994339872445,
+        -0.00011640285306264338
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "ridgeAll",
+      "reference": "sharePointwise",
+      "delta": 0.00001169906826858916,
+      "pointwise95": [
+        -0.00001634097529710068,
+        0.000041763358661604986
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "ridgeAll",
+      "reference": "Markov",
+      "delta": 0.00008191313832251154,
+      "pointwise95": [
+        -0.000040001191307942116,
+        0.00019186811020109333
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "ridge64",
+      "reference": "sharePointwise",
+      "delta": -0.000053043098525917954,
+      "pointwise95": [
+        -0.00007135633223695072,
+        -0.00003292072477067157
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "ridge64",
+      "reference": "Markov",
+      "delta": 0.00001717097152800443,
+      "pointwise95": [
+        -0.00009011895067980591,
+        0.00011134581539389986
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "currentCovAll",
+      "reference": "sharePointwise",
+      "delta": 0.000011987113611433789,
+      "pointwise95": [
+        -0.000016347368395804406,
+        0.0000422585297810302
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "currentCovAll",
+      "reference": "Markov",
+      "delta": 0.00008220118366535617,
+      "pointwise95": [
+        -0.00003746561640878948,
+        0.00018993931442953284
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "currentCov64",
+      "reference": "sharePointwise",
+      "delta": -0.00004082807631938052,
+      "pointwise95": [
+        -0.00005792153653525602,
+        -0.00002262899545649224
+      ]
+    },
+    {
+      "regime": "stationary",
+      "period": "terminal64",
+      "arm": "currentCov64",
+      "reference": "Markov",
+      "delta": 0.00002938599373454187,
+      "pointwise95": [
+        -0.0000791416376495997,
+        0.00012292205543000626
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "ridgeAll",
+      "reference": "sharePointwise",
+      "delta": 0.00013045119970987577,
+      "pointwise95": [
+        0.00009456824586497135,
+        0.0001688459837372043
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "ridgeAll",
+      "reference": "Markov",
+      "delta": -0.0013997957321176201,
+      "pointwise95": [
+        -0.0015389152890463997,
+        -0.0012735428195313227
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "ridge64",
+      "reference": "sharePointwise",
+      "delta": 0.00007804002406869135,
+      "pointwise95": [
+        0.00003259960794672163,
+        0.0001186377658404773
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "ridge64",
+      "reference": "Markov",
+      "delta": -0.0014522069077588045,
+      "pointwise95": [
+        -0.0015740260727899566,
+        -0.0013402361157587124
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "currentCovAll",
+      "reference": "sharePointwise",
+      "delta": 0.00012423221979364032,
+      "pointwise95": [
+        0.00008773143383802872,
+        0.00016442745455884605
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "currentCovAll",
+      "reference": "Markov",
+      "delta": -0.0014060147120338558,
+      "pointwise95": [
+        -0.001546309458694024,
+        -0.0012714372751367262
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "currentCov64",
+      "reference": "sharePointwise",
+      "delta": 0.00007272598744342568,
+      "pointwise95": [
+        0.000026814825364175718,
+        0.00011139240929706866
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "whole",
+      "arm": "currentCov64",
+      "reference": "Markov",
+      "delta": -0.00145752094438407,
+      "pointwise95": [
+        -0.001585702115104396,
+        -0.0013439850252602928
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "ridgeAll",
+      "reference": "sharePointwise",
+      "delta": 0.00007869201120313973,
+      "pointwise95": [
+        -0.00004262127243594182,
+        0.0002185065782193014
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "ridgeAll",
+      "reference": "Markov",
+      "delta": -0.0006232406663440201,
+      "pointwise95": [
+        -0.0007623273841670582,
+        -0.0004862322907365952
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "ridge64",
+      "reference": "sharePointwise",
+      "delta": 0.000041751330107265986,
+      "pointwise95": [
+        -0.000002870559842678216,
+        0.00008237500015886967
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "ridge64",
+      "reference": "Markov",
+      "delta": -0.0006601813474398938,
+      "pointwise95": [
+        -0.0007631999367091054,
+        -0.0005286365207240975
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "currentCovAll",
+      "reference": "sharePointwise",
+      "delta": 0.00007757852788072396,
+      "pointwise95": [
+        -0.00004293746223203696,
+        0.0002148185689415906
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "currentCovAll",
+      "reference": "Markov",
+      "delta": -0.0006243541496664359,
+      "pointwise95": [
+        -0.0007622750885706412,
+        -0.0004919010127679334
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "currentCov64",
+      "reference": "sharePointwise",
+      "delta": 0.00004202920303073891,
+      "pointwise95": [
+        0.0000028825622965482486,
+        0.00008036348574313063
+      ]
+    },
+    {
+      "regime": "changing",
+      "period": "terminal64",
+      "arm": "currentCov64",
+      "reference": "Markov",
+      "delta": -0.0006599034745164208,
+      "pointwise95": [
+        -0.0007650862129496107,
+        -0.0005285763418192034
+      ]
+    }
+  ],
+  "limitations": "Consumed-data paired eight-index cluster bootstrap. Pointwise intervals, not simultaneous or selection-adjusted. Report all four variants."
+}

@@ -1,0 +1,54 @@
+# v109 benchmark records
+
+Go1.27.1 darwin/arm64, Apple M4, GOMAXPROCS10.
+Benchmark source SHA256: 9ec2af56ec1444376dd49cf12fb55ce7d256c1bc0dd16b381482d84de4ab2fe0
+
+Quality, replay and independent verification handles were terminal before
+these sequential batches. External host activity is not controlled.
+
+## Fixed-model 256-frame journal lifetimes
+
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkLogV109Journal$' -benchtime=200ms -count=3
+
+Each operation has 256 forecasts, fixed models, delay8 release-before-issue,
+eight publications, expiry scans and complete flush. Acquired views may differ;
+these are not pure selector arithmetic or production query latencies.
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkLogV109Journal/arrival-10         	     146	   1639545 ns/op	  148016 B/op	    1219 allocs/op
+BenchmarkLogV109Journal/arrival-10         	     145	   1609383 ns/op	  148018 B/op	    1219 allocs/op
+BenchmarkLogV109Journal/arrival-10         	     146	   1616157 ns/op	  148016 B/op	    1219 allocs/op
+BenchmarkLogV109Journal/brier_neutral-10   	     145	   1643996 ns/op	  151472 B/op	    1240 allocs/op
+BenchmarkLogV109Journal/brier_neutral-10   	     146	   1629821 ns/op	  151473 B/op	    1240 allocs/op
+BenchmarkLogV109Journal/brier_neutral-10   	     146	   1644894 ns/op	  151474 B/op	    1240 allocs/op
+BenchmarkLogV109Journal/log-10             	     148	   1610972 ns/op	  151481 B/op	    1241 allocs/op
+BenchmarkLogV109Journal/log-10             	     148	   1606445 ns/op	  151481 B/op	    1241 allocs/op
+BenchmarkLogV109Journal/log-10             	     148	   1617785 ns/op	  151480 B/op	    1241 allocs/op
+BenchmarkLogV109Journal/log_neutral-10     	     146	   1621573 ns/op	  151480 B/op	    1241 allocs/op
+BenchmarkLogV109Journal/log_neutral-10     	     148	   1608140 ns/op	  151480 B/op	    1241 allocs/op
+BenchmarkLogV109Journal/log_neutral-10     	     148	   1616099 ns/op	  151480 B/op	    1241 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	5.168s
+
+## Whole seven-arm fixture
+
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkLogV109WholeFixture$' -benchtime=1x -count=3
+
+All seven arms, eight fits/publications, RNG, scores and recorded trajectories
+on consumed v108 design parity4/index0. No database, network or serving load.
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkLogV109WholeFixture/immediate-10         	       1	 145911459 ns/op	26893624 B/op	    7663 allocs/op
+BenchmarkLogV109WholeFixture/immediate-10         	       1	 131441375 ns/op	26888272 B/op	    7655 allocs/op
+BenchmarkLogV109WholeFixture/immediate-10         	       1	 130045875 ns/op	26888160 B/op	    7654 allocs/op
+BenchmarkLogV109WholeFixture/delayed_missing-10   	       1	 128103666 ns/op	26913440 B/op	    7768 allocs/op
+BenchmarkLogV109WholeFixture/delayed_missing-10   	       1	 128004334 ns/op	26913424 B/op	    7769 allocs/op
+BenchmarkLogV109WholeFixture/delayed_missing-10   	       1	 127617875 ns/op	26918616 B/op	    7773 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	0.959s

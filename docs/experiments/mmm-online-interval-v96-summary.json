@@ -1,0 +1,6951 @@
+{
+  "protocol": "mmm-online-interval-v96",
+  "artifactSHA256": "a6ac4766c413a26c87d81129dd23e44d3e2b3c29d420321ee0c249931f7d7cfd",
+  "evaluatorSHA256": "f784cbda0675e072fe01b59ac77ff12dcda0681044e26f66cbe70234d50dc2e9",
+  "runtime": "go1.27.1 darwin/arm64",
+  "streams": 768,
+  "stepsPerStream": 256,
+  "armOrder": [
+    "generic",
+    "parity",
+    "skeptical_BMA",
+    "online_no_share",
+    "online_share",
+    "interval"
+  ],
+  "caveat": "Approximate paired trajectory z=3.5 intervals, not anytime confidence sequences; complete full-frame training feedback in both views.",
+  "passed": 98,
+  "total": 106,
+  "verdict": "FAIL",
+  "maxBoundViolation": 0,
+  "gates": [
+    {
+      "phase": "design",
+      "scenario": "parity1",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00003065080084180963
+    },
+    {
+      "phase": "design",
+      "scenario": "parity1",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00006930752519311352
+    },
+    {
+      "phase": "design",
+      "scenario": "parity1",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00003226573535706386
+    },
+    {
+      "phase": "design",
+      "scenario": "parity1",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.000017532986071920834
+    },
+    {
+      "phase": "design",
+      "scenario": "parity2",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00042973560521089094
+    },
+    {
+      "phase": "design",
+      "scenario": "parity2",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00018065873113581022
+    },
+    {
+      "phase": "design",
+      "scenario": "parity2",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00013370077612938602
+    },
+    {
+      "phase": "design",
+      "scenario": "parity2",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00008378193361991195
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0014110229234837325
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 0,
+      "kind": "interaction_gain",
+      "pass": false,
+      "mean": 0.0019385909941276609,
+      "lower": 0.0014110229234837325,
+      "upper": 0.002466159064771589
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0004562587431491742
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00005077964822360222
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00006413124273025464
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0035348097912534116
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 0,
+      "kind": "interaction_gain",
+      "pass": false,
+      "mean": 0.004365566815180712,
+      "lower": 0.0035348097912534116,
+      "upper": 0.005196323839108013
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0020181816319339947
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00029897904134548086
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0003045160812580795
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.003216863495046396
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 0,
+      "kind": "interaction_gain",
+      "pass": false,
+      "mean": 0.004100772083348102,
+      "lower": 0.003216863495046396,
+      "upper": 0.004984680671649807
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.001773954833419755
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00018804075612196755
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00020467906872466326
+    },
+    {
+      "phase": "design",
+      "scenario": "majority3",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.0016301603782517256
+    },
+    {
+      "phase": "design",
+      "scenario": "majority3",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0015764383519325997
+    },
+    {
+      "phase": "design",
+      "scenario": "majority3",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.0013492695313295892
+    },
+    {
+      "phase": "design",
+      "scenario": "majority3",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0013547798163327008
+    },
+    {
+      "phase": "design",
+      "scenario": "mux3",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.0015575767571121293
+    },
+    {
+      "phase": "design",
+      "scenario": "mux3",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0016435193074606624
+    },
+    {
+      "phase": "design",
+      "scenario": "mux3",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.0010454861061338038
+    },
+    {
+      "phase": "design",
+      "scenario": "mux3",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0010523311101916272
+    },
+    {
+      "phase": "design",
+      "scenario": "constant",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00002747886327307886
+    },
+    {
+      "phase": "design",
+      "scenario": "constant",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00002570693872481407
+    },
+    {
+      "phase": "design",
+      "scenario": "constant",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0000064572527139347626
+    },
+    {
+      "phase": "design",
+      "scenario": "constant",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.000024599256417690886
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0011126470715301282
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0010329290249305486
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0005955098430108877
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0005315513837413784
+    },
+    {
+      "phase": "design",
+      "scenario": "dependent4",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0037397347213741837
+    },
+    {
+      "phase": "design",
+      "scenario": "dependent4",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0016614032602048471
+    },
+    {
+      "phase": "design",
+      "scenario": "dependent4",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0003375220898503025
+    },
+    {
+      "phase": "design",
+      "scenario": "dependent4",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00025017709732634054
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.001835930990605451
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.005104152492713739
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 1,
+      "kind": "recovery_gain",
+      "pass": true,
+      "mean": 0.006843404829206735,
+      "lower": 0.005104152492713739,
+      "upper": 0.008582657165699732
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0005596623483036966
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0019196637532458414
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.001333537519724279
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0017473794330997757
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 1,
+      "kind": "recovery_gain",
+      "pass": false,
+      "mean": -0.0014599511847302607,
+      "lower": -0.0017473794330997757,
+      "upper": -0.0011725229363607457
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.00007841747111222844
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0009644153078058082
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity1",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00015316323162794962
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity1",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00007586171251277401
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity1",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00009548126469679308
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity1",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00005622703833673845
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity2",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.000660945754482628
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity2",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00023485145829412263
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity2",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0002199839437671335
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity2",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00011755069174499447
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0015716572993009614
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 0,
+      "kind": "interaction_gain",
+      "pass": false,
+      "mean": 0.002117355509541469,
+      "lower": 0.0015716572993009614,
+      "upper": 0.0026630537197819765
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0006232998132498753
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0002593935771325614
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00019717117430291265
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.003242079186047061
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 0,
+      "kind": "interaction_gain",
+      "pass": false,
+      "mean": 0.004082226845118551,
+      "lower": 0.003242079186047061,
+      "upper": 0.004922374504190041
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0017972248252941427
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00027273414243614963
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00013165397919049867
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.003404443966013501
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 0,
+      "kind": "interaction_gain",
+      "pass": false,
+      "mean": 0.004307859036300321,
+      "lower": 0.003404443966013501,
+      "upper": 0.005211274106587141
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.002031797578120264
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.00016339556712420067
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00012006622429253338
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority3",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.001626994842603352
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority3",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0016369122988779607
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority3",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.001272683610063646
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority3",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.001286710545088218
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "mux3",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.0015582511687921032
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "mux3",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0017115824190968311
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "mux3",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.0011149531871018207
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "mux3",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.001216587934236744
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "constant",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.00012397270711268275
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "constant",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.000018975457835006872
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "constant",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.00013620066315930728
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "constant",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00001293431969176977
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.001115333197551702
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0009414731524643462
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.000528664157244932
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0003743004631628293
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "dependent4",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.003064789530171618
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "dependent4",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.0016263203705435842
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "dependent4",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.000296988907348881
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "dependent4",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.00015929962368151486
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0018426947201675968
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.005081880599877936
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 1,
+      "kind": "recovery_gain",
+      "pass": true,
+      "mean": 0.007502130357495552,
+      "lower": 0.005081880599877936,
+      "upper": 0.009922380115113169
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.0003913267796783349
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": -0.001532701265839959
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": -0.001187197702714304
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0017476741662697623
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 1,
+      "kind": "recovery_gain",
+      "pass": false,
+      "mean": -0.0013997134287704318,
+      "lower": -0.0017476741662697623,
+      "upper": -0.0010517526912711013
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 1,
+      "segment": 0,
+      "kind": "nonharm",
+      "pass": true,
+      "value": 0.00020016025020773486
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 1,
+      "segment": 1,
+      "kind": "late_nonharm",
+      "pass": true,
+      "value": 0.0007632307945285553
+    }
+  ],
+  "cells": [
+    {
+      "phase": "design",
+      "scenario": "parity1",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.0552298658278188,
+          "accuracy": 0.9452758789062459,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.054384376664537465,
+          "accuracy": 0.9404418945312459,
+          "gain": {
+            "mean": 0.000845489163281323,
+            "lower": -0.0028042058879867216,
+            "upper": 0.004495184214549367
+          }
+        },
+        {
+          "brier": 0.05490797958959191,
+          "accuracy": 0.9450561523437457,
+          "gain": {
+            "mean": 0.00032188623822688436,
+            "lower": 0.0001356269584204608,
+            "upper": 0.0005081455180333079
+          }
+        },
+        {
+          "brier": 0.054970497548764555,
+          "accuracy": 0.9454956054687458,
+          "gain": {
+            "mean": 0.00025936827905423615,
+            "lower": 0.00006879686561979412,
+            "upper": 0.00044993969248867817
+          }
+        },
+        {
+          "brier": 0.05497418463041929,
+          "accuracy": 0.9454956054687458,
+          "gain": {
+            "mean": 0.0002556811973994861,
+            "lower": 0.00006985942647259199,
+            "upper": 0.0004415029683263802
+          }
+        },
+        {
+          "brier": 0.05503594020302878,
+          "accuracy": 0.9452758789062458,
+          "gain": {
+            "mean": 0.00019392562479000745,
+            "lower": 0.00003065080084180963,
+            "upper": 0.00035720044873820524
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity1",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.04982421009142247,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.048231326395454834,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0015928836959676507,
+            "lower": 0.0006665781435726583,
+            "upper": 0.002519189248362643
+          }
+        },
+        {
+          "brier": 0.04956855925644215,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0002556508349803098,
+            "lower": 0.00012073824872248267,
+            "upper": 0.0003905634212381369
+          }
+        },
+        {
+          "brier": 0.049635380320396376,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0001888297710260973,
+            "lower": 0.00006398743530029337,
+            "upper": 0.00031367210675190124
+          }
+        },
+        {
+          "brier": 0.04964150434121843,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000182705750204025,
+            "lower": 0.00006658983829511427,
+            "upper": 0.00029882166211293577
+          }
+        },
+        {
+          "brier": 0.04967922252431359,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00014498756710888054,
+            "lower": 0.00006930752519311352,
+            "upper": 0.00022066760902464757
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity1",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.1517864836270537,
+          "accuracy": 0.7209350585937478,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.1506952454649511,
+          "accuracy": 0.7295043945312477,
+          "gain": {
+            "mean": 0.0010912381621025475,
+            "lower": -0.0011093901880516654,
+            "upper": 0.0032918665122567605
+          }
+        },
+        {
+          "brier": 0.15153891237562794,
+          "accuracy": 0.7209350585937478,
+          "gain": {
+            "mean": 0.0002475712514257266,
+            "lower": 0.00009403060734052441,
+            "upper": 0.00040111189551092887
+          }
+        },
+        {
+          "brier": 0.1516101884857173,
+          "accuracy": 0.7210449218749978,
+          "gain": {
+            "mean": 0.00017629514133635552,
+            "lower": 0.000050466095848505986,
+            "upper": 0.00030212418682420506
+          }
+        },
+        {
+          "brier": 0.15161211840111705,
+          "accuracy": 0.7210449218749978,
+          "gain": {
+            "mean": 0.00017436522593661892,
+            "lower": 0.00005013209860288553,
+            "upper": 0.0002985983532703523
+          }
+        },
+        {
+          "brier": 0.15163530592122113,
+          "accuracy": 0.7210449218749978,
+          "gain": {
+            "mean": 0.000151177705832546,
+            "lower": 0.00003226573535706386,
+            "upper": 0.0002700896763080282
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity1",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.15025276656551648,
+          "accuracy": 0.7210449218750011,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.14913831380262,
+          "accuracy": 0.7282958984375013,
+          "gain": {
+            "mean": 0.0011144527628964736,
+            "lower": -0.00065756227512657,
+            "upper": 0.002886467800919517
+          }
+        },
+        {
+          "brier": 0.15003547995960537,
+          "accuracy": 0.7210449218750011,
+          "gain": {
+            "mean": 0.00021728660591113606,
+            "lower": 0.00005519616260408824,
+            "upper": 0.00037937704921818386
+          }
+        },
+        {
+          "brier": 0.1501134229789354,
+          "accuracy": 0.7210449218750011,
+          "gain": {
+            "mean": 0.0001393435865810499,
+            "lower": 0.00001788900728155114,
+            "upper": 0.0002607981658805487
+          }
+        },
+        {
+          "brier": 0.15011686509053349,
+          "accuracy": 0.7210449218750011,
+          "gain": {
+            "mean": 0.00013590147498299988,
+            "lower": 0.000018385460498137663,
+            "upper": 0.0002534174894678621
+          }
+        },
+        {
+          "brier": 0.15014070492170334,
+          "accuracy": 0.7210449218750011,
+          "gain": {
+            "mean": 0.00011206164381317237,
+            "lower": 0.000017532986071920834,
+            "upper": 0.0002065903015544239
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity2",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.06333773797805653,
+          "accuracy": 0.9364868164062459,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.056421108378917874,
+          "accuracy": 0.9393432617187459,
+          "gain": {
+            "mean": 0.006916629599138673,
+            "lower": 0.004151328458102531,
+            "upper": 0.009681930740174816
+          }
+        },
+        {
+          "brier": 0.05975077185424612,
+          "accuracy": 0.9378051757812459,
+          "gain": {
+            "mean": 0.0035869661238104133,
+            "lower": 0.002482876270403164,
+            "upper": 0.004691055977217662
+          }
+        },
+        {
+          "brier": 0.062352298670300364,
+          "accuracy": 0.9370361328124958,
+          "gain": {
+            "mean": 0.0009854393077561854,
+            "lower": 0.0005627628511223852,
+            "upper": 0.0014081157643899855
+          }
+        },
+        {
+          "brier": 0.06238212344810055,
+          "accuracy": 0.9370361328124958,
+          "gain": {
+            "mean": 0.000955614529955988,
+            "lower": 0.0005526899003829926,
+            "upper": 0.0013585391595289833
+          }
+        },
+        {
+          "brier": 0.06272415800782934,
+          "accuracy": 0.9368164062499958,
+          "gain": {
+            "mean": 0.000613579970227188,
+            "lower": 0.00042973560521089094,
+            "upper": 0.0007974243352434851
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity2",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.05175537774894869,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04832655519556342,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.003428822553385255,
+            "lower": 0.0017579381692565663,
+            "upper": 0.005099706937513944
+          }
+        },
+        {
+          "brier": 0.04948805577170299,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.002267321977245715,
+            "lower": 0.0013657522248907857,
+            "upper": 0.0031688917296006443
+          }
+        },
+        {
+          "brier": 0.051103175222487446,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000652202526461243,
+            "lower": 0.0003181435086837067,
+            "upper": 0.0009862615442387795
+          }
+        },
+        {
+          "brier": 0.05114846175173257,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0006069159972161141,
+            "lower": 0.00030184945132674944,
+            "upper": 0.0009119825431054788
+          }
+        },
+        {
+          "brier": 0.05144273943469607,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0003126383142526179,
+            "lower": 0.00018065873113581022,
+            "upper": 0.00044461789736942564
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity2",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.1814285389448532,
+          "accuracy": 0.6609497070312484,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.1780126838130341,
+          "accuracy": 0.6672119140624985,
+          "gain": {
+            "mean": 0.003415855131819098,
+            "lower": 0.0010021806349050986,
+            "upper": 0.005829529628733097
+          }
+        },
+        {
+          "brier": 0.17953500377712303,
+          "accuracy": 0.6614990234374984,
+          "gain": {
+            "mean": 0.0018935351677301707,
+            "lower": 0.0008924689384552681,
+            "upper": 0.002894601397005073
+          }
+        },
+        {
+          "brier": 0.1809872605746226,
+          "accuracy": 0.6611694335937485,
+          "gain": {
+            "mean": 0.00044127837023062353,
+            "lower": 0.00009656673808874265,
+            "upper": 0.0007859900023725044
+          }
+        },
+        {
+          "brier": 0.1809985128938481,
+          "accuracy": 0.6611694335937485,
+          "gain": {
+            "mean": 0.0004300260510050483,
+            "lower": 0.00010017732785853255,
+            "upper": 0.000759874774151564
+          }
+        },
+        {
+          "brier": 0.1811225002286416,
+          "accuracy": 0.6611694335937485,
+          "gain": {
+            "mean": 0.000306038716211584,
+            "lower": 0.00013370077612938602,
+            "upper": 0.00047837665629378194
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity2",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.17639298406675955,
+          "accuracy": 0.669848632812501,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.17431767795312358,
+          "accuracy": 0.6696289062500008,
+          "gain": {
+            "mean": 0.002075306113635925,
+            "lower": 0.0004816519575111169,
+            "upper": 0.0036689602697607335
+          }
+        },
+        {
+          "brier": 0.17507050942187039,
+          "accuracy": 0.669848632812501,
+          "gain": {
+            "mean": 0.0013224746448891806,
+            "lower": 0.00038183507355344076,
+            "upper": 0.0022631142162249204
+          }
+        },
+        {
+          "brier": 0.1760768660701923,
+          "accuracy": 0.669848632812501,
+          "gain": {
+            "mean": 0.00031611799656727844,
+            "lower": 0.00006784420645797822,
+            "upper": 0.0005643917866765787
+          }
+        },
+        {
+          "brier": 0.17609346825596586,
+          "accuracy": 0.669848632812501,
+          "gain": {
+            "mean": 0.0002995158107936956,
+            "lower": 0.0000725341589839559,
+            "upper": 0.0005264974626034353
+          }
+        },
+        {
+          "brier": 0.17620246387188973,
+          "accuracy": 0.669848632812501,
+          "gain": {
+            "mean": 0.00019052019486979002,
+            "lower": 0.00008378193361991195,
+            "upper": 0.0002972584561196681
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.07730926060589914,
+          "accuracy": 0.9091308593749963,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05823899454341,
+          "accuracy": 0.9378051757812458,
+          "gain": {
+            "mean": 0.01907026606248914,
+            "lower": 0.01144554757901969,
+            "upper": 0.026694984545958592
+          }
+        },
+        {
+          "brier": 0.06410283565681345,
+          "accuracy": 0.9218749999999961,
+          "gain": {
+            "mean": 0.01320642494908568,
+            "lower": 0.008090272092695479,
+            "upper": 0.01832257780547588
+          }
+        },
+        {
+          "brier": 0.07042078621595885,
+          "accuracy": 0.9189086914062461,
+          "gain": {
+            "mean": 0.006888474389940308,
+            "lower": 0.004201497706198633,
+            "upper": 0.009575451073681983
+          }
+        },
+        {
+          "brier": 0.0706435871000635,
+          "accuracy": 0.9189086914062461,
+          "gain": {
+            "mean": 0.006665673505835648,
+            "lower": 0.004061262677876728,
+            "upper": 0.009270084333794568
+          }
+        },
+        {
+          "brier": 0.07537066961177148,
+          "accuracy": 0.9128662109374963,
+          "gain": {
+            "mean": 0.0019385909941276609,
+            "lower": 0.0014110229234837325,
+            "upper": 0.002466159064771589
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.05459459062121291,
+          "accuracy": 0.9489013671875025,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04815088904461313,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0064437015765997805,
+            "lower": 0.004091567329616837,
+            "upper": 0.008795835823582725
+          }
+        },
+        {
+          "brier": 0.048285888260145904,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.006308702361067007,
+            "lower": 0.004069917639878453,
+            "upper": 0.008547487082255561
+          }
+        },
+        {
+          "brier": 0.05076867206415408,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.003825918557058841,
+            "lower": 0.002212380580056782,
+            "upper": 0.0054394565340609
+          }
+        },
+        {
+          "brier": 0.05107386231366779,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0035207283075451164,
+            "lower": 0.0020584266660450563,
+            "upper": 0.004983029949045177
+          }
+        },
+        {
+          "brier": 0.05393673623570021,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0006578543855127058,
+            "lower": 0.0004562587431491742,
+            "upper": 0.0008594500278762373
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.23053378484286238,
+          "accuracy": 0.5629516601562495,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22564100628334455,
+          "accuracy": 0.5565795898437494,
+          "gain": {
+            "mean": 0.004892778559517872,
+            "lower": -0.000057875750995152984,
+            "upper": 0.009843432870030897
+          }
+        },
+        {
+          "brier": 0.22758438103968695,
+          "accuracy": 0.5653686523437496,
+          "gain": {
+            "mean": 0.002949403803175478,
+            "lower": -0.00018052651355504688,
+            "upper": 0.006079334119906003
+          }
+        },
+        {
+          "brier": 0.22929345898269973,
+          "accuracy": 0.5645996093749995,
+          "gain": {
+            "mean": 0.0012403258601626876,
+            "lower": -0.0004984057542309921,
+            "upper": 0.0029790574745563675
+          }
+        },
+        {
+          "brier": 0.22932302991912293,
+          "accuracy": 0.5645996093749995,
+          "gain": {
+            "mean": 0.0012107549237395277,
+            "lower": -0.00048471981704954715,
+            "upper": 0.0029062296645286025
+          }
+        },
+        {
+          "brier": 0.23003683715247497,
+          "accuracy": 0.5635009765624995,
+          "gain": {
+            "mean": 0.0004969476903873859,
+            "lower": 0.00005077964822360222,
+            "upper": 0.0009431157325511696
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity3",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.2264312244678161,
+          "accuracy": 0.5648193359375002,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22473557689062115,
+          "accuracy": 0.5536132812500002,
+          "gain": {
+            "mean": 0.00169564757719489,
+            "lower": -0.0005192549628687444,
+            "upper": 0.0039105501172585246
+          }
+        },
+        {
+          "brier": 0.22469003867266307,
+          "accuracy": 0.5648193359375002,
+          "gain": {
+            "mean": 0.0017411857951529467,
+            "lower": -0.00034180850115933395,
+            "upper": 0.0038241800914652273
+          }
+        },
+        {
+          "brier": 0.22589535654346002,
+          "accuracy": 0.5648193359375002,
+          "gain": {
+            "mean": 0.0005358679243560656,
+            "lower": -0.00010543779133488033,
+            "upper": 0.0011771736400470116
+          }
+        },
+        {
+          "brier": 0.2259301660991779,
+          "accuracy": 0.5648193359375002,
+          "gain": {
+            "mean": 0.0005010583686381703,
+            "lower": -0.00008363386687398498,
+            "upper": 0.0010857506041503256
+          }
+        },
+        {
+          "brier": 0.22623192513049448,
+          "accuracy": 0.5648193359375002,
+          "gain": {
+            "mean": 0.00019929933732162962,
+            "lower": 0.00006413124273025464,
+            "upper": 0.00033446743191300457
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.0978038621842062,
+          "accuracy": 0.8679321289062467,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.055972910255069126,
+          "accuracy": 0.9437377929687457,
+          "gain": {
+            "mean": 0.04183095192913706,
+            "lower": 0.03519834658599424,
+            "upper": 0.04846355727227988
+          }
+        },
+        {
+          "brier": 0.06322866188013855,
+          "accuracy": 0.9235229492187461,
+          "gain": {
+            "mean": 0.034575200304067646,
+            "lower": 0.02719073349450737,
+            "upper": 0.04195966711362792
+          }
+        },
+        {
+          "brier": 0.07284474629762806,
+          "accuracy": 0.9145141601562461,
+          "gain": {
+            "mean": 0.02495911588657812,
+            "lower": 0.018976346355135426,
+            "upper": 0.030941885418020815
+          }
+        },
+        {
+          "brier": 0.07337530868518026,
+          "accuracy": 0.914404296874996,
+          "gain": {
+            "mean": 0.02442855349902593,
+            "lower": 0.018477080231012005,
+            "upper": 0.030380026767039856
+          }
+        },
+        {
+          "brier": 0.09343829536902548,
+          "accuracy": 0.8949584960937463,
+          "gain": {
+            "mean": 0.004365566815180712,
+            "lower": 0.0035348097912534116,
+            "upper": 0.005196323839108013
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.07275342860384443,
+          "accuracy": 0.9196777343750018,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.048429199299874916,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0243242293039695,
+            "lower": 0.019224741009667798,
+            "upper": 0.029423717598271205
+          }
+        },
+        {
+          "brier": 0.04844570859604034,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.024307720007804075,
+            "lower": 0.019218468144856445,
+            "upper": 0.029396971870751704
+          }
+        },
+        {
+          "brier": 0.050708044987866296,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.022045383615978124,
+            "lower": 0.016499632825096925,
+            "upper": 0.027591134406859324
+          }
+        },
+        {
+          "brier": 0.05138703374074774,
+          "accuracy": 0.9497802734375026,
+          "gain": {
+            "mean": 0.0213663948630967,
+            "lower": 0.015937076223898304,
+            "upper": 0.026795713502295093
+          }
+        },
+        {
+          "brier": 0.07016978640263889,
+          "accuracy": 0.9436279296875022,
+          "gain": {
+            "mean": 0.0025836422012055294,
+            "lower": 0.0020181816319339947,
+            "upper": 0.003149102770477064
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.2271200667407956,
+          "accuracy": 0.5610839843749994,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.212528659210082,
+          "accuracy": 0.5814086914062492,
+          "gain": {
+            "mean": 0.014591407530713633,
+            "lower": 0.003745352541916651,
+            "upper": 0.025437462519510616
+          }
+        },
+        {
+          "brier": 0.2141153891947869,
+          "accuracy": 0.5750366210937491,
+          "gain": {
+            "mean": 0.0130046775460087,
+            "lower": 0.0028365940763507846,
+            "upper": 0.023172761015666614
+          }
+        },
+        {
+          "brier": 0.22034599417693415,
+          "accuracy": 0.5739379882812491,
+          "gain": {
+            "mean": 0.006774072563861481,
+            "lower": -0.0008935468250925518,
+            "upper": 0.014441691952815514
+          }
+        },
+        {
+          "brier": 0.22050055632042184,
+          "accuracy": 0.5739379882812491,
+          "gain": {
+            "mean": 0.006619510420373786,
+            "lower": -0.0008991088667079719,
+            "upper": 0.014138129707455543
+          }
+        },
+        {
+          "brier": 0.22565339666670498,
+          "accuracy": 0.5693237304687491,
+          "gain": {
+            "mean": 0.0014666700740906683,
+            "lower": 0.00029897904134548086,
+            "upper": 0.0026343611068358557
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity4",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.22286692111094725,
+          "accuracy": 0.5566894531250003,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21239369598227886,
+          "accuracy": 0.5806396484375006,
+          "gain": {
+            "mean": 0.010473225128668343,
+            "lower": 0.003845596357166285,
+            "upper": 0.0171008539001704
+          }
+        },
+        {
+          "brier": 0.21240943770995613,
+          "accuracy": 0.5648193359375003,
+          "gain": {
+            "mean": 0.01045748340099106,
+            "lower": 0.00384547861147034,
+            "upper": 0.01706948819051178
+          }
+        },
+        {
+          "brier": 0.21684068144078647,
+          "accuracy": 0.5648193359375003,
+          "gain": {
+            "mean": 0.006026239670160801,
+            "lower": -0.0006653969502452388,
+            "upper": 0.012717876290566841
+          }
+        },
+        {
+          "brier": 0.21705131589176904,
+          "accuracy": 0.5648193359375003,
+          "gain": {
+            "mean": 0.005815605219178211,
+            "lower": -0.0006687226042731411,
+            "upper": 0.012299933042629562
+          }
+        },
+        {
+          "brier": 0.22189514829237764,
+          "accuracy": 0.5635009765625003,
+          "gain": {
+            "mean": 0.0009717728185695807,
+            "lower": 0.0003045160812580795,
+            "upper": 0.0016390295558810818
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.09748819169004432,
+          "accuracy": 0.8679321289062466,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05796659569476377,
+          "accuracy": 0.9372558593749958,
+          "gain": {
+            "mean": 0.039521595995280545,
+            "lower": 0.031921244043469826,
+            "upper": 0.047121947947091264
+          }
+        },
+        {
+          "brier": 0.06379045679203654,
+          "accuracy": 0.922863769531246,
+          "gain": {
+            "mean": 0.03369773489800777,
+            "lower": 0.02625350339006731,
+            "upper": 0.041141966405948235
+          }
+        },
+        {
+          "brier": 0.07396230377408411,
+          "accuracy": 0.9126464843749961,
+          "gain": {
+            "mean": 0.0235258879159602,
+            "lower": 0.016703401950384743,
+            "upper": 0.030348373881535655
+          }
+        },
+        {
+          "brier": 0.07444639765906827,
+          "accuracy": 0.912426757812496,
+          "gain": {
+            "mean": 0.02304179403097606,
+            "lower": 0.016219954999556488,
+            "upper": 0.02986363306239563
+          }
+        },
+        {
+          "brier": 0.09338741960669619,
+          "accuracy": 0.8929809570312465,
+          "gain": {
+            "mean": 0.004100772083348102,
+            "lower": 0.003216863495046396,
+            "upper": 0.004984680671649807
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.06953624223359321,
+          "accuracy": 0.9311035156250017,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04828959737291303,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.02124664486068022,
+            "lower": 0.017369097446228676,
+            "upper": 0.025124192275131765
+          }
+        },
+        {
+          "brier": 0.048297999060212614,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.02123824317338062,
+            "lower": 0.017364884450650972,
+            "upper": 0.025111601896110267
+          }
+        },
+        {
+          "brier": 0.050929238782614794,
+          "accuracy": 0.9497802734375026,
+          "gain": {
+            "mean": 0.01860700345097844,
+            "lower": 0.014395029126119384,
+            "upper": 0.022818977775837496
+          }
+        },
+        {
+          "brier": 0.05149346555975866,
+          "accuracy": 0.9497802734375026,
+          "gain": {
+            "mean": 0.018042776673834558,
+            "lower": 0.013813151967406453,
+            "upper": 0.022272401380262662
+          }
+        },
+        {
+          "brier": 0.06731167409072024,
+          "accuracy": 0.9453857421875024,
+          "gain": {
+            "mean": 0.0022245681428729965,
+            "lower": 0.001773954833419755,
+            "upper": 0.002675181452326238
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.22446841681372004,
+          "accuracy": 0.5799804687499993,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21400174429866173,
+          "accuracy": 0.5867919921874992,
+          "gain": {
+            "mean": 0.010466672515058333,
+            "lower": 0.0010984400889676067,
+            "upper": 0.01983490494114906
+          }
+        },
+        {
+          "brier": 0.21540168224425282,
+          "accuracy": 0.5900878906249992,
+          "gain": {
+            "mean": 0.009066734569467166,
+            "lower": 0.001383240490853377,
+            "upper": 0.016750228648080956
+          }
+        },
+        {
+          "brier": 0.21951137777550309,
+          "accuracy": 0.5883300781249993,
+          "gain": {
+            "mean": 0.004957039038216895,
+            "lower": -0.001244032836371367,
+            "upper": 0.011158110912805157
+          }
+        },
+        {
+          "brier": 0.21960318588215996,
+          "accuracy": 0.5883300781249993,
+          "gain": {
+            "mean": 0.004865230931560063,
+            "lower": -0.0012297217001669778,
+            "upper": 0.010960183563287105
+          }
+        },
+        {
+          "brier": 0.22332694391214047,
+          "accuracy": 0.5838256835937492,
+          "gain": {
+            "mean": 0.0011414729015795494,
+            "lower": 0.00018804075612196755,
+            "upper": 0.0020949050470371313
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "complement4",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.21933059362247584,
+          "accuracy": 0.5883300781250004,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21214866819359865,
+          "accuracy": 0.5828369140625005,
+          "gain": {
+            "mean": 0.007181925428877035,
+            "lower": 0.0014856667987387271,
+            "upper": 0.012878184059015342
+          }
+        },
+        {
+          "brier": 0.2121555997747338,
+          "accuracy": 0.5905273437500004,
+          "gain": {
+            "mean": 0.0071749938477419445,
+            "lower": 0.0014826274647339469,
+            "upper": 0.012867360230749941
+          }
+        },
+        {
+          "brier": 0.2153507279240629,
+          "accuracy": 0.5905273437500004,
+          "gain": {
+            "mean": 0.003979865698412837,
+            "lower": -0.0008185367794277375,
+            "upper": 0.008778268176253412
+          }
+        },
+        {
+          "brier": 0.21545549030489541,
+          "accuracy": 0.5905273437500004,
+          "gain": {
+            "mean": 0.0038751033175803153,
+            "lower": -0.0007957041710567711,
+            "upper": 0.008545910806217402
+          }
+        },
+        {
+          "brier": 0.21857726851588186,
+          "accuracy": 0.5892089843750004,
+          "gain": {
+            "mean": 0.0007533251065939038,
+            "lower": 0.00020467906872466326,
+            "upper": 0.0013019711444631444
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "majority3",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.07578856178573658,
+          "accuracy": 0.9192382812499961,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.19868505820275612,
+          "accuracy": 0.7267578124999987,
+          "gain": {
+            "mean": -0.12289649641701955,
+            "lower": -0.12973196812095178,
+            "upper": -0.11606102471308732
+          }
+        },
+        {
+          "brier": 0.07634901725536751,
+          "accuracy": 0.918249511718746,
+          "gain": {
+            "mean": -0.0005604554696309397,
+            "lower": -0.0017508506343058305,
+            "upper": 0.0006299396950439511
+          }
+        },
+        {
+          "brier": 0.07594365070789509,
+          "accuracy": 0.919348144531246,
+          "gain": {
+            "mean": -0.00015508892215850955,
+            "lower": -0.0002490661203703527,
+            "upper": -0.00006111172394666635
+          }
+        },
+        {
+          "brier": 0.07596458040320438,
+          "accuracy": 0.919348144531246,
+          "gain": {
+            "mean": -0.00017601861746782167,
+            "lower": -0.0002709548512820182,
+            "upper": -0.00008108238365362515
+          }
+        },
+        {
+          "brier": 0.07720263632073145,
+          "accuracy": 0.918688964843746,
+          "gain": {
+            "mean": -0.0014140745349948613,
+            "lower": -0.0016301603782517256,
+            "upper": -0.001197988691737997
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "majority3",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.05750082065926723,
+          "accuracy": 0.9491210937500026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.19177487568194126,
+          "accuracy": 0.7355468750000009,
+          "gain": {
+            "mean": -0.134274055022674,
+            "lower": -0.14320553595136445,
+            "upper": -0.12534257409398356
+          }
+        },
+        {
+          "brier": 0.05750505720429884,
+          "accuracy": 0.9491210937500026,
+          "gain": {
+            "mean": -0.0000042365450315916,
+            "lower": -0.000014875869980339643,
+            "upper": 0.000006402779917156442
+          }
+        },
+        {
+          "brier": 0.05750114179067862,
+          "accuracy": 0.9491210937500026,
+          "gain": {
+            "mean": -3.2113141139713045e-7,
+            "lower": -6.150005430774061e-7,
+            "upper": -2.7262279716854838e-8
+          }
+        },
+        {
+          "brier": 0.057526060904497335,
+          "accuracy": 0.9491210937500026,
+          "gain": {
+            "mean": -0.000025240245230113284,
+            "lower": -0.000030386398645084577,
+            "upper": -0.00002009409181514199
+          }
+        },
+        {
+          "brier": 0.058877421305996575,
+          "accuracy": 0.9486816406250026,
+          "gain": {
+            "mean": -0.0013766006467293434,
+            "lower": -0.0015764383519325997,
+            "upper": -0.0011767629415260872
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "majority3",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.13385287581241423,
+          "accuracy": 0.8039916992187476,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21385997447103156,
+          "accuracy": 0.7200561523437489,
+          "gain": {
+            "mean": -0.08000709865861738,
+            "lower": -0.10510436188473388,
+            "upper": -0.054909835432500886
+          }
+        },
+        {
+          "brier": 0.1341226231165686,
+          "accuracy": 0.8035522460937475,
+          "gain": {
+            "mean": -0.0002697473041544476,
+            "lower": -0.000618840034918737,
+            "upper": 0.00007934542660984178
+          }
+        },
+        {
+          "brier": 0.13402548954373972,
+          "accuracy": 0.8038818359374976,
+          "gain": {
+            "mean": -0.0001726137313255013,
+            "lower": -0.0002627126057696659,
+            "upper": -0.00008251485688133671
+          }
+        },
+        {
+          "brier": 0.13404270353109976,
+          "accuracy": 0.8042114257812475,
+          "gain": {
+            "mean": -0.00018982771868557334,
+            "lower": -0.00028284540799261907,
+            "upper": -0.0000968100293785276
+          }
+        },
+        {
+          "brier": 0.13484007619090424,
+          "accuracy": 0.8043212890624976,
+          "gain": {
+            "mean": -0.0009872003784900199,
+            "lower": -0.0013492695313295892,
+            "upper": -0.0006251312256504505
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "majority3",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.12428246582915115,
+          "accuracy": 0.8183837890625014,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21102167151197318,
+          "accuracy": 0.7254394531250009,
+          "gain": {
+            "mean": -0.08673920568282212,
+            "lower": -0.11531944064769237,
+            "upper": -0.058158970717951876
+          }
+        },
+        {
+          "brier": 0.12428651467450162,
+          "accuracy": 0.8183837890625014,
+          "gain": {
+            "mean": -0.000004048845350481008,
+            "lower": -0.000014743282009578837,
+            "upper": 0.000006645591308616822
+          }
+        },
+        {
+          "brier": 0.12429433730631145,
+          "accuracy": 0.8188232421875015,
+          "gain": {
+            "mean": -0.000011871477160313752,
+            "lower": -0.000028792597792875908,
+            "upper": 0.000005049643472248404
+          }
+        },
+        {
+          "brier": 0.12431679444294545,
+          "accuracy": 0.8188232421875015,
+          "gain": {
+            "mean": -0.00003432861379431976,
+            "lower": -0.000056587597440178484,
+            "upper": -0.000012069630148461033
+          }
+        },
+        {
+          "brier": 0.12522546637172927,
+          "accuracy": 0.8183837890625014,
+          "gain": {
+            "mean": -0.0009430005425781352,
+            "lower": -0.0013547798163327008,
+            "upper": -0.0005312212688235696
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "mux3",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.07489843203181627,
+          "accuracy": 0.9207763671874961,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.1959242900843461,
+          "accuracy": 0.7269775390624988,
+          "gain": {
+            "mean": -0.12102585805252976,
+            "lower": -0.12748494390414808,
+            "upper": -0.11456677220091144
+          }
+        },
+        {
+          "brier": 0.07531098774419859,
+          "accuracy": 0.9203369140624962,
+          "gain": {
+            "mean": -0.00041255571238229703,
+            "lower": -0.001059041523200205,
+            "upper": 0.00023393009843561093
+          }
+        },
+        {
+          "brier": 0.07505820780642691,
+          "accuracy": 0.9202270507812462,
+          "gain": {
+            "mean": -0.00015977577461061482,
+            "lower": -0.00023687242074169743,
+            "upper": -0.00008267912847953222
+          }
+        },
+        {
+          "brier": 0.0750786445304872,
+          "accuracy": 0.9198974609374961,
+          "gain": {
+            "mean": -0.00018021249867093692,
+            "lower": -0.0002587021307804892,
+            "upper": -0.00010172286656138459
+          }
+        },
+        {
+          "brier": 0.07626697348328956,
+          "accuracy": 0.9201171874999962,
+          "gain": {
+            "mean": -0.0013685414514732885,
+            "lower": -0.0015575767571121293,
+            "upper": -0.0011795061458344477
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "mux3",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.05790133619846778,
+          "accuracy": 0.9482421875000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.19486099841330604,
+          "accuracy": 0.7307128906250008,
+          "gain": {
+            "mean": -0.13695966221483824,
+            "lower": -0.14763668822035247,
+            "upper": -0.126282636209324
+          }
+        },
+        {
+          "brier": 0.05791082021234845,
+          "accuracy": 0.9482421875000026,
+          "gain": {
+            "mean": -0.000009484013880666506,
+            "lower": -0.0000358154612516014,
+            "upper": 0.000016847433490268387
+          }
+        },
+        {
+          "brier": 0.05790247291598242,
+          "accuracy": 0.9482421875000026,
+          "gain": {
+            "mean": -0.0000011367175146138019,
+            "lower": -0.000003821525568018631,
+            "upper": 0.000001548090538791027
+          }
+        },
+        {
+          "brier": 0.057927927548405964,
+          "accuracy": 0.9475830078125025,
+          "gain": {
+            "mean": -0.000026591349938193077,
+            "lower": -0.00003504381603853806,
+            "upper": -0.00001813888383784809
+          }
+        },
+        {
+          "brier": 0.05929035224465184,
+          "accuracy": 0.9478027343750025,
+          "gain": {
+            "mean": -0.0013890160461840482,
+            "lower": -0.0016435193074606624,
+            "upper": -0.001134512784907434
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "mux3",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.16570575976334304,
+          "accuracy": 0.7065429687499986,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22222309967482468,
+          "accuracy": 0.6524902343749993,
+          "gain": {
+            "mean": -0.056517339911481584,
+            "lower": -0.08636028568284859,
+            "upper": -0.026674394140114584
+          }
+        },
+        {
+          "brier": 0.16577059262681249,
+          "accuracy": 0.7064331054687484,
+          "gain": {
+            "mean": -0.00006483286346943822,
+            "lower": -0.0003033797025517777,
+            "upper": 0.00017371397561290127
+          }
+        },
+        {
+          "brier": 0.16576438310397368,
+          "accuracy": 0.7062133789062484,
+          "gain": {
+            "mean": -0.000058623340630644186,
+            "lower": -0.00019486006215088423,
+            "upper": 0.00007761338088959585
+          }
+        },
+        {
+          "brier": 0.16577663152191538,
+          "accuracy": 0.7063232421874984,
+          "gain": {
+            "mean": -0.00007087175857229495,
+            "lower": -0.0002098128131510513,
+            "upper": 0.0000680692960064614
+          }
+        },
+        {
+          "brier": 0.16632018382738026,
+          "accuracy": 0.7073120117187485,
+          "gain": {
+            "mean": -0.0006144240640371997,
+            "lower": -0.0010454861061338038,
+            "upper": -0.00018336202194059562
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "mux3",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.155643643008026,
+          "accuracy": 0.7230224609375011,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22020248367403053,
+          "accuracy": 0.6621582031250005,
+          "gain": {
+            "mean": -0.06455884066600451,
+            "lower": -0.09816174433795494,
+            "upper": -0.03095593699405408
+          }
+        },
+        {
+          "brier": 0.15564699541453147,
+          "accuracy": 0.7230224609375011,
+          "gain": {
+            "mean": -0.0000033524065055101117,
+            "lower": -0.000011042620145168541,
+            "upper": 0.000004337807134148318
+          }
+        },
+        {
+          "brier": 0.15560913044979977,
+          "accuracy": 0.7228027343750012,
+          "gain": {
+            "mean": 0.000034512558226232814,
+            "lower": -0.00005183021229357406,
+            "upper": 0.00012085532874603969
+          }
+        },
+        {
+          "brier": 0.15562555961114946,
+          "accuracy": 0.7230224609375011,
+          "gain": {
+            "mean": 0.000018083396876530456,
+            "lower": -0.00006855490754381416,
+            "upper": 0.00010472170129687507
+          }
+        },
+        {
+          "brier": 0.15625744029144284,
+          "accuracy": 0.7254394531250011,
+          "gain": {
+            "mean": -0.0006137972834168591,
+            "lower": -0.0010523311101916272,
+            "upper": -0.00017526345664209094
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "constant",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.05050264795170213,
+          "accuracy": 0.9496704101562456,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04997006557393212,
+          "accuracy": 0.9482421874999957,
+          "gain": {
+            "mean": 0.0005325823777700342,
+            "lower": -0.0008393546040441088,
+            "upper": 0.0019045193595841772
+          }
+        },
+        {
+          "brier": 0.05047018552360409,
+          "accuracy": 0.9496704101562456,
+          "gain": {
+            "mean": 0.00003246242809806115,
+            "lower": 0.000016713215481445632,
+            "upper": 0.00004821164071467667
+          }
+        },
+        {
+          "brier": 0.05040888353533505,
+          "accuracy": 0.9496704101562456,
+          "gain": {
+            "mean": 0.00009376441636710755,
+            "lower": 0.000014970823156163946,
+            "upper": 0.00017255800957805114
+          }
+        },
+        {
+          "brier": 0.05040880804302573,
+          "accuracy": 0.9496704101562456,
+          "gain": {
+            "mean": 0.00009383990867643799,
+            "lower": 0.00001680636698462181,
+            "upper": 0.00017087345036825418
+          }
+        },
+        {
+          "brier": 0.0504156673253263,
+          "accuracy": 0.9496704101562456,
+          "gain": {
+            "mean": 0.00008698062637586758,
+            "lower": 0.00002747886327307886,
+            "upper": 0.0001464823894786563
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "constant",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.04919222987325999,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.048394971015522634,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00079725885773737,
+            "lower": 0.0003247155722250935,
+            "upper": 0.0012698021432496465
+          }
+        },
+        {
+          "brier": 0.04916524786410737,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000026982009152618815,
+            "lower": 0.00001667139545852534,
+            "upper": 0.00003729262284671229
+          }
+        },
+        {
+          "brier": 0.04912501110206981,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0000672187711901885,
+            "lower": 0.000028591280107941465,
+            "upper": 0.00010584626227243553
+          }
+        },
+        {
+          "brier": 0.04912451650001822,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00006771337324177349,
+            "lower": 0.000029012353765784502,
+            "upper": 0.00010641439271776247
+          }
+        },
+        {
+          "brier": 0.049124662769033295,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00006756710422669253,
+            "lower": 0.00002570693872481407,
+            "upper": 0.00010942726972857099
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "constant",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.05017967831233999,
+          "accuracy": 0.9499999999999956,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04980406903541953,
+          "accuracy": 0.9499999999999956,
+          "gain": {
+            "mean": 0.0003756092769204556,
+            "lower": -0.0007904702235887421,
+            "upper": 0.0015416887774296532
+          }
+        },
+        {
+          "brier": 0.050155842822941304,
+          "accuracy": 0.9499999999999956,
+          "gain": {
+            "mean": 0.000023835489398666603,
+            "lower": 0.000009959611492582278,
+            "upper": 0.000037711367304750924
+          }
+        },
+        {
+          "brier": 0.050117005841581935,
+          "accuracy": 0.9499999999999956,
+          "gain": {
+            "mean": 0.00006267247075807353,
+            "lower": 0.00000652085014781447,
+            "upper": 0.00011882409136833259
+          }
+        },
+        {
+          "brier": 0.05011695451806055,
+          "accuracy": 0.9499999999999956,
+          "gain": {
+            "mean": 0.00006272379427941805,
+            "lower": 0.00000753775168638911,
+            "upper": 0.00011790983687244699
+          }
+        },
+        {
+          "brier": 0.05012309292261157,
+          "accuracy": 0.9499999999999956,
+          "gain": {
+            "mean": 0.00005658538972841214,
+            "lower": 0.0000064572527139347626,
+            "upper": 0.00010671352674288952
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "constant",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.04902883590655889,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04839497101751321,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000633864889045683,
+            "lower": 0.000302564039194842,
+            "upper": 0.0009651657388965241
+          }
+        },
+        {
+          "brier": 0.04900776641093084,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000021069495628069264,
+            "lower": 0.000011921818331192948,
+            "upper": 0.00003021717292494558
+          }
+        },
+        {
+          "brier": 0.04898161368588771,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00004722222067117922,
+            "lower": 0.000024796268467774746,
+            "upper": 0.0000696481728745837
+          }
+        },
+        {
+          "brier": 0.04898128019939414,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000047555707164735096,
+            "lower": 0.000025228595380421986,
+            "upper": 0.0000698828189490482
+          }
+        },
+        {
+          "brier": 0.04898057911878955,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00004825678776934953,
+            "lower": 0.000024599256417690886,
+            "upper": 0.00007191431912100817
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.2681255068955331,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.2556622871116598,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.012463219783873332,
+            "lower": 0.008875999149857934,
+            "upper": 0.01605044041788873
+          }
+        },
+        {
+          "brier": 0.2641595825144476,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.003965924381085371,
+            "lower": 0.002867906516417728,
+            "upper": 0.0050639422457530135
+          }
+        },
+        {
+          "brier": 0.2651174596964501,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.003008047199082913,
+            "lower": 0.0015971420167809466,
+            "upper": 0.00441895238138488
+          }
+        },
+        {
+          "brier": 0.26523682306200586,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0028886838335271878,
+            "lower": 0.0015733961856646038,
+            "upper": 0.004203971481389772
+          }
+        },
+        {
+          "brier": 0.2667025899181644,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0014229169773685817,
+            "lower": 0.0011126470715301282,
+            "upper": 0.0017331868832070351
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.2683519539807041,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.25430159224236826,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.01405036173833594,
+            "lower": 0.009641587068334826,
+            "upper": 0.018459136408337053
+          }
+        },
+        {
+          "brier": 0.26393731507471546,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.004414638905988633,
+            "lower": 0.0026843436092232175,
+            "upper": 0.006144934202754049
+          }
+        },
+        {
+          "brier": 0.2642178112205126,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.004134142760191532,
+            "lower": 0.0018199681842516516,
+            "upper": 0.006448317336131411
+          }
+        },
+        {
+          "brier": 0.2644381796220469,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.003913774358657213,
+            "lower": 0.001759897232411415,
+            "upper": 0.006067651484903012
+          }
+        },
+        {
+          "brier": 0.266846643218369,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0015053107623351353,
+            "lower": 0.0010329290249305486,
+            "upper": 0.001977692499739722
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.2597367443111317,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.2518233462042462,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.007913398106885319,
+            "lower": 0.005619645632808343,
+            "upper": 0.010207150580962294
+          }
+        },
+        {
+          "brier": 0.2573606390348228,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0023761052763088125,
+            "lower": 0.0017906761639254025,
+            "upper": 0.0029615343886922225
+          }
+        },
+        {
+          "brier": 0.25837233862652115,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0013644056846104716,
+            "lower": 0.0007942491919308685,
+            "upper": 0.0019345621772900747
+          }
+        },
+        {
+          "brier": 0.258424992292133,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.001311752018998618,
+            "lower": 0.0007814647691442811,
+            "upper": 0.0018420392688529548
+          }
+        },
+        {
+          "brier": 0.258970525912764,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0007662183983675915,
+            "lower": 0.0005955098430108877,
+            "upper": 0.0009369269537242952
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.25955588835043664,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.25145069002501064,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.008105198325425958,
+            "lower": 0.005316176243492074,
+            "upper": 0.010894220407359842
+          }
+        },
+        {
+          "brier": 0.2569476270048642,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0026082613455724445,
+            "lower": 0.0017377570457058058,
+            "upper": 0.0034787656454390832
+          }
+        },
+        {
+          "brier": 0.25782865919276393,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0017272291576726842,
+            "lower": 0.0008781569823541227,
+            "upper": 0.0025763013329912457
+          }
+        },
+        {
+          "brier": 0.2579222931099638,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.001633595240472803,
+            "lower": 0.000848443448142113,
+            "upper": 0.002418747032803493
+          }
+        },
+        {
+          "brier": 0.2587784709958154,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0007774173546212255,
+            "lower": 0.0005315513837413784,
+            "upper": 0.0010232833255010725
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "dependent4",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.0942477022749607,
+          "accuracy": 0.8750732421874965,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05146222237298454,
+          "accuracy": 0.9470336914062457,
+          "gain": {
+            "mean": 0.04278547990197614,
+            "lower": 0.03674085921400992,
+            "upper": 0.04883010058994236
+          }
+        },
+        {
+          "brier": 0.057928703778030846,
+          "accuracy": 0.933630371093746,
+          "gain": {
+            "mean": 0.036318998496929836,
+            "lower": 0.029288784819184063,
+            "upper": 0.04334921217467561
+          }
+        },
+        {
+          "brier": 0.06850303253110666,
+          "accuracy": 0.921655273437496,
+          "gain": {
+            "mean": 0.025744669743854014,
+            "lower": 0.020523186744535203,
+            "upper": 0.030966152743172826
+          }
+        },
+        {
+          "brier": 0.06903547109337298,
+          "accuracy": 0.921545410156246,
+          "gain": {
+            "mean": 0.02521223118158771,
+            "lower": 0.020026076085470728,
+            "upper": 0.03039838627770469
+          }
+        },
+        {
+          "brier": 0.08976907659416096,
+          "accuracy": 0.9008911132812465,
+          "gain": {
+            "mean": 0.004478625680799727,
+            "lower": 0.0037397347213741837,
+            "upper": 0.005217516640225271
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "dependent4",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.07234075110125314,
+          "accuracy": 0.9258300781250018,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04810466082115444,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.02423609028009869,
+            "lower": 0.017621381707175306,
+            "upper": 0.030850798853022072
+          }
+        },
+        {
+          "brier": 0.04814051367823718,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.02420023742301596,
+            "lower": 0.017551345338533905,
+            "upper": 0.030849129507498012
+          }
+        },
+        {
+          "brier": 0.04957539227255011,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.022765358828703026,
+            "lower": 0.01599340513755037,
+            "upper": 0.029537312519855682
+          }
+        },
+        {
+          "brier": 0.05023923373096458,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.022101517370288534,
+            "lower": 0.015408459133546246,
+            "upper": 0.02879457560703082
+          }
+        },
+        {
+          "brier": 0.06973466873358425,
+          "accuracy": 0.9431884765625023,
+          "gain": {
+            "mean": 0.0026060823676688763,
+            "lower": 0.0016614032602048471,
+            "upper": 0.0035507614751329056
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "dependent4",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.2166071103904922,
+          "accuracy": 0.604589843749999,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.20340669026105634,
+          "accuracy": 0.6276611328124988,
+          "gain": {
+            "mean": 0.01320042012943587,
+            "lower": 0.0031327949281594533,
+            "upper": 0.023268045330712285
+          }
+        },
+        {
+          "brier": 0.20475809033272704,
+          "accuracy": 0.6229370117187488,
+          "gain": {
+            "mean": 0.011849020057765138,
+            "lower": 0.002767857237211173,
+            "upper": 0.020930182878319104
+          }
+        },
+        {
+          "brier": 0.21149938639414037,
+          "accuracy": 0.6173339843749989,
+          "gain": {
+            "mean": 0.005107723996351811,
+            "lower": -0.00034171573752517746,
+            "upper": 0.010557163730228799
+          }
+        },
+        {
+          "brier": 0.21171653794288,
+          "accuracy": 0.6173339843749989,
+          "gain": {
+            "mean": 0.004890572447612177,
+            "lower": -0.0003253868782047394,
+            "upper": 0.010106531773429094
+          }
+        },
+        {
+          "brier": 0.21552968502619949,
+          "accuracy": 0.6088745117187491,
+          "gain": {
+            "mean": 0.00107742536429268,
+            "lower": 0.0003375220898503025,
+            "upper": 0.0018173286387350575
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "dependent4",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.21107856634081748,
+          "accuracy": 0.6184326171875006,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.20254234475192145,
+          "accuracy": 0.6226074218750006,
+          "gain": {
+            "mean": 0.00853622158889602,
+            "lower": 0.0019614384747399793,
+            "upper": 0.015111004703052062
+          }
+        },
+        {
+          "brier": 0.202439593820825,
+          "accuracy": 0.6259033203125006,
+          "gain": {
+            "mean": 0.008638972519992447,
+            "lower": 0.0021449822334058894,
+            "upper": 0.015132962806579005
+          }
+        },
+        {
+          "brier": 0.20591928239692622,
+          "accuracy": 0.6259033203125006,
+          "gain": {
+            "mean": 0.005159283943891212,
+            "lower": -0.0006090736043076255,
+            "upper": 0.010927641492090051
+          }
+        },
+        {
+          "brier": 0.2062296032777246,
+          "accuracy": 0.6259033203125006,
+          "gain": {
+            "mean": 0.004848963063092878,
+            "lower": -0.0005928292694252647,
+            "upper": 0.01029075539561102
+          }
+        },
+        {
+          "brier": 0.2103744302235527,
+          "accuracy": 0.6206298828125005,
+          "gain": {
+            "mean": 0.0007041361172647215,
+            "lower": 0.00025017709732634054,
+            "upper": 0.0011580951372031027
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.1473710520047754,
+          "accuracy": 0.8126708984374976,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.17480819771317715,
+          "accuracy": 0.7534545898437477,
+          "gain": {
+            "mean": -0.027437145708401778,
+            "lower": -0.035674775488137585,
+            "upper": -0.01919951592866597
+          }
+        },
+        {
+          "brier": 0.1390373597564984,
+          "accuracy": 0.8264038085937477,
+          "gain": {
+            "mean": 0.008333692248277014,
+            "lower": 0.005375590585719932,
+            "upper": 0.011291793910834095
+          }
+        },
+        {
+          "brier": 0.1474606793715159,
+          "accuracy": 0.8153076171874976,
+          "gain": {
+            "mean": -0.0000896273667405161,
+            "lower": -0.00021481358023933608,
+            "upper": 0.00003555884675830387
+          }
+        },
+        {
+          "brier": 0.14653816681430762,
+          "accuracy": 0.8162963867187477,
+          "gain": {
+            "mean": 0.0008328851904677893,
+            "lower": 0.00020270655783481662,
+            "upper": 0.0014630638231007622
+          }
+        },
+        {
+          "brier": 0.14467332153698476,
+          "accuracy": 0.8179443359374976,
+          "gain": {
+            "mean": 0.0026977304677906233,
+            "lower": 0.001835930990605451,
+            "upper": 0.0035595299449757956
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.19994435212131234,
+          "accuracy": 0.7386230468750015,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.1499672525702952,
+          "accuracy": 0.7841064453125015,
+          "gain": {
+            "mean": 0.049977099551017146,
+            "lower": 0.03659151116770626,
+            "upper": 0.06336268793432803
+          }
+        },
+        {
+          "brier": 0.18298480869345712,
+          "accuracy": 0.7652099609375016,
+          "gain": {
+            "mean": 0.016959543427855203,
+            "lower": 0.011068712942096928,
+            "upper": 0.022850373913613477
+          }
+        },
+        {
+          "brier": 0.19974784240254462,
+          "accuracy": 0.7434570312500016,
+          "gain": {
+            "mean": 0.00019650971876771645,
+            "lower": -0.00005033939307868537,
+            "upper": 0.00044335883061411826
+          }
+        },
+        {
+          "brier": 0.1978857443473294,
+          "accuracy": 0.7454345703125015,
+          "gain": {
+            "mean": 0.0020586077739828896,
+            "lower": 0.0008005787211377579,
+            "upper": 0.0033166368268280214
+          }
+        },
+        {
+          "brier": 0.19310094729210558,
+          "accuracy": 0.7482910156250013,
+          "gain": {
+            "mean": 0.006843404829206735,
+            "lower": 0.005104152492713739,
+            "upper": 0.008582657165699732
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.20396498003500715,
+          "accuracy": 0.6711669921875001,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22571275570348553,
+          "accuracy": 0.63963623046875,
+          "gain": {
+            "mean": -0.0217477756684784,
+            "lower": -0.030778459201725533,
+            "upper": -0.012717092135231268
+          }
+        },
+        {
+          "brier": 0.20131595413453182,
+          "accuracy": 0.67325439453125,
+          "gain": {
+            "mean": 0.002649025900475333,
+            "lower": 0.0005178516915566034,
+            "upper": 0.0047802001093940625
+          }
+        },
+        {
+          "brier": 0.2040256155808449,
+          "accuracy": 0.67193603515625,
+          "gain": {
+            "mean": -0.00006063554583777761,
+            "lower": -0.00020293774494979,
+            "upper": 0.00008166665327423477
+          }
+        },
+        {
+          "brier": 0.20387264808408842,
+          "accuracy": 0.67171630859375,
+          "gain": {
+            "mean": 0.00009233195091870941,
+            "lower": -0.00008466092987170242,
+            "upper": 0.0002693248317091212
+          }
+        },
+        {
+          "brier": 0.20295336748636106,
+          "accuracy": 0.6720458984375,
+          "gain": {
+            "mean": 0.0010116125486460412,
+            "lower": 0.0005596623483036966,
+            "upper": 0.001463562748988386
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "majority_to_parity",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.26229481935308696,
+          "accuracy": 0.5492187500000003,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.23728202454528444,
+          "accuracy": 0.5613037109375004,
+          "gain": {
+            "mean": 0.025012794807802517,
+            "lower": 0.015798518813238363,
+            "upper": 0.03422707080236667
+          }
+        },
+        {
+          "brier": 0.2567922530747728,
+          "accuracy": 0.5533935546875003,
+          "gain": {
+            "mean": 0.005502566278314158,
+            "lower": 0.001243947552960441,
+            "upper": 0.009761185003667874
+          }
+        },
+        {
+          "brier": 0.26208413105435147,
+          "accuracy": 0.5514160156250002,
+          "gain": {
+            "mean": 0.0002106882987354449,
+            "lower": 0.00002832427057917458,
+            "upper": 0.00039305232689171527
+          }
+        },
+        {
+          "brier": 0.26176584237166,
+          "accuracy": 0.5509765625000003,
+          "gain": {
+            "mean": 0.0005289769814269913,
+            "lower": 0.00022813323324764575,
+            "upper": 0.0008298207296063369
+          }
+        },
+        {
+          "brier": 0.25928263847643346,
+          "accuracy": 0.5520751953125003,
+          "gain": {
+            "mean": 0.0030121808766534813,
+            "lower": 0.0019196637532458414,
+            "upper": 0.004104698000061122
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.14498389416713978,
+          "accuracy": 0.7966308593749977,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.1671924710003996,
+          "accuracy": 0.7832275390624991,
+          "gain": {
+            "mean": -0.022208576833259913,
+            "lower": -0.03120936303138759,
+            "upper": -0.013207790635132236
+          }
+        },
+        {
+          "brier": 0.13256215618472103,
+          "accuracy": 0.8353027343749976,
+          "gain": {
+            "mean": 0.01242173798241869,
+            "lower": 0.005181048467157398,
+            "upper": 0.019662427497679984
+          }
+        },
+        {
+          "brier": 0.13963495690395208,
+          "accuracy": 0.8209106445312475,
+          "gain": {
+            "mean": 0.005348937263187652,
+            "lower": 0.0030024785257688385,
+            "upper": 0.007695396000606466
+          }
+        },
+        {
+          "brier": 0.13803012956366295,
+          "accuracy": 0.8233276367187475,
+          "gain": {
+            "mean": 0.006953764603476769,
+            "lower": 0.0038437239624425986,
+            "upper": 0.01006380524451094
+          }
+        },
+        {
+          "brier": 0.14282608189020787,
+          "accuracy": 0.8113525390624973,
+          "gain": {
+            "mean": 0.0021578122769318605,
+            "lower": 0.001333537519724279,
+            "upper": 0.002982087034139442
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.16480187197575683,
+          "accuracy": 0.7836669921875015,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.26489426711347175,
+          "accuracy": 0.6516113281250008,
+          "gain": {
+            "mean": -0.10009239513771485,
+            "lower": -0.11108953375388592,
+            "upper": -0.08909525652154379
+          }
+        },
+        {
+          "brier": 0.18493289445032066,
+          "accuracy": 0.7757568359375014,
+          "gain": {
+            "mean": -0.020131022474563776,
+            "lower": -0.024930077133845898,
+            "upper": -0.015331967815281653
+          }
+        },
+        {
+          "brier": 0.18020763691500377,
+          "accuracy": 0.7720214843750015,
+          "gain": {
+            "mean": -0.015405764939246898,
+            "lower": -0.02288772684727384,
+            "upper": -0.007923803031219959
+          }
+        },
+        {
+          "brier": 0.17663726214525055,
+          "accuracy": 0.7768554687500014,
+          "gain": {
+            "mean": -0.011835390169493672,
+            "lower": -0.01695383755721928,
+            "upper": -0.006716942781768064
+          }
+        },
+        {
+          "brier": 0.1662618231604871,
+          "accuracy": 0.7854248046875014,
+          "gain": {
+            "mean": -0.0014599511847302607,
+            "lower": -0.0017473794330997757,
+            "upper": -0.0011725229363607457
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.20818824535581185,
+          "accuracy": 0.6261230468749992,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22569020667434633,
+          "accuracy": 0.6189819335937496,
+          "gain": {
+            "mean": -0.017501961318534365,
+            "lower": -0.028026148421527942,
+            "upper": -0.006977774215540789
+          }
+        },
+        {
+          "brier": 0.2043464560932142,
+          "accuracy": 0.6316162109374992,
+          "gain": {
+            "mean": 0.0038417892625977547,
+            "lower": 0.00004178943458706336,
+            "upper": 0.007641789090608446
+          }
+        },
+        {
+          "brier": 0.2071546780063574,
+          "accuracy": 0.6298583984374991,
+          "gain": {
+            "mean": 0.0010335673494545421,
+            "lower": -0.0004473557930796065,
+            "upper": 0.0025144904919886905
+          }
+        },
+        {
+          "brier": 0.20703863546700318,
+          "accuracy": 0.6298583984374991,
+          "gain": {
+            "mean": 0.0011496098888087217,
+            "lower": -0.0004928799331556037,
+            "upper": 0.0027920997107730473
+          }
+        },
+        {
+          "brier": 0.20777018016167303,
+          "accuracy": 0.6287597656249991,
+          "gain": {
+            "mean": 0.0004180651941388478,
+            "lower": -0.00007841747111222844,
+            "upper": 0.0009145478593899241
+          }
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "scenario": "parity_to_majority",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.1877999095298185,
+          "accuracy": 0.6867675781250009,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.2372584392184372,
+          "accuracy": 0.6516113281250007,
+          "gain": {
+            "mean": -0.04945852968861871,
+            "lower": -0.06942035808113156,
+            "upper": -0.02949670129610586
+          }
+        },
+        {
+          "brier": 0.1916180165828102,
+          "accuracy": 0.684350585937501,
+          "gain": {
+            "mean": -0.00381810705299166,
+            "lower": -0.010045372124723187,
+            "upper": 0.002409158018739866
+          }
+        },
+        {
+          "brier": 0.18962631694252016,
+          "accuracy": 0.6863281250000008,
+          "gain": {
+            "mean": -0.0018264074127016731,
+            "lower": -0.0044306130178917505,
+            "upper": 0.0007777981924884038
+          }
+        },
+        {
+          "brier": 0.189342982171149,
+          "accuracy": 0.6863281250000008,
+          "gain": {
+            "mean": -0.0015430726413304839,
+            "lower": -0.003710475058925418,
+            "upper": 0.0006243297762644501
+          }
+        },
+        {
+          "brier": 0.18835077336868122,
+          "accuracy": 0.6874267578125008,
+          "gain": {
+            "mean": -0.0005508638388627548,
+            "lower": -0.0009644153078058082,
+            "upper": -0.00013731236991970143
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity1",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.052923991468915584,
+          "accuracy": 0.9490112304687457,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05051286622980781,
+          "accuracy": 0.9490112304687457,
+          "gain": {
+            "mean": 0.0024111252391077914,
+            "lower": 0.001252872320833829,
+            "upper": 0.0035693781573817537
+          }
+        },
+        {
+          "brier": 0.052529182131516736,
+          "accuracy": 0.9490112304687457,
+          "gain": {
+            "mean": 0.0003948093373988455,
+            "lower": 0.00030327680661055943,
+            "upper": 0.00048634186818713156
+          }
+        },
+        {
+          "brier": 0.05265361664144422,
+          "accuracy": 0.9490112304687457,
+          "gain": {
+            "mean": 0.0002703748274713771,
+            "lower": 0.0001510120159202179,
+            "upper": 0.0003897376390225363
+          }
+        },
+        {
+          "brier": 0.05265606437536003,
+          "accuracy": 0.9490112304687457,
+          "gain": {
+            "mean": 0.00026792709355554964,
+            "lower": 0.0001509010392850283,
+            "upper": 0.000384953147826071
+          }
+        },
+        {
+          "brier": 0.05269475512769438,
+          "accuracy": 0.9490112304687457,
+          "gain": {
+            "mean": 0.00022923634122119416,
+            "lower": 0.00015316323162794962,
+            "upper": 0.0003053094508144387
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity1",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.049753916318777396,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04823409814636446,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.001519818172412937,
+            "lower": 0.0007972224467172024,
+            "upper": 0.0022424138981086716
+          }
+        },
+        {
+          "brier": 0.04947399379755667,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0002799225212207384,
+            "lower": 0.00018296280007060685,
+            "upper": 0.00037688224237086994
+          }
+        },
+        {
+          "brier": 0.049589568292470215,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00016434802630717316,
+            "lower": 0.00009333421309691611,
+            "upper": 0.0002353618395174302
+          }
+        },
+        {
+          "brier": 0.04959352881111948,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00016038750765789652,
+            "lower": 0.00009172707101715461,
+            "upper": 0.00022904794429863843
+          }
+        },
+        {
+          "brier": 0.04961923922120752,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00013467709756988895,
+            "lower": 0.00007586171251277401,
+            "upper": 0.00019349248262700387
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity1",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.10268664442287426,
+          "accuracy": 0.8390380859374968,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.10079764987724409,
+          "accuracy": 0.8323364257812467,
+          "gain": {
+            "mean": 0.0018889945456302003,
+            "lower": 0.0005518453659334457,
+            "upper": 0.0032261437253269546
+          }
+        },
+        {
+          "brier": 0.10237719130391908,
+          "accuracy": 0.8390380859374968,
+          "gain": {
+            "mean": 0.00030945311895522014,
+            "lower": 0.0001947123899666602,
+            "upper": 0.0004241938479437801
+          }
+        },
+        {
+          "brier": 0.10247408276923786,
+          "accuracy": 0.8390380859374968,
+          "gain": {
+            "mean": 0.00021256165363639935,
+            "lower": 0.00008489694867864372,
+            "upper": 0.00034022635859415497
+          }
+        },
+        {
+          "brier": 0.10247545196564814,
+          "accuracy": 0.8390380859374968,
+          "gain": {
+            "mean": 0.00021119245722614932,
+            "lower": 0.00008555427632187516,
+            "upper": 0.0003368306381304235
+          }
+        },
+        {
+          "brier": 0.10250344939285196,
+          "accuracy": 0.8390380859374968,
+          "gain": {
+            "mean": 0.00018319503002233828,
+            "lower": 0.00009548126469679308,
+            "upper": 0.00027090879534788346
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity1",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.09969135157198633,
+          "accuracy": 0.8392578125000019,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.09860946772488262,
+          "accuracy": 0.8315673828125018,
+          "gain": {
+            "mean": 0.0010818838471037147,
+            "lower": 0.00041803915114093585,
+            "upper": 0.0017457285430664935
+          }
+        },
+        {
+          "brier": 0.09945718921250522,
+          "accuracy": 0.8392578125000019,
+          "gain": {
+            "mean": 0.00023416235948109723,
+            "lower": 0.00014662454662044437,
+            "upper": 0.0003217001723417501
+          }
+        },
+        {
+          "brier": 0.09957200316379064,
+          "accuracy": 0.8392578125000019,
+          "gain": {
+            "mean": 0.00011934840819568322,
+            "lower": 0.0000623350336844348,
+            "upper": 0.00017636178270693164
+          }
+        },
+        {
+          "brier": 0.09957413719646636,
+          "accuracy": 0.8392578125000019,
+          "gain": {
+            "mean": 0.00011721437551995197,
+            "lower": 0.00006206066277642472,
+            "upper": 0.0001723680882634792
+          }
+        },
+        {
+          "brier": 0.09958858111321753,
+          "accuracy": 0.8392578125000019,
+          "gain": {
+            "mean": 0.00010277045876876589,
+            "lower": 0.00005622703833673845,
+            "upper": 0.00014931387920079332
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity2",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.06306071767442671,
+          "accuracy": 0.9384643554687458,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05349429574813802,
+          "accuracy": 0.9440673828124957,
+          "gain": {
+            "mean": 0.009566421926288694,
+            "lower": 0.006986420563309019,
+            "upper": 0.012146423289268368
+          }
+        },
+        {
+          "brier": 0.05845236848056776,
+          "accuracy": 0.9409912109374958,
+          "gain": {
+            "mean": 0.004608349193858963,
+            "lower": 0.003446083759711466,
+            "upper": 0.00577061462800646
+          }
+        },
+        {
+          "brier": 0.06145329629499954,
+          "accuracy": 0.9401123046874957,
+          "gain": {
+            "mean": 0.001607421379427169,
+            "lower": 0.0010692273329284971,
+            "upper": 0.002145615425925841
+          }
+        },
+        {
+          "brier": 0.061512115276267716,
+          "accuracy": 0.9401123046874957,
+          "gain": {
+            "mean": 0.0015486023981589867,
+            "lower": 0.001039139384271144,
+            "upper": 0.0020580654120468294
+          }
+        },
+        {
+          "brier": 0.062201530015788896,
+          "accuracy": 0.9393432617187457,
+          "gain": {
+            "mean": 0.000859187658637817,
+            "lower": 0.000660945754482628,
+            "upper": 0.001057429562793006
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity2",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.05273597316967487,
+          "accuracy": 0.9491210937500025,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.048299744838154496,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0044362283315203845,
+            "lower": 0.0024063980780117083,
+            "upper": 0.00646605858502906
+          }
+        },
+        {
+          "brier": 0.04998669870974068,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0027492744599341727,
+            "lower": 0.0018401141072013514,
+            "upper": 0.003658434812666994
+          }
+        },
+        {
+          "brier": 0.05161006426574266,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.001125908903932197,
+            "lower": 0.000560850665733773,
+            "upper": 0.001690967142130621
+          }
+        },
+        {
+          "brier": 0.05170570509544801,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0010302680742268627,
+            "lower": 0.0005160504719933598,
+            "upper": 0.0015444856764603655
+          }
+        },
+        {
+          "brier": 0.0523296752542347,
+          "accuracy": 0.9495605468750026,
+          "gain": {
+            "mean": 0.00040629791544015545,
+            "lower": 0.00023485145829412263,
+            "upper": 0.0005777443725861883
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity2",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.17015450865101242,
+          "accuracy": 0.6885253906249981,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.16458127313405319,
+          "accuracy": 0.699841308593748,
+          "gain": {
+            "mean": 0.00557323551695925,
+            "lower": 0.0021300111832274274,
+            "upper": 0.009016459850691072
+          }
+        },
+        {
+          "brier": 0.16760981996813415,
+          "accuracy": 0.6900634765624981,
+          "gain": {
+            "mean": 0.0025446886828782876,
+            "lower": 0.00122381883768778,
+            "upper": 0.003865558528068795
+          }
+        },
+        {
+          "brier": 0.16930102852907838,
+          "accuracy": 0.6894042968749982,
+          "gain": {
+            "mean": 0.0008534801219340661,
+            "lower": 0.0002596129964259105,
+            "upper": 0.0014473472474422217
+          }
+        },
+        {
+          "brier": 0.16932544610027284,
+          "accuracy": 0.6894042968749982,
+          "gain": {
+            "mean": 0.0008290625507396511,
+            "lower": 0.00025814997381121715,
+            "upper": 0.0013999751276680852
+          }
+        },
+        {
+          "brier": 0.16966049018538112,
+          "accuracy": 0.6892944335937482,
+          "gain": {
+            "mean": 0.0004940184656313531,
+            "lower": 0.0002199839437671335,
+            "upper": 0.0007680529874955727
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity2",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.16474741685385574,
+          "accuracy": 0.688085937500001,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.16173261928639937,
+          "accuracy": 0.7012695312500011,
+          "gain": {
+            "mean": 0.0030147975674564027,
+            "lower": 0.0010199824201564322,
+            "upper": 0.005009612714756373
+          }
+        },
+        {
+          "brier": 0.1628142333929653,
+          "accuracy": 0.688085937500001,
+          "gain": {
+            "mean": 0.0019331834608904877,
+            "lower": 0.0008829100917643602,
+            "upper": 0.002983456830016615
+          }
+        },
+        {
+          "brier": 0.1642064578113857,
+          "accuracy": 0.688085937500001,
+          "gain": {
+            "mean": 0.0005409590424700675,
+            "lower": 0.00016549005080287386,
+            "upper": 0.0009164280341372612
+          }
+        },
+        {
+          "brier": 0.16424273339167347,
+          "accuracy": 0.688085937500001,
+          "gain": {
+            "mean": 0.0005046834621823372,
+            "lower": 0.00016424982511583784,
+            "upper": 0.0008451170992488366
+          }
+        },
+        {
+          "brier": 0.16448435536892086,
+          "accuracy": 0.688085937500001,
+          "gain": {
+            "mean": 0.00026306148493486243,
+            "lower": 0.00011755069174499447,
+            "upper": 0.0004085722781247304
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.07789960922512044,
+          "accuracy": 0.9103393554687462,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05654017184152471,
+          "accuracy": 0.9362670898437458,
+          "gain": {
+            "mean": 0.021359437383595723,
+            "lower": 0.015849319643941647,
+            "upper": 0.0268695551232498
+          }
+        },
+        {
+          "brier": 0.060881936079769196,
+          "accuracy": 0.9315429687499961,
+          "gain": {
+            "mean": 0.017017673145351235,
+            "lower": 0.012011109843457587,
+            "upper": 0.022024236447244883
+          }
+        },
+        {
+          "brier": 0.07006721109775464,
+          "accuracy": 0.924951171874996,
+          "gain": {
+            "mean": 0.007832398127365794,
+            "lower": 0.004541490616162186,
+            "upper": 0.011123305638569402
+          }
+        },
+        {
+          "brier": 0.07034222400180612,
+          "accuracy": 0.924951171874996,
+          "gain": {
+            "mean": 0.007557385223314313,
+            "lower": 0.004351346452446173,
+            "upper": 0.010763423994182453
+          }
+        },
+        {
+          "brier": 0.07578225371557896,
+          "accuracy": 0.9161621093749961,
+          "gain": {
+            "mean": 0.002117355509541469,
+            "lower": 0.0015716572993009614,
+            "upper": 0.0026630537197819765
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.0561149158126906,
+          "accuracy": 0.9486816406250025,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.048172153051397694,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.007942762761292917,
+            "lower": 0.0062269876788610175,
+            "upper": 0.009658537843724816
+          }
+        },
+        {
+          "brier": 0.04829568559592122,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00781923021676937,
+            "lower": 0.006172957985318908,
+            "upper": 0.009465502448219832
+          }
+        },
+        {
+          "brier": 0.051442284386201846,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.004672631426488745,
+            "lower": 0.0029541268230410815,
+            "upper": 0.00639113602993641
+          }
+        },
+        {
+          "brier": 0.05181490655006947,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.004300009262621135,
+            "lower": 0.002694800520716644,
+            "upper": 0.005905218004525627
+          }
+        },
+        {
+          "brier": 0.055350233217164556,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00076468259552603,
+            "lower": 0.0006232998132498753,
+            "upper": 0.0009060653778021847
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.20474982388196,
+          "accuracy": 0.6119506835937488,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.1947497702192863,
+          "accuracy": 0.6365600585937488,
+          "gain": {
+            "mean": 0.010000053662673694,
+            "lower": 0.002836012948085675,
+            "upper": 0.017164094377261713
+          }
+        },
+        {
+          "brier": 0.19679436006341902,
+          "accuracy": 0.6192016601562487,
+          "gain": {
+            "mean": 0.007955463818540915,
+            "lower": 0.0018927231046772883,
+            "upper": 0.014018204532404542
+          }
+        },
+        {
+          "brier": 0.20136720795958502,
+          "accuracy": 0.6176635742187486,
+          "gain": {
+            "mean": 0.003382615922374979,
+            "lower": -0.00014194836707212164,
+            "upper": 0.00690718021182208
+          }
+        },
+        {
+          "brier": 0.201469478385847,
+          "accuracy": 0.6176635742187486,
+          "gain": {
+            "mean": 0.003280345496113009,
+            "lower": -0.0001450560335093708,
+            "upper": 0.006705747025735388
+          }
+        },
+        {
+          "brier": 0.20377025477297336,
+          "accuracy": 0.6146972656249986,
+          "gain": {
+            "mean": 0.0009795691089866604,
+            "lower": 0.0002593935771325614,
+            "upper": 0.0016997446408407594
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity3",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.19758221013040853,
+          "accuracy": 0.6243652343750005,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.19327385410391362,
+          "accuracy": 0.6353515625000007,
+          "gain": {
+            "mean": 0.004308356026494894,
+            "lower": 0.001891961027297477,
+            "upper": 0.006724751025692311
+          }
+        },
+        {
+          "brier": 0.1933559614716635,
+          "accuracy": 0.6248046875000005,
+          "gain": {
+            "mean": 0.004226248658745051,
+            "lower": 0.001854901444239018,
+            "upper": 0.006597595873251084
+          }
+        },
+        {
+          "brier": 0.19565438519808612,
+          "accuracy": 0.6248046875000005,
+          "gain": {
+            "mean": 0.0019278249323224433,
+            "lower": 0.0001762672550518372,
+            "upper": 0.0036793826095930494
+          }
+        },
+        {
+          "brier": 0.19578796479619065,
+          "accuracy": 0.6248046875000005,
+          "gain": {
+            "mean": 0.0017942453342178653,
+            "lower": 0.00016779309122105898,
+            "upper": 0.0034206975772146713
+          }
+        },
+        {
+          "brier": 0.19718308018361208,
+          "accuracy": 0.6248046875000005,
+          "gain": {
+            "mean": 0.0003991299467964969,
+            "lower": 0.00019717117430291265,
+            "upper": 0.0006010887192900811
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.0964505328702541,
+          "accuracy": 0.8717773437499967,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05642487287297458,
+          "accuracy": 0.9419799804687458,
+          "gain": {
+            "mean": 0.04002565999727952,
+            "lower": 0.03343332534426337,
+            "upper": 0.046617994650295674
+          }
+        },
+        {
+          "brier": 0.06399334886597137,
+          "accuracy": 0.921325683593746,
+          "gain": {
+            "mean": 0.03245718400428275,
+            "lower": 0.024779491845980987,
+            "upper": 0.04013487616258451
+          }
+        },
+        {
+          "brier": 0.07322655811065343,
+          "accuracy": 0.9119873046874961,
+          "gain": {
+            "mean": 0.023223974759600682,
+            "lower": 0.017251599157569332,
+            "upper": 0.029196350361632033
+          }
+        },
+        {
+          "brier": 0.07374166903719816,
+          "accuracy": 0.911877441406246,
+          "gain": {
+            "mean": 0.022708863833055957,
+            "lower": 0.016718635316254206,
+            "upper": 0.028699092349857708
+          }
+        },
+        {
+          "brier": 0.09236830602513559,
+          "accuracy": 0.8923217773437467,
+          "gain": {
+            "mean": 0.004082226845118551,
+            "lower": 0.003242079186047061,
+            "upper": 0.004922374504190041
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.07156827523179282,
+          "accuracy": 0.931982421875002,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04827848242635261,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.023289792805440197,
+            "lower": 0.01735982305624759,
+            "upper": 0.029219762554632805
+          }
+        },
+        {
+          "brier": 0.04832676978028457,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.02324150545150826,
+            "lower": 0.017328545998272247,
+            "upper": 0.029154464904744274
+          }
+        },
+        {
+          "brier": 0.05061851451087942,
+          "accuracy": 0.9497802734375026,
+          "gain": {
+            "mean": 0.02094976072091338,
+            "lower": 0.01485044984644493,
+            "upper": 0.027049071595381828
+          }
+        },
+        {
+          "brier": 0.051301318658637116,
+          "accuracy": 0.9495605468750026,
+          "gain": {
+            "mean": 0.020266956573155692,
+            "lower": 0.01423830798103147,
+            "upper": 0.026295605165279914
+          }
+        },
+        {
+          "brier": 0.06912117862910944,
+          "accuracy": 0.9434082031250024,
+          "gain": {
+            "mean": 0.0024470966026833682,
+            "lower": 0.0017972248252941427,
+            "upper": 0.0030969683800725935
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.23195042895617587,
+          "accuracy": 0.5469116210937496,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21936255740201852,
+          "accuracy": 0.5674560546874993,
+          "gain": {
+            "mean": 0.012587871554157384,
+            "lower": 0.003709474177997182,
+            "upper": 0.021466268930317584
+          }
+        },
+        {
+          "brier": 0.22162627873763843,
+          "accuracy": 0.5570190429687494,
+          "gain": {
+            "mean": 0.01032415021853746,
+            "lower": 0.0030587699432094466,
+            "upper": 0.017589530493865472
+          }
+        },
+        {
+          "brier": 0.2268919945988116,
+          "accuracy": 0.5550415039062495,
+          "gain": {
+            "mean": 0.005058434357364306,
+            "lower": -0.0011636950868218528,
+            "upper": 0.011280563801550465
+          }
+        },
+        {
+          "brier": 0.2270144888390579,
+          "accuracy": 0.5550415039062495,
+          "gain": {
+            "mean": 0.00493594011711804,
+            "lower": -0.00116815896218961,
+            "upper": 0.01104003919642569
+          }
+        },
+        {
+          "brier": 0.2307702992111055,
+          "accuracy": 0.5508666992187495,
+          "gain": {
+            "mean": 0.00118012974507042,
+            "lower": 0.00027273414243614963,
+            "upper": 0.0020875253477046904
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity4",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.2279105534673436,
+          "accuracy": 0.5602050781250002,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.2184652390126927,
+          "accuracy": 0.5744873046875004,
+          "gain": {
+            "mean": 0.009445314454650813,
+            "lower": 0.0021348822471342326,
+            "upper": 0.016755746662167392
+          }
+        },
+        {
+          "brier": 0.2185066099165407,
+          "accuracy": 0.5654785156250003,
+          "gain": {
+            "mean": 0.00940394355080285,
+            "lower": 0.002134830611545042,
+            "upper": 0.016673056490060657
+          }
+        },
+        {
+          "brier": 0.22251536037638525,
+          "accuracy": 0.5654785156250003,
+          "gain": {
+            "mean": 0.005395193090958288,
+            "lower": -0.0019333973213484564,
+            "upper": 0.012723783503265033
+          }
+        },
+        {
+          "brier": 0.22269335288259576,
+          "accuracy": 0.5654785156250003,
+          "gain": {
+            "mean": 0.00521720058474772,
+            "lower": -0.0019446573519732854,
+            "upper": 0.012379058521468724
+          }
+        },
+        {
+          "brier": 0.22697608451804618,
+          "accuracy": 0.5621826171875003,
+          "gain": {
+            "mean": 0.0009344689492973603,
+            "lower": 0.00013165397919049867,
+            "upper": 0.0017372839194042219
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.0967142606566375,
+          "accuracy": 0.8691406249999967,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.054760645342368894,
+          "accuracy": 0.9460449218749958,
+          "gain": {
+            "mean": 0.041953615314268604,
+            "lower": 0.03480954812256151,
+            "upper": 0.049097682505975695
+          }
+        },
+        {
+          "brier": 0.062118540455494475,
+          "accuracy": 0.9265991210937461,
+          "gain": {
+            "mean": 0.034595720201143036,
+            "lower": 0.026906267714624822,
+            "upper": 0.04228517268766125
+          }
+        },
+        {
+          "brier": 0.071769718489431,
+          "accuracy": 0.9178100585937462,
+          "gain": {
+            "mean": 0.0249445421672065,
+            "lower": 0.018058784845663648,
+            "upper": 0.03183029948874935
+          }
+        },
+        {
+          "brier": 0.07231808406596228,
+          "accuracy": 0.9175903320312463,
+          "gain": {
+            "mean": 0.02439617659067525,
+            "lower": 0.017527487484920005,
+            "upper": 0.0312648656964305
+          }
+        },
+        {
+          "brier": 0.0924064016203372,
+          "accuracy": 0.8957275390624962,
+          "gain": {
+            "mean": 0.004307859036300321,
+            "lower": 0.003404443966013501,
+            "upper": 0.005211274106587141
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.07199413208734952,
+          "accuracy": 0.9216552734375019,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04829976983404072,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.023694362253308808,
+            "lower": 0.019655338655688276,
+            "upper": 0.02773338585092934
+          }
+        },
+        {
+          "brier": 0.04830943006253938,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.02368470202481014,
+            "lower": 0.019653340458389068,
+            "upper": 0.02771606359123121
+          }
+        },
+        {
+          "brier": 0.05064022966264582,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.021353902424703697,
+            "lower": 0.016600551242260324,
+            "upper": 0.02610725360714707
+          }
+        },
+        {
+          "brier": 0.05134909906996932,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.02064503301738021,
+            "lower": 0.015906447972214303,
+            "upper": 0.025383618062546114
+          }
+        },
+        {
+          "brier": 0.06952731157457932,
+          "accuracy": 0.9440673828125024,
+          "gain": {
+            "mean": 0.002466820512770202,
+            "lower": 0.002031797578120264,
+            "upper": 0.00290184344742014
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.22029589613196643,
+          "accuracy": 0.5809692382812492,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.20701632350968546,
+          "accuracy": 0.6017333984374991,
+          "gain": {
+            "mean": 0.013279572622280928,
+            "lower": 0.0010108125946884788,
+            "upper": 0.025548332649873377
+          }
+        },
+        {
+          "brier": 0.20947025581628537,
+          "accuracy": 0.5962402343749991,
+          "gain": {
+            "mean": 0.010825640315681043,
+            "lower": 0.0010313138219309754,
+            "upper": 0.02061996680943111
+          }
+        },
+        {
+          "brier": 0.21314313042859384,
+          "accuracy": 0.594592285156249,
+          "gain": {
+            "mean": 0.007152765703372574,
+            "lower": -0.0012056097960726035,
+            "upper": 0.015511141202817751
+          }
+        },
+        {
+          "brier": 0.2132693369309772,
+          "accuracy": 0.594592285156249,
+          "gain": {
+            "mean": 0.00702655920098923,
+            "lower": -0.0011986415233506825,
+            "upper": 0.015251759925329143
+          }
+        },
+        {
+          "brier": 0.21890804333927028,
+          "accuracy": 0.5876708984374992,
+          "gain": {
+            "mean": 0.0013878527926961329,
+            "lower": 0.00016339556712420067,
+            "upper": 0.002612310018268065
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "complement4",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.21385698863608435,
+          "accuracy": 0.5911865234375004,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.20594212303243783,
+          "accuracy": 0.6043701171875006,
+          "gain": {
+            "mean": 0.007914865603646478,
+            "lower": 0.0006083444843408801,
+            "upper": 0.015221386722952077
+          }
+        },
+        {
+          "brier": 0.20594696271661586,
+          "accuracy": 0.5999755859375006,
+          "gain": {
+            "mean": 0.007910025919468423,
+            "lower": 0.0006102554833885103,
+            "upper": 0.015209796355548335
+          }
+        },
+        {
+          "brier": 0.20775327791956397,
+          "accuracy": 0.5999755859375006,
+          "gain": {
+            "mean": 0.006103710716520389,
+            "lower": -0.0010078867075026636,
+            "upper": 0.013215308140543442
+          }
+        },
+        {
+          "brier": 0.2078946818178725,
+          "accuracy": 0.5999755859375006,
+          "gain": {
+            "mean": 0.005962306818211849,
+            "lower": -0.000995014661831978,
+            "upper": 0.012919628298255676
+          }
+        },
+        {
+          "brier": 0.2129917451130424,
+          "accuracy": 0.5975585937500004,
+          "gain": {
+            "mean": 0.0008652435230418736,
+            "lower": 0.00012006622429253338,
+            "upper": 0.0016104208217912138
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority3",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.07546317006683928,
+          "accuracy": 0.9183593749999961,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.1966101523454459,
+          "accuracy": 0.7356567382812488,
+          "gain": {
+            "mean": -0.12114698227860658,
+            "lower": -0.12769721309227947,
+            "upper": -0.1145967514649337
+          }
+        },
+        {
+          "brier": 0.07568262777979705,
+          "accuracy": 0.917480468749996,
+          "gain": {
+            "mean": -0.00021945771295774118,
+            "lower": -0.0005530807175631908,
+            "upper": 0.00011416529164770837
+          }
+        },
+        {
+          "brier": 0.07563034822403746,
+          "accuracy": 0.9183593749999961,
+          "gain": {
+            "mean": -0.00016717815719817898,
+            "lower": -0.00022869411636944098,
+            "upper": -0.00010566219802691697
+          }
+        },
+        {
+          "brier": 0.0756526800801827,
+          "accuracy": 0.917919921874996,
+          "gain": {
+            "mean": -0.0001895100133434027,
+            "lower": -0.0002525004285413815,
+            "upper": -0.00012651959814542394
+          }
+        },
+        {
+          "brier": 0.07690205530098015,
+          "accuracy": 0.9177001953124961,
+          "gain": {
+            "mean": -0.0014388852341408807,
+            "lower": -0.001626994842603352,
+            "upper": -0.0012507756256784095
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority3",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.05781554219979855,
+          "accuracy": 0.9471435546875024,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.19139832995376874,
+          "accuracy": 0.7476318359375008,
+          "gain": {
+            "mean": -0.13358278775397014,
+            "lower": -0.1440316575460741,
+            "upper": -0.1231339179618662
+          }
+        },
+        {
+          "brier": 0.057819491924978254,
+          "accuracy": 0.9471435546875024,
+          "gain": {
+            "mean": -0.0000039497251796884875,
+            "lower": -0.000013011820072298702,
+            "upper": 0.000005112369712921727
+          }
+        },
+        {
+          "brier": 0.057816140228713606,
+          "accuracy": 0.9469238281250024,
+          "gain": {
+            "mean": -5.980289150566385e-7,
+            "lower": -0.0000012264118599880416,
+            "upper": 3.035402987476455e-8
+          }
+        },
+        {
+          "brier": 0.057843657784320754,
+          "accuracy": 0.9460449218750024,
+          "gain": {
+            "mean": -0.00002811558452220494,
+            "lower": -0.000034119339283646754,
+            "upper": -0.00002211182976076313
+          }
+        },
+        {
+          "brier": 0.05923997813950291,
+          "accuracy": 0.9458251953125024,
+          "gain": {
+            "mean": -0.0014244359397043403,
+            "lower": -0.0016369122988779607,
+            "upper": -0.00121195958053072
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority3",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.14558430578160564,
+          "accuracy": 0.7805908203124979,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21812220217457873,
+          "accuracy": 0.7075317382812489,
+          "gain": {
+            "mean": -0.07253789639297308,
+            "lower": -0.09639664333701256,
+            "upper": -0.0486791494489336
+          }
+        },
+        {
+          "brier": 0.14568849368805664,
+          "accuracy": 0.780151367187498,
+          "gain": {
+            "mean": -0.00010418790645096024,
+            "lower": -0.0001972693879501086,
+            "upper": -0.00001110642495181191
+          }
+        },
+        {
+          "brier": 0.1457387435890198,
+          "accuracy": 0.780151367187498,
+          "gain": {
+            "mean": -0.0001544378074141415,
+            "lower": -0.00022746177864595618,
+            "upper": -0.00008141383618232683
+          }
+        },
+        {
+          "brier": 0.1457575664058455,
+          "accuracy": 0.7801513671874981,
+          "gain": {
+            "mean": -0.00017326062423986786,
+            "lower": -0.00024997836948415425,
+            "upper": -0.00009654287899558149
+          }
+        },
+        {
+          "brier": 0.1465053496574362,
+          "accuracy": 0.7796020507812481,
+          "gain": {
+            "mean": -0.0009210438758304896,
+            "lower": -0.001272683610063646,
+            "upper": -0.0005694041415973333
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority3",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.13429892954528638,
+          "accuracy": 0.7986083984375011,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21422412185638592,
+          "accuracy": 0.7157714843750007,
+          "gain": {
+            "mean": -0.07992519231109954,
+            "lower": -0.10683667454789977,
+            "upper": -0.05301371007429931
+          }
+        },
+        {
+          "brier": 0.13430271570588526,
+          "accuracy": 0.7986083984375011,
+          "gain": {
+            "mean": -0.0000037861605988616636,
+            "lower": -0.000012873603563893882,
+            "upper": 0.0000053012823661705545
+          }
+        },
+        {
+          "brier": 0.13431003537278383,
+          "accuracy": 0.7986083984375011,
+          "gain": {
+            "mean": -0.00001110582749742797,
+            "lower": -0.000029640484586876835,
+            "upper": 0.0000074288295920208935
+          }
+        },
+        {
+          "brier": 0.1343356700690622,
+          "accuracy": 0.7988281250000012,
+          "gain": {
+            "mean": -0.000036740523775754055,
+            "lower": -0.00006038461461679791,
+            "upper": -0.000013096432934710205
+          }
+        },
+        {
+          "brier": 0.13520488120377663,
+          "accuracy": 0.7977294921875012,
+          "gain": {
+            "mean": -0.0009059516584902212,
+            "lower": -0.001286710545088218,
+            "upper": -0.0005251927718922246
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "mux3",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.07373804785550107,
+          "accuracy": 0.9211059570312461,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.1964046996986404,
+          "accuracy": 0.7242309570312488,
+          "gain": {
+            "mean": -0.12266665184313935,
+            "lower": -0.13162900982889994,
+            "upper": -0.11370429385737876
+          }
+        },
+        {
+          "brier": 0.07433348618655017,
+          "accuracy": 0.918579101562496,
+          "gain": {
+            "mean": -0.000595438331049089,
+            "lower": -0.0021997511238134597,
+            "upper": 0.0010088744617152818
+          }
+        },
+        {
+          "brier": 0.07388350009607028,
+          "accuracy": 0.920556640624996,
+          "gain": {
+            "mean": -0.0001454522405691912,
+            "lower": -0.00021150948054801097,
+            "upper": -0.00007939500059037146
+          }
+        },
+        {
+          "brier": 0.07390443083517527,
+          "accuracy": 0.920556640624996,
+          "gain": {
+            "mean": -0.00016638297967420555,
+            "lower": -0.00023320951292466022,
+            "upper": -0.00009955644642375089
+          }
+        },
+        {
+          "brier": 0.07510351416178357,
+          "accuracy": 0.920117187499996,
+          "gain": {
+            "mean": -0.0013654663062824686,
+            "lower": -0.0015582511687921032,
+            "upper": -0.001172681443772834
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "mux3",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.056276601784704186,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.19670237570894514,
+          "accuracy": 0.7285156250000007,
+          "gain": {
+            "mean": -0.14042577392424097,
+            "lower": -0.15296335321416535,
+            "upper": -0.12788819463431658
+          }
+        },
+        {
+          "brier": 0.056284105389536807,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": -0.000007503604832624156,
+            "lower": -0.000028359881425800787,
+            "upper": 0.000013352671760552475
+          }
+        },
+        {
+          "brier": 0.05627717982648599,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": -5.780417818221362e-7,
+            "lower": -0.0000012045773361349531,
+            "upper": 4.849377249068079e-8
+          }
+        },
+        {
+          "brier": 0.056303093324097185,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": -0.00002649153939300727,
+            "lower": -0.000034050065232010854,
+            "upper": -0.000018933013554003687
+          }
+        },
+        {
+          "brier": 0.057717156349905284,
+          "accuracy": 0.9493408203125026,
+          "gain": {
+            "mean": -0.0014405545652011013,
+            "lower": -0.0017115824190968311,
+            "upper": -0.0011695267113053715
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "mux3",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.1579493953513486,
+          "accuracy": 0.7209350585937483,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22156579220169847,
+          "accuracy": 0.6720458984374992,
+          "gain": {
+            "mean": -0.06361639685034987,
+            "lower": -0.09253415340132154,
+            "upper": -0.034698640299378185
+          }
+        },
+        {
+          "brier": 0.15847228462975463,
+          "accuracy": 0.7196166992187484,
+          "gain": {
+            "mean": -0.0005228892784060772,
+            "lower": -0.0021448764804633848,
+            "upper": 0.0010990979236512302
+          }
+        },
+        {
+          "brier": 0.15799920160818975,
+          "accuracy": 0.7208251953124983,
+          "gain": {
+            "mean": -0.00004980625684115588,
+            "lower": -0.00021188110122317315,
+            "upper": 0.0001122685875408614
+          }
+        },
+        {
+          "brier": 0.1580154160524727,
+          "accuracy": 0.7209350585937483,
+          "gain": {
+            "mean": -0.0000660207011241253,
+            "lower": -0.00023094771056175699,
+            "upper": 0.00009890630831350638
+          }
+        },
+        {
+          "brier": 0.1586638142130771,
+          "accuracy": 0.7210449218749984,
+          "gain": {
+            "mean": -0.0007144188617285458,
+            "lower": -0.0011149531871018207,
+            "upper": -0.0003138845363552709
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "mux3",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.14838535909399161,
+          "accuracy": 0.735766601562501,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22276900837027783,
+          "accuracy": 0.6751220703125007,
+          "gain": {
+            "mean": -0.0743836492762862,
+            "lower": -0.10773840875417873,
+            "upper": -0.041028889798393677
+          }
+        },
+        {
+          "brier": 0.14838742974505825,
+          "accuracy": 0.735766601562501,
+          "gain": {
+            "mean": -0.000002070651066644457,
+            "lower": -0.000008199806669845634,
+            "upper": 0.000004058504536556719
+          }
+        },
+        {
+          "brier": 0.14836049740001436,
+          "accuracy": 0.735986328125001,
+          "gain": {
+            "mean": 0.000024861693977224148,
+            "lower": -0.00005397620912945838,
+            "upper": 0.00010369959708390667
+          }
+        },
+        {
+          "brier": 0.1483832294609294,
+          "accuracy": 0.736206054687501,
+          "gain": {
+            "mean": 0.0000021296330621786534,
+            "lower": -0.00007911595232433368,
+            "upper": 0.00008337521844869099
+          }
+        },
+        {
+          "brier": 0.14918832361473303,
+          "accuracy": 0.7351074218750011,
+          "gain": {
+            "mean": -0.0008029645207414059,
+            "lower": -0.001216587934236744,
+            "upper": -0.00038934110724606785
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "constant",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.05239689984444612,
+          "accuracy": 0.9492309570312457,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05528659180475899,
+          "accuracy": 0.9411010742187459,
+          "gain": {
+            "mean": -0.002889691960312862,
+            "lower": -0.0068861284897381424,
+            "upper": 0.0011067445691124184
+          }
+        },
+        {
+          "brier": 0.05244329418809274,
+          "accuracy": 0.9492309570312457,
+          "gain": {
+            "mean": -0.00004639434364660895,
+            "lower": -0.00013552184511778824,
+            "upper": 0.00004273315782457036
+          }
+        },
+        {
+          "brier": 0.05238695729996168,
+          "accuracy": 0.9492309570312457,
+          "gain": {
+            "mean": 0.00000994254448444796,
+            "lower": -0.00007354689015377184,
+            "upper": 0.00009343197912266776
+          }
+        },
+        {
+          "brier": 0.05238596251822275,
+          "accuracy": 0.9492309570312457,
+          "gain": {
+            "mean": 0.000010937326223379182,
+            "lower": -0.00007141169078980623,
+            "upper": 0.00009328634323656459
+          }
+        },
+        {
+          "brier": 0.05241517676794458,
+          "accuracy": 0.9492309570312457,
+          "gain": {
+            "mean": -0.000018276923498453503,
+            "lower": -0.00012397270711268275,
+            "upper": 0.00008741886011577574
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "constant",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.04867129876702074,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04809079144823774,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.0005805073187829951,
+            "lower": 0.00017817556385977108,
+            "upper": 0.0009828390737062192
+          }
+        },
+        {
+          "brier": 0.04865178895597843,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000019509811042303215,
+            "lower": 0.000009065760239799015,
+            "upper": 0.000029953861844807417
+          }
+        },
+        {
+          "brier": 0.04863235974116042,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00003893902586031518,
+            "lower": 0.000011119634978864658,
+            "upper": 0.0000667584167417657
+          }
+        },
+        {
+          "brier": 0.048630030201037976,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00004126856598275362,
+            "lower": 0.000013442398666103413,
+            "upper": 0.00006909473329940384
+          }
+        },
+        {
+          "brier": 0.0486192522102214,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.00005204655679934603,
+            "lower": 0.000018975457835006872,
+            "upper": 0.0000851176557636852
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "constant",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.05213937092919278,
+          "accuracy": 0.9494506835937457,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.05436829015593631,
+          "accuracy": 0.9497802734374957,
+          "gain": {
+            "mean": -0.0022289192267435243,
+            "lower": -0.0049638486525751145,
+            "upper": 0.0005060101990880658
+          }
+        },
+        {
+          "brier": 0.05219103531591516,
+          "accuracy": 0.9494506835937457,
+          "gain": {
+            "mean": -0.00005166438672237167,
+            "lower": -0.0001376066420472811,
+            "upper": 0.00003427786860253774
+          }
+        },
+        {
+          "brier": 0.052151473884154385,
+          "accuracy": 0.9494506835937457,
+          "gain": {
+            "mean": -0.00001210295496160323,
+            "lower": -0.00008712549139483987,
+            "upper": 0.00006291958147163341
+          }
+        },
+        {
+          "brier": 0.052150743537363035,
+          "accuracy": 0.9494506835937457,
+          "gain": {
+            "mean": -0.000011372608170264744,
+            "lower": -0.00008561698580059242,
+            "upper": 0.00006287176946006293
+          }
+        },
+        {
+          "brier": 0.0521777980044197,
+          "accuracy": 0.9494506835937457,
+          "gain": {
+            "mean": -0.00003842707522693357,
+            "lower": -0.00013620066315930728,
+            "upper": 0.00005934651270544014
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "constant",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.048538417362632785,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.0480907914471911,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000447625915441672,
+            "lower": 0.0001161701917251269,
+            "upper": 0.0007790816391582171
+          }
+        },
+        {
+          "brier": 0.048523543515980976,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000014873846651787623,
+            "lower": 0.0000054923846676635035,
+            "upper": 0.000024255308635911743
+          }
+        },
+        {
+          "brier": 0.048509512323524,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000028905039108782045,
+            "lower": 0.000012023798189239066,
+            "upper": 0.00004578628002832502
+          }
+        },
+        {
+          "brier": 0.048507696899184854,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000030720463447908445,
+            "lower": 0.000013010948197704435,
+            "upper": 0.000048429978698112455
+          }
+        },
+        {
+          "brier": 0.04849964358949642,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.000038773773136345285,
+            "lower": 0.00001293431969176977,
+            "upper": 0.0000646132265809208
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.2666079768939401,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.25457395050972564,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.012034026384214453,
+            "lower": 0.008974890547613664,
+            "upper": 0.015093162220815243
+          }
+        },
+        {
+          "brier": 0.26235633669070624,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.004251640203233809,
+            "lower": 0.0036355577930611673,
+            "upper": 0.004867722613406451
+          }
+        },
+        {
+          "brier": 0.2633116795266575,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0032962973672825205,
+            "lower": 0.0019140456002771811,
+            "upper": 0.00467854913428786
+          }
+        },
+        {
+          "brier": 0.2634511392435009,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0031568376504391097,
+            "lower": 0.0018723456646586038,
+            "upper": 0.004441329636219616
+          }
+        },
+        {
+          "brier": 0.2652506863172373,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0013572905767028094,
+            "lower": 0.001115333197551702,
+            "upper": 0.0015992479558539167
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.2663689114161534,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.25313660042255176,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.013232310993601585,
+            "lower": 0.008453251306986938,
+            "upper": 0.018011370680216233
+          }
+        },
+        {
+          "brier": 0.26183267321025117,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0045362382059022065,
+            "lower": 0.0035606772544040646,
+            "upper": 0.005511799157400348
+          }
+        },
+        {
+          "brier": 0.26184305799335106,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0045258534228023745,
+            "lower": 0.0021704265644193793,
+            "upper": 0.00688128028118537
+          }
+        },
+        {
+          "brier": 0.26208982596667135,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.004279085449482056,
+            "lower": 0.002090591818330112,
+            "upper": 0.006467579080634
+          }
+        },
+        {
+          "brier": 0.26495250737859855,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0014164040375548564,
+            "lower": 0.0009414731524643462,
+            "upper": 0.0018913349226453665
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.25866171543326677,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.251292971891067,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.007368743542199808,
+            "lower": 0.0053066235506289,
+            "upper": 0.009430863533770716
+          }
+        },
+        {
+          "brier": 0.25637150277303883,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.002290212660227945,
+            "lower": 0.0018157186707496832,
+            "upper": 0.002764706649706207
+          }
+        },
+        {
+          "brier": 0.257434510999769,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.001227204433497801,
+            "lower": 0.0007587299997005426,
+            "upper": 0.0016956788672950595
+          }
+        },
+        {
+          "brier": 0.2574812693199243,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0011804461133425124,
+            "lower": 0.0007378656118074691,
+            "upper": 0.0016230266148775556
+          }
+        },
+        {
+          "brier": 0.2579565067492664,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0007052086840004194,
+            "lower": 0.000528664157244932,
+            "upper": 0.0008817532107559067
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.25780109718372224,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.2514755685674663,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.006325528616256029,
+            "lower": 0.0035235441583534484,
+            "upper": 0.00912751307415861
+          }
+        },
+        {
+          "brier": 0.2555691817166515,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0022319154670707424,
+            "lower": 0.001481140396910499,
+            "upper": 0.002982690537230986
+          }
+        },
+        {
+          "brier": 0.25642854562698625,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0013725515567360024,
+            "lower": 0.0007061797404521702,
+            "upper": 0.0020389233730198344
+          }
+        },
+        {
+          "brier": 0.2565074389773614,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0012936582063608985,
+            "lower": 0.0006662589541406544,
+            "upper": 0.0019210574585811426
+          }
+        },
+        {
+          "brier": 0.2571692311416374,
+          "accuracy": 0.5,
+          "gain": {
+            "mean": 0.0006318660420848513,
+            "lower": 0.0003743004631628293,
+            "upper": 0.0008894316210068732
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "dependent4",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.09594936416687982,
+          "accuracy": 0.8687011718749967,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.056502203833046084,
+          "accuracy": 0.9400024414062458,
+          "gain": {
+            "mean": 0.03944716033383372,
+            "lower": 0.031351225164907896,
+            "upper": 0.04754309550275954
+          }
+        },
+        {
+          "brier": 0.06441014473714983,
+          "accuracy": 0.9214355468749961,
+          "gain": {
+            "mean": 0.03153921942972998,
+            "lower": 0.023389455432490838,
+            "upper": 0.039688983426969124
+          }
+        },
+        {
+          "brier": 0.07331966322252394,
+          "accuracy": 0.9131958007812461,
+          "gain": {
+            "mean": 0.02262970094435588,
+            "lower": 0.015517246262237187,
+            "upper": 0.029742155626474573
+          }
+        },
+        {
+          "brier": 0.07375858068549629,
+          "accuracy": 0.912866210937496,
+          "gain": {
+            "mean": 0.022190783481383543,
+            "lower": 0.015064378445247838,
+            "upper": 0.029317188517519247
+          }
+        },
+        {
+          "brier": 0.09189649075628124,
+          "accuracy": 0.8961669921874964,
+          "gain": {
+            "mean": 0.004052873410598561,
+            "lower": 0.003064789530171618,
+            "upper": 0.005040957291025503
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "dependent4",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.06864362666109465,
+          "accuracy": 0.9262695312500017,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.04802055853547662,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.020623068125618035,
+            "lower": 0.01549133161939069,
+            "upper": 0.02575480463184538
+          }
+        },
+        {
+          "brier": 0.048118465255440175,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.020525161405654493,
+            "lower": 0.015279316574885241,
+            "upper": 0.025771006236423744
+          }
+        },
+        {
+          "brier": 0.05042023375303655,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.01822339290805811,
+            "lower": 0.013298819865366431,
+            "upper": 0.023147965950749787
+          }
+        },
+        {
+          "brier": 0.05094113453219746,
+          "accuracy": 0.9500000000000026,
+          "gain": {
+            "mean": 0.01770249212889721,
+            "lower": 0.012830726481501043,
+            "upper": 0.022574257776293377
+          }
+        },
+        {
+          "brier": 0.06641010269875092,
+          "accuracy": 0.9469238281250025,
+          "gain": {
+            "mean": 0.002233523962343745,
+            "lower": 0.0016263203705435842,
+            "upper": 0.0028407275541439056
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "dependent4",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.2263296055975753,
+          "accuracy": 0.5919555664062494,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.21308672440219922,
+          "accuracy": 0.614147949218749,
+          "gain": {
+            "mean": 0.01324288119537608,
+            "lower": 0.0026027087009228723,
+            "upper": 0.023883053689829285
+          }
+        },
+        {
+          "brier": 0.21525325514005167,
+          "accuracy": 0.6084350585937491,
+          "gain": {
+            "mean": 0.01107635045752365,
+            "lower": 0.001344799318446917,
+            "upper": 0.020807901596600384
+          }
+        },
+        {
+          "brier": 0.22097377882091745,
+          "accuracy": 0.6033813476562492,
+          "gain": {
+            "mean": 0.005355826776657909,
+            "lower": -0.0007269793614862879,
+            "upper": 0.011438632914802106
+          }
+        },
+        {
+          "brier": 0.22119652931656905,
+          "accuracy": 0.6032714843749992,
+          "gain": {
+            "mean": 0.00513307628100626,
+            "lower": -0.0007235447739656663,
+            "upper": 0.010989697335978186
+          }
+        },
+        {
+          "brier": 0.22527195404224035,
+          "accuracy": 0.5955810546874993,
+          "gain": {
+            "mean": 0.0010576515553349392,
+            "lower": 0.000296988907348881,
+            "upper": 0.0018183142033209973
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "dependent4",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.2192444506407559,
+          "accuracy": 0.6131591796875004,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.20967419258014336,
+          "accuracy": 0.6215087890625005,
+          "gain": {
+            "mean": 0.009570258060612555,
+            "lower": 0.0009830146169146833,
+            "upper": 0.018157501504310426
+          }
+        },
+        {
+          "brier": 0.20957940161075264,
+          "accuracy": 0.6226074218750006,
+          "gain": {
+            "mean": 0.009665049030003274,
+            "lower": 0.0011375301271403446,
+            "upper": 0.018192567932866204
+          }
+        },
+        {
+          "brier": 0.2133311087678263,
+          "accuracy": 0.6226074218750006,
+          "gain": {
+            "mean": 0.005913341872929587,
+            "lower": -0.0006467946000373436,
+            "upper": 0.012473478345896518
+          }
+        },
+        {
+          "brier": 0.21366862943156506,
+          "accuracy": 0.6226074218750006,
+          "gain": {
+            "mean": 0.005575821209190812,
+            "lower": -0.000650783459436196,
+            "upper": 0.01180242587781782
+          }
+        },
+        {
+          "brier": 0.2184613387786553,
+          "accuracy": 0.6166748046875006,
+          "gain": {
+            "mean": 0.0007831118621006053,
+            "lower": 0.00015929962368151486,
+            "upper": 0.0014069241005196958
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.14836008838479503,
+          "accuracy": 0.8112426757812478,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.175712044548006,
+          "accuracy": 0.7590576171874978,
+          "gain": {
+            "mean": -0.02735195616321097,
+            "lower": -0.03804728748632699,
+            "upper": -0.01665662484009495
+          }
+        },
+        {
+          "brier": 0.13995901146212034,
+          "accuracy": 0.8234374999999975,
+          "gain": {
+            "mean": 0.00840107692267473,
+            "lower": 0.005055526214621126,
+            "upper": 0.011746627630728335
+          }
+        },
+        {
+          "brier": 0.14832494516011366,
+          "accuracy": 0.8140991210937479,
+          "gain": {
+            "mean": 0.00003514322468142631,
+            "lower": -0.00030358609741898694,
+            "upper": 0.00037387254678183956
+          }
+        },
+        {
+          "brier": 0.1469072305829106,
+          "accuracy": 0.8161865234374979,
+          "gain": {
+            "mean": 0.0014528578018844947,
+            "lower": -0.000005022223905398488,
+            "upper": 0.002910737827674388
+          }
+        },
+        {
+          "brier": 0.1452852757801123,
+          "accuracy": 0.8176147460937478,
+          "gain": {
+            "mean": 0.003074812604682719,
+            "lower": 0.0018426947201675968,
+            "upper": 0.004306930489197841
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.20580342339137042,
+          "accuracy": 0.7304931640625012,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.149671203582744,
+          "accuracy": 0.7913574218750015,
+          "gain": {
+            "mean": 0.056132219808626434,
+            "lower": 0.04179703012646378,
+            "upper": 0.07046740949078908
+          }
+        },
+        {
+          "brier": 0.18872733105239142,
+          "accuracy": 0.7544433593750012,
+          "gain": {
+            "mean": 0.017076092338979103,
+            "lower": 0.010408575119880928,
+            "upper": 0.023743609558077278
+          }
+        },
+        {
+          "brier": 0.20539899827919564,
+          "accuracy": 0.7353271484375012,
+          "gain": {
+            "mean": 0.00040442511217481537,
+            "lower": -0.00026708726379239185,
+            "upper": 0.0010759374881420226
+          }
+        },
+        {
+          "brier": 0.20254821822358113,
+          "accuracy": 0.7395019531250012,
+          "gain": {
+            "mean": 0.003255205167789348,
+            "lower": 0.0003434405082641382,
+            "upper": 0.0061669698273145584
+          }
+        },
+        {
+          "brier": 0.19830129303387495,
+          "accuracy": 0.7427978515625011,
+          "gain": {
+            "mean": 0.007502130357495552,
+            "lower": 0.005081880599877936,
+            "upper": 0.009922380115113169
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.20791441618936052,
+          "accuracy": 0.6474365234374999,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.2233940057378502,
+          "accuracy": 0.6290893554687497,
+          "gain": {
+            "mean": -0.015479589548489724,
+            "lower": -0.026106141717785476,
+            "upper": -0.004853037379193974
+          }
+        },
+        {
+          "brier": 0.20469814331028424,
+          "accuracy": 0.6517211914062498,
+          "gain": {
+            "mean": 0.0032162728790762624,
+            "lower": 0.00023443779926544516,
+            "upper": 0.0061981079588870796
+          }
+        },
+        {
+          "brier": 0.20763695424793238,
+          "accuracy": 0.64864501953125,
+          "gain": {
+            "mean": 0.0002774619414281296,
+            "lower": -0.0005901399403364259,
+            "upper": 0.001145063823192685
+          }
+        },
+        {
+          "brier": 0.20740352881885027,
+          "accuracy": 0.64842529296875,
+          "gain": {
+            "mean": 0.0005108873705101831,
+            "lower": -0.00045722849321222134,
+            "upper": 0.0014790032342325875
+          }
+        },
+        {
+          "brier": 0.20677197923103927,
+          "accuracy": 0.6487548828124999,
+          "gain": {
+            "mean": 0.0011424369583212532,
+            "lower": 0.0003913267796783349,
+            "upper": 0.0018935471369641715
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "majority_to_parity",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.25446083883791726,
+          "accuracy": 0.5588867187500002,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.22691188023089165,
+          "accuracy": 0.5751464843750003,
+          "gain": {
+            "mean": 0.027548958607025546,
+            "lower": 0.014507401261939045,
+            "upper": 0.04059051595211205
+          }
+        },
+        {
+          "brier": 0.24783258109973055,
+          "accuracy": 0.5672363281250001,
+          "gain": {
+            "mean": 0.006628257738186699,
+            "lower": 0.000626910228737212,
+            "upper": 0.012629605247636184
+          }
+        },
+        {
+          "brier": 0.2536094163696204,
+          "accuracy": 0.5613037109375003,
+          "gain": {
+            "mean": 0.0008514224682968519,
+            "lower": -0.0008977287577351081,
+            "upper": 0.002600573694328812
+          }
+        },
+        {
+          "brier": 0.25312976276185645,
+          "accuracy": 0.5608642578125004,
+          "gain": {
+            "mean": 0.0013310760760607597,
+            "lower": -0.0006266140447223328,
+            "upper": 0.0032887661968438522
+          }
+        },
+        {
+          "brier": 0.251286595901079,
+          "accuracy": 0.5619628906250004,
+          "gain": {
+            "mean": 0.0031742429368382293,
+            "lower": 0.001532701265839959,
+            "upper": 0.0048157846078365
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.1495733885689724,
+          "accuracy": 0.7879516601562477,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.17088506676443502,
+          "accuracy": 0.7849853515624988,
+          "gain": {
+            "mean": -0.02131167819546269,
+            "lower": -0.029867459971688506,
+            "upper": -0.012755896419236868
+          }
+        },
+        {
+          "brier": 0.13665304403904954,
+          "accuracy": 0.8305786132812475,
+          "gain": {
+            "mean": 0.012920344529922821,
+            "lower": 0.00492845507742311,
+            "upper": 0.020912233982422535
+          }
+        },
+        {
+          "brier": 0.1436782954329821,
+          "accuracy": 0.8153076171874974,
+          "gain": {
+            "mean": 0.005895093135990239,
+            "lower": 0.0030548400291504746,
+            "upper": 0.008735346242830002
+          }
+        },
+        {
+          "brier": 0.1423834444789361,
+          "accuracy": 0.8173950195312475,
+          "gain": {
+            "mean": 0.0071899440900362495,
+            "lower": 0.0035441710585705933,
+            "upper": 0.010835717121501906
+          }
+        },
+        {
+          "brier": 0.14746546116038736,
+          "accuracy": 0.8070678710937474,
+          "gain": {
+            "mean": 0.0021079274085850147,
+            "lower": 0.001187197702714304,
+            "upper": 0.0030286571144557254
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 0,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.1740702550031595,
+          "accuracy": 0.7742187500000014,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.2707817758009784,
+          "accuracy": 0.6467773437500006,
+          "gain": {
+            "mean": -0.09671152079781882,
+            "lower": -0.10601420784480067,
+            "upper": -0.08740883375083697
+          }
+        },
+        {
+          "brier": 0.193307650185263,
+          "accuracy": 0.7700439453125014,
+          "gain": {
+            "mean": -0.019237395182103476,
+            "lower": -0.024575203410219945,
+            "upper": -0.013899586953987006
+          }
+        },
+        {
+          "brier": 0.186957912397264,
+          "accuracy": 0.7636718750000013,
+          "gain": {
+            "mean": -0.012887657394104515,
+            "lower": -0.01965645738491037,
+            "upper": -0.0061188574032986585
+          }
+        },
+        {
+          "brier": 0.18398611575752197,
+          "accuracy": 0.7676269531250015,
+          "gain": {
+            "mean": -0.00991586075436251,
+            "lower": -0.014577228812901463,
+            "upper": -0.005254492695823559
+          }
+        },
+        {
+          "brier": 0.17546996843192994,
+          "accuracy": 0.7729003906250014,
+          "gain": {
+            "mean": -0.0013997134287704318,
+            "lower": -0.0017476741662697623,
+            "upper": -0.0010517526912711013
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 1,
+      "segment": 0,
+      "arms": [
+        {
+          "brier": 0.21765838348868355,
+          "accuracy": 0.6062377929687491,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.23334861436348772,
+          "accuracy": 0.5959106445312496,
+          "gain": {
+            "mean": -0.015690230874804204,
+            "lower": -0.02535016226697164,
+            "upper": -0.006030299482636765
+          }
+        },
+        {
+          "brier": 0.21472196667497392,
+          "accuracy": 0.6092041015624993,
+          "gain": {
+            "mean": 0.002936416813709637,
+            "lower": -0.0016337024235384837,
+            "upper": 0.007506536050957757
+          }
+        },
+        {
+          "brier": 0.2167834707050072,
+          "accuracy": 0.6088745117187493,
+          "gain": {
+            "mean": 0.0008749127836763402,
+            "lower": -0.0007006669779882524,
+            "upper": 0.002450492545340933
+          }
+        },
+        {
+          "brier": 0.21672647901610417,
+          "accuracy": 0.6089843749999994,
+          "gain": {
+            "mean": 0.0009319044725793375,
+            "lower": -0.000757013946399366,
+            "upper": 0.002620822891558041
+          }
+        },
+        {
+          "brier": 0.21735087929726354,
+          "accuracy": 0.6081054687499992,
+          "gain": {
+            "mean": 0.0003075041914200067,
+            "lower": -0.00020016025020773486,
+            "upper": 0.0008151686330477482
+          }
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "parity_to_majority",
+      "view": 1,
+      "segment": 1,
+      "arms": [
+        {
+          "brier": 0.1924078870730448,
+          "accuracy": 0.676660156250001,
+          "gain": {
+            "mean": 0,
+            "lower": 0,
+            "upper": 0
+          }
+        },
+        {
+          "brier": 0.23368740484112271,
+          "accuracy": 0.6496337890625006,
+          "gain": {
+            "mean": -0.04127951776807796,
+            "lower": -0.05731147550805017,
+            "upper": -0.02524756002810574
+          }
+        },
+        {
+          "brier": 0.194235014408445,
+          "accuracy": 0.6757812500000009,
+          "gain": {
+            "mean": -0.0018271273354002093,
+            "lower": -0.006272162933654261,
+            "upper": 0.002617908262853843
+          }
+        },
+        {
+          "brier": 0.19332351505279996,
+          "accuracy": 0.6760009765625009,
+          "gain": {
+            "mean": -0.0009156279797552049,
+            "lower": -0.002622828402855128,
+            "upper": 0.0007915724433447181
+          }
+        },
+        {
+          "brier": 0.19316426529075267,
+          "accuracy": 0.6762207031250009,
+          "gain": {
+            "mean": -0.0007563782177078568,
+            "lower": -0.0021209353231596965,
+            "upper": 0.0006081788877439829
+          }
+        },
+        {
+          "brier": 0.19281726752081857,
+          "accuracy": 0.6762207031250009,
+          "gain": {
+            "mean": -0.0004093804477737963,
+            "lower": -0.0007632307945285553,
+            "upper": -0.00005553010101903735
+          }
+        }
+      ]
+    }
+  ]
+}

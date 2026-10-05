@@ -30,6 +30,9 @@ export type CapturedTurn = {
   sequence: number;
   run_id?: string;
   agent_id?: string;
+  user_id?: string;
+  participant_user_ids?: string[];
+  previous_turn_id?: string;
   user_text: string;
   assistant_text: string;
   retrieved_ids?: string[];
@@ -119,6 +122,7 @@ export type AdapterConfig = {
   packK: number;
   tokenBudget: number;
   capture: boolean;
+  identityBySession?: Record<string, CaptureIdentity>;
   tracePath?: string;
   agencyEnabled: boolean;
   agencyKillSwitch: boolean;
@@ -135,6 +139,8 @@ export type AdapterConfig = {
   agencyCriticalThreshold: number;
   agencyAllowedSessionPrefixes: string[];
 };
+
+export type CaptureIdentity = { userId?: string; participantUserIds?: string[] };
 
 export type AgencyAction = "wake" | "notify" | "schedule";
 

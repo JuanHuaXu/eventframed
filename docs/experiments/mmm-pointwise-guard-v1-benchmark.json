@@ -1,0 +1,21 @@
+{
+  "rounds": [
+    {
+      "milliseconds": 31.902000000000015,
+      "forecasts": 1720320,
+      "microsecondsPerForecast": 0.018544224330357153
+    },
+    {
+      "milliseconds": 31.501041999999984,
+      "forecasts": 1720320,
+      "microsecondsPerForecast": 0.01831115257626487
+    },
+    {
+      "milliseconds": 31.776916999999997,
+      "forecasts": 1720320,
+      "microsecondsPerForecast": 0.018471515183221723
+    }
+  ],
+  "checksum": 2726662.5534708747,
+  "limitations": "Warm scalar pointwise guard only, measured over stored as-of proposals. Excludes Fixed Share filtering, all fitting, retrieval, persistence and loaded serving. O(1) arithmetic per forecast."
+}

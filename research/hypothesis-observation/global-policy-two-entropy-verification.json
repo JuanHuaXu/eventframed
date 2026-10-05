@@ -1,0 +1,13 @@
+{
+  "scope": "Replay, tiny exhaustive policies, independent recursive weighted oracle with alternate loss expression and mixture score reconstruction; floating-point witness, not outward-rounded proof",
+  "control": "entropy",
+  "witnessRound": 101,
+  "independentLower": 0.0024944504357252706,
+  "reportedLower": 0.0024944504357251596,
+  "statesChecked": 48048,
+  "mixtureChecks": 310,
+  "maxMixtureError": 1.3877787807814457e-16,
+  "replay": true,
+  "inputSHA256": "575b9d070c633afa314024e616bce950fdc6c4a99bb8cd2b1c418f2d36d72850",
+  "verifierSHA256": "d073239654defbbc2ca7c5e2ad59c760dff6d93afb734201894bbe0303340b4b"
+}

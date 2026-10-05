@@ -1,0 +1,17 @@
+{
+  "repositoryCompilerInputs": 56,
+  "repositoryClosureProspectivelyComplete": true,
+  "savedCopiesVerified": true,
+  "compactGoJSONDigestVerified": true,
+  "nonrepositoryGeneratedTestMains": [
+    "<LOCAL_ROOT>/Library/Caches/go-build/4a/4a093c5494ca8d178d29a12d922de65ef97da0f5305de48c0b473b30356cf504-d",
+    "<LOCAL_ROOT>/Library/Caches/go-build/69/69cc42cf83dc38c2ded0ffa3d8dd850ed12f8a0afac694fea0a505ad3e9c2e78-d",
+    "<LOCAL_ROOT>/Library/Caches/go-build/fa/faaf2e5ab30e451229fe8c8842d564b305411d1f68a4b5550648bdc819daa0ce-d"
+  ],
+  "generatedTestMainsRebuildableFromSavedRepositoryTests": true,
+  "nonrepositoryFilesRead": false,
+  "initialSupplementalAuditFailure": "An inline readback omitted the final absolute-path repository filter. It incorrectly flagged three generated Go cache test mains as missing repository inputs. Runner already had the filter; no frozen source or scientific record repaired.",
+  "sources": {
+    "research/noise-v53-closure-readback.mjs": "65090fbc1fefbb253bdb405ba71941c94db3068c23e995bf4718eb3e9ef84735"
+  }
+}

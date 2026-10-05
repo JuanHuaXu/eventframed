@@ -1,0 +1,61 @@
+{
+  "results": {
+    "staticGlobal": [
+      {
+        "millisecondsPerTrajectory": 0.16587021,
+        "amortizedMicrosecondsPerForecast": 0.6479305078125
+      },
+      {
+        "millisecondsPerTrajectory": 0.168338125,
+        "amortizedMicrosecondsPerForecast": 0.65757080078125
+      },
+      {
+        "millisecondsPerTrajectory": 0.164835835,
+        "amortizedMicrosecondsPerForecast": 0.64388998046875
+      }
+    ],
+    "shareOnly": [
+      {
+        "millisecondsPerTrajectory": 0.3836402100000001,
+        "amortizedMicrosecondsPerForecast": 1.4985945703125003
+      },
+      {
+        "millisecondsPerTrajectory": 0.38402187499999996,
+        "amortizedMicrosecondsPerForecast": 1.5000854492187499
+      },
+      {
+        "millisecondsPerTrajectory": 0.379653955,
+        "amortizedMicrosecondsPerForecast": 1.48302326171875
+      }
+    ],
+    "shareGlobal": [
+      {
+        "millisecondsPerTrajectory": 0.554599375,
+        "amortizedMicrosecondsPerForecast": 2.16640380859375
+      },
+      {
+        "millisecondsPerTrajectory": 0.5471399999999997,
+        "amortizedMicrosecondsPerForecast": 2.137265624999999
+      },
+      {
+        "millisecondsPerTrajectory": 0.5675227100000001,
+        "amortizedMicrosecondsPerForecast": 2.2168855859375003
+      }
+    ],
+    "shareLocal": [
+      {
+        "millisecondsPerTrajectory": 0.39672770999999957,
+        "amortizedMicrosecondsPerForecast": 1.5497176171874982
+      },
+      {
+        "millisecondsPerTrajectory": 0.3973289600000004,
+        "amortizedMicrosecondsPerForecast": 1.5520662500000015
+      },
+      {
+        "millisecondsPerTrajectory": 0.3986420800000002,
+        "amortizedMicrosecondsPerForecast": 1.5571956250000007
+      }
+    ]
+  },
+  "limitation": "Single-process warm256-step fixture, not loaded/tail serving latency. Fit costs excluded. This measures O(T^2) reference methods; the research scorer also computes a discarded global guard for the local-ledger ablation."
+}

@@ -1,0 +1,22 @@
+{
+  "scope": "Byte-exact replay, direct ordered likelihood check and separate backward scoring in six representative regimes; frozen forecasts, separate risk-budget compiler, zero-budget parity; archived-policy score parity",
+  "inputSHA256": "ed39d584507221931a840928d758a09d1473cd81315c10e5e04615ac9f1bcea4",
+  "verifierSHA256": "c7a036fe22b8d9f18010cce36650d3e0274a046dbbea01dfe0fa44f9a173f25b",
+  "replay": true,
+  "zeroParity": 20592,
+  "invalidBudgetTests": 3,
+  "changedByDepth": [
+    0,
+    0,
+    0,
+    96,
+    208,
+    1360
+  ],
+  "archivedChecks": 880,
+  "tieRuleTests": 4,
+  "likelihoodChecks": 16896,
+  "maxLikelihoodError": 1.3877787807814457e-17,
+  "valueChecks": 360,
+  "maxError": 2.9753977059954195e-14
+}

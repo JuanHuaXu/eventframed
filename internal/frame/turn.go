@@ -92,8 +92,9 @@ func FromTurn(turn model.TurnCapture) model.Event {
 
 func firstField(sources []sourceText, patterns []pattern, confidence float64, accept func(string) bool, fallback model.Field) model.Field {
 	for _, source := range sources {
+		clean := unquoted(source.text)
 		for _, candidate := range patterns {
-			indices := candidate.expression.FindStringSubmatchIndex(source.text)
+			indices := candidate.expression.FindStringSubmatchIndex(clean)
 			group := candidate.group * 2
 			if len(indices) <= group+1 || indices[group] < 0 {
 				continue
@@ -113,14 +114,15 @@ func firstField(sources []sourceText, patterns []pattern, confidence float64, ac
 }
 
 func participantFallback(turn model.TurnCapture, user sourceText) model.Field {
-	if indices := collectivePattern.FindStringIndex(user.text); indices != nil {
-		return field("user and agent", model.SourceInferred, .72, span(user.name, indices[0], indices[1]))
+	clean := unquoted(user.text)
+	if indices := collectivePattern.FindStringIndex(clean); indices != nil {
+		return field("unresolved group", model.SourceInferred, 0, span(user.name, indices[0], indices[1]))
 	}
-	if indices := firstPersonPattern.FindStringIndex(user.text); indices != nil {
+	if indices := firstPersonPattern.FindStringIndex(clean); indices != nil {
 		return field("user", model.SourceInferred, .72, span(user.name, indices[0], indices[1]))
 	}
 	if turn.AgentID != "" {
-		if indices := secondPersonPattern.FindStringIndex(user.text); indices != nil {
+		if indices := secondPersonPattern.FindStringIndex(clean); indices != nil {
 			return field("agent:"+turn.AgentID, model.SourceInferred, .70, span(user.name, indices[0], indices[1]))
 		}
 		return field("user and agent:"+turn.AgentID, model.SourceInferred, .55, "turn participants")

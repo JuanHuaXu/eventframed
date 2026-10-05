@@ -1,0 +1,24 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchregimefrozen
+cpu: Apple M4
+BenchmarkMatchedReplay/members2_cap36_rows32/v77-10         	     277	    428798 ns/op	 2880317 B/op	     153 allocs/op
+BenchmarkMatchedReplay/members2_cap36_rows32/v77-10         	     271	    427010 ns/op	 2880320 B/op	     153 allocs/op
+BenchmarkMatchedReplay/members2_cap36_rows32/v78-10         	     272	    442253 ns/op	 2899995 B/op	     191 allocs/op
+BenchmarkMatchedReplay/members2_cap36_rows32/v78-10         	     277	    435386 ns/op	 2899979 B/op	     191 allocs/op
+BenchmarkMatchedReplay/members150_cap36_rows32/v77-10       	     168	    710285 ns/op	 2881584 B/op	     153 allocs/op
+BenchmarkMatchedReplay/members150_cap36_rows32/v77-10       	     170	    712918 ns/op	 2881589 B/op	     153 allocs/op
+BenchmarkMatchedReplay/members150_cap36_rows32/v78-10       	     166	    723986 ns/op	 2901248 B/op	     191 allocs/op
+BenchmarkMatchedReplay/members150_cap36_rows32/v78-10       	     165	    720719 ns/op	 2901239 B/op	     191 allocs/op
+BenchmarkMatchedReplay/members200_cap36_rows32/v77-10       	     148	    806829 ns/op	 2882097 B/op	     153 allocs/op
+BenchmarkMatchedReplay/members200_cap36_rows32/v77-10       	     148	    801079 ns/op	 2882100 B/op	     153 allocs/op
+BenchmarkMatchedReplay/members200_cap36_rows32/v78-10       	     147	    810899 ns/op	 2901760 B/op	     191 allocs/op
+BenchmarkMatchedReplay/members200_cap36_rows32/v78-10       	     147	    810043 ns/op	 2901763 B/op	     191 allocs/op
+BenchmarkRegimeReplay/members2_cap36_rows32-10              	     273	    435106 ns/op	 2899974 B/op	     191 allocs/op
+BenchmarkRegimeReplay/members2_cap36_rows32-10              	     273	    431358 ns/op	 2899975 B/op	     191 allocs/op
+BenchmarkRegimeReplay/members150_cap36_rows32-10            	     168	    748938 ns/op	 2901242 B/op	     191 allocs/op
+BenchmarkRegimeReplay/members150_cap36_rows32-10            	     144	    723505 ns/op	 2901241 B/op	     191 allocs/op
+BenchmarkRegimeReplay/members200_cap36_rows32-10            	     147	    814768 ns/op	 2901750 B/op	     191 allocs/op
+BenchmarkRegimeReplay/members200_cap36_rows32-10            	     147	    810474 ns/op	 2901756 B/op	     191 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregimefrozen	3.607s

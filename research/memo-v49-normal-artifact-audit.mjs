@@ -1,0 +1,12 @@
+// Separate byte/command/source verification, independent of metric readback.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const root='research/memo-v49-normal',hash=b=>crypto.createHash('sha256').update(b).digest('hex');async function digest(p){const h=crypto.createHash('sha256');for await(const b of fs.createReadStream(p))h.update(b);return h.digest('hex')}
+const f=JSON.parse(fs.readFileSync(root+'/freeze.json')),d=JSON.parse(fs.readFileSync(root+'/completed.json'));assert(d.stage==='normal'&&d.sourceUnchanged&&d.checks.length===11&&d.checks.every(c=>c.code===0));
+for(const[p,h]of Object.entries(f.files)){assert.equal(hash(fs.readFileSync(p)),h,'current '+p);assert.equal(hash(fs.readFileSync(root+'/source/'+p)),h,'frozen '+p)}
+for(const[p,h]of Object.entries(d.artifacts))assert.equal(await digest(root+'/'+p),h,'artifact '+p);
+for(const c of d.checks){assert.deepEqual(JSON.parse(fs.readFileSync(root+'/'+c.name+'-command.json')),c);assert.equal(await digest(root+'/'+c.name+'.log'),c.logSHA256)}
+const g=JSON.parse(fs.readFileSync('research/memo-v49-normal-generation.json'));assert(g.inverseHarnessEqual&&g.inverseReaderEqual&&!g.qualityGatesChanged);for(const[p,h]of [[g.source,g.sourceSHA256],[g.destination,g.destinationSHA256],[g.originalReader,g.originalReaderSHA256],[g.reader,g.readerSHA256]])assert.equal(hash(fs.readFileSync(p)),h);
+const c=JSON.parse(fs.readFileSync(root+'/cost-report.json'));assert(c.exactPairEquality&&c.loops.length===9);assert(Number.isSafeInteger(c.constructorMaxBytes.memo)&&c.constructorMaxBytes.memo>0);
+const cost=x=>{for(const v of Object.values(x))assert(Number.isSafeInteger(v)&&v>0);assert.equal(x.AccountedNS,x.SetupNS+x.IssueNS+x.ResolveNS+x.SnapshotNS);assert(x.ElapsedNS>=x.AccountedNS)};
+for(const[j,r]of c.loops.entries()){assert.equal(r.mode,['static','slow','round'][j%3]);assert.equal(r.schedule,['immediate','fixed150','uniform299'][Math.floor(j/3)]);assert.equal(r.memoFirst,j%2!==0);cost(r.original);cost(r.memo)}
+const out={time:new Date().toISOString(),sources:Object.keys(f.files).length,artifacts:Object.keys(d.artifacts).length,commands:d.checks.length,inverseHarnessAndReadback:true,sourceCopiesAndRawHashes:true,allocationFieldMatchesMemo:true,allSevenWholeGoals:'OPEN',goal:'ACTIVE'};const fd=fs.openSync(root+'/artifact-audit.json','wx',0o600);try{fs.writeFileSync(fd,JSON.stringify(out,null,2)+'\n');fs.fsyncSync(fd)}finally{fs.closeSync(fd)}console.log(JSON.stringify(out,null,2));

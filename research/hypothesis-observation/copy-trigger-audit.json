@@ -1,0 +1,372 @@
+{
+  "scope": "Frozen policy support/trigger audit; integer occupancy comparison, not universal impossibility",
+  "frozenSHA256": "ed39d584507221931a840928d758a09d1473cd81315c10e5e04615ac9f1bcea4",
+  "hashes": {
+    "copy-trigger-audit.mjs": "16082a98036a6d64650322d3d9b52cd6c8a557040149ea1a2e14973d02e18662",
+    "COPY_TRIGGER_PROTOCOL.md": "41b070723775c2c9350f48dc73ae12f68e6d9caf26b29a8f257e6764435f6278",
+    "exact-regime.mjs": "cd51743646ffa2e4c5b6a49c574d2ddd077fe44aa67f88f00bfdf9f656ee6a29"
+  },
+  "counts": [
+    {
+      "step": 0,
+      "allDifferences": 0,
+      "reachableDifferences": 0,
+      "reachableWithoutContradiction": 0
+    },
+    {
+      "step": 1,
+      "allDifferences": 0,
+      "reachableDifferences": 0,
+      "reachableWithoutContradiction": 0
+    },
+    {
+      "step": 2,
+      "allDifferences": 0,
+      "reachableDifferences": 0,
+      "reachableWithoutContradiction": 0
+    },
+    {
+      "step": 3,
+      "allDifferences": 96,
+      "reachableDifferences": 0,
+      "reachableWithoutContradiction": 0
+    },
+    {
+      "step": 4,
+      "allDifferences": 208,
+      "reachableDifferences": 8,
+      "reachableWithoutContradiction": 0
+    },
+    {
+      "step": 5,
+      "allDifferences": 1360,
+      "reachableDifferences": 24,
+      "reachableWithoutContradiction": 0
+    }
+  ],
+  "counterexamples": [],
+  "masks": [
+    {
+      "mask": 0,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        16
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        8,
+        24
+      ]
+    },
+    {
+      "mask": 1,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mask": 2,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        16
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        8,
+        24
+      ]
+    },
+    {
+      "mask": 3,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mask": 4,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        16
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        8,
+        24
+      ]
+    },
+    {
+      "mask": 5,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mask": 6,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        16
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        8,
+        24
+      ]
+    },
+    {
+      "mask": 7,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mask": 8,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        16
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        8,
+        8
+      ]
+    },
+    {
+      "mask": 9,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mask": 10,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        16
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        8,
+        8
+      ]
+    },
+    {
+      "mask": 11,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mask": 12,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        16
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        8,
+        8
+      ]
+    },
+    {
+      "mask": 13,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mask": 14,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        16
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        8,
+        8
+      ]
+    },
+    {
+      "mask": 15,
+      "unequalLayers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "differingReachableActions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "layerChecks": 1792,
+  "integerChecks": 20768
+}

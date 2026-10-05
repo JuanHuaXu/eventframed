@@ -1,0 +1,415 @@
+{
+  "kind": "post-hoc-packed-risk-diagnostic",
+  "splits": {
+    "design": {
+      "sha256": "7536ace6380fd8b789c2fa6021ae2d08783834c1dfd240910b3b9504e868d72d",
+      "cases": [
+        {
+          "geometry": "tight",
+          "regime": "independent",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.4512696543295012,
+          "servedPacketServedLawBrier": 0.29028158220047423,
+          "baselinePacketServedLawBrier": 0.2979829286202351,
+          "totalPackedRiskHarm": {
+            "mean": -0.16098807212902705,
+            "lower": -0.22655742409195545,
+            "upper": -0.09541872016609863
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.007701346419760861,
+            "lower": -0.04635405776526634,
+            "upper": 0.030951364925744615
+          },
+          "meanServedForecast": 0.9495149435226744,
+          "meanServedTruth": 0.68,
+          "meanProbabilityBias": {
+            "mean": 0.2695149435226744,
+            "lower": 0.22227378332595454,
+            "upper": 0.3167561037193943
+          }
+        },
+        {
+          "geometry": "tight",
+          "regime": "aligned",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.11115122267382516,
+          "servedPacketServedLawBrier": 0.11807920115946173,
+          "baselinePacketServedLawBrier": 0.12224290036012982,
+          "totalPackedRiskHarm": {
+            "mean": 0.006927978485636565,
+            "lower": 0.004708510125879806,
+            "upper": 0.009147446845393325
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.004163699200668093,
+            "lower": -0.005912362314799201,
+            "upper": -0.0024150360865369857
+          },
+          "meanServedForecast": 0.9499167605485073,
+          "meanServedTruth": 0.8715604026845639,
+          "meanProbabilityBias": {
+            "mean": 0.07835635786394324,
+            "lower": 0.07590315491881902,
+            "upper": 0.08080956080906745
+          }
+        },
+        {
+          "geometry": "tight",
+          "regime": "reversed",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.7499576168932787,
+          "servedPacketServedLawBrier": 0.6850318774313181,
+          "baselinePacketServedLawBrier": 0.41530422645470605,
+          "totalPackedRiskHarm": {
+            "mean": -0.06492573946196051,
+            "lower": -0.08042125218714591,
+            "upper": -0.04943022673677511
+          },
+          "selectionPackedRiskHarm": {
+            "mean": 0.2697276509766119,
+            "lower": 0.24690063052041641,
+            "upper": 0.2925546714328074
+          },
+          "meanServedForecast": 0.9384367811406765,
+          "meanServedTruth": 0.224748322147651,
+          "meanProbabilityBias": {
+            "mean": 0.7136884589930256,
+            "lower": 0.6977413068790822,
+            "upper": 0.729635611106969
+          }
+        },
+        {
+          "geometry": "tight",
+          "regime": "calibrated",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.06944548185617273,
+          "servedPacketServedLawBrier": 0.07008867337725276,
+          "baselinePacketServedLawBrier": 0.07833328738407344,
+          "totalPackedRiskHarm": {
+            "mean": 0.0006431915210800198,
+            "lower": 0.0006317795978216998,
+            "upper": 0.0006546034443383399
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.008244614006820672,
+            "lower": -0.012623342770638044,
+            "upper": -0.0038658852430032992
+          },
+          "meanServedForecast": 0.9499317738309472,
+          "meanServedTruth": 0.9248976607464208,
+          "meanProbabilityBias": {
+            "mean": 0.025034113084526338,
+            "lower": 0.025029721778658823,
+            "upper": 0.025038504390393852
+          }
+        },
+        {
+          "geometry": "wide",
+          "regime": "independent",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.4199998975244775,
+          "servedPacketServedLawBrier": 0.29588124213538214,
+          "baselinePacketServedLawBrier": 0.2879153307780613,
+          "totalPackedRiskHarm": {
+            "mean": -0.12411865538909533,
+            "lower": -0.16583746083825637,
+            "upper": -0.0823998499399343
+          },
+          "selectionPackedRiskHarm": {
+            "mean": 0.007965911357320825,
+            "lower": -0.019064350228168034,
+            "upper": 0.034996172942809683
+          },
+          "meanServedForecast": 0.9444039393635353,
+          "meanServedTruth": 0.6706249999999996,
+          "meanProbabilityBias": {
+            "mean": 0.2737789393635352,
+            "lower": 0.22766961368138883,
+            "upper": 0.3198882650456816
+          }
+        },
+        {
+          "geometry": "wide",
+          "regime": "aligned",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.11099484606266675,
+          "servedPacketServedLawBrier": 0.11690194475833054,
+          "baselinePacketServedLawBrier": 0.12008936204825707,
+          "totalPackedRiskHarm": {
+            "mean": 0.005907098695663831,
+            "lower": 0.00411117230632348,
+            "upper": 0.007703025085004181
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.0031874172899265087,
+            "lower": -0.004886622140445168,
+            "upper": -0.0014882124394078496
+          },
+          "meanServedForecast": 0.9487986862120498,
+          "meanServedTruth": 0.8726342281879194,
+          "meanProbabilityBias": {
+            "mean": 0.07616445802413038,
+            "lower": 0.07431830874061611,
+            "upper": 0.07801060730764466
+          }
+        },
+        {
+          "geometry": "wide",
+          "regime": "reversed",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.7480111935854257,
+          "servedPacketServedLawBrier": 0.6469645484636174,
+          "baselinePacketServedLawBrier": 0.4214108117731426,
+          "totalPackedRiskHarm": {
+            "mean": -0.10104664512180762,
+            "lower": -0.127330124809095,
+            "upper": -0.07476316543452025
+          },
+          "selectionPackedRiskHarm": {
+            "mean": 0.2255537366904751,
+            "lower": 0.20161666833643904,
+            "upper": 0.24949080504451115
+          },
+          "meanServedForecast": 0.9080281170075316,
+          "meanServedTruth": 0.22416107382550335,
+          "meanProbabilityBias": {
+            "mean": 0.6838670431820284,
+            "lower": 0.6581999562279287,
+            "upper": 0.7095341301361281
+          }
+        },
+        {
+          "geometry": "wide",
+          "regime": "calibrated",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.07049688210300925,
+          "servedPacketServedLawBrier": 0.07140645877491125,
+          "baselinePacketServedLawBrier": 0.07848813381822209,
+          "totalPackedRiskHarm": {
+            "mean": 0.0009095766719019785,
+            "lower": 0.000705714980990911,
+            "upper": 0.0011134383628130461
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.00708167504331081,
+            "lower": -0.01194858512001826,
+            "upper": -0.00221476496660336
+          },
+          "meanServedForecast": 0.9489140343903221,
+          "meanServedTruth": 0.9233710515854838,
+          "meanProbabilityBias": {
+            "mean": 0.025542982804838722,
+            "lower": 0.02546398116194858,
+            "upper": 0.025621984447728865
+          }
+        }
+      ]
+    },
+    "confirmation": {
+      "sha256": "4ca78fe2a32a10d1c893c6ea6c4b89670bf63e417574848b4a71587eb9c21028",
+      "cases": [
+        {
+          "geometry": "tight",
+          "regime": "independent",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.4512657286943119,
+          "servedPacketServedLawBrier": 0.28170541616260747,
+          "baselinePacketServedLawBrier": 0.30277172922132867,
+          "totalPackedRiskHarm": {
+            "mean": -0.16956031253170442,
+            "lower": -0.22636382553350065,
+            "upper": -0.1127567995299082
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.021066313058721194,
+            "lower": -0.0521090831821201,
+            "upper": 0.009976457064677705
+          },
+          "meanServedForecast": 0.9493984329668538,
+          "meanServedTruth": 0.689375,
+          "meanProbabilityBias": {
+            "mean": 0.2600234329668539,
+            "lower": 0.21373851970030164,
+            "upper": 0.3063083462334061
+          }
+        },
+        {
+          "geometry": "tight",
+          "regime": "aligned",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.11115122267382516,
+          "servedPacketServedLawBrier": 0.11719025504040667,
+          "baselinePacketServedLawBrier": 0.1206688011984116,
+          "totalPackedRiskHarm": {
+            "mean": 0.006039032366581502,
+            "lower": 0.004174171293586094,
+            "upper": 0.00790389343957691
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.0034785461580049606,
+            "lower": -0.005271924813862109,
+            "upper": -0.001685167502147812
+          },
+          "meanServedForecast": 0.9499245434960607,
+          "meanServedTruth": 0.8725503355704697,
+          "meanProbabilityBias": {
+            "mean": 0.07737420792559101,
+            "lower": 0.07531098879419408,
+            "upper": 0.07943742705698793
+          }
+        },
+        {
+          "geometry": "tight",
+          "regime": "reversed",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.7499576168932787,
+          "servedPacketServedLawBrier": 0.6792973001999173,
+          "baselinePacketServedLawBrier": 0.4138805297049276,
+          "totalPackedRiskHarm": {
+            "mean": -0.07066031669336115,
+            "lower": -0.08880036887050474,
+            "upper": -0.05252026451621755
+          },
+          "selectionPackedRiskHarm": {
+            "mean": 0.26541677049498963,
+            "lower": 0.246349469439786,
+            "upper": 0.2844840715501933
+          },
+          "meanServedForecast": 0.9373172789095441,
+          "meanServedTruth": 0.22954697986577183,
+          "meanProbabilityBias": {
+            "mean": 0.7077702990437722,
+            "lower": 0.689227487114341,
+            "upper": 0.7263131109732034
+          }
+        },
+        {
+          "geometry": "tight",
+          "regime": "calibrated",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.06944548185617273,
+          "servedPacketServedLawBrier": 0.0700896427394031,
+          "baselinePacketServedLawBrier": 0.07744851989110299,
+          "totalPackedRiskHarm": {
+            "mean": 0.0006441608832303426,
+            "lower": 0.000628140704982177,
+            "upper": 0.0006601810614785081
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.007358877151699882,
+            "lower": -0.012427629451837032,
+            "upper": -0.002290124851562731
+          },
+          "meanServedForecast": 0.9499310277449892,
+          "meanServedTruth": 0.9248965416174834,
+          "meanProbabilityBias": {
+            "mean": 0.025034486127505407,
+            "lower": 0.025028321663423784,
+            "upper": 0.02504065059158703
+          }
+        },
+        {
+          "geometry": "wide",
+          "regime": "independent",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.41358548111894017,
+          "servedPacketServedLawBrier": 0.28098722035015816,
+          "baselinePacketServedLawBrier": 0.28830815912157237,
+          "totalPackedRiskHarm": {
+            "mean": -0.13259826076878206,
+            "lower": -0.1797374385843687,
+            "upper": -0.08545908295319543
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.007320938771414148,
+            "lower": -0.03502533699956187,
+            "upper": 0.020383459456733574
+          },
+          "meanServedForecast": 0.9445188082166615,
+          "meanServedTruth": 0.6874999999999998,
+          "meanProbabilityBias": {
+            "mean": 0.2570188082166615,
+            "lower": 0.2091344677736265,
+            "upper": 0.30490314865969653
+          }
+        },
+        {
+          "geometry": "wide",
+          "regime": "aligned",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.11099484606266675,
+          "servedPacketServedLawBrier": 0.11816437773968107,
+          "baselinePacketServedLawBrier": 0.12271055160721349,
+          "totalPackedRiskHarm": {
+            "mean": 0.007169531677014349,
+            "lower": 0.004618709591272174,
+            "upper": 0.009720353762756524
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.004546173867532453,
+            "lower": -0.006564017230688885,
+            "upper": -0.0025283305043760206
+          },
+          "meanServedForecast": 0.9486441018890226,
+          "meanServedTruth": 0.8711912751677852,
+          "meanProbabilityBias": {
+            "mean": 0.0774528267212373,
+            "lower": 0.07484287398721805,
+            "upper": 0.08006277945525654
+          }
+        },
+        {
+          "geometry": "wide",
+          "regime": "reversed",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.7480111935854257,
+          "servedPacketServedLawBrier": 0.6510823470433353,
+          "baselinePacketServedLawBrier": 0.4118445925439413,
+          "totalPackedRiskHarm": {
+            "mean": -0.09692884654208966,
+            "lower": -0.12343452626155313,
+            "upper": -0.0704231668226262
+          },
+          "selectionPackedRiskHarm": {
+            "mean": 0.2392377544993942,
+            "lower": 0.22017663084126432,
+            "upper": 0.25829887815752406
+          },
+          "meanServedForecast": 0.9107488469300901,
+          "meanServedTruth": 0.22307046979865772,
+          "meanProbabilityBias": {
+            "mean": 0.6876783771314324,
+            "lower": 0.6619371330348088,
+            "upper": 0.713419621228056
+          }
+        },
+        {
+          "geometry": "wide",
+          "regime": "calibrated",
+          "worlds": 32,
+          "baselinePacketBaselineLawBrier": 0.07049688210300925,
+          "servedPacketServedLawBrier": 0.071410130894064,
+          "baselinePacketServedLawBrier": 0.0773245195749705,
+          "totalPackedRiskHarm": {
+            "mean": 0.0009132487910547046,
+            "lower": 0.0006705527102271206,
+            "upper": 0.0011559448718822885
+          },
+          "selectionPackedRiskHarm": {
+            "mean": -0.005914388680906494,
+            "lower": -0.010032602794653045,
+            "upper": -0.0017961745671599433
+          },
+          "meanServedForecast": 0.9489112873895349,
+          "meanServedTruth": 0.9233669310843025,
+          "meanProbabilityBias": {
+            "mean": 0.025544356305232364,
+            "lower": 0.025450252225794442,
+            "upper": 0.025638460384670287
+          }
+        }
+      ]
+    }
+  }
+}

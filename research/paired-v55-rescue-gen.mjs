@@ -1,0 +1,5 @@
+// Mechanical exclusive run-root replacement after pre-experiment vet failure.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const src='research/paired-v55-run.mjs',dest='research/paired-v55-rescue-run.mjs',hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+assert(!fs.existsSync(dest));const before=fs.readFileSync(src),after=before.toString().replace("const root='research/paired-v55-diagnostic'","const root='research/paired-v55-rescue'").replace("'research/paired-v55-run.mjs'","'research/paired-v55-run.mjs','research/paired-v55-rescue-gen.mjs','research/paired-v55-rescue-generation.json','research/paired-v55-rescue-run.mjs'");
+fs.writeFileSync(dest,after,{flag:'wx',mode:0o600});fs.writeFileSync('research/paired-v55-rescue-generation.json',JSON.stringify({source:src,sourceSHA256:hash(before),output:dest,outputSHA256:hash(after),failurePreserved:'research/paired-v55-diagnostic/failure.json',noTimingDataInFailedRun:true},null,2)+'\n',{flag:'wx',mode:0o600});console.log(JSON.stringify({dest,hash:hash(after)}));

@@ -1,0 +1,27 @@
+{
+  "time": "2026-10-04T09:57:25.563Z",
+  "sources": 151,
+  "artifacts": 41,
+  "commands": 16,
+  "sourceCopiesAndRawHashes": true,
+  "commandHashes": true,
+  "executedRaceRoots": [
+    "TestScoredV51DenseDelayedReference",
+    "TestScoredV51LegacyExactAndCancellation",
+    "TestScoredV51LifecycleAndFutureFork",
+    "TestScoredV51HybridLegacyExactAndFencing",
+    "TestScoredV51StreamIdentity",
+    "TestHybridV48CompactEquivalent",
+    "TestHybridV48CompactExtremeRevival",
+    "TestHybridV48DelayedHeadsAndOriginalServedLaw",
+    "TestHybridV48OwnershipCapsAndGlobalFence"
+  ],
+  "futurePrefixes": 36,
+  "semanticCorruptions": 68,
+  "exactLegacyPairs": 252,
+  "exactSharedAdvicePairs": 1008,
+  "readbackSHA256": "b41a1e8409b3719846b5e7a3167b2b51d75f2af9efa8acee81e1e1e8d72a9e7b",
+  "weeklyUsage": 21,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

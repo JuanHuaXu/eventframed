@@ -1,0 +1,22 @@
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkSnapshot(AdviceLifecycle|BankPublication)$' -benchmem -benchtime=300ms -count=3
+Benchmark SHA256: 8616fd91c0d22ae8739062ea02cabbc72c1bd22213829b752ae53f4e4b001bc4
+All repeats retained. No concurrent research computation.
+Lifecycle operation: 256 issues plus feedback and eight admission transitions.
+No model fits, observation controller, acceptance gate or storage I/O included.
+Publication operation: one detached four-model validation/copy, not fitting.
+
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkSnapshotAdviceLifecycle/immediate-10       747   475197 ns/op        0 B/op  0 allocs/op
+BenchmarkSnapshotAdviceLifecycle/immediate-10       748   477611 ns/op        0 B/op  0 allocs/op
+BenchmarkSnapshotAdviceLifecycle/immediate-10       757   482576 ns/op        0 B/op  0 allocs/op
+BenchmarkSnapshotAdviceLifecycle/delay31-10          68  5225855 ns/op        0 B/op  0 allocs/op
+BenchmarkSnapshotAdviceLifecycle/delay31-10          68  5212307 ns/op        0 B/op  0 allocs/op
+BenchmarkSnapshotAdviceLifecycle/delay31-10          68  5152058 ns/op        0 B/op  0 allocs/op
+BenchmarkSnapshotBankPublication-10                482   738525 ns/op  1261568 B/op  1 allocs/op
+BenchmarkSnapshotBankPublication-10                488   732805 ns/op  1261568 B/op  1 allocs/op
+BenchmarkSnapshotBankPublication-10                495   744286 ns/op  1261568 B/op  1 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/observationlearners 4.093s

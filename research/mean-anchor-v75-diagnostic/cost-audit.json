@@ -1,0 +1,659 @@
+{
+  "source": "research/mean-anchor-v75-cohort-cost-audit.mjs",
+  "sourceSHA256": "0892f4f9f5dc81aaa4414a3b09c46282b75435f59ee1526ce2fcbf3fd6b8e78e",
+  "dataSHA256": "6b69bfc5bce2dd449d06943af5ee0c06f8914d20b414cb209868c5feb2424a37",
+  "newModelArms": 1440,
+  "totals": {
+    "mean_no_pair": {
+      "arms": 120,
+      "elapsedNS": 91266425670,
+      "accountedNS": 91216519878,
+      "phases": {
+        "ScheduleNS": 5153958,
+        "SetupNS": 735526331,
+        "IssueNS": 33315645964,
+        "FirstResolveNS": 48736553020,
+        "ProposalNS": 0,
+        "RequestNS": 0,
+        "SecondResolveNS": 0,
+        "SnapshotNS": 8423640605
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "curved",
+        "schedule": "uniform299",
+        "elapsedNS": 808727041,
+        "phases": {
+          "ScheduleNS": 53042,
+          "SetupNS": 5978667,
+          "IssueNS": 281746652,
+          "FirstResolveNS": 448372471,
+          "ProposalNS": 0,
+          "RequestNS": 0,
+          "SecondResolveNS": 0,
+          "SnapshotNS": 72011000
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00005647156621029092,
+        "SetupNS": 0.0080591118322033,
+        "IssueNS": 0.3650372600814049,
+        "FirstResolveNS": 0.5340030867015765,
+        "ProposalNS": 0,
+        "RequestNS": 0,
+        "SecondResolveNS": 0,
+        "SnapshotNS": 0.09229725546016335
+      },
+      "unattributedFraction": 0.0005468143584416163,
+      "meanElapsedMS": 760.55354725,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "mean_random": {
+      "arms": 120,
+      "elapsedNS": 112179076327,
+      "accountedNS": 112124212092,
+      "phases": {
+        "ScheduleNS": 4983963,
+        "SetupNS": 739912122,
+        "IssueNS": 32991734719,
+        "FirstResolveNS": 48395465044,
+        "ProposalNS": 2142723,
+        "RequestNS": 5694945240,
+        "SecondResolveNS": 15878978169,
+        "SnapshotNS": 8416050112
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "curved",
+        "schedule": "uniform299",
+        "elapsedNS": 1041197834,
+        "phases": {
+          "ScheduleNS": 65958,
+          "SetupNS": 6168541,
+          "IssueNS": 279118558,
+          "FirstResolveNS": 443993136,
+          "ProposalNS": 27584,
+          "RequestNS": 92649011,
+          "SecondResolveNS": 146720835,
+          "SnapshotNS": 71959126
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00004442863288936198,
+        "SetupNS": 0.006595812215846469,
+        "IssueNS": 0.2940988266192323,
+        "FirstResolveNS": 0.4314125827077421,
+        "ProposalNS": 0.00001910091498484085,
+        "RequestNS": 0.05076655492686833,
+        "SecondResolveNS": 0.1415502666710596,
+        "SnapshotNS": 0.07502335005386712
+      },
+      "unattributedFraction": 0.0004890772575099067,
+      "meanElapsedMS": 934.8256360583333,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "mean_uncertainty": {
+      "arms": 120,
+      "elapsedNS": 145955319839,
+      "accountedNS": 145897341174,
+      "phases": {
+        "ScheduleNS": 5010248,
+        "SetupNS": 742847540,
+        "IssueNS": 32935883524,
+        "FirstResolveNS": 48349559142,
+        "ProposalNS": 33884577029,
+        "RequestNS": 5714197119,
+        "SecondResolveNS": 15842295496,
+        "SnapshotNS": 8422971076
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "aligned",
+        "schedule": "uniform299",
+        "elapsedNS": 1605950792,
+        "phases": {
+          "ScheduleNS": 56833,
+          "SetupNS": 6092917,
+          "IssueNS": 279070841,
+          "FirstResolveNS": 444100923,
+          "ProposalNS": 551612127,
+          "RequestNS": 103381413,
+          "SecondResolveNS": 149613003,
+          "SnapshotNS": 71595957
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00003432727224692249,
+        "SetupNS": 0.005089554398013161,
+        "IssueNS": 0.22565730088037095,
+        "FirstResolveNS": 0.3312627398256761,
+        "ProposalNS": 0.23215719075109634,
+        "RequestNS": 0.0391503175444595,
+        "SecondResolveNS": 0.10854209023333494,
+        "SnapshotNS": 0.05770924338551817
+      },
+      "unattributedFraction": 0.00039723570928384966,
+      "meanElapsedMS": 1216.2943319916665,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "mean_falsification": {
+      "arms": 120,
+      "elapsedNS": 152050177414,
+      "accountedNS": 151990085631,
+      "phases": {
+        "ScheduleNS": 5096048,
+        "SetupNS": 742038837,
+        "IssueNS": 32944260144,
+        "FirstResolveNS": 48339368482,
+        "ProposalNS": 39996672736,
+        "RequestNS": 5743376937,
+        "SecondResolveNS": 15804710116,
+        "SnapshotNS": 8414562331
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "gradual",
+        "schedule": "uniform299",
+        "elapsedNS": 1645440334,
+        "phases": {
+          "ScheduleNS": 58000,
+          "SetupNS": 6078166,
+          "IssueNS": 280722614,
+          "FirstResolveNS": 452276446,
+          "ProposalNS": 592553501,
+          "RequestNS": 93460137,
+          "SecondResolveNS": 147810845,
+          "SnapshotNS": 71988124
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00003351556760190128,
+        "SetupNS": 0.004880223421111753,
+        "IssueNS": 0.21666702863686801,
+        "FirstResolveNS": 0.31791721196340517,
+        "ProposalNS": 0.2630491684800712,
+        "RequestNS": 0.037772905199327834,
+        "SecondResolveNS": 0.10394404258383183,
+        "SnapshotNS": 0.055340693934798596
+      },
+      "unattributedFraction": 0.00039521021298372094,
+      "meanElapsedMS": 1267.0848117833334,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "meanlocal_no_pair": {
+      "arms": 120,
+      "elapsedNS": 81745467625,
+      "accountedNS": 81697483624,
+      "phases": {
+        "ScheduleNS": 4973495,
+        "SetupNS": 733997294,
+        "IssueNS": 33392982111,
+        "FirstResolveNS": 39116771476,
+        "ProposalNS": 0,
+        "RequestNS": 0,
+        "SecondResolveNS": 0,
+        "SnapshotNS": 8448759248
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "early",
+        "schedule": "uniform299",
+        "elapsedNS": 732129125,
+        "phases": {
+          "ScheduleNS": 56041,
+          "SetupNS": 5887666,
+          "IssueNS": 282329041,
+          "FirstResolveNS": 370530417,
+          "ProposalNS": 0,
+          "RequestNS": 0,
+          "SecondResolveNS": 0,
+          "SnapshotNS": 72722794
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00006084123248050231,
+        "SetupNS": 0.00897905798725315,
+        "IssueNS": 0.4084994933809335,
+        "FirstResolveNS": 0.47851914745224383,
+        "ProposalNS": 0,
+        "RequestNS": 0,
+        "SecondResolveNS": 0,
+        "SnapshotNS": 0.10335446714621446
+      },
+      "unattributedFraction": 0.0005869928008745973,
+      "meanElapsedMS": 681.2122302083334,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "meanlocal_random": {
+      "arms": 120,
+      "elapsedNS": 100960087670,
+      "accountedNS": 100903888037,
+      "phases": {
+        "ScheduleNS": 5098340,
+        "SetupNS": 724453045,
+        "IssueNS": 33050996563,
+        "FirstResolveNS": 38675561469,
+        "ProposalNS": 2121869,
+        "RequestNS": 5688153040,
+        "SecondResolveNS": 14314682076,
+        "SnapshotNS": 8442821635
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "early",
+        "schedule": "uniform299",
+        "elapsedNS": 944422208,
+        "phases": {
+          "ScheduleNS": 63334,
+          "SetupNS": 6071875,
+          "IssueNS": 278345786,
+          "FirstResolveNS": 366014972,
+          "ProposalNS": 17919,
+          "RequestNS": 89159803,
+          "SecondResolveNS": 132499960,
+          "SnapshotNS": 71663959
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.000050498569461077804,
+        "SetupNS": 0.007175638033991814,
+        "IssueNS": 0.3273669558512181,
+        "FirstResolveNS": 0.3830777326126702,
+        "ProposalNS": 0.000021016909245716784,
+        "RequestNS": 0.056340611139249416,
+        "SecondResolveNS": 0.14178555512738097,
+        "SnapshotNS": 0.0836253397738358
+      },
+      "unattributedFraction": 0.0005566519829469652,
+      "meanElapsedMS": 841.3340639166667,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "meanlocal_uncertainty": {
+      "arms": 120,
+      "elapsedNS": 134814938465,
+      "accountedNS": 134757362678,
+      "phases": {
+        "ScheduleNS": 5184714,
+        "SetupNS": 728128168,
+        "IssueNS": 33176213584,
+        "FirstResolveNS": 38851406751,
+        "ProposalNS": 34229026624,
+        "RequestNS": 5549687133,
+        "SecondResolveNS": 13766328944,
+        "SnapshotNS": 8451386760
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "early",
+        "schedule": "uniform299",
+        "elapsedNS": 1489645042,
+        "phases": {
+          "ScheduleNS": 56625,
+          "SetupNS": 6058959,
+          "IssueNS": 280056043,
+          "FirstResolveNS": 357675879,
+          "ProposalNS": 547756918,
+          "RequestNS": 91200039,
+          "SecondResolveNS": 134090455,
+          "SnapshotNS": 72085752
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.000038458008133468315,
+        "SetupNS": 0.005400945743034501,
+        "IssueNS": 0.24608707285515727,
+        "FirstResolveNS": 0.2881832472970821,
+        "ProposalNS": 0.25389639318706786,
+        "RequestNS": 0.041165223944680154,
+        "SecondResolveNS": 0.10211278587330994,
+        "SnapshotNS": 0.06268880033790994
+      },
+      "unattributedFraction": 0.0004270727536247465,
+      "meanElapsedMS": 1123.4578205416667,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "meanlocal_falsification": {
+      "arms": 120,
+      "elapsedNS": 140929113086,
+      "accountedNS": 140871536094,
+      "phases": {
+        "ScheduleNS": 5039543,
+        "SetupNS": 739956498,
+        "IssueNS": 32929176559,
+        "FirstResolveNS": 38529214879,
+        "ProposalNS": 40108497614,
+        "RequestNS": 5786121657,
+        "SecondResolveNS": 14326897439,
+        "SnapshotNS": 8446631905
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "curved",
+        "schedule": "uniform299",
+        "elapsedNS": 1553488625,
+        "phases": {
+          "ScheduleNS": 61708,
+          "SetupNS": 6175125,
+          "IssueNS": 282308378,
+          "FirstResolveNS": 368544425,
+          "ProposalNS": 594117166,
+          "RequestNS": 93013925,
+          "SecondResolveNS": 134611972,
+          "SnapshotNS": 73953832
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00003575941755146568,
+        "SetupNS": 0.005250558112492002,
+        "IssueNS": 0.23365772932172954,
+        "FirstResolveNS": 0.2733942904720339,
+        "ProposalNS": 0.28460051110606477,
+        "RequestNS": 0.04105696495421142,
+        "SecondResolveNS": 0.10166031081354505,
+        "SnapshotNS": 0.059935322943851656
+      },
+      "unattributedFraction": 0.00040855285852015033,
+      "meanElapsedMS": 1174.4092757166668,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "meanindividual_no_pair": {
+      "arms": 120,
+      "elapsedNS": 78239486752,
+      "accountedNS": 78192220654,
+      "phases": {
+        "ScheduleNS": 5107003,
+        "SetupNS": 736711244,
+        "IssueNS": 33328503737,
+        "FirstResolveNS": 35689958363,
+        "ProposalNS": 0,
+        "RequestNS": 0,
+        "SecondResolveNS": 0,
+        "SnapshotNS": 8431940307
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "early",
+        "schedule": "uniform299",
+        "elapsedNS": 693707250,
+        "phases": {
+          "ScheduleNS": 56917,
+          "SetupNS": 6192958,
+          "IssueNS": 278114867,
+          "FirstResolveNS": 337420633,
+          "ProposalNS": 0,
+          "RequestNS": 0,
+          "SecondResolveNS": 0,
+          "SnapshotNS": 71434292
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00006527398391796648,
+        "SetupNS": 0.009416105276037841,
+        "IssueNS": 0.4259806028973987,
+        "FirstResolveNS": 0.45616299191900916,
+        "ProposalNS": 0,
+        "RequestNS": 0,
+        "SecondResolveNS": 0,
+        "SnapshotNS": 0.10777090516617503
+      },
+      "unattributedFraction": 0.0006041207574613017,
+      "meanElapsedMS": 651.9957229333332,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "meanindividual_random": {
+      "arms": 120,
+      "elapsedNS": 96853418831,
+      "accountedNS": 96797367443,
+      "phases": {
+        "ScheduleNS": 5046417,
+        "SetupNS": 721628456,
+        "IssueNS": 32978335319,
+        "FirstResolveNS": 35240321518,
+        "ProposalNS": 2135138,
+        "RequestNS": 5683790176,
+        "SecondResolveNS": 13742526380,
+        "SnapshotNS": 8423584039
+      },
+      "worst": {
+        "geometry": "wide",
+        "regime": "abrupt",
+        "schedule": "uniform299",
+        "elapsedNS": 912340875,
+        "phases": {
+          "ScheduleNS": 56958,
+          "SetupNS": 6101291,
+          "IssueNS": 278312371,
+          "FirstResolveNS": 333845700,
+          "ProposalNS": 24252,
+          "RequestNS": 93694964,
+          "SecondResolveNS": 128290577,
+          "SnapshotNS": 71582500
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00005210365375749428,
+        "SetupNS": 0.007450727756540768,
+        "IssueNS": 0.34049737961799836,
+        "FirstResolveNS": 0.36385211738876255,
+        "ProposalNS": 0.000022045045242291474,
+        "RequestNS": 0.058684455795181306,
+        "SecondResolveNS": 0.14188994612548889,
+        "SnapshotNS": 0.08697250071985949
+      },
+      "unattributedFraction": 0.0005787238971688424,
+      "meanElapsedMS": 807.1118235916667,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "meanindividual_uncertainty": {
+      "arms": 120,
+      "elapsedNS": 130798126165,
+      "accountedNS": 130738008524,
+      "phases": {
+        "ScheduleNS": 5056124,
+        "SetupNS": 722654031,
+        "IssueNS": 33073470526,
+        "FirstResolveNS": 35369439760,
+        "ProposalNS": 34183392936,
+        "RequestNS": 5622298249,
+        "SecondResolveNS": 13332141549,
+        "SnapshotNS": 8429555349
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "asynchronous",
+        "schedule": "uniform299",
+        "elapsedNS": 1459128250,
+        "phases": {
+          "ScheduleNS": 57708,
+          "SetupNS": 6031416,
+          "IssueNS": 278753946,
+          "FirstResolveNS": 328385241,
+          "ProposalNS": 552818460,
+          "RequestNS": 92214626,
+          "SecondResolveNS": 128157155,
+          "SnapshotNS": 72283580
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00003865593604622264,
+        "SetupNS": 0.005524957063133933,
+        "IssueNS": 0.2528589016961778,
+        "FirstResolveNS": 0.2704124347728189,
+        "ProposalNS": 0.2613446685992896,
+        "RequestNS": 0.042984547361997756,
+        "SecondResolveNS": 0.10192914791593949,
+        "SnapshotNS": 0.06444706507772316
+      },
+      "unattributedFraction": 0.0004596215768730705,
+      "meanElapsedMS": 1089.9843847083332,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    },
+    "meanindividual_falsification": {
+      "arms": 120,
+      "elapsedNS": 136925375463,
+      "accountedNS": 136866870519,
+      "phases": {
+        "ScheduleNS": 5064503,
+        "SetupNS": 726294666,
+        "IssueNS": 32919082756,
+        "FirstResolveNS": 35165036741,
+        "ProposalNS": 40198898977,
+        "RequestNS": 5627742424,
+        "SecondResolveNS": 13797215503,
+        "SnapshotNS": 8427534949
+      },
+      "worst": {
+        "geometry": "tight",
+        "regime": "aligned",
+        "schedule": "uniform299",
+        "elapsedNS": 1520539917,
+        "phases": {
+          "ScheduleNS": 58083,
+          "SetupNS": 5905292,
+          "IssueNS": 276166470,
+          "FirstResolveNS": 330449525,
+          "ProposalNS": 603376750,
+          "RequestNS": 102669171,
+          "SecondResolveNS": 129726628,
+          "SnapshotNS": 71765916
+        }
+      },
+      "phaseFractions": {
+        "ScheduleNS": 0.00003698732234894277,
+        "SetupNS": 0.005304310202138241,
+        "IssueNS": 0.2404162314303487,
+        "FirstResolveNS": 0.2568189907976721,
+        "ProposalNS": 0.293582536042507,
+        "RequestNS": 0.041100799650688045,
+        "SecondResolveNS": 0.10076448909740829,
+        "SnapshotNS": 0.06154837933073472
+      },
+      "unattributedFraction": 0.0004272761261538971,
+      "meanElapsedMS": 1141.0447955250002,
+      "gates": {
+        "gain01": false,
+        "noAdaptiveHarm01": false,
+        "recovery": false,
+        "completeLoop400": false
+      },
+      "over400MS": 120
+    }
+  },
+  "paired": {
+    "mean_falsification/mean_random": {
+      "riskGain": -0.000014836148733043952,
+      "coreCostRatio": 1.3554236885564686,
+      "equalRequests": true,
+      "equalTotalCost": false
+    },
+    "mean_falsification/mean_uncertainty": {
+      "riskGain": -0.000022083324016597405,
+      "coreCostRatio": 1.0417583790828793,
+      "equalRequests": true,
+      "equalTotalCost": false
+    },
+    "meanlocal_falsification/meanlocal_random": {
+      "riskGain": 0.0005606373386518315,
+      "coreCostRatio": 1.3958893691400451,
+      "equalRequests": true,
+      "equalTotalCost": false
+    },
+    "meanlocal_falsification/meanlocal_uncertainty": {
+      "riskGain": 0.0004093740319899286,
+      "coreCostRatio": 1.0453523525702404,
+      "equalRequests": true,
+      "equalTotalCost": false
+    },
+    "meanindividual_falsification/meanindividual_random": {
+      "riskGain": 0.0022145108957541404,
+      "coreCostRatio": 1.4137381737852923,
+      "equalRequests": true,
+      "equalTotalCost": false
+    },
+    "meanindividual_falsification/meanindividual_uncertainty": {
+      "riskGain": -0.0008661397959301154,
+      "coreCostRatio": 1.0468450846938786,
+      "equalRequests": true,
+      "equalTotalCost": false
+    }
+  },
+  "scope": "phase elapsed accounting on complete consumed screen, not causal profiling, fresh confirmation, loaded serving or full new-arm independent replay",
+  "equalTotalCostSuperiorityEstablished": false,
+  "loadedServingEstablished": false,
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ],
+  "goal": "ACTIVE"
+}

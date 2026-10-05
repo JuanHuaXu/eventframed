@@ -1,0 +1,21 @@
+{
+  "name": "benchmarks",
+  "args": [
+    "test",
+    "./internal/researchdispersion",
+    "-run",
+    "^$",
+    "-bench",
+    "^BenchmarkContinuing",
+    "-benchmem",
+    "-benchtime=100ms",
+    "-count=3",
+    "-timeout=3m"
+  ],
+  "env": {},
+  "start": "2026-10-03T21:01:22.541Z",
+  "end": "2026-10-03T21:01:24.639Z",
+  "code": 0,
+  "wall_ms": 2097.625041000021,
+  "log_sha256": "a652cbe05b5a3c0a9c55afa4aad2388e8d6192976d6c56b42817b1352afab9c3"
+}

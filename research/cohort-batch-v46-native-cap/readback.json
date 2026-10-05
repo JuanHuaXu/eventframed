@@ -1,0 +1,1565 @@
+{
+  "time": "2026-10-04T05:32:10.824Z",
+  "scriptSHA256": "8dd5ecfb37dce8cdaa0bae6e83bca5bcd239bce070c20bd7725a111dd04a2118",
+  "completedSHA256": "f2d765287aa24a8f0976a4cd3a7d2b7dce5353fd08913046c30bfeade57caa5f",
+  "auditSHA256": "fab2392061b6aea245c57876b8cc6cdefd76204b13b4b3ac1ef391a614ab5f76",
+  "rawSHA256": "91bd8c71539411a6735a85102621eba5a920aec8cc667581dd1247241a9ad998",
+  "arms": {
+    "4": {
+      "trials": 16,
+      "passed": 0,
+      "failedGates": {
+        "call": 1,
+        "offer": 16,
+        "outcome": 16,
+        "outcomeMax": 16,
+        "write": 0,
+        "view": 0
+      },
+      "greaterThanFourBatches": 0
+    },
+    "8": {
+      "trials": 16,
+      "passed": 0,
+      "failedGates": {
+        "call": 1,
+        "offer": 16,
+        "outcome": 16,
+        "outcomeMax": 16,
+        "write": 0,
+        "view": 0
+      },
+      "greaterThanFourBatches": 184
+    }
+  },
+  "cells": [
+    {
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "cap": 4,
+      "callP99MS": [
+        59.209,
+        63.423
+      ],
+      "offerP99MS": [
+        188.912,
+        191.871
+      ],
+      "outcomeP99MS": [
+        397.307,
+        397.65
+      ],
+      "outcomeMaxMS": [
+        397.307,
+        397.65
+      ],
+      "batches": [
+        43,
+        44
+      ],
+      "passes": 0
+    },
+    {
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "cap": 8,
+      "callP99MS": [
+        50.486,
+        55.925
+      ],
+      "offerP99MS": [
+        147.035,
+        156.199
+      ],
+      "outcomeP99MS": [
+        356.25,
+        364.335
+      ],
+      "outcomeMaxMS": [
+        356.25,
+        364.335
+      ],
+      "batches": [
+        33,
+        32
+      ],
+      "passes": 0
+    },
+    {
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "cap": 4,
+      "callP99MS": [
+        52.885,
+        54.318
+      ],
+      "offerP99MS": [
+        167.854,
+        174.258
+      ],
+      "outcomeP99MS": [
+        381.692,
+        383.685
+      ],
+      "outcomeMaxMS": [
+        381.692,
+        383.685
+      ],
+      "batches": [
+        39,
+        40
+      ],
+      "passes": 0
+    },
+    {
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "cap": 8,
+      "callP99MS": [
+        53.613,
+        73.516
+      ],
+      "offerP99MS": [
+        156.455,
+        182.276
+      ],
+      "outcomeP99MS": [
+        363.49,
+        396.688
+      ],
+      "outcomeMaxMS": [
+        363.49,
+        396.688
+      ],
+      "batches": [
+        33,
+        35
+      ],
+      "passes": 0
+    },
+    {
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "cap": 4,
+      "callP99MS": [
+        65.238,
+        84.878
+      ],
+      "offerP99MS": [
+        249.793,
+        298.822
+      ],
+      "outcomeP99MS": [
+        437.684,
+        448.833
+      ],
+      "outcomeMaxMS": [
+        437.684,
+        448.833
+      ],
+      "batches": [
+        48,
+        40
+      ],
+      "passes": 0
+    },
+    {
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "cap": 8,
+      "callP99MS": [
+        79.487,
+        83.122
+      ],
+      "offerP99MS": [
+        268.216,
+        274.122
+      ],
+      "outcomeP99MS": [
+        384.105,
+        420.619
+      ],
+      "outcomeMaxMS": [
+        384.105,
+        420.619
+      ],
+      "batches": [
+        39,
+        39
+      ],
+      "passes": 0
+    },
+    {
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "cap": 4,
+      "callP99MS": [
+        91.066,
+        102.584
+      ],
+      "offerP99MS": [
+        312.182,
+        341.247
+      ],
+      "outcomeP99MS": [
+        412.831,
+        431.55
+      ],
+      "outcomeMaxMS": [
+        412.831,
+        431.55
+      ],
+      "batches": [
+        46,
+        47
+      ],
+      "passes": 0
+    },
+    {
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "cap": 8,
+      "callP99MS": [
+        83.117,
+        92.749
+      ],
+      "offerP99MS": [
+        319.515,
+        324.47
+      ],
+      "outcomeP99MS": [
+        327.477,
+        333.314
+      ],
+      "outcomeMaxMS": [
+        327.477,
+        333.314
+      ],
+      "batches": [
+        39,
+        38
+      ],
+      "passes": 0
+    },
+    {
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "cap": 4,
+      "callP99MS": [
+        54.892,
+        55.633
+      ],
+      "offerP99MS": [
+        150.07,
+        163.786
+      ],
+      "outcomeP99MS": [
+        360.544,
+        376.362
+      ],
+      "outcomeMaxMS": [
+        360.544,
+        376.362
+      ],
+      "batches": [
+        39,
+        41
+      ],
+      "passes": 0
+    },
+    {
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "cap": 8,
+      "callP99MS": [
+        51.24,
+        51.32
+      ],
+      "offerP99MS": [
+        141.469,
+        146.698
+      ],
+      "outcomeP99MS": [
+        356.182,
+        358.673
+      ],
+      "outcomeMaxMS": [
+        356.182,
+        358.673
+      ],
+      "batches": [
+        34,
+        34
+      ],
+      "passes": 0
+    },
+    {
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "cap": 4,
+      "callP99MS": [
+        52.397,
+        52.904
+      ],
+      "offerP99MS": [
+        160.512,
+        171.812
+      ],
+      "outcomeP99MS": [
+        371.345,
+        378.798
+      ],
+      "outcomeMaxMS": [
+        371.345,
+        378.798
+      ],
+      "batches": [
+        42,
+        43
+      ],
+      "passes": 0
+    },
+    {
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "cap": 8,
+      "callP99MS": [
+        51.89,
+        54.444
+      ],
+      "offerP99MS": [
+        152.567,
+        156.241
+      ],
+      "outcomeP99MS": [
+        362.511,
+        375.522
+      ],
+      "outcomeMaxMS": [
+        362.511,
+        375.522
+      ],
+      "batches": [
+        36,
+        36
+      ],
+      "passes": 0
+    },
+    {
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "cap": 4,
+      "callP99MS": [
+        83.159,
+        88.785
+      ],
+      "offerP99MS": [
+        250.897,
+        279.846
+      ],
+      "outcomeP99MS": [
+        425.226,
+        454.587
+      ],
+      "outcomeMaxMS": [
+        425.226,
+        454.587
+      ],
+      "batches": [
+        46,
+        41
+      ],
+      "passes": 0
+    },
+    {
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "cap": 8,
+      "callP99MS": [
+        97.805,
+        101.095
+      ],
+      "offerP99MS": [
+        260.291,
+        264.888
+      ],
+      "outcomeP99MS": [
+        340.729,
+        359.231
+      ],
+      "outcomeMaxMS": [
+        340.729,
+        359.231
+      ],
+      "batches": [
+        38,
+        36
+      ],
+      "passes": 0
+    },
+    {
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "cap": 4,
+      "callP99MS": [
+        89.696,
+        89.979
+      ],
+      "offerP99MS": [
+        285.736,
+        296.415
+      ],
+      "outcomeP99MS": [
+        401.527,
+        437.909
+      ],
+      "outcomeMaxMS": [
+        401.527,
+        437.909
+      ],
+      "batches": [
+        43,
+        47
+      ],
+      "passes": 0
+    },
+    {
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "cap": 8,
+      "callP99MS": [
+        79.195,
+        82.989
+      ],
+      "offerP99MS": [
+        303.143,
+        322.989
+      ],
+      "outcomeP99MS": [
+        318.529,
+        331.626
+      ],
+      "outcomeMaxMS": [
+        318.529,
+        331.626
+      ],
+      "batches": [
+        41,
+        39
+      ],
+      "passes": 0
+    }
+  ],
+  "counts": [
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "cap": 4,
+      "batches": 43,
+      "maximumBatch": 4,
+      "meanBatch": 3,
+      "aboveFour": 0
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "cap": 8,
+      "batches": 33,
+      "maximumBatch": 8,
+      "meanBatch": 3.909090909090909,
+      "aboveFour": 14
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "cap": 4,
+      "batches": 39,
+      "maximumBatch": 4,
+      "meanBatch": 3.3076923076923075,
+      "aboveFour": 0
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "cap": 8,
+      "batches": 33,
+      "maximumBatch": 8,
+      "meanBatch": 3.909090909090909,
+      "aboveFour": 14
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "cap": 4,
+      "batches": 48,
+      "maximumBatch": 4,
+      "meanBatch": 2.6875,
+      "aboveFour": 0
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "cap": 8,
+      "batches": 39,
+      "maximumBatch": 6,
+      "meanBatch": 3.3076923076923075,
+      "aboveFour": 9
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "cap": 4,
+      "batches": 46,
+      "maximumBatch": 4,
+      "meanBatch": 2.8043478260869565,
+      "aboveFour": 0
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "cap": 8,
+      "batches": 39,
+      "maximumBatch": 7,
+      "meanBatch": 3.3076923076923075,
+      "aboveFour": 6
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "cap": 4,
+      "batches": 39,
+      "maximumBatch": 4,
+      "meanBatch": 3.3076923076923075,
+      "aboveFour": 0
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "cap": 8,
+      "batches": 34,
+      "maximumBatch": 8,
+      "meanBatch": 3.7941176470588234,
+      "aboveFour": 12
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "cap": 4,
+      "batches": 42,
+      "maximumBatch": 4,
+      "meanBatch": 3.0714285714285716,
+      "aboveFour": 0
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "cap": 8,
+      "batches": 36,
+      "maximumBatch": 8,
+      "meanBatch": 3.5833333333333335,
+      "aboveFour": 14
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "cap": 4,
+      "batches": 46,
+      "maximumBatch": 4,
+      "meanBatch": 2.8043478260869565,
+      "aboveFour": 0
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "cap": 8,
+      "batches": 38,
+      "maximumBatch": 5,
+      "meanBatch": 3.3947368421052633,
+      "aboveFour": 10
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "cap": 4,
+      "batches": 43,
+      "maximumBatch": 4,
+      "meanBatch": 3,
+      "aboveFour": 0
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "cap": 8,
+      "batches": 41,
+      "maximumBatch": 6,
+      "meanBatch": 3.1463414634146343,
+      "aboveFour": 11
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "cap": 8,
+      "batches": 32,
+      "maximumBatch": 8,
+      "meanBatch": 4.03125,
+      "aboveFour": 14
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "cap": 4,
+      "batches": 44,
+      "maximumBatch": 4,
+      "meanBatch": 2.9318181818181817,
+      "aboveFour": 0
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "cap": 8,
+      "batches": 35,
+      "maximumBatch": 7,
+      "meanBatch": 3.6857142857142855,
+      "aboveFour": 12
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "cap": 4,
+      "batches": 40,
+      "maximumBatch": 4,
+      "meanBatch": 3.225,
+      "aboveFour": 0
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "cap": 8,
+      "batches": 39,
+      "maximumBatch": 6,
+      "meanBatch": 3.3076923076923075,
+      "aboveFour": 11
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "cap": 4,
+      "batches": 40,
+      "maximumBatch": 4,
+      "meanBatch": 3.225,
+      "aboveFour": 0
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "cap": 8,
+      "batches": 38,
+      "maximumBatch": 6,
+      "meanBatch": 3.3947368421052633,
+      "aboveFour": 10
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "cap": 4,
+      "batches": 47,
+      "maximumBatch": 4,
+      "meanBatch": 2.74468085106383,
+      "aboveFour": 0
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "cap": 8,
+      "batches": 34,
+      "maximumBatch": 8,
+      "meanBatch": 3.7941176470588234,
+      "aboveFour": 13
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "cap": 4,
+      "batches": 41,
+      "maximumBatch": 4,
+      "meanBatch": 3.1463414634146343,
+      "aboveFour": 0
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "cap": 8,
+      "batches": 36,
+      "maximumBatch": 6,
+      "meanBatch": 3.5833333333333335,
+      "aboveFour": 14
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "cap": 4,
+      "batches": 43,
+      "maximumBatch": 4,
+      "meanBatch": 3,
+      "aboveFour": 0
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "cap": 8,
+      "batches": 36,
+      "maximumBatch": 6,
+      "meanBatch": 3.5833333333333335,
+      "aboveFour": 12
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "cap": 4,
+      "batches": 41,
+      "maximumBatch": 4,
+      "meanBatch": 3.1463414634146343,
+      "aboveFour": 0
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "cap": 8,
+      "batches": 39,
+      "maximumBatch": 6,
+      "meanBatch": 3.3076923076923075,
+      "aboveFour": 8
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "cap": 4,
+      "batches": 47,
+      "maximumBatch": 4,
+      "meanBatch": 2.74468085106383,
+      "aboveFour": 0
+    }
+  ],
+  "paired": [
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "control": {
+        "call_max_ns": 63107000,
+        "call_p99_ns": 59209000,
+        "learned_decisions": 1007,
+        "offer_max_ns": 189440000,
+        "offer_p99_ns": 188912000,
+        "outcome_max_ns": 397650000,
+        "outcome_p99_ns": 397650000,
+        "view_max_ns": 45825000,
+        "view_p99_ns": 45819000,
+        "write_max_ns": 91962000,
+        "write_p99_ns": 89424000
+      },
+      "candidate": {
+        "call_max_ns": 55937000,
+        "call_p99_ns": 55925000,
+        "learned_decisions": 1037,
+        "offer_max_ns": 159335000,
+        "offer_p99_ns": 156199000,
+        "outcome_max_ns": 364335000,
+        "outcome_p99_ns": 364335000,
+        "view_max_ns": 42172000,
+        "view_p99_ns": 36587000,
+        "write_max_ns": 85491000,
+        "write_p99_ns": 83719000
+      },
+      "deltaMS": {
+        "call": -3.284,
+        "offer": -32.713,
+        "outcome": -33.315,
+        "outcomeMax": -33.315,
+        "write": -5.705,
+        "view": -3.653
+      },
+      "batches4": 43,
+      "batches8": 33,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "control": {
+        "call_max_ns": 56831000,
+        "call_p99_ns": 52885000,
+        "learned_decisions": 1023,
+        "offer_max_ns": 176094000,
+        "offer_p99_ns": 174258000,
+        "outcome_max_ns": 383685000,
+        "outcome_p99_ns": 383685000,
+        "view_max_ns": 43113000,
+        "view_p99_ns": 37928000,
+        "write_max_ns": 90925000,
+        "write_p99_ns": 87662000
+      },
+      "candidate": {
+        "call_max_ns": 56195000,
+        "call_p99_ns": 53613000,
+        "learned_decisions": 1038,
+        "offer_max_ns": 160413000,
+        "offer_p99_ns": 156455000,
+        "outcome_max_ns": 363490000,
+        "outcome_p99_ns": 363490000,
+        "view_max_ns": 42456000,
+        "view_p99_ns": 36339000,
+        "write_max_ns": 87537000,
+        "write_p99_ns": 83447000
+      },
+      "deltaMS": {
+        "call": 0.728,
+        "offer": -17.803,
+        "outcome": -20.195,
+        "outcomeMax": -20.195,
+        "write": -4.215,
+        "view": -0.657
+      },
+      "batches4": 39,
+      "batches8": 33,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "control": {
+        "call_max_ns": 85888000,
+        "call_p99_ns": 84878000,
+        "learned_decisions": 1097,
+        "offer_max_ns": 302047000,
+        "offer_p99_ns": 298822000,
+        "outcome_max_ns": 437684000,
+        "outcome_p99_ns": 437684000,
+        "view_max_ns": 56859000,
+        "view_p99_ns": 51878000,
+        "write_max_ns": 106876000,
+        "write_p99_ns": 105257000
+      },
+      "candidate": {
+        "call_max_ns": 87260000,
+        "call_p99_ns": 83122000,
+        "learned_decisions": 1179,
+        "offer_max_ns": 280579000,
+        "offer_p99_ns": 274122000,
+        "outcome_max_ns": 384105000,
+        "outcome_p99_ns": 384105000,
+        "view_max_ns": 53523000,
+        "view_p99_ns": 53447000,
+        "write_max_ns": 102144000,
+        "write_p99_ns": 99387000
+      },
+      "deltaMS": {
+        "call": -1.756,
+        "offer": -24.7,
+        "outcome": -53.579,
+        "outcomeMax": -53.579,
+        "write": -5.87,
+        "view": -3.336
+      },
+      "batches4": 48,
+      "batches8": 39,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 1,
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "control": {
+        "call_max_ns": 104980000,
+        "call_p99_ns": 102584000,
+        "learned_decisions": 1261,
+        "offer_max_ns": 345334000,
+        "offer_p99_ns": 341247000,
+        "outcome_max_ns": 431550000,
+        "outcome_p99_ns": 431550000,
+        "view_max_ns": 58714000,
+        "view_p99_ns": 51890000,
+        "write_max_ns": 99739000,
+        "write_p99_ns": 95901000
+      },
+      "candidate": {
+        "call_max_ns": 83202000,
+        "call_p99_ns": 83117000,
+        "learned_decisions": 1393,
+        "offer_max_ns": 324372000,
+        "offer_p99_ns": 319515000,
+        "outcome_max_ns": 327477000,
+        "outcome_p99_ns": 327477000,
+        "view_max_ns": 62635000,
+        "view_p99_ns": 48393000,
+        "write_max_ns": 83947000,
+        "write_p99_ns": 79946000
+      },
+      "deltaMS": {
+        "call": -19.467,
+        "offer": -21.732,
+        "outcome": -104.073,
+        "outcomeMax": -104.073,
+        "write": -15.955,
+        "view": 3.921
+      },
+      "batches4": 46,
+      "batches8": 39,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "control": {
+        "call_max_ns": 58971000,
+        "call_p99_ns": 54892000,
+        "learned_decisions": 0,
+        "offer_max_ns": 152775000,
+        "offer_p99_ns": 150070000,
+        "outcome_max_ns": 360544000,
+        "outcome_p99_ns": 360544000,
+        "view_max_ns": 43057000,
+        "view_p99_ns": 37728000,
+        "write_max_ns": 89704000,
+        "write_p99_ns": 86346000
+      },
+      "candidate": {
+        "call_max_ns": 57907000,
+        "call_p99_ns": 51240000,
+        "learned_decisions": 0,
+        "offer_max_ns": 149530000,
+        "offer_p99_ns": 146698000,
+        "outcome_max_ns": 356182000,
+        "outcome_p99_ns": 356182000,
+        "view_max_ns": 39200000,
+        "view_p99_ns": 39158000,
+        "write_max_ns": 84794000,
+        "write_p99_ns": 82358000
+      },
+      "deltaMS": {
+        "call": -3.652,
+        "offer": -3.372,
+        "outcome": -4.362,
+        "outcomeMax": -4.362,
+        "write": -3.988,
+        "view": -3.857
+      },
+      "batches4": 39,
+      "batches8": 34,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "control": {
+        "call_max_ns": 54688000,
+        "call_p99_ns": 52904000,
+        "learned_decisions": 0,
+        "offer_max_ns": 175859000,
+        "offer_p99_ns": 171812000,
+        "outcome_max_ns": 378798000,
+        "outcome_p99_ns": 378798000,
+        "view_max_ns": 44418000,
+        "view_p99_ns": 37619000,
+        "write_max_ns": 94607000,
+        "write_p99_ns": 91738000
+      },
+      "candidate": {
+        "call_max_ns": 54449000,
+        "call_p99_ns": 54444000,
+        "learned_decisions": 0,
+        "offer_max_ns": 153194000,
+        "offer_p99_ns": 152567000,
+        "outcome_max_ns": 375522000,
+        "outcome_p99_ns": 375522000,
+        "view_max_ns": 42144000,
+        "view_p99_ns": 36094000,
+        "write_max_ns": 83997000,
+        "write_p99_ns": 82812000
+      },
+      "deltaMS": {
+        "call": 1.54,
+        "offer": -19.245,
+        "outcome": -3.276,
+        "outcomeMax": -3.276,
+        "write": -8.926,
+        "view": -2.274
+      },
+      "batches4": 42,
+      "batches8": 36,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "control": {
+        "call_max_ns": 89695000,
+        "call_p99_ns": 88785000,
+        "learned_decisions": 0,
+        "offer_max_ns": 287135000,
+        "offer_p99_ns": 279846000,
+        "outcome_max_ns": 454587000,
+        "outcome_p99_ns": 454587000,
+        "view_max_ns": 50534000,
+        "view_p99_ns": 50115000,
+        "write_max_ns": 109087000,
+        "write_p99_ns": 106761000
+      },
+      "candidate": {
+        "call_max_ns": 97888000,
+        "call_p99_ns": 97805000,
+        "learned_decisions": 0,
+        "offer_max_ns": 263563000,
+        "offer_p99_ns": 260291000,
+        "outcome_max_ns": 359231000,
+        "outcome_p99_ns": 359231000,
+        "view_max_ns": 70228000,
+        "view_p99_ns": 70221000,
+        "write_max_ns": 95704000,
+        "write_p99_ns": 92714000
+      },
+      "deltaMS": {
+        "call": 9.02,
+        "offer": -19.555,
+        "outcome": -95.356,
+        "outcomeMax": -95.356,
+        "write": -14.047,
+        "view": 19.694
+      },
+      "batches4": 46,
+      "batches8": 38,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 1,
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "control": {
+        "call_max_ns": 90346000,
+        "call_p99_ns": 89979000,
+        "learned_decisions": 0,
+        "offer_max_ns": 285927000,
+        "offer_p99_ns": 285736000,
+        "outcome_max_ns": 437909000,
+        "outcome_p99_ns": 437909000,
+        "view_max_ns": 50380000,
+        "view_p99_ns": 50372000,
+        "write_max_ns": 92233000,
+        "write_p99_ns": 88900000
+      },
+      "candidate": {
+        "call_max_ns": 95152000,
+        "call_p99_ns": 82989000,
+        "learned_decisions": 0,
+        "offer_max_ns": 327967000,
+        "offer_p99_ns": 322989000,
+        "outcome_max_ns": 331626000,
+        "outcome_p99_ns": 331626000,
+        "view_max_ns": 50968000,
+        "view_p99_ns": 50692000,
+        "write_max_ns": 85800000,
+        "write_p99_ns": 85055000
+      },
+      "deltaMS": {
+        "call": -6.99,
+        "offer": 37.253,
+        "outcome": -106.283,
+        "outcomeMax": -106.283,
+        "write": -3.845,
+        "view": 0.588
+      },
+      "batches4": 43,
+      "batches8": 41,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": false,
+      "eager": false,
+      "control": {
+        "call_max_ns": 68137000,
+        "call_p99_ns": 63423000,
+        "learned_decisions": 1022,
+        "offer_max_ns": 195068000,
+        "offer_p99_ns": 191871000,
+        "outcome_max_ns": 397307000,
+        "outcome_p99_ns": 397307000,
+        "view_max_ns": 40337000,
+        "view_p99_ns": 40286000,
+        "write_max_ns": 93700000,
+        "write_p99_ns": 91978000
+      },
+      "candidate": {
+        "call_max_ns": 55526000,
+        "call_p99_ns": 50486000,
+        "learned_decisions": 1037,
+        "offer_max_ns": 150990000,
+        "offer_p99_ns": 147035000,
+        "outcome_max_ns": 356250000,
+        "outcome_p99_ns": 356250000,
+        "view_max_ns": 39655000,
+        "view_p99_ns": 39654000,
+        "write_max_ns": 87523000,
+        "write_p99_ns": 84153000
+      },
+      "deltaMS": {
+        "call": -12.937,
+        "offer": -44.836,
+        "outcome": -41.057,
+        "outcomeMax": -41.057,
+        "write": -7.825,
+        "view": -0.682
+      },
+      "batches4": 44,
+      "batches8": 32,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": false,
+      "eager": true,
+      "control": {
+        "call_max_ns": 66991000,
+        "call_p99_ns": 54318000,
+        "learned_decisions": 1023,
+        "offer_max_ns": 172120000,
+        "offer_p99_ns": 167854000,
+        "outcome_max_ns": 381692000,
+        "outcome_p99_ns": 381692000,
+        "view_max_ns": 45798000,
+        "view_p99_ns": 37563000,
+        "write_max_ns": 91036000,
+        "write_p99_ns": 87845000
+      },
+      "candidate": {
+        "call_max_ns": 73519000,
+        "call_p99_ns": 73516000,
+        "learned_decisions": 1022,
+        "offer_max_ns": 183462000,
+        "offer_p99_ns": 182276000,
+        "outcome_max_ns": 396688000,
+        "outcome_p99_ns": 396688000,
+        "view_max_ns": 49251000,
+        "view_p99_ns": 49239000,
+        "write_max_ns": 105703000,
+        "write_p99_ns": 104546000
+      },
+      "deltaMS": {
+        "call": 19.198,
+        "offer": 14.422,
+        "outcome": 14.996,
+        "outcomeMax": 14.996,
+        "write": 16.701,
+        "view": 3.453
+      },
+      "batches4": 40,
+      "batches8": 35,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": true,
+      "eager": false,
+      "control": {
+        "call_max_ns": 65553000,
+        "call_p99_ns": 65238000,
+        "learned_decisions": 1009,
+        "offer_max_ns": 251388000,
+        "offer_p99_ns": 249793000,
+        "outcome_max_ns": 448833000,
+        "outcome_p99_ns": 448833000,
+        "view_max_ns": 48972000,
+        "view_p99_ns": 48953000,
+        "write_max_ns": 99288000,
+        "write_p99_ns": 98549000
+      },
+      "candidate": {
+        "call_max_ns": 82995000,
+        "call_p99_ns": 79487000,
+        "learned_decisions": 1060,
+        "offer_max_ns": 276195000,
+        "offer_p99_ns": 268216000,
+        "outcome_max_ns": 420619000,
+        "outcome_p99_ns": 420619000,
+        "view_max_ns": 50479000,
+        "view_p99_ns": 50141000,
+        "write_max_ns": 106537000,
+        "write_p99_ns": 101590000
+      },
+      "deltaMS": {
+        "call": 14.249,
+        "offer": 18.423,
+        "outcome": -28.214,
+        "outcomeMax": -28.214,
+        "write": 3.041,
+        "view": 1.507
+      },
+      "batches4": 40,
+      "batches8": 39,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 2,
+      "visible": false,
+      "archived": true,
+      "eager": true,
+      "control": {
+        "call_max_ns": 91100000,
+        "call_p99_ns": 91066000,
+        "learned_decisions": 1200,
+        "offer_max_ns": 316213000,
+        "offer_p99_ns": 312182000,
+        "outcome_max_ns": 412831000,
+        "outcome_p99_ns": 412831000,
+        "view_max_ns": 53353000,
+        "view_p99_ns": 53347000,
+        "write_max_ns": 93070000,
+        "write_p99_ns": 91553000
+      },
+      "candidate": {
+        "call_max_ns": 92797000,
+        "call_p99_ns": 92749000,
+        "learned_decisions": 1415,
+        "offer_max_ns": 326233000,
+        "offer_p99_ns": 324470000,
+        "outcome_max_ns": 333314000,
+        "outcome_p99_ns": 333314000,
+        "view_max_ns": 53402000,
+        "view_p99_ns": 53354000,
+        "write_max_ns": 92185000,
+        "write_p99_ns": 88417000
+      },
+      "deltaMS": {
+        "call": 1.683,
+        "offer": 12.288,
+        "outcome": -79.517,
+        "outcomeMax": -79.517,
+        "write": -3.136,
+        "view": 0.049
+      },
+      "batches4": 47,
+      "batches8": 38,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": false,
+      "eager": false,
+      "control": {
+        "call_max_ns": 57845000,
+        "call_p99_ns": 55633000,
+        "learned_decisions": 0,
+        "offer_max_ns": 168674000,
+        "offer_p99_ns": 163786000,
+        "outcome_max_ns": 376362000,
+        "outcome_p99_ns": 376362000,
+        "view_max_ns": 44946000,
+        "view_p99_ns": 38907000,
+        "write_max_ns": 86340000,
+        "write_p99_ns": 83127000
+      },
+      "candidate": {
+        "call_max_ns": 53177000,
+        "call_p99_ns": 51320000,
+        "learned_decisions": 0,
+        "offer_max_ns": 145017000,
+        "offer_p99_ns": 141469000,
+        "outcome_max_ns": 358673000,
+        "outcome_p99_ns": 358673000,
+        "view_max_ns": 41732000,
+        "view_p99_ns": 35510000,
+        "write_max_ns": 84692000,
+        "write_p99_ns": 81234000
+      },
+      "deltaMS": {
+        "call": -4.313,
+        "offer": -22.317,
+        "outcome": -17.689,
+        "outcomeMax": -17.689,
+        "write": -1.893,
+        "view": -3.214
+      },
+      "batches4": 41,
+      "batches8": 34,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": false,
+      "eager": true,
+      "control": {
+        "call_max_ns": 57035000,
+        "call_p99_ns": 52397000,
+        "learned_decisions": 0,
+        "offer_max_ns": 165552000,
+        "offer_p99_ns": 160512000,
+        "outcome_max_ns": 371345000,
+        "outcome_p99_ns": 371345000,
+        "view_max_ns": 44227000,
+        "view_p99_ns": 38214000,
+        "write_max_ns": 92061000,
+        "write_p99_ns": 88627000
+      },
+      "candidate": {
+        "call_max_ns": 54049000,
+        "call_p99_ns": 51890000,
+        "learned_decisions": 0,
+        "offer_max_ns": 156249000,
+        "offer_p99_ns": 156241000,
+        "outcome_max_ns": 362511000,
+        "outcome_p99_ns": 362511000,
+        "view_max_ns": 50946000,
+        "view_p99_ns": 43023000,
+        "write_max_ns": 84984000,
+        "write_p99_ns": 81892000
+      },
+      "deltaMS": {
+        "call": -0.507,
+        "offer": -4.271,
+        "outcome": -8.834,
+        "outcomeMax": -8.834,
+        "write": -6.735,
+        "view": 6.719
+      },
+      "batches4": 43,
+      "batches8": 36,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": true,
+      "eager": false,
+      "control": {
+        "call_max_ns": 83185000,
+        "call_p99_ns": 83159000,
+        "learned_decisions": 0,
+        "offer_max_ns": 251266000,
+        "offer_p99_ns": 250897000,
+        "outcome_max_ns": 425226000,
+        "outcome_p99_ns": 425226000,
+        "view_max_ns": 54192000,
+        "view_p99_ns": 54185000,
+        "write_max_ns": 96857000,
+        "write_p99_ns": 95587000
+      },
+      "candidate": {
+        "call_max_ns": 101105000,
+        "call_p99_ns": 101095000,
+        "learned_decisions": 0,
+        "offer_max_ns": 270468000,
+        "offer_p99_ns": 264888000,
+        "outcome_max_ns": 340729000,
+        "outcome_p99_ns": 340729000,
+        "view_max_ns": 70765000,
+        "view_p99_ns": 70753000,
+        "write_max_ns": 93560000,
+        "write_p99_ns": 92765000
+      },
+      "deltaMS": {
+        "call": 17.936,
+        "offer": 13.991,
+        "outcome": -84.497,
+        "outcomeMax": -84.497,
+        "write": -2.822,
+        "view": 16.573
+      },
+      "batches4": 41,
+      "batches8": 36,
+      "pass4": false,
+      "pass8": false
+    },
+    {
+      "trial": 2,
+      "visible": true,
+      "archived": true,
+      "eager": true,
+      "control": {
+        "call_max_ns": 98776000,
+        "call_p99_ns": 89696000,
+        "learned_decisions": 0,
+        "offer_max_ns": 304049000,
+        "offer_p99_ns": 296415000,
+        "outcome_max_ns": 401527000,
+        "outcome_p99_ns": 401527000,
+        "view_max_ns": 65786000,
+        "view_p99_ns": 60837000,
+        "write_max_ns": 98164000,
+        "write_p99_ns": 94965000
+      },
+      "candidate": {
+        "call_max_ns": 79245000,
+        "call_p99_ns": 79195000,
+        "learned_decisions": 0,
+        "offer_max_ns": 307242000,
+        "offer_p99_ns": 303143000,
+        "outcome_max_ns": 318529000,
+        "outcome_p99_ns": 318529000,
+        "view_max_ns": 48248000,
+        "view_p99_ns": 47839000,
+        "write_max_ns": 74789000,
+        "write_p99_ns": 74095000
+      },
+      "deltaMS": {
+        "call": -10.501,
+        "offer": 6.728,
+        "outcome": -82.998,
+        "outcomeMax": -82.998,
+        "write": -20.87,
+        "view": -17.538
+      },
+      "batches4": 47,
+      "batches8": 39,
+      "pass4": false,
+      "pass8": false
+    }
+  ],
+  "pairedDirection": {
+    "call": {
+      "better": 9,
+      "worse": 7,
+      "equal": 0
+    },
+    "offer": {
+      "better": 10,
+      "worse": 6,
+      "equal": 0
+    },
+    "outcome": {
+      "better": 15,
+      "worse": 1,
+      "equal": 0
+    },
+    "outcomeMax": {
+      "better": 15,
+      "worse": 1,
+      "equal": 0
+    },
+    "write": {
+      "better": 14,
+      "worse": 2,
+      "equal": 0
+    },
+    "view": {
+      "better": 8,
+      "worse": 8,
+      "equal": 0
+    }
+  },
+  "originalGatesUnchanged": true,
+  "alternatedOrderTwoRepeatsNotPopulationCertification": true,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

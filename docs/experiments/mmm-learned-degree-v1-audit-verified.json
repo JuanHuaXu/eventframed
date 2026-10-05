@@ -1,0 +1,84 @@
+{
+  "rows": 2688,
+  "statsChecked": 86016,
+  "fits": 1008,
+  "forecasts": 32256,
+  "objectives": 2016,
+  "derivatives": 4536,
+  "maxForecastError": 1.1324274851176597e-14,
+  "maxObjectiveError": 1.0658141036401503e-12,
+  "maxProjectedGradientError": 1.3397655429514543e-8,
+  "boundaryRoundoffs": 13519,
+  "maxBoundaryRoundoff": 8.881784197001252e-16,
+  "stops": [
+    {
+      "iteration-cap": 21504
+    },
+    {
+      "iteration-cap": 21504
+    },
+    {
+      "iteration-cap": 21464,
+      "projected-gradient": 40
+    },
+    {
+      "iteration-cap": 21430,
+      "projected-gradient": 74
+    }
+  ],
+  "summary": [
+    {
+      "n": 21504,
+      "objectiveGain": 65.96113288629495,
+      "evaluations": 33.574497767857146,
+      "projectedGradient": 0.12249271068927942,
+      "parameters": [
+        0.1356564887033452,
+        0.04548344567654854,
+        0.02841155841264323,
+        0.042783995448028585,
+        1
+      ]
+    },
+    {
+      "n": 21504,
+      "objectiveGain": 37.30591519660051,
+      "evaluations": 33.00269717261905,
+      "projectedGradient": 0.07262283733700091,
+      "parameters": [
+        0.13560320828265443,
+        0.04467077515361254,
+        0.030047149466205993,
+        0.03480883627472111,
+        1
+      ]
+    },
+    {
+      "n": 21504,
+      "objectiveGain": 74.58704640860708,
+      "evaluations": 48.43949962797619,
+      "projectedGradient": 0.9462757053804767,
+      "parameters": [
+        0.20595239619881725,
+        0.14463287700860836,
+        0.1492465625295758,
+        0.21474629504141074,
+        0.24397001394164614
+      ]
+    },
+    {
+      "n": 21504,
+      "objectiveGain": 42.126315049536146,
+      "evaluations": 45.213448660714285,
+      "projectedGradient": 0.5371540727159394,
+      "parameters": [
+        0.2211327847712696,
+        0.1706044210173378,
+        0.17152757356404424,
+        0.2271744263344911,
+        0.1698305776383612
+      ]
+    }
+  ],
+  "pass": true
+}

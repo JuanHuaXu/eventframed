@@ -1,0 +1,110 @@
+package main
+
+import (
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"fmt"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/researchmemory"
+	"github.com/JuanHuaXu/eventframed/internal/researchsparse"
+	"os"
+)
+
+func read(path string, v any, hashes map[string]string) {
+	b, e := os.ReadFile(path)
+	if e != nil {
+		panic(e)
+	}
+	if e = json.Unmarshal(b, v); e != nil {
+		panic(e)
+	}
+	h := sha256.Sum256(b)
+	hashes[path] = hex.EncodeToString(h[:])
+}
+func main() {
+	hashes := map[string]string{}
+	var golden struct {
+		Rows []struct {
+			Query string
+			Event model.Event
+		}
+	}
+	var queries []struct {
+		CaseID   string `json:"case_id"`
+		Question string
+	}
+	var corpus []struct {
+		ID   string `json:"fixture_id"`
+		Text string
+	}
+	var oracle map[string]struct{ Support []string }
+	root := "research/public-task-pilot/"
+	read(root+"sparse-go-golden.json", &golden, hashes)
+	read(root+"prepared-v2/queries.json", &queries, hashes)
+	read(root+"prepared-v2/corpus.json", &corpus, hashes)
+	read(root+"prepared-v2/oracle.json", &oracle, hashes)
+	type row struct {
+		Case, Fixture string
+		Relevant      bool
+		Bits          uint16
+		Sparse        [researchsparse.Dimension]float64
+	}
+	rows := []row{}
+	for _, r := range golden.Rows {
+		bits, e := researchmemory.Extract(r.Query, r.Event, .75)
+		if e != nil {
+			panic(e)
+		}
+		sparse, e := researchsparse.Extract(r.Query, r.Event)
+		if e != nil {
+			panic(e)
+		}
+		caseID, fixture := "", ""
+		for _, q := range queries {
+			if q.Question == r.Query {
+				if caseID != "" {
+					panic("ambiguous question")
+				}
+				caseID = q.CaseID
+			}
+		}
+		for _, c := range corpus {
+			if r.Event.What.Value == "request: "+c.Text+"; outcome: Recorded." {
+				if fixture != "" {
+					panic("ambiguous event")
+				}
+				fixture = c.ID
+			}
+		}
+		if caseID == "" || fixture == "" {
+			panic(fmt.Sprintf("unmapped captured row %q %q", caseID, fixture))
+		}
+		label, ok := oracle[caseID]
+		if !ok {
+			panic("missing oracle")
+		}
+		relevant := false
+		for _, id := range label.Support {
+			if id == fixture {
+				relevant = true
+			}
+		}
+		rows = append(rows, row{caseID, fixture, relevant, bits, sparse.Values()})
+	}
+	for _, p := range []string{"research/public-feature-collisions/main.go", "internal/researchmemory/features.go", "internal/researchsparse/sparse.go"} {
+		b, e := os.ReadFile(p)
+		if e != nil {
+			panic(e)
+		}
+		h := sha256.Sum256(b)
+		hashes[p] = hex.EncodeToString(h[:])
+	}
+	if e := json.NewEncoder(os.Stdout).Encode(struct {
+		Scope  string
+		Hashes map[string]string
+		Rows   []row
+	}{"Consumed packed NASA rows; fixed baseline .75; feature-only diagnostic", hashes, rows}); e != nil {
+		panic(e)
+	}
+}

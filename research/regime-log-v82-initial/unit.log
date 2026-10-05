@@ -1,0 +1,38 @@
+=== RUN   TestCacheBoundariesLateEvidenceAndRefresh
+    cache_test.go:100: oracle comparison 0 1
+--- FAIL: TestCacheBoundariesLateEvidenceAndRefresh (0.75s)
+=== RUN   TestUncappedCachedPrefixAndAtomicHistoryLimit
+    cache_test.go:148: oracle comparison 6.8787318997938519e-08 0.0021636144307277992
+--- FAIL: TestUncappedCachedPrefixAndAtomicHistoryLimit (0.15s)
+=== RUN   TestFullWorkloadReferenceAndResourceShape
+    cache_test.go:188: M150 T2400 support payload 1381968 bytes, cached component payload 233856 bytes; excludes heap/scratch/headers/publication/RSS
+    cache_test.go:188: M200 T3200 support payload 1842768 bytes, cached component payload 233856 bytes; excludes heap/scratch/headers/publication/RSS
+--- PASS: TestFullWorkloadReferenceAndResourceShape (2.05s)
+=== RUN   TestColdUnknownSetupMatchesIssuedPrefix
+--- PASS: TestColdUnknownSetupMatchesIssuedPrefix (0.10s)
+=== RUN   TestCanonicalIssueRevealAndRefresh
+    ledger_test.go:299: 108 configurations, 2376 publications, 136493 checks, max oracle 6.252776074688882e-12, tower 1.887379141862766e-15, receipt 1.3322676295501878e-15, explicit query abstentions 0
+--- PASS: TestCanonicalIssueRevealAndRefresh (2.45s)
+=== RUN   TestFull64DelayedAndFutureForks
+--- PASS: TestFull64DelayedAndFutureForks (0.55s)
+=== RUN   TestOwnershipBindingsAndFailedOperations
+--- PASS: TestOwnershipBindingsAndFailedOperations (0.00s)
+=== RUN   TestEmptySnapshotAndRefreshIdentity
+--- PASS: TestEmptySnapshotAndRefreshIdentity (0.00s)
+=== RUN   TestJointDimensionBindingAndRescuedLatestPair
+--- PASS: TestJointDimensionBindingAndRescuedLatestPair (0.02s)
+=== RUN   TestMemberOddsSurviveEndpointAndEvidenceReversal
+    numeric_test.go:78: member endpoint reversal: V81 0.980000000, log/closed-form 0.320000000
+--- PASS: TestMemberOddsSurviveEndpointAndEvidenceReversal (0.00s)
+=== RUN   TestTinyTransitionsAndBranchMassMetadata
+--- PASS: TestTinyTransitionsAndBranchMassMetadata (0.13s)
+=== RUN   TestProtectedKeysAndRestartOnlyNegativeControl
+--- PASS: TestProtectedKeysAndRestartOnlyNegativeControl (0.11s)
+=== RUN   TestProtectedOldAndLatestContradictions
+--- PASS: TestProtectedOldAndLatestContradictions (0.28s)
+=== RUN   TestNoResetLongPositiveLogRescue
+    protect_test.go:188: POSITIVE LOG RESCUE: oracle logp=-1321.2095576498039; max log defect=1.6416379367001355e-10; float probability0 explicitly Underflow=true; actual reveal accepted
+--- PASS: TestNoResetLongPositiveLogRescue (0.10s)
+FAIL
+FAIL	github.com/JuanHuaXu/eventframed/internal/researchregimelog	6.919s
+FAIL

@@ -1,0 +1,11 @@
+=== RUN   TestCanonicalIssueRevealAndRefresh
+    ledger_test.go:291: 108 configurations, 2376 publications, 127980 checks, max oracle 1.2545520178264269e-14, tower 2.4424906541753444e-15, receipt 1.4432899320127035e-15, explicit query abstentions 0
+--- PASS: TestCanonicalIssueRevealAndRefresh (2.60s)
+=== RUN   TestFull64DelayedAndFutureForks
+    ledger_test.go:341: revealed fork vacuous
+--- FAIL: TestFull64DelayedAndFutureForks (0.55s)
+=== RUN   TestOwnershipBindingsAndFailedOperations
+--- PASS: TestOwnershipBindingsAndFailedOperations (0.00s)
+FAIL
+FAIL	github.com/JuanHuaXu/eventframed/internal/researchregimeledger	3.364s
+FAIL

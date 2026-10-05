@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 	"time"
+	"unicode"
 )
 
 const (
@@ -16,18 +17,23 @@ const (
 // TurnCapture is the raw transport envelope accepted from an agent adapter.
 // Semantic EventFrame fields are deliberately absent from this contract.
 type TurnCapture struct {
-	ID            string    `json:"id"`
-	TenantID      string    `json:"tenant_id"`
-	SessionID     string    `json:"session_id"`
-	Sequence      uint64    `json:"sequence"`
-	RunID         string    `json:"run_id,omitempty"`
-	AgentID       string    `json:"agent_id,omitempty"`
-	UserText      string    `json:"user_text"`
-	AssistantText string    `json:"assistant_text"`
-	RetrievedIDs  []string  `json:"retrieved_ids,omitempty"`
-	OccurredAt    time.Time `json:"occurred_at"`
-	ObservedAt    time.Time `json:"observed_at"`
-	AvailableAt   time.Time `json:"available_at"`
+	ID        string `json:"id"`
+	TenantID  string `json:"tenant_id"`
+	SessionID string `json:"session_id"`
+	Sequence  uint64 `json:"sequence"`
+	RunID     string `json:"run_id,omitempty"`
+	AgentID   string `json:"agent_id,omitempty"`
+	// Identity keys come from the trusted adapter/roster, never chat text. These
+	// identify accounts, not an assertion that the account's statements are true.
+	UserID             string    `json:"user_id,omitempty"`
+	ParticipantUserIDs []string  `json:"participant_user_ids,omitempty"`
+	PreviousTurnID     string    `json:"previous_turn_id,omitempty"`
+	UserText           string    `json:"user_text"`
+	AssistantText      string    `json:"assistant_text"`
+	RetrievedIDs       []string  `json:"retrieved_ids,omitempty"`
+	OccurredAt         time.Time `json:"occurred_at"`
+	ObservedAt         time.Time `json:"observed_at"`
+	AvailableAt        time.Time `json:"available_at"`
 }
 
 type CaptureTurnRequest struct {
@@ -55,6 +61,24 @@ func (c TurnCapture) Validate() error {
 	}
 	if len(c.RunID) > maxCaptureIDBytes || len(c.AgentID) > maxCaptureIDBytes {
 		return fmt.Errorf("run_id and agent_id must not exceed %d bytes", maxCaptureIDBytes)
+	}
+	for _, id := range []string{c.UserID, c.PreviousTurnID} {
+		if len(id) > maxCaptureIDBytes || (id != "" && strings.TrimSpace(id) != id) || strings.IndexFunc(id, unicode.IsControl) >= 0 {
+			return errors.New("identity and previous-turn keys must be bounded, nonblank identifiers")
+		}
+	}
+	if c.PreviousTurnID == c.ID {
+		return errors.New("previous_turn_id cannot refer to the current turn")
+	}
+	if len(c.ParticipantUserIDs) > 7 {
+		return errors.New("participant_user_ids exceeds 7 entries")
+	}
+	participants := make(map[string]bool)
+	for _, id := range c.ParticipantUserIDs {
+		if id == "" || strings.TrimSpace(id) != id || len(id) > maxCaptureIDBytes || participants[id] || strings.IndexFunc(id, unicode.IsControl) >= 0 {
+			return errors.New("participant_user_ids must contain unique bounded identifiers")
+		}
+		participants[id] = true
 	}
 	if len(c.RetrievedIDs) > maxRetrievedIDs {
 		return fmt.Errorf("retrieved_ids exceeds %d entries", maxRetrievedIDs)

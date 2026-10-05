@@ -1,0 +1,121 @@
+{
+  "time": "2026-10-05T06:56:09.478Z",
+  "checks": [
+    {
+      "name": "unit",
+      "args": [
+        "test",
+        "-v",
+        "-count=1",
+        "./cmd/research-regime-protected-screen",
+        "-timeout=10m"
+      ],
+      "exitCode": 0,
+      "seconds": 0.515973667,
+      "logSHA256": "bde422fa3b81c92a9fbd4c6731dd75f50bb4487d5283f70fababe61dff129645"
+    },
+    {
+      "name": "race",
+      "args": [
+        "test",
+        "-race",
+        "-v",
+        "-count=1",
+        "./cmd/research-regime-protected-screen",
+        "-timeout=10m"
+      ],
+      "exitCode": 0,
+      "seconds": 1.789704292,
+      "logSHA256": "9ead5f61770ad15bafcfef26c4cdff430c98570ee76ef44fced62f1b80df4ca5"
+    },
+    {
+      "name": "vet",
+      "args": [
+        "vet",
+        "./cmd/research-regime-protected-screen"
+      ],
+      "exitCode": 0,
+      "seconds": 0.08978658300000006,
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "experiment",
+      "args": [
+        "run",
+        "./cmd/research-regime-protected-screen",
+        "research/regime-protected-v81-screen-initial/data"
+      ],
+      "exitCode": 0,
+      "seconds": 338.22302066699996,
+      "logSHA256": "8f07af05018e1b66360850e5f32df0c510f057c466b1f39bbc7a7f6865ab23b5"
+    }
+  ],
+  "dataHashes": {
+    "case-000.json": "49841f43d0a176925d57111b8ff64da0c1ff8e072c3d49f06dac8f1966c9b682",
+    "case-001.json": "e2e01fdda54a71abfe992f01305b85b423be1f0df370e5c1889683482d4b9b9d",
+    "case-002.json": "a5edccabda7e315c17c619f05523e2ae96ff55cdb723cb9a3feda130ef7b8fd4",
+    "case-003.json": "23dc55ff66e6610871aed6d2cef011bd3acf0a196e0d8b1911039f2f1d242997",
+    "case-004.json": "4d82f6f18efac557228910d5b5671e3addbeeab03544cae17d4d8fb71c19e0bd",
+    "case-005.json": "c3abdd82ef253f87e04eecebc7fbf550ff92385831c3a8911e7ca78ac1d7441d",
+    "case-006.json": "6b1f3f013eaeec9065fcb6b6aac4605c2cfd9ea4ba19bf3bca80779abdf7b288",
+    "case-007.json": "a357e4f56cd20876e31d601c1b6b48be7dd53cfcfaef5d96cb211fe5b837b02c",
+    "case-008.json": "b343f5e9ff07fd391a42814753020886e64673b9906f0989ec49960abd6c23ed",
+    "case-009.json": "0a5ae2cdcb76ab19d48717efc34a0280f7680b7b4a349ebb936012da5b16a1ea",
+    "case-010.json": "61de13cf8fe1ce8d9634436b5da671fbce799739daabe647c15085bc2b57eb41",
+    "case-011.json": "dcb877c6b34f9760c3a34631cb69df4dbd755f33f2f9c013b593fb1e8534d130",
+    "case-012.json": "e88a083d454482707e4b6682ef9a8ee56f44b3c95e453e65f45641ef3bdb8c16",
+    "case-013.json": "68f4e3c2483bfde086a5f6e7ac57c9fa9cf4ea4b7ae293f9ae67faeb03091b20",
+    "case-014.json": "034b53ce903e19110e84dbdd66fb570a2825986ff3be982eb8adfb539f6bb4b8",
+    "case-015.json": "e9f4fa8e00f4f1069ddd5cd677613b6c4fd06d01088c8bbc93141010a3a91e8a",
+    "case-016.json": "c5d03a036fb10dc8b448749f1d9bcc17fd96e76f2f7fd47fab885f1be89f5a5b",
+    "case-017.json": "053c2c7379307dabf8bd4fdc068faa0f0eb998d3cb000c251e287062306bc2b2",
+    "case-018.json": "ca08dc7a8def4050ef4280767794f3ed4f46950e1983505f52d8fb16527484e4",
+    "case-019.json": "6c7bb28db317a6038eba7cc1f37574e71e742af33c267e5406aec8343ff0e62e",
+    "case-020.json": "52a7c144295498233d381255d8e7bf3c315e615ac3d934fcfbc6c58de6e242c2",
+    "case-021.json": "3ab410c3267cca2832789bc2291d3169407df257e2799a70a303c6db681b2a97",
+    "case-022.json": "d7f29580b1ffb57d3ae22f172094254b8ab0636424d29a000d002931fb6093e3",
+    "case-023.json": "f25156a13d8a44af096d2a8e5fcb03697745de7c80334d776ea17a60c03a8459",
+    "case-024.json": "30af2356568dde4e98f44f2bbe15d2de1134f40ec51fc85c2b0b2c2ab04a1204",
+    "case-025.json": "e5341541d18cf1f532bb55705befe3f314dccea4f82a9aa30f674e55562a51bb",
+    "case-026.json": "0d7396e7f405da7c9f688f68f19b7440a5a7c740e7ba2ca7702e848515c08cde",
+    "case-027.json": "87df57f74736e6ca232d888983f42738f03a7fca7db6d1d5b0bfb93b5ec8ec96",
+    "case-028.json": "e64d6b7b901383fcd4cdbe707e242424b4bf6f4b786b4d22ac522c4df13088e4",
+    "case-029.json": "07af0acffc049d13a534b0f7a58a204be14eea4d29df6d8226d6af45a58efb02",
+    "case-030.json": "968c81b0320aaf9331a5bce649a57340d50cd77fff272514a6a5d689b5877e0d",
+    "case-031.json": "8ae3a7cd9655597ab1f442977952232c754127b474e44b79216c554640401559",
+    "case-032.json": "02ea8a53a6e3489eb8ab72b9ffe4128b40d3b31d70b20cc3098ecd9411f51497",
+    "case-033.json": "e56896bbae85d849b750fa409af767916e96726662be23f8965cc0bb5a9089bc",
+    "case-034.json": "545a31a1f68ba842e62c3c4576b1efa1f96511a4e18e12050c3bec902de17440",
+    "case-035.json": "45e1bf954cf0eccf4689a413ec3593c32d197847ba7819f11d1cc2c5cf480401",
+    "case-036.json": "753eed26f983cfa5040c2587bfb92704d0475d0c4b5807dcaa04f2f107aaeb87",
+    "case-037.json": "4b4b305eacd5c32b9069bacddd5431357ae3da2d18e044d5d8d5054cdc77dc7a",
+    "case-038.json": "3cc2a4dc4c9ed36e8cd46ffab90bc5d5ae331af0921d7dea857b12e7686e3d32",
+    "case-039.json": "be6da15b3937614143c40b64286444e66cdc45d3f9c72834fda02d208b2daa3d",
+    "case-040.json": "3fe84528447bb4a54393e88a2bb386c54fabcf8c0c60df2d06b80235c94b4342",
+    "case-041.json": "64f573a01dbbdbe890f41eb3b69b338c0c82331e8ab6d82fc67c1ba901ed1be1",
+    "case-042.json": "d76f30f0455cfb8ab77193006b7a7fe9c6b6c978dc0eb9f7e927db079e1f7653",
+    "case-043.json": "43b8d8a9a9f42964db75a0b2db90a3b75cdd73f12f2e72a3736f06d29c55bc07",
+    "case-044.json": "c8aa06bc4b8d3ff1f6c5a60d577da83fbe69fa414757986224450185e6a43015",
+    "case-045.json": "3953caa5ee76aa37dabd83de2a34be61862b79434cf1987147cc163c59968ab5",
+    "case-046.json": "ffb1fa136a6aa4b4f8fb7f8b9f78aa6856002642ab3180b4dd3610cb81150e04",
+    "case-047.json": "0fd91bed7e19a0f98f551282cb30399a3b28cf01a23c4c33aed4b66123cd32c7",
+    "summary.json": "cf9d52aac18f167d3ea253905cedfe4c5b861c5f4f582c305fbeeef28fb16ab7"
+  },
+  "allJobsTerminal": true,
+  "allChecksPass": true,
+  "sourceUnchanged": true,
+  "scientificConfirmation": false,
+  "originalFullAdaptiveGatesTested": false,
+  "equalTotalCostComparison": false,
+  "loadedServing": false,
+  "goal": "ACTIVE",
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ]
+}

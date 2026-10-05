@@ -1,0 +1,24 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkMarkovAdviceJournal/immediate/log-10         	     184	   1716957 ns/op	  158200 B/op	    1276 allocs/op
+BenchmarkMarkovAdviceJournal/immediate/log-10         	     213	   1686018 ns/op	  158202 B/op	    1276 allocs/op
+BenchmarkMarkovAdviceJournal/immediate/log-10         	     212	   1690840 ns/op	  158200 B/op	    1276 allocs/op
+BenchmarkMarkovAdviceJournal/immediate/markov-10      	     174	   2069083 ns/op	  174577 B/op	    1276 allocs/op
+BenchmarkMarkovAdviceJournal/immediate/markov-10      	     174	   2066606 ns/op	  174577 B/op	    1276 allocs/op
+BenchmarkMarkovAdviceJournal/immediate/markov-10      	     170	   2057277 ns/op	  174577 B/op	    1276 allocs/op
+BenchmarkMarkovAdviceJournal/delay31/log-10           	     274	   1313613 ns/op	  146041 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/delay31/log-10           	     274	   1319922 ns/op	  146042 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/delay31/log-10           	     273	   1315864 ns/op	  146041 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/delay31/markov-10        	     100	   3088680 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/delay31/markov-10        	     100	   3111074 ns/op	  162417 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/delay31/markov-10        	     100	   3101702 ns/op	  162417 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/reverse_batch31/log-10   	     232	   1560328 ns/op	  146041 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/reverse_batch31/log-10   	     229	   1548922 ns/op	  146040 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/reverse_batch31/log-10   	     230	   1552039 ns/op	  146041 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/reverse_batch31/markov-10         	     100	   3206522 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/reverse_batch31/markov-10         	     100	   3239261 ns/op	  162416 B/op	    1191 allocs/op
+BenchmarkMarkovAdviceJournal/reverse_batch31/markov-10         	     100	   3214381 ns/op	  162416 B/op	    1191 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	8.368s

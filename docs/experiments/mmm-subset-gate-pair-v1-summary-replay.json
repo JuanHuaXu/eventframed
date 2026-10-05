@@ -1,0 +1,278 @@
+{
+  "sourceHash": "382d267a4fded68fca44c5cecfac077011abbf59cab218ec85b647875100340b",
+  "capturedSources": 805,
+  "trajectories": 160,
+  "summaries": [
+    {
+      "phase": "design",
+      "scenario": "stable",
+      "n": 16,
+      "oldPostBrier": 0.04724504142311249,
+      "mixturePostBrier": 0.04724504142311249,
+      "postGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "fullGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "oldCountPostBrier": 0.047251988751259286,
+      "mixtureCountPostBrier": 0.047251988751259286,
+      "oldSplits": 0,
+      "mixtureSplits": 0,
+      "oldRestrictedDelay": null,
+      "mixtureRestrictedDelay": null,
+      "oldCost": 4,
+      "mixtureCost": 4,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "design",
+      "scenario": "member_shift",
+      "n": 16,
+      "oldPostBrier": 0.1981109653872282,
+      "mixturePostBrier": 0.19802822870679007,
+      "postGain": {
+        "mean": 0.00008273668043815366,
+        "lower": -0.000294187835744105,
+        "upper": 0.0004596611966204123
+      },
+      "fullGain": {
+        "mean": 0.00004136834021906122,
+        "lower": -0.00014709391787209611,
+        "upper": 0.00022983059831021855
+      },
+      "oldCountPostBrier": 0.23704058967861566,
+      "mixtureCountPostBrier": 0.2370865954723643,
+      "oldSplits": 16,
+      "mixtureSplits": 16,
+      "oldRestrictedDelay": 118.1875,
+      "mixtureRestrictedDelay": 83.5,
+      "oldCost": 4.5850830078125,
+      "mixtureCost": 4.588623046875,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "design",
+      "scenario": "common_shift",
+      "n": 16,
+      "oldPostBrier": 0.1977180549925932,
+      "mixturePostBrier": 0.1977180549925932,
+      "postGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "fullGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "oldCountPostBrier": 0.2377556048368024,
+      "mixtureCountPostBrier": 0.2377556048368024,
+      "oldSplits": 0,
+      "mixtureSplits": 0,
+      "oldRestrictedDelay": null,
+      "mixtureRestrictedDelay": null,
+      "oldCost": 4.586669921875,
+      "mixtureCost": 4.586669921875,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "design",
+      "scenario": "recurring",
+      "n": 16,
+      "oldPostBrier": 0.17582675299136108,
+      "mixturePostBrier": 0.17598698851177244,
+      "postGain": {
+        "mean": -0.00016023552041140483,
+        "lower": -0.001990921949186323,
+        "upper": 0.001670450908363513
+      },
+      "fullGain": {
+        "mean": -0.00012017664030854885,
+        "lower": -0.0014931914618897266,
+        "upper": 0.001252838181272629
+      },
+      "oldCountPostBrier": 0.190006192019875,
+      "mixtureCountPostBrier": 0.18965767374714124,
+      "oldSplits": 16,
+      "mixtureSplits": 16,
+      "oldRestrictedDelay": 133.1875,
+      "mixtureRestrictedDelay": 60.75,
+      "oldCost": 4.8612060546875,
+      "mixtureCost": 4.8619384765625,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "design",
+      "scenario": "null",
+      "n": 16,
+      "oldPostBrier": 0.2517649953424636,
+      "mixturePostBrier": 0.2517649953424636,
+      "postGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "fullGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "oldCountPostBrier": 0.25198818141300383,
+      "mixtureCountPostBrier": 0.25198818141300383,
+      "oldSplits": 0,
+      "mixtureSplits": 0,
+      "oldRestrictedDelay": null,
+      "mixtureRestrictedDelay": null,
+      "oldCost": 5.9974365234375,
+      "mixtureCost": 5.9974365234375,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "stable",
+      "n": 16,
+      "oldPostBrier": 0.0503022125300521,
+      "mixturePostBrier": 0.0503022125300521,
+      "postGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "fullGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "oldCountPostBrier": 0.05033607241563616,
+      "mixtureCountPostBrier": 0.05033607241563616,
+      "oldSplits": 0,
+      "mixtureSplits": 0,
+      "oldRestrictedDelay": null,
+      "mixtureRestrictedDelay": null,
+      "oldCost": 4.000244140625,
+      "mixtureCost": 4.000244140625,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "member_shift",
+      "n": 16,
+      "oldPostBrier": 0.2009014975067171,
+      "mixturePostBrier": 0.20095342533620753,
+      "postGain": {
+        "mean": -0.000051927829490412344,
+        "lower": -0.0009167091184687183,
+        "upper": 0.0008128534594878936
+      },
+      "fullGain": {
+        "mean": -0.00002596391474522959,
+        "lower": -0.0004583545592343705,
+        "upper": 0.00040642672974391134
+      },
+      "oldCountPostBrier": 0.2380460474027523,
+      "mixtureCountPostBrier": 0.23852180055867447,
+      "oldSplits": 16,
+      "mixtureSplits": 16,
+      "oldRestrictedDelay": 112.5625,
+      "mixtureRestrictedDelay": 68.3125,
+      "oldCost": 4.68408203125,
+      "mixtureCost": 4.690673828125,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "common_shift",
+      "n": 16,
+      "oldPostBrier": 0.21048983848202443,
+      "mixturePostBrier": 0.21048983848202443,
+      "postGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "fullGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "oldCountPostBrier": 0.24306565562194687,
+      "mixtureCountPostBrier": 0.24306565562194687,
+      "oldSplits": 0,
+      "mixtureSplits": 0,
+      "oldRestrictedDelay": null,
+      "mixtureRestrictedDelay": null,
+      "oldCost": 4.694091796875,
+      "mixtureCost": 4.694091796875,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "recurring",
+      "n": 16,
+      "oldPostBrier": 0.1750203194679385,
+      "mixturePostBrier": 0.17458275597439654,
+      "postGain": {
+        "mean": 0.000437563493541928,
+        "lower": -0.0005177823962499267,
+        "upper": 0.0013929093833337826
+      },
+      "fullGain": {
+        "mean": 0.0003281726201564729,
+        "lower": -0.00038833679718742846,
+        "upper": 0.0010446820375003742
+      },
+      "oldCountPostBrier": 0.19412336268975677,
+      "mixtureCountPostBrier": 0.19318532638271332,
+      "oldSplits": 15,
+      "mixtureSplits": 16,
+      "oldRestrictedDelay": 150.4375,
+      "mixtureRestrictedDelay": 76.9375,
+      "oldCost": 4.9320068359375,
+      "mixtureCost": 4.9195556640625,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    },
+    {
+      "phase": "confirmation",
+      "scenario": "null",
+      "n": 16,
+      "oldPostBrier": 0.2517219113736008,
+      "mixturePostBrier": 0.2517219113736008,
+      "postGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "fullGain": {
+        "mean": 0,
+        "lower": 0,
+        "upper": 0
+      },
+      "oldCountPostBrier": 0.2515287134572714,
+      "mixtureCountPostBrier": 0.2515287134572714,
+      "oldSplits": 0,
+      "mixtureSplits": 0,
+      "oldRestrictedDelay": null,
+      "mixtureRestrictedDelay": null,
+      "oldCost": 5.9981689453125,
+      "mixtureCost": 5.9981689453125,
+      "positiveGainScreen": false,
+      "nonHarmScreen": true
+    }
+  ],
+  "limits": "Exploratory n16 per cell; mean +/-3.5SE screens, no anytime or rare-event guarantee; fixed representation/noise, immediate feedback; no complete goal validation."
+}

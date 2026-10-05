@@ -1,0 +1,15 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkRegimeQuery/base63-10         	      30	  39568374 ns/op	  475361 B/op	       9 allocs/op
+BenchmarkRegimeQuery/base63-10         	      30	  39699554 ns/op	  475184 B/op	       9 allocs/op
+BenchmarkRegimeQuery/base63-10         	      30	  39585336 ns/op	  475184 B/op	       9 allocs/op
+BenchmarkRegimeQuery/query_two_refits-10         	      14	  81290854 ns/op	  950633 B/op	      28 allocs/op
+BenchmarkRegimeQuery/query_two_refits-10         	      14	  81597592 ns/op	  950632 B/op	      28 allocs/op
+BenchmarkRegimeQuery/query_two_refits-10         	      14	  81642997 ns/op	  950632 B/op	      28 allocs/op
+BenchmarkRegimeQuery/pool_eight_queries-10       	       2	 654482938 ns/op	 7605056 B/op	     224 allocs/op
+BenchmarkRegimeQuery/pool_eight_queries-10       	       2	 654476458 ns/op	 7605056 B/op	     224 allocs/op
+BenchmarkRegimeQuery/pool_eight_queries-10       	       2	 651874104 ns/op	 7605064 B/op	     224 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	13.666s

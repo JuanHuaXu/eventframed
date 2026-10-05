@@ -112,6 +112,7 @@ type codexTurnBuilder struct {
 	codexTurn
 	pendingCalls map[string]map[string]struct{}
 	lastAgent    string
+	userMessages int
 }
 
 type codexEnvelope struct {
@@ -364,13 +365,28 @@ func readCodexSession(path string, dataStart, dataEnd time.Time) (codexSession, 
 			continue
 		}
 		switch {
-		case envelope.Type == "event_msg" && payloadType == "user_message":
-			query := boundedText(rawText(payload["message"]))
+		case envelope.Type == "event_msg" && payloadType == "task_started":
+			turn = nil
+		case (envelope.Type == "event_msg" && payloadType == "user_message") ||
+			(envelope.Type == "response_item" && payloadType == "message" && rawString(payload["role"]) == "user"):
+			queryField := payload["message"]
+			if envelope.Type == "response_item" {
+				queryField = payload["content"]
+			}
+			query := boundedText(rawText(queryField))
 			if query != "" {
-				turn = &codexTurnBuilder{codexTurn: codexTurn{user: query, startedAt: timestamp, downstreamUsage: make(map[string]struct{})}, pendingCalls: make(map[string]map[string]struct{})}
+				if turn == nil {
+					turn = &codexTurnBuilder{codexTurn: codexTurn{user: query, startedAt: timestamp, downstreamUsage: make(map[string]struct{})}, pendingCalls: make(map[string]map[string]struct{}), userMessages: 1}
+				} else {
+					turn.userMessages++
+				}
 			}
 		case envelope.Type == "event_msg" && payloadType == "agent_message" && turn != nil:
 			if text := boundedText(rawText(payload["message"])); text != "" {
+				turn.lastAgent = text
+			}
+		case envelope.Type == "response_item" && payloadType == "message" && rawString(payload["role"]) == "assistant" && rawString(payload["phase"]) == "final_answer" && turn != nil:
+			if text := boundedText(rawText(payload["content"])); text != "" {
 				turn.lastAgent = text
 			}
 		case envelope.Type == "response_item" && (payloadType == "function_call" || payloadType == "custom_tool_call") && turn != nil:
@@ -395,7 +411,8 @@ func readCodexSession(path string, dataStart, dataEnd time.Time) (codexSession, 
 			if assistant == "" {
 				assistant = turn.lastAgent
 			}
-			if turn.user != "" && assistant != "" && timestamp.After(turn.startedAt) {
+			failure := strings.TrimSpace(string(payload["error"]))
+			if turn.userMessages == 1 && turn.user != "" && assistant != "" && (failure == "" || failure == "null" || failure == `""`) && timestamp.After(turn.startedAt) {
 				turn.assistant = assistant
 				turn.completedAt = timestamp
 				current.turns = append(current.turns, turn.codexTurn)

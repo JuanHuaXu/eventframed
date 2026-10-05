@@ -1,0 +1,2979 @@
+{
+  "version": "v103",
+  "artifactSHA256": "173e2f1027b79455211f9eff313225f117f58890a03c424244f049d64fd265f0",
+  "trajectories": 768,
+  "steps": 196608,
+  "uniqueEffectiveSeeds": 3072,
+  "sourceHashes": 21,
+  "passed": 106,
+  "total": 108,
+  "status": "FAIL",
+  "gates": [
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00018048458602904155,
+      "lower": -0.0005316043324478448,
+      "upper": 0.00017063516038976178,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "segment": 0,
+      "control": 2,
+      "mean": 0.00005329166401547565,
+      "lower": -0.00006350060768002585,
+      "upper": 0.00017008393571097714,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00009775280998121556,
+      "lower": -0.0001855820349968689,
+      "upper": -0.000009923584965562202,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity1",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.000008609884934464383,
+      "lower": -0.000026041397779161386,
+      "upper": 0.00004326116764809015,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0023660573108134184,
+      "lower": -0.005350724500610436,
+      "upper": 0.000618609878983599,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.001237893555361792,
+      "lower": -0.004010031571486751,
+      "upper": 0.0015342444607631673,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0005157493843913699,
+      "lower": -0.0007867977963983692,
+      "upper": -0.0002447009723843705,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity2",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.000007455745083064869,
+      "lower": -0.00009764686495236092,
+      "upper": 0.00008273537478623118,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.005847756884009446,
+      "lower": -0.008453719650867084,
+      "upper": -0.003241794117151808,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.001669942675218158,
+      "lower": -0.003936566185868138,
+      "upper": 0.0005966808354318214,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity3",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.005847756884009446,
+      "lower": 0.003241794117151808,
+      "upper": 0.008453719650867084,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0031711406629463586,
+      "lower": -0.004736058142200486,
+      "upper": -0.001606223183692231,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity3",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.00030019233448712475,
+      "lower": -0.0009269835933263155,
+      "upper": 0.000326598924352066,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.01063718566886592,
+      "lower": -0.014962768877096157,
+      "upper": -0.006311602460635682,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "segment": 0,
+      "control": 2,
+      "mean": 0.0002853548772890767,
+      "lower": -0.0023769554412425456,
+      "upper": 0.002947665195820699,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity4",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.01063718566886592,
+      "lower": 0.006311602460635682,
+      "upper": 0.014962768877096157,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.011878779854560387,
+      "lower": -0.015381840567836914,
+      "upper": -0.00837571914128386,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity4",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.0007092217063910688,
+      "lower": -0.000587470638488812,
+      "upper": 0.0020059140512709494,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity4",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.0007092217063910688,
+      "lower": -0.0020059140512709494,
+      "upper": 0.000587470638488812,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.013551676259675979,
+      "lower": -0.019006394683757054,
+      "upper": -0.008096957835594904,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.0020970495999832893,
+      "lower": -0.006109260734535689,
+      "upper": 0.0019151615345691102,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "complement4",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.013551676259675979,
+      "lower": 0.008096957835594904,
+      "upper": 0.019006394683757054,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.013286082378518822,
+      "lower": -0.017841525410514914,
+      "upper": -0.008730639346522729,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "complement4",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.0008400270445514304,
+      "lower": -0.003368029182914096,
+      "upper": 0.0016879750938112352,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00007824523251522258,
+      "lower": -0.0008732717918041222,
+      "upper": 0.000716781326773677,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.0002625123966668941,
+      "lower": -0.0011455686348097163,
+      "upper": 0.0006205438414759281,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "segment": 1,
+      "control": 0,
+      "mean": 0.0000912587786874202,
+      "lower": -0.00009077959064626769,
+      "upper": 0.0002732971480211081,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority3",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.00004722840918182066,
+      "lower": -0.000128878594433289,
+      "upper": 0.0002233354127969303,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.00027490846316337823,
+      "lower": 0.000052771413143425626,
+      "upper": 0.0004970455131833309,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "segment": 0,
+      "control": 2,
+      "mean": 0.00006442009028815102,
+      "lower": -0.00013492730125298406,
+      "upper": 0.0002637674818292861,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "segment": 1,
+      "control": 0,
+      "mean": 0.0001607291665100569,
+      "lower": 0.00007542291424732326,
+      "upper": 0.00024603541877279056,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "mux3",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.00011430918429733471,
+      "lower": 0.00003175600304081937,
+      "upper": 0.00019686236555385006,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.000015595729425554655,
+      "lower": -0.00008431564996867644,
+      "upper": 0.00005312419111756713,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "segment": 0,
+      "control": 2,
+      "mean": -5.560933079413154e-7,
+      "lower": -0.000040515638219635256,
+      "upper": 0.000039403451603752626,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.000008118671341876505,
+      "lower": -0.00002442335937247246,
+      "upper": 0.00000818601668871945,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "constant",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.0000020373910393238406,
+      "lower": -0.0000060299785011580205,
+      "upper": 0.000010104760579805702,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0017902070886037097,
+      "lower": -0.0031256513410062694,
+      "upper": -0.0004547628362011498,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "segment": 0,
+      "control": 2,
+      "mean": 0.000438875442128556,
+      "lower": 0.00016306100843240765,
+      "upper": 0.0007146898758247043,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0024552234959736505,
+      "lower": -0.004566095768362295,
+      "upper": -0.00034435122358500653,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "null",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.00045807908426779426,
+      "lower": 0.00005374668328624488,
+      "upper": 0.0008624114852493436,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.014420158189297632,
+      "lower": -0.020470031107798197,
+      "upper": -0.008370285270797067,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.004149525452450956,
+      "lower": -0.009894185585409486,
+      "upper": 0.0015951346805075737,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.01483719409195168,
+      "lower": -0.023294688060718445,
+      "upper": -0.006379700123184916,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "dependent4",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.004851483482939404,
+      "lower": -0.012123875934880787,
+      "upper": 0.0024209089690019787,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.012607319405066101,
+      "lower": -0.019314809436314678,
+      "upper": -0.0058998293738175235,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.000463042101045686,
+      "lower": -0.002322600894876711,
+      "upper": 0.001396516692785339,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.025401137695129104,
+      "lower": -0.03875627502685859,
+      "upper": -0.012046000363399617,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.0008584249558260364,
+      "lower": -0.00448581094388569,
+      "upper": 0.002768961032233617,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "majority_to_parity",
+      "segment": 1,
+      "control": 0,
+      "mean": 0.025401137695129104,
+      "lower": 0.012046000363399617,
+      "upper": 0.03875627502685859,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.010534390063673077,
+      "lower": -0.015456355622483996,
+      "upper": -0.005612424504862156,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.0006099418853812576,
+      "lower": -0.0030780385169202756,
+      "upper": 0.0018581547461577605,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.009433450604956498,
+      "lower": -0.017024484725502654,
+      "upper": -0.001842416484410342,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.000304517027818421,
+      "lower": -0.0021510184061960405,
+      "upper": 0.0027600524618328825,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "design",
+      "case": "parity_to_majority",
+      "segment": 1,
+      "control": 0,
+      "mean": 0.009433450604956498,
+      "lower": 0.001842416484410342,
+      "upper": 0.017024484725502654,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.00012581632274501946,
+      "lower": -0.00023724857644219686,
+      "upper": -0.00001438406904784206,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "segment": 0,
+      "control": 2,
+      "mean": 0.00003474608509037658,
+      "lower": -0.000023582305560755645,
+      "upper": 0.0000930744757415088,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00010515160475412389,
+      "lower": -0.0003396428585190148,
+      "upper": 0.00012933964901076705,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity1",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.00005147594081986672,
+      "lower": 0.0000012248050425646618,
+      "upper": 0.00010172707659716878,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.0013965243908255806,
+      "lower": -0.00285052060177105,
+      "upper": 0.000057471820119888795,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.0005271974532468045,
+      "lower": -0.0019452639582213977,
+      "upper": 0.0008908690517277886,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.00046797121773340007,
+      "lower": -0.0007664291866662494,
+      "upper": -0.0001695132488005508,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity2",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.000006434090136106085,
+      "lower": -0.000053806939575756465,
+      "upper": 0.000040938759303544295,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.005806097918990138,
+      "lower": -0.008405332035152209,
+      "upper": -0.0032068638028280665,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.0017256488224209388,
+      "lower": -0.004230679447165424,
+      "upper": 0.0007793818023235461,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity3",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.005806097918990138,
+      "lower": 0.0032068638028280665,
+      "upper": 0.008405332035152209,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0031828178539028175,
+      "lower": -0.0050658990868088765,
+      "upper": -0.0012997366209967583,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity3",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.00048373522675029313,
+      "lower": -0.0013401510102543043,
+      "upper": 0.0003726805567537181,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.012538146431621554,
+      "lower": -0.018146270254663522,
+      "upper": -0.006930022608579588,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.0019507823868077255,
+      "lower": -0.004798028966735299,
+      "upper": 0.0008964641931198474,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity4",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.012538146431621554,
+      "lower": 0.006930022608579588,
+      "upper": 0.018146270254663522,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.01220315965611545,
+      "lower": -0.016862482482460868,
+      "upper": -0.007543836829770034,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity4",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.0007078134620423203,
+      "lower": -0.0024233357085767463,
+      "upper": 0.001007708784492106,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity4",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.0007078134620423203,
+      "lower": -0.001007708784492106,
+      "upper": 0.0024233357085767463,
+      "pass": false
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.013812207636585866,
+      "lower": -0.019825262278652556,
+      "upper": -0.007799152994519176,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.002355532493154166,
+      "lower": -0.006238287607639419,
+      "upper": 0.0015272226213310872,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "complement4",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.013812207636585866,
+      "lower": 0.007799152994519176,
+      "upper": 0.019825262278652556,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.015616781468621888,
+      "lower": -0.021093062461542127,
+      "upper": -0.010140500475701648,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "complement4",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.0022664832380789287,
+      "lower": -0.005813664689848854,
+      "upper": 0.0012806982136909966,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.000226436247767432,
+      "lower": -0.00007109195059560686,
+      "upper": 0.0005239644461304709,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "segment": 0,
+      "control": 2,
+      "mean": 0.000028393508073760402,
+      "lower": -0.00026421438594876907,
+      "upper": 0.00032100140209628987,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "segment": 1,
+      "control": 0,
+      "mean": 0.00010965981442449726,
+      "lower": 0.00006339914642275135,
+      "upper": 0.00015592048242624317,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority3",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.00006427630797408855,
+      "lower": 0.00001889077905184463,
+      "upper": 0.00010966183689633247,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "segment": 0,
+      "control": 0,
+      "mean": 0.00024136386318624218,
+      "lower": 0.00009075031283939763,
+      "upper": 0.00039197741353308674,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "segment": 0,
+      "control": 2,
+      "mean": 0.00007207640636094047,
+      "lower": -0.0000835737031186825,
+      "upper": 0.00022772651584056344,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "segment": 1,
+      "control": 0,
+      "mean": 0.0001803753768638307,
+      "lower": 0.0000900096923106178,
+      "upper": 0.0002707410614170436,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "mux3",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.00013921111082790412,
+      "lower": 0.00004881438671901056,
+      "upper": 0.0002296078349367977,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.000038858691775595696,
+      "lower": -0.00009888267444371228,
+      "upper": 0.000021165290892520885,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.0000031998598885398834,
+      "lower": -0.000023025296092087627,
+      "upper": 0.00001662557631500786,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0000412678236642104,
+      "lower": -0.00011710192025169272,
+      "upper": 0.00003456627292327192,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "constant",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.0000061492241286034786,
+      "lower": -0.00000616504245959451,
+      "upper": 0.000018463490716801465,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.002093505817636553,
+      "lower": -0.003468920279717267,
+      "upper": -0.000718091355555839,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "segment": 0,
+      "control": 2,
+      "mean": 0.0003748024412393962,
+      "lower": 0.000034126362301236746,
+      "upper": 0.0007154785201775556,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.0029226062136323196,
+      "lower": -0.004690627048707082,
+      "upper": -0.0011545853785575571,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "null",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.0003650500082688652,
+      "lower": -0.00020228641844501983,
+      "upper": 0.0009323864349827502,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.013699772597265902,
+      "lower": -0.020833254455512193,
+      "upper": -0.00656629073901961,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.003930456380826234,
+      "lower": -0.0073536115318792745,
+      "upper": -0.0005073012297731939,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.014863824791495641,
+      "lower": -0.023923673798631567,
+      "upper": -0.0058039757843597155,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "dependent4",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.003290628429854863,
+      "lower": -0.007741009142307684,
+      "upper": 0.001159752282597958,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.012517568824683035,
+      "lower": -0.019061909973001168,
+      "upper": -0.005973227676364902,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.0010533619926014755,
+      "lower": -0.003356073248994626,
+      "upper": 0.001249349263791675,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.024813563649330076,
+      "lower": -0.03767923004184506,
+      "upper": -0.01194789725681509,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "segment": 1,
+      "control": 2,
+      "mean": -0.0015398064427606835,
+      "lower": -0.005748579391038992,
+      "upper": 0.002668966505517625,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "segment": 1,
+      "control": 0,
+      "mean": 0.024813563649330076,
+      "lower": 0.01194789725681509,
+      "upper": 0.03767923004184506,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "segment": 0,
+      "control": 0,
+      "mean": -0.010001990823874162,
+      "lower": -0.016427083192250683,
+      "upper": -0.0035768984554976416,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "segment": 0,
+      "control": 2,
+      "mean": -0.002354870138640493,
+      "lower": -0.0060174418329775065,
+      "upper": 0.0013077015556965201,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "segment": 1,
+      "control": 0,
+      "mean": -0.006038321667098571,
+      "lower": -0.011147276429976644,
+      "upper": -0.000929366904220498,
+      "pass": true
+    },
+    {
+      "type": "nonharm",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "segment": 1,
+      "control": 2,
+      "mean": 0.0005511684689587602,
+      "lower": -0.0006618709573893891,
+      "upper": 0.0017642078953069094,
+      "pass": true
+    },
+    {
+      "type": "gain",
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "segment": 1,
+      "control": 0,
+      "mean": 0.006038321667098571,
+      "lower": 0.000929366904220498,
+      "upper": 0.011147276429976644,
+      "pass": true
+    }
+  ],
+  "groups": [
+    {
+      "phase": "design",
+      "case": "parity1",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.05372985031275905,
+          "accuracy": 0.9476928710937458,
+          "cost": 2.9322509765625
+        },
+        {
+          "brier": 0.053496573069969765,
+          "accuracy": 0.9490112304687457,
+          "cost": 2.9322509765625
+        },
+        {
+          "brier": 0.053496074062714526,
+          "accuracy": 0.9490112304687457,
+          "cost": 2.9173583984375
+        },
+        {
+          "brier": 0.053549365726730004,
+          "accuracy": 0.9486816406249957,
+          "cost": 4.0653076171875
+        },
+        {
+          "brier": 0.08451459500103034,
+          "accuracy": 0.8774902343749967,
+          "cost": 3.701416015625
+        },
+        {
+          "brier": 0.09099369483839381,
+          "accuracy": 0.8623291015624963,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity1",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.049931173006034425,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.50244140625
+        },
+        {
+          "brier": 0.04982705857309259,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.50244140625
+        },
+        {
+          "brier": 0.049824810311118746,
+          "accuracy": 0.9500000000000026,
+          "cost": 2.51416015625
+        },
+        {
+          "brier": 0.04983342019605322,
+          "accuracy": 0.9500000000000026,
+          "cost": 3.740966796875
+        },
+        {
+          "brier": 0.08184920487428411,
+          "accuracy": 0.8783691406250017,
+          "cost": 3.350830078125
+        },
+        {
+          "brier": 0.08754289571723467,
+          "accuracy": 0.865844726562502,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.06338404469762068,
+          "accuracy": 0.9372558593749957,
+          "cost": 4.615234375
+        },
+        {
+          "brier": 0.06203297169808131,
+          "accuracy": 0.9392333984374959,
+          "cost": 4.615234375
+        },
+        {
+          "brier": 0.062255880942169085,
+          "accuracy": 0.9387939453124959,
+          "cost": 4.5771484375
+        },
+        {
+          "brier": 0.06101798738680729,
+          "accuracy": 0.9408813476562459,
+          "cost": 5.9991455078125
+        },
+        {
+          "brier": 0.15938522311474304,
+          "accuracy": 0.7178588867187489,
+          "cost": 5.736328125
+        },
+        {
+          "brier": 0.16268039688482058,
+          "accuracy": 0.7059936523437481,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity2",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05190502208603616,
+          "accuracy": 0.9500000000000026,
+          "cost": 4.416015625
+        },
+        {
+          "brier": 0.05137995712488448,
+          "accuracy": 0.9500000000000026,
+          "cost": 4.416015625
+        },
+        {
+          "brier": 0.05139672844672785,
+          "accuracy": 0.9500000000000026,
+          "cost": 4.353271484375
+        },
+        {
+          "brier": 0.051389272701644784,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.999755859375
+        },
+        {
+          "brier": 0.15326561459381002,
+          "accuracy": 0.7276367187500008,
+          "cost": 5.70556640625
+        },
+        {
+          "brier": 0.15770565657832988,
+          "accuracy": 0.7115966796875013,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07783152973854286,
+          "accuracy": 0.909460449218746,
+          "cost": 5.4544677734375
+        },
+        {
+          "brier": 0.07394247442522316,
+          "accuracy": 0.9159423828124962,
+          "cost": 5.4544677734375
+        },
+        {
+          "brier": 0.07365371552975156,
+          "accuracy": 0.9168212890624962,
+          "cost": 5.4156494140625
+        },
+        {
+          "brier": 0.0719837728545334,
+          "accuracy": 0.9225341796874963,
+          "cost": 6
+        },
+        {
+          "brier": 0.20155359236280992,
+          "accuracy": 0.6199707031249998,
+          "cost": 5.91845703125
+        },
+        {
+          "brier": 0.20134115081689663,
+          "accuracy": 0.620629882812499,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity3",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05620026657830744,
+          "accuracy": 0.9489013671875025,
+          "cost": 5.33349609375
+        },
+        {
+          "brier": 0.05345630335890803,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.33349609375
+        },
+        {
+          "brier": 0.05332931824984819,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.280029296875
+        },
+        {
+          "brier": 0.05302912591536108,
+          "accuracy": 0.9500000000000026,
+          "cost": 6
+        },
+        {
+          "brier": 0.1965566786452796,
+          "accuracy": 0.6243652343750005,
+          "cost": 5.8916015625
+        },
+        {
+          "brier": 0.19592572830569302,
+          "accuracy": 0.6272216796875005,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.0997605097179901,
+          "accuracy": 0.8657348632812468,
+          "cost": 5.87841796875
+        },
+        {
+          "brier": 0.09133757868237032,
+          "accuracy": 0.8885864257812462,
+          "cost": 5.87841796875
+        },
+        {
+          "brier": 0.08883796917183506,
+          "accuracy": 0.8910034179687464,
+          "cost": 5.7593994140625
+        },
+        {
+          "brier": 0.08912332404912417,
+          "accuracy": 0.8918823242187466,
+          "cost": 5.9993896484375
+        },
+        {
+          "brier": 0.2232416697408221,
+          "accuracy": 0.5760253906249998,
+          "cost": 5.9815673828125
+        },
+        {
+          "brier": 0.21112816139508342,
+          "accuracy": 0.5953613281249992,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity4",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07356448110334114,
+          "accuracy": 0.9234130859375018,
+          "cost": 5.850341796875
+        },
+        {
+          "brier": 0.062601625708968,
+          "accuracy": 0.9460449218750022,
+          "cost": 5.850341796875
+        },
+        {
+          "brier": 0.06097647954238972,
+          "accuracy": 0.9469238281250023,
+          "cost": 5.688720703125
+        },
+        {
+          "brier": 0.06168570124878079,
+          "accuracy": 0.9469238281250023,
+          "cost": 5.998779296875
+        },
+        {
+          "brier": 0.21768762726984972,
+          "accuracy": 0.5881103515625004,
+          "cost": 5.97802734375
+        },
+        {
+          "brier": 0.20424645218477047,
+          "accuracy": 0.6023925781250006,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.09742923816057213,
+          "accuracy": 0.8679321289062467,
+          "cost": 5.819091796875
+        },
+        {
+          "brier": 0.08750286790032442,
+          "accuracy": 0.8944091796874964,
+          "cost": 5.819091796875
+        },
+        {
+          "brier": 0.08597461150087944,
+          "accuracy": 0.8971557617187464,
+          "cost": 5.641357421875
+        },
+        {
+          "brier": 0.08387756190089615,
+          "accuracy": 0.9008911132812464,
+          "cost": 5.9996337890625
+        },
+        {
+          "brier": 0.21388091485525393,
+          "accuracy": 0.5912963867187497,
+          "cost": 5.97412109375
+        },
+        {
+          "brier": 0.22827018210049918,
+          "accuracy": 0.5587768554687494,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "complement4",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.07015940829183333,
+          "accuracy": 0.9273681640625018,
+          "cost": 5.7822265625
+        },
+        {
+          "brier": 0.05873386222619909,
+          "accuracy": 0.9484619140625025,
+          "cost": 5.7822265625
+        },
+        {
+          "brier": 0.057713352957865935,
+          "accuracy": 0.9493408203125026,
+          "cost": 5.5224609375
+        },
+        {
+          "brier": 0.0568733259133145,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.999267578125
+        },
+        {
+          "brier": 0.2063076770489938,
+          "accuracy": 0.6067871093750004,
+          "cost": 5.968505859375
+        },
+        {
+          "brier": 0.22250514896754428,
+          "accuracy": 0.5613037109375003,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07723273113620387,
+          "accuracy": 0.9116577148437462,
+          "cost": 5.00830078125
+        },
+        {
+          "brier": 0.07739284300550758,
+          "accuracy": 0.9122070312499962,
+          "cost": 5.00830078125
+        },
+        {
+          "brier": 0.07741699830035553,
+          "accuracy": 0.9122070312499962,
+          "cost": 5.022216796875
+        },
+        {
+          "brier": 0.07715448590368865,
+          "accuracy": 0.9138549804687465,
+          "cost": 5.94091796875
+        },
+        {
+          "brier": 0.14725844133953234,
+          "accuracy": 0.7741088867187483,
+          "cost": 5.730712890625
+        },
+        {
+          "brier": 0.15735702415182215,
+          "accuracy": 0.7604858398437483,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority3",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.058341889203544606,
+          "accuracy": 0.9449462890625023,
+          "cost": 4.84033203125
+        },
+        {
+          "brier": 0.058385555224447015,
+          "accuracy": 0.9449462890625023,
+          "cost": 4.84033203125
+        },
+        {
+          "brier": 0.05838591957305023,
+          "accuracy": 0.9449462890625023,
+          "cost": 4.84423828125
+        },
+        {
+          "brier": 0.05843314798223203,
+          "accuracy": 0.9451660156250024,
+          "cost": 5.93994140625
+        },
+        {
+          "brier": 0.13562199950922124,
+          "accuracy": 0.794873046875001,
+          "cost": 5.6875
+        },
+        {
+          "brier": 0.1469300467888514,
+          "accuracy": 0.7832275390625012,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07510694784879872,
+          "accuracy": 0.9206665039062459,
+          "cost": 4.8831787109375
+        },
+        {
+          "brier": 0.07530813106593566,
+          "accuracy": 0.9206665039062459,
+          "cost": 4.8831787109375
+        },
+        {
+          "brier": 0.07531743622167396,
+          "accuracy": 0.920556640624996,
+          "cost": 4.89892578125
+        },
+        {
+          "brier": 0.0753818563119621,
+          "accuracy": 0.921545410156246,
+          "cost": 5.996337890625
+        },
+        {
+          "brier": 0.14659181430175452,
+          "accuracy": 0.7632324218749983,
+          "cost": 5.7196044921875
+        },
+        {
+          "brier": 0.1599386198147694,
+          "accuracy": 0.7218139648437484,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "mux3",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.0573476954762765,
+          "accuracy": 0.9489013671875025,
+          "cost": 4.684326171875
+        },
+        {
+          "brier": 0.05739111609451295,
+          "accuracy": 0.9489013671875025,
+          "cost": 4.684326171875
+        },
+        {
+          "brier": 0.057394115458489214,
+          "accuracy": 0.9489013671875025,
+          "cost": 4.687744140625
+        },
+        {
+          "brier": 0.05750842464278656,
+          "accuracy": 0.9489013671875025,
+          "cost": 5.9970703125
+        },
+        {
+          "brier": 0.13649336815022017,
+          "accuracy": 0.777075195312501,
+          "cost": 5.677734375
+        },
+        {
+          "brier": 0.15215492960785665,
+          "accuracy": 0.7285156250000009,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.0508400498129063,
+          "accuracy": 0.9496704101562456,
+          "cost": 1.9124755859375
+        },
+        {
+          "brier": 0.05082265718712049,
+          "accuracy": 0.9496704101562456,
+          "cost": 1.9124755859375
+        },
+        {
+          "brier": 0.05082501017678869,
+          "accuracy": 0.9496704101562456,
+          "cost": 1.91943359375
+        },
+        {
+          "brier": 0.05082445408348074,
+          "accuracy": 0.9496704101562456,
+          "cost": 2.001953125
+        },
+        {
+          "brier": 0.05069882277687592,
+          "accuracy": 0.9498901367187457,
+          "cost": 1.9674072265625
+        },
+        {
+          "brier": 0.05083040300573595,
+          "accuracy": 0.9499999999999956,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "constant",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.04866092113395107,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.5
+        },
+        {
+          "brier": 0.04865091830961618,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.5
+        },
+        {
+          "brier": 0.04865076507156987,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.497802734375
+        },
+        {
+          "brier": 0.048652802462609196,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.602783203125
+        },
+        {
+          "brier": 0.0486004944650816,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.55810546875
+        },
+        {
+          "brier": 0.04871377191825544,
+          "accuracy": 0.9500000000000026,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.2641213045243278,
+          "accuracy": 0.5,
+          "cost": 5.9952392578125
+        },
+        {
+          "brier": 0.2618891981049258,
+          "accuracy": 0.5,
+          "cost": 5.9952392578125
+        },
+        {
+          "brier": 0.2618922219935956,
+          "accuracy": 0.5,
+          "cost": 5.9993896484375
+        },
+        {
+          "brier": 0.2623310974357242,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.258013084888043,
+          "accuracy": 0.5,
+          "cost": 5.9996337890625
+        },
+        {
+          "brier": 0.25823932421850954,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "null",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.26358471207623607,
+          "accuracy": 0.5,
+          "cost": 5.990478515625
+        },
+        {
+          "brier": 0.2606655968698311,
+          "accuracy": 0.5,
+          "cost": 5.990478515625
+        },
+        {
+          "brier": 0.2606714094959947,
+          "accuracy": 0.5,
+          "cost": 5.998779296875
+        },
+        {
+          "brier": 0.26112948858026247,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2575723358040861,
+          "accuracy": 0.5,
+          "cost": 5.999267578125
+        },
+        {
+          "brier": 0.2581103496725632,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.11143304913511325,
+          "accuracy": 0.858813476562497,
+          "cost": 5.7777099609375
+        },
+        {
+          "brier": 0.10453482499940975,
+          "accuracy": 0.8837524414062464,
+          "cost": 5.7777099609375
+        },
+        {
+          "brier": 0.10116241639826654,
+          "accuracy": 0.8900146484374964,
+          "cost": 5.797607421875
+        },
+        {
+          "brier": 0.09701289094581558,
+          "accuracy": 0.8999023437499961,
+          "cost": 6
+        },
+        {
+          "brier": 0.20956605136445985,
+          "accuracy": 0.6204101562499996,
+          "cost": 5.9422607421875
+        },
+        {
+          "brier": 0.22623171198518088,
+          "accuracy": 0.5783325195312494,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "dependent4",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.09040191237013981,
+          "accuracy": 0.9040771484375014,
+          "cost": 5.756103515625
+        },
+        {
+          "brier": 0.08213623514812243,
+          "accuracy": 0.9308837890625021,
+          "cost": 5.756103515625
+        },
+        {
+          "brier": 0.08041620176112756,
+          "accuracy": 0.9322021484375022,
+          "cost": 5.78125
+        },
+        {
+          "brier": 0.07556471827818814,
+          "accuracy": 0.9464843750000024,
+          "cost": 6
+        },
+        {
+          "brier": 0.20312230285317553,
+          "accuracy": 0.6410644531250007,
+          "cost": 5.940185546875
+        },
+        {
+          "brier": 0.22274338974483512,
+          "accuracy": 0.5894287109375005,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority_to_parity",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1463081546515634,
+          "accuracy": 0.8165161132812481,
+          "cost": 5.41357421875
+        },
+        {
+          "brier": 0.13465990520412463,
+          "accuracy": 0.8259643554687479,
+          "cost": 5.41357421875
+        },
+        {
+          "brier": 0.134163877347543,
+          "accuracy": 0.8271728515624979,
+          "cost": 5.44384765625
+        },
+        {
+          "brier": 0.1337008352464973,
+          "accuracy": 0.8283813476562476,
+          "cost": 5.9844970703125
+        },
+        {
+          "brier": 0.20681236036369421,
+          "accuracy": 0.65677490234375,
+          "cost": 5.8734130859375
+        },
+        {
+          "brier": 0.19748390314636224,
+          "accuracy": 0.681494140625,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "majority_to_parity",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.20107518765118368,
+          "accuracy": 0.7326904296875014,
+          "cost": 5.648193359375
+        },
+        {
+          "brier": 0.17748608305479066,
+          "accuracy": 0.7518066406250015,
+          "cost": 5.648193359375
+        },
+        {
+          "brier": 0.17653247491188065,
+          "accuracy": 0.7540039062500015,
+          "cost": 5.696533203125
+        },
+        {
+          "brier": 0.1756740499560546,
+          "accuracy": 0.7577392578125014,
+          "cost": 5.9970703125
+        },
+        {
+          "brier": 0.25460995249134644,
+          "accuracy": 0.5580078125000003,
+          "cost": 5.945068359375
+        },
+        {
+          "brier": 0.2530435082304781,
+          "accuracy": 0.5573486328125005,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity_to_majority",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1487794436088043,
+          "accuracy": 0.7941040039062474,
+          "cost": 5.6158447265625
+        },
+        {
+          "brier": 0.1405081512362514,
+          "accuracy": 0.8087158203124974,
+          "cost": 5.6158447265625
+        },
+        {
+          "brier": 0.1388549954305125,
+          "accuracy": 0.8116821289062476,
+          "cost": 5.62109375
+        },
+        {
+          "brier": 0.13824505354513122,
+          "accuracy": 0.8137695312499973,
+          "cost": 5.9822998046875
+        },
+        {
+          "brier": 0.20888176510113302,
+          "accuracy": 0.6276611328124996,
+          "cost": 5.9146728515625
+        },
+        {
+          "brier": 0.21440834128063826,
+          "accuracy": 0.6134887695312495,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "design",
+      "case": "parity_to_majority",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.17093677883657077,
+          "accuracy": 0.7834472656250013,
+          "cost": 5.30810546875
+        },
+        {
+          "brier": 0.16103105608175985,
+          "accuracy": 0.7841064453125015,
+          "cost": 5.30810546875
+        },
+        {
+          "brier": 0.1611988112037959,
+          "accuracy": 0.7825683593750015,
+          "cost": 5.37841796875
+        },
+        {
+          "brier": 0.1615033282316143,
+          "accuracy": 0.7836669921875017,
+          "cost": 5.964599609375
+        },
+        {
+          "brier": 0.1856879660194432,
+          "accuracy": 0.6979736328125009,
+          "cost": 5.8369140625
+        },
+        {
+          "brier": 0.19117735571747807,
+          "accuracy": 0.681713867187501,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.05406237645713528,
+          "accuracy": 0.9468139648437457,
+          "cost": 3.6834716796875
+        },
+        {
+          "brier": 0.05389590923066171,
+          "accuracy": 0.9468139648437457,
+          "cost": 3.6834716796875
+        },
+        {
+          "brier": 0.053901814049299876,
+          "accuracy": 0.9468139648437457,
+          "cost": 3.6612548828125
+        },
+        {
+          "brier": 0.05393656013439026,
+          "accuracy": 0.9468139648437457,
+          "cost": 5.9993896484375
+        },
+        {
+          "brier": 0.1288198599112268,
+          "accuracy": 0.7793823242187481,
+          "cost": 5.2860107421875
+        },
+        {
+          "brier": 0.07853029481216633,
+          "accuracy": 0.8930908203124963,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity1",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05008546515978545,
+          "accuracy": 0.9484619140625026,
+          "cost": 3.371337890625
+        },
+        {
+          "brier": 0.049930228425663366,
+          "accuracy": 0.9484619140625026,
+          "cost": 3.371337890625
+        },
+        {
+          "brier": 0.04992883761421146,
+          "accuracy": 0.9484619140625026,
+          "cost": 3.36083984375
+        },
+        {
+          "brier": 0.04998031355503133,
+          "accuracy": 0.9484619140625026,
+          "cost": 6
+        },
+        {
+          "brier": 0.12566741279361945,
+          "accuracy": 0.7805908203125012,
+          "cost": 5.18115234375
+        },
+        {
+          "brier": 0.074750308479407,
+          "accuracy": 0.8948486328125023,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.06365567761067904,
+          "accuracy": 0.9315429687499958,
+          "cost": 4.6953125
+        },
+        {
+          "brier": 0.06278875653302436,
+          "accuracy": 0.9330810546874958,
+          "cost": 4.6953125
+        },
+        {
+          "brier": 0.06278635067310027,
+          "accuracy": 0.9330810546874958,
+          "cost": 4.6702880859375
+        },
+        {
+          "brier": 0.06225915321985348,
+          "accuracy": 0.9343994140624958,
+          "cost": 5.9990234375
+        },
+        {
+          "brier": 0.15919045950264749,
+          "accuracy": 0.7128051757812488,
+          "cost": 5.6634521484375
+        },
+        {
+          "brier": 0.19294921887334943,
+          "accuracy": 0.6357910156249986,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity2",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.0523307887590607,
+          "accuracy": 0.9495605468750026,
+          "cost": 4.5205078125
+        },
+        {
+          "brier": 0.05186530706640029,
+          "accuracy": 0.9495605468750026,
+          "cost": 4.5205078125
+        },
+        {
+          "brier": 0.0518692516314634,
+          "accuracy": 0.9495605468750026,
+          "cost": 4.481689453125
+        },
+        {
+          "brier": 0.0518628175413273,
+          "accuracy": 0.9495605468750026,
+          "cost": 5.998291015625
+        },
+        {
+          "brier": 0.15336203111967317,
+          "accuracy": 0.7179687500000007,
+          "cost": 5.616455078125
+        },
+        {
+          "brier": 0.18934260073574857,
+          "accuracy": 0.6412841796875006,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07892065485789289,
+          "accuracy": 0.9047363281249963,
+          "cost": 5.2119140625
+        },
+        {
+          "brier": 0.0751244296104827,
+          "accuracy": 0.9137451171874962,
+          "cost": 5.2119140625
+        },
+        {
+          "brier": 0.07484020576132369,
+          "accuracy": 0.915612792968746,
+          "cost": 5.1129150390625
+        },
+        {
+          "brier": 0.07311455693890276,
+          "accuracy": 0.9190185546874962,
+          "cost": 5.99951171875
+        },
+        {
+          "brier": 0.19343074266169952,
+          "accuracy": 0.6424926757812496,
+          "cost": 5.8701171875
+        },
+        {
+          "brier": 0.17335311784256416,
+          "accuracy": 0.6894042968749984,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity3",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.056687758961615264,
+          "accuracy": 0.9482421875000026,
+          "cost": 5.08203125
+        },
+        {
+          "brier": 0.05400288628722408,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.08203125
+        },
+        {
+          "brier": 0.05398867633446271,
+          "accuracy": 0.9500000000000026,
+          "cost": 4.965576171875
+        },
+        {
+          "brier": 0.053504941107712436,
+          "accuracy": 0.9500000000000026,
+          "cost": 5.9990234375
+        },
+        {
+          "brier": 0.18779647364939686,
+          "accuracy": 0.6441406250000004,
+          "cost": 5.853271484375
+        },
+        {
+          "brier": 0.16475613124193564,
+          "accuracy": 0.6975341796875009,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.09805835286456788,
+          "accuracy": 0.8659545898437468,
+          "cost": 5.8497314453125
+        },
+        {
+          "brier": 0.08947440478902183,
+          "accuracy": 0.8899047851562465,
+          "cost": 5.8497314453125
+        },
+        {
+          "brier": 0.08747098881975406,
+          "accuracy": 0.8944091796874964,
+          "cost": 5.7186279296875
+        },
+        {
+          "brier": 0.08552020643294633,
+          "accuracy": 0.8994628906249964,
+          "cost": 5.9996337890625
+        },
+        {
+          "brier": 0.2223390494080865,
+          "accuracy": 0.5793212890624997,
+          "cost": 5.984375
+        },
+        {
+          "brier": 0.22151337621433478,
+          "accuracy": 0.5752563476562493,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity4",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.06962645846731859,
+          "accuracy": 0.928027343750002,
+          "cost": 5.81689453125
+        },
+        {
+          "brier": 0.05886113720167361,
+          "accuracy": 0.9480224609375024,
+          "cost": 5.81689453125
+        },
+        {
+          "brier": 0.05813111227324547,
+          "accuracy": 0.9473632812500025,
+          "cost": 5.6357421875
+        },
+        {
+          "brier": 0.057423298811203144,
+          "accuracy": 0.9480224609375024,
+          "cost": 5.999755859375
+        },
+        {
+          "brier": 0.21454920461914706,
+          "accuracy": 0.5933837890625003,
+          "cost": 5.9814453125
+        },
+        {
+          "brier": 0.2155028112151974,
+          "accuracy": 0.5817382812500003,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.09792615787952867,
+          "accuracy": 0.8647460937499968,
+          "cost": 5.8756103515625
+        },
+        {
+          "brier": 0.08869762574259307,
+          "accuracy": 0.8924316406249964,
+          "cost": 5.8756103515625
+        },
+        {
+          "brier": 0.08646948273609696,
+          "accuracy": 0.8951782226562464,
+          "cost": 5.782470703125
+        },
+        {
+          "brier": 0.08411395024294281,
+          "accuracy": 0.9002319335937464,
+          "cost": 6
+        },
+        {
+          "brier": 0.2253057720553519,
+          "accuracy": 0.57481689453125,
+          "cost": 5.9881591796875
+        },
+        {
+          "brier": 0.22171115917998,
+          "accuracy": 0.5730590820312493,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "complement4",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.0744079026545809,
+          "accuracy": 0.9152832031250018,
+          "cost": 5.840576171875
+        },
+        {
+          "brier": 0.0624213276623327,
+          "accuracy": 0.9445068359375024,
+          "cost": 5.840576171875
+        },
+        {
+          "brier": 0.06105760442403793,
+          "accuracy": 0.9445068359375024,
+          "cost": 5.703857421875
+        },
+        {
+          "brier": 0.058791121185959,
+          "accuracy": 0.9473632812500025,
+          "cost": 6
+        },
+        {
+          "brier": 0.2207921585275139,
+          "accuracy": 0.5804199218750001,
+          "cost": 5.98291015625
+        },
+        {
+          "brier": 0.21817133873083894,
+          "accuracy": 0.5755859375000005,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07363832722725704,
+          "accuracy": 0.9216552734374958,
+          "cost": 5.052734375
+        },
+        {
+          "brier": 0.07382458984789173,
+          "accuracy": 0.9218749999999959,
+          "cost": 5.052734375
+        },
+        {
+          "brier": 0.07383636996695073,
+          "accuracy": 0.9218749999999959,
+          "cost": 5.0555419921875
+        },
+        {
+          "brier": 0.07386476347502446,
+          "accuracy": 0.9222045898437459,
+          "cost": 5.9278564453125
+        },
+        {
+          "brier": 0.1500149576789699,
+          "accuracy": 0.7661987304687482,
+          "cost": 5.7518310546875
+        },
+        {
+          "brier": 0.13503300940798274,
+          "accuracy": 0.8016845703124976,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority3",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05582133973452011,
+          "accuracy": 0.9482421875000026,
+          "cost": 4.857177734375
+        },
+        {
+          "brier": 0.05586577424457068,
+          "accuracy": 0.9482421875000026,
+          "cost": 4.857177734375
+        },
+        {
+          "brier": 0.05586672324097051,
+          "accuracy": 0.9482421875000026,
+          "cost": 4.857666015625
+        },
+        {
+          "brier": 0.0559309995489446,
+          "accuracy": 0.9482421875000026,
+          "cost": 5.918212890625
+        },
+        {
+          "brier": 0.14002596514269344,
+          "accuracy": 0.777954101562501,
+          "cost": 5.69482421875
+        },
+        {
+          "brier": 0.12511199987183313,
+          "accuracy": 0.8159667968750014,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.07478786115111329,
+          "accuracy": 0.920117187499996,
+          "cost": 4.869140625
+        },
+        {
+          "brier": 0.07495532995398517,
+          "accuracy": 0.9201171874999959,
+          "cost": 4.869140625
+        },
+        {
+          "brier": 0.07495714860793859,
+          "accuracy": 0.9202270507812459,
+          "cost": 4.8814697265625
+        },
+        {
+          "brier": 0.07502922501429954,
+          "accuracy": 0.9204467773437457,
+          "cost": 5.9964599609375
+        },
+        {
+          "brier": 0.15078830546747643,
+          "accuracy": 0.7529052734374984,
+          "cost": 5.7198486328125
+        },
+        {
+          "brier": 0.14957528264330128,
+          "accuracy": 0.7433471679687481,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "mux3",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.05728466978130419,
+          "accuracy": 0.9467041015625025,
+          "cost": 4.7197265625
+        },
+        {
+          "brier": 0.05732572246808685,
+          "accuracy": 0.9467041015625025,
+          "cost": 4.7197265625
+        },
+        {
+          "brier": 0.05732583404734011,
+          "accuracy": 0.9467041015625025,
+          "cost": 4.72021484375
+        },
+        {
+          "brier": 0.05746504515816802,
+          "accuracy": 0.9467041015625025,
+          "cost": 5.996337890625
+        },
+        {
+          "brier": 0.14114908715498034,
+          "accuracy": 0.7669677734375009,
+          "cost": 5.6767578125
+        },
+        {
+          "brier": 0.13915222177684702,
+          "accuracy": 0.7566406250000012,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.049921239328286494,
+          "accuracy": 0.9499999999999956,
+          "cost": 1.7210693359375
+        },
+        {
+          "brier": 0.04988792460453248,
+          "accuracy": 0.9499999999999956,
+          "cost": 1.7210693359375
+        },
+        {
+          "brier": 0.04988558049639945,
+          "accuracy": 0.9499999999999956,
+          "cost": 1.7208251953125
+        },
+        {
+          "brier": 0.0498823806365109,
+          "accuracy": 0.9499999999999956,
+          "cost": 1.8389892578125
+        },
+        {
+          "brier": 0.049770912874719894,
+          "accuracy": 0.9499999999999956,
+          "cost": 1.79931640625
+        },
+        {
+          "brier": 0.04980174028039023,
+          "accuracy": 0.9499999999999956,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "constant",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.04892856921964925,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.458740234375
+        },
+        {
+          "brier": 0.048885385949871164,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.458740234375
+        },
+        {
+          "brier": 0.04888115217185644,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.446533203125
+        },
+        {
+          "brier": 0.04888730139598504,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.581298828125
+        },
+        {
+          "brier": 0.04880029036643062,
+          "accuracy": 0.9500000000000026,
+          "cost": 1.5439453125
+        },
+        {
+          "brier": 0.04879468436971827,
+          "accuracy": 0.9500000000000026,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.26567040455401475,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.26315301546583103,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.26320209629513874,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2635768987363782,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.25926631077339857,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2587581890934575,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "null",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.26497416654870926,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.26161778938459423,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.2616865103268082,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.26205156033507687,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.25809900373287065,
+          "accuracy": 0.5,
+          "cost": 6
+        },
+        {
+          "brier": 0.25720180563088335,
+          "accuracy": 0.5,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.10584181779360886,
+          "accuracy": 0.8801269531249967,
+          "cost": 5.4720458984375
+        },
+        {
+          "brier": 0.09803321836885483,
+          "accuracy": 0.8981445312499964,
+          "cost": 5.4720458984375
+        },
+        {
+          "brier": 0.09607250157716916,
+          "accuracy": 0.9015502929687462,
+          "cost": 5.4940185546875
+        },
+        {
+          "brier": 0.09214204519634295,
+          "accuracy": 0.9118774414062462,
+          "cost": 6
+        },
+        {
+          "brier": 0.196980683321412,
+          "accuracy": 0.6540283203124994,
+          "cost": 5.87109375
+        },
+        {
+          "brier": 0.21194058523774972,
+          "accuracy": 0.622387695312499,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "dependent4",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.08968362993895222,
+          "accuracy": 0.914184570312502,
+          "cost": 5.402099609375
+        },
+        {
+          "brier": 0.0797046521221852,
+          "accuracy": 0.9354980468750023,
+          "cost": 5.402099609375
+        },
+        {
+          "brier": 0.07811043357731144,
+          "accuracy": 0.9385742187500024,
+          "cost": 5.428466796875
+        },
+        {
+          "brier": 0.07481980514745658,
+          "accuracy": 0.9451660156250025,
+          "cost": 6
+        },
+        {
+          "brier": 0.19168425425842273,
+          "accuracy": 0.6643554687500005,
+          "cost": 5.84716796875
+        },
+        {
+          "brier": 0.2065839402532872,
+          "accuracy": 0.6362304687500003,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1497037942191925,
+          "accuracy": 0.8087158203124979,
+          "cost": 5.3955078125
+        },
+        {
+          "brier": 0.13839481945706605,
+          "accuracy": 0.8184936523437478,
+          "cost": 5.3955078125
+        },
+        {
+          "brier": 0.13823958738711092,
+          "accuracy": 0.8182739257812479,
+          "cost": 5.4678955078125
+        },
+        {
+          "brier": 0.13718622539450945,
+          "accuracy": 0.8201416015624979,
+          "cost": 5.9569091796875
+        },
+        {
+          "brier": 0.20799565666120606,
+          "accuracy": 0.6467773437500002,
+          "cost": 5.8350830078125
+        },
+        {
+          "brier": 0.20842465005115637,
+          "accuracy": 0.6431518554687503,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "majority_to_parity",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.20622216833699533,
+          "accuracy": 0.7214843750000014,
+          "cost": 5.6044921875
+        },
+        {
+          "brier": 0.18326994966442872,
+          "accuracy": 0.7414794921875015,
+          "cost": 5.6044921875
+        },
+        {
+          "brier": 0.182948411130426,
+          "accuracy": 0.7412597656250015,
+          "cost": 5.7255859375
+        },
+        {
+          "brier": 0.18140860468766523,
+          "accuracy": 0.7430175781250014,
+          "cost": 5.98291015625
+        },
+        {
+          "brier": 0.2604145941306642,
+          "accuracy": 0.5391113281250002,
+          "cost": 5.91552734375
+        },
+        {
+          "brier": 0.2592934301734576,
+          "accuracy": 0.5413085937500002,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "segment": "all",
+      "metrics": [
+        {
+          "brier": 0.1488561222332568,
+          "accuracy": 0.7892700195312476,
+          "cost": 5.6995849609375
+        },
+        {
+          "brier": 0.14332186671965644,
+          "accuracy": 0.8016845703124974,
+          "cost": 5.6995849609375
+        },
+        {
+          "brier": 0.14120900154802316,
+          "accuracy": 0.8045410156249975,
+          "cost": 5.7054443359375
+        },
+        {
+          "brier": 0.13885413140938263,
+          "accuracy": 0.8114624023437476,
+          "cost": 5.982421875
+        },
+        {
+          "brier": 0.2144477034730228,
+          "accuracy": 0.6187622070312495,
+          "cost": 5.9346923828125
+        },
+        {
+          "brier": 0.22152257281048082,
+          "accuracy": 0.5928344726562496,
+          "cost": 6
+        }
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "case": "parity_to_majority",
+      "segment": "late",
+      "metrics": [
+        {
+          "brier": 0.17314793371879175,
+          "accuracy": 0.7768554687500017,
+          "cost": 5.486083984375
+        },
+        {
+          "brier": 0.16695463526396304,
+          "accuracy": 0.7786132812500016,
+          "cost": 5.486083984375
+        },
+        {
+          "brier": 0.16655844358273444,
+          "accuracy": 0.7783935546875017,
+          "cost": 5.54150390625
+        },
+        {
+          "brier": 0.1671096120516932,
+          "accuracy": 0.7777343750000014,
+          "cost": 5.96484375
+        },
+        {
+          "brier": 0.1962497577978862,
+          "accuracy": 0.6828125000000008,
+          "cost": 5.877685546875
+        },
+        {
+          "brier": 0.19593473090621497,
+          "accuracy": 0.671826171875001,
+          "cost": 6
+        }
+      ]
+    }
+  ]
+}

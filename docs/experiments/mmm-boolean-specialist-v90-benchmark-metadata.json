@@ -1,0 +1,22 @@
+{
+  "command": "go test ./internal/observationlearners -run '^$' -bench '^(BenchmarkBooleanComparison|BenchmarkBooleanSpecialistForecast)$' -benchmem -benchtime=500ms -count=3",
+  "runtime": "go1.27.1 darwin/arm64",
+  "cpu": "Apple M4",
+  "gomaxprocs": 10,
+  "scope": "same-fixture component fits and compiled lookup; no daemon or concurrent experiment",
+  "hashes": {
+    "docs/experiments/mmm-boolean-specialist-v90-protocol.md": "733df3ab0fb9113eb4b911210c43281a96bb0bd92746f089f2e204bf011060f5",
+    "go.mod": "fa72235136c9ba87b6c33424e3e28c451a53901bd5198db1ee69fe9b4f654da6",
+    "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13",
+    "internal/observation/controller.go": "3d742564146015b10c74c4a9c63e0bcf3f499ea53180ebefe634c2fbcf7e3b72",
+    "internal/observationlearners/boolean_specialist.go": "9636ff1c80f27d92444c251b2638a9d55ee392b409038267d9d5997021aed66f",
+    "internal/observationlearners/boolean_specialist_test.go": "d7d71f8ba3be3d97149422c71b3b15f5ca493c086fb27e4e74f51ef57fdd4e43",
+    "internal/observationlearners/boolean_specialist_v90_test.go": "669fd127c78d6796cf12636ee03662d80f4ed3404ae14ef9e2496c9596fd4991",
+    "internal/observationlearners/conditional.go": "25f157a5dfe6fc4c99a8f509625de4652a68bed760e7020430529528c800c6f0",
+    "internal/observationlearners/subset.go": "b33e2cbfeac2e8cbda8b596e519b777da40e7573d2b4347eaf21dc0706f321a3",
+    "internal/observationlearners/subset_test.go": "9ebd28e04c0c270ed5df3218f65c4fd7a88a16c6fb03777fa78f5835bbb155a6",
+    "research/boolean-specialist-proposal.md": "d31cbc66da092c057214c02bff656e0dc07492e18fe2070243c07c5e325ef5cf",
+    "internal/observationlearners/boolean_benchmark_test.go": "256d950ec24296a9f94eaf561b1d9d66322308f9490521da49f6511ec3132773",
+    "docs/experiments/mmm-boolean-specialist-v90-benchmarks.txt": "e7bed588fce0e4bb43c45f57ff3b26cc0c7cd7a653e53a6d30e31a5ceec50765"
+  }
+}

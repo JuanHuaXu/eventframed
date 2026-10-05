@@ -1,0 +1,13 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+const root=process.cwd(),dir=path.join(root,'research/public-task-pilot/lazy-repair-overlay');fs.mkdirSync(dir,{recursive:true});
+const overlay=JSON.parse(fs.readFileSync('research/public-task-pilot/serial-work-probe/probe.json'));
+const target=path.join(root,'research/public-task-pilot/candidate-libravdb-v1.6.13/internal/index/hnsw/delete.go');
+let s=fs.readFileSync(overlay.Replace[target],'utf8');
+const start=s.indexOf('\tdistMat, err := memory.ArenaSlice[float32](arena, D*D)');
+const end=s.indexOf('\n\t// For each neighbor, try to connect',start);assert(start>=0&&end>start);
+const block=s.slice(start,end).replace('distMat, err :=','distMat, err =');
+s=s.slice(0,start)+'\tvar distMat []float32\n'+s.slice(end);
+const gate='\t\tif currentConnections >= minConnections {\n\t\t\tcontinue\n\t\t}';assert.equal(s.split(gate).length,2);
+s=s.replace(gate,gate+'\n\t\t// Research lazy preparation: no matrix unless repair is needed.\n\t\tif distMat == nil {\n'+block+'\n\t\t}');
+const source=path.join(dir,'delete.go');fs.writeFileSync(source,s);overlay.Replace[target]=source;
+fs.writeFileSync(path.join(dir,'overlay.json'),JSON.stringify(overlay,null,2));

@@ -1,0 +1,243 @@
+package observationlearners
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+
+	"github.com/JuanHuaXu/eventframed/internal/bayes"
+	"github.com/JuanHuaXu/eventframed/internal/observation"
+	"github.com/JuanHuaXu/eventframed/internal/observationexperiment"
+)
+
+type AcquisitionRecord struct {
+	DependentRecord
+	Mode string
+}
+
+func RunAcquisitionStream(base *observation.Model, split string, j, fit, stream int, seed int64, generator, mode int) (AcquisitionRecord, error) {
+	if mode < 0 || mode > 2 || generator < 0 || generator > 2 || j < 0 || j >= len(Scenarios) || base == nil {
+		return AcquisitionRecord{}, fmt.Errorf("invalid dependent experiment input")
+	}
+	s := Scenarios[j]
+	r := AcquisitionRecord{DependentRecord: DependentRecord{RetainedRecord: RetainedRecord{Record: Record{Split: split, Scenario: s.Name, Fit: fit, Stream: stream}}, Generator: []string{"fair", "biased", "clustered"}[generator]}, Mode: []string{"uniform", "empirical", "oracle"}[mode]}
+	for i := range r.Recovery {
+		r.Recovery[i] = -1
+	}
+	rng := rand.New(rand.NewSource(Seed(seed, 10*generator+j, fit, stream, 0)))
+	ar := rand.New(rand.NewSource(Seed(seed, 10*generator+j, fit, stream, 1)))
+	mr := rand.New(rand.NewSource(Seed(seed, 10*generator+j, fit, stream, 2)))
+	rollingSeed := Seed(seed, 10*generator+j, fit, stream, 4)
+	forest := NewForest(rollingSeed)
+	var conditional *ConditionalForest
+	var short, long *observation.Model
+	var mixes [4]bayes.ForecastMix
+	var inner bayes.ForecastMix
+	var audits []observation.Sample
+	var queue []packet
+	for t := 0; t < 512; t++ {
+		tick := Tick{Audit: ar.Float64() < .25, Missing: mr.Float64() < s.Missing}
+		x := dependentInput(rng, generator)
+		r.Inputs = append(r.Inputs, x)
+		rd := observationexperiment.Frames(x, fmt.Sprintf("v6-%s-%s-%d-%d-%d", split, s.Name, fit, stream, t))
+		var views [4]observation.Result
+		var innerTrace [4][4]float64
+		for a := 0; a < 4; a++ {
+			w := mixes[a].Weights
+			if w == [4]float64{} {
+				w = [4]float64{.7, .1, .1, .1}
+			}
+			guide := 0
+			{
+				if short != nil && w[1] > w[guide] {
+					guide = 1
+				}
+				if long != nil && w[2] > w[guide] {
+					guide = 2
+				}
+			}
+			var view observation.Result
+			var e error
+			useTree := a == 1
+			if a == 2 {
+				iw := inner.Weights
+				if iw == [4]float64{} {
+					iw = [4]float64{.7, .1, .1, .1}
+				}
+				useTree = iw[1]+iw[2]+iw[3] > iw[0]
+			}
+			if useTree && guide == 1 {
+				if mode == 0 {
+					view, e = RunForestObserver(forest, rd, rd.Epoch())
+				} else {
+					view, e = RunConditionalObserver(conditional, rd, rd.Epoch())
+				}
+			} else {
+				model := base
+				if guide == 1 {
+					model = short
+				}
+				if guide == 2 {
+					model = long
+				}
+				policy := "mmm"
+
+				view, e = observation.Run(model, rd, rd.Epoch(), policy, 0)
+			}
+			if e != nil {
+				return r, e
+			}
+			views[a] = view
+			last := view.Trace[len(view.Trace)-1]
+			mask, values := last.Observed, last.Values
+			b, e := base.ForecastObserved(mask, values)
+			if e != nil {
+				return r, e
+			}
+			l, c := .5, .5
+			if long != nil {
+				l, e = long.ForecastObserved(mask, values)
+				if e != nil {
+					return r, e
+				}
+			}
+			sp, tp := .5, .5
+			if short != nil {
+				sp, e = short.ForecastObserved(mask, values)
+				if e != nil {
+					return r, e
+				}
+				if mode == 0 {
+					tp, e = forest.ForecastPartial(mask, values)
+				} else {
+					tp, e = conditional.Forecast(mask, values)
+				}
+				if e != nil {
+					return r, e
+				}
+			}
+			innerTrace[a] = [4]float64{sp, tp, tp, tp}
+			switch a {
+			case 0:
+				c = sp
+			case 1:
+				c = tp
+			case 2:
+				c = inner.Forecast(innerTrace[a])
+			case 3:
+				c = .5 * (sp + tp)
+			}
+			ex := [4]float64{b, c, l, .5}
+			tick.Predictions[a] = Prediction{P: mixes[a].Forecast(ex), Experts: ex}
+		}
+		r.Views = append(r.Views, views)
+		r.Inner = append(r.Inner, innerTrace)
+		tick.Outcome = truth(x, t, s, rng)
+		if !tick.Missing {
+			queue = append(queue, packet{Origin: t, Due: t + s.Delay, X: x, Y: tick.Outcome, Audit: tick.Audit, Predictions: tick.Predictions})
+		}
+		for len(queue) > 0 && queue[0].Due <= t {
+			q := queue[0]
+			queue = queue[1:]
+			r.Available++
+			inner = inner.Observe(r.Inner[q.Origin][2], q.Y, 1)
+			tick.Delivered = append(tick.Delivered, q.Origin)
+			for a := range mixes {
+				mixes[a] = mixes[a].Observe(q.Predictions[a].Experts, q.Y, 1)
+			}
+			if !q.Audit {
+				continue
+			}
+			r.Audits++
+			v := observation.Sample{Bits: q.X, Outcome: q.Y}
+			audits = append(audits, v)
+			if len(audits) > 256 {
+				audits = audits[1:]
+			}
+			if r.Audits < 32 || r.Audits%16 != 0 {
+				continue
+			}
+			start := time.Now()
+			var e error
+			short, e = observation.Fit(audits[max(0, len(audits)-64):])
+			if e != nil {
+				return r, e
+			}
+			long, e = observation.Fit(audits)
+			if e != nil {
+				return r, e
+			}
+			r.FitNS += int64(time.Since(start))
+			r.Fits += 2
+			start = time.Now()
+			forest = NewForest(rollingSeed)
+			for _, v := range audits[max(0, len(audits)-64):] {
+				forest.Update(v.Bits, v.Outcome)
+				r.TreeUpdates++
+			}
+			if mode != 0 {
+				var weights [512]float64
+				if mode == 2 {
+					weights = conditionalOracle(generator)
+				} else {
+					for x := range weights {
+						weights[x] = 1. / 512
+					}
+					for _, v := range audits {
+						weights[v.Bits]++
+					}
+				}
+				conditional, e = NewConditionalForest(forest, weights)
+				if e != nil {
+					return r, e
+				}
+			}
+			r.TreeNS += int64(time.Since(start))
+		}
+		tick.Audits = r.Audits
+		r.Ticks = append(r.Ticks, tick)
+	}
+	r.Pending = len(queue)
+	post := s.Change
+	if post >= 512 {
+		post = 256
+	}
+	for a := 0; a < 4; a++ {
+		r.Full[a] = score(r.Ticks, a, 0)
+		r.Post[a] = score(r.Ticks, a, post)
+	}
+	r.TreeNodes = forest.Nodes()
+	return r, nil
+}
+
+func RunAcquisition() ([]AcquisitionRecord, error) {
+	var records []AcquisitionRecord
+	for splitIndex, split := range []string{"design", "confirmation"} {
+		for generator := 0; generator < 3; generator++ {
+			for _, j := range []int{0, 2, 6, 8} {
+				for fit := 0; fit < 2; fit++ {
+					rng := rand.New(rand.NewSource(Seed(2026105201, 10*generator+j, fit, 0, 0)))
+					samples := make([]observation.Sample, 4096)
+					for i := range samples {
+						x := dependentInput(rng, generator)
+						samples[i] = observation.Sample{Bits: x, Outcome: truth(x, -1, Scenarios[j], rng)}
+					}
+					base, err := observation.Fit(samples)
+					if err != nil {
+						return nil, err
+					}
+					for stream := 0; stream < 4; stream++ {
+						for mode := 0; mode < 3; mode++ {
+							r, err := RunAcquisitionStream(base, split, j, fit, stream, int64(2026105202+splitIndex), generator, mode)
+							if err != nil {
+								return nil, err
+							}
+							records = append(records, r)
+						}
+					}
+				}
+			}
+		}
+	}
+	return records, nil
+}

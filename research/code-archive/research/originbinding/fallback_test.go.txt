@@ -1,0 +1,78 @@
+package originbinding
+
+import (
+	"testing"
+
+	"github.com/JuanHuaXu/eventframed/internal/epistemic"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+	"github.com/JuanHuaXu/eventframed/internal/packing"
+)
+
+// This diagnostic records a limitation, not a successful separation guarantee:
+// packing still has its independent legacy correlation fallback.
+func TestDiagnosticSameProducerPunctuationFallback(t *testing.T) {
+	a, b := fixture("a", "same"), fixture("b", "same")
+	a.Event.Provenance.ToolCallID = "shared"
+	b.Event.Provenance.ToolCallID = "shared"
+	b.Event.What.Value = "A < B"
+	r := registry(t, []model.Candidate{a, b}, []string{"origin", "origin"})
+	left, _ := r.Apply(a)
+	right, _ := r.Apply(b)
+	if left.EvidenceGroupKey == right.EvidenceGroupKey {
+		t.Fatal("adapter lost punctuation")
+	}
+	got := packing.Select([]model.Candidate{left, right}, nil, 2, 2, 100, packing.DefaultPolicy())
+	if len(got.Candidates) != 1 {
+		t.Fatal("legacy fallback behavior changed; revisit recorded limitation")
+	}
+	t.Log("KNOWN LIMITATION: distinct bound relation keys still collapse through legacy claim normalization")
+}
+
+// A different exact binding key is not, by itself, evidence of an independent
+// observation: harmless spacing and a reversed operator both change the key.
+func TestDiagnosticDistinctBindingKeysDoNotCertifyIndependence(t *testing.T) {
+	for _, variant := range []struct {
+		name string
+		what string
+	}{
+		{name: "formatting_repeat", what: "A  >  B"},
+		{name: "reversed_relation", what: "A < B"},
+	} {
+		t.Run(variant.name, func(t *testing.T) {
+			a, b := fixture("a", "same"), fixture("b", "same")
+			a.Event.Provenance.ToolCallID = "shared"
+			b.Event.Provenance.ToolCallID = "shared"
+			b.Event.What.Value = variant.what
+			r := registry(t, []model.Candidate{a, b}, []string{"origin", "origin"})
+			left, leftOK := r.Apply(a)
+			right, rightOK := r.Apply(b)
+			if !leftOK || !rightOK || left.EvidenceGroupKey == right.EvidenceGroupKey {
+				t.Fatal("expected two verified, distinct exact binding keys")
+			}
+			if !epistemic.Correlated(epistemic.Describe(left.Event), epistemic.Describe(right.Event), packing.DefaultPolicy().EvidenceSimilarity) {
+				t.Fatal("legacy correlation no longer exhibits the diagnostic ambiguity")
+			}
+			got := packing.Select([]model.Candidate{left, right}, nil, 2, 2, 100, packing.DefaultPolicy())
+			if len(got.Candidates) != 1 {
+				t.Fatal("legacy packet decision changed; re-evaluate the diagnostic")
+			}
+		})
+	}
+}
+
+func TestSameProducerExplicitObservedOccurrencesRemainSeparate(t *testing.T) {
+	a, b := fixture("a", "same"), fixture("b", "same")
+	for _, c := range []*model.Candidate{&a, &b} {
+		c.Event.Provenance.ToolCallID = "shared"
+		c.Event.What.Source = model.SourceObserved
+		c.Event.When.Source = model.SourceObserved
+		c.Event.Attributes = map[string]string{epistemic.DistinctOccurrenceAttribute: "true"}
+	}
+	b.Event.When.Value = "1975-03-16"
+	r := registry(t, []model.Candidate{a, b}, []string{"origin", "origin"})
+	left, _ := r.Apply(a)
+	right, _ := r.Apply(b)
+	if len(packing.Select([]model.Candidate{left, right}, nil, 2, 2, 100, packing.DefaultPolicy()).Candidates) != 2 {
+		t.Fatal("explicit occurrences collapsed")
+	}
+}

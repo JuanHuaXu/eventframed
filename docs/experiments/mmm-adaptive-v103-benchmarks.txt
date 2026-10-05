@@ -1,0 +1,12 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkJointPlannerPair/one_step-10         	  180552	      3378 ns/op	     528 B/op	       5 allocs/op
+BenchmarkJointPlannerPair/one_step-10         	  188053	      4788 ns/op	     528 B/op	       5 allocs/op
+BenchmarkJointPlannerPair/one_step-10         	  154765	      3569 ns/op	     528 B/op	       5 allocs/op
+BenchmarkJointPlannerPair/lookahead-10        	    3728	    149155 ns/op	  180752 B/op	       6 allocs/op
+BenchmarkJointPlannerPair/lookahead-10        	    3956	    149267 ns/op	  180752 B/op	       6 allocs/op
+BenchmarkJointPlannerPair/lookahead-10        	    4023	    149080 ns/op	  180752 B/op	       6 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	4.666s

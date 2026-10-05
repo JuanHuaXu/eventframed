@@ -1,0 +1,113 @@
+{
+  "Scope": "Only public selector API; explicit observable sinks. Complete-loop row includes selector construction,64 issue/first resolves,origin request/second resolve. Excludes all three base-model costs,nomination,persistence and loaded serving.",
+  "Timings": [
+    {
+      "Name": "weights_with_observable_sink",
+      "Repetition": 1,
+      "Iterations": 255985311,
+      "NSPerOp": 4,
+      "BytesPerOp": 0,
+      "AllocsPerOp": 0
+    },
+    {
+      "Name": "weights_with_observable_sink",
+      "Repetition": 2,
+      "Iterations": 265049763,
+      "NSPerOp": 4,
+      "BytesPerOp": 0,
+      "AllocsPerOp": 0
+    },
+    {
+      "Name": "weights_with_observable_sink",
+      "Repetition": 3,
+      "Iterations": 266265049,
+      "NSPerOp": 4,
+      "BytesPerOp": 0,
+      "AllocsPerOp": 0
+    },
+    {
+      "Name": "smoothed_query_with_observable_sink",
+      "Repetition": 1,
+      "Iterations": 643011,
+      "NSPerOp": 1865,
+      "BytesPerOp": 0,
+      "AllocsPerOp": 0
+    },
+    {
+      "Name": "smoothed_query_with_observable_sink",
+      "Repetition": 2,
+      "Iterations": 644498,
+      "NSPerOp": 1860,
+      "BytesPerOp": 0,
+      "AllocsPerOp": 0
+    },
+    {
+      "Name": "smoothed_query_with_observable_sink",
+      "Repetition": 3,
+      "Iterations": 644386,
+      "NSPerOp": 1879,
+      "BytesPerOp": 0,
+      "AllocsPerOp": 0
+    },
+    {
+      "Name": "constructor_150",
+      "Repetition": 1,
+      "Iterations": 32150,
+      "NSPerOp": 36279,
+      "BytesPerOp": 1851441,
+      "AllocsPerOp": 2
+    },
+    {
+      "Name": "constructor_150",
+      "Repetition": 2,
+      "Iterations": 32779,
+      "NSPerOp": 36492,
+      "BytesPerOp": 1851441,
+      "AllocsPerOp": 2
+    },
+    {
+      "Name": "constructor_150",
+      "Repetition": 3,
+      "Iterations": 32948,
+      "NSPerOp": 36784,
+      "BytesPerOp": 1851441,
+      "AllocsPerOp": 2
+    },
+    {
+      "Name": "complete_64_trial_member_loop_150_member_capacity",
+      "Repetition": 1,
+      "Iterations": 23078,
+      "NSPerOp": 52523,
+      "BytesPerOp": 1851442,
+      "AllocsPerOp": 2
+    },
+    {
+      "Name": "complete_64_trial_member_loop_150_member_capacity",
+      "Repetition": 2,
+      "Iterations": 22960,
+      "NSPerOp": 52768,
+      "BytesPerOp": 1851442,
+      "AllocsPerOp": 2
+    },
+    {
+      "Name": "complete_64_trial_member_loop_150_member_capacity",
+      "Repetition": 3,
+      "Iterations": 22819,
+      "NSPerOp": 53044,
+      "BytesPerOp": 1851442,
+      "AllocsPerOp": 2
+    }
+  ],
+  "Weights": [
+    0.061961587240069685,
+    0.900202774685766,
+    0.037835638074164346
+  ],
+  "Forecast": 0.8126223788847236,
+  "sources": {
+    "cmd/research-retention-bench/main.go": "5c66e98c2e4ecd13738a525f570b3a47d3c0968dd5f347c3841ccd8cb94781d6",
+    "research/retention-v61-performance-audit.mjs": "a76e2ab58ca0ddceb4e8762b2a7535abe97874483a1e97192a14da03da14d63c"
+  },
+  "originalBenchmarkUnmodified": true,
+  "noScientificAdoption": true
+}

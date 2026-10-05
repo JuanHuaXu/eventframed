@@ -1,0 +1,323 @@
+{
+  "scope": "Direct evidence-grouping boundary on repeated public facts; not authentication, extraction, or end-to-end confidence validation",
+  "hashes": {
+    "internal/epistemic/evidence.go": "8083eb8b251db84532cf8ffb4a4fdeae23678e90484a10405ba0637f77f47ee5",
+    "research/public-provenance/main.go": "d3cccdbd088391f9a6a297e2dc1d47492a58418df00cf0cd269fc2244d7e6a0b",
+    "research/public-task-pilot/PUBLIC_PROVENANCE_PROTOCOL.md": "a546be4d3e99c9641aa12cb5bb7af00a571682ae89ff5df952e799007a4a1c00",
+    "research/public-task-pilot/facts.json": "bda004686753a0bacf9f488f711c34ee97e187cad5a4a7b71733fd3df6b24af5"
+  },
+  "results": [
+    {
+      "fact": "m10-venus",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "m10-venus",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-venus",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-venus",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury1",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "m10-mercury1",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury1",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury1",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury2",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "m10-mercury2",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury2",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury2",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury3",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "m10-mercury3",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury3",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-mercury3",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-contact",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "m10-contact",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-contact",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "m10-contact",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-launch",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "v1-launch",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-launch",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-launch",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-jupiter",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "v1-jupiter",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-jupiter",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-jupiter",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-saturn",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "v1-saturn",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-saturn",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v1-saturn",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-launch",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "v2-launch",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-launch",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-launch",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-jupiter",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "v2-jupiter",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-jupiter",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-jupiter",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-saturn",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "v2-saturn",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-saturn",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-saturn",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-uranus",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "v2-uranus",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-uranus",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-uranus",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-neptune",
+      "mode": "stable_origin",
+      "same_group": true,
+      "correlated": true
+    },
+    {
+      "fact": "v2-neptune",
+      "mode": "missing_origin",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-neptune",
+      "mode": "producer_change",
+      "same_group": false,
+      "correlated": false
+    },
+    {
+      "fact": "v2-neptune",
+      "mode": "per_fetch_origin",
+      "same_group": false,
+      "correlated": false
+    }
+  ]
+}

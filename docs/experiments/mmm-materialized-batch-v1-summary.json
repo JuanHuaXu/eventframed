@@ -1,0 +1,286 @@
+{
+  "rawHash": "aebe7950cc103d891c2185e4433bf57add9bd17f2eb3194d5563bd6bc3f4dbe8",
+  "capturedSources": 44,
+  "verified": 96000,
+  "means": [
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "indexed",
+      "layout": "grouped",
+      "meanMS": 0.35679021875
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "indexed",
+      "layout": "scattered",
+      "meanMS": 0.38252603125
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "indexed",
+      "layout": "grouped",
+      "meanMS": 1.53426175
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "indexed",
+      "layout": "scattered",
+      "meanMS": 1.45300775
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 0.3144856875
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 0.33907425
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 1.39391525
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 1.31968234375
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 0.32358859375
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 0.3236588125
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 1.40127721875
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 1.32883984375
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "indexed",
+      "layout": "grouped",
+      "meanMS": 0.34859753125
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "indexed",
+      "layout": "scattered",
+      "meanMS": 0.34002609375
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "indexed",
+      "layout": "grouped",
+      "meanMS": 1.50419409375
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "indexed",
+      "layout": "scattered",
+      "meanMS": 1.4274114375
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "indexed",
+      "layout": "grouped",
+      "meanMS": 0.345496
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "indexed",
+      "layout": "scattered",
+      "meanMS": 0.35389859375
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "indexed",
+      "layout": "grouped",
+      "meanMS": 1.4872553125
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "indexed",
+      "layout": "scattered",
+      "meanMS": 1.418616
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 0.317068875
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 0.306834625
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 1.39473703125
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 1.3032160625
+    }
+  ],
+  "pairs": [
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 0.3144856875,
+      "controlMS": 0.35679021875,
+      "ratio": 0.88143023819932
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 0.33907425,
+      "controlMS": 0.38252603125,
+      "ratio": 0.8864083024415087
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 1.39391525,
+      "controlMS": 1.53426175,
+      "ratio": 0.9085250609943186
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 1.31968234375,
+      "controlMS": 1.45300775,
+      "ratio": 0.908241778992576
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 0.32358859375,
+      "controlMS": 0.34859753125,
+      "ratio": 0.9282584205048068
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 0.3236588125,
+      "controlMS": 0.34002609375,
+      "ratio": 0.9518646317125479
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 1.40127721875,
+      "controlMS": 1.50419409375,
+      "ratio": 0.9315800564384445
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 1.32883984375,
+      "controlMS": 1.4274114375,
+      "ratio": 0.9309438111812803
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 0.317068875,
+      "controlMS": 0.345496,
+      "ratio": 0.9177208274480745
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 0.306834625,
+      "controlMS": 0.35389859375,
+      "ratio": 0.8670128404543852
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "grouped",
+      "meanMS": 1.39473703125,
+      "controlMS": 1.4872553125,
+      "ratio": 0.9377926032790688
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "materialized",
+      "layout": "scattered",
+      "meanMS": 1.3032160625,
+      "controlMS": 1.418616,
+      "ratio": 0.9186531538485396
+    }
+  ],
+  "limits": "Batch-read microbenchmark. No write rescue, concurrent serving tails, migration, or whole-goal completion."
+}

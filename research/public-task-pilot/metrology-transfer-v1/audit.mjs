@@ -1,0 +1,62 @@
+// Independent outcome audit. Runtime collector never imports this module.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const root='research/public-task-pilot/metrology-transfer-v1/';
+const read=p=>JSON.parse(fs.readFileSync(root+p)),hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const stop=new Set('a an the is was of to at in on and what which when according retained records date s'.split(' '));
+const words=s=>new Set(s.toLowerCase().split(/[^a-z0-9]+/).filter(s=>s&&!stop.has(s)));
+function coverage(q, fields){const query=words(q),union=words(fields.join(' '));assert(query.size>0);return [...query].filter(w=>union.has(w)).length/query.size}
+export function audit(raw){
+ const queries=read('prepared/queries.json');
+ const corpus=read('prepared/corpus.json'),expectedFrames=Object.fromEntries(corpus.map(f=>[f.id,['who','what','where','when','why','how'].map(k=>f.frame[k])]));
+ const textFrames=Object.fromEntries(corpus.map(f=>[f.id,['user and agent','request: '+f.text+'; outcome: Recorded.','session:public-import','2026-10-03T00:00:00Z','to address the user request: '+f.text,'through the agent response: Recorded.']]));
+ const framesByMode={structured:expectedFrames,text:textFrames};
+ const rows=raw.filter(r=>r.Type==='case'),header=raw[0],footer=raw.at(-1);
+ assert.deepEqual(header.files,read('runtime-freeze.json'),'runtime source inventory changed');
+ assert.equal(header.digest,'0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f');
+ assert.equal(raw.length,434,'unaccounted output rows');
+ assert.equal(header.type,'header');assert.equal(header.phase,'transfer');assert.equal(footer.type,'footer');assert.equal(footer.complete,432);assert.equal(rows.length,432);assert.equal(footer.hashes_verified,true);
+ for(const [p,h]of Object.entries(header.files))assert.equal(hash(fs.readFileSync(p)),h,'changed source '+p);
+ const arms=['baseline','incumbent','selected'];
+ const weights={baseline:0,incumbent:0,selected:1};
+ const keyed=new Map();let frameRecords=0;
+ for(const r of rows){assert(queries.some(q=>q.id===r.Case&&q.split===r.Split),'foreign query');assert(arms.includes(r.Arm));assert(['structured','text'].includes(r.ImportMode));const k=r.ImportMode+'/'+r.Case+'/'+r.Arm;assert(!keyed.has(k),'duplicate case');keyed.set(k,r);assert.equal(r.JournalStored,true);assert.equal(r.Weight,weights[r.Arm]);assert(r.RecallNS>0&&r.ImportNS>0);assert.equal(r.MemoBefore.misses,r.MemoAfter.misses,'uncached timed Recall');assert.equal(r.Order.length,36);assert.equal(r.JournalOrder.length,36);assert.equal(new Set(r.JournalOrder.map(v=>v.id)).size,36);assert(r.Packed.length>0&&r.Packed.length<=10);assert.equal(new Set(r.Order.map(v=>v.id)).size,36);assert.equal(new Set(r.Packed.map(v=>v.id)).size,r.Packed.length);
+  for(const v of [...r.JournalOrder,...r.Order,...r.Packed]){assert(v.id in expectedFrames,'foreign candidate');assert(Number.isFinite(v.score)&&v.score>=0&&v.score<=1);assert.deepEqual(Object.keys(v.law).sort(),['not_useful','useful']);assert(Object.values(v.law).every(x=>Number.isFinite(x)&&x>=0&&x<=1));assert(Math.abs(v.law.useful+v.law.not_useful-1)<1e-12);}
+  const journalByID=new Map(r.JournalOrder.map(v=>[v.id,v]));for(const v of r.Order){assert(journalByID.has(v.id));assert.deepEqual(v.law,journalByID.get(v.id).law);assert.equal(v.score,journalByID.get(v.id).score)}const byID=new Map(r.Order.map(v=>[v.id,v]));for(const v of r.Packed){assert(byID.has(v.id),'packed outside frontier');assert.deepEqual(v.law,byID.get(v.id).law);assert.equal(v.score,byID.get(v.id).score)}
+  if(r.Frames){assert.deepEqual(r.Frames,framesByMode[r.ImportMode],'import frame changed');frameRecords++;for(const f of corpus){assert(r.Frames[f.id].join(' ').includes(f.metadata.from),'source convention lost');assert(r.Frames[f.id].join(' ').includes(f.metadata.to),'target convention lost')}}
+ }
+ assert.equal(frameRecords,2);assert.equal(new Set(rows.filter(r=>r.Frames).map(r=>r.ImportMode)).size,2);
+ for(const mode of ['structured','text'])for(const q of queries){const baseline=keyed.get(mode+'/'+q.id+'/baseline');assert(baseline,'missing baseline');const incumbent=keyed.get(mode+'/'+q.id+'/incumbent');assert(incumbent);const idx=[...incumbent.JournalOrder].sort((a,b)=>b.score-a.score).map(v=>v.id);const byID=new Map(baseline.JournalOrder.map(v=>[v.id,v]));assert.deepEqual(idx.slice(0,36),baseline.Order.map(v=>v.id),'incumbent input prefix');
+  for(const a of arms){const r=keyed.get(mode+'/'+q.id+'/'+a);assert(r,'missing arm');assert.deepEqual([...r.JournalOrder.map(v=>v.id)].sort(),[...idx].sort(),'nomination changed');for(const v of r.JournalOrder)assert.deepEqual(v.law,byID.get(v.id).law,'law changed');
+   if(a==='baseline'){assert.equal(r.HookCalls,0);assert.equal(r.Lexical,null);continue}
+   assert.equal(r.HookCalls,1);assert.equal(r.Lexical.length,36);assert.equal(r.HookScores.length,36);
+   const utility=idx.map((id,i)=>{const x=coverage(q.text,framesByMode[mode][id]);assert(Math.abs(x-r.Lexical[i])<1e-12,'lexical/metadata/order mismatch');const s=(1-weights[a])/(i+1)+weights[a]*x;assert(Math.abs(s-r.HookScores[i])<1e-12,'formula mismatch');return {id,score:s,i}}).sort((a,b)=>b.score-a.score||a.i-b.i);
+   assert.deepEqual(r.Order.map(v=>v.id),utility.slice(0,36).map(v=>v.id),'stable sort mismatch');for(const v of utility)assert(Math.abs(r.JournalOrder.find(j=>j.id===v.id).score-v.score)<1e-12,'journal score');
+   if(a==='incumbent'){assert.deepEqual(r.Packed.map(v=>v.id),baseline.Packed.map(v=>v.id),'passthrough packet changed')}
+  }
+ }
+ return {keyed,queries,rows,arms,source_files:Object.keys(header.files).length};
+}
+export function metrics(check, labels, split, arm, mode){
+ const per=[],cluster=new Map();for(const q of check.queries.filter(q=>q.split===split)){
+  const label=labels.find(l=>l.question_id===q.id);assert(label,'missing label');const r=check.keyed.get(mode+'/'+q.id+'/'+arm),ids=r.Packed.map(v=>v.id),rank=ids.indexOf(label.target_id)+1;
+  const v={id:q.id,cluster:label.cluster,wording:q.wording,top1:Number(ids[0]===label.target_id),survival:Number(rank>0),rr:rank>0?1/rank:0,nominated:Number(r.JournalOrder.some(v=>v.id===label.target_id)),retained:Number(r.Order.some(v=>v.id===label.target_id))};per.push(v);if(!cluster.has(v.cluster))cluster.set(v.cluster,[]);cluster.get(v.cluster).push(v);
+ }
+ assert.equal(per.length,36);assert.equal(cluster.size,6);
+ return {wordings:Object.fromEntries(['literal','paraphrase'].map(w=>[w,{top1:per.filter(v=>v.wording===w).reduce((a,v)=>a+v.top1,0),survival:per.filter(v=>v.wording===w).reduce((a,v)=>a+v.survival,0)}])),top1:per.reduce((a,v)=>a+v.top1,0),survival:per.reduce((a,v)=>a+v.survival,0),nomination:per.reduce((a,v)=>a+v.nominated,0),mean_reciprocal_rank:per.reduce((a,v)=>a+v.rr,0)/36,per,clusters:Object.fromEntries([...cluster].map(([k,v])=>[k,v.reduce((a,r)=>a+r.top1,0)/v.length]))};
+}
+export function comparison(base,selected){const vector=Object.keys(base.clusters).map(k=>selected.clusters[k]-base.clusters[k]),mean=vector.reduce((a,v)=>a+v,0)/6,se=Math.sqrt(vector.reduce((a,v)=>a+(v-mean)**2,0)/5/6),pairs=base.per.map((v,i)=>[v,selected.per[i]]);const gains=pairs.filter(([a,b])=>b.top1>a.top1).length,losses=pairs.filter(([a,b])=>b.top1<a.top1).length,literalLosses=pairs.filter(([a,b])=>a.wording==='literal'&&b.top1<a.top1).length,survivalLosses=pairs.filter(([a,b])=>b.survival<a.survival).length;const positive=vector.filter(v=>v>0).length,negative=vector.filter(v=>v<0).length,n=positive+negative;let sign=0;for(let k=positive;k<=n;k++){let c=1;for(let j=1;j<=k;j++)c=c*(n-j+1)/j;sign+=c/2**n}const lower=mean-2.015048373*se;return {gains,losses,literal_losses:literalLosses,survival_losses:survivalLosses,cluster_vector:vector,cluster_mean:mean,one_sided95_lower:lower,two_sided95:[mean-2.570581836*se,mean+2.570581836*se],exact_cluster_sign_p:sign,pass:gains-losses>=2&&literalLosses===0&&survivalLosses===0&&lower>0}}
+function timing(check){const out={};for(const mode of ['structured','text'])for(const arm of check.arms){const rows=check.rows.filter(r=>r.Arm===arm&&r.ImportMode===mode),quant=(values,p)=>values.sort((a,b)=>a-b)[Math.ceil(p*values.length)-1];out[mode+'/'+arm]={cases:rows.length,recall_median_ms:quant(rows.map(r=>r.RecallNS/1e6),.5),recall_p99_ms:quant(rows.map(r=>r.RecallNS/1e6),.99),hook_p99_ms:quant(rows.map(r=>r.HookNS/1e6),.99),import_median_ms:quant(rows.map(r=>r.ImportNS/1e6),.5),import_p99_ms:quant(rows.map(r=>r.ImportNS/1e6),.99)}}return out}
+
+if(process.argv[1]?.endsWith('/audit.mjs')){
+ const rawPath=process.argv[2],output=process.argv[3],raw=fs.readFileSync(rawPath,'utf8').trim().split('\n').map(l=>JSON.parse(l));
+ const check=audit(raw),labels=read('prepared/oracle.json'),cells={};
+ for(const mode of ['structured','text'])for(const split of ['design','confirmation']){
+  const b=metrics(check,labels,split,'baseline',mode),s=metrics(check,labels,split,'selected',mode);
+  cells[mode+'/'+split]={baseline:b,selected:s,comparison:comparison(b,s)};
+ }
+ const modelPath='research/public-task-pilot/ecmascript-v1/magnitude-v2-model.json';
+ assert.equal(raw[0].model_sha256,hash(fs.readFileSync(modelPath)));
+ const report={time:new Date().toISOString(),raw_sha256:hash(fs.readFileSync(rawPath)),model_sha256:raw[0].model_sha256,technical_pass:true,weight:1,cells,adoption_pass:Object.values(cells).every(s=>s.comparison.pass),timing:timing(check),memo:raw.at(-1).memo,whole_goal_complete:false};
+ fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
+ console.log(JSON.stringify({technical_pass:true,adoption_pass:report.adoption_pass,cells:Object.fromEntries(Object.entries(cells).map(([k,v])=>[k,{baseline:v.baseline.top1,selected:v.selected.top1,baseline_survival:v.baseline.survival,selected_survival:v.selected.survival,...v.comparison}])),timing:report.timing,memo:report.memo},null,2));
+}

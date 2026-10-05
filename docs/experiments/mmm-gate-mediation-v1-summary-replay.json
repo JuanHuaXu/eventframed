@@ -1,0 +1,2084 @@
+{
+  "sourceHash": "dd8b21196f69c73c83e7ad33dd1ff7ce0f47106002719218afcdd52d005b474f",
+  "archiveHash": "382d267a4fded68fca44c5cecfac077011abbf59cab218ec85b647875100340b",
+  "capturedSources": 807,
+  "trajectories": 160,
+  "frames": 81920,
+  "affineChecks": 123042,
+  "maxAffineError": 2.0816681711721685e-16,
+  "summaries": [
+    {
+      "key": "confirmation/common_shift/Mixture/window1",
+      "n": 59,
+      "meanWeight": 0.0014731269796702294,
+      "meanAbsMotion": 0.00010414119552897388,
+      "maxMotion": 0.00043567013054790493,
+      "rawSlotBrierGain": -0.02421845574387949,
+      "directMixtureBrierGain": -3.103719183611462e-7,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Mixture/window2",
+      "n": 867,
+      "meanWeight": 0.005004476014459148,
+      "meanAbsMotion": 0.00048565355995228247,
+      "maxMotion": 0.04025765630774425,
+      "rawSlotBrierGain": -0.036439874733682494,
+      "directMixtureBrierGain": -0.00001002408098135053,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.018650978491197453,
+      "meanAbsMotion": 0.0016716834799193794,
+      "maxMotion": 0.059309834255849125,
+      "rawSlotBrierGain": -0.0310305073936058,
+      "directMixtureBrierGain": -0.0000774393474954163,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.06665336979508295,
+      "meanAbsMotion": 0.005271834109548087,
+      "maxMotion": 0.10508448980768437,
+      "rawSlotBrierGain": 0.025002747245922784,
+      "directMixtureBrierGain": 0.001003450694227623,
+      "guideFractions": [
+        0.42578125,
+        0.326171875,
+        0.248046875
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.03483718679268522,
+      "meanAbsMotion": 0.0035834382275142553,
+      "maxMotion": 0.16582504145363347,
+      "rawSlotBrierGain": 0.014855884081987942,
+      "directMixtureBrierGain": -0.00045226238913915226,
+      "guideFractions": [
+        0.3359375,
+        0.5478515625,
+        0.1162109375
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.026469700270741043,
+      "meanAbsMotion": 0.002516906352537107,
+      "maxMotion": 0.09549253253060908,
+      "rawSlotBrierGain": 0.00044935068100297455,
+      "directMixtureBrierGain": -0.00011207415822369857,
+      "guideFractions": [
+        0.115234375,
+        0.853515625,
+        0.03125
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.010699491322580777,
+      "meanAbsMotion": 0.0009357226679328231,
+      "maxMotion": 0.07112145280152171,
+      "rawSlotBrierGain": -0.0192329929044415,
+      "directMixtureBrierGain": -0.0003169927595830556,
+      "guideFractions": [
+        0.0126953125,
+        0.966796875,
+        0.0205078125
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Old/window1",
+      "n": 59,
+      "meanWeight": 0.0014731269796702294,
+      "meanAbsMotion": 0.00010414119552897388,
+      "maxMotion": 0.00043567013054790493,
+      "rawSlotBrierGain": -0.02421845574387949,
+      "directMixtureBrierGain": -3.103719183611462e-7,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Old/window2",
+      "n": 867,
+      "meanWeight": 0.005004476014459148,
+      "meanAbsMotion": 0.00048565355995228247,
+      "maxMotion": 0.04025765630774425,
+      "rawSlotBrierGain": -0.036439874733682494,
+      "directMixtureBrierGain": -0.00001002408098135053,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.018650978491197453,
+      "meanAbsMotion": 0.0016716834799193794,
+      "maxMotion": 0.059309834255849125,
+      "rawSlotBrierGain": -0.0310305073936058,
+      "directMixtureBrierGain": -0.0000774393474954163,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.06665336979508295,
+      "meanAbsMotion": 0.005271834109548087,
+      "maxMotion": 0.10508448980768437,
+      "rawSlotBrierGain": 0.025002747245922784,
+      "directMixtureBrierGain": 0.001003450694227623,
+      "guideFractions": [
+        0.42578125,
+        0.326171875,
+        0.248046875
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.03483718679268522,
+      "meanAbsMotion": 0.0035834382275142553,
+      "maxMotion": 0.16582504145363347,
+      "rawSlotBrierGain": 0.014855884081987942,
+      "directMixtureBrierGain": -0.00045226238913915226,
+      "guideFractions": [
+        0.3359375,
+        0.5478515625,
+        0.1162109375
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.026469700270741043,
+      "meanAbsMotion": 0.002516906352537107,
+      "maxMotion": 0.09549253253060908,
+      "rawSlotBrierGain": 0.00044935068100297455,
+      "directMixtureBrierGain": -0.00011207415822369857,
+      "guideFractions": [
+        0.115234375,
+        0.853515625,
+        0.03125
+      ]
+    },
+    {
+      "key": "confirmation/common_shift/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.010699491322580777,
+      "meanAbsMotion": 0.0009357226679328231,
+      "maxMotion": 0.07112145280152171,
+      "rawSlotBrierGain": -0.0192329929044415,
+      "directMixtureBrierGain": -0.0003169927595830556,
+      "guideFractions": [
+        0.0126953125,
+        0.966796875,
+        0.0205078125
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Mixture/only-new-split",
+      "n": 708,
+      "meanWeight": 0.014183871598371218,
+      "meanAbsMotion": 0.0011830327284155777,
+      "maxMotion": 0.02560503206885495,
+      "rawSlotBrierGain": 0.037309159659410576,
+      "directMixtureBrierGain": 0.00010899089550811506,
+      "guideFractions": [
+        0.3347457627118644,
+        0.5550847457627118,
+        0.11016949152542373
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Mixture/window1",
+      "n": 121,
+      "meanWeight": 0.003244161095633941,
+      "meanAbsMotion": 0.0002684762268263846,
+      "maxMotion": 0.0030250486872519175,
+      "rawSlotBrierGain": -0.030273099215198787,
+      "directMixtureBrierGain": -0.000016985378880278375,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Mixture/window2",
+      "n": 893,
+      "meanWeight": 0.005688487825999765,
+      "meanAbsMotion": 0.000576454983703886,
+      "maxMotion": 0.019127138665214996,
+      "rawSlotBrierGain": -0.035532412471264,
+      "directMixtureBrierGain": -0.00004887054861660888,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.01551827931612823,
+      "meanAbsMotion": 0.0010843646283197248,
+      "maxMotion": 0.03297621551632912,
+      "rawSlotBrierGain": -0.025673944505350963,
+      "directMixtureBrierGain": -0.00003081174735291161,
+      "guideFractions": [
+        0.9970703125,
+        0,
+        0.0029296875
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.0878898142942013,
+      "meanAbsMotion": 0.006051314394045924,
+      "maxMotion": 0.2178050843780796,
+      "rawSlotBrierGain": 0.029210321258430278,
+      "directMixtureBrierGain": 0.0004923718790354186,
+      "guideFractions": [
+        0.4658203125,
+        0.3154296875,
+        0.21875
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.015112131447441675,
+      "meanAbsMotion": 0.0012775003055510929,
+      "maxMotion": 0.03141166134387863,
+      "rawSlotBrierGain": 0.03437053640240713,
+      "directMixtureBrierGain": 0.00016192870822726125,
+      "guideFractions": [
+        0.3271484375,
+        0.548828125,
+        0.1240234375
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.03784727854222095,
+      "meanAbsMotion": 0.003692494431018936,
+      "maxMotion": 0.1614974883735673,
+      "rawSlotBrierGain": 0.029462635457857496,
+      "directMixtureBrierGain": 0.000697225140759127,
+      "guideFractions": [
+        0.0986328125,
+        0.8095703125,
+        0.091796875
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.013159003397990978,
+      "meanAbsMotion": 0.001389177301457685,
+      "maxMotion": 0.16012382908547984,
+      "rawSlotBrierGain": 0.027419243703137725,
+      "directMixtureBrierGain": 0.0002935684521390559,
+      "guideFractions": [
+        0.001953125,
+        0.9921875,
+        0.005859375
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Old/only-new-split",
+      "n": 708,
+      "meanWeight": 0.006552706982315058,
+      "meanAbsMotion": 0.0006002201434250668,
+      "maxMotion": 0.027652244365628076,
+      "rawSlotBrierGain": 0.0389559554787948,
+      "directMixtureBrierGain": 0.00011671534567544928,
+      "guideFractions": [
+        0.3516949152542373,
+        0.635593220338983,
+        0.012711864406779662
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Old/window1",
+      "n": 121,
+      "meanWeight": 0.003244161095633941,
+      "meanAbsMotion": 0.0002684762268263846,
+      "maxMotion": 0.0030250486872519175,
+      "rawSlotBrierGain": -0.030273099215198787,
+      "directMixtureBrierGain": -0.000016985378880278375,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Old/window2",
+      "n": 893,
+      "meanWeight": 0.005688487825999765,
+      "meanAbsMotion": 0.000576454983703886,
+      "maxMotion": 0.019127138665214996,
+      "rawSlotBrierGain": -0.035532412471264,
+      "directMixtureBrierGain": -0.00004887054861660888,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.01551827931612823,
+      "meanAbsMotion": 0.0010843646283197248,
+      "maxMotion": 0.03297621551632912,
+      "rawSlotBrierGain": -0.025673944505350963,
+      "directMixtureBrierGain": -0.00003081174735291161,
+      "guideFractions": [
+        0.9970703125,
+        0,
+        0.0029296875
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.08786647155774648,
+      "meanAbsMotion": 0.006048993500802705,
+      "maxMotion": 0.2178050843780796,
+      "rawSlotBrierGain": 0.029210321258430278,
+      "directMixtureBrierGain": 0.0004924242707755658,
+      "guideFractions": [
+        0.4658203125,
+        0.3154296875,
+        0.21875
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.007094243365559327,
+      "meanAbsMotion": 0.0006533901675486813,
+      "maxMotion": 0.027652244365628076,
+      "rawSlotBrierGain": 0.03459714441140867,
+      "directMixtureBrierGain": 0.0001469917876402692,
+      "guideFractions": [
+        0.3408203125,
+        0.619140625,
+        0.0400390625
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.025271088771306825,
+      "meanAbsMotion": 0.0023322813099872367,
+      "maxMotion": 0.16149124670406317,
+      "rawSlotBrierGain": 0.02738084314437466,
+      "directMixtureBrierGain": 0.000394637493569768,
+      "guideFractions": [
+        0.1064453125,
+        0.857421875,
+        0.0361328125
+      ]
+    },
+    {
+      "key": "confirmation/member_shift/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.01157806882646553,
+      "meanAbsMotion": 0.0012336263061512728,
+      "maxMotion": 0.16011329567442467,
+      "rawSlotBrierGain": 0.027419243703137725,
+      "directMixtureBrierGain": 0.00026681805246323427,
+      "guideFractions": [
+        0.001953125,
+        0.9921875,
+        0.005859375
+      ]
+    },
+    {
+      "key": "confirmation/null/Mixture/window1",
+      "n": 89,
+      "meanWeight": 0.15432321615713065,
+      "meanAbsMotion": 0.007135924802461754,
+      "maxMotion": 0.0815666180999744,
+      "rawSlotBrierGain": 0.0006273408239700369,
+      "directMixtureBrierGain": 0.0011936917516276217,
+      "guideFractions": [
+        0.797752808988764,
+        0.0449438202247191,
+        0.15730337078651685
+      ]
+    },
+    {
+      "key": "confirmation/null/Mixture/window2",
+      "n": 866,
+      "meanWeight": 0.10430417308814563,
+      "meanAbsMotion": 0.004975212424899153,
+      "maxMotion": 0.11909460063575028,
+      "rawSlotBrierGain": 0.008867037962221087,
+      "directMixtureBrierGain": 0.0011532495647702552,
+      "guideFractions": [
+        0.7217090069284064,
+        0.20207852193995382,
+        0.07621247113163972
+      ]
+    },
+    {
+      "key": "confirmation/null/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.041850410420943215,
+      "meanAbsMotion": 0.002706618629665293,
+      "maxMotion": 0.08071973590367687,
+      "rawSlotBrierGain": 0.0016646533830546118,
+      "directMixtureBrierGain": 0.00015945276057390838,
+      "guideFractions": [
+        0.791015625,
+        0.1865234375,
+        0.0224609375
+      ]
+    },
+    {
+      "key": "confirmation/null/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.020057658762429407,
+      "meanAbsMotion": 0.0017311938216429995,
+      "maxMotion": 0.07159717361767393,
+      "rawSlotBrierGain": 0.003834320801227594,
+      "directMixtureBrierGain": 0.00017433609401936925,
+      "guideFractions": [
+        0.814453125,
+        0.185546875,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/null/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.02775048943543892,
+      "meanAbsMotion": 0.00243630005356854,
+      "maxMotion": 0.07191292299754914,
+      "rawSlotBrierGain": 0.0025378557613798393,
+      "directMixtureBrierGain": 0.0000034542189518466007,
+      "guideFractions": [
+        0.900390625,
+        0.087890625,
+        0.01171875
+      ]
+    },
+    {
+      "key": "confirmation/null/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.02061479485578787,
+      "meanAbsMotion": 0.0018279359193167483,
+      "maxMotion": 0.08878942930772216,
+      "rawSlotBrierGain": 0.002520095217288977,
+      "directMixtureBrierGain": -0.00006203346855801261,
+      "guideFractions": [
+        0.8740234375,
+        0.103515625,
+        0.0224609375
+      ]
+    },
+    {
+      "key": "confirmation/null/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.009268582820421374,
+      "meanAbsMotion": 0.0008701269890862599,
+      "maxMotion": 0.018224142656748432,
+      "rawSlotBrierGain": 0.009166000697695128,
+      "directMixtureBrierGain": 0.00002929469890170991,
+      "guideFractions": [
+        0.8681640625,
+        0.12890625,
+        0.0029296875
+      ]
+    },
+    {
+      "key": "confirmation/null/Old/window1",
+      "n": 89,
+      "meanWeight": 0.15432321615713065,
+      "meanAbsMotion": 0.007135924802461754,
+      "maxMotion": 0.0815666180999744,
+      "rawSlotBrierGain": 0.0006273408239700369,
+      "directMixtureBrierGain": 0.0011936917516276217,
+      "guideFractions": [
+        0.797752808988764,
+        0.0449438202247191,
+        0.15730337078651685
+      ]
+    },
+    {
+      "key": "confirmation/null/Old/window2",
+      "n": 866,
+      "meanWeight": 0.10430417308814563,
+      "meanAbsMotion": 0.004975212424899153,
+      "maxMotion": 0.11909460063575028,
+      "rawSlotBrierGain": 0.008867037962221087,
+      "directMixtureBrierGain": 0.0011532495647702552,
+      "guideFractions": [
+        0.7217090069284064,
+        0.20207852193995382,
+        0.07621247113163972
+      ]
+    },
+    {
+      "key": "confirmation/null/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.041850410420943215,
+      "meanAbsMotion": 0.002706618629665293,
+      "maxMotion": 0.08071973590367687,
+      "rawSlotBrierGain": 0.0016646533830546118,
+      "directMixtureBrierGain": 0.00015945276057390838,
+      "guideFractions": [
+        0.791015625,
+        0.1865234375,
+        0.0224609375
+      ]
+    },
+    {
+      "key": "confirmation/null/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.020057658762429407,
+      "meanAbsMotion": 0.0017311938216429995,
+      "maxMotion": 0.07159717361767393,
+      "rawSlotBrierGain": 0.003834320801227594,
+      "directMixtureBrierGain": 0.00017433609401936925,
+      "guideFractions": [
+        0.814453125,
+        0.185546875,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/null/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.02775048943543892,
+      "meanAbsMotion": 0.00243630005356854,
+      "maxMotion": 0.07191292299754914,
+      "rawSlotBrierGain": 0.0025378557613798393,
+      "directMixtureBrierGain": 0.0000034542189518466007,
+      "guideFractions": [
+        0.900390625,
+        0.087890625,
+        0.01171875
+      ]
+    },
+    {
+      "key": "confirmation/null/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.02061479485578787,
+      "meanAbsMotion": 0.0018279359193167483,
+      "maxMotion": 0.08878942930772216,
+      "rawSlotBrierGain": 0.002520095217288977,
+      "directMixtureBrierGain": -0.00006203346855801261,
+      "guideFractions": [
+        0.8740234375,
+        0.103515625,
+        0.0224609375
+      ]
+    },
+    {
+      "key": "confirmation/null/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.009268582820421374,
+      "meanAbsMotion": 0.0008701269890862599,
+      "maxMotion": 0.018224142656748432,
+      "rawSlotBrierGain": 0.009166000697695128,
+      "directMixtureBrierGain": 0.00002929469890170991,
+      "guideFractions": [
+        0.8681640625,
+        0.12890625,
+        0.0029296875
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Mixture/only-new-split",
+      "n": 1175,
+      "meanWeight": 0.03713578002648226,
+      "meanAbsMotion": 0.0032208200495917106,
+      "maxMotion": 0.10027503058008214,
+      "rawSlotBrierGain": -0.00013382878299945987,
+      "directMixtureBrierGain": 0.00022543556273953754,
+      "guideFractions": [
+        0.3608510638297872,
+        0.6102127659574468,
+        0.02893617021276596
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Mixture/window1",
+      "n": 150,
+      "meanWeight": 0.0019495803128412356,
+      "meanAbsMotion": 0.00017397357856114993,
+      "maxMotion": 0.004588583412941327,
+      "rawSlotBrierGain": -0.03799878432854623,
+      "directMixtureBrierGain": -0.000013278088677258987,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Mixture/window2",
+      "n": 941,
+      "meanWeight": 0.11226300053841505,
+      "meanAbsMotion": 0.00691972613999449,
+      "maxMotion": 0.12521463825933987,
+      "rawSlotBrierGain": 0.012702799812521011,
+      "directMixtureBrierGain": 0.0008613835185911309,
+      "guideFractions": [
+        0.17534537725823593,
+        0.5090329436769394,
+        0.31562167906482463
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.07235068891303056,
+      "meanAbsMotion": 0.005850802815368609,
+      "maxMotion": 0.15595913716015264,
+      "rawSlotBrierGain": 0.02227982635145625,
+      "directMixtureBrierGain": 0.0011029944776153708,
+      "guideFractions": [
+        0.1162109375,
+        0.8291015625,
+        0.0546875
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.046217918169163055,
+      "meanAbsMotion": 0.004529327761711073,
+      "maxMotion": 0.1065109558232491,
+      "rawSlotBrierGain": -0.05594641740543659,
+      "directMixtureBrierGain": -0.0012677114415221421,
+      "guideFractions": [
+        0.736328125,
+        0.248046875,
+        0.015625
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.005990845048960156,
+      "meanAbsMotion": 0.0006041898653247893,
+      "maxMotion": 0.026512168365508293,
+      "rawSlotBrierGain": -0.05029693083987952,
+      "directMixtureBrierGain": -0.00005810756974055494,
+      "guideFractions": [
+        0.9990234375,
+        0.0009765625,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.1347519505513702,
+      "meanAbsMotion": 0.014769341672628085,
+      "maxMotion": 0.23978638968022764,
+      "rawSlotBrierGain": 0.03417831503016507,
+      "directMixtureBrierGain": 0.0033137183102540674,
+      "guideFractions": [
+        0.15625,
+        0.7392578125,
+        0.1044921875
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.09890971835997112,
+      "meanAbsMotion": 0.010192534570471938,
+      "maxMotion": 0.30126069043209136,
+      "rawSlotBrierGain": 0.03301514702609115,
+      "directMixtureBrierGain": 0.0021953141069962264,
+      "guideFractions": [
+        0.005859375,
+        0.8759765625,
+        0.1181640625
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Old/only-new-split",
+      "n": 1175,
+      "meanWeight": 0.04078731877281966,
+      "meanAbsMotion": 0.003186331594536195,
+      "maxMotion": 0.10048839637844015,
+      "rawSlotBrierGain": -0.00016709688421450493,
+      "directMixtureBrierGain": 0.0001762819951733337,
+      "guideFractions": [
+        0.35319148936170214,
+        0.6263829787234042,
+        0.020425531914893616
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Old/window1",
+      "n": 150,
+      "meanWeight": 0.0019495803128412356,
+      "meanAbsMotion": 0.00017397357856114993,
+      "maxMotion": 0.004588583412941327,
+      "rawSlotBrierGain": -0.03799878432854623,
+      "directMixtureBrierGain": -0.000013278088677258987,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Old/window2",
+      "n": 941,
+      "meanWeight": 0.11375595392824225,
+      "meanAbsMotion": 0.007008404128444746,
+      "maxMotion": 0.12521463825933987,
+      "rawSlotBrierGain": 0.01227295529082431,
+      "directMixtureBrierGain": 0.000927570792209673,
+      "guideFractions": [
+        0.17321997874601489,
+        0.512221041445271,
+        0.3145589798087141
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.06803720052513425,
+      "meanAbsMotion": 0.005147198748293072,
+      "maxMotion": 0.15595913716015264,
+      "rawSlotBrierGain": 0.021825213299937342,
+      "directMixtureBrierGain": 0.0009449330495918215,
+      "guideFractions": [
+        0.09765625,
+        0.873046875,
+        0.029296875
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.028234753155732508,
+      "meanAbsMotion": 0.0027715296871495465,
+      "maxMotion": 0.056017043021239554,
+      "rawSlotBrierGain": -0.0542674896177913,
+      "directMixtureBrierGain": -0.0009449653232640569,
+      "guideFractions": [
+        0.7080078125,
+        0.2919921875,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.005425508977268106,
+      "meanAbsMotion": 0.0005236616854978784,
+      "maxMotion": 0.023837058978068537,
+      "rawSlotBrierGain": -0.05029693083987952,
+      "directMixtureBrierGain": -0.000036300705491699167,
+      "guideFractions": [
+        0.9990234375,
+        0.0009765625,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.12940993358646274,
+      "meanAbsMotion": 0.01402543917904225,
+      "maxMotion": 0.23969781497435316,
+      "rawSlotBrierGain": 0.034310181108482975,
+      "directMixtureBrierGain": 0.0031262382311021803,
+      "guideFractions": [
+        0.1552734375,
+        0.7392578125,
+        0.10546875
+      ]
+    },
+    {
+      "key": "confirmation/recurring/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.09785650875862888,
+      "meanAbsMotion": 0.0100739696941604,
+      "maxMotion": 0.30126069043209136,
+      "rawSlotBrierGain": 0.03301514702609115,
+      "directMixtureBrierGain": 0.002184709389802542,
+      "guideFractions": [
+        0.005859375,
+        0.8759765625,
+        0.1181640625
+      ]
+    },
+    {
+      "key": "confirmation/stable/Mixture/window1",
+      "n": 128,
+      "meanWeight": 0.0021158890018248247,
+      "meanAbsMotion": 0.0002521467163504577,
+      "maxMotion": 0.004955773277929398,
+      "rawSlotBrierGain": -0.04282982543422461,
+      "directMixtureBrierGain": 0.00003547756485382677,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Mixture/window2",
+      "n": 891,
+      "meanWeight": 0.0061620508199170315,
+      "meanAbsMotion": 0.0005129652227985117,
+      "maxMotion": 0.016950338960212724,
+      "rawSlotBrierGain": -0.038427780498101624,
+      "directMixtureBrierGain": 0.000004909902437209535,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Mixture/window3",
+      "n": 1020,
+      "meanWeight": 0.01091052299007014,
+      "meanAbsMotion": 0.0009538876745830776,
+      "maxMotion": 0.038463197677212735,
+      "rawSlotBrierGain": -0.030573134250128826,
+      "directMixtureBrierGain": -0.00007548875894334662,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.01711547371706822,
+      "meanAbsMotion": 0.0013606613709441382,
+      "maxMotion": 0.07031502757084021,
+      "rawSlotBrierGain": -0.02266021043290804,
+      "directMixtureBrierGain": -0.0001525699356210488,
+      "guideFractions": [
+        0.9990234375,
+        0,
+        0.0009765625
+      ]
+    },
+    {
+      "key": "confirmation/stable/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.009222865129707205,
+      "meanAbsMotion": 0.0006285302342757738,
+      "maxMotion": 0.01127869993919317,
+      "rawSlotBrierGain": -0.015296274778722033,
+      "directMixtureBrierGain": -0.0000028687984004040268,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.015612546549496032,
+      "meanAbsMotion": 0.0009960684103385521,
+      "maxMotion": 0.019680153362779174,
+      "rawSlotBrierGain": -0.012885735492011994,
+      "directMixtureBrierGain": -0.0000010218161547501705,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.01919495512659412,
+      "meanAbsMotion": 0.0012962483949916308,
+      "maxMotion": 0.02346205277408537,
+      "rawSlotBrierGain": -0.013119778658698495,
+      "directMixtureBrierGain": -0.000014534238210100439,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Old/window1",
+      "n": 128,
+      "meanWeight": 0.0021158890018248247,
+      "meanAbsMotion": 0.0002521467163504577,
+      "maxMotion": 0.004955773277929398,
+      "rawSlotBrierGain": -0.04282982543422461,
+      "directMixtureBrierGain": 0.00003547756485382677,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Old/window2",
+      "n": 891,
+      "meanWeight": 0.0061620508199170315,
+      "meanAbsMotion": 0.0005129652227985117,
+      "maxMotion": 0.016950338960212724,
+      "rawSlotBrierGain": -0.038427780498101624,
+      "directMixtureBrierGain": 0.000004909902437209535,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Old/window3",
+      "n": 1020,
+      "meanWeight": 0.01091052299007014,
+      "meanAbsMotion": 0.0009538876745830776,
+      "maxMotion": 0.038463197677212735,
+      "rawSlotBrierGain": -0.030573134250128826,
+      "directMixtureBrierGain": -0.00007548875894334662,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.01711547371706822,
+      "meanAbsMotion": 0.0013606613709441382,
+      "maxMotion": 0.07031502757084021,
+      "rawSlotBrierGain": -0.02266021043290804,
+      "directMixtureBrierGain": -0.0001525699356210488,
+      "guideFractions": [
+        0.9990234375,
+        0,
+        0.0009765625
+      ]
+    },
+    {
+      "key": "confirmation/stable/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.009222865129707205,
+      "meanAbsMotion": 0.0006285302342757738,
+      "maxMotion": 0.01127869993919317,
+      "rawSlotBrierGain": -0.015296274778722033,
+      "directMixtureBrierGain": -0.0000028687984004040268,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.015612546549496032,
+      "meanAbsMotion": 0.0009960684103385521,
+      "maxMotion": 0.019680153362779174,
+      "rawSlotBrierGain": -0.012885735492011994,
+      "directMixtureBrierGain": -0.0000010218161547501705,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "confirmation/stable/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.01919495512659412,
+      "meanAbsMotion": 0.0012962483949916308,
+      "maxMotion": 0.02346205277408537,
+      "rawSlotBrierGain": -0.013119778658698495,
+      "directMixtureBrierGain": -0.000014534238210100439,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/common_shift/Mixture/window1",
+      "n": 159,
+      "meanWeight": 0.0014132314635645743,
+      "meanAbsMotion": 0.00011360015849857143,
+      "maxMotion": 0.0014081916156382102,
+      "rawSlotBrierGain": -0.028397055142031842,
+      "directMixtureBrierGain": -0.00000355132497615968,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/common_shift/Mixture/window2",
+      "n": 965,
+      "meanWeight": 0.009599699516488818,
+      "meanAbsMotion": 0.0007384729219300906,
+      "maxMotion": 0.014183930110578238,
+      "rawSlotBrierGain": -0.02933384814968837,
+      "directMixtureBrierGain": 0.00000823113132761408,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/common_shift/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.011357379923603353,
+      "meanAbsMotion": 0.0009960813208881886,
+      "maxMotion": 0.05512107533463631,
+      "rawSlotBrierGain": -0.03232687718094849,
+      "directMixtureBrierGain": -0.00007369688605259865,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/common_shift/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.027440013589918284,
+      "meanAbsMotion": 0.0020414078980707483,
+      "maxMotion": 0.07935186256475535,
+      "rawSlotBrierGain": 0.0289652689113866,
+      "directMixtureBrierGain": 0.0006267714180016145,
+      "guideFractions": [
+        0.51171875,
+        0.3828125,
+        0.10546875
+      ]
+    },
+    {
+      "key": "design/common_shift/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.023306538628773358,
+      "meanAbsMotion": 0.0021216965109112063,
+      "maxMotion": 0.15240039789813353,
+      "rawSlotBrierGain": 0.009881563440838088,
+      "directMixtureBrierGain": -0.00001418638372694018,
+      "guideFractions": [
+        0.4619140625,
+        0.46875,
+        0.0693359375
+      ]
+    },
+    {
+      "key": "design/common_shift/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.06091851742183946,
+      "meanAbsMotion": 0.004272774067205729,
+      "maxMotion": 0.19723797278779842,
+      "rawSlotBrierGain": -0.012216067451874082,
+      "directMixtureBrierGain": -0.00038820764754318536,
+      "guideFractions": [
+        0.103515625,
+        0.7470703125,
+        0.1494140625
+      ]
+    },
+    {
+      "key": "design/common_shift/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.008460142768709884,
+      "meanAbsMotion": 0.0006975199633035751,
+      "maxMotion": 0.050214221804049775,
+      "rawSlotBrierGain": -0.02028746665568679,
+      "directMixtureBrierGain": -0.00004657227843952662,
+      "guideFractions": [
+        0.00390625,
+        0.994140625,
+        0.001953125
+      ]
+    },
+    {
+      "key": "design/common_shift/Old/window1",
+      "n": 159,
+      "meanWeight": 0.0014132314635645743,
+      "meanAbsMotion": 0.00011360015849857143,
+      "maxMotion": 0.0014081916156382102,
+      "rawSlotBrierGain": -0.028397055142031842,
+      "directMixtureBrierGain": -0.00000355132497615968,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/common_shift/Old/window2",
+      "n": 965,
+      "meanWeight": 0.009599699516488818,
+      "meanAbsMotion": 0.0007384729219300906,
+      "maxMotion": 0.014183930110578238,
+      "rawSlotBrierGain": -0.02933384814968837,
+      "directMixtureBrierGain": 0.00000823113132761408,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/common_shift/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.011357379923603353,
+      "meanAbsMotion": 0.0009960813208881886,
+      "maxMotion": 0.05512107533463631,
+      "rawSlotBrierGain": -0.03232687718094849,
+      "directMixtureBrierGain": -0.00007369688605259865,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/common_shift/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.027440013589918284,
+      "meanAbsMotion": 0.0020414078980707483,
+      "maxMotion": 0.07935186256475535,
+      "rawSlotBrierGain": 0.0289652689113866,
+      "directMixtureBrierGain": 0.0006267714180016145,
+      "guideFractions": [
+        0.51171875,
+        0.3828125,
+        0.10546875
+      ]
+    },
+    {
+      "key": "design/common_shift/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.023306538628773358,
+      "meanAbsMotion": 0.0021216965109112063,
+      "maxMotion": 0.15240039789813353,
+      "rawSlotBrierGain": 0.009881563440838088,
+      "directMixtureBrierGain": -0.00001418638372694018,
+      "guideFractions": [
+        0.4619140625,
+        0.46875,
+        0.0693359375
+      ]
+    },
+    {
+      "key": "design/common_shift/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.06091851742183946,
+      "meanAbsMotion": 0.004272774067205729,
+      "maxMotion": 0.19723797278779842,
+      "rawSlotBrierGain": -0.012216067451874082,
+      "directMixtureBrierGain": -0.00038820764754318536,
+      "guideFractions": [
+        0.103515625,
+        0.7470703125,
+        0.1494140625
+      ]
+    },
+    {
+      "key": "design/common_shift/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.008460142768709884,
+      "meanAbsMotion": 0.0006975199633035751,
+      "maxMotion": 0.050214221804049775,
+      "rawSlotBrierGain": -0.02028746665568679,
+      "directMixtureBrierGain": -0.00004657227843952662,
+      "guideFractions": [
+        0.00390625,
+        0.994140625,
+        0.001953125
+      ]
+    },
+    {
+      "key": "design/member_shift/Mixture/only-new-split",
+      "n": 555,
+      "meanWeight": 0.005049284644393279,
+      "meanAbsMotion": 0.0005536183453504123,
+      "maxMotion": 0.01671795666099951,
+      "rawSlotBrierGain": 0.03588124122502157,
+      "directMixtureBrierGain": 0.00006678617897233514,
+      "guideFractions": [
+        0.4072072072072072,
+        0.5621621621621622,
+        0.03063063063063063
+      ]
+    },
+    {
+      "key": "design/member_shift/Mixture/window1",
+      "n": 162,
+      "meanWeight": 0.0019084076420418743,
+      "meanAbsMotion": 0.00019574581053028966,
+      "maxMotion": 0.0018914709691971732,
+      "rawSlotBrierGain": -0.027088502534847573,
+      "directMixtureBrierGain": 0.000016898794154976748,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/member_shift/Mixture/window2",
+      "n": 939,
+      "meanWeight": 0.003374396227483748,
+      "meanAbsMotion": 0.00031798826783822854,
+      "maxMotion": 0.009579416099738891,
+      "rawSlotBrierGain": -0.03885337997061697,
+      "directMixtureBrierGain": -0.00002050968658953709,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/member_shift/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.0064126074593824165,
+      "meanAbsMotion": 0.0005492351274192358,
+      "maxMotion": 0.013020572007417769,
+      "rawSlotBrierGain": -0.02876439933965021,
+      "directMixtureBrierGain": -0.000017058367199603818,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/member_shift/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.03587775911699792,
+      "meanAbsMotion": 0.00261606664909091,
+      "maxMotion": 0.1193242111949342,
+      "rawSlotBrierGain": 0.03685722856772072,
+      "directMixtureBrierGain": 0.0008994485275995027,
+      "guideFractions": [
+        0.4560546875,
+        0.3779296875,
+        0.166015625
+      ]
+    },
+    {
+      "key": "design/member_shift/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.01962183143668796,
+      "meanAbsMotion": 0.0017479901791728667,
+      "maxMotion": 0.08532949761077424,
+      "rawSlotBrierGain": 0.02399350754092677,
+      "directMixtureBrierGain": 0.0002810444852488583,
+      "guideFractions": [
+        0.3994140625,
+        0.5078125,
+        0.0927734375
+      ]
+    },
+    {
+      "key": "design/member_shift/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.012819969237339485,
+      "meanAbsMotion": 0.001418542150379642,
+      "maxMotion": 0.03904694887892923,
+      "rawSlotBrierGain": 0.03021216416479573,
+      "directMixtureBrierGain": -0.00006432475517543804,
+      "guideFractions": [
+        0.0966796875,
+        0.8857421875,
+        0.017578125
+      ]
+    },
+    {
+      "key": "design/member_shift/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.0016855754574460313,
+      "meanAbsMotion": 0.00017597136722101184,
+      "maxMotion": 0.0076087648092504345,
+      "rawSlotBrierGain": 0.03779433115830042,
+      "directMixtureBrierGain": 0.00003145305280252784,
+      "guideFractions": [
+        0.0341796875,
+        0.9619140625,
+        0.00390625
+      ]
+    },
+    {
+      "key": "design/member_shift/Old/only-new-split",
+      "n": 555,
+      "meanWeight": 0.004553805232459263,
+      "meanAbsMotion": 0.0005198964546326769,
+      "maxMotion": 0.01871318533686772,
+      "rawSlotBrierGain": 0.03644138173437097,
+      "directMixtureBrierGain": 0.00010583731661469571,
+      "guideFractions": [
+        0.4072072072072072,
+        0.5783783783783784,
+        0.014414414414414415
+      ]
+    },
+    {
+      "key": "design/member_shift/Old/window1",
+      "n": 162,
+      "meanWeight": 0.0019084076420418743,
+      "meanAbsMotion": 0.00019574581053028966,
+      "maxMotion": 0.0018914709691971732,
+      "rawSlotBrierGain": -0.027088502534847573,
+      "directMixtureBrierGain": 0.000016898794154976748,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/member_shift/Old/window2",
+      "n": 939,
+      "meanWeight": 0.003374396227483748,
+      "meanAbsMotion": 0.00031798826783822854,
+      "maxMotion": 0.009579416099738891,
+      "rawSlotBrierGain": -0.03885337997061697,
+      "directMixtureBrierGain": -0.00002050968658953709,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/member_shift/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.0064126074593824165,
+      "meanAbsMotion": 0.0005492351274192358,
+      "maxMotion": 0.013020572007417769,
+      "rawSlotBrierGain": -0.02876439933965021,
+      "directMixtureBrierGain": -0.000017058367199603818,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/member_shift/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.03580490572021953,
+      "meanAbsMotion": 0.002611923916002377,
+      "maxMotion": 0.1193242111949342,
+      "rawSlotBrierGain": 0.03685722856772072,
+      "directMixtureBrierGain": 0.0009000848313796589,
+      "guideFractions": [
+        0.4560546875,
+        0.37890625,
+        0.1650390625
+      ]
+    },
+    {
+      "key": "design/member_shift/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.019341735226039557,
+      "meanAbsMotion": 0.0017261369205249953,
+      "maxMotion": 0.08532949761077424,
+      "rawSlotBrierGain": 0.02329527642118652,
+      "directMixtureBrierGain": 0.0002684722813015281,
+      "guideFractions": [
+        0.4072265625,
+        0.5263671875,
+        0.06640625
+      ]
+    },
+    {
+      "key": "design/member_shift/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.014896722684769891,
+      "meanAbsMotion": 0.0017236283731341007,
+      "maxMotion": 0.05861735445218497,
+      "rawSlotBrierGain": 0.029874459390366623,
+      "directMixtureBrierGain": -0.00008584500778095614,
+      "guideFractions": [
+        0.0966796875,
+        0.8857421875,
+        0.017578125
+      ]
+    },
+    {
+      "key": "design/member_shift/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.0017011086957224254,
+      "meanAbsMotion": 0.00018081238239321708,
+      "maxMotion": 0.007588783933108134,
+      "rawSlotBrierGain": 0.03779433115830042,
+      "directMixtureBrierGain": 0.000027821427373729413,
+      "guideFractions": [
+        0.0341796875,
+        0.9619140625,
+        0.00390625
+      ]
+    },
+    {
+      "key": "design/null/Mixture/window1",
+      "n": 148,
+      "meanWeight": 0.17676527524802396,
+      "meanAbsMotion": 0.008139592160626529,
+      "maxMotion": 0.062407900840066755,
+      "rawSlotBrierGain": -0.00609421921921922,
+      "directMixtureBrierGain": -0.0005895765825974947,
+      "guideFractions": [
+        0.7297297297297297,
+        0.12837837837837837,
+        0.14189189189189189
+      ]
+    },
+    {
+      "key": "design/null/Mixture/window2",
+      "n": 941,
+      "meanWeight": 0.133246997776195,
+      "meanAbsMotion": 0.008057953914980084,
+      "maxMotion": 0.12544274649348597,
+      "rawSlotBrierGain": 0.007237893120407929,
+      "directMixtureBrierGain": 0.00040618887013249544,
+      "guideFractions": [
+        0.6950053134962806,
+        0.20085015940488843,
+        0.10414452709883103
+      ]
+    },
+    {
+      "key": "design/null/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.07602731974126824,
+      "meanAbsMotion": 0.005349584011197828,
+      "maxMotion": 0.10762992120366432,
+      "rawSlotBrierGain": 0.00885225810701885,
+      "directMixtureBrierGain": -0.00047897374211917996,
+      "guideFractions": [
+        0.73828125,
+        0.1796875,
+        0.08203125
+      ]
+    },
+    {
+      "key": "design/null/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.020172380099816426,
+      "meanAbsMotion": 0.0014327189816370888,
+      "maxMotion": 0.06469723516358222,
+      "rawSlotBrierGain": 0.01092852620438133,
+      "directMixtureBrierGain": 0.00015089997178476436,
+      "guideFractions": [
+        0.89453125,
+        0.09375,
+        0.01171875
+      ]
+    },
+    {
+      "key": "design/null/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.025883551798318378,
+      "meanAbsMotion": 0.0022026891700807714,
+      "maxMotion": 0.0568447553574849,
+      "rawSlotBrierGain": 0.0026332729044248916,
+      "directMixtureBrierGain": -0.00011660884341247601,
+      "guideFractions": [
+        0.9052734375,
+        0.078125,
+        0.0166015625
+      ]
+    },
+    {
+      "key": "design/null/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.013598227005362997,
+      "meanAbsMotion": 0.0012701726533683644,
+      "maxMotion": 0.03884436448537043,
+      "rawSlotBrierGain": 0.008209366447570712,
+      "directMixtureBrierGain": 0.00011711827788960481,
+      "guideFractions": [
+        0.859375,
+        0.126953125,
+        0.013671875
+      ]
+    },
+    {
+      "key": "design/null/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.009530204493239745,
+      "meanAbsMotion": 0.0009401134337115616,
+      "maxMotion": 0.01674610813788391,
+      "rawSlotBrierGain": 0.004541442104431077,
+      "directMixtureBrierGain": -0.00002454018507933107,
+      "guideFractions": [
+        0.9208984375,
+        0.060546875,
+        0.0185546875
+      ]
+    },
+    {
+      "key": "design/null/Old/window1",
+      "n": 148,
+      "meanWeight": 0.17676527524802396,
+      "meanAbsMotion": 0.008139592160626529,
+      "maxMotion": 0.062407900840066755,
+      "rawSlotBrierGain": -0.00609421921921922,
+      "directMixtureBrierGain": -0.0005895765825974947,
+      "guideFractions": [
+        0.7297297297297297,
+        0.12837837837837837,
+        0.14189189189189189
+      ]
+    },
+    {
+      "key": "design/null/Old/window2",
+      "n": 941,
+      "meanWeight": 0.133246997776195,
+      "meanAbsMotion": 0.008057953914980084,
+      "maxMotion": 0.12544274649348597,
+      "rawSlotBrierGain": 0.007237893120407929,
+      "directMixtureBrierGain": 0.00040618887013249544,
+      "guideFractions": [
+        0.6950053134962806,
+        0.20085015940488843,
+        0.10414452709883103
+      ]
+    },
+    {
+      "key": "design/null/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.07602731974126824,
+      "meanAbsMotion": 0.005349584011197828,
+      "maxMotion": 0.10762992120366432,
+      "rawSlotBrierGain": 0.00885225810701885,
+      "directMixtureBrierGain": -0.00047897374211917996,
+      "guideFractions": [
+        0.73828125,
+        0.1796875,
+        0.08203125
+      ]
+    },
+    {
+      "key": "design/null/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.020172380099816426,
+      "meanAbsMotion": 0.0014327189816370888,
+      "maxMotion": 0.06469723516358222,
+      "rawSlotBrierGain": 0.01092852620438133,
+      "directMixtureBrierGain": 0.00015089997178476436,
+      "guideFractions": [
+        0.89453125,
+        0.09375,
+        0.01171875
+      ]
+    },
+    {
+      "key": "design/null/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.025883551798318378,
+      "meanAbsMotion": 0.0022026891700807714,
+      "maxMotion": 0.0568447553574849,
+      "rawSlotBrierGain": 0.0026332729044248916,
+      "directMixtureBrierGain": -0.00011660884341247601,
+      "guideFractions": [
+        0.9052734375,
+        0.078125,
+        0.0166015625
+      ]
+    },
+    {
+      "key": "design/null/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.013598227005362997,
+      "meanAbsMotion": 0.0012701726533683644,
+      "maxMotion": 0.03884436448537043,
+      "rawSlotBrierGain": 0.008209366447570712,
+      "directMixtureBrierGain": 0.00011711827788960481,
+      "guideFractions": [
+        0.859375,
+        0.126953125,
+        0.013671875
+      ]
+    },
+    {
+      "key": "design/null/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.009530204493239745,
+      "meanAbsMotion": 0.0009401134337115616,
+      "maxMotion": 0.01674610813788391,
+      "rawSlotBrierGain": 0.004541442104431077,
+      "directMixtureBrierGain": -0.00002454018507933107,
+      "guideFractions": [
+        0.9208984375,
+        0.060546875,
+        0.0185546875
+      ]
+    },
+    {
+      "key": "design/recurring/Mixture/only-new-split",
+      "n": 1159,
+      "meanWeight": 0.045505871942824454,
+      "meanAbsMotion": 0.004142291435393853,
+      "maxMotion": 0.17728575766711685,
+      "rawSlotBrierGain": 0.01077428009382006,
+      "directMixtureBrierGain": 0.0005709744434673414,
+      "guideFractions": [
+        0.31320103537532357,
+        0.5979292493528904,
+        0.08886971527178603
+      ]
+    },
+    {
+      "key": "design/recurring/Mixture/window1",
+      "n": 161,
+      "meanWeight": 0.002374391560357359,
+      "meanAbsMotion": 0.00022978807452524546,
+      "maxMotion": 0.00460717632902316,
+      "rawSlotBrierGain": -0.039034550346611734,
+      "directMixtureBrierGain": 0.000003501612606198668,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/recurring/Mixture/window2",
+      "n": 882,
+      "meanWeight": 0.1004312817216864,
+      "meanAbsMotion": 0.006976633223161522,
+      "maxMotion": 0.15781890988501235,
+      "rawSlotBrierGain": 0.020911587955879867,
+      "directMixtureBrierGain": 0.0018525513072190694,
+      "guideFractions": [
+        0.1870748299319728,
+        0.5895691609977324,
+        0.2233560090702948
+      ]
+    },
+    {
+      "key": "design/recurring/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.04365918949091758,
+      "meanAbsMotion": 0.003309576464211013,
+      "maxMotion": 0.10398643560566323,
+      "rawSlotBrierGain": 0.01961143447963706,
+      "directMixtureBrierGain": 0.00028663428656718786,
+      "guideFractions": [
+        0.15234375,
+        0.7060546875,
+        0.1416015625
+      ]
+    },
+    {
+      "key": "design/recurring/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.017836415146710517,
+      "meanAbsMotion": 0.0018343400881715224,
+      "maxMotion": 0.07393334141628038,
+      "rawSlotBrierGain": -0.05764405985750408,
+      "directMixtureBrierGain": -0.0006634752723301146,
+      "guideFractions": [
+        0.8408203125,
+        0.142578125,
+        0.0166015625
+      ]
+    },
+    {
+      "key": "design/recurring/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.0023535949199336363,
+      "meanAbsMotion": 0.00027810083452037114,
+      "maxMotion": 0.027561230045082596,
+      "rawSlotBrierGain": -0.05698528053309247,
+      "directMixtureBrierGain": -0.000019519386911237157,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/recurring/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.10265161208055897,
+      "meanAbsMotion": 0.010910505461897792,
+      "maxMotion": 0.18726338671204523,
+      "rawSlotBrierGain": 0.03156941436256589,
+      "directMixtureBrierGain": 0.001532865960476513,
+      "guideFractions": [
+        0.1611328125,
+        0.748046875,
+        0.0908203125
+      ]
+    },
+    {
+      "key": "design/recurring/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.05486774891962478,
+      "meanAbsMotion": 0.006457256470112788,
+      "maxMotion": 0.3324280494404403,
+      "rawSlotBrierGain": 0.037813767968155484,
+      "directMixtureBrierGain": 0.0032371307567368966,
+      "guideFractions": [
+        0.04296875,
+        0.8447265625,
+        0.1123046875
+      ]
+    },
+    {
+      "key": "design/recurring/Old/only-new-split",
+      "n": 1159,
+      "meanWeight": 0.019150132031685082,
+      "meanAbsMotion": 0.0014748672462738235,
+      "maxMotion": 0.09591267318615199,
+      "rawSlotBrierGain": 0.012627493149193059,
+      "directMixtureBrierGain": 0.00009006307330864963,
+      "guideFractions": [
+        0.30543572044866263,
+        0.6522864538395168,
+        0.04227782571182054
+      ]
+    },
+    {
+      "key": "design/recurring/Old/window1",
+      "n": 161,
+      "meanWeight": 0.002374391560357359,
+      "meanAbsMotion": 0.00022978807452524546,
+      "maxMotion": 0.00460717632902316,
+      "rawSlotBrierGain": -0.039034550346611734,
+      "directMixtureBrierGain": 0.000003501612606198668,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/recurring/Old/window2",
+      "n": 882,
+      "meanWeight": 0.09918827296649849,
+      "meanAbsMotion": 0.006935507324896503,
+      "maxMotion": 0.15781890988501235,
+      "rawSlotBrierGain": 0.020722623481201106,
+      "directMixtureBrierGain": 0.0018397918795356304,
+      "guideFractions": [
+        0.1870748299319728,
+        0.5895691609977324,
+        0.2233560090702948
+      ]
+    },
+    {
+      "key": "design/recurring/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.02288425766033026,
+      "meanAbsMotion": 0.0017511434675076493,
+      "maxMotion": 0.09591267318615199,
+      "rawSlotBrierGain": 0.021971398796068575,
+      "directMixtureBrierGain": -0.00014053048296246577,
+      "guideFractions": [
+        0.146484375,
+        0.7958984375,
+        0.0576171875
+      ]
+    },
+    {
+      "key": "design/recurring/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.010330176378995972,
+      "meanAbsMotion": 0.0009474718772153395,
+      "maxMotion": 0.04711543757051295,
+      "rawSlotBrierGain": -0.05859437041078857,
+      "directMixtureBrierGain": -0.0003054124577066691,
+      "guideFractions": [
+        0.849609375,
+        0.150390625,
+        0
+      ]
+    },
+    {
+      "key": "design/recurring/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.002424460459563034,
+      "meanAbsMotion": 0.00028659598093889544,
+      "maxMotion": 0.027561229189266845,
+      "rawSlotBrierGain": -0.05698528053309247,
+      "directMixtureBrierGain": -0.000020057557361910383,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/recurring/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.0835902143824155,
+      "meanAbsMotion": 0.008880355392802443,
+      "maxMotion": 0.18726338669961423,
+      "rawSlotBrierGain": 0.031761188699615535,
+      "directMixtureBrierGain": 0.001208857685730367,
+      "guideFractions": [
+        0.1611328125,
+        0.7724609375,
+        0.06640625
+      ]
+    },
+    {
+      "key": "design/recurring/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.05195288534162316,
+      "meanAbsMotion": 0.006080923537799712,
+      "maxMotion": 0.3324280494223785,
+      "rawSlotBrierGain": 0.037813767968155484,
+      "directMixtureBrierGain": 0.0031272527706333935,
+      "guideFractions": [
+        0.04296875,
+        0.8447265625,
+        0.1123046875
+      ]
+    },
+    {
+      "key": "design/stable/Mixture/window1",
+      "n": 103,
+      "meanWeight": 0.002430858460830817,
+      "meanAbsMotion": 0.00019525049375739194,
+      "maxMotion": 0.002252205727945711,
+      "rawSlotBrierGain": -0.021527228924651497,
+      "directMixtureBrierGain": 0.000018772584077371313,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Mixture/window2",
+      "n": 860,
+      "meanWeight": 0.002960767787353215,
+      "meanAbsMotion": 0.00027131923694608657,
+      "maxMotion": 0.004083769989074629,
+      "rawSlotBrierGain": -0.03537856567253794,
+      "directMixtureBrierGain": -0.000007602162613775175,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Mixture/window3",
+      "n": 1024,
+      "meanWeight": 0.005290411421243769,
+      "meanAbsMotion": 0.00047423350085742136,
+      "maxMotion": 0.017211671017904467,
+      "rawSlotBrierGain": -0.03596455152286585,
+      "directMixtureBrierGain": -0.000021335634564248703,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Mixture/window4",
+      "n": 1024,
+      "meanWeight": 0.011471633541775472,
+      "meanAbsMotion": 0.000916695528055077,
+      "maxMotion": 0.0444210539134936,
+      "rawSlotBrierGain": -0.026302147581259403,
+      "directMixtureBrierGain": -0.0000525368147248839,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Mixture/window5",
+      "n": 1024,
+      "meanWeight": 0.008279896171897184,
+      "meanAbsMotion": 0.0006513045403339017,
+      "maxMotion": 0.01120355645607437,
+      "rawSlotBrierGain": -0.021497153736241652,
+      "directMixtureBrierGain": -0.000016438071172933077,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Mixture/window6",
+      "n": 1024,
+      "meanWeight": 0.012165253752461549,
+      "meanAbsMotion": 0.0008256495944030462,
+      "maxMotion": 0.02251540574445747,
+      "rawSlotBrierGain": -0.01638144872090757,
+      "directMixtureBrierGain": -0.00006012740878259933,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Mixture/window7",
+      "n": 1024,
+      "meanWeight": 0.01735621494471079,
+      "meanAbsMotion": 0.0011198568383103652,
+      "maxMotion": 0.04899106982728707,
+      "rawSlotBrierGain": -0.012910917326845652,
+      "directMixtureBrierGain": -0.00007831160426305932,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Old/window1",
+      "n": 103,
+      "meanWeight": 0.002430858460830817,
+      "meanAbsMotion": 0.00019525049375739194,
+      "maxMotion": 0.002252205727945711,
+      "rawSlotBrierGain": -0.021527228924651497,
+      "directMixtureBrierGain": 0.000018772584077371313,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Old/window2",
+      "n": 860,
+      "meanWeight": 0.002960767787353215,
+      "meanAbsMotion": 0.00027131923694608657,
+      "maxMotion": 0.004083769989074629,
+      "rawSlotBrierGain": -0.03537856567253794,
+      "directMixtureBrierGain": -0.000007602162613775175,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Old/window3",
+      "n": 1024,
+      "meanWeight": 0.005290411421243769,
+      "meanAbsMotion": 0.00047423350085742136,
+      "maxMotion": 0.017211671017904467,
+      "rawSlotBrierGain": -0.03596455152286585,
+      "directMixtureBrierGain": -0.000021335634564248703,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Old/window4",
+      "n": 1024,
+      "meanWeight": 0.011471633541775472,
+      "meanAbsMotion": 0.000916695528055077,
+      "maxMotion": 0.0444210539134936,
+      "rawSlotBrierGain": -0.026302147581259403,
+      "directMixtureBrierGain": -0.0000525368147248839,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Old/window5",
+      "n": 1024,
+      "meanWeight": 0.008279896171897184,
+      "meanAbsMotion": 0.0006513045403339017,
+      "maxMotion": 0.01120355645607437,
+      "rawSlotBrierGain": -0.021497153736241652,
+      "directMixtureBrierGain": -0.000016438071172933077,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Old/window6",
+      "n": 1024,
+      "meanWeight": 0.012165253752461549,
+      "meanAbsMotion": 0.0008256495944030462,
+      "maxMotion": 0.02251540574445747,
+      "rawSlotBrierGain": -0.01638144872090757,
+      "directMixtureBrierGain": -0.00006012740878259933,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "design/stable/Old/window7",
+      "n": 1024,
+      "meanWeight": 0.01735621494471079,
+      "meanAbsMotion": 0.0011198568383103652,
+      "maxMotion": 0.04899106982728707,
+      "rawSlotBrierGain": -0.012910917326845652,
+      "directMixtureBrierGain": -0.00007831160426305932,
+      "guideFractions": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "limits": "Read-only fixed-mask substitution on consumed trajectories; no alternate acquisition/learning trajectory or new quality guarantee. Aggregates are descriptive, not independent-frame confidence intervals."
+}

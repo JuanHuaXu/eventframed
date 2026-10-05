@@ -1,0 +1,35 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+import {audit,metrics,comparison} from './audit.mjs';
+const root='research/public-task-pilot/metrology-transfer-v1/';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const read=p=>JSON.parse(fs.readFileSync(p));
+const rawBytes=fs.readFileSync(root+'raw.jsonl'),raw=rawBytes.toString().trim().split('\n').map(JSON.parse);
+const check=audit(raw),completed=read(root+'completed.json'),results=read(root+'results.json'),readback=read(root+'readback.json');
+assert.equal(completed.checks.length,7);assert(completed.checks.every(c=>c.code===0));assert.equal(completed.controls,20);
+for(const c of completed.checks)assert.equal(hash(fs.readFileSync(root+c.name+'.log')),c.log_sha256);
+for(const[p,h]of Object.entries(completed.artifacts))assert.equal(hash(fs.readFileSync(root+p)),h);
+for(const[p,h]of Object.entries(read(root+'auditor-freeze.json').files))assert.equal(hash(fs.readFileSync(p)),h);
+assert.equal(hash(fs.readFileSync(root+'readback.mjs')),readback.readback_source_sha256);
+assert(readback.normal_pass&&readback.prior_checkpoints_unchanged);assert.equal(readback.complete_cases,432);assert.equal(readback.journal_decisions,15552);assert.equal(readback.packed_decisions,4320);
+assert.equal(results.raw_sha256,hash(rawBytes));
+const labels=read(root+'prepared/oracle.json');
+for(const mode of ['structured','text'])for(const split of ['design','confirmation']){
+ const baseline=metrics(check,labels,split,'baseline',mode),selected=metrics(check,labels,split,'selected',mode),v=results.cells[mode+'/'+split];
+ assert.deepEqual(v,{baseline,selected,comparison:comparison(baseline,selected)});
+ assert.equal(v.comparison.pass,false);
+}
+assert.equal(results.adoption_pass,false);assert.equal(completed.whole_goal_complete,false);
+const old=read('research/continuing-v39-completion/final-readback.json');
+assert.equal(hash(fs.readFileSync('research/continuing-v39-completion/checkpoint-verification.json')),old.checkpoint_sha256);
+for(const[p,h]of Object.entries(old.terminal_run_hashes))assert.equal(hash(fs.readFileSync(p)),h);
+const diff=execFileSync('git',['diff','--numstat'],{encoding:'utf8'}).trim();
+assert.equal(diff,read('research/continuing-v39-completion/checkpoint-verification.json').tracked_diff);
+execFileSync('git',['diff','--check']);
+const files={};for(const p of [root+'RESULTS.md',root+'PROTOCOL.md',root+'PREFLIGHT_RECOVERY.md',root+'READBACK_RECOVERY.md',root+'completed.json',root+'readback.json',root+'checkpoint.mjs','research-direction.md','docs/experiments/research-checkpoint-2026-10-03-metrology.md'])files[p]=hash(fs.readFileSync(p));
+const usage=Number(process.env.EVENTFRAME_WEEKLY_USAGE);assert(Number.isFinite(usage)&&usage>=0&&usage<=100);
+const report={time:new Date().toISOString(),files,current_runtime_files:Object.keys(raw[0].files).length,prior_sources_and_terminal_manifests_verified:true,prior_large_trajectory_raws_rehashed:false,complete_cases:432,proper_law_invariance:true,transfer_adoption_pass:false,all_seven_whole_goals:'OPEN',goal:'ACTIVE',whole_goal_complete:false,weekly_usage_percent:usage,tracked_diff:diff,production_untouched:true,required_sessions_terminal:true};
+fs.writeFileSync(root+'checkpoint.json',JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
+console.log(JSON.stringify(report,null,2));

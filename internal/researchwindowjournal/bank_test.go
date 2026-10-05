@@ -1,0 +1,245 @@
+package researchwindowjournal
+
+import (
+	"math"
+	"reflect"
+	"testing"
+)
+
+type bankState struct {
+	models   [3]Model
+	selector Selector
+	clock    int64
+	epoch    uint64
+}
+
+func bankSnapshot(b *Bank) bankState {
+	x := bankState{selector: selectorSnapshot(b.selector), clock: b.clock, epoch: b.epoch}
+	for k, m := range b.models {
+		x.models[k] = snapshot(m)
+	}
+	return x
+}
+func TestSharedTablesMutableStatesAndJoint(t *testing.T) {
+	for _, depth := range []int{0, 2, 7} {
+		base := []float64{.25, .47, .78, .925}
+		b, e := NewBank(base, 1, 128, depth, [3]int{2, 4, 8})
+		if e != nil {
+			t.Fatal(e)
+		}
+		for k := 1; k < 3; k++ {
+			a, z := b.models[0], b.models[k]
+			if &a.rates[0] != &z.rates[0] || &a.factors[0] != &z.factors[0] || &a.localFactors[0] != &z.localFactors[0] || &a.localPriors[0] != &z.localPriors[0] || &a.base[0] != &z.base[0] {
+				t.Fatal("immutable tables duplicated")
+			}
+			if &a.individuals[0] == &z.individuals[0] || &a.issued[0] == &z.issued[0] {
+				t.Fatal("posterior or member counters shared")
+			}
+			if &a.trials[0] != &z.trials[0] || &a.seqSlots[0] != &z.seqSlots[0] || !a.bankOwned || !z.bankOwned {
+				t.Fatal("journal ownership or sharing missing")
+			}
+		}
+		saved := b.models[0].base[0]
+		base[0] = .9
+		near(t, b.models[0].base[0], saved)
+		for n := 0; n < 16; n++ {
+			ticket, e := b.Issue(n%4, int64(3*n))
+			if e != nil {
+				t.Fatal(e)
+			}
+			if _, e = b.Resolve(ticket, n%3 != 0, int64(3*n+1)); e != nil {
+				t.Fatal(e)
+			}
+			if n%2 == 0 {
+				second, e := b.RequestSecond(ticket, int64(3*n+1))
+				if e != nil {
+					t.Fatal(e)
+				}
+				if _, e = b.Resolve(second, n%4 == 0, int64(3*n+2)); e != nil {
+					t.Fatal(e)
+				}
+			}
+			for _, m := range b.models {
+				for i := range m.base {
+					j, e := m.LatentJoint(i)
+					if e != nil {
+						t.Fatal(e)
+					}
+					total, q, o := 0., 0., 0.
+					for index, p := range j {
+						if !finite(p) || p < 0 {
+							t.Fatal("joint probability")
+						}
+						total += p
+						if index >= 4 {
+							q += p
+						}
+						if index%4 >= 2 {
+							o += p
+						}
+					}
+					actual, observed, e := m.Predict(i)
+					if e != nil {
+						t.Fatal(e)
+					}
+					near(t, total, 1)
+					near(t, q, actual)
+					near(t, o, observed)
+				}
+			}
+		}
+	}
+}
+func TestBankAllOrNothingAtEveryChildAndSelector(t *testing.T) {
+	for fault := 0; fault < 4; fault++ {
+		b, _ := NewBank([]float64{.3, .7}, 1, 16, 1, [3]int{2, 4, 8})
+		one, e := b.Issue(0, 0)
+		if e != nil {
+			t.Fatal(e)
+		}
+		if fault < 3 {
+			m := b.models[fault]
+			leaf := 1 + m.ranks[0]
+			m.nodes[leaf].finite[1][0] = math.Inf(1)
+		} else {
+			r := &b.selector.members[0].rows[0]
+			for k := range r.forecasts {
+				r.forecasts[k].Joint = [4]float64{1, 0, 0, 0}
+			}
+		}
+		before := bankSnapshot(b)
+		if _, e = b.Resolve(one, true, 1); e == nil {
+			t.Fatal("fault accepted", fault)
+		}
+		if !reflect.DeepEqual(before, bankSnapshot(b)) {
+			t.Fatal("partial publication", fault)
+		}
+	}
+	// Issue may expire factors. A later child's cap failure must not expire an
+	// earlier child's suffix or publish a selector trial first.
+	b, _ := NewBank([]float64{.3, .7}, 1, 16, 1, [3]int{1, 2, 4})
+	one, _ := b.Issue(0, 0)
+	_, _ = b.Resolve(one, true, 1)
+	b.models[2].cap = 0
+	before := bankSnapshot(b)
+	if _, e := b.Issue(1, 2); e == nil {
+		t.Fatal("child cap accepted")
+	}
+	if !reflect.DeepEqual(before, bankSnapshot(b)) {
+		t.Fatal("partial issue/expiry")
+	}
+}
+func TestBankOldGradingDoesNotResurrectWindow(t *testing.T) {
+	b, _ := NewBank([]float64{.3, .7}, 1, 16, 1, [3]int{1, 2, 8})
+	// The first-ever joint is identical across windows and cannot discriminate
+	// them. Warm the distinct suffixes BEFORE issuing the forecast to be graded.
+	for n := 0; n < 4; n++ {
+		x, e := b.Issue(0, int64(2*n))
+		if e != nil {
+			t.Fatal(e)
+		}
+		if _, e = b.Resolve(x, n < 2, int64(2*n+1)); e != nil {
+			t.Fatal(e)
+		}
+	}
+	one, e := b.Issue(0, 8)
+	if e != nil {
+		t.Fatal(e)
+	}
+	if _, e = b.Resolve(one, true, 9); e != nil {
+		t.Fatal(e)
+	}
+	joint := b.selector.members[0].rows[4].forecasts
+	if joint[0].Joint == joint[2].Joint {
+		t.Fatal("old issue still has identical kernels")
+	}
+	for n := 5; n < 9; n++ {
+		x, e := b.Issue(n%2, int64(2*n))
+		if e != nil {
+			t.Fatal(e)
+		}
+		if _, e = b.Resolve(x, n%2 == 0, int64(2*n+1)); e != nil {
+			t.Fatal(e)
+		}
+	}
+	a, z := snapshot(b.models[0]), snapshot(b.models[1])
+	weights, _ := b.selector.Weights(0)
+	second, e := b.RequestSecond(one, 18)
+	if e != nil {
+		t.Fatal(e)
+	}
+	if _, e = b.Resolve(second, false, 19); e != nil {
+		t.Fatal(e)
+	}
+	if a.nodes != b.models[0].nodes || z.nodes != b.models[1].nodes || !reflect.DeepEqual(a.individuals, b.models[0].individuals) || !reflect.DeepEqual(z.individuals, b.models[1].individuals) {
+		t.Fatal("grading resurrected expired base factors")
+	}
+	after, _ := b.selector.Weights(0)
+	if weights == after {
+		t.Fatal("vacuous old grading test")
+	}
+}
+func TestBankLifecycleAndEpochAtomicity(t *testing.T) {
+	base := []float64{.3, .7}
+	b, _ := NewBank(base, 1, 16, 1, [3]int{1, 2, 4})
+	other, _ := NewBank(base, 1, 16, 1, [3]int{1, 2, 4})
+	one, _ := b.Issue(0, 0)
+	foreign, _ := other.Issue(0, 0)
+	before := bankSnapshot(b)
+	for _, x := range []BankTicket{{}, foreign} {
+		if _, e := b.Resolve(x, true, 1); e == nil {
+			t.Fatal("foreign owner")
+		}
+		if !reflect.DeepEqual(before, bankSnapshot(b)) {
+			t.Fatal("foreign mutation")
+		}
+	}
+	if _, e := b.RequestSecond(one, 1); e == nil {
+		t.Fatal("unreceived nomination")
+	}
+	_, _ = b.Resolve(one, true, 1)
+	second, e := b.RequestSecond(one, 2)
+	if e != nil {
+		t.Fatal(e)
+	}
+	before = bankSnapshot(b)
+	if _, e = b.RequestSecond(one, 3); e == nil {
+		t.Fatal("duplicate request")
+	}
+	if !reflect.DeepEqual(before, bankSnapshot(b)) {
+		t.Fatal("duplicate mutation")
+	}
+	if e = b.Cancel(second, 3); e != nil {
+		t.Fatal(e)
+	}
+	before = bankSnapshot(b)
+	if _, e = b.Resolve(second, false, 4); e == nil {
+		t.Fatal("missing replay")
+	}
+	if !reflect.DeepEqual(before, bankSnapshot(b)) {
+		t.Fatal("missing mutation")
+	}
+	if e = b.BeginEpoch(2, 4); e != nil {
+		t.Fatal(e)
+	}
+	if b.Pending() != 0 {
+		t.Fatal("epoch pending")
+	}
+	before = bankSnapshot(b)
+	if _, e = b.Resolve(one, false, 5); e == nil {
+		t.Fatal("old epoch")
+	}
+	if !reflect.DeepEqual(before, bankSnapshot(b)) {
+		t.Fatal("epoch mutation")
+	}
+	for i, q := range base {
+		actual, _, e := b.Predict(i)
+		if e != nil {
+			t.Fatal(e)
+		}
+		near(t, actual, q)
+	}
+	if _, e := NewBank(base, 1, 16, 1, [3]int{2, 2, 4}); e == nil {
+		t.Fatal("duplicate windows")
+	}
+}

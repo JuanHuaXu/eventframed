@@ -1,0 +1,340 @@
+{
+  "sourceHash": "cc5fec406b90ae2bb3080f7f740fb19bffbcef769b2c7d43615f0467e8fcb92d",
+  "capturedSources": 812,
+  "summaries": [
+    {
+      "trial": 0,
+      "active": false,
+      "measured": false,
+      "accepted": 0,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 0,
+      "discards": 0,
+      "scheduledReadP99MS": 622.559667,
+      "scheduledWriteP99MS": 156.311542,
+      "ageP95MS": null,
+      "callbackTotalMS": 0,
+      "admissionTotalMS": 0,
+      "gates": []
+    },
+    {
+      "trial": 0,
+      "active": false,
+      "measured": true,
+      "accepted": 0,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 0,
+      "discards": 0,
+      "scheduledReadP99MS": 384.501084,
+      "scheduledWriteP99MS": 73.788709,
+      "ageP95MS": null,
+      "callbackTotalMS": 0,
+      "admissionTotalMS": 0,
+      "gates": [
+        {
+          "kind": "close",
+          "count": 1,
+          "entered": 1,
+          "waitTotalMS": 0.000792,
+          "heldTotalMS": 39.079792,
+          "waitP99MS": 0.000792,
+          "heldP99MS": 39.079792
+        },
+        {
+          "kind": "ingestion",
+          "count": 96,
+          "entered": 96,
+          "waitTotalMS": 0.012002,
+          "heldTotalMS": 969.547784,
+          "waitP99MS": 0.000875,
+          "heldP99MS": 15.028417
+        }
+      ]
+    },
+    {
+      "trial": 0,
+      "active": true,
+      "measured": false,
+      "accepted": 192,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 9600,
+      "discards": 9600,
+      "scheduledReadP99MS": 28.099833,
+      "scheduledWriteP99MS": 229.264333,
+      "ageP95MS": 94.855709,
+      "callbackTotalMS": 400.122376,
+      "admissionTotalMS": 312.011379,
+      "gates": []
+    },
+    {
+      "trial": 0,
+      "active": true,
+      "measured": true,
+      "accepted": 192,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 9600,
+      "discards": 9600,
+      "scheduledReadP99MS": 24.277792,
+      "scheduledWriteP99MS": 204.688042,
+      "ageP95MS": 72.748458,
+      "callbackTotalMS": 358.50142,
+      "admissionTotalMS": 266.761917,
+      "gates": [
+        {
+          "kind": "asof",
+          "count": 49,
+          "entered": 49,
+          "waitTotalMS": 267.735249,
+          "heldTotalMS": 358.527043,
+          "waitP99MS": 12.516916,
+          "heldP99MS": 17.127625
+        },
+        {
+          "kind": "close",
+          "count": 1,
+          "entered": 1,
+          "waitTotalMS": 0.000125,
+          "heldTotalMS": 37.828833,
+          "waitP99MS": 0.000125,
+          "heldP99MS": 37.828833
+        },
+        {
+          "kind": "ingestion",
+          "count": 96,
+          "entered": 96,
+          "waitTotalMS": 359.399416,
+          "heldTotalMS": 750.774417,
+          "waitP99MS": 17.143791,
+          "heldP99MS": 14.535791
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "active": false,
+      "measured": true,
+      "accepted": 0,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 0,
+      "discards": 0,
+      "scheduledReadP99MS": 511.614459,
+      "scheduledWriteP99MS": 107.219167,
+      "ageP95MS": null,
+      "callbackTotalMS": 0,
+      "admissionTotalMS": 0,
+      "gates": [
+        {
+          "kind": "close",
+          "count": 1,
+          "entered": 1,
+          "waitTotalMS": 0.000625,
+          "heldTotalMS": 44.172833,
+          "waitP99MS": 0.000625,
+          "heldP99MS": 44.172833
+        },
+        {
+          "kind": "ingestion",
+          "count": 96,
+          "entered": 96,
+          "waitTotalMS": 0.011589,
+          "heldTotalMS": 1015.278327,
+          "waitP99MS": 0.000375,
+          "heldP99MS": 15.19075
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "active": true,
+      "measured": false,
+      "accepted": 192,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 9600,
+      "discards": 9600,
+      "scheduledReadP99MS": 29.289583,
+      "scheduledWriteP99MS": 218.546416,
+      "ageP95MS": 115.996416,
+      "callbackTotalMS": 361.506959,
+      "admissionTotalMS": 278.135375,
+      "gates": []
+    },
+    {
+      "trial": 1,
+      "active": true,
+      "measured": true,
+      "accepted": 192,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 9600,
+      "discards": 9600,
+      "scheduledReadP99MS": 30.122333,
+      "scheduledWriteP99MS": 172.024625,
+      "ageP95MS": 94.995833,
+      "callbackTotalMS": 349.371371,
+      "admissionTotalMS": 264.904579,
+      "gates": [
+        {
+          "kind": "asof",
+          "count": 49,
+          "entered": 49,
+          "waitTotalMS": 311.145793,
+          "heldTotalMS": 349.402125,
+          "waitP99MS": 11.227083,
+          "heldP99MS": 19.428
+        },
+        {
+          "kind": "close",
+          "count": 1,
+          "entered": 1,
+          "waitTotalMS": 0.000125,
+          "heldTotalMS": 38.728916,
+          "waitP99MS": 0.000125,
+          "heldP99MS": 38.728916
+        },
+        {
+          "kind": "ingestion",
+          "count": 96,
+          "entered": 96,
+          "waitTotalMS": 350.309417,
+          "heldTotalMS": 745.887997,
+          "waitP99MS": 19.439875,
+          "heldP99MS": 13.926917
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "active": false,
+      "measured": false,
+      "accepted": 0,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 0,
+      "discards": 0,
+      "scheduledReadP99MS": 536.551042,
+      "scheduledWriteP99MS": 125.744875,
+      "ageP95MS": null,
+      "callbackTotalMS": 0,
+      "admissionTotalMS": 0,
+      "gates": []
+    },
+    {
+      "trial": 2,
+      "active": true,
+      "measured": false,
+      "accepted": 192,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 9600,
+      "discards": 9600,
+      "scheduledReadP99MS": 28.270167,
+      "scheduledWriteP99MS": 210.489334,
+      "ageP95MS": 94.022417,
+      "callbackTotalMS": 357.602413,
+      "admissionTotalMS": 270.070039,
+      "gates": []
+    },
+    {
+      "trial": 2,
+      "active": true,
+      "measured": true,
+      "accepted": 192,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 9600,
+      "discards": 9600,
+      "scheduledReadP99MS": 27.71925,
+      "scheduledWriteP99MS": 151.066166,
+      "ageP95MS": 101.993375,
+      "callbackTotalMS": 360.603124,
+      "admissionTotalMS": 268.281999,
+      "gates": [
+        {
+          "kind": "asof",
+          "count": 49,
+          "entered": 49,
+          "waitTotalMS": 298.436127,
+          "heldTotalMS": 360.634329,
+          "waitP99MS": 12.65025,
+          "heldP99MS": 22.369917
+        },
+        {
+          "kind": "close",
+          "count": 1,
+          "entered": 1,
+          "waitTotalMS": 0.000125,
+          "heldTotalMS": 38.832125,
+          "waitP99MS": 0.000125,
+          "heldP99MS": 38.832125
+        },
+        {
+          "kind": "ingestion",
+          "count": 96,
+          "entered": 96,
+          "waitTotalMS": 361.696792,
+          "heldTotalMS": 720.149545,
+          "waitP99MS": 22.380459,
+          "heldP99MS": 13.780708
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "active": false,
+      "measured": false,
+      "accepted": 0,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 0,
+      "discards": 0,
+      "scheduledReadP99MS": 587.481,
+      "scheduledWriteP99MS": 122.691917,
+      "ageP95MS": null,
+      "callbackTotalMS": 0,
+      "admissionTotalMS": 0,
+      "gates": []
+    },
+    {
+      "trial": 2,
+      "active": false,
+      "measured": true,
+      "accepted": 0,
+      "dropped": 0,
+      "expired": 0,
+      "admits": 0,
+      "discards": 0,
+      "scheduledReadP99MS": 549.280125,
+      "scheduledWriteP99MS": 113.545833,
+      "ageP95MS": null,
+      "callbackTotalMS": 0,
+      "admissionTotalMS": 0,
+      "gates": [
+        {
+          "kind": "close",
+          "count": 1,
+          "entered": 1,
+          "waitTotalMS": 0.000375,
+          "heldTotalMS": 40.235667,
+          "waitP99MS": 0.000375,
+          "heldP99MS": 40.235667
+        },
+        {
+          "kind": "ingestion",
+          "count": 96,
+          "entered": 96,
+          "waitTotalMS": 0.014958,
+          "heldTotalMS": 1042.256742,
+          "waitP99MS": 0.001917,
+          "heldP99MS": 15.651792
+        }
+      ]
+    }
+  ],
+  "limitations": "Direct bounded telemetry; durations include instrumentation cost. Rotated finite cells, not a latency non-inferiority guarantee. Idle controls retain the wrapper; not the earlier bare-native control. Cold observations, not training. Held totals and callback/admission totals overlap and must not be added."
+}

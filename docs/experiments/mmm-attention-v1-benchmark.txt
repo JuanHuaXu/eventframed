@@ -1,0 +1,21 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationexperiment
+cpu: Apple M4
+BenchmarkObservation/fixed         	  158592	      7458 ns/op	    5408 B/op	       2 allocs/op
+BenchmarkObservation/fixed         	  161076	      7482 ns/op	    5408 B/op	       2 allocs/op
+BenchmarkObservation/fixed         	  161289	      7466 ns/op	    5408 B/op	       2 allocs/op
+BenchmarkObservation/breadth       	  122170	      9770 ns/op	    6816 B/op	      21 allocs/op
+BenchmarkObservation/breadth       	  122622	      9933 ns/op	    6816 B/op	      21 allocs/op
+BenchmarkObservation/breadth       	  123304	      9957 ns/op	    6816 B/op	      21 allocs/op
+BenchmarkObservation/depth_first   	  116594	     10100 ns/op	    6688 B/op	      20 allocs/op
+BenchmarkObservation/depth_first   	  118740	     10059 ns/op	    6688 B/op	      20 allocs/op
+BenchmarkObservation/depth_first   	  119442	     10080 ns/op	    6688 B/op	      20 allocs/op
+BenchmarkObservation/mmm           	  141465	      8528 ns/op	    5712 B/op	       7 allocs/op
+BenchmarkObservation/mmm           	  141651	      8453 ns/op	    5712 B/op	       7 allocs/op
+BenchmarkObservation/mmm           	  141987	      8620 ns/op	    5712 B/op	       7 allocs/op
+BenchmarkObservation/exhaustive    	   92448	     12939 ns/op	    7616 B/op	      31 allocs/op
+BenchmarkObservation/exhaustive    	   92697	     12938 ns/op	    7616 B/op	      31 allocs/op
+BenchmarkObservation/exhaustive    	   90324	     12929 ns/op	    7616 B/op	      31 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationexperiment	20.655s

@@ -1,0 +1,11 @@
+{
+  "command": "env EVENTFRAME_WEEKLY_USAGE=23 node research/public-task-pilot/scifact-pairrank-v1-audit.mjs",
+  "exitCode": 1,
+  "actualTerminalObserved": true,
+  "error": "AssertionError [ERR_ASSERTION]: undefined !== '10'",
+  "location": "scifact-pairrank-v1-audit.mjs:14:302",
+  "confirmedCause": "Evaluator used Go exported Case field names ID/Family/Rows/Positive instead of the declared JSON tags id/family/rows/positive.",
+  "scientificSourceModelsPredictionsUnchanged": true,
+  "repair": "New v2 evaluator reads the declared JSON properties; preserve the frozen v1 evaluator and failed invocation.",
+  "scope": "Research evaluator only; no durable policy changes"
+}

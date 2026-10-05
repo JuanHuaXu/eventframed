@@ -1,0 +1,1998 @@
+{
+  "raw_sha256": "51706ae54d8c534c6755a25bc3a00486c8f0b7bb6cd55c5146971f14ba5ef5e6",
+  "oracle_sha256": "f6eff5abd160b7bb13d274ea9eddbfec41f2b3723f5363bfe3248ef126860c5c",
+  "scorer_sha256": "87577b300b054c7f1ec612bb77e194ff52bb0753e1471111461c800a3f741d11",
+  "counts": {
+    "focus": {
+      "literal": {
+        "cases": 15,
+        "top1": 15,
+        "survived": 15,
+        "packed": 15
+      },
+      "paraphrase": {
+        "cases": 15,
+        "top1": 15,
+        "survived": 15,
+        "packed": 15
+      },
+      "absent": {
+        "cases": 2,
+        "top1": 0,
+        "survived": 0,
+        "packed": 2
+      }
+    },
+    "priority": {
+      "literal": {
+        "cases": 15,
+        "top1": 15,
+        "survived": 15,
+        "packed": 15
+      },
+      "paraphrase": {
+        "cases": 15,
+        "top1": 14,
+        "survived": 15,
+        "packed": 15
+      },
+      "absent": {
+        "cases": 2,
+        "top1": 0,
+        "survived": 0,
+        "packed": 2
+      }
+    },
+    "fusion": {
+      "literal": {
+        "cases": 15,
+        "top1": 15,
+        "survived": 15,
+        "packed": 15
+      },
+      "paraphrase": {
+        "cases": 15,
+        "top1": 14,
+        "survived": 15,
+        "packed": 15
+      },
+      "absent": {
+        "cases": 2,
+        "top1": 0,
+        "survived": 0,
+        "packed": 2
+      }
+    }
+  },
+  "fusion_top1_gains": [],
+  "fusion_top1_losses": [
+    "nara-rights-paraphrase"
+  ],
+  "priority_top1_losses": [
+    "nara-rights-paraphrase"
+  ],
+  "invariant_errors": [],
+  "finite_fusion_pass": false,
+  "rows": [
+    {
+      "case": "nara-absent-emancipation",
+      "wording": "absent",
+      "target": null,
+      "arm": "focus",
+      "top1": false,
+      "survived": false,
+      "packed": [
+        "nara-rights",
+        "nara-removal",
+        "nara-lee",
+        "m10-contact",
+        "nara-alliance",
+        "nara-inaugural",
+        "nara-missouri",
+        "nara-seal",
+        "nara-guadalupe",
+        "v1-launch"
+      ]
+    },
+    {
+      "case": "nara-absent-emancipation",
+      "wording": "absent",
+      "target": null,
+      "arm": "priority",
+      "top1": false,
+      "survived": false,
+      "packed": [
+        "nara-marbury",
+        "nara-paris",
+        "nara-alliance",
+        "nara-rights",
+        "nara-articles",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-removal",
+        "nara-ghent",
+        "nara-guadalupe"
+      ]
+    },
+    {
+      "case": "nara-absent-emancipation",
+      "wording": "absent",
+      "target": null,
+      "arm": "fusion",
+      "top1": false,
+      "survived": false,
+      "packed": [
+        "nara-rights",
+        "nara-removal",
+        "nara-lee",
+        "m10-contact",
+        "nara-alliance",
+        "nara-inaugural",
+        "nara-missouri",
+        "nara-seal",
+        "nara-guadalupe",
+        "v1-launch"
+      ]
+    },
+    {
+      "case": "nara-absent-suffrage",
+      "wording": "absent",
+      "target": null,
+      "arm": "focus",
+      "top1": false,
+      "survived": false,
+      "packed": [
+        "nara-rights",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-inaugural",
+        "nara-missouri",
+        "nara-removal",
+        "nara-articles",
+        "nara-virginia",
+        "nara-marbury"
+      ]
+    },
+    {
+      "case": "nara-absent-suffrage",
+      "wording": "absent",
+      "target": null,
+      "arm": "priority",
+      "top1": false,
+      "survived": false,
+      "packed": [
+        "nara-rights",
+        "nara-marbury",
+        "nara-alliance",
+        "nara-paris",
+        "nara-removal",
+        "m10-contact",
+        "nara-articles",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-ghent"
+      ]
+    },
+    {
+      "case": "nara-absent-suffrage",
+      "wording": "absent",
+      "target": null,
+      "arm": "fusion",
+      "top1": false,
+      "survived": false,
+      "packed": [
+        "nara-rights",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-inaugural",
+        "nara-missouri",
+        "nara-removal",
+        "nara-articles",
+        "nara-virginia",
+        "nara-marbury"
+      ]
+    },
+    {
+      "case": "nara-alien-literal",
+      "wording": "literal",
+      "target": "nara-alien",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alien",
+        "m10-contact",
+        "nara-alliance",
+        "v1-launch",
+        "nara-seal",
+        "nara-rights",
+        "nara-removal",
+        "nara-lee",
+        "nara-inaugural",
+        "nara-gibbons"
+      ]
+    },
+    {
+      "case": "nara-alien-literal",
+      "wording": "literal",
+      "target": "nara-alien",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alien",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-ghent",
+        "nara-rights",
+        "nara-articles",
+        "nara-virginia",
+        "nara-missouri",
+        "nara-alliance",
+        "nara-guadalupe"
+      ]
+    },
+    {
+      "case": "nara-alien-literal",
+      "wording": "literal",
+      "target": "nara-alien",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alien",
+        "m10-contact",
+        "nara-alliance",
+        "v1-launch",
+        "nara-seal",
+        "nara-rights",
+        "nara-removal",
+        "nara-lee",
+        "nara-inaugural",
+        "nara-gibbons"
+      ]
+    },
+    {
+      "case": "nara-alien-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-alien",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alien",
+        "m10-contact",
+        "nara-alliance",
+        "v1-launch",
+        "nara-rights",
+        "nara-gibbons",
+        "nara-guadalupe",
+        "nara-articles",
+        "nara-seal",
+        "nara-paris"
+      ]
+    },
+    {
+      "case": "nara-alien-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-alien",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alien",
+        "nara-gibbons",
+        "nara-alliance",
+        "nara-paris",
+        "nara-removal",
+        "nara-rights",
+        "nara-articles",
+        "m10-contact",
+        "nara-missouri",
+        "nara-ghent"
+      ]
+    },
+    {
+      "case": "nara-alien-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-alien",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alien",
+        "m10-contact",
+        "nara-alliance",
+        "v1-launch",
+        "nara-rights",
+        "nara-gibbons",
+        "nara-guadalupe",
+        "nara-articles",
+        "nara-seal",
+        "nara-paris"
+      ]
+    },
+    {
+      "case": "nara-alliance-literal",
+      "wording": "literal",
+      "target": "nara-alliance",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alliance",
+        "nara-paris",
+        "m10-contact",
+        "nara-ghent",
+        "nara-articles",
+        "nara-missouri",
+        "nara-guadalupe",
+        "nara-seal",
+        "nara-lee",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-alliance-literal",
+      "wording": "literal",
+      "target": "nara-alliance",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alliance",
+        "nara-paris",
+        "nara-ghent",
+        "nara-guadalupe",
+        "nara-gibbons",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-alliance-literal",
+      "wording": "literal",
+      "target": "nara-alliance",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alliance",
+        "nara-paris",
+        "m10-contact",
+        "nara-ghent",
+        "nara-articles",
+        "nara-missouri",
+        "nara-guadalupe",
+        "nara-seal",
+        "nara-lee",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-alliance-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-alliance",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alliance",
+        "nara-paris",
+        "m10-contact",
+        "nara-missouri",
+        "nara-seal",
+        "nara-articles",
+        "v2-neptune",
+        "nara-alien",
+        "nara-ghent",
+        "nara-guadalupe"
+      ]
+    },
+    {
+      "case": "nara-alliance-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-alliance",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alliance",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-removal",
+        "nara-articles",
+        "nara-rights",
+        "m10-contact",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-ghent"
+      ]
+    },
+    {
+      "case": "nara-alliance-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-alliance",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-alliance",
+        "nara-paris",
+        "m10-contact",
+        "nara-missouri",
+        "nara-seal",
+        "nara-articles",
+        "v2-neptune",
+        "nara-alien",
+        "nara-ghent",
+        "nara-guadalupe"
+      ]
+    },
+    {
+      "case": "nara-articles-literal",
+      "wording": "literal",
+      "target": "nara-articles",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-articles",
+        "nara-alliance",
+        "m10-contact",
+        "nara-seal",
+        "nara-inaugural",
+        "nara-lee",
+        "nara-paris",
+        "nara-removal",
+        "nara-rights",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-articles-literal",
+      "wording": "literal",
+      "target": "nara-articles",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-articles",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-ghent",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-articles-literal",
+      "wording": "literal",
+      "target": "nara-articles",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-articles",
+        "nara-alliance",
+        "m10-contact",
+        "nara-seal",
+        "nara-inaugural",
+        "nara-lee",
+        "nara-paris",
+        "nara-removal",
+        "nara-rights",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-articles-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-articles",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-articles",
+        "nara-alliance",
+        "m10-contact",
+        "nara-virginia",
+        "nara-paris",
+        "nara-seal",
+        "nara-missouri",
+        "nara-rights",
+        "v1-launch",
+        "nara-lee"
+      ]
+    },
+    {
+      "case": "nara-articles-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-articles",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-articles",
+        "nara-seal",
+        "nara-paris",
+        "nara-virginia",
+        "nara-ghent",
+        "nara-missouri",
+        "nara-rights",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-gibbons"
+      ]
+    },
+    {
+      "case": "nara-articles-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-articles",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-articles",
+        "nara-alliance",
+        "m10-contact",
+        "nara-virginia",
+        "nara-paris",
+        "nara-seal",
+        "nara-missouri",
+        "nara-rights",
+        "v1-launch",
+        "nara-lee"
+      ]
+    },
+    {
+      "case": "nara-ghent-literal",
+      "wording": "literal",
+      "target": "nara-ghent",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-ghent",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-paris",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-seal",
+        "nara-articles",
+        "nara-missouri"
+      ]
+    },
+    {
+      "case": "nara-ghent-literal",
+      "wording": "literal",
+      "target": "nara-ghent",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-ghent",
+        "nara-paris",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-gibbons",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-ghent-literal",
+      "wording": "literal",
+      "target": "nara-ghent",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-ghent",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-paris",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-seal",
+        "nara-articles",
+        "nara-missouri"
+      ]
+    },
+    {
+      "case": "nara-ghent-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-ghent",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-ghent",
+        "nara-alliance",
+        "m10-contact",
+        "nara-paris",
+        "nara-lee",
+        "nara-guadalupe",
+        "nara-alien",
+        "nara-missouri",
+        "v1-launch",
+        "nara-seal"
+      ]
+    },
+    {
+      "case": "nara-ghent-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-ghent",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-ghent",
+        "nara-paris",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-gibbons",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-ghent-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-ghent",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-ghent",
+        "nara-alliance",
+        "m10-contact",
+        "nara-paris",
+        "nara-lee",
+        "nara-guadalupe",
+        "nara-alien",
+        "nara-missouri",
+        "v1-launch",
+        "nara-seal"
+      ]
+    },
+    {
+      "case": "nara-gibbons-literal",
+      "wording": "literal",
+      "target": "nara-gibbons",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-gibbons",
+        "m10-contact",
+        "nara-alliance",
+        "nara-rights",
+        "v1-launch",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-lee",
+        "nara-articles",
+        "nara-missouri"
+      ]
+    },
+    {
+      "case": "nara-gibbons-literal",
+      "wording": "literal",
+      "target": "nara-gibbons",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-gibbons",
+        "nara-paris",
+        "nara-ghent",
+        "nara-rights",
+        "nara-articles",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-gibbons-literal",
+      "wording": "literal",
+      "target": "nara-gibbons",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-gibbons",
+        "m10-contact",
+        "nara-alliance",
+        "nara-rights",
+        "v1-launch",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-lee",
+        "nara-articles",
+        "nara-missouri"
+      ]
+    },
+    {
+      "case": "nara-gibbons-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-gibbons",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-gibbons",
+        "m10-contact",
+        "v1-launch",
+        "nara-alliance",
+        "nara-missouri",
+        "nara-articles",
+        "m10-venus",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-lee"
+      ]
+    },
+    {
+      "case": "nara-gibbons-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-gibbons",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-gibbons",
+        "nara-alliance",
+        "nara-paris",
+        "nara-removal",
+        "m10-contact",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-ghent"
+      ]
+    },
+    {
+      "case": "nara-gibbons-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-gibbons",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-gibbons",
+        "m10-contact",
+        "v1-launch",
+        "nara-alliance",
+        "nara-missouri",
+        "nara-articles",
+        "m10-venus",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-lee"
+      ]
+    },
+    {
+      "case": "nara-guadalupe-literal",
+      "wording": "literal",
+      "target": "nara-guadalupe",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-guadalupe",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-alien",
+        "nara-seal",
+        "nara-paris",
+        "nara-removal",
+        "nara-missouri",
+        "nara-ghent"
+      ]
+    },
+    {
+      "case": "nara-guadalupe-literal",
+      "wording": "literal",
+      "target": "nara-guadalupe",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-guadalupe",
+        "nara-paris",
+        "nara-ghent",
+        "nara-alliance",
+        "nara-gibbons",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-guadalupe-literal",
+      "wording": "literal",
+      "target": "nara-guadalupe",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-guadalupe",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-alien",
+        "nara-seal",
+        "nara-paris",
+        "nara-removal",
+        "nara-missouri",
+        "nara-ghent"
+      ]
+    },
+    {
+      "case": "nara-guadalupe-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-guadalupe",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-guadalupe",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-alien",
+        "nara-seal",
+        "nara-paris",
+        "nara-removal",
+        "nara-missouri",
+        "v1-launch"
+      ]
+    },
+    {
+      "case": "nara-guadalupe-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-guadalupe",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-guadalupe",
+        "nara-paris",
+        "nara-ghent",
+        "nara-alliance",
+        "nara-gibbons",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-guadalupe-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-guadalupe",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-guadalupe",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-alien",
+        "nara-seal",
+        "nara-paris",
+        "nara-removal",
+        "nara-missouri",
+        "v1-launch"
+      ]
+    },
+    {
+      "case": "nara-inaugural-literal",
+      "wording": "literal",
+      "target": "nara-inaugural",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-inaugural",
+        "nara-seal",
+        "nara-alliance",
+        "nara-lee",
+        "nara-rights",
+        "m10-mercury1",
+        "nara-removal",
+        "nara-paris",
+        "nara-articles",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-inaugural-literal",
+      "wording": "literal",
+      "target": "nara-inaugural",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-inaugural",
+        "m10-mercury1",
+        "nara-removal",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-ghent",
+        "nara-rights",
+        "nara-articles",
+        "nara-virginia",
+        "nara-missouri"
+      ]
+    },
+    {
+      "case": "nara-inaugural-literal",
+      "wording": "literal",
+      "target": "nara-inaugural",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-inaugural",
+        "nara-seal",
+        "nara-alliance",
+        "nara-lee",
+        "nara-rights",
+        "m10-mercury1",
+        "nara-removal",
+        "nara-paris",
+        "nara-articles",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-inaugural-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-inaugural",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-inaugural",
+        "nara-seal",
+        "nara-alliance",
+        "nara-articles",
+        "m10-contact",
+        "nara-removal",
+        "nara-lee",
+        "v1-launch",
+        "nara-virginia",
+        "nara-paris"
+      ]
+    },
+    {
+      "case": "nara-inaugural-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-inaugural",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-inaugural",
+        "nara-marbury",
+        "nara-alliance",
+        "nara-paris",
+        "m10-contact",
+        "nara-removal",
+        "nara-articles",
+        "nara-rights",
+        "nara-virginia",
+        "nara-ghent"
+      ]
+    },
+    {
+      "case": "nara-inaugural-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-inaugural",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-inaugural",
+        "nara-seal",
+        "nara-alliance",
+        "nara-articles",
+        "m10-contact",
+        "nara-removal",
+        "nara-lee",
+        "v1-launch",
+        "nara-virginia",
+        "nara-paris"
+      ]
+    },
+    {
+      "case": "nara-lee-literal",
+      "wording": "literal",
+      "target": "nara-lee",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-lee",
+        "m10-contact",
+        "nara-alliance",
+        "nara-missouri",
+        "v1-launch",
+        "nara-removal",
+        "nara-inaugural",
+        "nara-seal",
+        "nara-guadalupe",
+        "nara-virginia"
+      ]
+    },
+    {
+      "case": "nara-lee-literal",
+      "wording": "literal",
+      "target": "nara-lee",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-lee",
+        "nara-gibbons",
+        "nara-ghent",
+        "nara-paris",
+        "nara-rights",
+        "nara-articles",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-guadalupe",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-lee-literal",
+      "wording": "literal",
+      "target": "nara-lee",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-lee",
+        "m10-contact",
+        "nara-alliance",
+        "nara-missouri",
+        "v1-launch",
+        "nara-removal",
+        "nara-inaugural",
+        "nara-seal",
+        "nara-guadalupe",
+        "nara-virginia"
+      ]
+    },
+    {
+      "case": "nara-lee-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-lee",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-lee",
+        "nara-alliance",
+        "nara-removal",
+        "nara-inaugural",
+        "m10-contact",
+        "nara-missouri",
+        "nara-guadalupe",
+        "v1-launch",
+        "nara-seal",
+        "nara-rights"
+      ]
+    },
+    {
+      "case": "nara-lee-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-lee",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-lee",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-ghent",
+        "nara-rights",
+        "nara-articles",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-alliance",
+        "nara-guadalupe"
+      ]
+    },
+    {
+      "case": "nara-lee-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-lee",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-lee",
+        "nara-alliance",
+        "nara-removal",
+        "nara-inaugural",
+        "m10-contact",
+        "nara-missouri",
+        "nara-guadalupe",
+        "v1-launch",
+        "nara-seal",
+        "nara-rights"
+      ]
+    },
+    {
+      "case": "nara-marbury-literal",
+      "wording": "literal",
+      "target": "nara-marbury",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-marbury",
+        "m10-contact",
+        "nara-alliance",
+        "v1-launch",
+        "nara-alien",
+        "nara-articles",
+        "nara-rights",
+        "nara-lee",
+        "nara-missouri",
+        "nara-inaugural"
+      ]
+    },
+    {
+      "case": "nara-marbury-literal",
+      "wording": "literal",
+      "target": "nara-marbury",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-marbury",
+        "nara-paris",
+        "nara-ghent",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-marbury-literal",
+      "wording": "literal",
+      "target": "nara-marbury",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-marbury",
+        "m10-contact",
+        "nara-alliance",
+        "v1-launch",
+        "nara-alien",
+        "nara-articles",
+        "nara-rights",
+        "nara-lee",
+        "nara-missouri",
+        "nara-inaugural"
+      ]
+    },
+    {
+      "case": "nara-marbury-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-marbury",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-marbury",
+        "m10-contact",
+        "v1-launch",
+        "nara-alliance",
+        "nara-missouri",
+        "m10-mercury1",
+        "nara-articles",
+        "nara-alien",
+        "nara-rights",
+        "nara-virginia"
+      ]
+    },
+    {
+      "case": "nara-marbury-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-marbury",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-marbury",
+        "m10-contact",
+        "v2-saturn",
+        "m10-mercury1",
+        "v1-launch",
+        "nara-removal",
+        "nara-alliance",
+        "nara-seal",
+        "v1-jupiter",
+        "v2-uranus"
+      ]
+    },
+    {
+      "case": "nara-marbury-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-marbury",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-marbury",
+        "m10-contact",
+        "v1-launch",
+        "nara-alliance",
+        "nara-missouri",
+        "m10-mercury1",
+        "nara-articles",
+        "nara-alien",
+        "nara-rights",
+        "nara-virginia"
+      ]
+    },
+    {
+      "case": "nara-missouri-literal",
+      "wording": "literal",
+      "target": "nara-missouri",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-missouri",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-removal",
+        "nara-seal",
+        "nara-paris",
+        "nara-inaugural",
+        "nara-articles",
+        "nara-virginia"
+      ]
+    },
+    {
+      "case": "nara-missouri-literal",
+      "wording": "literal",
+      "target": "nara-missouri",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-missouri",
+        "nara-marbury",
+        "nara-paris",
+        "nara-ghent",
+        "nara-articles",
+        "nara-rights",
+        "nara-virginia",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-missouri-literal",
+      "wording": "literal",
+      "target": "nara-missouri",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-missouri",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-removal",
+        "nara-seal",
+        "nara-paris",
+        "nara-inaugural",
+        "nara-articles",
+        "nara-virginia"
+      ]
+    },
+    {
+      "case": "nara-missouri-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-missouri",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-missouri",
+        "m10-contact",
+        "nara-alliance",
+        "nara-lee",
+        "nara-removal",
+        "v1-launch",
+        "nara-guadalupe",
+        "nara-virginia",
+        "nara-articles",
+        "nara-seal"
+      ]
+    },
+    {
+      "case": "nara-missouri-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-missouri",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-missouri",
+        "nara-removal",
+        "m10-contact",
+        "v2-neptune",
+        "m10-mercury2",
+        "v1-launch",
+        "nara-alliance",
+        "nara-seal",
+        "nara-lee",
+        "nara-inaugural"
+      ]
+    },
+    {
+      "case": "nara-missouri-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-missouri",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-missouri",
+        "m10-contact",
+        "nara-alliance",
+        "nara-lee",
+        "nara-removal",
+        "v1-launch",
+        "nara-guadalupe",
+        "nara-virginia",
+        "nara-articles",
+        "nara-seal"
+      ]
+    },
+    {
+      "case": "nara-paris-literal",
+      "wording": "literal",
+      "target": "nara-paris",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-paris",
+        "nara-alliance",
+        "m10-contact",
+        "nara-ghent",
+        "nara-lee",
+        "nara-inaugural",
+        "nara-seal",
+        "nara-guadalupe",
+        "nara-alien",
+        "nara-articles"
+      ]
+    },
+    {
+      "case": "nara-paris-literal",
+      "wording": "literal",
+      "target": "nara-paris",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-paris",
+        "nara-ghent",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-gibbons",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-paris-literal",
+      "wording": "literal",
+      "target": "nara-paris",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-paris",
+        "nara-alliance",
+        "m10-contact",
+        "nara-ghent",
+        "nara-lee",
+        "nara-inaugural",
+        "nara-seal",
+        "nara-guadalupe",
+        "nara-alien",
+        "nara-articles"
+      ]
+    },
+    {
+      "case": "nara-paris-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-paris",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-paris",
+        "nara-alliance",
+        "m10-contact",
+        "nara-missouri",
+        "nara-ghent",
+        "nara-guadalupe",
+        "v1-launch",
+        "nara-alien",
+        "nara-articles",
+        "nara-rights"
+      ]
+    },
+    {
+      "case": "nara-paris-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-paris",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-paris",
+        "nara-ghent",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-articles",
+        "nara-rights",
+        "nara-alien",
+        "nara-gibbons"
+      ]
+    },
+    {
+      "case": "nara-paris-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-paris",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-paris",
+        "nara-alliance",
+        "m10-contact",
+        "nara-missouri",
+        "nara-ghent",
+        "nara-guadalupe",
+        "v1-launch",
+        "nara-alien",
+        "nara-articles",
+        "nara-rights"
+      ]
+    },
+    {
+      "case": "nara-removal-literal",
+      "wording": "literal",
+      "target": "nara-removal",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-removal",
+        "nara-lee",
+        "nara-alliance",
+        "nara-inaugural",
+        "m10-contact",
+        "nara-rights",
+        "nara-alien",
+        "nara-missouri",
+        "nara-seal",
+        "nara-articles"
+      ]
+    },
+    {
+      "case": "nara-removal-literal",
+      "wording": "literal",
+      "target": "nara-removal",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-removal",
+        "nara-inaugural",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-rights",
+        "nara-articles",
+        "nara-ghent",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-guadalupe"
+      ]
+    },
+    {
+      "case": "nara-removal-literal",
+      "wording": "literal",
+      "target": "nara-removal",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-removal",
+        "nara-lee",
+        "nara-alliance",
+        "nara-inaugural",
+        "m10-contact",
+        "nara-rights",
+        "nara-alien",
+        "nara-missouri",
+        "nara-seal",
+        "nara-articles"
+      ]
+    },
+    {
+      "case": "nara-removal-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-removal",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-removal",
+        "m10-contact",
+        "nara-lee",
+        "nara-missouri",
+        "nara-alliance",
+        "v1-launch",
+        "nara-rights",
+        "nara-inaugural",
+        "nara-alien",
+        "nara-seal"
+      ]
+    },
+    {
+      "case": "nara-removal-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-removal",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-removal",
+        "m10-contact",
+        "v2-neptune",
+        "nara-alliance",
+        "m10-mercury2",
+        "nara-lee",
+        "nara-seal",
+        "v1-launch",
+        "nara-inaugural",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-removal-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-removal",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-removal",
+        "m10-contact",
+        "nara-lee",
+        "nara-missouri",
+        "nara-alliance",
+        "v1-launch",
+        "nara-rights",
+        "nara-inaugural",
+        "nara-alien",
+        "nara-seal"
+      ]
+    },
+    {
+      "case": "nara-rights-literal",
+      "wording": "literal",
+      "target": "nara-rights",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-rights",
+        "nara-alliance",
+        "m10-contact",
+        "nara-inaugural",
+        "nara-alien",
+        "nara-removal",
+        "nara-lee",
+        "nara-paris",
+        "nara-seal",
+        "nara-articles"
+      ]
+    },
+    {
+      "case": "nara-rights-literal",
+      "wording": "literal",
+      "target": "nara-rights",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-rights",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-ghent",
+        "nara-articles",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-rights-literal",
+      "wording": "literal",
+      "target": "nara-rights",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-rights",
+        "nara-alliance",
+        "m10-contact",
+        "nara-inaugural",
+        "nara-alien",
+        "nara-removal",
+        "nara-lee",
+        "nara-paris",
+        "nara-seal",
+        "nara-articles"
+      ]
+    },
+    {
+      "case": "nara-rights-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-rights",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-rights",
+        "nara-inaugural",
+        "nara-alliance",
+        "nara-articles",
+        "nara-seal",
+        "m10-contact",
+        "nara-removal",
+        "nara-missouri",
+        "nara-alien",
+        "nara-lee"
+      ]
+    },
+    {
+      "case": "nara-rights-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-rights",
+      "arm": "priority",
+      "top1": false,
+      "survived": true,
+      "packed": [
+        "nara-inaugural",
+        "m10-mercury1",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-ghent",
+        "nara-rights",
+        "nara-articles",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-guadalupe"
+      ]
+    },
+    {
+      "case": "nara-rights-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-rights",
+      "arm": "fusion",
+      "top1": false,
+      "survived": true,
+      "packed": [
+        "nara-inaugural",
+        "nara-rights",
+        "nara-alliance",
+        "nara-articles",
+        "nara-seal",
+        "m10-contact",
+        "nara-removal",
+        "nara-missouri",
+        "nara-alien",
+        "nara-lee"
+      ]
+    },
+    {
+      "case": "nara-seal-literal",
+      "wording": "literal",
+      "target": "nara-seal",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-seal",
+        "nara-alliance",
+        "nara-inaugural",
+        "m10-contact",
+        "nara-rights",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-removal",
+        "nara-articles",
+        "nara-lee"
+      ]
+    },
+    {
+      "case": "nara-seal-literal",
+      "wording": "literal",
+      "target": "nara-seal",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-seal",
+        "nara-gibbons",
+        "nara-paris",
+        "nara-rights",
+        "nara-articles",
+        "nara-ghent",
+        "nara-missouri",
+        "nara-virginia",
+        "nara-alliance",
+        "nara-guadalupe"
+      ]
+    },
+    {
+      "case": "nara-seal-literal",
+      "wording": "literal",
+      "target": "nara-seal",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-seal",
+        "nara-alliance",
+        "nara-inaugural",
+        "m10-contact",
+        "nara-rights",
+        "nara-alien",
+        "nara-guadalupe",
+        "nara-removal",
+        "nara-articles",
+        "nara-lee"
+      ]
+    },
+    {
+      "case": "nara-seal-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-seal",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-seal",
+        "m10-contact",
+        "nara-alliance",
+        "nara-inaugural",
+        "v1-launch",
+        "nara-paris",
+        "nara-alien",
+        "nara-lee",
+        "m10-mercury1",
+        "nara-virginia"
+      ]
+    },
+    {
+      "case": "nara-seal-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-seal",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-seal",
+        "m10-contact",
+        "v2-neptune",
+        "nara-removal",
+        "m10-mercury1",
+        "nara-alliance",
+        "nara-lee",
+        "v1-launch",
+        "nara-inaugural",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-seal-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-seal",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-seal",
+        "m10-contact",
+        "nara-alliance",
+        "nara-inaugural",
+        "v1-launch",
+        "nara-paris",
+        "nara-alien",
+        "nara-lee",
+        "m10-mercury1",
+        "nara-virginia"
+      ]
+    },
+    {
+      "case": "nara-virginia-literal",
+      "wording": "literal",
+      "target": "nara-virginia",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-virginia",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-seal",
+        "nara-articles",
+        "nara-inaugural",
+        "nara-missouri",
+        "v1-launch",
+        "nara-rights"
+      ]
+    },
+    {
+      "case": "nara-virginia-literal",
+      "wording": "literal",
+      "target": "nara-virginia",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-virginia",
+        "nara-marbury",
+        "nara-paris",
+        "nara-ghent",
+        "nara-articles",
+        "nara-rights",
+        "nara-missouri",
+        "nara-guadalupe",
+        "nara-alliance",
+        "nara-alien"
+      ]
+    },
+    {
+      "case": "nara-virginia-literal",
+      "wording": "literal",
+      "target": "nara-virginia",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-virginia",
+        "nara-alliance",
+        "m10-contact",
+        "nara-lee",
+        "nara-seal",
+        "nara-articles",
+        "nara-inaugural",
+        "nara-missouri",
+        "v1-launch",
+        "nara-rights"
+      ]
+    },
+    {
+      "case": "nara-virginia-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-virginia",
+      "arm": "focus",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-virginia",
+        "m10-contact",
+        "nara-alliance",
+        "nara-lee",
+        "v1-launch",
+        "nara-inaugural",
+        "nara-articles",
+        "nara-missouri",
+        "nara-rights",
+        "nara-seal"
+      ]
+    },
+    {
+      "case": "nara-virginia-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-virginia",
+      "arm": "priority",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-virginia",
+        "m10-contact",
+        "v2-saturn",
+        "m10-mercury2",
+        "nara-removal",
+        "v1-launch",
+        "nara-alliance",
+        "nara-seal",
+        "nara-lee",
+        "nara-inaugural"
+      ]
+    },
+    {
+      "case": "nara-virginia-paraphrase",
+      "wording": "paraphrase",
+      "target": "nara-virginia",
+      "arm": "fusion",
+      "top1": true,
+      "survived": true,
+      "packed": [
+        "nara-virginia",
+        "m10-contact",
+        "nara-alliance",
+        "nara-lee",
+        "v1-launch",
+        "nara-inaugural",
+        "nara-articles",
+        "nara-missouri",
+        "nara-rights",
+        "nara-seal"
+      ]
+    }
+  ]
+}

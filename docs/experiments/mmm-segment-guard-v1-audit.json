@@ -1,0 +1,13 @@
+{
+  "rows": 84,
+  "states": 252,
+  "forecastsPerHead": 8064,
+  "negativeControls": 2,
+  "maximum": {
+    "evidenceError": 1.9184653865522705e-13,
+    "maxWeightError": 2.0483614804334138e-14,
+    "maxForecastError": 9.536815781530095e-14,
+    "maxNoChangeError": 1.4099832412739488e-14
+  },
+  "limitations": "Independent direct-probability reconstruction of index0 at clocks0/128/224 in every phase/case/schedule for segment64/static64. Stratified reference, not all fits or a full fresh Go replay."
+}

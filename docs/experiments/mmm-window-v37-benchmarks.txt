@@ -1,0 +1,29 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchdispersion
+cpu: Apple M4
+BenchmarkRollingShapeReplace-10 64336 18753 ns/op 0 B/op 0 allocs/op
+BenchmarkRollingShapeReplace-10 63986 18337 ns/op 0 B/op 0 allocs/op
+BenchmarkRollingShapeReplace-10 66586 18176 ns/op 0 B/op 0 allocs/op
+BenchmarkWindowObserverNew-10 3326 349250 ns/op 3071460 B/op 55 allocs/op
+BenchmarkWindowObserverNew-10 3506 347770 ns/op 3071454 B/op 55 allocs/op
+BenchmarkWindowObserverNew-10 3422 349648 ns/op 3071456 B/op 55 allocs/op
+BenchmarkWindowObserverIssue-10 1000000 1149 ns/op 0 B/op 0 allocs/op
+BenchmarkWindowObserverIssue-10 1000000 1141 ns/op 0 B/op 0 allocs/op
+BenchmarkWindowObserverIssue-10 1000000 1144 ns/op 0 B/op 0 allocs/op
+BenchmarkWindowObserverResolve-10 27559 43494 ns/op 0 B/op 0 allocs/op
+BenchmarkWindowObserverResolve-10 27452 43715 ns/op 0 B/op 0 allocs/op
+BenchmarkWindowObserverResolve-10 27234 43937 ns/op 0 B/op 0 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/researchdispersion 14.337s
+
+Captured from completed precollection tool output; whitespace normalized.
+Replace/Issue/Resolve include benchmark state restoration. These are
+component costs, not serving, queueing, acquisition or durability costs.
+
+Additional warm replacement benchmark after16 rounds/member:
+BenchmarkWindowObserverWarmResolve-10 15918 75585 ns/op 0 B/op 0 allocs/op
+BenchmarkWindowObserverWarmResolve-10 15870 75806 ns/op 0 B/op 0 allocs/op
+BenchmarkWindowObserverWarmResolve-10 15822 76072 ns/op 0 B/op 0 allocs/op
+PASS
+ok github.com/JuanHuaXu/eventframed/internal/researchdispersion 4.403s

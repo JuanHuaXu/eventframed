@@ -1,0 +1,440 @@
+{
+  "design": {
+    "split": "design",
+    "sha256": "1db73214785085d549b5538455496d1adbc616e5693cc4b590172e2ae7b2c5da",
+    "worlds": 24,
+    "labels": 768,
+    "regimes": {
+      "independent": {
+        "positiveLabels": 139,
+        "baseBrier": 0.40680047991386076,
+        "learnedBrier": 0.3990262016887422,
+        "controls": {
+          "baseline": {
+            "utility": 0.4925,
+            "expectedFalseItems": 5.075,
+            "packetBrier": 0.3978607425963924,
+            "gain": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            },
+            "harm": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            }
+          },
+          "current": {
+            "utility": 0.5225,
+            "expectedFalseItems": 4.775,
+            "packetBrier": 0.4075150414187601,
+            "gain": {
+              "mean": 0.02999999999999993,
+              "lower": -0.0890588089979066,
+              "upper": 0.14905880899790647
+            },
+            "harm": {
+              "mean": -0.02999999999999993,
+              "lower": -0.14905880899790647,
+              "upper": 0.0890588089979066
+            }
+          },
+          "flat": {
+            "utility": 0.6799999999999999,
+            "expectedFalseItems": 3.2,
+            "packetBrier": 0.2655101608301566,
+            "gain": {
+              "mean": 0.1874999999999999,
+              "lower": 0.08680708813426827,
+              "upper": 0.2881929118657315
+            },
+            "harm": {
+              "mean": -0.1874999999999999,
+              "lower": -0.2881929118657315,
+              "upper": -0.08680708813426827
+            }
+          },
+          "context": {
+            "utility": 0.6799999999999999,
+            "expectedFalseItems": 3.2,
+            "packetBrier": 0.2655101608301566,
+            "gain": {
+              "mean": 0.1874999999999999,
+              "lower": 0.08680708813426827,
+              "upper": 0.2881929118657315
+            },
+            "harm": {
+              "mean": -0.1874999999999999,
+              "lower": -0.2881929118657315,
+              "upper": -0.08680708813426827
+            }
+          }
+        }
+      },
+      "aligned": {
+        "positiveLabels": 202,
+        "baseBrier": 0.3960774843671953,
+        "learnedBrier": 0.39483519452148225,
+        "controls": {
+          "baseline": {
+            "utility": 0.8758389261744968,
+            "expectedFalseItems": 1.2416107382550334,
+            "packetBrier": 0.10920021981746195,
+            "gain": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            },
+            "harm": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            }
+          },
+          "current": {
+            "utility": 0.7040268456375839,
+            "expectedFalseItems": 2.9597315436241605,
+            "packetBrier": 0.25493245787410196,
+            "gain": {
+              "mean": -0.17181208053691277,
+              "lower": -0.17181208053691277,
+              "upper": -0.17181208053691277
+            },
+            "harm": {
+              "mean": 0.17181208053691277,
+              "lower": 0.17181208053691277,
+              "upper": 0.17181208053691277
+            }
+          },
+          "flat": {
+            "utility": 0.8685234899328859,
+            "expectedFalseItems": 1.314765100671141,
+            "packetBrier": 0.11511519150679338,
+            "gain": {
+              "mean": -0.007315436241610712,
+              "lower": -0.017862016255256637,
+              "upper": 0.0032311437720352106
+            },
+            "harm": {
+              "mean": 0.007315436241610712,
+              "lower": -0.0032311437720352106,
+              "upper": 0.017862016255256637
+            }
+          },
+          "context": {
+            "utility": 0.8685234899328859,
+            "expectedFalseItems": 1.314765100671141,
+            "packetBrier": 0.11511519150679338,
+            "gain": {
+              "mean": -0.007315436241610712,
+              "lower": -0.017862016255256637,
+              "upper": 0.0032311437720352106
+            },
+            "harm": {
+              "mean": 0.007315436241610712,
+              "lower": -0.0032311437720352106,
+              "upper": 0.017862016255256637
+            }
+          }
+        }
+      },
+      "reversed": {
+        "positiveLabels": 45,
+        "baseBrier": 0.41925774088665335,
+        "learnedBrier": 0.40306135831769685,
+        "controls": {
+          "baseline": {
+            "utility": 0.12416107382550336,
+            "expectedFalseItems": 8.758389261744968,
+            "packetBrier": 0.6656267986675809,
+            "gain": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            },
+            "harm": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            }
+          },
+          "current": {
+            "utility": 0.29597315436241617,
+            "expectedFalseItems": 7.0402684563758395,
+            "packetBrier": 0.5976345144407409,
+            "gain": {
+              "mean": 0.17181208053691274,
+              "lower": 0.17181208053691274,
+              "upper": 0.17181208053691274
+            },
+            "harm": {
+              "mean": -0.17181208053691274,
+              "lower": -0.17181208053691274,
+              "upper": -0.17181208053691274
+            }
+          },
+          "flat": {
+            "utility": 0.2325503355704698,
+            "expectedFalseItems": 7.674496644295303,
+            "packetBrier": 0.6336255425703137,
+            "gain": {
+              "mean": 0.10838926174496645,
+              "lower": 0.07557738437673149,
+              "upper": 0.14120113911320142
+            },
+            "harm": {
+              "mean": -0.10838926174496645,
+              "lower": -0.14120113911320142,
+              "upper": -0.07557738437673149
+            }
+          },
+          "context": {
+            "utility": 0.2325503355704698,
+            "expectedFalseItems": 7.674496644295303,
+            "packetBrier": 0.6336255425703137,
+            "gain": {
+              "mean": 0.10838926174496645,
+              "lower": 0.07557738437673149,
+              "upper": 0.14120113911320142
+            },
+            "harm": {
+              "mean": -0.10838926174496645,
+              "lower": -0.14120113911320142,
+              "upper": -0.07557738437673149
+            }
+          }
+        }
+      }
+    },
+    "maxRecallMS": 14.862166,
+    "maxOutcomeMS": 11.609583,
+    "proposals": {
+      "flat": {
+        "pass": false
+      },
+      "context": {
+        "pass": false
+      }
+    }
+  },
+  "confirmation": {
+    "split": "confirmation",
+    "sha256": "a11300023fcccd99ed569d88bcb3150c108c88785d38019c969b0f5706d1e888",
+    "worlds": 24,
+    "labels": 768,
+    "regimes": {
+      "independent": {
+        "positiveLabels": 125,
+        "baseBrier": 0.40730581555327794,
+        "learnedBrier": 0.3985594990493411,
+        "controls": {
+          "baseline": {
+            "utility": 0.4475,
+            "expectedFalseItems": 5.525,
+            "packetBrier": 0.4289523774026402,
+            "gain": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            },
+            "harm": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            }
+          },
+          "current": {
+            "utility": 0.53,
+            "expectedFalseItems": 4.699999999999999,
+            "packetBrier": 0.40112270816723244,
+            "gain": {
+              "mean": 0.08249999999999993,
+              "lower": -0.1116689019899943,
+              "upper": 0.27666890198999416
+            },
+            "harm": {
+              "mean": -0.08249999999999993,
+              "lower": -0.27666890198999416,
+              "upper": 0.1116689019899943
+            }
+          },
+          "flat": {
+            "utility": 0.6575,
+            "expectedFalseItems": 3.4250000000000007,
+            "packetBrier": 0.2833526902960131,
+            "gain": {
+              "mean": 0.2099999999999999,
+              "lower": 0.09775027839678166,
+              "upper": 0.3222497216032182
+            },
+            "harm": {
+              "mean": -0.2099999999999999,
+              "lower": -0.3222497216032182,
+              "upper": -0.09775027839678166
+            }
+          },
+          "context": {
+            "utility": 0.6575,
+            "expectedFalseItems": 3.4250000000000007,
+            "packetBrier": 0.2833526902960131,
+            "gain": {
+              "mean": 0.2099999999999999,
+              "lower": 0.09775027839678166,
+              "upper": 0.3222497216032182
+            },
+            "harm": {
+              "mean": -0.2099999999999999,
+              "lower": -0.3222497216032182,
+              "upper": -0.09775027839678166
+            }
+          }
+        }
+      },
+      "aligned": {
+        "positiveLabels": 201,
+        "baseBrier": 0.3960774843671953,
+        "learnedBrier": 0.3948360572190696,
+        "controls": {
+          "baseline": {
+            "utility": 0.8758389261744968,
+            "expectedFalseItems": 1.2416107382550334,
+            "packetBrier": 0.10921550912946555,
+            "gain": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            },
+            "harm": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            }
+          },
+          "current": {
+            "utility": 0.7040268456375839,
+            "expectedFalseItems": 2.9597315436241605,
+            "packetBrier": 0.25493245787410196,
+            "gain": {
+              "mean": -0.17181208053691277,
+              "lower": -0.17181208053691277,
+              "upper": -0.17181208053691277
+            },
+            "harm": {
+              "mean": 0.17181208053691277,
+              "lower": 0.17181208053691277,
+              "upper": 0.17181208053691277
+            }
+          },
+          "flat": {
+            "utility": 0.8698657718120806,
+            "expectedFalseItems": 1.3013422818791942,
+            "packetBrier": 0.11404596499931599,
+            "gain": {
+              "mean": -0.00597315436241605,
+              "lower": -0.011845637583892576,
+              "upper": -0.00010067114093952317
+            },
+            "harm": {
+              "mean": 0.00597315436241605,
+              "lower": 0.00010067114093952317,
+              "upper": 0.011845637583892576
+            }
+          },
+          "context": {
+            "utility": 0.8698657718120806,
+            "expectedFalseItems": 1.3013422818791942,
+            "packetBrier": 0.11404596499931599,
+            "gain": {
+              "mean": -0.00597315436241605,
+              "lower": -0.011845637583892576,
+              "upper": -0.00010067114093952317
+            },
+            "harm": {
+              "mean": 0.00597315436241605,
+              "lower": 0.00010067114093952317,
+              "upper": 0.011845637583892576
+            }
+          }
+        }
+      },
+      "reversed": {
+        "positiveLabels": 46,
+        "baseBrier": 0.41925774088665335,
+        "learnedBrier": 0.4030984277125703,
+        "controls": {
+          "baseline": {
+            "utility": 0.12416107382550336,
+            "expectedFalseItems": 8.758389261744968,
+            "packetBrier": 0.6650422102812824,
+            "gain": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            },
+            "harm": {
+              "mean": 0,
+              "lower": 0,
+              "upper": 0
+            }
+          },
+          "current": {
+            "utility": 0.29597315436241617,
+            "expectedFalseItems": 7.0402684563758395,
+            "packetBrier": 0.5976345144407409,
+            "gain": {
+              "mean": 0.17181208053691274,
+              "lower": 0.17181208053691274,
+              "upper": 0.17181208053691274
+            },
+            "harm": {
+              "mean": -0.17181208053691274,
+              "lower": -0.17181208053691274,
+              "upper": -0.17181208053691274
+            }
+          },
+          "flat": {
+            "utility": 0.2319463087248322,
+            "expectedFalseItems": 7.680536912751678,
+            "packetBrier": 0.6337042980192613,
+            "gain": {
+              "mean": 0.10778523489932884,
+              "lower": 0.07449955360190971,
+              "upper": 0.14107091619674797
+            },
+            "harm": {
+              "mean": -0.10778523489932884,
+              "lower": -0.14107091619674797,
+              "upper": -0.07449955360190971
+            }
+          },
+          "context": {
+            "utility": 0.2319463087248322,
+            "expectedFalseItems": 7.680536912751678,
+            "packetBrier": 0.6337042980192613,
+            "gain": {
+              "mean": 0.10778523489932884,
+              "lower": 0.07449955360190971,
+              "upper": 0.14107091619674797
+            },
+            "harm": {
+              "mean": -0.10778523489932884,
+              "lower": -0.14107091619674797,
+              "upper": -0.07449955360190971
+            }
+          }
+        }
+      }
+    },
+    "maxRecallMS": 17.556583,
+    "maxOutcomeMS": 12.08025,
+    "proposals": {
+      "flat": {
+        "pass": false
+      },
+      "context": {
+        "pass": false
+      }
+    }
+  }
+}

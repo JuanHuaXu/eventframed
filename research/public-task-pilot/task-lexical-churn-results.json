@@ -1,0 +1,6168 @@
+{
+  "Go": "go1.27.1",
+  "OS": "darwin",
+  "Arch": "arm64",
+  "Procs": 4,
+  "Hashes": {
+    "cmd/research-task-lexical-churn/main.go": "126ac03ce3f9340d72c77502f6fa2172f33f5e3655d6abab371cad490ee7abdc",
+    "internal/packing/packing.go": "850ff6f983a64bf11539c24659ecf48978183598ccac11b5c6d6b3b899d81146",
+    "internal/researchcalendar/lexical.go": "22ba19d6db536d3f8130c7aaec12789e26ced9c8443af22fea34977abfb655d6",
+    "internal/researchcalendar/packing_lexical.go": "32e716e9386a8323aaeb76c1c91bef276951fbcec82845d001378e222e863b83",
+    "internal/researchcalendar/packing_task.go": "ca130c2f731a6db3d822546e4a141707e66a1ade300f5a6179775e5f365d310e",
+    "internal/researchcalendar/task_plan.go": "0097907472571ccc5cbee04abd39c695787b0379151302c171b6d96734bf399e",
+    "internal/service/calendar_task_lexical_overlay.go": "cb1a8eefd9dc46dc4c332b50f807f55b575c5d9c15f58a5a6c13435d9eacefb8",
+    "internal/store/memorystore/store.go": "5228fc1f04db1a663e03064144268abe1bc72b1c2b96cbab371a2807f9d8cde0",
+    "internal/store/store.go": "4f88abdd556b5438ef006704b95053eefa433fe49f648cfa3c9aeb5ddd864300",
+    "research/public-task-pilot/TASK_LEXICAL_CHURN_PROTOCOL.md": "1e3df36a366970698fc8d3244cc8b2e7739546fae975d9ae7c5d5aa164d89270",
+    "research/public-task-pilot/landing-transfer-v1/corpus.json": "0139a37068311efcf7e98eafe0dda4072c145ce10a8e94f5a15224b5edeb9321",
+    "research/public-task-pilot/task-lexical-overlay-v1/source-0.go.txt": "3cc61eb8f40a8ac17f14a8aa647dcba43ae0b5365ba26f347e51daf16fd1e82a",
+    "research/public-task-pilot/task-lexical-overlay-v1/source-1.go.txt": "4f7a01ca23f2c4b94e2df1f61334164979ebe5415dea919bf54686bdda9d3f22",
+    "research/public-task-pilot/task-lexical-overlay-v1/source-2.go.txt": "1a9f4174f56cc67138b31df9889d34c3e17b2a2f5711a1a271e78c71d7a3e9a0"
+  },
+  "Arms": [
+    {
+      "Mode": "future",
+      "Writes": [
+        {
+          "NS": 233958,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 106375,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 27000,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33208,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 25417,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 532667,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 27625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 89708,
+          "Error": "",
+          "ActiveReads": 2
+        },
+        {
+          "NS": 37000,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 45084,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 44250,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 42833,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 34333,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 101292,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 94167,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 71333,
+          "Error": "",
+          "ActiveReads": 0
+        }
+      ],
+      "JournalAttempts": 32,
+      "StaleRejections": 0,
+      "ReadWallNS": 51916333,
+      "N": 50,
+      "Workers": 4,
+      "Repeat": 0,
+      "Enabled": false,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 7482667,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7822083,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7493917,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7425375,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7124250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6561541,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7288791,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7302125,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6533041,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6699625,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7513292,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6715625,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6371625,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6224417,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6344792,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6235500,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6012625,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6030167,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6019125,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5890834,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6048458,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5961958,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6024459,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5871958,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5773083,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6055292,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5214250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5904166,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6031375,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5446417,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5876875,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5521875,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 100193625,
+      "AllocatedBytes": 57842392
+    },
+    {
+      "Mode": "future",
+      "Writes": [
+        {
+          "NS": 226875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 45875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 51625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 615583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 651041,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 26875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 30333,
+          "Error": "",
+          "ActiveReads": 3
+        },
+        {
+          "NS": 70167,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 33542,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 65833,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 27333,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 47375,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 57375,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 55500,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 49375,
+          "Error": "",
+          "ActiveReads": 0
+        }
+      ],
+      "JournalAttempts": 32,
+      "StaleRejections": 0,
+      "ReadWallNS": 54514959,
+      "N": 50,
+      "Workers": 4,
+      "Repeat": 0,
+      "Enabled": true,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 6901750,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7795917,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6775458,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 10192083,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7979209,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6608333,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6603833,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6483167,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6224584,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6567750,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6126667,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6535708,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6559750,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6724333,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6215208,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6512125,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6333833,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7740667,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7159125,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5975708,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6325750,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6704917,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6342958,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6072958,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6144208,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6473708,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6563167,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6240000,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6087417,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5746208,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6276917,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5789333,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 102691375,
+      "AllocatedBytes": 67035672
+    },
+    {
+      "Mode": "in-window",
+      "Writes": [
+        {
+          "NS": 28583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 929625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 28166,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 777459,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 581042,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 37042,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 133625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33375,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 24834,
+          "Error": "",
+          "ActiveReads": 2
+        },
+        {
+          "NS": 76250,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 66375,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 71583,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 66708,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 68375,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 72375,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 76000,
+          "Error": "",
+          "ActiveReads": 0
+        }
+      ],
+      "JournalAttempts": 39,
+      "StaleRejections": 7,
+      "ReadWallNS": 58121125,
+      "N": 50,
+      "Workers": 4,
+      "Repeat": 0,
+      "Enabled": false,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 6038542,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6060584,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8813375,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6301792,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 9765125,
+          "Error": "frontier mismatch: got51 want50",
+          "Nominated": 51,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8563417,
+          "Error": "frontier mismatch: got51 want50",
+          "Nominated": 51,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6034375,
+          "Error": "frontier mismatch: got51 want50",
+          "Nominated": 51,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6242917,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5490875,
+          "Error": "frontier mismatch: got52 want50",
+          "Nominated": 52,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5786916,
+          "Error": "frontier mismatch: got52 want50",
+          "Nominated": 52,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6497708,
+          "Error": "frontier mismatch: got52 want50",
+          "Nominated": 52,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 9128042,
+          "Error": "frontier mismatch: got51 want50",
+          "Nominated": 51,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7228750,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6861500,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5769833,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8003792,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5622709,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6715166,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7746000,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6268708,
+          "Error": "frontier mismatch: got54 want50",
+          "Nominated": 54,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8801792,
+          "Error": "frontier mismatch: got55 want50",
+          "Nominated": 55,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 10707500,
+          "Error": "frontier mismatch: got55 want50",
+          "Nominated": 55,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6511834,
+          "Error": "frontier mismatch: got54 want50",
+          "Nominated": 54,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6337750,
+          "Error": "frontier mismatch: got55 want50",
+          "Nominated": 55,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6414667,
+          "Error": "frontier mismatch: got56 want50",
+          "Nominated": 56,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8381667,
+          "Error": "frontier mismatch: got57 want50",
+          "Nominated": 57,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6187042,
+          "Error": "frontier mismatch: got56 want50",
+          "Nominated": 56,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7263500,
+          "Error": "frontier mismatch: got56 want50",
+          "Nominated": 56,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6047208,
+          "Error": "frontier mismatch: got57 want50",
+          "Nominated": 57,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 4970833,
+          "Error": "frontier mismatch: got58 want50",
+          "Nominated": 58,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5676541,
+          "Error": "frontier mismatch: got57 want50",
+          "Nominated": 57,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7921417,
+          "Error": "frontier mismatch: got58 want50",
+          "Nominated": 58,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 101448417,
+      "AllocatedBytes": 67979336
+    },
+    {
+      "Mode": "in-window",
+      "Writes": [
+        {
+          "NS": 113542,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 152333,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33041,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 36333,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 35292,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34125,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 35291,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 205791,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29250,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 25375,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 31458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 31458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34958,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 27542,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 115500,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 63,
+      "StaleRejections": 35,
+      "ReadWallNS": 135534709,
+      "N": 50,
+      "Workers": 4,
+      "Repeat": 0,
+      "Enabled": true,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 6287083,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 48510458,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 48443250,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6453625,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5988125,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 47791792,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 47823084,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 46756125,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 46579208,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7531417,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6503375,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 46932333,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 31744750,
+          "Error": "frontier mismatch: got65 want50",
+          "Nominated": 65,
+          "Packed": 4,
+          "ExplanationBytes": 6011,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7505917,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6899709,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6476708,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6100542,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6826458,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6767417,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7297125,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6827708,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6080125,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6367417,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6484334,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6288541,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5956125,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6258583,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6110417,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7134584,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5244292,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5448583,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5950792,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 135534750,
+      "AllocatedBytes": 143972848
+    },
+    {
+      "Mode": "future",
+      "Writes": [
+        {
+          "NS": 30958,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 603542,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 32375,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 45125,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 369625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 32875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 32583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 458041,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 482750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 424458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 107291,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 82291,
+          "Error": "",
+          "ActiveReads": 3
+        },
+        {
+          "NS": 36625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 1148750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 31792,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 36459,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 32,
+      "StaleRejections": 0,
+      "ReadWallNS": 214911250,
+      "N": 200,
+      "Workers": 4,
+      "Repeat": 0,
+      "Enabled": false,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 25437958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27363500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25699625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25810666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26569000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27550750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25158042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27157583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25741042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26555083,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26845041,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26140291,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26449291,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26343000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25281083,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26098666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26152791,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27188375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26629125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25638458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25790209,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27804542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25591917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26498916,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25760833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26224250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26980542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26985291,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 24936958,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25690000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25463208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26024166,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 214911333,
+      "AllocatedBytes": 222244040
+    },
+    {
+      "Mode": "future",
+      "Writes": [
+        {
+          "NS": 31166,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 530750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 90334,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 50041,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 30625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 36208,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 116791,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 60875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 119292,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 50209,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 107000,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 36417,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29792,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 35959,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 23500,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 37041,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 32,
+      "StaleRejections": 0,
+      "ReadWallNS": 225672459,
+      "N": 200,
+      "Workers": 4,
+      "Repeat": 0,
+      "Enabled": true,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 28849208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28563875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28314250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27491458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27400625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28258791,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27741500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28492083,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26955500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27680334,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28377666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28362208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30073959,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27305167,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27930916,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28606583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27733833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28339041,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27748542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27170000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27626291,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27961292,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27983000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28078250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27147125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28620875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29782667,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27226208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27221875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28643000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26759875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27478458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 225672542,
+      "AllocatedBytes": 255943144
+    },
+    {
+      "Mode": "in-window",
+      "Writes": [
+        {
+          "NS": 33667,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 28500,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 826250,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 932042,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 492750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 44167,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 30500,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 27167,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 916417,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 939625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 959792,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 396583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 31792,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 676000,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29000,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 43208,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 44,
+      "StaleRejections": 12,
+      "ReadWallNS": 241799042,
+      "N": 200,
+      "Workers": 4,
+      "Repeat": 0,
+      "Enabled": false,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 26382333,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27187459,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25113208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26668542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26029833,
+          "Error": "frontier mismatch: got202 want200",
+          "Nominated": 202,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28425333,
+          "Error": "frontier mismatch: got202 want200",
+          "Nominated": 202,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 36845333,
+          "Error": "frontier mismatch: got203 want200",
+          "Nominated": 203,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25895000,
+          "Error": "frontier mismatch: got202 want200",
+          "Nominated": 202,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 31756125,
+          "Error": "frontier mismatch: got205 want200",
+          "Nominated": 205,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 31458750,
+          "Error": "frontier mismatch: got206 want200",
+          "Nominated": 206,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 31416834,
+          "Error": "frontier mismatch: got207 want200",
+          "Nominated": 207,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 44072500,
+          "Error": "frontier mismatch: got208 want200",
+          "Nominated": 208,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25747833,
+          "Error": "frontier mismatch: got208 want200",
+          "Nominated": 208,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28402916,
+          "Error": "frontier mismatch: got209 want200",
+          "Nominated": 209,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26408625,
+          "Error": "frontier mismatch: got210 want200",
+          "Nominated": 210,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26660500,
+          "Error": "frontier mismatch: got210 want200",
+          "Nominated": 210,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 43930166,
+          "Error": "frontier mismatch: got213 want200",
+          "Nominated": 213,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28097250,
+          "Error": "frontier mismatch: got211 want200",
+          "Nominated": 211,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30756125,
+          "Error": "frontier mismatch: got213 want200",
+          "Nominated": 213,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25932958,
+          "Error": "frontier mismatch: got213 want200",
+          "Nominated": 213,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26527083,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27973084,
+          "Error": "frontier mismatch: got214 want200",
+          "Nominated": 214,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28141583,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26169917,
+          "Error": "frontier mismatch: got215 want200",
+          "Nominated": 215,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25316166,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28078000,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26608208,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25751875,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 35817750,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 38083292,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 34937167,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 37267291,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 241799125,
+      "AllocatedBytes": 283259104
+    },
+    {
+      "Mode": "in-window",
+      "Writes": [
+        {
+          "NS": 39083,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 65958,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 39750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 35709,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 827041,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 39584,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 191458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34041,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 28750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 78125,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34291,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 43208,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 398542,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 42709,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33416,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 52,
+      "StaleRejections": 24,
+      "ReadWallNS": 401731000,
+      "N": 200,
+      "Workers": 4,
+      "Repeat": 0,
+      "Enabled": true,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 154756459,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 153757333,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 157222416,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 161838250,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 58073000,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 58827792,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 58838083,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 62718083,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29890000,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28688417,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28540041,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30011000,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28792416,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28717083,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28500375,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30894666,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28345250,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28885334,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28775666,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30467416,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29800125,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27998834,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28374875,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29394708,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28844125,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27988792,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27860500,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29702917,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28166666,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28649791,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28279334,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26564833,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 401731083,
+      "AllocatedBytes": 433874392
+    },
+    {
+      "Mode": "future",
+      "Writes": [
+        {
+          "NS": 333209,
+          "Error": "",
+          "ActiveReads": 3
+        },
+        {
+          "NS": 32333,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 258000,
+          "Error": "",
+          "ActiveReads": 3
+        },
+        {
+          "NS": 32125,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 304375,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 706625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 26291,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 27500,
+          "Error": "",
+          "ActiveReads": 3
+        },
+        {
+          "NS": 70250,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 63792,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 72667,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 69916,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 61625,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 66250,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 62834,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 66167,
+          "Error": "",
+          "ActiveReads": 0
+        }
+      ],
+      "JournalAttempts": 32,
+      "StaleRejections": 0,
+      "ReadWallNS": 50798708,
+      "N": 50,
+      "Workers": 4,
+      "Repeat": 1,
+      "Enabled": true,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 6836125,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6502916,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6421417,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6616833,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5812542,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5789042,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5887583,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6678792,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6656291,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6188083,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6178208,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6083917,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5460167,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7128792,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6268333,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5679417,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6378708,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5946250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6354792,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6755667,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6197875,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5796250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7092208,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5697542,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6267709,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6408042,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6761417,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6977500,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6195583,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6294625,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5585792,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6098375,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 100754417,
+      "AllocatedBytes": 66645536
+    },
+    {
+      "Mode": "future",
+      "Writes": [
+        {
+          "NS": 105541,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 42375,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 23083,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 48208,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 213167,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 24959,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 28041,
+          "Error": "",
+          "ActiveReads": 2
+        },
+        {
+          "NS": 60542,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 70167,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 66500,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 67250,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 65584,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 64292,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 61666,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 67292,
+          "Error": "",
+          "ActiveReads": 0
+        }
+      ],
+      "JournalAttempts": 32,
+      "StaleRejections": 0,
+      "ReadWallNS": 46198834,
+      "N": 50,
+      "Workers": 4,
+      "Repeat": 1,
+      "Enabled": false,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 5869542,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5989500,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5643917,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5830083,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5839500,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5734083,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6011375,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5544500,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5297250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5702750,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5505541,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5634458,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6007250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5454708,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5813000,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5607708,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5519666,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5618250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5490333,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5915875,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5748333,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5612208,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5865250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5976792,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5794833,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5707292,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5883917,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6222000,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5763083,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5886458,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5878250,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5407583,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 96141917,
+      "AllocatedBytes": 57847928
+    },
+    {
+      "Mode": "in-window",
+      "Writes": [
+        {
+          "NS": 23917,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 26667,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 234500,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 57875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 24250,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 53334,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 75167,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 54500,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 39333,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 43667,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 28167,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 31125,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 28667,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29791,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 30041,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 35000,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 64,
+      "StaleRejections": 37,
+      "ReadWallNS": 133757125,
+      "N": 50,
+      "Workers": 4,
+      "Repeat": 1,
+      "Enabled": true,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 47912958,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6188458,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 44997500,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6351333,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 5813,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 47078167,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 45399833,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 45081500,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 45016000,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7293667,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 45919750,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6943916,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 45322625,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6460334,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6605000,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5792583,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6197041,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6631167,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6595000,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6900625,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6112000,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6630125,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6382458,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6958917,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6434375,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6433417,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6278583,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6603583,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6410125,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5208958,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5736666,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6081708,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6468125,
+          "Error": "frontier mismatch: got66 want50",
+          "Nominated": 66,
+          "Packed": 3,
+          "ExplanationBytes": 5999,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 133757166,
+      "AllocatedBytes": 145468624
+    },
+    {
+      "Mode": "in-window",
+      "Writes": [
+        {
+          "NS": 32667,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33292,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 35750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 74459,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 30333,
+          "Error": "",
+          "ActiveReads": 3
+        },
+        {
+          "NS": 135417,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29459,
+          "Error": "",
+          "ActiveReads": 3
+        },
+        {
+          "NS": 73208,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 66209,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 66083,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 69500,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 68542,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 67959,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 63333,
+          "Error": "",
+          "ActiveReads": 0
+        },
+        {
+          "NS": 67708,
+          "Error": "",
+          "ActiveReads": 0
+        }
+      ],
+      "JournalAttempts": 39,
+      "StaleRejections": 7,
+      "ReadWallNS": 50712541,
+      "N": 50,
+      "Workers": 4,
+      "Repeat": 1,
+      "Enabled": false,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 5556375,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5728834,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5549625,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5787500,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8049167,
+          "Error": "frontier mismatch: got51 want50",
+          "Nominated": 51,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5804375,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8200416,
+          "Error": "frontier mismatch: got51 want50",
+          "Nominated": 51,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5910708,
+          "Error": "",
+          "Nominated": 50,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5711500,
+          "Error": "frontier mismatch: got52 want50",
+          "Nominated": 52,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5713958,
+          "Error": "frontier mismatch: got51 want50",
+          "Nominated": 51,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6133417,
+          "Error": "frontier mismatch: got52 want50",
+          "Nominated": 52,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7694792,
+          "Error": "frontier mismatch: got52 want50",
+          "Nominated": 52,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5901417,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7912042,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5436834,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5625083,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5852125,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5762541,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5508834,
+          "Error": "frontier mismatch: got53 want50",
+          "Nominated": 53,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8446458,
+          "Error": "frontier mismatch: got54 want50",
+          "Nominated": 54,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5931625,
+          "Error": "frontier mismatch: got55 want50",
+          "Nominated": 55,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5819291,
+          "Error": "frontier mismatch: got54 want50",
+          "Nominated": 54,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6092584,
+          "Error": "frontier mismatch: got54 want50",
+          "Nominated": 54,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5445250,
+          "Error": "frontier mismatch: got55 want50",
+          "Nominated": 55,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5525333,
+          "Error": "frontier mismatch: got56 want50",
+          "Nominated": 56,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5850959,
+          "Error": "frontier mismatch: got55 want50",
+          "Nominated": 55,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 6321667,
+          "Error": "frontier mismatch: got56 want50",
+          "Nominated": 56,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5628209,
+          "Error": "frontier mismatch: got56 want50",
+          "Nominated": 56,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 8073125,
+          "Error": "frontier mismatch: got57 want50",
+          "Nominated": 57,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 7821250,
+          "Error": "frontier mismatch: got57 want50",
+          "Nominated": 57,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5662917,
+          "Error": "frontier mismatch: got57 want50",
+          "Nominated": 57,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 5361875,
+          "Error": "frontier mismatch: got57 want50",
+          "Nominated": 57,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 99810208,
+      "AllocatedBytes": 67779600
+    },
+    {
+      "Mode": "future",
+      "Writes": [
+        {
+          "NS": 45458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 544250,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 30334,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 31750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34209,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 31917,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34500,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 117000,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 27334,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33083,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 59917,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 26708,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 35459,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 105042,
+          "Error": "",
+          "ActiveReads": 3
+        },
+        {
+          "NS": 47750,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 32,
+      "StaleRejections": 0,
+      "ReadWallNS": 230509541,
+      "N": 200,
+      "Workers": 4,
+      "Repeat": 1,
+      "Enabled": true,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 28786916,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29045584,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27412833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29087458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29127917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28067584,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27946833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28280917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28552500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29312083,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27858666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29983834,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27989209,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28015875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28500000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30088875,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28159250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28821667,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28112666,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27728500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29813584,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28201583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27457750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28922917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28124708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28789542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28557583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29458959,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27848125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27069416,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28021000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26610042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 21531,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 230509666,
+      "AllocatedBytes": 257008984
+    },
+    {
+      "Mode": "future",
+      "Writes": [
+        {
+          "NS": 32750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 32125,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 40833,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 1024292,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 30458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34000,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 24125,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 485208,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 478959,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 763083,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 783666,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 37709,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 932167,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34667,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 27042,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 38083,
+          "Error": "",
+          "ActiveReads": 1
+        }
+      ],
+      "JournalAttempts": 32,
+      "StaleRejections": 0,
+      "ReadWallNS": 209544167,
+      "N": 200,
+      "Workers": 4,
+      "Repeat": 1,
+      "Enabled": false,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 25706375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26033584,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27024833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26527000,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27370041,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25129375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25635459,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25607458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25459542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26686583,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 24454334,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25365792,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26151667,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 24663708,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26503500,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26100042,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26842625,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26180833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26387833,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26174250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26838125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25498709,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25780125,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26043458,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26049834,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26423250,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 23943208,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26349917,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 24754542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25752750,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25312375,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25608334,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 209544333,
+      "AllocatedBytes": 224080136
+    },
+    {
+      "Mode": "in-window",
+      "Writes": [
+        {
+          "NS": 29625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 28375,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 49083,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 39000,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 77417,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 37833,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 38000,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 34666,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 60708,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 36459,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 89750,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 32250,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 138042,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 1030833,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 37750,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 52,
+      "StaleRejections": 24,
+      "ReadWallNS": 395115542,
+      "N": 200,
+      "Workers": 4,
+      "Repeat": 1,
+      "Enabled": true,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 155887041,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 156595708,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 159991666,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 157619750,
+          "Error": "persist Bayesian frontier journal: runtime snapshot changed before Bayesian journal commit",
+          "Nominated": 0,
+          "Packed": 0,
+          "ExplanationBytes": 0,
+          "JournalMatched": false
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 57343250,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 58523958,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 57211291,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 59924458,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27885834,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28748166,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29594167,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27897542,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28707333,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28717042,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29435708,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27295333,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28694083,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29032167,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30030459,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28845291,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29600709,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27793708,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30362250,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29054542,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 29379375,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30066167,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30644125,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28680917,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30106542,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27808500,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27611875,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28664083,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 21693,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 395115750,
+      "AllocatedBytes": 431793936
+    },
+    {
+      "Mode": "in-window",
+      "Writes": [
+        {
+          "NS": 49166,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 38792,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 31375,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 42792,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 27708,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 30875,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 361625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 36625,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 24583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 47833,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 44125,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 35583,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 43458,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 33083,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 29208,
+          "Error": "",
+          "ActiveReads": 4
+        },
+        {
+          "NS": 80250,
+          "Error": "",
+          "ActiveReads": 4
+        }
+      ],
+      "JournalAttempts": 46,
+      "StaleRejections": 14,
+      "ReadWallNS": 236413125,
+      "N": 200,
+      "Workers": 4,
+      "Repeat": 1,
+      "Enabled": false,
+      "Samples": [
+        {
+          "FutureRecords": 0,
+          "NS": 27131542,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26026166,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25722667,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25253791,
+          "Error": "",
+          "Nominated": 200,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 28411917,
+          "Error": "frontier mismatch: got202 want200",
+          "Nominated": 202,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 37692209,
+          "Error": "frontier mismatch: got204 want200",
+          "Nominated": 204,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 45842667,
+          "Error": "frontier mismatch: got205 want200",
+          "Nominated": 205,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 46544250,
+          "Error": "frontier mismatch: got205 want200",
+          "Nominated": 205,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 31891666,
+          "Error": "frontier mismatch: got207 want200",
+          "Nominated": 207,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30334375,
+          "Error": "frontier mismatch: got208 want200",
+          "Nominated": 208,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 30629917,
+          "Error": "frontier mismatch: got209 want200",
+          "Nominated": 209,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26995917,
+          "Error": "frontier mismatch: got208 want200",
+          "Nominated": 208,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27040666,
+          "Error": "frontier mismatch: got209 want200",
+          "Nominated": 209,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26456625,
+          "Error": "frontier mismatch: got210 want200",
+          "Nominated": 210,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26962083,
+          "Error": "frontier mismatch: got212 want200",
+          "Nominated": 212,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27817166,
+          "Error": "frontier mismatch: got211 want200",
+          "Nominated": 211,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 38189000,
+          "Error": "frontier mismatch: got214 want200",
+          "Nominated": 214,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26958333,
+          "Error": "frontier mismatch: got213 want200",
+          "Nominated": 213,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 31300833,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26748792,
+          "Error": "frontier mismatch: got215 want200",
+          "Nominated": 215,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27464208,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26918666,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25914250,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27798959,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 27535000,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26032916,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26285459,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26241875,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 24716417,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 25673375,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 23531542,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        },
+        {
+          "FutureRecords": 0,
+          "NS": 26148458,
+          "Error": "frontier mismatch: got216 want200",
+          "Nominated": 216,
+          "Packed": 4,
+          "ExplanationBytes": 0,
+          "JournalMatched": true
+        }
+      ],
+      "WallNS": 236413209,
+      "AllocatedBytes": 291468904
+    }
+  ]
+}

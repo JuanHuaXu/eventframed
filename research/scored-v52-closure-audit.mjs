@@ -1,0 +1,10 @@
+// Post-run verification of actual compiler test dependency closure.
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';
+const root='research/scored-v52-diagnostic',done=JSON.parse(fs.readFileSync(root+'/completed.json')),freeze=JSON.parse(fs.readFileSync(root+'/freeze.json'));assert.equal(done.checks.length,24);assert(done.checks.every(c=>c.code===0));
+const args=['run','./cmd/research-go-list-closure','./internal/researchswitch','./internal/researchdispersion'];
+const objects=JSON.parse(execFileSync('go',args,{encoding:'utf8',maxBuffer:32<<20}));assert(objects.length>0);const sources=new Set(),packages=new Set();
+// Test variants already include their compiled test sources in GoFiles. Do not
+// count an imported dependency's uncompiled TestGoFiles metadata as an input.
+for(const p of objects){if(!p.Dir||!p.Dir.startsWith(process.cwd()+'/'))continue;packages.add(p.ImportPath);for(const k of ['GoFiles','CgoFiles','EmbedFiles'])for(const n of p[k]??[]){const abs=path.resolve(p.Dir,n);if(abs.startsWith(process.cwd()+'/')&&fs.existsSync(abs))sources.add(path.relative(process.cwd(),abs));}}
+sources.add('go.mod');const missing=[...sources].filter(p=>!freeze.files[p]),postRunMissingHashes={};for(const p of sources){const h=crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');if(freeze.files[p])assert.equal(h,freeze.files[p]);else postRunMissingHashes[p]=h;}
+const out={time:new Date().toISOString(),command:['go',...args],packages:[...packages].sort(),compilerRepositorySources:[...sources].sort(),sources:sources.size,missing,postRunMissingHashes,allRepositoryInputsProspectivelyFrozen:missing.length===0,postRunGoVersion:execFileSync('go',['version'],{encoding:'utf8'}).trim(),toolchainProspectivelyFrozen:false};fs.writeFileSync(root+'/closure-audit.json',JSON.stringify(out,null,2)+'\n',{flag:'wx',mode:0o600});console.log(JSON.stringify({sources:sources.size,missing,allRepositoryInputsProspectivelyFrozen:out.allRepositoryInputsProspectivelyFrozen}));

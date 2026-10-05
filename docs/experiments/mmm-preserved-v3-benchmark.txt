@@ -1,0 +1,18 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationpreserved
+cpu: Apple M4
+BenchmarkPreservedStep/frozen_mmm         	  121140	      9177 ns/op	    5824 B/op	       8 allocs/op
+BenchmarkPreservedStep/frozen_mmm         	  136296	      8768 ns/op	    5824 B/op	       8 allocs/op
+BenchmarkPreservedStep/frozen_mmm         	  123602	      8941 ns/op	    5824 B/op	       8 allocs/op
+BenchmarkPreservedStep/mix_breadth_ap     	  115122	     10442 ns/op	    7040 B/op	      25 allocs/op
+BenchmarkPreservedStep/mix_breadth_ap     	  115124	     10429 ns/op	    7040 B/op	      25 allocs/op
+BenchmarkPreservedStep/mix_breadth_ap     	  114553	     10489 ns/op	    7040 B/op	      25 allocs/op
+BenchmarkPreservedStep/mix_mmm_ap         	  137748	      8787 ns/op	    5824 B/op	       8 allocs/op
+BenchmarkPreservedStep/mix_mmm_ap         	  137271	      8720 ns/op	    5824 B/op	       8 allocs/op
+BenchmarkPreservedStep/mix_mmm_ap         	  137342	      8703 ns/op	    5824 B/op	       8 allocs/op
+BenchmarkChallengerFit                    	    3627	    333258 ns/op	 2097152 B/op	       1 allocs/op
+BenchmarkChallengerFit                    	    3584	    334638 ns/op	 2097152 B/op	       1 allocs/op
+BenchmarkChallengerFit                    	    3628	    334143 ns/op	 2097152 B/op	       1 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationpreserved	15.412s

@@ -1,0 +1,15 @@
+=== RUN   TestColdUnknownSetupMatchesIssuedPrefix
+--- PASS: TestColdUnknownSetupMatchesIssuedPrefix (0.34s)
+=== RUN   TestCanonicalIssueRevealAndRefresh
+    ledger_test.go:291: 108 configurations, 2376 publications, 128335 checks, max oracle 1.2323475573339238e-14, tower 2.4424906541753444e-15, receipt 1.1102230246251565e-15, explicit query abstentions 0
+--- PASS: TestCanonicalIssueRevealAndRefresh (25.23s)
+=== RUN   TestFull64DelayedAndFutureForks
+--- PASS: TestFull64DelayedAndFutureForks (7.57s)
+=== RUN   TestOwnershipBindingsAndFailedOperations
+--- PASS: TestOwnershipBindingsAndFailedOperations (0.01s)
+=== RUN   TestEmptySnapshotAndRefreshIdentity
+--- PASS: TestEmptySnapshotAndRefreshIdentity (0.00s)
+=== RUN   TestJointDimensionBindingAndUnsupportedLatestPair
+--- PASS: TestJointDimensionBindingAndUnsupportedLatestPair (0.43s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregimeledger	34.772s

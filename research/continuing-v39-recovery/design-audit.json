@@ -1,0 +1,21 @@
+{
+  "name": "design-audit",
+  "args": [
+    "test",
+    "./internal/researchdispersion",
+    "-run",
+    "^TestStudyAuditV39$",
+    "-count=1",
+    "-v",
+    "-timeout=12m"
+  ],
+  "env": {
+    "EVENTFRAME_CONTINUING_V39_AUDIT": "<LOCAL_ROOT>/research/continuing-v39-recovery/design.jsonl",
+    "EVENTFRAME_CONTINUING_V39_BENCHMARK": "<LOCAL_ROOT>/research/continuing-v39-recovery/benchmarks.log"
+  },
+  "start": "2026-10-03T21:07:57.950Z",
+  "end": "2026-10-03T21:19:58.398Z",
+  "code": 1,
+  "wall_ms": 720448.7023750001,
+  "log_sha256": "2482d2b38f83ee98342743f90e1cd71e3e92ebbd33b01ce5d216e82060169f3a"
+}

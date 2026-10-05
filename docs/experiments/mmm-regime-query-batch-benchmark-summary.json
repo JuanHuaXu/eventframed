@@ -1,0 +1,76 @@
+{
+  "scope": "Isolated per-call cold fitted state; shared immutable lookup tables may be warm. Not serving p95/p99.",
+  "historyFrames": 80,
+  "retainedLabels": 63,
+  "candidateQueries": 8,
+  "probes": 8,
+  "records": [
+    {
+      "arm": "reference_cold",
+      "iterations": 2,
+      "nsPerOp": 690917125,
+      "bytesPerOp": 8080248,
+      "allocsPerOp": 233
+    },
+    {
+      "arm": "reference_cold",
+      "iterations": 2,
+      "nsPerOp": 736644292,
+      "bytesPerOp": 8080248,
+      "allocsPerOp": 233
+    },
+    {
+      "arm": "reference_cold",
+      "iterations": 2,
+      "nsPerOp": 724812125,
+      "bytesPerOp": 8080264,
+      "allocsPerOp": 233
+    },
+    {
+      "arm": "batch_cold",
+      "iterations": 25,
+      "nsPerOp": 45416322,
+      "bytesPerOp": 350064,
+      "allocsPerOp": 98
+    },
+    {
+      "arm": "batch_cold",
+      "iterations": 25,
+      "nsPerOp": 47077393,
+      "bytesPerOp": 350064,
+      "allocsPerOp": 98
+    },
+    {
+      "arm": "batch_cold",
+      "iterations": 26,
+      "nsPerOp": 46836516,
+      "bytesPerOp": 350064,
+      "allocsPerOp": 98
+    }
+  ],
+  "medians": {
+    "reference_cold": {
+      "nsPerOp": 724812125,
+      "bytesPerOp": 8080248,
+      "allocsPerOp": 233
+    },
+    "batch_cold": {
+      "nsPerOp": 46836516,
+      "bytesPerOp": 350064,
+      "allocsPerOp": 98
+    }
+  },
+  "speedup": 15.475363816557149,
+  "allocationRatio": 0.04332342274643056,
+  "pass": true,
+  "hashes": {
+    "docs/experiments/mmm-regime-query-batch-benchmark.txt": "4e588dbd204292afde9a850e195b1b029a3ac93481796acd754606962e6b9bc2",
+    "internal/observationlearners/regime_query_research_test.go": "1d3335f31d2ec2ccf9b01a8f755c683dc5c565f078e2bcb720e5b24ec6b0e104",
+    "internal/observationlearners/regime_query_batch_test.go": "3c172f78e6a1d7098931c74ca1fb86e532dbe13687423f5c889b4f38efd18088",
+    "internal/observationlearners/regime_query_batch_contract_test.go": "d7560009d85b1c0e36ef0fb0f47b2125d05c876c8951abf71057b1b790edc5b6",
+    "internal/observationlearners/segment_posterior.go": "16e4a6281a64ceed920acf5c29ae2bcdfa70b246b37740d9f44f57eb22f2ec3e",
+    "internal/observationlearners/segment_batch_research_test.go": "d8b4d250940166f430647d59289d99d5cd2216407dd0e3bcc3323aed3b172680",
+    "docs/experiments/mmm-regime-query-batch-plan.md": "f5b03a6751d5dec2aa7e74e6d1bae7d31f5305ecf9d801a6fbd5dd6c10816b65"
+  },
+  "scorerSHA256": "bc1660eda54496691a7f774c2e6341889d97cc8b9823d9f966296b106119f200"
+}

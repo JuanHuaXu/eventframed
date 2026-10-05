@@ -1,0 +1,13 @@
+{
+  "scope": "Replay, tiny exhaustive policies, independent joint oracle using closed-form minimized Brier risk and mixture score reconstruction; floating-point witness, not outward-rounded proof",
+  "control": "tie_entropy",
+  "witnessRound": 126,
+  "independentLower": 0.000501222337426277,
+  "reportedLower": 0.000501222337426277,
+  "statesChecked": 48048,
+  "mixtureChecks": 310,
+  "maxMixtureError": 1.3877787807814457e-16,
+  "replay": true,
+  "inputSHA256": "b4c49d6e6bc2927e9e3427a7794db9907ee1741cec885288ebe283d11e5e1cc5",
+  "verifierSHA256": "9f841a81bf66a3ed53289c714cf3c89b2c0ac52d53034e3f6ffabd69b6636c1a"
+}

@@ -1,0 +1,12 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchregime
+cpu: Apple M4
+BenchmarkRegimeReplay/members2_cap36_rows32-10         	     279	    424108 ns/op	 2880322 B/op	     153 allocs/op
+BenchmarkRegimeReplay/members2_cap36_rows32-10         	     283	    420545 ns/op	 2880320 B/op	     153 allocs/op
+BenchmarkRegimeReplay/members150_cap36_rows32-10       	     169	    724474 ns/op	 2881620 B/op	     153 allocs/op
+BenchmarkRegimeReplay/members150_cap36_rows32-10       	     168	    709771 ns/op	 2881590 B/op	     153 allocs/op
+BenchmarkRegimeReplay/members200_cap36_rows32-10       	     146	    800505 ns/op	 2882100 B/op	     153 allocs/op
+BenchmarkRegimeReplay/members200_cap36_rows32-10       	     148	    797096 ns/op	 2882100 B/op	     153 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregime	1.371s

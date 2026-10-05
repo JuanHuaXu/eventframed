@@ -1,0 +1,249 @@
+{
+  "sourceHash": "08aa9d86b34799d161f6897ed4c039c433bf53ec314d83c4d7203e10bbeca02a",
+  "capturedSources": 28,
+  "results": [
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "rows",
+      "verified": 1600,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.58561453125,
+      "totalMeanMS": 0.58561453125,
+      "finalP95MS": 0.895958,
+      "totalP95MS": 0.895958
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "envelope",
+      "verified": 32,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.20831371875,
+      "totalMeanMS": 0.20831371875,
+      "finalP95MS": 0.289959,
+      "totalP95MS": 0.289959
+    },
+    {
+      "trial": 0,
+      "size": 50,
+      "mode": "staged",
+      "verified": 64,
+      "prepareMeanMS": 0.20656384375,
+      "finalMeanMS": 0.081828125,
+      "totalMeanMS": 0.28839196875,
+      "finalP95MS": 0.120958,
+      "totalP95MS": 0.367251
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "rows",
+      "verified": 6400,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 1.67610278125,
+      "totalMeanMS": 1.67610278125,
+      "finalP95MS": 4.990791,
+      "totalP95MS": 4.990791
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "envelope",
+      "verified": 32,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.5550455625,
+      "totalMeanMS": 0.5550455625,
+      "finalP95MS": 0.518708,
+      "totalP95MS": 0.518708
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "mode": "staged",
+      "verified": 64,
+      "prepareMeanMS": 0.7176705,
+      "finalMeanMS": 0.077572875,
+      "totalMeanMS": 0.795243375,
+      "finalP95MS": 0.154834,
+      "totalP95MS": 0.946458
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "envelope",
+      "verified": 32,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.194049375,
+      "totalMeanMS": 0.194049375,
+      "finalP95MS": 0.23425,
+      "totalP95MS": 0.23425
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "staged",
+      "verified": 64,
+      "prepareMeanMS": 0.18716546875,
+      "finalMeanMS": 0.07511728125,
+      "totalMeanMS": 0.26228275,
+      "finalP95MS": 0.102125,
+      "totalP95MS": 0.302542
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "mode": "rows",
+      "verified": 1600,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.46253,
+      "totalMeanMS": 0.46253,
+      "finalP95MS": 0.597167,
+      "totalP95MS": 0.597167
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "envelope",
+      "verified": 32,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.5726003125,
+      "totalMeanMS": 0.5726003125,
+      "finalP95MS": 0.59225,
+      "totalP95MS": 0.59225
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "staged",
+      "verified": 64,
+      "prepareMeanMS": 0.5415390625,
+      "finalMeanMS": 0.06293746875,
+      "totalMeanMS": 0.60447653125,
+      "finalP95MS": 0.080208,
+      "totalP95MS": 0.598167
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "mode": "rows",
+      "verified": 6400,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 1.6962981875,
+      "totalMeanMS": 1.6962981875,
+      "finalP95MS": 5.095125,
+      "totalP95MS": 5.095125
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "staged",
+      "verified": 64,
+      "prepareMeanMS": 0.1892955625,
+      "finalMeanMS": 0.0788294375,
+      "totalMeanMS": 0.268125,
+      "finalP95MS": 0.101833,
+      "totalP95MS": 0.298167
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "rows",
+      "verified": 1600,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.4572825625,
+      "totalMeanMS": 0.4572825625,
+      "finalP95MS": 0.57375,
+      "totalP95MS": 0.57375
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "mode": "envelope",
+      "verified": 32,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.18609115625,
+      "totalMeanMS": 0.18609115625,
+      "finalP95MS": 0.203625,
+      "totalP95MS": 0.203625
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "staged",
+      "verified": 64,
+      "prepareMeanMS": 0.5535155625,
+      "finalMeanMS": 0.078109375,
+      "totalMeanMS": 0.6316249375,
+      "finalP95MS": 0.103917,
+      "totalP95MS": 0.852917
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "rows",
+      "verified": 6400,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 1.67673434375,
+      "totalMeanMS": 1.67673434375,
+      "finalP95MS": 4.993541,
+      "totalP95MS": 4.993541
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "mode": "envelope",
+      "verified": 32,
+      "prepareMeanMS": 0,
+      "finalMeanMS": 0.56185021875,
+      "totalMeanMS": 0.56185021875,
+      "finalP95MS": 0.641792,
+      "totalP95MS": 0.641792
+    }
+  ],
+  "comparisons": [
+    {
+      "trial": 0,
+      "size": 50,
+      "envelopeVsRows": 0.35571815184529715,
+      "stagedTotalVsRows": 0.4924604041747812,
+      "markerVsRows": 0.13973035270374365
+    },
+    {
+      "trial": 0,
+      "size": 200,
+      "envelopeVsRows": 0.33115246195466574,
+      "stagedTotalVsRows": 0.47445979082913114,
+      "markerVsRows": 0.04628169338287708
+    },
+    {
+      "trial": 1,
+      "size": 50,
+      "envelopeVsRows": 0.4195390028754892,
+      "stagedTotalVsRows": 0.5670610554991028,
+      "markerVsRows": 0.16240520885131776
+    },
+    {
+      "trial": 1,
+      "size": 200,
+      "envelopeVsRows": 0.33755875984510536,
+      "stagedTotalVsRows": 0.3563503962359802,
+      "markerVsRows": 0.03710283322459779
+    },
+    {
+      "trial": 2,
+      "size": 50,
+      "envelopeVsRows": 0.4069500381397115,
+      "stagedTotalVsRows": 0.5863442474913966,
+      "markerVsRows": 0.17238671220925902
+    },
+    {
+      "trial": 2,
+      "size": 200,
+      "envelopeVsRows": 0.33508600861209026,
+      "stagedTotalVsRows": 0.37669946933118637,
+      "markerVsRows": 0.04658422802106453
+    }
+  ],
+  "limitations": "Storage-only synthetic surrogate, no service identity index or policy validation; append intervals exclude encoding/digest, source lookup, learner staging and replay. Marker is not a valid admission protocol. No daemon speedup or power-loss proof."
+}

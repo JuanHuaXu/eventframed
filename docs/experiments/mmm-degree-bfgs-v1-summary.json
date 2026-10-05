@@ -1,0 +1,133 @@
+{
+  "records": 1008,
+  "forecastChecks": 32256,
+  "traceChecks": 31214,
+  "converged": 1004,
+  "objectiveNonharm": 1005,
+  "maxObjectiveRegression": 4.1037140663221034,
+  "screenPass": false,
+  "groups": [
+    {
+      "n": 252,
+      "converged": 252,
+      "oldConverged": 0,
+      "objectiveNonharm": 252,
+      "objectiveGain": 0.2002214718456604,
+      "brierGain": 0.0007881650461225211,
+      "realizedGain": 0.0011150987513961553,
+      "newBrier": 0.21843391622611283,
+      "oldBrier": 0.21922208127223544,
+      "iterations": 30.03968253968254,
+      "evaluations": 63.58730158730159,
+      "projectedGradient": 1.4957103835041723e-7,
+      "resets": 0,
+      "patterns": 2433.214285714286,
+      "stops": {
+        "projected-gradient": 252
+      }
+    },
+    {
+      "n": 252,
+      "converged": 252,
+      "oldConverged": 0,
+      "objectiveNonharm": 252,
+      "objectiveGain": 0.17664789901378605,
+      "brierGain": 0.000357944034221157,
+      "realizedGain": 0.0006464816177756884,
+      "newBrier": 0.22979451057708355,
+      "oldBrier": 0.2301524546113049,
+      "iterations": 30,
+      "evaluations": 62.36507936507937,
+      "projectedGradient": 1.4413325490665002e-7,
+      "resets": 0,
+      "patterns": 2430,
+      "stops": {
+        "projected-gradient": 252
+      }
+    },
+    {
+      "n": 252,
+      "converged": 250,
+      "oldConverged": 0,
+      "objectiveNonharm": 250,
+      "objectiveGain": 1.0192313165033373,
+      "brierGain": -0.0015276902525600397,
+      "realizedGain": -0.0004185861845373217,
+      "newBrier": 0.21826953880337735,
+      "oldBrier": 0.21674184855081746,
+      "iterations": 31.92063492063492,
+      "evaluations": 69.5,
+      "projectedGradient": 0.00021248854287633264,
+      "resets": 0,
+      "patterns": 7756.714285714285,
+      "stops": {
+        "iteration-cap": 2,
+        "projected-gradient": 250
+      }
+    },
+    {
+      "n": 252,
+      "converged": 250,
+      "oldConverged": 0,
+      "objectiveNonharm": 251,
+      "objectiveGain": 0.5702199580636063,
+      "brierGain": -0.0034081707198763108,
+      "realizedGain": -0.002728996535023829,
+      "newBrier": 0.23312475259153137,
+      "oldBrier": 0.2297165818716544,
+      "iterations": 31.904761904761905,
+      "evaluations": 68.01984126984127,
+      "projectedGradient": 0.00021250080323333986,
+      "resets": 0,
+      "patterns": 7752.857142857143,
+      "stops": {
+        "iteration-cap": 2,
+        "projected-gradient": 250
+      }
+    }
+  ],
+  "failures": [
+    {
+      "key": "0:0:0:0:0:0:true",
+      "stop": "iteration-cap",
+      "pg": 0.026744899582613453,
+      "delta": -0.16731588097111505
+    },
+    {
+      "key": "0:0:0:0:0:1:true",
+      "stop": "iteration-cap",
+      "pg": 0.026744899582613453,
+      "delta": -0.16731588097111505
+    },
+    {
+      "key": "0:0:0:1:0:0:true",
+      "stop": "iteration-cap",
+      "pg": 0.026744899582613453,
+      "delta": -0.16731588097111505
+    },
+    {
+      "key": "0:0:0:1:0:1:true",
+      "stop": "iteration-cap",
+      "pg": 0.026744899582613453,
+      "delta": -0.16731588097111505
+    },
+    {
+      "key": "0:16:0:1:224:0:true",
+      "stop": "projected-gradient",
+      "pg": 2.3986166719502933e-7,
+      "delta": 4.1037140663221034
+    },
+    {
+      "key": "0:20:0:1:224:0:true",
+      "stop": "projected-gradient",
+      "pg": 9.772023190635082e-9,
+      "delta": 0.11010424652604223
+    },
+    {
+      "key": "1:8:0:0:128:1:true",
+      "stop": "projected-gradient",
+      "pg": 1.359317113869274e-7,
+      "delta": 0.7177149260753009
+    }
+  ]
+}

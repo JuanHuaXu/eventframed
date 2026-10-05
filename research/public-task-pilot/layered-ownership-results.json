@@ -1,0 +1,298 @@
+{
+  "inputSHA256": "fbd608a391a618679aa8d46643aae8593a8efc8e6671e9f4925622630be860f6",
+  "harnessSHA256": "e1c921e757b1349ff79a17fe5c033aaf7dc22de9f11a630e9d9cc4329947bae0",
+  "passed": true,
+  "operations": 32,
+  "retainedSnapshotsChecked": 34,
+  "scope": "Captured logical-state replay; no dynamic ANN preparation, vector payload, durability, or throughput claim",
+  "reports": [
+    {
+      "n": 800,
+      "kind": "insert",
+      "changed": 66,
+      "paths": 2178,
+      "records": 66,
+      "links": 5985,
+      "reusedVectors": 65
+    },
+    {
+      "n": 800,
+      "kind": "insert",
+      "changed": 77,
+      "paths": 2541,
+      "records": 77,
+      "links": 6915,
+      "reusedVectors": 76
+    },
+    {
+      "n": 800,
+      "kind": "insert",
+      "changed": 98,
+      "paths": 3234,
+      "records": 98,
+      "links": 10785,
+      "reusedVectors": 97
+    },
+    {
+      "n": 800,
+      "kind": "insert",
+      "changed": 104,
+      "paths": 3432,
+      "records": 104,
+      "links": 10876,
+      "reusedVectors": 103
+    },
+    {
+      "n": 800,
+      "kind": "insert",
+      "changed": 74,
+      "paths": 2442,
+      "records": 74,
+      "links": 6809,
+      "reusedVectors": 73
+    },
+    {
+      "n": 800,
+      "kind": "insert",
+      "changed": 113,
+      "paths": 3729,
+      "records": 113,
+      "links": 12952,
+      "reusedVectors": 112
+    },
+    {
+      "n": 800,
+      "kind": "insert",
+      "changed": 66,
+      "paths": 2178,
+      "records": 66,
+      "links": 6013,
+      "reusedVectors": 65
+    },
+    {
+      "n": 800,
+      "kind": "insert",
+      "changed": 74,
+      "paths": 2442,
+      "records": 74,
+      "links": 6735,
+      "reusedVectors": 73
+    },
+    {
+      "n": 800,
+      "kind": "delete",
+      "changed": 35,
+      "paths": 1155,
+      "records": 34,
+      "links": 3178,
+      "reusedVectors": 34
+    },
+    {
+      "n": 800,
+      "kind": "delete",
+      "changed": 31,
+      "paths": 1023,
+      "records": 30,
+      "links": 2810,
+      "reusedVectors": 30
+    },
+    {
+      "n": 800,
+      "kind": "delete",
+      "changed": 44,
+      "paths": 1452,
+      "records": 43,
+      "links": 4068,
+      "reusedVectors": 43
+    },
+    {
+      "n": 800,
+      "kind": "delete",
+      "changed": 54,
+      "paths": 1782,
+      "records": 53,
+      "links": 5011,
+      "reusedVectors": 53
+    },
+    {
+      "n": 800,
+      "kind": "delete",
+      "changed": 74,
+      "paths": 2442,
+      "records": 73,
+      "links": 8913,
+      "reusedVectors": 73
+    },
+    {
+      "n": 800,
+      "kind": "delete",
+      "changed": 77,
+      "paths": 2541,
+      "records": 76,
+      "links": 9099,
+      "reusedVectors": 76
+    },
+    {
+      "n": 800,
+      "kind": "delete",
+      "changed": 63,
+      "paths": 2079,
+      "records": 62,
+      "links": 7398,
+      "reusedVectors": 62
+    },
+    {
+      "n": 800,
+      "kind": "delete",
+      "changed": 65,
+      "paths": 2145,
+      "records": 64,
+      "links": 7429,
+      "reusedVectors": 64
+    },
+    {
+      "n": 6400,
+      "kind": "insert",
+      "changed": 75,
+      "paths": 2475,
+      "records": 75,
+      "links": 7391,
+      "reusedVectors": 74
+    },
+    {
+      "n": 6400,
+      "kind": "insert",
+      "changed": 111,
+      "paths": 3663,
+      "records": 111,
+      "links": 12432,
+      "reusedVectors": 110
+    },
+    {
+      "n": 6400,
+      "kind": "insert",
+      "changed": 92,
+      "paths": 3036,
+      "records": 92,
+      "links": 8969,
+      "reusedVectors": 91
+    },
+    {
+      "n": 6400,
+      "kind": "insert",
+      "changed": 72,
+      "paths": 2376,
+      "records": 72,
+      "links": 6818,
+      "reusedVectors": 71
+    },
+    {
+      "n": 6400,
+      "kind": "insert",
+      "changed": 77,
+      "paths": 2541,
+      "records": 77,
+      "links": 7170,
+      "reusedVectors": 76
+    },
+    {
+      "n": 6400,
+      "kind": "insert",
+      "changed": 92,
+      "paths": 3036,
+      "records": 92,
+      "links": 8406,
+      "reusedVectors": 91
+    },
+    {
+      "n": 6400,
+      "kind": "insert",
+      "changed": 96,
+      "paths": 3168,
+      "records": 96,
+      "links": 9654,
+      "reusedVectors": 95
+    },
+    {
+      "n": 6400,
+      "kind": "insert",
+      "changed": 72,
+      "paths": 2376,
+      "records": 72,
+      "links": 6356,
+      "reusedVectors": 71
+    },
+    {
+      "n": 6400,
+      "kind": "delete",
+      "changed": 39,
+      "paths": 1287,
+      "records": 38,
+      "links": 3190,
+      "reusedVectors": 38
+    },
+    {
+      "n": 6400,
+      "kind": "delete",
+      "changed": 38,
+      "paths": 1254,
+      "records": 37,
+      "links": 3638,
+      "reusedVectors": 37
+    },
+    {
+      "n": 6400,
+      "kind": "delete",
+      "changed": 40,
+      "paths": 1320,
+      "records": 39,
+      "links": 3814,
+      "reusedVectors": 39
+    },
+    {
+      "n": 6400,
+      "kind": "delete",
+      "changed": 38,
+      "paths": 1254,
+      "records": 37,
+      "links": 3409,
+      "reusedVectors": 37
+    },
+    {
+      "n": 6400,
+      "kind": "delete",
+      "changed": 104,
+      "paths": 3432,
+      "records": 103,
+      "links": 16274,
+      "reusedVectors": 103
+    },
+    {
+      "n": 6400,
+      "kind": "delete",
+      "changed": 106,
+      "paths": 3498,
+      "records": 105,
+      "links": 15701,
+      "reusedVectors": 105
+    },
+    {
+      "n": 6400,
+      "kind": "delete",
+      "changed": 97,
+      "paths": 3201,
+      "records": 96,
+      "links": 14129,
+      "reusedVectors": 96
+    },
+    {
+      "n": 6400,
+      "kind": "delete",
+      "changed": 93,
+      "paths": 3069,
+      "records": 92,
+      "links": 14083,
+      "reusedVectors": 92
+    }
+  ]
+}

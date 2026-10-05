@@ -1,0 +1,70 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchregimeledger
+cpu: Apple M4
+BenchmarkLedgerOperations/M2/T32/PendingSecond-10         	      69	   1629174 ns/op	 9987450 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M2/T32/PendingSecond-10         	      68	   1629779 ns/op	 9987518 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M2/T32/PendingFirst-10          	      78	   1627887 ns/op	 9987435 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M2/T32/PendingFirst-10          	      76	   1662082 ns/op	 9987444 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M2/T32/Reveal-10                	     128	    925139 ns/op	 5115408 B/op	     383 allocs/op
+BenchmarkLedgerOperations/M2/T32/Reveal-10                	     130	    913508 ns/op	 5115840 B/op	     383 allocs/op
+BenchmarkLedgerOperations/M2/T32/Issue-10                 	     124	    960624 ns/op	 5394813 B/op	     434 allocs/op
+BenchmarkLedgerOperations/M2/T32/Issue-10                 	     124	    971564 ns/op	 5395794 B/op	     435 allocs/op
+BenchmarkLedgerOperations/M2/T64/PendingSecondAbstention-10         	      72	   1664513 ns/op	10097534 B/op	     709 allocs/op
+BenchmarkLedgerOperations/M2/T64/PendingSecondAbstention-10         	      70	   1648893 ns/op	10097540 B/op	     709 allocs/op
+BenchmarkLedgerOperations/M2/T64/PendingFirst-10                    	      34	   3304360 ns/op	20196235 B/op	    1422 allocs/op
+BenchmarkLedgerOperations/M2/T64/PendingFirst-10                    	      34	   3316055 ns/op	20196261 B/op	    1422 allocs/op
+BenchmarkLedgerOperations/M2/T64/Reveal-10                          	      55	   1827946 ns/op	10369851 B/op	     742 allocs/op
+BenchmarkLedgerOperations/M2/T64/Reveal-10                          	      64	   1833366 ns/op	10369869 B/op	     742 allocs/op
+BenchmarkLedgerOperations/M2/T64/Issue-10                           	      64	   1886725 ns/op	10666026 B/op	     825 allocs/op
+BenchmarkLedgerOperations/M2/T64/Issue-10                           	      63	   1894515 ns/op	10666143 B/op	     825 allocs/op
+BenchmarkLedgerOperations/M150/T32/PendingSecond-10                 	      52	   2207047 ns/op	 9992507 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M150/T32/PendingSecond-10                 	      54	   2210999 ns/op	 9992503 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M150/T32/PendingFirst-10                  	      54	   2220613 ns/op	 9992505 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M150/T32/PendingFirst-10                  	      52	   2221939 ns/op	 9992504 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M150/T32/Reveal-10                        	      90	   1211210 ns/op	 5169202 B/op	     386 allocs/op
+BenchmarkLedgerOperations/M150/T32/Reveal-10                        	      97	   1287396 ns/op	 5167109 B/op	     385 allocs/op
+BenchmarkLedgerOperations/M150/T32/Issue-10                         	      82	   1520629 ns/op	 5445472 B/op	     437 allocs/op
+BenchmarkLedgerOperations/M150/T32/Issue-10                         	      88	   1307757 ns/op	 5441102 B/op	     436 allocs/op
+BenchmarkLedgerOperations/M150/T64/PendingSecondAbstention-10       	      62	   1902810 ns/op	10097539 B/op	     709 allocs/op
+BenchmarkLedgerOperations/M150/T64/PendingSecondAbstention-10       	      64	   1900533 ns/op	10097543 B/op	     709 allocs/op
+BenchmarkLedgerOperations/M150/T64/PendingFirst-10                  	      28	   4123382 ns/op	20201312 B/op	    1422 allocs/op
+BenchmarkLedgerOperations/M150/T64/PendingFirst-10                  	      28	   4151537 ns/op	20201320 B/op	    1422 allocs/op
+BenchmarkLedgerOperations/M150/T64/Reveal-10                        	      51	   2230647 ns/op	10371053 B/op	     742 allocs/op
+BenchmarkLedgerOperations/M150/T64/Reveal-10                        	      50	   2274631 ns/op	10371218 B/op	     743 allocs/op
+BenchmarkLedgerOperations/M150/T64/Issue-10                         	      51	   2297872 ns/op	10749137 B/op	     826 allocs/op
+BenchmarkLedgerOperations/M150/T64/Issue-10                         	      52	   2298361 ns/op	10749297 B/op	     826 allocs/op
+BenchmarkLedgerOperations/M200/T32/PendingSecond-10                 	      50	   2402011 ns/op	 9994552 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M200/T32/PendingSecond-10                 	      49	   2399819 ns/op	 9994562 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M200/T32/PendingFirst-10                  	      49	   2410300 ns/op	 9994564 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M200/T32/PendingFirst-10                  	      51	   2404362 ns/op	 9994688 B/op	     716 allocs/op
+BenchmarkLedgerOperations/M200/T32/Reveal-10                        	      92	   1306212 ns/op	 5166721 B/op	     385 allocs/op
+BenchmarkLedgerOperations/M200/T32/Reveal-10                        	      98	   1312992 ns/op	 5164701 B/op	     385 allocs/op
+BenchmarkLedgerOperations/M200/T32/Issue-10                         	      86	   1354928 ns/op	 5448309 B/op	     437 allocs/op
+BenchmarkLedgerOperations/M200/T32/Issue-10                         	      85	   1350294 ns/op	 5446375 B/op	     437 allocs/op
+BenchmarkLedgerOperations/M200/T64/PendingSecondAbstention-10       	      61	   1990193 ns/op	10097536 B/op	     709 allocs/op
+BenchmarkLedgerOperations/M200/T64/PendingSecondAbstention-10       	      61	   2025548 ns/op	10097527 B/op	     709 allocs/op
+BenchmarkLedgerOperations/M200/T64/PendingFirst-10                  	      27	   4371901 ns/op	20203383 B/op	    1422 allocs/op
+BenchmarkLedgerOperations/M200/T64/PendingFirst-10                  	      27	   4413653 ns/op	20203400 B/op	    1423 allocs/op
+BenchmarkLedgerOperations/M200/T64/Reveal-10                        	      51	   2384296 ns/op	10453504 B/op	     743 allocs/op
+BenchmarkLedgerOperations/M200/T64/Reveal-10                        	      48	   2394433 ns/op	10447388 B/op	     743 allocs/op
+BenchmarkLedgerOperations/M200/T64/Issue-10                         	      49	   2433309 ns/op	10749826 B/op	     826 allocs/op
+BenchmarkLedgerOperations/M200/T64/Issue-10                         	      49	   2435621 ns/op	10749808 B/op	     826 allocs/op
+BenchmarkConstructor/M150-10                                        	    2301	     53768 ns/op	   20353 B/op	       9 allocs/op
+BenchmarkConstructor/M150-10                                        	    2290	     53604 ns/op	   20356 B/op	       9 allocs/op
+BenchmarkConstructor/M200-10                                        	    1746	     71408 ns/op	   21641 B/op	       9 allocs/op
+BenchmarkConstructor/M200-10                                        	    1741	     71005 ns/op	   21639 B/op	       9 allocs/op
+BenchmarkFullFrontier/M150/T2400/PendingFirst-10                    	       1	 147964292 ns/op	765670656 B/op	   52853 allocs/op
+BenchmarkFullFrontier/M150/T2400/PendingFirst-10                    	       1	 148662375 ns/op	765670544 B/op	   52852 allocs/op
+BenchmarkFullFrontier/M150/T2400/RevealFirst-10                     	       2	  74832584 ns/op	398400968 B/op	   26472 allocs/op
+BenchmarkFullFrontier/M150/T2400/RevealFirst-10                     	       2	  75283229 ns/op	398401360 B/op	   26475 allocs/op
+BenchmarkFullFrontier/M150/T2400/Issue-10                           	       2	  72430042 ns/op	400181760 B/op	   28886 allocs/op
+BenchmarkFullFrontier/M150/T2400/Issue-10                           	       2	  72236458 ns/op	400181536 B/op	   28884 allocs/op
+BenchmarkFullFrontier/M200/T3200/PendingFirst-10                    	       1	 186539208 ns/op	1020794544 B/op	   70434 allocs/op
+BenchmarkFullFrontier/M200/T3200/PendingFirst-10                    	       1	 187995708 ns/op	1020795664 B/op	   70444 allocs/op
+BenchmarkFullFrontier/M200/T3200/RevealFirst-10                     	       1	 100982250 ns/op	530165848 B/op	   35272 allocs/op
+BenchmarkFullFrontier/M200/T3200/RevealFirst-10                     	       1	 101706875 ns/op	530165400 B/op	   35268 allocs/op
+BenchmarkFullFrontier/M200/T3200/Issue-10                           	       2	  99156271 ns/op	532448064 B/op	   38483 allocs/op
+BenchmarkFullFrontier/M200/T3200/Issue-10                           	       2	  99510542 ns/op	532448176 B/op	   38484 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregimeledger	9.758s

@@ -1,0 +1,10 @@
+{
+  "runtime": "go1.27.1 darwin/arm64",
+  "cpu": "Apple M4",
+  "gomaxprocs": 10,
+  "command": "go test ./internal/observationlearners -run '^$' -bench '^BenchmarkBrierKernel$' -benchmem -benchtime=500ms -count=3",
+  "boundary": "Two-expert single-owner predict/observe cycle; no fitting, retrieval, persistence or concurrent instance ownership",
+  "sourceManifest": "mmm-brier-kernel-v94.json:Hashes",
+  "artifactSHA256": "715516a85fbb6fcdf5976b47d4b854ab9c4cee270cef545817681101645168d7",
+  "benchmarkSHA256": "5b2535ac0223beadf932b42127e82a90d7528034dd9a53f2ce41dbaaac3eea6e"
+}

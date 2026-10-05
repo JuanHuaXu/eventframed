@@ -1,0 +1,1583 @@
+{
+  "time": "2026-10-03T22:06:18.823Z",
+  "weight": 1,
+  "raw_sha256": "138a76a9db4c0ea4b6c5a7a12829af744eaded2985ad7e520428eaaf8c439d41",
+  "model_sha256": "ddeebcb09f52583e8e9bcc633b4ec5dcbafb5962769ec7e38ae7092d995cc495",
+  "technical_pass": true,
+  "splits": {
+    "design": {
+      "baseline": {
+        "top1": 11,
+        "survival": 21,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.39339726631393296,
+        "per": [
+          {
+            "id": "39b5255c0a60e8ec9903b039",
+            "cluster": "strict equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e72b70ba5a9f197b4296f3b8",
+            "cluster": "strict equality",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "bbddc37da7908945115662f6",
+            "cluster": "strict equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "aa8ed39c55538d69afb913be",
+            "cluster": "strict equality",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "32b5674264c31d17fe702647",
+            "cluster": "strict equality",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0cdfd6cdcb51670032b45bbb",
+            "cluster": "strict equality",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8903fcdae5a061c2b9a0d15f",
+            "cluster": "array index search",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c7370c1f79e13e5ddc753d18",
+            "cluster": "array index search",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "baea0e44b927442e816408e5",
+            "cluster": "array index search",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.125,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "f3ea840eec8357b55577de91",
+            "cluster": "array index search",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "793c9fabee88c502f2692731",
+            "cluster": "array index search",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "206acd70f35ab71f62dccfb6",
+            "cluster": "array index search",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "616aa1e2f033d1e9da6d02ee",
+            "cluster": "JSON object serialization",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "217ac907baef2fad79eb416a",
+            "cluster": "JSON object serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "dfd010b5ab3d601e36c31223",
+            "cluster": "JSON object serialization",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c9bd27be0f4f825b2f6269ba",
+            "cluster": "JSON object serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "03c55fc4069b2c4adcaaa359",
+            "cluster": "JSON object serialization",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "26263954b74e452c1c3c5d91",
+            "cluster": "JSON object serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8c721b2448e531ef8d1ccbc5",
+            "cluster": "coercing not-a-number test",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 0
+          },
+          {
+            "id": "2f50dee232099e70b783f216",
+            "cluster": "coercing not-a-number test",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.25,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "bd32a526a7f7254a4ceaf5f2",
+            "cluster": "coercing not-a-number test",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "fa5b055641a1efaf409f6ef4",
+            "cluster": "coercing not-a-number test",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.14285714285714285,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "862f74d73989c38466496c3b",
+            "cluster": "coercing not-a-number test",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "14d5a959e84361d1844e6eb9",
+            "cluster": "coercing not-a-number test",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.2,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5a1433194a6911bba3d45da2",
+            "cluster": "floating prefix parsing",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0e8a538c909c27a516090074",
+            "cluster": "floating prefix parsing",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ada7d67a047426e1b1857c5c",
+            "cluster": "floating prefix parsing",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "96d44539d841a7146f8cadb2",
+            "cluster": "floating prefix parsing",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "45891d635f4c5b071c2c9f6e",
+            "cluster": "floating prefix parsing",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "23393112128d2a53ece8488d",
+            "cluster": "floating prefix parsing",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "329f6665394fde6628dc6828",
+            "cluster": "left reduction",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.1111111111111111,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e5a900f132f65c8a12e55f24",
+            "cluster": "left reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3f79eb7897f4d63191825a45",
+            "cluster": "left reduction",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "49d584aa4745b1880ebc8ef3",
+            "cluster": "left reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "04746d2ad46775b42441eeba",
+            "cluster": "left reduction",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5295ff5336a8ebc19a03aca8",
+            "cluster": "left reduction",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "strict equality": 0.5,
+          "array index search": 0.5,
+          "JSON object serialization": 0.5,
+          "coercing not-a-number test": 0,
+          "floating prefix parsing": 0,
+          "left reduction": 0.3333333333333333
+        }
+      },
+      "selected": {
+        "top1": 27,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.8541666666666665,
+        "per": [
+          {
+            "id": "39b5255c0a60e8ec9903b039",
+            "cluster": "strict equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.25,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e72b70ba5a9f197b4296f3b8",
+            "cluster": "strict equality",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "bbddc37da7908945115662f6",
+            "cluster": "strict equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "aa8ed39c55538d69afb913be",
+            "cluster": "strict equality",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "32b5674264c31d17fe702647",
+            "cluster": "strict equality",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0cdfd6cdcb51670032b45bbb",
+            "cluster": "strict equality",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8903fcdae5a061c2b9a0d15f",
+            "cluster": "array index search",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c7370c1f79e13e5ddc753d18",
+            "cluster": "array index search",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "baea0e44b927442e816408e5",
+            "cluster": "array index search",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "f3ea840eec8357b55577de91",
+            "cluster": "array index search",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "793c9fabee88c502f2692731",
+            "cluster": "array index search",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "206acd70f35ab71f62dccfb6",
+            "cluster": "array index search",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "616aa1e2f033d1e9da6d02ee",
+            "cluster": "JSON object serialization",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "217ac907baef2fad79eb416a",
+            "cluster": "JSON object serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "dfd010b5ab3d601e36c31223",
+            "cluster": "JSON object serialization",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c9bd27be0f4f825b2f6269ba",
+            "cluster": "JSON object serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "03c55fc4069b2c4adcaaa359",
+            "cluster": "JSON object serialization",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "26263954b74e452c1c3c5d91",
+            "cluster": "JSON object serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8c721b2448e531ef8d1ccbc5",
+            "cluster": "coercing not-a-number test",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "2f50dee232099e70b783f216",
+            "cluster": "coercing not-a-number test",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "bd32a526a7f7254a4ceaf5f2",
+            "cluster": "coercing not-a-number test",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "fa5b055641a1efaf409f6ef4",
+            "cluster": "coercing not-a-number test",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "862f74d73989c38466496c3b",
+            "cluster": "coercing not-a-number test",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "14d5a959e84361d1844e6eb9",
+            "cluster": "coercing not-a-number test",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5a1433194a6911bba3d45da2",
+            "cluster": "floating prefix parsing",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0e8a538c909c27a516090074",
+            "cluster": "floating prefix parsing",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ada7d67a047426e1b1857c5c",
+            "cluster": "floating prefix parsing",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "96d44539d841a7146f8cadb2",
+            "cluster": "floating prefix parsing",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "45891d635f4c5b071c2c9f6e",
+            "cluster": "floating prefix parsing",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "23393112128d2a53ece8488d",
+            "cluster": "floating prefix parsing",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "329f6665394fde6628dc6828",
+            "cluster": "left reduction",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e5a900f132f65c8a12e55f24",
+            "cluster": "left reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "3f79eb7897f4d63191825a45",
+            "cluster": "left reduction",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "49d584aa4745b1880ebc8ef3",
+            "cluster": "left reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "04746d2ad46775b42441eeba",
+            "cluster": "left reduction",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "5295ff5336a8ebc19a03aca8",
+            "cluster": "left reduction",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "strict equality": 0.5,
+          "array index search": 1,
+          "JSON object serialization": 0.8333333333333334,
+          "coercing not-a-number test": 0.5,
+          "floating prefix parsing": 0.8333333333333334,
+          "left reduction": 0.8333333333333334
+        }
+      },
+      "comparison": {
+        "gains": 16,
+        "losses": 0,
+        "literal_losses": 0,
+        "survival_losses": 0,
+        "cluster_vector": [
+          0,
+          0.5,
+          0.33333333333333337,
+          0.5,
+          0.8333333333333334,
+          0.5
+        ],
+        "cluster_mean": 0.4444444444444445,
+        "one_sided95_lower": 0.22055018077777783,
+        "two_sided95": [
+          0.1588242404444445,
+          0.7300646484444444
+        ],
+        "exact_cluster_sign_p": 0.03125,
+        "pass": true
+      }
+    },
+    "confirmation": {
+      "baseline": {
+        "top1": 12,
+        "survival": 22,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.42294973544973546,
+        "per": [
+          {
+            "id": "c0deed2f75f86807b594a216",
+            "cluster": "coercing equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.25,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9ec108480371f91d94376d77",
+            "cluster": "coercing equality",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.2,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a54c456a9789723186979c1b",
+            "cluster": "coercing equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6b8a12480746324e239e10e6",
+            "cluster": "coercing equality",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.2,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8e9aaa0061585a4c8d2ab897",
+            "cluster": "coercing equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "01b75e9f3ea22b79e20be6d8",
+            "cluster": "coercing equality",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9fb951566d6ab3db5593a64c",
+            "cluster": "array predicate search",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "b09f6b6afc7f7ed108f4c8db",
+            "cluster": "array predicate search",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "bf1be01a27a43555dabae94b",
+            "cluster": "array predicate search",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9ca748a590388e78d7b4ab8a",
+            "cluster": "array predicate search",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "dcd4c508602c65ebc912647e",
+            "cluster": "array predicate search",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ef7ad08c8d383e2b9b55f6f9",
+            "cluster": "array predicate search",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "7e164f5ce7bcfd0a1bc0c4ee",
+            "cluster": "JSON top-level serialization",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0c5cccc579fd18d2e2016e9d",
+            "cluster": "JSON top-level serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "75b93f3c8ec079df7837f0c6",
+            "cluster": "JSON top-level serialization",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e2c12a662582c45168bfe70f",
+            "cluster": "JSON top-level serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "f9e690e4eba72a76990d1d0d",
+            "cluster": "JSON top-level serialization",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8837c2ec7da63aa33dbd699d",
+            "cluster": "JSON top-level serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "81477be89d3ceb8bc3fdd00a",
+            "cluster": "coercing finiteness test",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4bcad4980dd59e0033ad1155",
+            "cluster": "coercing finiteness test",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a4b31168034ed2022736fc10",
+            "cluster": "coercing finiteness test",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e919a6839888c9872f75f697",
+            "cluster": "coercing finiteness test",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ac698a33fd76ac2c5d9baf80",
+            "cluster": "coercing finiteness test",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c94c02bcf3fa7b5bc44a4d6f",
+            "cluster": "coercing finiteness test",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "32934461733e4fcc5ee9e7d0",
+            "cluster": "integer prefix parsing",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4980cfd0c5431365a7c5d23a",
+            "cluster": "integer prefix parsing",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "7fceddc5010b4a310141c273",
+            "cluster": "integer prefix parsing",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9a9988cc80fd8bbea333b5c0",
+            "cluster": "integer prefix parsing",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9116868ff6fa4225e83460a7",
+            "cluster": "integer prefix parsing",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ccdd0112120f873e8e5be227",
+            "cluster": "integer prefix parsing",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "07c32ff1a97e39365ec95035",
+            "cluster": "right reduction",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9b2c709f63a7d4f6c68353e0",
+            "cluster": "right reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ef2615d0fa501eb5cac285aa",
+            "cluster": "right reduction",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.14285714285714285,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "25d5ddd015f62b82fd5b6939",
+            "cluster": "right reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9014ecf82c782c54f8c6ce82",
+            "cluster": "right reduction",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 0,
+            "rr": 0,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4a1b97e300fe973fc141c5d8",
+            "cluster": "right reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "coercing equality": 0,
+          "array predicate search": 0.16666666666666666,
+          "JSON top-level serialization": 0.5,
+          "coercing finiteness test": 0.5,
+          "integer prefix parsing": 0.3333333333333333,
+          "right reduction": 0.5
+        }
+      },
+      "selected": {
+        "top1": 27,
+        "survival": 36,
+        "nomination": 36,
+        "mean_reciprocal_rank": 0.8374999999999999,
+        "per": [
+          {
+            "id": "c0deed2f75f86807b594a216",
+            "cluster": "coercing equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9ec108480371f91d94376d77",
+            "cluster": "coercing equality",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.16666666666666666,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a54c456a9789723186979c1b",
+            "cluster": "coercing equality",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "6b8a12480746324e239e10e6",
+            "cluster": "coercing equality",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.2,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8e9aaa0061585a4c8d2ab897",
+            "cluster": "coercing equality",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.2,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "01b75e9f3ea22b79e20be6d8",
+            "cluster": "coercing equality",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9fb951566d6ab3db5593a64c",
+            "cluster": "array predicate search",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "b09f6b6afc7f7ed108f4c8db",
+            "cluster": "array predicate search",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "bf1be01a27a43555dabae94b",
+            "cluster": "array predicate search",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9ca748a590388e78d7b4ab8a",
+            "cluster": "array predicate search",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "dcd4c508602c65ebc912647e",
+            "cluster": "array predicate search",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ef7ad08c8d383e2b9b55f6f9",
+            "cluster": "array predicate search",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "7e164f5ce7bcfd0a1bc0c4ee",
+            "cluster": "JSON top-level serialization",
+            "wording": "literal",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.3333333333333333,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "0c5cccc579fd18d2e2016e9d",
+            "cluster": "JSON top-level serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "75b93f3c8ec079df7837f0c6",
+            "cluster": "JSON top-level serialization",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e2c12a662582c45168bfe70f",
+            "cluster": "JSON top-level serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "f9e690e4eba72a76990d1d0d",
+            "cluster": "JSON top-level serialization",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "8837c2ec7da63aa33dbd699d",
+            "cluster": "JSON top-level serialization",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "81477be89d3ceb8bc3fdd00a",
+            "cluster": "coercing finiteness test",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4bcad4980dd59e0033ad1155",
+            "cluster": "coercing finiteness test",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "a4b31168034ed2022736fc10",
+            "cluster": "coercing finiteness test",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "e919a6839888c9872f75f697",
+            "cluster": "coercing finiteness test",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.25,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ac698a33fd76ac2c5d9baf80",
+            "cluster": "coercing finiteness test",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "c94c02bcf3fa7b5bc44a4d6f",
+            "cluster": "coercing finiteness test",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "32934461733e4fcc5ee9e7d0",
+            "cluster": "integer prefix parsing",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4980cfd0c5431365a7c5d23a",
+            "cluster": "integer prefix parsing",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "7fceddc5010b4a310141c273",
+            "cluster": "integer prefix parsing",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9a9988cc80fd8bbea333b5c0",
+            "cluster": "integer prefix parsing",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9116868ff6fa4225e83460a7",
+            "cluster": "integer prefix parsing",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ccdd0112120f873e8e5be227",
+            "cluster": "integer prefix parsing",
+            "wording": "paraphrase",
+            "top1": 0,
+            "survival": 1,
+            "rr": 0.5,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "07c32ff1a97e39365ec95035",
+            "cluster": "right reduction",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9b2c709f63a7d4f6c68353e0",
+            "cluster": "right reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "ef2615d0fa501eb5cac285aa",
+            "cluster": "right reduction",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "25d5ddd015f62b82fd5b6939",
+            "cluster": "right reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "9014ecf82c782c54f8c6ce82",
+            "cluster": "right reduction",
+            "wording": "literal",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          },
+          {
+            "id": "4a1b97e300fe973fc141c5d8",
+            "cluster": "right reduction",
+            "wording": "paraphrase",
+            "top1": 1,
+            "survival": 1,
+            "rr": 1,
+            "nominated": 1,
+            "retained": 1
+          }
+        ],
+        "clusters": {
+          "coercing equality": 0.3333333333333333,
+          "array predicate search": 0.6666666666666666,
+          "JSON top-level serialization": 0.8333333333333334,
+          "coercing finiteness test": 0.8333333333333334,
+          "integer prefix parsing": 0.8333333333333334,
+          "right reduction": 1
+        }
+      },
+      "comparison": {
+        "gains": 16,
+        "losses": 1,
+        "literal_losses": 0,
+        "survival_losses": 0,
+        "cluster_vector": [
+          0.3333333333333333,
+          0.5,
+          0.33333333333333337,
+          0.33333333333333337,
+          0.5,
+          0.5
+        ],
+        "cluster_mean": 0.4166666666666667,
+        "one_sided95_lower": 0.3415702476670275,
+        "two_sided95": [
+          0.3208667378829631,
+          0.5124665954503703
+        ],
+        "exact_cluster_sign_p": 0.015625,
+        "pass": true
+      }
+    }
+  },
+  "adoption_pass": true,
+  "timing": {
+    "baseline": {
+      "cases": 72,
+      "recall_median_ms": 1.864667,
+      "recall_p99_ms": 3.070291,
+      "hook_p99_ms": 0
+    },
+    "incumbent": {
+      "cases": 72,
+      "recall_median_ms": 2.767458,
+      "recall_p99_ms": 3.727583,
+      "hook_p99_ms": 0.076541
+    },
+    "selected": {
+      "cases": 72,
+      "recall_median_ms": 2.722584,
+      "recall_p99_ms": 4.26275,
+      "hook_p99_ms": 0.0435
+    }
+  },
+  "whole_goal_complete": false
+}

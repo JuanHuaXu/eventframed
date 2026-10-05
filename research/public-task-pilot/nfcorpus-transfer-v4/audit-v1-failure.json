@@ -1,0 +1,10 @@
+{
+ "phase": "independent negative-control audit before relevance read",
+ "auditExitCode": 1,
+ "error": "Missing expected exception",
+ "cause": "First query PLAIN-1008 has an empty legitimate frontier; pop/reverse on an empty array is not a corruption",
+ "all323PredictionsAlreadyTerminal": true,
+ "relevanceValuesEvaluated": 0,
+ "repair": "Use first nonempty >=2 frontier for row/order corruptions and add separate empty-frontier controls. Preserve every query and original predictions.",
+ "nextAuditor": "nfcorpus-transfer-v4-audit-v2.mjs"
+}

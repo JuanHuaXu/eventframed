@@ -1,0 +1,5842 @@
+{
+  "time": "2026-10-04T06:57:55.508Z",
+  "worlds": 28,
+  "cells": 84,
+  "pairedArms": 252,
+  "snapshotsPerVariant": 4200,
+  "distinctLabels": 67200,
+  "consumedData": true,
+  "exactAllFieldsExceptCost": true,
+  "sourceCopies": 118,
+  "commands": 5,
+  "screen": {
+    "original": {
+      "constructorMaxBytes": 7886136,
+      "allocationPass": true,
+      "maximumLoopNS": 399279792,
+      "loopPass": true
+    },
+    "memo": {
+      "constructorMaxBytes": 7886152,
+      "allocationPass": true,
+      "maximumLoopNS": 371046125,
+      "loopPass": true
+    }
+  },
+  "total": {
+    "original": {
+      "maximumLoopNS": 419143875,
+      "loopPass": false,
+      "meanLoopNS": 388239636.0555556,
+      "meanSetupNS": 77623191.64285715
+    },
+    "memo": {
+      "maximumLoopNS": 383283375,
+      "loopPass": true,
+      "meanLoopNS": 353140599.68650794,
+      "meanSetupNS": 42968627.32539683
+    }
+  },
+  "paired": [
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75224292,
+        "IssueNS": 18695320,
+        "ResolveNS": 268980888,
+        "SnapshotNS": 5500540,
+        "AccountedNS": 368401040,
+        "ElapsedNS": 368578416
+      },
+      "memo": {
+        "SetupNS": 43514416,
+        "IssueNS": 19017803,
+        "ResolveNS": 270205248,
+        "SnapshotNS": 5593461,
+        "AccountedNS": 338330928,
+        "ElapsedNS": 338512208
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 75521625,
+        "IssueNS": 19075424,
+        "ResolveNS": 268133866,
+        "SnapshotNS": 5592459,
+        "AccountedNS": 368323374,
+        "ElapsedNS": 368502333
+      },
+      "memo": {
+        "SetupNS": 42115125,
+        "IssueNS": 19131069,
+        "ResolveNS": 270056657,
+        "SnapshotNS": 5659417,
+        "AccountedNS": 336962268,
+        "ElapsedNS": 337142917
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75726500,
+        "IssueNS": 18848698,
+        "ResolveNS": 269238485,
+        "SnapshotNS": 5556290,
+        "AccountedNS": 369369973,
+        "ElapsedNS": 369540500
+      },
+      "memo": {
+        "SetupNS": 42750167,
+        "IssueNS": 19212921,
+        "ResolveNS": 269381985,
+        "SnapshotNS": 5646584,
+        "AccountedNS": 336991657,
+        "ElapsedNS": 337165500
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76528542,
+        "IssueNS": 19804740,
+        "ResolveNS": 271648997,
+        "SnapshotNS": 6371958,
+        "AccountedNS": 374354237,
+        "ElapsedNS": 374539541
+      },
+      "memo": {
+        "SetupNS": 42605125,
+        "IssueNS": 19291352,
+        "ResolveNS": 270682173,
+        "SnapshotNS": 6169627,
+        "AccountedNS": 338748277,
+        "ElapsedNS": 338930125
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75888750,
+        "IssueNS": 20118769,
+        "ResolveNS": 268203222,
+        "SnapshotNS": 6480793,
+        "AccountedNS": 370691534,
+        "ElapsedNS": 370864417
+      },
+      "memo": {
+        "SetupNS": 42678208,
+        "IssueNS": 20356981,
+        "ResolveNS": 268258948,
+        "SnapshotNS": 6562207,
+        "AccountedNS": 337856344,
+        "ElapsedNS": 338030125
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78089750,
+        "IssueNS": 20567747,
+        "ResolveNS": 269185644,
+        "SnapshotNS": 6573503,
+        "AccountedNS": 374416644,
+        "ElapsedNS": 374586917
+      },
+      "memo": {
+        "SetupNS": 42788750,
+        "IssueNS": 20523707,
+        "ResolveNS": 268654719,
+        "SnapshotNS": 6464540,
+        "AccountedNS": 338431716,
+        "ElapsedNS": 338607666
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76330417,
+        "IssueNS": 19108103,
+        "ResolveNS": 296321520,
+        "SnapshotNS": 6158961,
+        "AccountedNS": 397919001,
+        "ElapsedNS": 398115750
+      },
+      "memo": {
+        "SetupNS": 42964333,
+        "IssueNS": 19822370,
+        "ResolveNS": 300954272,
+        "SnapshotNS": 6395625,
+        "AccountedNS": 370136600,
+        "ElapsedNS": 370323958
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76144666,
+        "IssueNS": 20287583,
+        "ResolveNS": 304213355,
+        "SnapshotNS": 6527917,
+        "AccountedNS": 407173521,
+        "ElapsedNS": 407346792
+      },
+      "memo": {
+        "SetupNS": 42622833,
+        "IssueNS": 19750749,
+        "ResolveNS": 301847020,
+        "SnapshotNS": 6386290,
+        "AccountedNS": 370606892,
+        "ElapsedNS": 370783667
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "aligned",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77698042,
+        "IssueNS": 19821008,
+        "ResolveNS": 303847378,
+        "SnapshotNS": 6433122,
+        "AccountedNS": 407799550,
+        "ElapsedNS": 407975708
+      },
+      "memo": {
+        "SetupNS": 42488500,
+        "IssueNS": 19867774,
+        "ResolveNS": 304633324,
+        "SnapshotNS": 6388001,
+        "AccountedNS": 373377599,
+        "ElapsedNS": 373552834
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 74977875,
+        "IssueNS": 18610986,
+        "ResolveNS": 269460441,
+        "SnapshotNS": 5551711,
+        "AccountedNS": 368601013,
+        "ElapsedNS": 368779541
+      },
+      "memo": {
+        "SetupNS": 42020167,
+        "IssueNS": 18952278,
+        "ResolveNS": 273312948,
+        "SnapshotNS": 5618084,
+        "AccountedNS": 339903477,
+        "ElapsedNS": 340091375
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76948125,
+        "IssueNS": 18960768,
+        "ResolveNS": 270120864,
+        "SnapshotNS": 5664250,
+        "AccountedNS": 371694007,
+        "ElapsedNS": 371869584
+      },
+      "memo": {
+        "SetupNS": 43081917,
+        "IssueNS": 18982773,
+        "ResolveNS": 269218195,
+        "SnapshotNS": 5612917,
+        "AccountedNS": 336895802,
+        "ElapsedNS": 337066666
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76173209,
+        "IssueNS": 19051218,
+        "ResolveNS": 270026534,
+        "SnapshotNS": 5657126,
+        "AccountedNS": 370908087,
+        "ElapsedNS": 371082083
+      },
+      "memo": {
+        "SetupNS": 42246542,
+        "IssueNS": 18924787,
+        "ResolveNS": 270137521,
+        "SnapshotNS": 5598668,
+        "AccountedNS": 336907518,
+        "ElapsedNS": 337081333
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76399917,
+        "IssueNS": 19784113,
+        "ResolveNS": 271810024,
+        "SnapshotNS": 6301751,
+        "AccountedNS": 374295805,
+        "ElapsedNS": 374482750
+      },
+      "memo": {
+        "SetupNS": 43119917,
+        "IssueNS": 19940116,
+        "ResolveNS": 270331528,
+        "SnapshotNS": 6443709,
+        "AccountedNS": 339835270,
+        "ElapsedNS": 340013667
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76695375,
+        "IssueNS": 20768662,
+        "ResolveNS": 272316485,
+        "SnapshotNS": 6684167,
+        "AccountedNS": 376464689,
+        "ElapsedNS": 376637958
+      },
+      "memo": {
+        "SetupNS": 42210375,
+        "IssueNS": 20480377,
+        "ResolveNS": 271030254,
+        "SnapshotNS": 6544834,
+        "AccountedNS": 340265840,
+        "ElapsedNS": 340439875
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75743958,
+        "IssueNS": 20676919,
+        "ResolveNS": 272368744,
+        "SnapshotNS": 6632876,
+        "AccountedNS": 375422497,
+        "ElapsedNS": 375595416
+      },
+      "memo": {
+        "SetupNS": 41572625,
+        "IssueNS": 20682543,
+        "ResolveNS": 272360591,
+        "SnapshotNS": 6655747,
+        "AccountedNS": 341271506,
+        "ElapsedNS": 341444334
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76920167,
+        "IssueNS": 19643381,
+        "ResolveNS": 297356126,
+        "SnapshotNS": 6326251,
+        "AccountedNS": 400245925,
+        "ElapsedNS": 400438250
+      },
+      "memo": {
+        "SetupNS": 41349500,
+        "IssueNS": 19554622,
+        "ResolveNS": 297730518,
+        "SnapshotNS": 6336540,
+        "AccountedNS": 364971180,
+        "ElapsedNS": 365159000
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76020375,
+        "IssueNS": 20255859,
+        "ResolveNS": 304180227,
+        "SnapshotNS": 6585459,
+        "AccountedNS": 407041920,
+        "ElapsedNS": 407216041
+      },
+      "memo": {
+        "SetupNS": 42538208,
+        "IssueNS": 20456293,
+        "ResolveNS": 305168203,
+        "SnapshotNS": 6614876,
+        "AccountedNS": 374777580,
+        "ElapsedNS": 374957417
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "independent",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76899958,
+        "IssueNS": 20562469,
+        "ResolveNS": 309779637,
+        "SnapshotNS": 6724168,
+        "AccountedNS": 413966232,
+        "ElapsedNS": 414148125
+      },
+      "memo": {
+        "SetupNS": 43113042,
+        "IssueNS": 20096857,
+        "ResolveNS": 302625923,
+        "SnapshotNS": 6545125,
+        "AccountedNS": 372380947,
+        "ElapsedNS": 372558375
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75987709,
+        "IssueNS": 18623362,
+        "ResolveNS": 268338832,
+        "SnapshotNS": 5469917,
+        "AccountedNS": 368419820,
+        "ElapsedNS": 368599042
+      },
+      "memo": {
+        "SetupNS": 42442542,
+        "IssueNS": 18684740,
+        "ResolveNS": 267855741,
+        "SnapshotNS": 5557207,
+        "AccountedNS": 334540230,
+        "ElapsedNS": 334720667
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77035917,
+        "IssueNS": 18926806,
+        "ResolveNS": 267074146,
+        "SnapshotNS": 5540875,
+        "AccountedNS": 368577744,
+        "ElapsedNS": 368749959
+      },
+      "memo": {
+        "SetupNS": 43018250,
+        "IssueNS": 19088213,
+        "ResolveNS": 269317306,
+        "SnapshotNS": 5672459,
+        "AccountedNS": 337096228,
+        "ElapsedNS": 337269250
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77004417,
+        "IssueNS": 19365104,
+        "ResolveNS": 275350413,
+        "SnapshotNS": 5814794,
+        "AccountedNS": 377534728,
+        "ElapsedNS": 377709917
+      },
+      "memo": {
+        "SetupNS": 43033791,
+        "IssueNS": 19137278,
+        "ResolveNS": 269202246,
+        "SnapshotNS": 5679207,
+        "AccountedNS": 337052522,
+        "ElapsedNS": 337227375
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77036791,
+        "IssueNS": 20424954,
+        "ResolveNS": 275962030,
+        "SnapshotNS": 6549957,
+        "AccountedNS": 379973732,
+        "ElapsedNS": 380167042
+      },
+      "memo": {
+        "SetupNS": 42932750,
+        "IssueNS": 20262335,
+        "ResolveNS": 275164618,
+        "SnapshotNS": 6491123,
+        "AccountedNS": 344850826,
+        "ElapsedNS": 345043708
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76628416,
+        "IssueNS": 20547239,
+        "ResolveNS": 271654025,
+        "SnapshotNS": 6615709,
+        "AccountedNS": 375445389,
+        "ElapsedNS": 375625167
+      },
+      "memo": {
+        "SetupNS": 41362583,
+        "IssueNS": 20156682,
+        "ResolveNS": 269294379,
+        "SnapshotNS": 6406124,
+        "AccountedNS": 337219768,
+        "ElapsedNS": 337389625
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76659708,
+        "IssueNS": 20224868,
+        "ResolveNS": 268674904,
+        "SnapshotNS": 6554206,
+        "AccountedNS": 372113686,
+        "ElapsedNS": 372289083
+      },
+      "memo": {
+        "SetupNS": 41267667,
+        "IssueNS": 20738174,
+        "ResolveNS": 270494956,
+        "SnapshotNS": 6658251,
+        "AccountedNS": 339159048,
+        "ElapsedNS": 339329792
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77143084,
+        "IssueNS": 19303436,
+        "ResolveNS": 299128597,
+        "SnapshotNS": 6191456,
+        "AccountedNS": 401766573,
+        "ElapsedNS": 401957916
+      },
+      "memo": {
+        "SetupNS": 42811375,
+        "IssueNS": 19522526,
+        "ResolveNS": 296769884,
+        "SnapshotNS": 6247583,
+        "AccountedNS": 365351368,
+        "ElapsedNS": 365533792
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76599500,
+        "IssueNS": 20661674,
+        "ResolveNS": 308455673,
+        "SnapshotNS": 6648459,
+        "AccountedNS": 412365306,
+        "ElapsedNS": 412547541
+      },
+      "memo": {
+        "SetupNS": 41405208,
+        "IssueNS": 20252440,
+        "ResolveNS": 304017975,
+        "SnapshotNS": 6544416,
+        "AccountedNS": 372220039,
+        "ElapsedNS": 372396209
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "curved",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75366500,
+        "IssueNS": 20318179,
+        "ResolveNS": 305071750,
+        "SnapshotNS": 6605706,
+        "AccountedNS": 407362135,
+        "ElapsedNS": 407539417
+      },
+      "memo": {
+        "SetupNS": 42572041,
+        "IssueNS": 20359588,
+        "ResolveNS": 305800894,
+        "SnapshotNS": 6626001,
+        "AccountedNS": 375358524,
+        "ElapsedNS": 375541500
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76450000,
+        "IssueNS": 18743527,
+        "ResolveNS": 259909954,
+        "SnapshotNS": 5523172,
+        "AccountedNS": 360626653,
+        "ElapsedNS": 360811500
+      },
+      "memo": {
+        "SetupNS": 42083292,
+        "IssueNS": 18562684,
+        "ResolveNS": 259273435,
+        "SnapshotNS": 5504960,
+        "AccountedNS": 325424371,
+        "ElapsedNS": 325601792
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78001416,
+        "IssueNS": 19153761,
+        "ResolveNS": 260556715,
+        "SnapshotNS": 5662670,
+        "AccountedNS": 363374562,
+        "ElapsedNS": 363548583
+      },
+      "memo": {
+        "SetupNS": 41347750,
+        "IssueNS": 19108553,
+        "ResolveNS": 260820954,
+        "SnapshotNS": 5684252,
+        "AccountedNS": 326961509,
+        "ElapsedNS": 327135209
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76954000,
+        "IssueNS": 19003085,
+        "ResolveNS": 260232563,
+        "SnapshotNS": 5620125,
+        "AccountedNS": 361809773,
+        "ElapsedNS": 361985500
+      },
+      "memo": {
+        "SetupNS": 42560708,
+        "IssueNS": 18933628,
+        "ResolveNS": 259019474,
+        "SnapshotNS": 5619750,
+        "AccountedNS": 326133560,
+        "ElapsedNS": 326304500
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78063708,
+        "IssueNS": 19974218,
+        "ResolveNS": 261632596,
+        "SnapshotNS": 6407831,
+        "AccountedNS": 366078353,
+        "ElapsedNS": 366259958
+      },
+      "memo": {
+        "SetupNS": 41955792,
+        "IssueNS": 20043297,
+        "ResolveNS": 260106246,
+        "SnapshotNS": 6345124,
+        "AccountedNS": 328450459,
+        "ElapsedNS": 328628000
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76836417,
+        "IssueNS": 20607971,
+        "ResolveNS": 260219544,
+        "SnapshotNS": 6607540,
+        "AccountedNS": 364271472,
+        "ElapsedNS": 364443750
+      },
+      "memo": {
+        "SetupNS": 41436875,
+        "IssueNS": 20601386,
+        "ResolveNS": 260128068,
+        "SnapshotNS": 6602999,
+        "AccountedNS": 328769328,
+        "ElapsedNS": 328943000
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76612459,
+        "IssueNS": 20586187,
+        "ResolveNS": 260910380,
+        "SnapshotNS": 6673125,
+        "AccountedNS": 364782151,
+        "ElapsedNS": 364955166
+      },
+      "memo": {
+        "SetupNS": 42753375,
+        "IssueNS": 20524724,
+        "ResolveNS": 260523190,
+        "SnapshotNS": 6667415,
+        "AccountedNS": 330468704,
+        "ElapsedNS": 330641458
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76846208,
+        "IssueNS": 19628123,
+        "ResolveNS": 287516699,
+        "SnapshotNS": 6349875,
+        "AccountedNS": 390340905,
+        "ElapsedNS": 390528792
+      },
+      "memo": {
+        "SetupNS": 42601917,
+        "IssueNS": 19302330,
+        "ResolveNS": 286157748,
+        "SnapshotNS": 6259252,
+        "AccountedNS": 354321247,
+        "ElapsedNS": 354508208
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75406167,
+        "IssueNS": 20443498,
+        "ResolveNS": 295731904,
+        "SnapshotNS": 6618500,
+        "AccountedNS": 398200069,
+        "ElapsedNS": 398377084
+      },
+      "memo": {
+        "SetupNS": 42750750,
+        "IssueNS": 20345254,
+        "ResolveNS": 294567686,
+        "SnapshotNS": 6599582,
+        "AccountedNS": 364263272,
+        "ElapsedNS": 364440542
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "baseline_matched",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76367416,
+        "IssueNS": 20449712,
+        "ResolveNS": 296513344,
+        "SnapshotNS": 6603293,
+        "AccountedNS": 399933765,
+        "ElapsedNS": 400111792
+      },
+      "memo": {
+        "SetupNS": 42164250,
+        "IssueNS": 20157961,
+        "ResolveNS": 291839868,
+        "SnapshotNS": 6516917,
+        "AccountedNS": 360678996,
+        "ElapsedNS": 360859250
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77415500,
+        "IssueNS": 19246658,
+        "ResolveNS": 273577530,
+        "SnapshotNS": 5662750,
+        "AccountedNS": 375902438,
+        "ElapsedNS": 376094250
+      },
+      "memo": {
+        "SetupNS": 42843750,
+        "IssueNS": 18373270,
+        "ResolveNS": 271536124,
+        "SnapshotNS": 5433123,
+        "AccountedNS": 338186267,
+        "ElapsedNS": 338367083
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77072916,
+        "IssueNS": 19144817,
+        "ResolveNS": 269383234,
+        "SnapshotNS": 5680251,
+        "AccountedNS": 371281218,
+        "ElapsedNS": 371452708
+      },
+      "memo": {
+        "SetupNS": 41783834,
+        "IssueNS": 19036609,
+        "ResolveNS": 270952732,
+        "SnapshotNS": 5648835,
+        "AccountedNS": 337422010,
+        "ElapsedNS": 337595416
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76855292,
+        "IssueNS": 19103542,
+        "ResolveNS": 271278428,
+        "SnapshotNS": 5682584,
+        "AccountedNS": 372919846,
+        "ElapsedNS": 373097292
+      },
+      "memo": {
+        "SetupNS": 42108625,
+        "IssueNS": 19247762,
+        "ResolveNS": 272430748,
+        "SnapshotNS": 5708790,
+        "AccountedNS": 339495925,
+        "ElapsedNS": 339666875
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77180917,
+        "IssueNS": 20068766,
+        "ResolveNS": 272780542,
+        "SnapshotNS": 6471209,
+        "AccountedNS": 376501434,
+        "ElapsedNS": 376685500
+      },
+      "memo": {
+        "SetupNS": 42566833,
+        "IssueNS": 19826769,
+        "ResolveNS": 269402924,
+        "SnapshotNS": 6377750,
+        "AccountedNS": 338174276,
+        "ElapsedNS": 338353375
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76477709,
+        "IssueNS": 20811812,
+        "ResolveNS": 273735705,
+        "SnapshotNS": 6752209,
+        "AccountedNS": 377777435,
+        "ElapsedNS": 377950791
+      },
+      "memo": {
+        "SetupNS": 42556500,
+        "IssueNS": 20586658,
+        "ResolveNS": 270667329,
+        "SnapshotNS": 6566624,
+        "AccountedNS": 340377111,
+        "ElapsedNS": 340552375
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76928583,
+        "IssueNS": 20775752,
+        "ResolveNS": 270985634,
+        "SnapshotNS": 6570043,
+        "AccountedNS": 375260012,
+        "ElapsedNS": 375433834
+      },
+      "memo": {
+        "SetupNS": 42734333,
+        "IssueNS": 20697273,
+        "ResolveNS": 272792769,
+        "SnapshotNS": 6662251,
+        "AccountedNS": 342886626,
+        "ElapsedNS": 343062417
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76451166,
+        "IssueNS": 19432729,
+        "ResolveNS": 301552186,
+        "SnapshotNS": 6271582,
+        "AccountedNS": 403707663,
+        "ElapsedNS": 403904917
+      },
+      "memo": {
+        "SetupNS": 43246083,
+        "IssueNS": 19679698,
+        "ResolveNS": 299017385,
+        "SnapshotNS": 6365170,
+        "AccountedNS": 368308336,
+        "ElapsedNS": 368498458
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78057208,
+        "IssueNS": 20409197,
+        "ResolveNS": 306735714,
+        "SnapshotNS": 6554833,
+        "AccountedNS": 411756952,
+        "ElapsedNS": 411943250
+      },
+      "memo": {
+        "SetupNS": 42468250,
+        "IssueNS": 19986172,
+        "ResolveNS": 304543855,
+        "SnapshotNS": 6441125,
+        "AccountedNS": 373439402,
+        "ElapsedNS": 373616250
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "abrupt",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76741042,
+        "IssueNS": 20206539,
+        "ResolveNS": 305500068,
+        "SnapshotNS": 6544084,
+        "AccountedNS": 408991733,
+        "ElapsedNS": 409175708
+      },
+      "memo": {
+        "SetupNS": 42963083,
+        "IssueNS": 20491912,
+        "ResolveNS": 308732057,
+        "SnapshotNS": 6624667,
+        "AccountedNS": 378811719,
+        "ElapsedNS": 378989167
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76450125,
+        "IssueNS": 18790725,
+        "ResolveNS": 273136102,
+        "SnapshotNS": 5578793,
+        "AccountedNS": 373955745,
+        "ElapsedNS": 374139792
+      },
+      "memo": {
+        "SetupNS": 42499792,
+        "IssueNS": 18587527,
+        "ResolveNS": 271105452,
+        "SnapshotNS": 5435376,
+        "AccountedNS": 337628147,
+        "ElapsedNS": 337813125
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77341917,
+        "IssueNS": 19054037,
+        "ResolveNS": 271686755,
+        "SnapshotNS": 5617082,
+        "AccountedNS": 373699791,
+        "ElapsedNS": 373870125
+      },
+      "memo": {
+        "SetupNS": 42816667,
+        "IssueNS": 19062889,
+        "ResolveNS": 271846845,
+        "SnapshotNS": 5686916,
+        "AccountedNS": 339413317,
+        "ElapsedNS": 339595958
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76939459,
+        "IssueNS": 19275411,
+        "ResolveNS": 274030977,
+        "SnapshotNS": 5748958,
+        "AccountedNS": 375994805,
+        "ElapsedNS": 376169833
+      },
+      "memo": {
+        "SetupNS": 42505292,
+        "IssueNS": 19084554,
+        "ResolveNS": 272087252,
+        "SnapshotNS": 5698957,
+        "AccountedNS": 339376055,
+        "ElapsedNS": 339552833
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78361667,
+        "IssueNS": 20051749,
+        "ResolveNS": 273209189,
+        "SnapshotNS": 6447083,
+        "AccountedNS": 378069688,
+        "ElapsedNS": 378254167
+      },
+      "memo": {
+        "SetupNS": 42636167,
+        "IssueNS": 20021335,
+        "ResolveNS": 273089888,
+        "SnapshotNS": 6445748,
+        "AccountedNS": 342193138,
+        "ElapsedNS": 342375292
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76655041,
+        "IssueNS": 20594007,
+        "ResolveNS": 272229652,
+        "SnapshotNS": 6564125,
+        "AccountedNS": 376042825,
+        "ElapsedNS": 376213625
+      },
+      "memo": {
+        "SetupNS": 42829000,
+        "IssueNS": 20277529,
+        "ResolveNS": 272223742,
+        "SnapshotNS": 6528458,
+        "AccountedNS": 341858729,
+        "ElapsedNS": 342031125
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78027584,
+        "IssueNS": 21006903,
+        "ResolveNS": 274924542,
+        "SnapshotNS": 6778292,
+        "AccountedNS": 380737321,
+        "ElapsedNS": 380920166
+      },
+      "memo": {
+        "SetupNS": 42638792,
+        "IssueNS": 20702488,
+        "ResolveNS": 272816000,
+        "SnapshotNS": 6701082,
+        "AccountedNS": 342858362,
+        "ElapsedNS": 343033750
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77805000,
+        "IssueNS": 19809246,
+        "ResolveNS": 301034096,
+        "SnapshotNS": 6387293,
+        "AccountedNS": 405035635,
+        "ElapsedNS": 405226750
+      },
+      "memo": {
+        "SetupNS": 42815875,
+        "IssueNS": 19687664,
+        "ResolveNS": 300079782,
+        "SnapshotNS": 6398209,
+        "AccountedNS": 368981530,
+        "ElapsedNS": 369169458
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77531667,
+        "IssueNS": 20460729,
+        "ResolveNS": 307335616,
+        "SnapshotNS": 6592584,
+        "AccountedNS": 411920596,
+        "ElapsedNS": 412099583
+      },
+      "memo": {
+        "SetupNS": 42529750,
+        "IssueNS": 20291037,
+        "ResolveNS": 306084664,
+        "SnapshotNS": 6522166,
+        "AccountedNS": 375427617,
+        "ElapsedNS": 375604666
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "late",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77201000,
+        "IssueNS": 20477099,
+        "ResolveNS": 307793167,
+        "SnapshotNS": 6661458,
+        "AccountedNS": 412132724,
+        "ElapsedNS": 412313541
+      },
+      "memo": {
+        "SetupNS": 42813791,
+        "IssueNS": 20391747,
+        "ResolveNS": 307689027,
+        "SnapshotNS": 6601960,
+        "AccountedNS": 377496525,
+        "ElapsedNS": 377677083
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78199791,
+        "IssueNS": 18843189,
+        "ResolveNS": 270368619,
+        "SnapshotNS": 5580665,
+        "AccountedNS": 372992264,
+        "ElapsedNS": 373174875
+      },
+      "memo": {
+        "SetupNS": 42509625,
+        "IssueNS": 18837181,
+        "ResolveNS": 271471437,
+        "SnapshotNS": 5594959,
+        "AccountedNS": 338413202,
+        "ElapsedNS": 338593375
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77572458,
+        "IssueNS": 19123233,
+        "ResolveNS": 271452523,
+        "SnapshotNS": 5674624,
+        "AccountedNS": 373822838,
+        "ElapsedNS": 373997917
+      },
+      "memo": {
+        "SetupNS": 42416209,
+        "IssueNS": 19099302,
+        "ResolveNS": 271770560,
+        "SnapshotNS": 5692918,
+        "AccountedNS": 338978989,
+        "ElapsedNS": 339151166
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76946250,
+        "IssueNS": 18649276,
+        "ResolveNS": 269840989,
+        "SnapshotNS": 5515790,
+        "AccountedNS": 370952305,
+        "ElapsedNS": 371125292
+      },
+      "memo": {
+        "SetupNS": 42876417,
+        "IssueNS": 19134841,
+        "ResolveNS": 269208937,
+        "SnapshotNS": 5696665,
+        "AccountedNS": 336916860,
+        "ElapsedNS": 337090334
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 75593375,
+        "IssueNS": 20088638,
+        "ResolveNS": 274500129,
+        "SnapshotNS": 6481042,
+        "AccountedNS": 376663184,
+        "ElapsedNS": 376849167
+      },
+      "memo": {
+        "SetupNS": 42806750,
+        "IssueNS": 19925381,
+        "ResolveNS": 272133516,
+        "SnapshotNS": 6401457,
+        "AccountedNS": 341267104,
+        "ElapsedNS": 341446500
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77808167,
+        "IssueNS": 20739841,
+        "ResolveNS": 273339892,
+        "SnapshotNS": 6544457,
+        "AccountedNS": 378432357,
+        "ElapsedNS": 378611292
+      },
+      "memo": {
+        "SetupNS": 42415542,
+        "IssueNS": 20602133,
+        "ResolveNS": 272033488,
+        "SnapshotNS": 6595372,
+        "AccountedNS": 341646535,
+        "ElapsedNS": 341824250
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77410000,
+        "IssueNS": 20777084,
+        "ResolveNS": 272733909,
+        "SnapshotNS": 6641292,
+        "AccountedNS": 377562285,
+        "ElapsedNS": 377736959
+      },
+      "memo": {
+        "SetupNS": 42992750,
+        "IssueNS": 20653494,
+        "ResolveNS": 270666339,
+        "SnapshotNS": 6634170,
+        "AccountedNS": 340946753,
+        "ElapsedNS": 341119125
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76320917,
+        "IssueNS": 19426277,
+        "ResolveNS": 296696719,
+        "SnapshotNS": 6270794,
+        "AccountedNS": 398714707,
+        "ElapsedNS": 398911916
+      },
+      "memo": {
+        "SetupNS": 41408667,
+        "IssueNS": 19788890,
+        "ResolveNS": 298783481,
+        "SnapshotNS": 6432957,
+        "AccountedNS": 366413995,
+        "ElapsedNS": 366613250
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 75516541,
+        "IssueNS": 20275331,
+        "ResolveNS": 304617430,
+        "SnapshotNS": 6528207,
+        "AccountedNS": 406937509,
+        "ElapsedNS": 407119250
+      },
+      "memo": {
+        "SetupNS": 42824833,
+        "IssueNS": 20420525,
+        "ResolveNS": 305753571,
+        "SnapshotNS": 6640416,
+        "AccountedNS": 375639345,
+        "ElapsedNS": 375818083
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "recurring",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77548125,
+        "IssueNS": 20517875,
+        "ResolveNS": 306331393,
+        "SnapshotNS": 6685414,
+        "AccountedNS": 411082807,
+        "ElapsedNS": 411264042
+      },
+      "memo": {
+        "SetupNS": 42305916,
+        "IssueNS": 20406370,
+        "ResolveNS": 306952387,
+        "SnapshotNS": 6655707,
+        "AccountedNS": 376320380,
+        "ElapsedNS": 376498708
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77244959,
+        "IssueNS": 18837331,
+        "ResolveNS": 272031712,
+        "SnapshotNS": 5549794,
+        "AccountedNS": 373663796,
+        "ElapsedNS": 373848541
+      },
+      "memo": {
+        "SetupNS": 43297833,
+        "IssueNS": 18857187,
+        "ResolveNS": 273066231,
+        "SnapshotNS": 5594250,
+        "AccountedNS": 340815501,
+        "ElapsedNS": 341004833
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75800834,
+        "IssueNS": 19090999,
+        "ResolveNS": 270659094,
+        "SnapshotNS": 5687040,
+        "AccountedNS": 371237967,
+        "ElapsedNS": 371412250
+      },
+      "memo": {
+        "SetupNS": 43356500,
+        "IssueNS": 19214794,
+        "ResolveNS": 274097248,
+        "SnapshotNS": 5732167,
+        "AccountedNS": 342400709,
+        "ElapsedNS": 342574334
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77244584,
+        "IssueNS": 19962998,
+        "ResolveNS": 290201169,
+        "SnapshotNS": 6133586,
+        "AccountedNS": 393542337,
+        "ElapsedNS": 393731834
+      },
+      "memo": {
+        "SetupNS": 42992334,
+        "IssueNS": 19145984,
+        "ResolveNS": 272801961,
+        "SnapshotNS": 5618001,
+        "AccountedNS": 340558280,
+        "ElapsedNS": 340733041
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76996917,
+        "IssueNS": 19940976,
+        "ResolveNS": 270551226,
+        "SnapshotNS": 6384582,
+        "AccountedNS": 373873701,
+        "ElapsedNS": 374051625
+      },
+      "memo": {
+        "SetupNS": 42842834,
+        "IssueNS": 19972896,
+        "ResolveNS": 272278486,
+        "SnapshotNS": 6429331,
+        "AccountedNS": 341523547,
+        "ElapsedNS": 341703083
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78517375,
+        "IssueNS": 20840038,
+        "ResolveNS": 275101710,
+        "SnapshotNS": 6690044,
+        "AccountedNS": 381149167,
+        "ElapsedNS": 381320542
+      },
+      "memo": {
+        "SetupNS": 43063084,
+        "IssueNS": 20713385,
+        "ResolveNS": 273833611,
+        "SnapshotNS": 6729917,
+        "AccountedNS": 344339997,
+        "ElapsedNS": 344512833
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75433334,
+        "IssueNS": 20512885,
+        "ResolveNS": 272263766,
+        "SnapshotNS": 6647250,
+        "AccountedNS": 374857235,
+        "ElapsedNS": 375032375
+      },
+      "memo": {
+        "SetupNS": 42879000,
+        "IssueNS": 20808673,
+        "ResolveNS": 273947820,
+        "SnapshotNS": 6723373,
+        "AccountedNS": 344358866,
+        "ElapsedNS": 344531667
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77536291,
+        "IssueNS": 19571260,
+        "ResolveNS": 300224591,
+        "SnapshotNS": 6340667,
+        "AccountedNS": 403672809,
+        "ElapsedNS": 403860958
+      },
+      "memo": {
+        "SetupNS": 42642625,
+        "IssueNS": 19719747,
+        "ResolveNS": 301949857,
+        "SnapshotNS": 6398832,
+        "AccountedNS": 370711061,
+        "ElapsedNS": 370906417
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77633875,
+        "IssueNS": 20510515,
+        "ResolveNS": 307815948,
+        "SnapshotNS": 6607459,
+        "AccountedNS": 412567797,
+        "ElapsedNS": 412756125
+      },
+      "memo": {
+        "SetupNS": 42431500,
+        "IssueNS": 20471958,
+        "ResolveNS": 309004198,
+        "SnapshotNS": 6649004,
+        "AccountedNS": 378556660,
+        "ElapsedNS": 378732750
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "gradual",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77624917,
+        "IssueNS": 20452426,
+        "ResolveNS": 307337571,
+        "SnapshotNS": 6634208,
+        "AccountedNS": 412049122,
+        "ElapsedNS": 412229042
+      },
+      "memo": {
+        "SetupNS": 43400334,
+        "IssueNS": 20703980,
+        "ResolveNS": 310816479,
+        "SnapshotNS": 6738956,
+        "AccountedNS": 381659749,
+        "ElapsedNS": 381838875
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76876166,
+        "IssueNS": 18838684,
+        "ResolveNS": 273038936,
+        "SnapshotNS": 5574959,
+        "AccountedNS": 374328745,
+        "ElapsedNS": 374508250
+      },
+      "memo": {
+        "SetupNS": 42887792,
+        "IssueNS": 18991549,
+        "ResolveNS": 273555736,
+        "SnapshotNS": 5632918,
+        "AccountedNS": 341067995,
+        "ElapsedNS": 341254791
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76842750,
+        "IssueNS": 19378315,
+        "ResolveNS": 272795242,
+        "SnapshotNS": 5696541,
+        "AccountedNS": 374712848,
+        "ElapsedNS": 374886041
+      },
+      "memo": {
+        "SetupNS": 43086417,
+        "IssueNS": 19181829,
+        "ResolveNS": 274101356,
+        "SnapshotNS": 5766125,
+        "AccountedNS": 342135727,
+        "ElapsedNS": 342310000
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77294917,
+        "IssueNS": 19077995,
+        "ResolveNS": 272638166,
+        "SnapshotNS": 5688042,
+        "AccountedNS": 374699120,
+        "ElapsedNS": 374875041
+      },
+      "memo": {
+        "SetupNS": 43096834,
+        "IssueNS": 19028120,
+        "ResolveNS": 272416518,
+        "SnapshotNS": 5681625,
+        "AccountedNS": 340223097,
+        "ElapsedNS": 340394708
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77376209,
+        "IssueNS": 19967738,
+        "ResolveNS": 272200355,
+        "SnapshotNS": 6364208,
+        "AccountedNS": 375908510,
+        "ElapsedNS": 376092625
+      },
+      "memo": {
+        "SetupNS": 42213750,
+        "IssueNS": 20341369,
+        "ResolveNS": 276563425,
+        "SnapshotNS": 6628165,
+        "AccountedNS": 345746709,
+        "ElapsedNS": 345934292
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76783084,
+        "IssueNS": 22078206,
+        "ResolveNS": 296119720,
+        "SnapshotNS": 6980337,
+        "AccountedNS": 401961347,
+        "ElapsedNS": 402195583
+      },
+      "memo": {
+        "SetupNS": 41906292,
+        "IssueNS": 20434656,
+        "ResolveNS": 271532127,
+        "SnapshotNS": 6605084,
+        "AccountedNS": 340478159,
+        "ElapsedNS": 340654584
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77753458,
+        "IssueNS": 20719459,
+        "ResolveNS": 272365679,
+        "SnapshotNS": 6616665,
+        "AccountedNS": 377455261,
+        "ElapsedNS": 377628625
+      },
+      "memo": {
+        "SetupNS": 42845916,
+        "IssueNS": 20259051,
+        "ResolveNS": 271319133,
+        "SnapshotNS": 6481791,
+        "AccountedNS": 340905891,
+        "ElapsedNS": 341080667
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76455208,
+        "IssueNS": 19460515,
+        "ResolveNS": 298170873,
+        "SnapshotNS": 6297003,
+        "AccountedNS": 400383599,
+        "ElapsedNS": 400580750
+      },
+      "memo": {
+        "SetupNS": 42988417,
+        "IssueNS": 19738329,
+        "ResolveNS": 300233820,
+        "SnapshotNS": 6361707,
+        "AccountedNS": 369322273,
+        "ElapsedNS": 369512708
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77767917,
+        "IssueNS": 20686261,
+        "ResolveNS": 309737145,
+        "SnapshotNS": 6712750,
+        "AccountedNS": 414904073,
+        "ElapsedNS": 415085917
+      },
+      "memo": {
+        "SetupNS": 42168166,
+        "IssueNS": 20353334,
+        "ResolveNS": 307076464,
+        "SnapshotNS": 6562876,
+        "AccountedNS": 376160840,
+        "ElapsedNS": 376339583
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76941667,
+        "IssueNS": 20620480,
+        "ResolveNS": 309995093,
+        "SnapshotNS": 6714624,
+        "AccountedNS": 414271864,
+        "ElapsedNS": 414451875
+      },
+      "memo": {
+        "SetupNS": 43030083,
+        "IssueNS": 20435001,
+        "ResolveNS": 308179227,
+        "SnapshotNS": 6644415,
+        "AccountedNS": 378288726,
+        "ElapsedNS": 378466375
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77459042,
+        "IssueNS": 18997757,
+        "ResolveNS": 274307300,
+        "SnapshotNS": 5611082,
+        "AccountedNS": 376375181,
+        "ElapsedNS": 376562750
+      },
+      "memo": {
+        "SetupNS": 42609667,
+        "IssueNS": 18758572,
+        "ResolveNS": 270651194,
+        "SnapshotNS": 5577292,
+        "AccountedNS": 337596725,
+        "ElapsedNS": 337780708
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77900167,
+        "IssueNS": 19271333,
+        "ResolveNS": 273604881,
+        "SnapshotNS": 5696833,
+        "AccountedNS": 376473214,
+        "ElapsedNS": 376649209
+      },
+      "memo": {
+        "SetupNS": 43502250,
+        "IssueNS": 19319885,
+        "ResolveNS": 275108137,
+        "SnapshotNS": 5755584,
+        "AccountedNS": 343685856,
+        "ElapsedNS": 343860459
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77985792,
+        "IssueNS": 19127573,
+        "ResolveNS": 272151531,
+        "SnapshotNS": 5606957,
+        "AccountedNS": 374871853,
+        "ElapsedNS": 375043916
+      },
+      "memo": {
+        "SetupNS": 42470459,
+        "IssueNS": 19070487,
+        "ResolveNS": 273930639,
+        "SnapshotNS": 5643917,
+        "AccountedNS": 341115502,
+        "ElapsedNS": 341289291
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77776084,
+        "IssueNS": 20218890,
+        "ResolveNS": 275859142,
+        "SnapshotNS": 6518874,
+        "AccountedNS": 380372990,
+        "ElapsedNS": 380558083
+      },
+      "memo": {
+        "SetupNS": 42753917,
+        "IssueNS": 19816571,
+        "ResolveNS": 271972775,
+        "SnapshotNS": 6406540,
+        "AccountedNS": 340949803,
+        "ElapsedNS": 341128916
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76379291,
+        "IssueNS": 20298708,
+        "ResolveNS": 275429849,
+        "SnapshotNS": 6589210,
+        "AccountedNS": 378697058,
+        "ElapsedNS": 378871417
+      },
+      "memo": {
+        "SetupNS": 42890125,
+        "IssueNS": 20827317,
+        "ResolveNS": 273727492,
+        "SnapshotNS": 6640668,
+        "AccountedNS": 344085602,
+        "ElapsedNS": 344262250
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77897000,
+        "IssueNS": 21618656,
+        "ResolveNS": 278353874,
+        "SnapshotNS": 6919834,
+        "AccountedNS": 384789364,
+        "ElapsedNS": 384995958
+      },
+      "memo": {
+        "SetupNS": 51375500,
+        "IssueNS": 20602273,
+        "ResolveNS": 274438245,
+        "SnapshotNS": 6606792,
+        "AccountedNS": 353022810,
+        "ElapsedNS": 353200708
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77089625,
+        "IssueNS": 19521497,
+        "ResolveNS": 298838223,
+        "SnapshotNS": 6450001,
+        "AccountedNS": 401899346,
+        "ElapsedNS": 402086500
+      },
+      "memo": {
+        "SetupNS": 43491708,
+        "IssueNS": 19129610,
+        "ResolveNS": 300515922,
+        "SnapshotNS": 6136124,
+        "AccountedNS": 369273364,
+        "ElapsedNS": 369466292
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77319792,
+        "IssueNS": 20270345,
+        "ResolveNS": 308416251,
+        "SnapshotNS": 6617378,
+        "AccountedNS": 412623766,
+        "ElapsedNS": 412806666
+      },
+      "memo": {
+        "SetupNS": 42414041,
+        "IssueNS": 20618916,
+        "ResolveNS": 309667930,
+        "SnapshotNS": 6675460,
+        "AccountedNS": 379376347,
+        "ElapsedNS": 379558667
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "unrelated",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77841541,
+        "IssueNS": 20140593,
+        "ResolveNS": 309032791,
+        "SnapshotNS": 6538791,
+        "AccountedNS": 413553716,
+        "ElapsedNS": 413737125
+      },
+      "memo": {
+        "SetupNS": 43448416,
+        "IssueNS": 20651505,
+        "ResolveNS": 308808885,
+        "SnapshotNS": 6655667,
+        "AccountedNS": 379564473,
+        "ElapsedNS": 379747667
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76510750,
+        "IssueNS": 18798009,
+        "ResolveNS": 272780172,
+        "SnapshotNS": 5551416,
+        "AccountedNS": 373640347,
+        "ElapsedNS": 373829584
+      },
+      "memo": {
+        "SetupNS": 42794584,
+        "IssueNS": 18816433,
+        "ResolveNS": 271106906,
+        "SnapshotNS": 5670959,
+        "AccountedNS": 338388882,
+        "ElapsedNS": 338571916
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77625167,
+        "IssueNS": 19036545,
+        "ResolveNS": 273340884,
+        "SnapshotNS": 5647083,
+        "AccountedNS": 375649679,
+        "ElapsedNS": 375824666
+      },
+      "memo": {
+        "SetupNS": 42997500,
+        "IssueNS": 19228324,
+        "ResolveNS": 274384183,
+        "SnapshotNS": 5767916,
+        "AccountedNS": 342377923,
+        "ElapsedNS": 342555125
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78552583,
+        "IssueNS": 19617392,
+        "ResolveNS": 281611645,
+        "SnapshotNS": 5713373,
+        "AccountedNS": 385494993,
+        "ElapsedNS": 385690708
+      },
+      "memo": {
+        "SetupNS": 43852041,
+        "IssueNS": 19482069,
+        "ResolveNS": 279541385,
+        "SnapshotNS": 5792210,
+        "AccountedNS": 348667705,
+        "ElapsedNS": 348856417
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76304000,
+        "IssueNS": 19392822,
+        "ResolveNS": 275042201,
+        "SnapshotNS": 6223956,
+        "AccountedNS": 376962979,
+        "ElapsedNS": 377140250
+      },
+      "memo": {
+        "SetupNS": 43996625,
+        "IssueNS": 20195702,
+        "ResolveNS": 278628708,
+        "SnapshotNS": 6505664,
+        "AccountedNS": 349326699,
+        "ElapsedNS": 349519500
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77866208,
+        "IssueNS": 20614844,
+        "ResolveNS": 272783261,
+        "SnapshotNS": 6618039,
+        "AccountedNS": 377882352,
+        "ElapsedNS": 378057167
+      },
+      "memo": {
+        "SetupNS": 43101458,
+        "IssueNS": 20965431,
+        "ResolveNS": 276322754,
+        "SnapshotNS": 6755751,
+        "AccountedNS": 347145394,
+        "ElapsedNS": 347319625
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76056667,
+        "IssueNS": 20748095,
+        "ResolveNS": 274887321,
+        "SnapshotNS": 6716749,
+        "AccountedNS": 378408832,
+        "ElapsedNS": 378583834
+      },
+      "memo": {
+        "SetupNS": 43048416,
+        "IssueNS": 20793035,
+        "ResolveNS": 273574637,
+        "SnapshotNS": 6666626,
+        "AccountedNS": 344082714,
+        "ElapsedNS": 344255500
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78223500,
+        "IssueNS": 19908738,
+        "ResolveNS": 302908324,
+        "SnapshotNS": 6433711,
+        "AccountedNS": 407474273,
+        "ElapsedNS": 407665250
+      },
+      "memo": {
+        "SetupNS": 42585167,
+        "IssueNS": 19638928,
+        "ResolveNS": 301145478,
+        "SnapshotNS": 6358875,
+        "AccountedNS": 369728448,
+        "ElapsedNS": 369919625
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78660833,
+        "IssueNS": 20704333,
+        "ResolveNS": 312823074,
+        "SnapshotNS": 6771753,
+        "AccountedNS": 418959993,
+        "ElapsedNS": 419143875
+      },
+      "memo": {
+        "SetupNS": 43004208,
+        "IssueNS": 20476801,
+        "ResolveNS": 308685412,
+        "SnapshotNS": 6622001,
+        "AccountedNS": 378788422,
+        "ElapsedNS": 378975958
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "asynchronous",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77592875,
+        "IssueNS": 20453521,
+        "ResolveNS": 305750638,
+        "SnapshotNS": 6639666,
+        "AccountedNS": 410436700,
+        "ElapsedNS": 410613375
+      },
+      "memo": {
+        "SetupNS": 42928584,
+        "IssueNS": 20201714,
+        "ResolveNS": 308910395,
+        "SnapshotNS": 6478337,
+        "AccountedNS": 378519030,
+        "ElapsedNS": 378695083
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78703791,
+        "IssueNS": 18914901,
+        "ResolveNS": 272112502,
+        "SnapshotNS": 5602667,
+        "AccountedNS": 375333861,
+        "ElapsedNS": 375516125
+      },
+      "memo": {
+        "SetupNS": 43345125,
+        "IssueNS": 19010272,
+        "ResolveNS": 274431045,
+        "SnapshotNS": 5681625,
+        "AccountedNS": 342468067,
+        "ElapsedNS": 342653375
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77374583,
+        "IssueNS": 19177477,
+        "ResolveNS": 272648799,
+        "SnapshotNS": 5657457,
+        "AccountedNS": 374858316,
+        "ElapsedNS": 375032958
+      },
+      "memo": {
+        "SetupNS": 42939125,
+        "IssueNS": 19122241,
+        "ResolveNS": 272286429,
+        "SnapshotNS": 5702501,
+        "AccountedNS": 340050296,
+        "ElapsedNS": 340225083
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77896917,
+        "IssueNS": 19185147,
+        "ResolveNS": 272930791,
+        "SnapshotNS": 5716167,
+        "AccountedNS": 375729022,
+        "ElapsedNS": 375903833
+      },
+      "memo": {
+        "SetupNS": 43043500,
+        "IssueNS": 19017253,
+        "ResolveNS": 271477877,
+        "SnapshotNS": 5645329,
+        "AccountedNS": 339183959,
+        "ElapsedNS": 339357417
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76619583,
+        "IssueNS": 19745320,
+        "ResolveNS": 272432824,
+        "SnapshotNS": 6361333,
+        "AccountedNS": 375159060,
+        "ElapsedNS": 375338209
+      },
+      "memo": {
+        "SetupNS": 43696083,
+        "IssueNS": 20218572,
+        "ResolveNS": 274664855,
+        "SnapshotNS": 6499167,
+        "AccountedNS": 345078677,
+        "ElapsedNS": 345262833
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77686458,
+        "IssueNS": 20718047,
+        "ResolveNS": 273371377,
+        "SnapshotNS": 6690916,
+        "AccountedNS": 378466798,
+        "ElapsedNS": 378643417
+      },
+      "memo": {
+        "SetupNS": 42597625,
+        "IssueNS": 20906067,
+        "ResolveNS": 274808572,
+        "SnapshotNS": 6792291,
+        "AccountedNS": 345104555,
+        "ElapsedNS": 345277834
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77185834,
+        "IssueNS": 20742497,
+        "ResolveNS": 273008206,
+        "SnapshotNS": 6650127,
+        "AccountedNS": 377586664,
+        "ElapsedNS": 377760791
+      },
+      "memo": {
+        "SetupNS": 43051625,
+        "IssueNS": 20806150,
+        "ResolveNS": 273846451,
+        "SnapshotNS": 6693168,
+        "AccountedNS": 344397394,
+        "ElapsedNS": 344576458
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78667916,
+        "IssueNS": 19814076,
+        "ResolveNS": 301410345,
+        "SnapshotNS": 6439125,
+        "AccountedNS": 406331462,
+        "ElapsedNS": 406524417
+      },
+      "memo": {
+        "SetupNS": 43090292,
+        "IssueNS": 19588750,
+        "ResolveNS": 300016677,
+        "SnapshotNS": 6321418,
+        "AccountedNS": 369017137,
+        "ElapsedNS": 369208791
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77770667,
+        "IssueNS": 20443112,
+        "ResolveNS": 307997509,
+        "SnapshotNS": 6648708,
+        "AccountedNS": 412859996,
+        "ElapsedNS": 413038750
+      },
+      "memo": {
+        "SetupNS": 42613500,
+        "IssueNS": 20552914,
+        "ResolveNS": 309025843,
+        "SnapshotNS": 6643833,
+        "AccountedNS": 378836090,
+        "ElapsedNS": 379015500
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "early",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76793333,
+        "IssueNS": 20513566,
+        "ResolveNS": 307343107,
+        "SnapshotNS": 6578460,
+        "AccountedNS": 411228466,
+        "ElapsedNS": 411408416
+      },
+      "memo": {
+        "SetupNS": 43089625,
+        "IssueNS": 20571635,
+        "ResolveNS": 309057500,
+        "SnapshotNS": 6672498,
+        "AccountedNS": 379391258,
+        "ElapsedNS": 379574500
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78520084,
+        "IssueNS": 18951679,
+        "ResolveNS": 274671406,
+        "SnapshotNS": 5643084,
+        "AccountedNS": 377786253,
+        "ElapsedNS": 377968791
+      },
+      "memo": {
+        "SetupNS": 42838875,
+        "IssueNS": 18868834,
+        "ResolveNS": 274031123,
+        "SnapshotNS": 5636335,
+        "AccountedNS": 341375167,
+        "ElapsedNS": 341553542
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77914500,
+        "IssueNS": 19255736,
+        "ResolveNS": 273963655,
+        "SnapshotNS": 5689000,
+        "AccountedNS": 376822891,
+        "ElapsedNS": 376998584
+      },
+      "memo": {
+        "SetupNS": 43214500,
+        "IssueNS": 19167796,
+        "ResolveNS": 274415961,
+        "SnapshotNS": 5715461,
+        "AccountedNS": 342513718,
+        "ElapsedNS": 342690083
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76679000,
+        "IssueNS": 19234877,
+        "ResolveNS": 274282368,
+        "SnapshotNS": 5698750,
+        "AccountedNS": 375894995,
+        "ElapsedNS": 376065666
+      },
+      "memo": {
+        "SetupNS": 42954167,
+        "IssueNS": 19052754,
+        "ResolveNS": 271606379,
+        "SnapshotNS": 5652208,
+        "AccountedNS": 339265508,
+        "ElapsedNS": 339438541
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77775209,
+        "IssueNS": 19749346,
+        "ResolveNS": 275403200,
+        "SnapshotNS": 6358915,
+        "AccountedNS": 379286670,
+        "ElapsedNS": 379469708
+      },
+      "memo": {
+        "SetupNS": 43261625,
+        "IssueNS": 20009781,
+        "ResolveNS": 275564579,
+        "SnapshotNS": 6431959,
+        "AccountedNS": 345267944,
+        "ElapsedNS": 345451291
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77336084,
+        "IssueNS": 20528468,
+        "ResolveNS": 274843236,
+        "SnapshotNS": 6613166,
+        "AccountedNS": 379320954,
+        "ElapsedNS": 379497375
+      },
+      "memo": {
+        "SetupNS": 42964500,
+        "IssueNS": 20706295,
+        "ResolveNS": 273157936,
+        "SnapshotNS": 6649959,
+        "AccountedNS": 343478690,
+        "ElapsedNS": 343650792
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77834875,
+        "IssueNS": 20872194,
+        "ResolveNS": 273989354,
+        "SnapshotNS": 6708629,
+        "AccountedNS": 379405052,
+        "ElapsedNS": 379579250
+      },
+      "memo": {
+        "SetupNS": 43239750,
+        "IssueNS": 20843305,
+        "ResolveNS": 275405960,
+        "SnapshotNS": 6772207,
+        "AccountedNS": 346261222,
+        "ElapsedNS": 346433833
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 75965125,
+        "IssueNS": 19858757,
+        "ResolveNS": 302071016,
+        "SnapshotNS": 6370959,
+        "AccountedNS": 404265857,
+        "ElapsedNS": 404458625
+      },
+      "memo": {
+        "SetupNS": 43117042,
+        "IssueNS": 19635175,
+        "ResolveNS": 300031896,
+        "SnapshotNS": 6354583,
+        "AccountedNS": 369138696,
+        "ElapsedNS": 369323583
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77805083,
+        "IssueNS": 20627499,
+        "ResolveNS": 309718098,
+        "SnapshotNS": 6696667,
+        "AccountedNS": 414847347,
+        "ElapsedNS": 415027167
+      },
+      "memo": {
+        "SetupNS": 43001542,
+        "IssueNS": 20580153,
+        "ResolveNS": 309425505,
+        "SnapshotNS": 6708962,
+        "AccountedNS": 379716162,
+        "ElapsedNS": 379895250
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "stationary_noise10",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78101042,
+        "IssueNS": 20579329,
+        "ResolveNS": 309420752,
+        "SnapshotNS": 6670706,
+        "AccountedNS": 414771829,
+        "ElapsedNS": 414953291
+      },
+      "memo": {
+        "SetupNS": 43315459,
+        "IssueNS": 19914128,
+        "ResolveNS": 306346766,
+        "SnapshotNS": 6535125,
+        "AccountedNS": 376111478,
+        "ElapsedNS": 376287750
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78055125,
+        "IssueNS": 18994935,
+        "ResolveNS": 275182176,
+        "SnapshotNS": 5657627,
+        "AccountedNS": 377889863,
+        "ElapsedNS": 378081541
+      },
+      "memo": {
+        "SetupNS": 42901250,
+        "IssueNS": 18567383,
+        "ResolveNS": 274152685,
+        "SnapshotNS": 5527084,
+        "AccountedNS": 341148402,
+        "ElapsedNS": 341333083
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76811083,
+        "IssueNS": 19184286,
+        "ResolveNS": 273667445,
+        "SnapshotNS": 5695667,
+        "AccountedNS": 375358481,
+        "ElapsedNS": 375530792
+      },
+      "memo": {
+        "SetupNS": 43028375,
+        "IssueNS": 19166364,
+        "ResolveNS": 273965159,
+        "SnapshotNS": 5733002,
+        "AccountedNS": 341892900,
+        "ElapsedNS": 342067000
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76205834,
+        "IssueNS": 19143649,
+        "ResolveNS": 273638426,
+        "SnapshotNS": 5659542,
+        "AccountedNS": 374647451,
+        "ElapsedNS": 374820709
+      },
+      "memo": {
+        "SetupNS": 43209542,
+        "IssueNS": 19225363,
+        "ResolveNS": 274883685,
+        "SnapshotNS": 5716252,
+        "AccountedNS": 343034842,
+        "ElapsedNS": 343208791
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78117500,
+        "IssueNS": 20056106,
+        "ResolveNS": 274393220,
+        "SnapshotNS": 6447667,
+        "AccountedNS": 379014493,
+        "ElapsedNS": 379196750
+      },
+      "memo": {
+        "SetupNS": 42715417,
+        "IssueNS": 20130867,
+        "ResolveNS": 276905799,
+        "SnapshotNS": 6495126,
+        "AccountedNS": 346247209,
+        "ElapsedNS": 346431208
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77768208,
+        "IssueNS": 20867182,
+        "ResolveNS": 276059636,
+        "SnapshotNS": 6710166,
+        "AccountedNS": 381405192,
+        "ElapsedNS": 381578875
+      },
+      "memo": {
+        "SetupNS": 42127375,
+        "IssueNS": 20760816,
+        "ResolveNS": 275072754,
+        "SnapshotNS": 6685377,
+        "AccountedNS": 344646322,
+        "ElapsedNS": 344820667
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77896500,
+        "IssueNS": 20860033,
+        "ResolveNS": 275986957,
+        "SnapshotNS": 6681208,
+        "AccountedNS": 381424698,
+        "ElapsedNS": 381597792
+      },
+      "memo": {
+        "SetupNS": 42316041,
+        "IssueNS": 20776365,
+        "ResolveNS": 273805421,
+        "SnapshotNS": 6695626,
+        "AccountedNS": 343593453,
+        "ElapsedNS": 343765458
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77099667,
+        "IssueNS": 19820421,
+        "ResolveNS": 302754387,
+        "SnapshotNS": 6396707,
+        "AccountedNS": 406071182,
+        "ElapsedNS": 406260167
+      },
+      "memo": {
+        "SetupNS": 42707167,
+        "IssueNS": 19940995,
+        "ResolveNS": 305077941,
+        "SnapshotNS": 6436960,
+        "AccountedNS": 374163063,
+        "ElapsedNS": 374364916
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77546834,
+        "IssueNS": 20570009,
+        "ResolveNS": 310680748,
+        "SnapshotNS": 6693875,
+        "AccountedNS": 415491466,
+        "ElapsedNS": 415672916
+      },
+      "memo": {
+        "SetupNS": 43014334,
+        "IssueNS": 20567937,
+        "ResolveNS": 309926314,
+        "SnapshotNS": 6648247,
+        "AccountedNS": 380156832,
+        "ElapsedNS": 380337750
+      }
+    },
+    {
+      "geometry": "tight",
+      "regime": "partial_noise10",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77509708,
+        "IssueNS": 20612771,
+        "ResolveNS": 311321983,
+        "SnapshotNS": 6692080,
+        "AccountedNS": 416136542,
+        "ElapsedNS": 416313334
+      },
+      "memo": {
+        "SetupNS": 43123917,
+        "IssueNS": 20481782,
+        "ResolveNS": 308956256,
+        "SnapshotNS": 6668959,
+        "AccountedNS": 379230914,
+        "ElapsedNS": 379408750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77987792,
+        "IssueNS": 18932138,
+        "ResolveNS": 270054789,
+        "SnapshotNS": 5604793,
+        "AccountedNS": 372579512,
+        "ElapsedNS": 372762833
+      },
+      "memo": {
+        "SetupNS": 43034083,
+        "IssueNS": 18844173,
+        "ResolveNS": 272412042,
+        "SnapshotNS": 5588252,
+        "AccountedNS": 339878550,
+        "ElapsedNS": 340058292
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77844583,
+        "IssueNS": 19289893,
+        "ResolveNS": 273330048,
+        "SnapshotNS": 5698669,
+        "AccountedNS": 376163193,
+        "ElapsedNS": 376338250
+      },
+      "memo": {
+        "SetupNS": 42708916,
+        "IssueNS": 19268345,
+        "ResolveNS": 271795653,
+        "SnapshotNS": 5709960,
+        "AccountedNS": 339482874,
+        "ElapsedNS": 339659125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78266750,
+        "IssueNS": 19098382,
+        "ResolveNS": 272288830,
+        "SnapshotNS": 5650833,
+        "AccountedNS": 375304795,
+        "ElapsedNS": 375482833
+      },
+      "memo": {
+        "SetupNS": 43052584,
+        "IssueNS": 18980333,
+        "ResolveNS": 272747675,
+        "SnapshotNS": 5683414,
+        "AccountedNS": 340464006,
+        "ElapsedNS": 340636542
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78240792,
+        "IssueNS": 20098376,
+        "ResolveNS": 274193990,
+        "SnapshotNS": 6495958,
+        "AccountedNS": 379029116,
+        "ElapsedNS": 379211083
+      },
+      "memo": {
+        "SetupNS": 42543209,
+        "IssueNS": 19994368,
+        "ResolveNS": 273209634,
+        "SnapshotNS": 6406042,
+        "AccountedNS": 342153253,
+        "ElapsedNS": 342335333
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77489458,
+        "IssueNS": 20759619,
+        "ResolveNS": 272263074,
+        "SnapshotNS": 6717918,
+        "AccountedNS": 377230069,
+        "ElapsedNS": 377403292
+      },
+      "memo": {
+        "SetupNS": 43163708,
+        "IssueNS": 20877860,
+        "ResolveNS": 275079785,
+        "SnapshotNS": 6749002,
+        "AccountedNS": 345870355,
+        "ElapsedNS": 346046334
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76285584,
+        "IssueNS": 20657091,
+        "ResolveNS": 273004206,
+        "SnapshotNS": 6630957,
+        "AccountedNS": 376577838,
+        "ElapsedNS": 376751833
+      },
+      "memo": {
+        "SetupNS": 43145875,
+        "IssueNS": 20806652,
+        "ResolveNS": 273564374,
+        "SnapshotNS": 6752003,
+        "AccountedNS": 344268904,
+        "ElapsedNS": 344441291
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78046500,
+        "IssueNS": 19813454,
+        "ResolveNS": 302964011,
+        "SnapshotNS": 6448123,
+        "AccountedNS": 407272088,
+        "ElapsedNS": 407467625
+      },
+      "memo": {
+        "SetupNS": 43070959,
+        "IssueNS": 19327711,
+        "ResolveNS": 301883577,
+        "SnapshotNS": 6213915,
+        "AccountedNS": 370496162,
+        "ElapsedNS": 370684375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77869667,
+        "IssueNS": 20649345,
+        "ResolveNS": 310048387,
+        "SnapshotNS": 6659377,
+        "AccountedNS": 415226776,
+        "ElapsedNS": 415407792
+      },
+      "memo": {
+        "SetupNS": 43240042,
+        "IssueNS": 20524769,
+        "ResolveNS": 309198697,
+        "SnapshotNS": 6678914,
+        "AccountedNS": 379642422,
+        "ElapsedNS": 379823709
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "aligned",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76253042,
+        "IssueNS": 20612236,
+        "ResolveNS": 310333785,
+        "SnapshotNS": 6758873,
+        "AccountedNS": 413957936,
+        "ElapsedNS": 414143459
+      },
+      "memo": {
+        "SetupNS": 44314000,
+        "IssueNS": 20551655,
+        "ResolveNS": 309310356,
+        "SnapshotNS": 6662334,
+        "AccountedNS": 380838345,
+        "ElapsedNS": 381017542
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77911750,
+        "IssueNS": 19117043,
+        "ResolveNS": 273672400,
+        "SnapshotNS": 5609167,
+        "AccountedNS": 376310360,
+        "ElapsedNS": 376493458
+      },
+      "memo": {
+        "SetupNS": 43089709,
+        "IssueNS": 18852320,
+        "ResolveNS": 273570113,
+        "SnapshotNS": 5566333,
+        "AccountedNS": 341078475,
+        "ElapsedNS": 341272250
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77107791,
+        "IssueNS": 19185527,
+        "ResolveNS": 273353312,
+        "SnapshotNS": 5699918,
+        "AccountedNS": 375346548,
+        "ElapsedNS": 375523167
+      },
+      "memo": {
+        "SetupNS": 43640125,
+        "IssueNS": 18696278,
+        "ResolveNS": 271639724,
+        "SnapshotNS": 5543915,
+        "AccountedNS": 339520042,
+        "ElapsedNS": 339695250
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77959417,
+        "IssueNS": 19559771,
+        "ResolveNS": 274655686,
+        "SnapshotNS": 5790541,
+        "AccountedNS": 377965415,
+        "ElapsedNS": 378146292
+      },
+      "memo": {
+        "SetupNS": 42466625,
+        "IssueNS": 19058995,
+        "ResolveNS": 271989682,
+        "SnapshotNS": 5696626,
+        "AccountedNS": 339211928,
+        "ElapsedNS": 339386458
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77372333,
+        "IssueNS": 20086192,
+        "ResolveNS": 274115095,
+        "SnapshotNS": 6471835,
+        "AccountedNS": 378045455,
+        "ElapsedNS": 378225834
+      },
+      "memo": {
+        "SetupNS": 42747709,
+        "IssueNS": 20078946,
+        "ResolveNS": 275659198,
+        "SnapshotNS": 6426667,
+        "AccountedNS": 344912520,
+        "ElapsedNS": 345095375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76740583,
+        "IssueNS": 20920162,
+        "ResolveNS": 276012156,
+        "SnapshotNS": 6726165,
+        "AccountedNS": 380399066,
+        "ElapsedNS": 380574709
+      },
+      "memo": {
+        "SetupNS": 42839166,
+        "IssueNS": 20877238,
+        "ResolveNS": 272845832,
+        "SnapshotNS": 6755290,
+        "AccountedNS": 343317526,
+        "ElapsedNS": 343490375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78148334,
+        "IssueNS": 20745828,
+        "ResolveNS": 274276263,
+        "SnapshotNS": 6669042,
+        "AccountedNS": 379839467,
+        "ElapsedNS": 380019666
+      },
+      "memo": {
+        "SetupNS": 43054833,
+        "IssueNS": 20327356,
+        "ResolveNS": 274592091,
+        "SnapshotNS": 6580876,
+        "AccountedNS": 344555156,
+        "ElapsedNS": 344726084
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79039042,
+        "IssueNS": 19285102,
+        "ResolveNS": 301986185,
+        "SnapshotNS": 6239083,
+        "AccountedNS": 406549412,
+        "ElapsedNS": 406740625
+      },
+      "memo": {
+        "SetupNS": 43776458,
+        "IssueNS": 19850596,
+        "ResolveNS": 304100810,
+        "SnapshotNS": 6415625,
+        "AccountedNS": 374143489,
+        "ElapsedNS": 374340542
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77803666,
+        "IssueNS": 20527064,
+        "ResolveNS": 309688826,
+        "SnapshotNS": 6609500,
+        "AccountedNS": 414629056,
+        "ElapsedNS": 414811917
+      },
+      "memo": {
+        "SetupNS": 43059417,
+        "IssueNS": 20289034,
+        "ResolveNS": 308603832,
+        "SnapshotNS": 6560709,
+        "AccountedNS": 378512992,
+        "ElapsedNS": 378694125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "independent",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77815667,
+        "IssueNS": 20696273,
+        "ResolveNS": 306463053,
+        "SnapshotNS": 6768415,
+        "AccountedNS": 411743408,
+        "ElapsedNS": 411924584
+      },
+      "memo": {
+        "SetupNS": 43334708,
+        "IssueNS": 20226992,
+        "ResolveNS": 308432330,
+        "SnapshotNS": 6603457,
+        "AccountedNS": 378597487,
+        "ElapsedNS": 378778250
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77811333,
+        "IssueNS": 18974021,
+        "ResolveNS": 271925592,
+        "SnapshotNS": 5623165,
+        "AccountedNS": 374334111,
+        "ElapsedNS": 374518791
+      },
+      "memo": {
+        "SetupNS": 43254875,
+        "IssueNS": 18571908,
+        "ResolveNS": 268945550,
+        "SnapshotNS": 5494336,
+        "AccountedNS": 336266669,
+        "ElapsedNS": 336465083
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77887916,
+        "IssueNS": 19090551,
+        "ResolveNS": 269854783,
+        "SnapshotNS": 5670460,
+        "AccountedNS": 372503710,
+        "ElapsedNS": 372676083
+      },
+      "memo": {
+        "SetupNS": 43035667,
+        "IssueNS": 19018101,
+        "ResolveNS": 271838166,
+        "SnapshotNS": 5624333,
+        "AccountedNS": 339516267,
+        "ElapsedNS": 339689500
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78274583,
+        "IssueNS": 19327561,
+        "ResolveNS": 272645994,
+        "SnapshotNS": 5768124,
+        "AccountedNS": 376016262,
+        "ElapsedNS": 376188584
+      },
+      "memo": {
+        "SetupNS": 42941458,
+        "IssueNS": 19158992,
+        "ResolveNS": 271174199,
+        "SnapshotNS": 5705085,
+        "AccountedNS": 338979734,
+        "ElapsedNS": 339152583
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79100417,
+        "IssueNS": 19922154,
+        "ResolveNS": 271018147,
+        "SnapshotNS": 6418417,
+        "AccountedNS": 376459135,
+        "ElapsedNS": 376639417
+      },
+      "memo": {
+        "SetupNS": 43309333,
+        "IssueNS": 20113625,
+        "ResolveNS": 273583172,
+        "SnapshotNS": 6471793,
+        "AccountedNS": 343477923,
+        "ElapsedNS": 343661917
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77893459,
+        "IssueNS": 20861560,
+        "ResolveNS": 272437405,
+        "SnapshotNS": 6729956,
+        "AccountedNS": 377922380,
+        "ElapsedNS": 378098375
+      },
+      "memo": {
+        "SetupNS": 43110000,
+        "IssueNS": 20893530,
+        "ResolveNS": 272516974,
+        "SnapshotNS": 6727627,
+        "AccountedNS": 343248131,
+        "ElapsedNS": 343423334
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77090291,
+        "IssueNS": 20868716,
+        "ResolveNS": 272717155,
+        "SnapshotNS": 6739999,
+        "AccountedNS": 377416161,
+        "ElapsedNS": 377588875
+      },
+      "memo": {
+        "SetupNS": 42162375,
+        "IssueNS": 20903428,
+        "ResolveNS": 273317844,
+        "SnapshotNS": 6721789,
+        "AccountedNS": 343105436,
+        "ElapsedNS": 343281625
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77622000,
+        "IssueNS": 19794552,
+        "ResolveNS": 301989730,
+        "SnapshotNS": 6402960,
+        "AccountedNS": 405809242,
+        "ElapsedNS": 405996959
+      },
+      "memo": {
+        "SetupNS": 42765667,
+        "IssueNS": 19805603,
+        "ResolveNS": 302137930,
+        "SnapshotNS": 6436164,
+        "AccountedNS": 371145364,
+        "ElapsedNS": 371332666
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77286500,
+        "IssueNS": 20684940,
+        "ResolveNS": 310626417,
+        "SnapshotNS": 6662500,
+        "AccountedNS": 415260357,
+        "ElapsedNS": 415441667
+      },
+      "memo": {
+        "SetupNS": 43272000,
+        "IssueNS": 20610502,
+        "ResolveNS": 309478577,
+        "SnapshotNS": 6699877,
+        "AccountedNS": 380060956,
+        "ElapsedNS": 380250292
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "curved",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78909000,
+        "IssueNS": 20573079,
+        "ResolveNS": 309149958,
+        "SnapshotNS": 6733002,
+        "AccountedNS": 415365039,
+        "ElapsedNS": 415554167
+      },
+      "memo": {
+        "SetupNS": 43295500,
+        "IssueNS": 20602049,
+        "ResolveNS": 307611528,
+        "SnapshotNS": 6683665,
+        "AccountedNS": 378192742,
+        "ElapsedNS": 378372209
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76098083,
+        "IssueNS": 18811595,
+        "ResolveNS": 268828366,
+        "SnapshotNS": 5520708,
+        "AccountedNS": 369258752,
+        "ElapsedNS": 369444375
+      },
+      "memo": {
+        "SetupNS": 43429916,
+        "IssueNS": 19034842,
+        "ResolveNS": 270757681,
+        "SnapshotNS": 5649000,
+        "AccountedNS": 338871439,
+        "ElapsedNS": 339055875
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78052583,
+        "IssueNS": 19148289,
+        "ResolveNS": 269025540,
+        "SnapshotNS": 5709917,
+        "AccountedNS": 371936329,
+        "ElapsedNS": 372110000
+      },
+      "memo": {
+        "SetupNS": 42002791,
+        "IssueNS": 19065042,
+        "ResolveNS": 269014994,
+        "SnapshotNS": 5639874,
+        "AccountedNS": 335722701,
+        "ElapsedNS": 335897667
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 92744500,
+        "IssueNS": 19320065,
+        "ResolveNS": 270259599,
+        "SnapshotNS": 5688709,
+        "AccountedNS": 388012873,
+        "ElapsedNS": 388193583
+      },
+      "memo": {
+        "SetupNS": 43579250,
+        "IssueNS": 20111119,
+        "ResolveNS": 275135012,
+        "SnapshotNS": 5861415,
+        "AccountedNS": 344686796,
+        "ElapsedNS": 344882500
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78506583,
+        "IssueNS": 20090187,
+        "ResolveNS": 268856912,
+        "SnapshotNS": 6456917,
+        "AccountedNS": 373910599,
+        "ElapsedNS": 374090625
+      },
+      "memo": {
+        "SetupNS": 42265625,
+        "IssueNS": 19920394,
+        "ResolveNS": 268704779,
+        "SnapshotNS": 6441750,
+        "AccountedNS": 337332548,
+        "ElapsedNS": 337510125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77464667,
+        "IssueNS": 20865022,
+        "ResolveNS": 269273251,
+        "SnapshotNS": 6743580,
+        "AccountedNS": 374346520,
+        "ElapsedNS": 374519208
+      },
+      "memo": {
+        "SetupNS": 43095458,
+        "IssueNS": 20805292,
+        "ResolveNS": 270082389,
+        "SnapshotNS": 6728125,
+        "AccountedNS": 340711264,
+        "ElapsedNS": 340887041
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77992583,
+        "IssueNS": 20725344,
+        "ResolveNS": 269528805,
+        "SnapshotNS": 6677875,
+        "AccountedNS": 374924607,
+        "ElapsedNS": 375097584
+      },
+      "memo": {
+        "SetupNS": 43442083,
+        "IssueNS": 20755505,
+        "ResolveNS": 267719637,
+        "SnapshotNS": 6712082,
+        "AccountedNS": 338629307,
+        "ElapsedNS": 338803750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78963375,
+        "IssueNS": 19832954,
+        "ResolveNS": 297267535,
+        "SnapshotNS": 6478248,
+        "AccountedNS": 402542112,
+        "ElapsedNS": 402734250
+      },
+      "memo": {
+        "SetupNS": 42850916,
+        "IssueNS": 19732431,
+        "ResolveNS": 295224301,
+        "SnapshotNS": 6406584,
+        "AccountedNS": 364214232,
+        "ElapsedNS": 364411417
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78307583,
+        "IssueNS": 20484064,
+        "ResolveNS": 301271393,
+        "SnapshotNS": 6621413,
+        "AccountedNS": 406684453,
+        "ElapsedNS": 406864667
+      },
+      "memo": {
+        "SetupNS": 43060625,
+        "IssueNS": 20496272,
+        "ResolveNS": 302764849,
+        "SnapshotNS": 6655002,
+        "AccountedNS": 372976748,
+        "ElapsedNS": 373155667
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "baseline_matched",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78988375,
+        "IssueNS": 20671245,
+        "ResolveNS": 304373403,
+        "SnapshotNS": 6703251,
+        "AccountedNS": 410736274,
+        "ElapsedNS": 410914250
+      },
+      "memo": {
+        "SetupNS": 43245666,
+        "IssueNS": 20559551,
+        "ResolveNS": 303672992,
+        "SnapshotNS": 6861500,
+        "AccountedNS": 374339709,
+        "ElapsedNS": 374520375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77860875,
+        "IssueNS": 18965210,
+        "ResolveNS": 273809908,
+        "SnapshotNS": 5641753,
+        "AccountedNS": 376277746,
+        "ElapsedNS": 376460250
+      },
+      "memo": {
+        "SetupNS": 43260667,
+        "IssueNS": 18975816,
+        "ResolveNS": 274961088,
+        "SnapshotNS": 5651668,
+        "AccountedNS": 342849239,
+        "ElapsedNS": 343036459
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77928167,
+        "IssueNS": 19250804,
+        "ResolveNS": 275084023,
+        "SnapshotNS": 5744793,
+        "AccountedNS": 378007787,
+        "ElapsedNS": 378181584
+      },
+      "memo": {
+        "SetupNS": 43204125,
+        "IssueNS": 19042610,
+        "ResolveNS": 273696797,
+        "SnapshotNS": 5618376,
+        "AccountedNS": 341561908,
+        "ElapsedNS": 341738083
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78055625,
+        "IssueNS": 19035357,
+        "ResolveNS": 273056577,
+        "SnapshotNS": 5646750,
+        "AccountedNS": 375794309,
+        "ElapsedNS": 375966958
+      },
+      "memo": {
+        "SetupNS": 43034208,
+        "IssueNS": 18817992,
+        "ResolveNS": 274658117,
+        "SnapshotNS": 5595624,
+        "AccountedNS": 342105941,
+        "ElapsedNS": 342279625
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78253667,
+        "IssueNS": 20075194,
+        "ResolveNS": 272696833,
+        "SnapshotNS": 6475709,
+        "AccountedNS": 377501403,
+        "ElapsedNS": 377679584
+      },
+      "memo": {
+        "SetupNS": 43485791,
+        "IssueNS": 19955195,
+        "ResolveNS": 275238846,
+        "SnapshotNS": 6422877,
+        "AccountedNS": 345102709,
+        "ElapsedNS": 345286208
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77480958,
+        "IssueNS": 20856327,
+        "ResolveNS": 273140405,
+        "SnapshotNS": 6732543,
+        "AccountedNS": 378210233,
+        "ElapsedNS": 378382958
+      },
+      "memo": {
+        "SetupNS": 42019250,
+        "IssueNS": 20307353,
+        "ResolveNS": 274441866,
+        "SnapshotNS": 6526458,
+        "AccountedNS": 343294927,
+        "ElapsedNS": 343468083
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78406750,
+        "IssueNS": 20899928,
+        "ResolveNS": 272184849,
+        "SnapshotNS": 6764003,
+        "AccountedNS": 378255530,
+        "ElapsedNS": 378429667
+      },
+      "memo": {
+        "SetupNS": 43891209,
+        "IssueNS": 20982337,
+        "ResolveNS": 275715469,
+        "SnapshotNS": 6802585,
+        "AccountedNS": 347391600,
+        "ElapsedNS": 347567458
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77308333,
+        "IssueNS": 19716334,
+        "ResolveNS": 300015856,
+        "SnapshotNS": 6373664,
+        "AccountedNS": 403414187,
+        "ElapsedNS": 403604709
+      },
+      "memo": {
+        "SetupNS": 43229834,
+        "IssueNS": 19780562,
+        "ResolveNS": 302417229,
+        "SnapshotNS": 6388791,
+        "AccountedNS": 371816416,
+        "ElapsedNS": 372004625
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78904750,
+        "IssueNS": 20582739,
+        "ResolveNS": 310103201,
+        "SnapshotNS": 6682627,
+        "AccountedNS": 416273317,
+        "ElapsedNS": 416454333
+      },
+      "memo": {
+        "SetupNS": 43500750,
+        "IssueNS": 20612551,
+        "ResolveNS": 310222752,
+        "SnapshotNS": 6713415,
+        "AccountedNS": 381049468,
+        "ElapsedNS": 381227375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "abrupt",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77350958,
+        "IssueNS": 20606063,
+        "ResolveNS": 307580551,
+        "SnapshotNS": 6674084,
+        "AccountedNS": 412211656,
+        "ElapsedNS": 412393000
+      },
+      "memo": {
+        "SetupNS": 43253625,
+        "IssueNS": 20548315,
+        "ResolveNS": 309958000,
+        "SnapshotNS": 6658791,
+        "AccountedNS": 380418731,
+        "ElapsedNS": 380598791
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77478041,
+        "IssueNS": 19015778,
+        "ResolveNS": 275775372,
+        "SnapshotNS": 5641629,
+        "AccountedNS": 377910820,
+        "ElapsedNS": 378102875
+      },
+      "memo": {
+        "SetupNS": 42582542,
+        "IssueNS": 18984603,
+        "ResolveNS": 274688560,
+        "SnapshotNS": 5545378,
+        "AccountedNS": 341801083,
+        "ElapsedNS": 341986875
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 76201666,
+        "IssueNS": 19306330,
+        "ResolveNS": 275643364,
+        "SnapshotNS": 5765333,
+        "AccountedNS": 376916693,
+        "ElapsedNS": 377134500
+      },
+      "memo": {
+        "SetupNS": 43030417,
+        "IssueNS": 19281702,
+        "ResolveNS": 272950717,
+        "SnapshotNS": 5699709,
+        "AccountedNS": 340962545,
+        "ElapsedNS": 341137875
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77712292,
+        "IssueNS": 19326762,
+        "ResolveNS": 275192739,
+        "SnapshotNS": 5766125,
+        "AccountedNS": 377997918,
+        "ElapsedNS": 378172833
+      },
+      "memo": {
+        "SetupNS": 42473583,
+        "IssueNS": 19233650,
+        "ResolveNS": 275021117,
+        "SnapshotNS": 5738623,
+        "AccountedNS": 342466973,
+        "ElapsedNS": 342639750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77650541,
+        "IssueNS": 19943414,
+        "ResolveNS": 274492448,
+        "SnapshotNS": 6375875,
+        "AccountedNS": 378462278,
+        "ElapsedNS": 378643500
+      },
+      "memo": {
+        "SetupNS": 42833417,
+        "IssueNS": 20109096,
+        "ResolveNS": 276901140,
+        "SnapshotNS": 6499248,
+        "AccountedNS": 346342901,
+        "ElapsedNS": 346525625
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77740625,
+        "IssueNS": 20850544,
+        "ResolveNS": 276505802,
+        "SnapshotNS": 6741249,
+        "AccountedNS": 381838220,
+        "ElapsedNS": 382013917
+      },
+      "memo": {
+        "SetupNS": 43910125,
+        "IssueNS": 20992403,
+        "ResolveNS": 276516387,
+        "SnapshotNS": 6771376,
+        "AccountedNS": 348190291,
+        "ElapsedNS": 348366459
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77665750,
+        "IssueNS": 20935343,
+        "ResolveNS": 275979281,
+        "SnapshotNS": 6718872,
+        "AccountedNS": 381299246,
+        "ElapsedNS": 381479583
+      },
+      "memo": {
+        "SetupNS": 43068250,
+        "IssueNS": 20862623,
+        "ResolveNS": 275442174,
+        "SnapshotNS": 6718208,
+        "AccountedNS": 346091255,
+        "ElapsedNS": 346263917
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 80385959,
+        "IssueNS": 19832735,
+        "ResolveNS": 303579543,
+        "SnapshotNS": 6395333,
+        "AccountedNS": 410193570,
+        "ElapsedNS": 410387666
+      },
+      "memo": {
+        "SetupNS": 42917458,
+        "IssueNS": 19832488,
+        "ResolveNS": 303776397,
+        "SnapshotNS": 6426124,
+        "AccountedNS": 372952467,
+        "ElapsedNS": 373146333
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 79193083,
+        "IssueNS": 20020833,
+        "ResolveNS": 306706170,
+        "SnapshotNS": 6447624,
+        "AccountedNS": 412367710,
+        "ElapsedNS": 412548208
+      },
+      "memo": {
+        "SetupNS": 43057375,
+        "IssueNS": 20010253,
+        "ResolveNS": 306895820,
+        "SnapshotNS": 6460457,
+        "AccountedNS": 376423905,
+        "ElapsedNS": 376605458
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "late",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78978000,
+        "IssueNS": 20606312,
+        "ResolveNS": 310644182,
+        "SnapshotNS": 6697417,
+        "AccountedNS": 416925911,
+        "ElapsedNS": 417104958
+      },
+      "memo": {
+        "SetupNS": 43212334,
+        "IssueNS": 20597411,
+        "ResolveNS": 311402092,
+        "SnapshotNS": 6637668,
+        "AccountedNS": 381849505,
+        "ElapsedNS": 382034125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78007000,
+        "IssueNS": 18989732,
+        "ResolveNS": 273620069,
+        "SnapshotNS": 5642833,
+        "AccountedNS": 376259634,
+        "ElapsedNS": 376445250
+      },
+      "memo": {
+        "SetupNS": 43133375,
+        "IssueNS": 18907052,
+        "ResolveNS": 272967522,
+        "SnapshotNS": 5604623,
+        "AccountedNS": 340612572,
+        "ElapsedNS": 340797583
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77990625,
+        "IssueNS": 19156547,
+        "ResolveNS": 273449190,
+        "SnapshotNS": 5712793,
+        "AccountedNS": 376309155,
+        "ElapsedNS": 376484625
+      },
+      "memo": {
+        "SetupNS": 43146625,
+        "IssueNS": 19194746,
+        "ResolveNS": 273456484,
+        "SnapshotNS": 5731834,
+        "AccountedNS": 341529689,
+        "ElapsedNS": 341702750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77774000,
+        "IssueNS": 19169386,
+        "ResolveNS": 274660269,
+        "SnapshotNS": 5706166,
+        "AccountedNS": 377309821,
+        "ElapsedNS": 377483291
+      },
+      "memo": {
+        "SetupNS": 42887084,
+        "IssueNS": 19340942,
+        "ResolveNS": 272710733,
+        "SnapshotNS": 5748458,
+        "AccountedNS": 340687217,
+        "ElapsedNS": 340865958
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79065083,
+        "IssueNS": 20023139,
+        "ResolveNS": 273889933,
+        "SnapshotNS": 6412045,
+        "AccountedNS": 379390200,
+        "ElapsedNS": 379574083
+      },
+      "memo": {
+        "SetupNS": 43262416,
+        "IssueNS": 19605008,
+        "ResolveNS": 274864231,
+        "SnapshotNS": 6297211,
+        "AccountedNS": 344028866,
+        "ElapsedNS": 344212375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77107833,
+        "IssueNS": 20862833,
+        "ResolveNS": 274887909,
+        "SnapshotNS": 6758415,
+        "AccountedNS": 379616990,
+        "ElapsedNS": 379791250
+      },
+      "memo": {
+        "SetupNS": 42666584,
+        "IssueNS": 20544999,
+        "ResolveNS": 275360708,
+        "SnapshotNS": 6646168,
+        "AccountedNS": 345218459,
+        "ElapsedNS": 345392750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77590000,
+        "IssueNS": 20870183,
+        "ResolveNS": 274471961,
+        "SnapshotNS": 6747999,
+        "AccountedNS": 379680143,
+        "ElapsedNS": 379859583
+      },
+      "memo": {
+        "SetupNS": 43755958,
+        "IssueNS": 20789683,
+        "ResolveNS": 274263377,
+        "SnapshotNS": 6691461,
+        "AccountedNS": 345500479,
+        "ElapsedNS": 345675750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77818208,
+        "IssueNS": 19771458,
+        "ResolveNS": 302018613,
+        "SnapshotNS": 6380123,
+        "AccountedNS": 405988402,
+        "ElapsedNS": 406179333
+      },
+      "memo": {
+        "SetupNS": 43532250,
+        "IssueNS": 19729501,
+        "ResolveNS": 300915908,
+        "SnapshotNS": 6392079,
+        "AccountedNS": 370569738,
+        "ElapsedNS": 370760542
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79153458,
+        "IssueNS": 20585246,
+        "ResolveNS": 309637032,
+        "SnapshotNS": 6701416,
+        "AccountedNS": 416077152,
+        "ElapsedNS": 416257083
+      },
+      "memo": {
+        "SetupNS": 43229292,
+        "IssueNS": 20701784,
+        "ResolveNS": 310255806,
+        "SnapshotNS": 6721457,
+        "AccountedNS": 380908339,
+        "ElapsedNS": 381088000
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "recurring",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77461167,
+        "IssueNS": 20580328,
+        "ResolveNS": 309116004,
+        "SnapshotNS": 6699876,
+        "AccountedNS": 413857375,
+        "ElapsedNS": 414042750
+      },
+      "memo": {
+        "SetupNS": 42810542,
+        "IssueNS": 20588346,
+        "ResolveNS": 308741839,
+        "SnapshotNS": 6657332,
+        "AccountedNS": 378798059,
+        "ElapsedNS": 378975916
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76855833,
+        "IssueNS": 18974765,
+        "ResolveNS": 274721889,
+        "SnapshotNS": 5664458,
+        "AccountedNS": 376216945,
+        "ElapsedNS": 376402333
+      },
+      "memo": {
+        "SetupNS": 43065584,
+        "IssueNS": 18872194,
+        "ResolveNS": 274787508,
+        "SnapshotNS": 5605375,
+        "AccountedNS": 342330661,
+        "ElapsedNS": 342514458
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77351000,
+        "IssueNS": 19152202,
+        "ResolveNS": 273419196,
+        "SnapshotNS": 5641544,
+        "AccountedNS": 375563942,
+        "ElapsedNS": 375736958
+      },
+      "memo": {
+        "SetupNS": 42959292,
+        "IssueNS": 19344116,
+        "ResolveNS": 275848051,
+        "SnapshotNS": 5848707,
+        "AccountedNS": 344000166,
+        "ElapsedNS": 344190834
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77750709,
+        "IssueNS": 19033973,
+        "ResolveNS": 275450927,
+        "SnapshotNS": 5675918,
+        "AccountedNS": 377911527,
+        "ElapsedNS": 378084083
+      },
+      "memo": {
+        "SetupNS": 42649875,
+        "IssueNS": 18905660,
+        "ResolveNS": 273885583,
+        "SnapshotNS": 5631168,
+        "AccountedNS": 341072286,
+        "ElapsedNS": 341252917
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77918583,
+        "IssueNS": 19596109,
+        "ResolveNS": 275941655,
+        "SnapshotNS": 6306210,
+        "AccountedNS": 379762557,
+        "ElapsedNS": 379947625
+      },
+      "memo": {
+        "SetupNS": 43054208,
+        "IssueNS": 19825240,
+        "ResolveNS": 274283172,
+        "SnapshotNS": 6422376,
+        "AccountedNS": 343584996,
+        "ElapsedNS": 343766625
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77826416,
+        "IssueNS": 20850296,
+        "ResolveNS": 276254019,
+        "SnapshotNS": 6736793,
+        "AccountedNS": 381667524,
+        "ElapsedNS": 381841208
+      },
+      "memo": {
+        "SetupNS": 43322708,
+        "IssueNS": 20526707,
+        "ResolveNS": 276188943,
+        "SnapshotNS": 6653709,
+        "AccountedNS": 346692067,
+        "ElapsedNS": 346865458
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78508125,
+        "IssueNS": 20637501,
+        "ResolveNS": 277073369,
+        "SnapshotNS": 6660918,
+        "AccountedNS": 382879913,
+        "ElapsedNS": 383054417
+      },
+      "memo": {
+        "SetupNS": 43811750,
+        "IssueNS": 20927716,
+        "ResolveNS": 276695504,
+        "SnapshotNS": 6752290,
+        "AccountedNS": 348187260,
+        "ElapsedNS": 348363667
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78412375,
+        "IssueNS": 19813417,
+        "ResolveNS": 303186246,
+        "SnapshotNS": 6382001,
+        "AccountedNS": 407794039,
+        "ElapsedNS": 407990125
+      },
+      "memo": {
+        "SetupNS": 43011042,
+        "IssueNS": 19763639,
+        "ResolveNS": 302528083,
+        "SnapshotNS": 6414999,
+        "AccountedNS": 371717763,
+        "ElapsedNS": 371908459
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77893209,
+        "IssueNS": 20570990,
+        "ResolveNS": 310528881,
+        "SnapshotNS": 6676336,
+        "AccountedNS": 415669416,
+        "ElapsedNS": 415847958
+      },
+      "memo": {
+        "SetupNS": 43239417,
+        "IssueNS": 20649235,
+        "ResolveNS": 310654533,
+        "SnapshotNS": 6755917,
+        "AccountedNS": 381299102,
+        "ElapsedNS": 381478750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "gradual",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78408417,
+        "IssueNS": 20547389,
+        "ResolveNS": 310464184,
+        "SnapshotNS": 6625375,
+        "AccountedNS": 416045365,
+        "ElapsedNS": 416226250
+      },
+      "memo": {
+        "SetupNS": 43644833,
+        "IssueNS": 20621212,
+        "ResolveNS": 310625837,
+        "SnapshotNS": 6599874,
+        "AccountedNS": 381491756,
+        "ElapsedNS": 381675375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77047917,
+        "IssueNS": 18588651,
+        "ResolveNS": 274995633,
+        "SnapshotNS": 5506208,
+        "AccountedNS": 376138409,
+        "ElapsedNS": 376318958
+      },
+      "memo": {
+        "SetupNS": 43113625,
+        "IssueNS": 18953545,
+        "ResolveNS": 274835606,
+        "SnapshotNS": 5642168,
+        "AccountedNS": 342544944,
+        "ElapsedNS": 342731250
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79109958,
+        "IssueNS": 19143628,
+        "ResolveNS": 274674105,
+        "SnapshotNS": 5709919,
+        "AccountedNS": 378637610,
+        "ElapsedNS": 378810958
+      },
+      "memo": {
+        "SetupNS": 42429875,
+        "IssueNS": 19214789,
+        "ResolveNS": 275651793,
+        "SnapshotNS": 5710044,
+        "AccountedNS": 343006501,
+        "ElapsedNS": 343183500
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77794083,
+        "IssueNS": 19207091,
+        "ResolveNS": 274872969,
+        "SnapshotNS": 5697209,
+        "AccountedNS": 377571352,
+        "ElapsedNS": 377754125
+      },
+      "memo": {
+        "SetupNS": 43345916,
+        "IssueNS": 19252990,
+        "ResolveNS": 275312155,
+        "SnapshotNS": 5753920,
+        "AccountedNS": 343664981,
+        "ElapsedNS": 343844375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77345000,
+        "IssueNS": 20171784,
+        "ResolveNS": 276032951,
+        "SnapshotNS": 6528002,
+        "AccountedNS": 380077737,
+        "ElapsedNS": 380262208
+      },
+      "memo": {
+        "SetupNS": 43344333,
+        "IssueNS": 20025928,
+        "ResolveNS": 275120626,
+        "SnapshotNS": 6439751,
+        "AccountedNS": 344930638,
+        "ElapsedNS": 345115584
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77581292,
+        "IssueNS": 20930536,
+        "ResolveNS": 276237486,
+        "SnapshotNS": 6768000,
+        "AccountedNS": 381517314,
+        "ElapsedNS": 381689792
+      },
+      "memo": {
+        "SetupNS": 42967292,
+        "IssueNS": 20940943,
+        "ResolveNS": 276638313,
+        "SnapshotNS": 6720917,
+        "AccountedNS": 347267465,
+        "ElapsedNS": 347442083
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78280667,
+        "IssueNS": 21235801,
+        "ResolveNS": 277857494,
+        "SnapshotNS": 6782000,
+        "AccountedNS": 384155962,
+        "ElapsedNS": 384335875
+      },
+      "memo": {
+        "SetupNS": 43369625,
+        "IssueNS": 20903502,
+        "ResolveNS": 276526272,
+        "SnapshotNS": 6754956,
+        "AccountedNS": 347554355,
+        "ElapsedNS": 347729292
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77599417,
+        "IssueNS": 19711543,
+        "ResolveNS": 303286721,
+        "SnapshotNS": 6352085,
+        "AccountedNS": 406949766,
+        "ElapsedNS": 407143875
+      },
+      "memo": {
+        "SetupNS": 42828334,
+        "IssueNS": 19615151,
+        "ResolveNS": 303195113,
+        "SnapshotNS": 6323956,
+        "AccountedNS": 371962554,
+        "ElapsedNS": 372156291
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78353541,
+        "IssueNS": 20709262,
+        "ResolveNS": 309029619,
+        "SnapshotNS": 6658084,
+        "AccountedNS": 414750506,
+        "ElapsedNS": 414938792
+      },
+      "memo": {
+        "SetupNS": 43823125,
+        "IssueNS": 20697054,
+        "ResolveNS": 311844636,
+        "SnapshotNS": 6731209,
+        "AccountedNS": 383096024,
+        "ElapsedNS": 383283375
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77952667,
+        "IssueNS": 20689237,
+        "ResolveNS": 312126778,
+        "SnapshotNS": 6715293,
+        "AccountedNS": 417483975,
+        "ElapsedNS": 417665334
+      },
+      "memo": {
+        "SetupNS": 42925250,
+        "IssueNS": 20509325,
+        "ResolveNS": 310407990,
+        "SnapshotNS": 6617706,
+        "AccountedNS": 380460271,
+        "ElapsedNS": 380643542
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78034250,
+        "IssueNS": 18461185,
+        "ResolveNS": 275574062,
+        "SnapshotNS": 5438751,
+        "AccountedNS": 377508248,
+        "ElapsedNS": 377692084
+      },
+      "memo": {
+        "SetupNS": 43699459,
+        "IssueNS": 18923002,
+        "ResolveNS": 274679072,
+        "SnapshotNS": 5609713,
+        "AccountedNS": 342911246,
+        "ElapsedNS": 343094959
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78727042,
+        "IssueNS": 19229723,
+        "ResolveNS": 274695501,
+        "SnapshotNS": 5745873,
+        "AccountedNS": 378398139,
+        "ElapsedNS": 378572250
+      },
+      "memo": {
+        "SetupNS": 43301417,
+        "IssueNS": 19234916,
+        "ResolveNS": 274499000,
+        "SnapshotNS": 5732041,
+        "AccountedNS": 342767374,
+        "ElapsedNS": 342942875
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78548791,
+        "IssueNS": 19324414,
+        "ResolveNS": 275337567,
+        "SnapshotNS": 5729959,
+        "AccountedNS": 378940731,
+        "ElapsedNS": 379122958
+      },
+      "memo": {
+        "SetupNS": 43742542,
+        "IssueNS": 19267978,
+        "ResolveNS": 276138080,
+        "SnapshotNS": 5757374,
+        "AccountedNS": 344905974,
+        "ElapsedNS": 345080333
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77253125,
+        "IssueNS": 20123570,
+        "ResolveNS": 277098699,
+        "SnapshotNS": 6509791,
+        "AccountedNS": 380985185,
+        "ElapsedNS": 381168000
+      },
+      "memo": {
+        "SetupNS": 42555458,
+        "IssueNS": 20077270,
+        "ResolveNS": 276247868,
+        "SnapshotNS": 6456419,
+        "AccountedNS": 345337015,
+        "ElapsedNS": 345515333
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77914833,
+        "IssueNS": 20874428,
+        "ResolveNS": 276284034,
+        "SnapshotNS": 6722582,
+        "AccountedNS": 381795877,
+        "ElapsedNS": 381971667
+      },
+      "memo": {
+        "SetupNS": 42749708,
+        "IssueNS": 20917287,
+        "ResolveNS": 276249948,
+        "SnapshotNS": 6801417,
+        "AccountedNS": 346718360,
+        "ElapsedNS": 346894459
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78629917,
+        "IssueNS": 20941622,
+        "ResolveNS": 277017364,
+        "SnapshotNS": 6783837,
+        "AccountedNS": 383372740,
+        "ElapsedNS": 383550875
+      },
+      "memo": {
+        "SetupNS": 42907917,
+        "IssueNS": 20886906,
+        "ResolveNS": 276377130,
+        "SnapshotNS": 6774791,
+        "AccountedNS": 346946744,
+        "ElapsedNS": 347120042
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78180041,
+        "IssueNS": 19909493,
+        "ResolveNS": 304843546,
+        "SnapshotNS": 6490958,
+        "AccountedNS": 409424038,
+        "ElapsedNS": 409617625
+      },
+      "memo": {
+        "SetupNS": 42601583,
+        "IssueNS": 19777788,
+        "ResolveNS": 302247894,
+        "SnapshotNS": 6430501,
+        "AccountedNS": 371057766,
+        "ElapsedNS": 371244459
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78948625,
+        "IssueNS": 20640982,
+        "ResolveNS": 312331095,
+        "SnapshotNS": 6703584,
+        "AccountedNS": 418624286,
+        "ElapsedNS": 418805083
+      },
+      "memo": {
+        "SetupNS": 43267666,
+        "IssueNS": 20609061,
+        "ResolveNS": 310623641,
+        "SnapshotNS": 6684458,
+        "AccountedNS": 381184826,
+        "ElapsedNS": 381363708
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "unrelated",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79318833,
+        "IssueNS": 20222769,
+        "ResolveNS": 312666308,
+        "SnapshotNS": 6524250,
+        "AccountedNS": 418732160,
+        "ElapsedNS": 418915292
+      },
+      "memo": {
+        "SetupNS": 43385333,
+        "IssueNS": 20598226,
+        "ResolveNS": 310713099,
+        "SnapshotNS": 6707377,
+        "AccountedNS": 381404035,
+        "ElapsedNS": 381584500
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77934125,
+        "IssueNS": 18604538,
+        "ResolveNS": 274279291,
+        "SnapshotNS": 5498250,
+        "AccountedNS": 376316204,
+        "ElapsedNS": 376499334
+      },
+      "memo": {
+        "SetupNS": 43387792,
+        "IssueNS": 19070412,
+        "ResolveNS": 276519367,
+        "SnapshotNS": 5656957,
+        "AccountedNS": 344634528,
+        "ElapsedNS": 344828667
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77264833,
+        "IssueNS": 19200049,
+        "ResolveNS": 275745486,
+        "SnapshotNS": 5699665,
+        "AccountedNS": 377910033,
+        "ElapsedNS": 378084709
+      },
+      "memo": {
+        "SetupNS": 44069416,
+        "IssueNS": 19353275,
+        "ResolveNS": 273907770,
+        "SnapshotNS": 5713710,
+        "AccountedNS": 343044171,
+        "ElapsedNS": 343219708
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77947708,
+        "IssueNS": 20487813,
+        "ResolveNS": 296343404,
+        "SnapshotNS": 5892960,
+        "AccountedNS": 400671885,
+        "ElapsedNS": 400898458
+      },
+      "memo": {
+        "SetupNS": 42543458,
+        "IssueNS": 19281809,
+        "ResolveNS": 275523635,
+        "SnapshotNS": 5697210,
+        "AccountedNS": 343046112,
+        "ElapsedNS": 343221750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78397417,
+        "IssueNS": 20121606,
+        "ResolveNS": 276646300,
+        "SnapshotNS": 6485459,
+        "AccountedNS": 381650782,
+        "ElapsedNS": 381830417
+      },
+      "memo": {
+        "SetupNS": 43571500,
+        "IssueNS": 20173559,
+        "ResolveNS": 276755411,
+        "SnapshotNS": 6528792,
+        "AccountedNS": 347029262,
+        "ElapsedNS": 347214709
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78024250,
+        "IssueNS": 20946102,
+        "ResolveNS": 277886927,
+        "SnapshotNS": 6805122,
+        "AccountedNS": 383662401,
+        "ElapsedNS": 383838250
+      },
+      "memo": {
+        "SetupNS": 43157958,
+        "IssueNS": 20902751,
+        "ResolveNS": 275084527,
+        "SnapshotNS": 6771087,
+        "AccountedNS": 345916323,
+        "ElapsedNS": 346090583
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79035917,
+        "IssueNS": 20927384,
+        "ResolveNS": 277054553,
+        "SnapshotNS": 6767249,
+        "AccountedNS": 383785103,
+        "ElapsedNS": 383962125
+      },
+      "memo": {
+        "SetupNS": 43509042,
+        "IssueNS": 20975341,
+        "ResolveNS": 275902575,
+        "SnapshotNS": 6740042,
+        "AccountedNS": 347127000,
+        "ElapsedNS": 347299334
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78587875,
+        "IssueNS": 19927646,
+        "ResolveNS": 303868581,
+        "SnapshotNS": 6407000,
+        "AccountedNS": 408791102,
+        "ElapsedNS": 408984500
+      },
+      "memo": {
+        "SetupNS": 43268584,
+        "IssueNS": 19955497,
+        "ResolveNS": 304307196,
+        "SnapshotNS": 6454542,
+        "AccountedNS": 373985819,
+        "ElapsedNS": 374173166
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77320458,
+        "IssueNS": 20293820,
+        "ResolveNS": 310687565,
+        "SnapshotNS": 6569664,
+        "AccountedNS": 414871507,
+        "ElapsedNS": 415067500
+      },
+      "memo": {
+        "SetupNS": 43402041,
+        "IssueNS": 20594174,
+        "ResolveNS": 310717360,
+        "SnapshotNS": 6662292,
+        "AccountedNS": 381375867,
+        "ElapsedNS": 381560417
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "asynchronous",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78508416,
+        "IssueNS": 20569991,
+        "ResolveNS": 309507044,
+        "SnapshotNS": 6695374,
+        "AccountedNS": 415280825,
+        "ElapsedNS": 415459167
+      },
+      "memo": {
+        "SetupNS": 42653417,
+        "IssueNS": 20698990,
+        "ResolveNS": 311967362,
+        "SnapshotNS": 6718500,
+        "AccountedNS": 382038269,
+        "ElapsedNS": 382221125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77800334,
+        "IssueNS": 18939881,
+        "ResolveNS": 274889474,
+        "SnapshotNS": 5634249,
+        "AccountedNS": 377263938,
+        "ElapsedNS": 377447167
+      },
+      "memo": {
+        "SetupNS": 42528333,
+        "IssueNS": 18900475,
+        "ResolveNS": 274276784,
+        "SnapshotNS": 5591457,
+        "AccountedNS": 341297049,
+        "ElapsedNS": 341477000
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77706291,
+        "IssueNS": 19132978,
+        "ResolveNS": 273319062,
+        "SnapshotNS": 5721541,
+        "AccountedNS": 375879872,
+        "ElapsedNS": 376053042
+      },
+      "memo": {
+        "SetupNS": 43371875,
+        "IssueNS": 19193543,
+        "ResolveNS": 273161271,
+        "SnapshotNS": 5716458,
+        "AccountedNS": 341443147,
+        "ElapsedNS": 341621958
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79065959,
+        "IssueNS": 19272322,
+        "ResolveNS": 274292279,
+        "SnapshotNS": 5764207,
+        "AccountedNS": 378394767,
+        "ElapsedNS": 378570833
+      },
+      "memo": {
+        "SetupNS": 43200666,
+        "IssueNS": 19184275,
+        "ResolveNS": 272496319,
+        "SnapshotNS": 5702123,
+        "AccountedNS": 340583383,
+        "ElapsedNS": 340758125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78543041,
+        "IssueNS": 20082414,
+        "ResolveNS": 275357410,
+        "SnapshotNS": 6538207,
+        "AccountedNS": 380521072,
+        "ElapsedNS": 380709083
+      },
+      "memo": {
+        "SetupNS": 43554041,
+        "IssueNS": 20082577,
+        "ResolveNS": 275224873,
+        "SnapshotNS": 6441292,
+        "AccountedNS": 345302783,
+        "ElapsedNS": 345483208
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79242834,
+        "IssueNS": 20972149,
+        "ResolveNS": 275287362,
+        "SnapshotNS": 6758252,
+        "AccountedNS": 382260597,
+        "ElapsedNS": 382436583
+      },
+      "memo": {
+        "SetupNS": 43169500,
+        "IssueNS": 20911890,
+        "ResolveNS": 275692176,
+        "SnapshotNS": 6749837,
+        "AccountedNS": 346523403,
+        "ElapsedNS": 346698292
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77439167,
+        "IssueNS": 20839360,
+        "ResolveNS": 275319175,
+        "SnapshotNS": 6768500,
+        "AccountedNS": 380366202,
+        "ElapsedNS": 380543541
+      },
+      "memo": {
+        "SetupNS": 43241125,
+        "IssueNS": 20978224,
+        "ResolveNS": 275837430,
+        "SnapshotNS": 6755623,
+        "AccountedNS": 346812402,
+        "ElapsedNS": 346987917
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 79245000,
+        "IssueNS": 19868791,
+        "ResolveNS": 302421185,
+        "SnapshotNS": 6439537,
+        "AccountedNS": 407974513,
+        "ElapsedNS": 408163292
+      },
+      "memo": {
+        "SetupNS": 42639833,
+        "IssueNS": 19843410,
+        "ResolveNS": 303632027,
+        "SnapshotNS": 6491958,
+        "AccountedNS": 372607228,
+        "ElapsedNS": 372803750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78433792,
+        "IssueNS": 20546317,
+        "ResolveNS": 308720426,
+        "SnapshotNS": 6639208,
+        "AccountedNS": 414339743,
+        "ElapsedNS": 414521958
+      },
+      "memo": {
+        "SetupNS": 43248834,
+        "IssueNS": 20633777,
+        "ResolveNS": 310060728,
+        "SnapshotNS": 6697166,
+        "AccountedNS": 380640505,
+        "ElapsedNS": 380822750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "early",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78635333,
+        "IssueNS": 20520728,
+        "ResolveNS": 309431961,
+        "SnapshotNS": 6722043,
+        "AccountedNS": 415310065,
+        "ElapsedNS": 415488208
+      },
+      "memo": {
+        "SetupNS": 43251458,
+        "IssueNS": 20074447,
+        "ResolveNS": 307224748,
+        "SnapshotNS": 6533084,
+        "AccountedNS": 377083737,
+        "ElapsedNS": 377265417
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78347958,
+        "IssueNS": 18539346,
+        "ResolveNS": 272907827,
+        "SnapshotNS": 5513664,
+        "AccountedNS": 375308795,
+        "ElapsedNS": 375494250
+      },
+      "memo": {
+        "SetupNS": 42940041,
+        "IssueNS": 18756394,
+        "ResolveNS": 273377380,
+        "SnapshotNS": 5495333,
+        "AccountedNS": 340569148,
+        "ElapsedNS": 340750333
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78019417,
+        "IssueNS": 19305959,
+        "ResolveNS": 275591440,
+        "SnapshotNS": 5715833,
+        "AccountedNS": 378632649,
+        "ElapsedNS": 378806791
+      },
+      "memo": {
+        "SetupNS": 42952291,
+        "IssueNS": 19236995,
+        "ResolveNS": 275544007,
+        "SnapshotNS": 5702875,
+        "AccountedNS": 343436168,
+        "ElapsedNS": 343609125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78628625,
+        "IssueNS": 19244206,
+        "ResolveNS": 275598500,
+        "SnapshotNS": 5739792,
+        "AccountedNS": 379211123,
+        "ElapsedNS": 379387208
+      },
+      "memo": {
+        "SetupNS": 43118083,
+        "IssueNS": 19236562,
+        "ResolveNS": 275388931,
+        "SnapshotNS": 5764668,
+        "AccountedNS": 343508244,
+        "ElapsedNS": 343682875
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77956500,
+        "IssueNS": 20065277,
+        "ResolveNS": 276349435,
+        "SnapshotNS": 6487504,
+        "AccountedNS": 380858716,
+        "ElapsedNS": 381040833
+      },
+      "memo": {
+        "SetupNS": 43635625,
+        "IssueNS": 20082497,
+        "ResolveNS": 275879166,
+        "SnapshotNS": 6459832,
+        "AccountedNS": 346057120,
+        "ElapsedNS": 346239791
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77807417,
+        "IssueNS": 20919838,
+        "ResolveNS": 276334604,
+        "SnapshotNS": 6790418,
+        "AccountedNS": 381852277,
+        "ElapsedNS": 382025875
+      },
+      "memo": {
+        "SetupNS": 43377542,
+        "IssueNS": 20824184,
+        "ResolveNS": 275063781,
+        "SnapshotNS": 6712332,
+        "AccountedNS": 345977839,
+        "ElapsedNS": 346153042
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78199000,
+        "IssueNS": 20898849,
+        "ResolveNS": 276579231,
+        "SnapshotNS": 6759875,
+        "AccountedNS": 382436955,
+        "ElapsedNS": 382612458
+      },
+      "memo": {
+        "SetupNS": 43151583,
+        "IssueNS": 20900881,
+        "ResolveNS": 275750143,
+        "SnapshotNS": 6751124,
+        "AccountedNS": 346553731,
+        "ElapsedNS": 346729125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77873750,
+        "IssueNS": 19835556,
+        "ResolveNS": 304207878,
+        "SnapshotNS": 6460500,
+        "AccountedNS": 408377684,
+        "ElapsedNS": 408571792
+      },
+      "memo": {
+        "SetupNS": 43847000,
+        "IssueNS": 19821017,
+        "ResolveNS": 302404473,
+        "SnapshotNS": 6414377,
+        "AccountedNS": 372486867,
+        "ElapsedNS": 372678125
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78496917,
+        "IssueNS": 20508928,
+        "ResolveNS": 309026896,
+        "SnapshotNS": 6628999,
+        "AccountedNS": 414661740,
+        "ElapsedNS": 414843375
+      },
+      "memo": {
+        "SetupNS": 43013959,
+        "IssueNS": 20682338,
+        "ResolveNS": 310252817,
+        "SnapshotNS": 6691625,
+        "AccountedNS": 380640739,
+        "ElapsedNS": 380823708
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "stationary_noise10",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78632875,
+        "IssueNS": 20490669,
+        "ResolveNS": 311700097,
+        "SnapshotNS": 6871045,
+        "AccountedNS": 417694686,
+        "ElapsedNS": 417882875
+      },
+      "memo": {
+        "SetupNS": 42394625,
+        "IssueNS": 20258084,
+        "ResolveNS": 310134289,
+        "SnapshotNS": 6561957,
+        "AccountedNS": 379348955,
+        "ElapsedNS": 379530250
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "static",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 76471958,
+        "IssueNS": 18987825,
+        "ResolveNS": 275501831,
+        "SnapshotNS": 5634083,
+        "AccountedNS": 376595697,
+        "ElapsedNS": 376777791
+      },
+      "memo": {
+        "SetupNS": 43684458,
+        "IssueNS": 18998962,
+        "ResolveNS": 275820655,
+        "SnapshotNS": 5635708,
+        "AccountedNS": 344139783,
+        "ElapsedNS": 344326083
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "slow",
+      "schedule": "immediate",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 77910459,
+        "IssueNS": 19252637,
+        "ResolveNS": 276063556,
+        "SnapshotNS": 5765668,
+        "AccountedNS": 378992320,
+        "ElapsedNS": 379164750
+      },
+      "memo": {
+        "SetupNS": 43324791,
+        "IssueNS": 19188713,
+        "ResolveNS": 274481385,
+        "SnapshotNS": 5652790,
+        "AccountedNS": 342647679,
+        "ElapsedNS": 342821750
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "round",
+      "schedule": "immediate",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78392667,
+        "IssueNS": 19198647,
+        "ResolveNS": 274933442,
+        "SnapshotNS": 5725749,
+        "AccountedNS": 378250505,
+        "ElapsedNS": 378425583
+      },
+      "memo": {
+        "SetupNS": 43834542,
+        "IssueNS": 19225065,
+        "ResolveNS": 275164033,
+        "SnapshotNS": 5758749,
+        "AccountedNS": 343982389,
+        "ElapsedNS": 344163292
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "static",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78342000,
+        "IssueNS": 20138277,
+        "ResolveNS": 276161194,
+        "SnapshotNS": 6502751,
+        "AccountedNS": 381144222,
+        "ElapsedNS": 381331916
+      },
+      "memo": {
+        "SetupNS": 43587833,
+        "IssueNS": 20060978,
+        "ResolveNS": 276174365,
+        "SnapshotNS": 6512499,
+        "AccountedNS": 346335675,
+        "ElapsedNS": 346518250
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "slow",
+      "schedule": "fixed150",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78561458,
+        "IssueNS": 20848156,
+        "ResolveNS": 276575854,
+        "SnapshotNS": 6756915,
+        "AccountedNS": 382742383,
+        "ElapsedNS": 382915459
+      },
+      "memo": {
+        "SetupNS": 43172208,
+        "IssueNS": 20926619,
+        "ResolveNS": 276090515,
+        "SnapshotNS": 6749751,
+        "AccountedNS": 346939093,
+        "ElapsedNS": 347112708
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "round",
+      "schedule": "fixed150",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78264834,
+        "IssueNS": 20914266,
+        "ResolveNS": 276608986,
+        "SnapshotNS": 6754168,
+        "AccountedNS": 382542254,
+        "ElapsedNS": 382714833
+      },
+      "memo": {
+        "SetupNS": 43614250,
+        "IssueNS": 20909394,
+        "ResolveNS": 276728497,
+        "SnapshotNS": 6786294,
+        "AccountedNS": 348038435,
+        "ElapsedNS": 348213500
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "static",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 77596541,
+        "IssueNS": 19734918,
+        "ResolveNS": 302307740,
+        "SnapshotNS": 6386251,
+        "AccountedNS": 406025450,
+        "ElapsedNS": 406211958
+      },
+      "memo": {
+        "SetupNS": 42971583,
+        "IssueNS": 19813639,
+        "ResolveNS": 304273378,
+        "SnapshotNS": 6416752,
+        "AccountedNS": 373475352,
+        "ElapsedNS": 373663042
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "slow",
+      "schedule": "uniform299",
+      "memoFirst": false,
+      "original": {
+        "SetupNS": 78161833,
+        "IssueNS": 20672206,
+        "ResolveNS": 310772022,
+        "SnapshotNS": 6648039,
+        "AccountedNS": 416254100,
+        "ElapsedNS": 416434500
+      },
+      "memo": {
+        "SetupNS": 43036334,
+        "IssueNS": 20681731,
+        "ResolveNS": 311974948,
+        "SnapshotNS": 6679833,
+        "AccountedNS": 382372846,
+        "ElapsedNS": 382551958
+      }
+    },
+    {
+      "geometry": "wide",
+      "regime": "partial_noise10",
+      "mode": "round",
+      "schedule": "uniform299",
+      "memoFirst": true,
+      "original": {
+        "SetupNS": 78855958,
+        "IssueNS": 20600428,
+        "ResolveNS": 311183921,
+        "SnapshotNS": 6652874,
+        "AccountedNS": 417293181,
+        "ElapsedNS": 417471667
+      },
+      "memo": {
+        "SetupNS": 43655334,
+        "IssueNS": 20603899,
+        "ResolveNS": 309478788,
+        "SnapshotNS": 6740582,
+        "AccountedNS": 380478603,
+        "ElapsedNS": 380662416
+      }
+    }
+  ],
+  "qualityConfirmation": false,
+  "adoption": false,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

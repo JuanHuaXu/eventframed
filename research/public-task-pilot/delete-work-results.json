@@ -1,0 +1,580 @@
+{
+  "inputSHA256": "fbd608a391a618679aa8d46643aae8593a8efc8e6671e9f4925622630be860f6",
+  "sourceSHA256": "eb0f1051850ff5139f7b28ca114eb527e7bc7de6f1b1d3d77342f7c43eddd06b",
+  "harnessSHA256": "d4c366dfc211530ae7c3f98745a8ccf8e6f9c6afdfbb4a35764e7edbaa68a928",
+  "scope": "Derived from captured state and single-writer source; excludes extra heuristic distance work, arena alignment and metadata scans",
+  "reports": [
+    {
+      "n": 800,
+      "id": "seed-0",
+      "changedRecords": 35,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 41,
+          "pairDistanceCalls": 820,
+          "matrixFloat32Bytes": 6724
+        }
+      ],
+      "pairDistanceCalls": 820,
+      "matrixFloat32Bytes": 6724,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 808
+    },
+    {
+      "n": 800,
+      "id": "seed-1",
+      "changedRecords": 31,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 40,
+          "pairDistanceCalls": 780,
+          "matrixFloat32Bytes": 6400
+        }
+      ],
+      "pairDistanceCalls": 780,
+      "matrixFloat32Bytes": 6400,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 808
+    },
+    {
+      "n": 800,
+      "id": "seed-2",
+      "changedRecords": 44,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 40,
+          "pairDistanceCalls": 780,
+          "matrixFloat32Bytes": 6400
+        },
+        {
+          "level": 1,
+          "neighbors": 21,
+          "pairDistanceCalls": 210,
+          "matrixFloat32Bytes": 1764
+        }
+      ],
+      "pairDistanceCalls": 990,
+      "matrixFloat32Bytes": 8164,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 808
+    },
+    {
+      "n": 800,
+      "id": "seed-3",
+      "changedRecords": 54,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 46,
+          "pairDistanceCalls": 1035,
+          "matrixFloat32Bytes": 8464
+        },
+        {
+          "level": 1,
+          "neighbors": 25,
+          "pairDistanceCalls": 300,
+          "matrixFloat32Bytes": 2500
+        }
+      ],
+      "pairDistanceCalls": 1335,
+      "matrixFloat32Bytes": 10964,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 808
+    },
+    {
+      "n": 800,
+      "id": "seed-104",
+      "changedRecords": 74,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 43,
+          "pairDistanceCalls": 903,
+          "matrixFloat32Bytes": 7396
+        },
+        {
+          "level": 1,
+          "neighbors": 22,
+          "pairDistanceCalls": 231,
+          "matrixFloat32Bytes": 1936
+        },
+        {
+          "level": 2,
+          "neighbors": 19,
+          "pairDistanceCalls": 171,
+          "matrixFloat32Bytes": 1444
+        },
+        {
+          "level": 3,
+          "neighbors": 20,
+          "pairDistanceCalls": 190,
+          "matrixFloat32Bytes": 1600
+        },
+        {
+          "level": 4,
+          "neighbors": 11,
+          "pairDistanceCalls": 55,
+          "matrixFloat32Bytes": 484
+        }
+      ],
+      "pairDistanceCalls": 1550,
+      "matrixFloat32Bytes": 12860,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 808
+    },
+    {
+      "n": 800,
+      "id": "seed-101",
+      "changedRecords": 77,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 44,
+          "pairDistanceCalls": 946,
+          "matrixFloat32Bytes": 7744
+        },
+        {
+          "level": 1,
+          "neighbors": 23,
+          "pairDistanceCalls": 253,
+          "matrixFloat32Bytes": 2116
+        },
+        {
+          "level": 2,
+          "neighbors": 23,
+          "pairDistanceCalls": 253,
+          "matrixFloat32Bytes": 2116
+        },
+        {
+          "level": 3,
+          "neighbors": 17,
+          "pairDistanceCalls": 136,
+          "matrixFloat32Bytes": 1156
+        },
+        {
+          "level": 4,
+          "neighbors": 10,
+          "pairDistanceCalls": 45,
+          "matrixFloat32Bytes": 400
+        }
+      ],
+      "pairDistanceCalls": 1633,
+      "matrixFloat32Bytes": 13532,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 808
+    },
+    {
+      "n": 800,
+      "id": "seed-489",
+      "changedRecords": 63,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 42,
+          "pairDistanceCalls": 861,
+          "matrixFloat32Bytes": 7056
+        },
+        {
+          "level": 1,
+          "neighbors": 22,
+          "pairDistanceCalls": 231,
+          "matrixFloat32Bytes": 1936
+        },
+        {
+          "level": 2,
+          "neighbors": 21,
+          "pairDistanceCalls": 210,
+          "matrixFloat32Bytes": 1764
+        },
+        {
+          "level": 3,
+          "neighbors": 19,
+          "pairDistanceCalls": 171,
+          "matrixFloat32Bytes": 1444
+        }
+      ],
+      "pairDistanceCalls": 1473,
+      "matrixFloat32Bytes": 12200,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 808
+    },
+    {
+      "n": 800,
+      "id": "seed-250",
+      "changedRecords": 65,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 37,
+          "pairDistanceCalls": 666,
+          "matrixFloat32Bytes": 5476
+        },
+        {
+          "level": 1,
+          "neighbors": 22,
+          "pairDistanceCalls": 231,
+          "matrixFloat32Bytes": 1936
+        },
+        {
+          "level": 2,
+          "neighbors": 18,
+          "pairDistanceCalls": 153,
+          "matrixFloat32Bytes": 1296
+        },
+        {
+          "level": 3,
+          "neighbors": 18,
+          "pairDistanceCalls": 153,
+          "matrixFloat32Bytes": 1296
+        },
+        {
+          "level": 4,
+          "neighbors": 9,
+          "pairDistanceCalls": 36,
+          "matrixFloat32Bytes": 324
+        },
+        {
+          "level": 5,
+          "neighbors": 3,
+          "pairDistanceCalls": 3,
+          "matrixFloat32Bytes": 36
+        }
+      ],
+      "pairDistanceCalls": 1242,
+      "matrixFloat32Bytes": 10364,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 808
+    },
+    {
+      "n": 6400,
+      "id": "seed-0",
+      "changedRecords": 39,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 40,
+          "pairDistanceCalls": 780,
+          "matrixFloat32Bytes": 6400
+        }
+      ],
+      "pairDistanceCalls": 780,
+      "matrixFloat32Bytes": 6400,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 6408
+    },
+    {
+      "n": 6400,
+      "id": "seed-1",
+      "changedRecords": 38,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 40,
+          "pairDistanceCalls": 780,
+          "matrixFloat32Bytes": 6400
+        }
+      ],
+      "pairDistanceCalls": 780,
+      "matrixFloat32Bytes": 6400,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 6408
+    },
+    {
+      "n": 6400,
+      "id": "seed-2",
+      "changedRecords": 40,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 40,
+          "pairDistanceCalls": 780,
+          "matrixFloat32Bytes": 6400
+        },
+        {
+          "level": 1,
+          "neighbors": 23,
+          "pairDistanceCalls": 253,
+          "matrixFloat32Bytes": 2116
+        }
+      ],
+      "pairDistanceCalls": 1033,
+      "matrixFloat32Bytes": 8516,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 6408
+    },
+    {
+      "n": 6400,
+      "id": "seed-3",
+      "changedRecords": 38,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 36,
+          "pairDistanceCalls": 630,
+          "matrixFloat32Bytes": 5184
+        },
+        {
+          "level": 1,
+          "neighbors": 17,
+          "pairDistanceCalls": 136,
+          "matrixFloat32Bytes": 1156
+        }
+      ],
+      "pairDistanceCalls": 766,
+      "matrixFloat32Bytes": 6340,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 6408
+    },
+    {
+      "n": 6400,
+      "id": "seed-3164",
+      "changedRecords": 104,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 40,
+          "pairDistanceCalls": 780,
+          "matrixFloat32Bytes": 6400
+        },
+        {
+          "level": 1,
+          "neighbors": 22,
+          "pairDistanceCalls": 231,
+          "matrixFloat32Bytes": 1936
+        },
+        {
+          "level": 2,
+          "neighbors": 23,
+          "pairDistanceCalls": 253,
+          "matrixFloat32Bytes": 2116
+        },
+        {
+          "level": 3,
+          "neighbors": 21,
+          "pairDistanceCalls": 210,
+          "matrixFloat32Bytes": 1764
+        },
+        {
+          "level": 4,
+          "neighbors": 19,
+          "pairDistanceCalls": 171,
+          "matrixFloat32Bytes": 1444
+        },
+        {
+          "level": 5,
+          "neighbors": 20,
+          "pairDistanceCalls": 190,
+          "matrixFloat32Bytes": 1600
+        },
+        {
+          "level": 6,
+          "neighbors": 17,
+          "pairDistanceCalls": 136,
+          "matrixFloat32Bytes": 1156
+        },
+        {
+          "level": 7,
+          "neighbors": 9,
+          "pairDistanceCalls": 36,
+          "matrixFloat32Bytes": 324
+        }
+      ],
+      "pairDistanceCalls": 2007,
+      "matrixFloat32Bytes": 16740,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 6408
+    },
+    {
+      "n": 6400,
+      "id": "seed-3336",
+      "changedRecords": 106,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 47,
+          "pairDistanceCalls": 1081,
+          "matrixFloat32Bytes": 8836
+        },
+        {
+          "level": 1,
+          "neighbors": 23,
+          "pairDistanceCalls": 253,
+          "matrixFloat32Bytes": 2116
+        },
+        {
+          "level": 2,
+          "neighbors": 22,
+          "pairDistanceCalls": 231,
+          "matrixFloat32Bytes": 1936
+        },
+        {
+          "level": 3,
+          "neighbors": 21,
+          "pairDistanceCalls": 210,
+          "matrixFloat32Bytes": 1764
+        },
+        {
+          "level": 4,
+          "neighbors": 18,
+          "pairDistanceCalls": 153,
+          "matrixFloat32Bytes": 1296
+        },
+        {
+          "level": 5,
+          "neighbors": 20,
+          "pairDistanceCalls": 190,
+          "matrixFloat32Bytes": 1600
+        },
+        {
+          "level": 6,
+          "neighbors": 16,
+          "pairDistanceCalls": 120,
+          "matrixFloat32Bytes": 1024
+        },
+        {
+          "level": 7,
+          "neighbors": 8,
+          "pairDistanceCalls": 28,
+          "matrixFloat32Bytes": 256
+        }
+      ],
+      "pairDistanceCalls": 2266,
+      "matrixFloat32Bytes": 18828,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 6408
+    },
+    {
+      "n": 6400,
+      "id": "seed-4596",
+      "changedRecords": 97,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 45,
+          "pairDistanceCalls": 990,
+          "matrixFloat32Bytes": 8100
+        },
+        {
+          "level": 1,
+          "neighbors": 19,
+          "pairDistanceCalls": 171,
+          "matrixFloat32Bytes": 1444
+        },
+        {
+          "level": 2,
+          "neighbors": 20,
+          "pairDistanceCalls": 190,
+          "matrixFloat32Bytes": 1600
+        },
+        {
+          "level": 3,
+          "neighbors": 18,
+          "pairDistanceCalls": 153,
+          "matrixFloat32Bytes": 1296
+        },
+        {
+          "level": 4,
+          "neighbors": 18,
+          "pairDistanceCalls": 153,
+          "matrixFloat32Bytes": 1296
+        },
+        {
+          "level": 5,
+          "neighbors": 18,
+          "pairDistanceCalls": 153,
+          "matrixFloat32Bytes": 1296
+        },
+        {
+          "level": 6,
+          "neighbors": 15,
+          "pairDistanceCalls": 105,
+          "matrixFloat32Bytes": 900
+        },
+        {
+          "level": 7,
+          "neighbors": 7,
+          "pairDistanceCalls": 21,
+          "matrixFloat32Bytes": 196
+        },
+        {
+          "level": 8,
+          "neighbors": 1,
+          "pairDistanceCalls": 0,
+          "matrixFloat32Bytes": 0
+        }
+      ],
+      "pairDistanceCalls": 1936,
+      "matrixFloat32Bytes": 16128,
+      "globalChanged": false,
+      "registryScanLowerBoundIfEntryReplacement": 6408
+    },
+    {
+      "n": 6400,
+      "id": "seed-2709",
+      "changedRecords": 93,
+      "levels": [
+        {
+          "level": 0,
+          "neighbors": 40,
+          "pairDistanceCalls": 780,
+          "matrixFloat32Bytes": 6400
+        },
+        {
+          "level": 1,
+          "neighbors": 18,
+          "pairDistanceCalls": 153,
+          "matrixFloat32Bytes": 1296
+        },
+        {
+          "level": 2,
+          "neighbors": 19,
+          "pairDistanceCalls": 171,
+          "matrixFloat32Bytes": 1444
+        },
+        {
+          "level": 3,
+          "neighbors": 18,
+          "pairDistanceCalls": 153,
+          "matrixFloat32Bytes": 1296
+        },
+        {
+          "level": 4,
+          "neighbors": 21,
+          "pairDistanceCalls": 210,
+          "matrixFloat32Bytes": 1764
+        },
+        {
+          "level": 5,
+          "neighbors": 16,
+          "pairDistanceCalls": 120,
+          "matrixFloat32Bytes": 1024
+        },
+        {
+          "level": 6,
+          "neighbors": 13,
+          "pairDistanceCalls": 78,
+          "matrixFloat32Bytes": 676
+        },
+        {
+          "level": 7,
+          "neighbors": 6,
+          "pairDistanceCalls": 15,
+          "matrixFloat32Bytes": 144
+        },
+        {
+          "level": 8,
+          "neighbors": 0,
+          "pairDistanceCalls": 0,
+          "matrixFloat32Bytes": 0
+        }
+      ],
+      "pairDistanceCalls": 1680,
+      "matrixFloat32Bytes": 14044,
+      "globalChanged": true,
+      "registryScanLowerBoundIfEntryReplacement": 6408
+    }
+  ]
+}

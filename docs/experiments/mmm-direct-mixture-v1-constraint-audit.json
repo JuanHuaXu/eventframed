@@ -1,0 +1,43 @@
+{
+  "order": [
+    "ridgeAll",
+    "ridge64",
+    "currentCovAll",
+    "currentCov64"
+  ],
+  "stats": [
+    {
+      "forecasts": 172032,
+      "clipped": 87725,
+      "sameAsShareWithin1e12": 82248,
+      "sameAfterBothClipped": 81879,
+      "absoluteProposalDifference": 0.16936394108806122,
+      "absoluteForecastDifference": 0.004051885511468957
+    },
+    {
+      "forecasts": 172032,
+      "clipped": 86149,
+      "sameAsShareWithin1e12": 83284,
+      "sameAfterBothClipped": 82915,
+      "absoluteProposalDifference": 0.1105106324238089,
+      "absoluteForecastDifference": 0.0025483617956758306
+    },
+    {
+      "forecasts": 172032,
+      "clipped": 88016,
+      "sameAsShareWithin1e12": 82533,
+      "sameAfterBothClipped": 82164,
+      "absoluteProposalDifference": 0.1684788234778047,
+      "absoluteForecastDifference": 0.004008413706855022
+    },
+    {
+      "forecasts": 172032,
+      "clipped": 86650,
+      "sameAsShareWithin1e12": 83726,
+      "sameAfterBothClipped": 83357,
+      "absoluteProposalDifference": 0.10953904489726844,
+      "absoluteForecastDifference": 0.0024825282960304236
+    }
+  ],
+  "limitations": "Consumed-data deterministic saturation diagnosis, not a causal performance experiment."
+}

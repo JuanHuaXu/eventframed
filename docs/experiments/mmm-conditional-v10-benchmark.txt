@@ -1,0 +1,15 @@
+Local Apple M4, darwin/arm64, Go1.27.0; research microbenchmarks only.
+
+go test ./internal/observationlearners -run '^$' -bench '^BenchmarkConditionalLookup$' -benchmem -count=2
+BenchmarkConditionalLookup-10  157485907  7.358 ns/op  0 B/op  0 allocs/op
+BenchmarkConditionalLookup-10  173611874  7.250 ns/op  0 B/op  0 allocs/op
+
+Lookup retains the returned probability in a package-level sink. An earlier
+discarded-return measurement was not retained as a forecast-performance claim.
+
+Build portion of the preceding two-repeat combined benchmark:
+BenchmarkConditionalBuild-10  21198  55817 ns/op  319489 B/op  1 allocs/op
+BenchmarkConditionalBuild-10  21463  56057 ns/op  319488 B/op  1 allocs/op
+
+Approximately56 microseconds to build one fixed-nine-bit table, ~312 KiB.
+No end-to-end serving, tail-latency, arbitrary-dimension or contention claim.

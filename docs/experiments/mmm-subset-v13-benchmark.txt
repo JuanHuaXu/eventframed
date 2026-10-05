@@ -1,0 +1,11 @@
+Apple M4, darwin/arm64. Full64-label subset fit plus conditional-table build.
+Returned model retained in a package-level sink. No concurrent workload.
+
+go test ./internal/observationlearners -run '^$' -bench '^BenchmarkSubsetBuild$' -benchmem -count=2
+BenchmarkSubsetBuild-10  198  5946805 ns/op  651265 B/op  3 allocs/op
+BenchmarkSubsetBuild-10  200  5897128 ns/op  651265 B/op  3 allocs/op
+PASS
+
+About5.9ms and636KiB per refit. Not serving latency, not worker-under-load
+evidence. Do not compare directly with v10's table-only build: v13 also computes
+all conditional-label evidence, model weights and full-input predictions.

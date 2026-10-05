@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';import{checkCitationsV3}from'./scifact-provenance-v3.mjs';
+const queries=[{id:'1',text:'A claim'},{id:'2',text:'Other claim'}],rels=[{query:'1',document:'9',score:1},{query:'1',document:'8',score:1}],claims=[{id:1,claim:'A claim',cited_doc_ids:[8,9,9],evidence:{8:[{label:'SUPPORT'}]}}];
+const result=checkCitationsV3(queries,rels,claims);assert.equal(result.citationRelationsWithEvidence,1);assert.equal(result.citationRelationsWithoutEvidence,1);assert.deepEqual(checkCitationsV3(queries,[...rels].reverse(),claims),result);
+const empty=structuredClone(claims);empty[0].evidence={};assert.equal(checkCitationsV3(queries,rels,empty).emptyEvidenceClaims,1);
+const cases=[(q,r,c)=>q[0].text='different',(q,r,c)=>r[0].document='7',(q,r,c)=>r.push({...r[0]}),(q,r,c)=>r[0].score=0,(q,r,c)=>r[0].query='2',(q,r,c)=>c.push({...c[0]}),(q,r,c)=>c[0].id=3,(q,r,c)=>c[0].cited_doc_ids=[8],(q,r,c)=>c[0].cited_doc_ids=[8,NaN],(q,r,c)=>q.push({...q[0]})];
+for(const mutate of cases){const[q,r,c]=structuredClone([queries,rels,claims]);mutate(q,r,c);assert.throws(()=>checkCitationsV3(q,r,c))}console.log('SciFact citation provenance: exact/order/duplicate-source-citation/empty-evidence controls and ten corruption rejections PASS');

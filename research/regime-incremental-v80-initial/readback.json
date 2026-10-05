@@ -1,0 +1,2001 @@
+{
+  "time": "2026-10-05T06:27:19.797Z",
+  "sourceSHA256": "f9bd121966be88b1195601448a920ed01de53846ae9b314b05a0b9dc3aaeeb74",
+  "benchmarkSHA256": "b06ce795e51d0cc5754eecf9c806d8916aef7ad4e6678c76501e96685915bd90",
+  "auditSHA256": "c4bdac0c46029bbbc7f9fdf28ccc8f2b140ffc57e814896b7283810fb3e20004",
+  "audit": {
+    "Configurations": 108,
+    "Checks": 143038,
+    "Publications": 2474,
+    "Queries": 2341,
+    "Abstentions": 1,
+    "MaxOracle": 1.2434497875801753e-14,
+    "MaxTower": 3.1086244689504383e-15,
+    "MaxReceipt": 1.3322676295501878e-15,
+    "Full64": true,
+    "RepruningChanged": true,
+    "WholeGoalValidation": false,
+    "IncrementalChecks": 10364,
+    "CacheChecks": 214,
+    "MaxReference": 0,
+    "FullWorkload": true,
+    "OldReplay": true
+  },
+  "groups": {
+    "researchregimeledger": {
+      "BenchmarkLedgerOperations/M2/T32/PendingSecond": [
+        {
+          "iterations": 68,
+          "nsPerOp": 1577966,
+          "totalAllocatedBytesPerOp": 9987426,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 70,
+          "nsPerOp": 1630776,
+          "totalAllocatedBytesPerOp": 9987427,
+          "allocationsPerOp": 716
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T32/PendingFirst": [
+        {
+          "iterations": 76,
+          "nsPerOp": 1637510,
+          "totalAllocatedBytesPerOp": 9987443,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 72,
+          "nsPerOp": 1698447,
+          "totalAllocatedBytesPerOp": 9987439,
+          "allocationsPerOp": 716
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T32/Reveal": [
+        {
+          "iterations": 132,
+          "nsPerOp": 917462,
+          "totalAllocatedBytesPerOp": 5116224,
+          "allocationsPerOp": 383
+        },
+        {
+          "iterations": 130,
+          "nsPerOp": 917308,
+          "totalAllocatedBytesPerOp": 5117668,
+          "allocationsPerOp": 383
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T32/Issue": [
+        {
+          "iterations": 124,
+          "nsPerOp": 968530,
+          "totalAllocatedBytesPerOp": 5389329,
+          "allocationsPerOp": 433
+        },
+        {
+          "iterations": 123,
+          "nsPerOp": 967057,
+          "totalAllocatedBytesPerOp": 5404883,
+          "allocationsPerOp": 436
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/PendingSecondAbstention": [
+        {
+          "iterations": 74,
+          "nsPerOp": 1648641,
+          "totalAllocatedBytesPerOp": 10097534,
+          "allocationsPerOp": 709
+        },
+        {
+          "iterations": 67,
+          "nsPerOp": 1694366,
+          "totalAllocatedBytesPerOp": 10097536,
+          "allocationsPerOp": 709
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/PendingFirst": [
+        {
+          "iterations": 34,
+          "nsPerOp": 3321527,
+          "totalAllocatedBytesPerOp": 20196264,
+          "allocationsPerOp": 1422
+        },
+        {
+          "iterations": 36,
+          "nsPerOp": 3449370,
+          "totalAllocatedBytesPerOp": 20196232,
+          "allocationsPerOp": 1422
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/Reveal": [
+        {
+          "iterations": 64,
+          "nsPerOp": 1844464,
+          "totalAllocatedBytesPerOp": 10369677,
+          "allocationsPerOp": 742
+        },
+        {
+          "iterations": 64,
+          "nsPerOp": 1848531,
+          "totalAllocatedBytesPerOp": 10363076,
+          "allocationsPerOp": 741
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/Issue": [
+        {
+          "iterations": 62,
+          "nsPerOp": 1896260,
+          "totalAllocatedBytesPerOp": 10662585,
+          "allocationsPerOp": 825
+        },
+        {
+          "iterations": 63,
+          "nsPerOp": 1893019,
+          "totalAllocatedBytesPerOp": 10666167,
+          "allocationsPerOp": 825
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/PendingSecond": [
+        {
+          "iterations": 54,
+          "nsPerOp": 2245744,
+          "totalAllocatedBytesPerOp": 9992495,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 54,
+          "nsPerOp": 2242135,
+          "totalAllocatedBytesPerOp": 9992501,
+          "allocationsPerOp": 716
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/PendingFirst": [
+        {
+          "iterations": 52,
+          "nsPerOp": 2228947,
+          "totalAllocatedBytesPerOp": 9992500,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 54,
+          "nsPerOp": 2238343,
+          "totalAllocatedBytesPerOp": 9992513,
+          "allocationsPerOp": 716
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/Reveal": [
+        {
+          "iterations": 91,
+          "nsPerOp": 1211807,
+          "totalAllocatedBytesPerOp": 5165960,
+          "allocationsPerOp": 385
+        },
+        {
+          "iterations": 92,
+          "nsPerOp": 1207375,
+          "totalAllocatedBytesPerOp": 5167854,
+          "allocationsPerOp": 385
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/Issue": [
+        {
+          "iterations": 94,
+          "nsPerOp": 1273196,
+          "totalAllocatedBytesPerOp": 5452039,
+          "allocationsPerOp": 438
+        },
+        {
+          "iterations": 96,
+          "nsPerOp": 1255589,
+          "totalAllocatedBytesPerOp": 5450481,
+          "allocationsPerOp": 438
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/PendingSecondAbstention": [
+        {
+          "iterations": 62,
+          "nsPerOp": 1914123,
+          "totalAllocatedBytesPerOp": 10097530,
+          "allocationsPerOp": 709
+        },
+        {
+          "iterations": 62,
+          "nsPerOp": 1903263,
+          "totalAllocatedBytesPerOp": 10097535,
+          "allocationsPerOp": 709
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/PendingFirst": [
+        {
+          "iterations": 28,
+          "nsPerOp": 4125522,
+          "totalAllocatedBytesPerOp": 20201300,
+          "allocationsPerOp": 1422
+        },
+        {
+          "iterations": 28,
+          "nsPerOp": 4156118,
+          "totalAllocatedBytesPerOp": 20201348,
+          "allocationsPerOp": 1423
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/Reveal": [
+        {
+          "iterations": 52,
+          "nsPerOp": 2234975,
+          "totalAllocatedBytesPerOp": 10371068,
+          "allocationsPerOp": 742
+        },
+        {
+          "iterations": 54,
+          "nsPerOp": 2252241,
+          "totalAllocatedBytesPerOp": 10371033,
+          "allocationsPerOp": 742
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/Issue": [
+        {
+          "iterations": 51,
+          "nsPerOp": 2310999,
+          "totalAllocatedBytesPerOp": 10749408,
+          "allocationsPerOp": 827
+        },
+        {
+          "iterations": 52,
+          "nsPerOp": 2300047,
+          "totalAllocatedBytesPerOp": 10749458,
+          "allocationsPerOp": 827
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/PendingSecond": [
+        {
+          "iterations": 49,
+          "nsPerOp": 2400179,
+          "totalAllocatedBytesPerOp": 9994562,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 49,
+          "nsPerOp": 2415696,
+          "totalAllocatedBytesPerOp": 9994564,
+          "allocationsPerOp": 716
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/PendingFirst": [
+        {
+          "iterations": 49,
+          "nsPerOp": 2408395,
+          "totalAllocatedBytesPerOp": 9994548,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 48,
+          "nsPerOp": 2404243,
+          "totalAllocatedBytesPerOp": 9994544,
+          "allocationsPerOp": 716
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/Reveal": [
+        {
+          "iterations": 87,
+          "nsPerOp": 1306329,
+          "totalAllocatedBytesPerOp": 5162121,
+          "allocationsPerOp": 385
+        },
+        {
+          "iterations": 85,
+          "nsPerOp": 1296507,
+          "totalAllocatedBytesPerOp": 5157993,
+          "allocationsPerOp": 384
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/Issue": [
+        {
+          "iterations": 92,
+          "nsPerOp": 1355604,
+          "totalAllocatedBytesPerOp": 5440695,
+          "allocationsPerOp": 436
+        },
+        {
+          "iterations": 84,
+          "nsPerOp": 1349999,
+          "totalAllocatedBytesPerOp": 5442642,
+          "allocationsPerOp": 437
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/PendingSecondAbstention": [
+        {
+          "iterations": 61,
+          "nsPerOp": 1992777,
+          "totalAllocatedBytesPerOp": 10097540,
+          "allocationsPerOp": 709
+        },
+        {
+          "iterations": 61,
+          "nsPerOp": 1999775,
+          "totalAllocatedBytesPerOp": 10097538,
+          "allocationsPerOp": 709
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/PendingFirst": [
+        {
+          "iterations": 26,
+          "nsPerOp": 4370391,
+          "totalAllocatedBytesPerOp": 20203353,
+          "allocationsPerOp": 1422
+        },
+        {
+          "iterations": 27,
+          "nsPerOp": 4379332,
+          "totalAllocatedBytesPerOp": 20203342,
+          "allocationsPerOp": 1422
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/Reveal": [
+        {
+          "iterations": 50,
+          "nsPerOp": 2387218,
+          "totalAllocatedBytesPerOp": 10453504,
+          "allocationsPerOp": 743
+        },
+        {
+          "iterations": 50,
+          "nsPerOp": 2433142,
+          "totalAllocatedBytesPerOp": 10401672,
+          "allocationsPerOp": 738
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/Issue": [
+        {
+          "iterations": 49,
+          "nsPerOp": 2458378,
+          "totalAllocatedBytesPerOp": 10749754,
+          "allocationsPerOp": 826
+        },
+        {
+          "iterations": 45,
+          "nsPerOp": 2442355,
+          "totalAllocatedBytesPerOp": 10743455,
+          "allocationsPerOp": 826
+        }
+      ],
+      "BenchmarkConstructor/M150": [
+        {
+          "iterations": 2262,
+          "nsPerOp": 53290,
+          "totalAllocatedBytesPerOp": 20351,
+          "allocationsPerOp": 9
+        },
+        {
+          "iterations": 2307,
+          "nsPerOp": 54341,
+          "totalAllocatedBytesPerOp": 20354,
+          "allocationsPerOp": 9
+        }
+      ],
+      "BenchmarkConstructor/M200": [
+        {
+          "iterations": 1724,
+          "nsPerOp": 70769,
+          "totalAllocatedBytesPerOp": 21641,
+          "allocationsPerOp": 9
+        },
+        {
+          "iterations": 1735,
+          "nsPerOp": 70737,
+          "totalAllocatedBytesPerOp": 21637,
+          "allocationsPerOp": 9
+        }
+      ],
+      "BenchmarkFullFrontier/M150/T2400/PendingFirst": [
+        {
+          "iterations": 1,
+          "nsPerOp": 147575583,
+          "totalAllocatedBytesPerOp": 765671776,
+          "allocationsPerOp": 52863
+        },
+        {
+          "iterations": 1,
+          "nsPerOp": 146612875,
+          "totalAllocatedBytesPerOp": 765669312,
+          "allocationsPerOp": 52841
+        }
+      ],
+      "BenchmarkFullFrontier/M150/T2400/RevealFirst": [
+        {
+          "iterations": 2,
+          "nsPerOp": 74979980,
+          "totalAllocatedBytesPerOp": 398400744,
+          "allocationsPerOp": 26470
+        },
+        {
+          "iterations": 2,
+          "nsPerOp": 75006042,
+          "totalAllocatedBytesPerOp": 398400968,
+          "allocationsPerOp": 26472
+        }
+      ],
+      "BenchmarkFullFrontier/M150/T2400/Issue": [
+        {
+          "iterations": 2,
+          "nsPerOp": 72366271,
+          "totalAllocatedBytesPerOp": 400182096,
+          "allocationsPerOp": 28889
+        },
+        {
+          "iterations": 2,
+          "nsPerOp": 72611042,
+          "totalAllocatedBytesPerOp": 400181536,
+          "allocationsPerOp": 28884
+        }
+      ],
+      "BenchmarkFullFrontier/M200/T3200/PendingFirst": [
+        {
+          "iterations": 1,
+          "nsPerOp": 186130959,
+          "totalAllocatedBytesPerOp": 1020795776,
+          "allocationsPerOp": 70445
+        },
+        {
+          "iterations": 1,
+          "nsPerOp": 187091625,
+          "totalAllocatedBytesPerOp": 1020795888,
+          "allocationsPerOp": 70446
+        }
+      ],
+      "BenchmarkFullFrontier/M200/T3200/RevealFirst": [
+        {
+          "iterations": 1,
+          "nsPerOp": 101277500,
+          "totalAllocatedBytesPerOp": 530165064,
+          "allocationsPerOp": 35265
+        },
+        {
+          "iterations": 1,
+          "nsPerOp": 100949417,
+          "totalAllocatedBytesPerOp": 530165624,
+          "allocationsPerOp": 35270
+        }
+      ],
+      "BenchmarkFullFrontier/M200/T3200/Issue": [
+        {
+          "iterations": 2,
+          "nsPerOp": 98702521,
+          "totalAllocatedBytesPerOp": 532448624,
+          "allocationsPerOp": 38488
+        },
+        {
+          "iterations": 2,
+          "nsPerOp": 99804208,
+          "totalAllocatedBytesPerOp": 532448288,
+          "allocationsPerOp": 38485
+        }
+      ]
+    },
+    "researchregimeincremental": {
+      "BenchmarkLedgerOperations/M2/T32/PendingSecond": [
+        {
+          "iterations": 288,
+          "nsPerOp": 414073,
+          "totalAllocatedBytesPerOp": 369408,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 292,
+          "nsPerOp": 411925,
+          "totalAllocatedBytesPerOp": 369408,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T32/PendingFirst": [
+        {
+          "iterations": 294,
+          "nsPerOp": 412194,
+          "totalAllocatedBytesPerOp": 369408,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 292,
+          "nsPerOp": 411333,
+          "totalAllocatedBytesPerOp": 369428,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T32/Reveal": [
+        {
+          "iterations": 433,
+          "nsPerOp": 278647,
+          "totalAllocatedBytesPerOp": 218456,
+          "allocationsPerOp": 21
+        },
+        {
+          "iterations": 433,
+          "nsPerOp": 276677,
+          "totalAllocatedBytesPerOp": 218718,
+          "allocationsPerOp": 21
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T32/Issue": [
+        {
+          "iterations": 1131,
+          "nsPerOp": 104495,
+          "totalAllocatedBytesPerOp": 316631,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 1156,
+          "nsPerOp": 103633,
+          "totalAllocatedBytesPerOp": 316275,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/PendingSecondAbstention": [
+        {
+          "iterations": 291,
+          "nsPerOp": 408930,
+          "totalAllocatedBytesPerOp": 185456,
+          "allocationsPerOp": 13
+        },
+        {
+          "iterations": 294,
+          "nsPerOp": 409743,
+          "totalAllocatedBytesPerOp": 185456,
+          "allocationsPerOp": 13
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/PendingFirst": [
+        {
+          "iterations": 145,
+          "nsPerOp": 824214,
+          "totalAllocatedBytesPerOp": 370945,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 145,
+          "nsPerOp": 823794,
+          "totalAllocatedBytesPerOp": 370947,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/Reveal": [
+        {
+          "iterations": 214,
+          "nsPerOp": 559004,
+          "totalAllocatedBytesPerOp": 322530,
+          "allocationsPerOp": 22
+        },
+        {
+          "iterations": 216,
+          "nsPerOp": 556094,
+          "totalAllocatedBytesPerOp": 317494,
+          "allocationsPerOp": 22
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/Issue": [
+        {
+          "iterations": 682,
+          "nsPerOp": 176130,
+          "totalAllocatedBytesPerOp": 357460,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 681,
+          "nsPerOp": 174551,
+          "totalAllocatedBytesPerOp": 354678,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/PendingSecond": [
+        {
+          "iterations": 145,
+          "nsPerOp": 822905,
+          "totalAllocatedBytesPerOp": 376994,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 146,
+          "nsPerOp": 832566,
+          "totalAllocatedBytesPerOp": 376992,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/PendingFirst": [
+        {
+          "iterations": 141,
+          "nsPerOp": 891230,
+          "totalAllocatedBytesPerOp": 376992,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 144,
+          "nsPerOp": 823700,
+          "totalAllocatedBytesPerOp": 376992,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/Reveal": [
+        {
+          "iterations": 241,
+          "nsPerOp": 490319,
+          "totalAllocatedBytesPerOp": 232802,
+          "allocationsPerOp": 21
+        },
+        {
+          "iterations": 241,
+          "nsPerOp": 489571,
+          "totalAllocatedBytesPerOp": 228945,
+          "allocationsPerOp": 21
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/Issue": [
+        {
+          "iterations": 379,
+          "nsPerOp": 310323,
+          "totalAllocatedBytesPerOp": 328260,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 384,
+          "nsPerOp": 313762,
+          "totalAllocatedBytesPerOp": 326889,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/PendingSecondAbstention": [
+        {
+          "iterations": 261,
+          "nsPerOp": 459239,
+          "totalAllocatedBytesPerOp": 186720,
+          "allocationsPerOp": 13
+        },
+        {
+          "iterations": 261,
+          "nsPerOp": 460570,
+          "totalAllocatedBytesPerOp": 186720,
+          "allocationsPerOp": 13
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/PendingFirst": [
+        {
+          "iterations": 98,
+          "nsPerOp": 1231892,
+          "totalAllocatedBytesPerOp": 378529,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 94,
+          "nsPerOp": 1242961,
+          "totalAllocatedBytesPerOp": 378528,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/Reveal": [
+        {
+          "iterations": 156,
+          "nsPerOp": 768345,
+          "totalAllocatedBytesPerOp": 331211,
+          "allocationsPerOp": 23
+        },
+        {
+          "iterations": 157,
+          "nsPerOp": 769449,
+          "totalAllocatedBytesPerOp": 332439,
+          "allocationsPerOp": 23
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/Issue": [
+        {
+          "iterations": 312,
+          "nsPerOp": 386687,
+          "totalAllocatedBytesPerOp": 377668,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 309,
+          "nsPerOp": 384273,
+          "totalAllocatedBytesPerOp": 378839,
+          "allocationsPerOp": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/PendingSecond": [
+        {
+          "iterations": 123,
+          "nsPerOp": 957857,
+          "totalAllocatedBytesPerOp": 380064,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 124,
+          "nsPerOp": 960723,
+          "totalAllocatedBytesPerOp": 380064,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/PendingFirst": [
+        {
+          "iterations": 124,
+          "nsPerOp": 963116,
+          "totalAllocatedBytesPerOp": 380066,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 124,
+          "nsPerOp": 957120,
+          "totalAllocatedBytesPerOp": 380064,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/Reveal": [
+        {
+          "iterations": 213,
+          "nsPerOp": 561622,
+          "totalAllocatedBytesPerOp": 230256,
+          "allocationsPerOp": 21
+        },
+        {
+          "iterations": 214,
+          "nsPerOp": 560944,
+          "totalAllocatedBytesPerOp": 231664,
+          "allocationsPerOp": 21
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/Issue": [
+        {
+          "iterations": 306,
+          "nsPerOp": 381902,
+          "totalAllocatedBytesPerOp": 330693,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 310,
+          "nsPerOp": 385331,
+          "totalAllocatedBytesPerOp": 331517,
+          "allocationsPerOp": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/PendingSecondAbstention": [
+        {
+          "iterations": 250,
+          "nsPerOp": 477911,
+          "totalAllocatedBytesPerOp": 187232,
+          "allocationsPerOp": 13
+        },
+        {
+          "iterations": 252,
+          "nsPerOp": 477782,
+          "totalAllocatedBytesPerOp": 187232,
+          "allocationsPerOp": 13
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/PendingFirst": [
+        {
+          "iterations": 87,
+          "nsPerOp": 1370692,
+          "totalAllocatedBytesPerOp": 381601,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 87,
+          "nsPerOp": 1366299,
+          "totalAllocatedBytesPerOp": 381601,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/Reveal": [
+        {
+          "iterations": 144,
+          "nsPerOp": 833610,
+          "totalAllocatedBytesPerOp": 347199,
+          "allocationsPerOp": 23
+        },
+        {
+          "iterations": 142,
+          "nsPerOp": 835057,
+          "totalAllocatedBytesPerOp": 353613,
+          "allocationsPerOp": 24
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/Issue": [
+        {
+          "iterations": 259,
+          "nsPerOp": 457755,
+          "totalAllocatedBytesPerOp": 382839,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 260,
+          "nsPerOp": 461546,
+          "totalAllocatedBytesPerOp": 380523,
+          "allocationsPerOp": 29
+        }
+      ],
+      "BenchmarkConstructor/M150": [
+        {
+          "iterations": 2227,
+          "nsPerOp": 53479,
+          "totalAllocatedBytesPerOp": 20366,
+          "allocationsPerOp": 9
+        },
+        {
+          "iterations": 2310,
+          "nsPerOp": 53481,
+          "totalAllocatedBytesPerOp": 20371,
+          "allocationsPerOp": 9
+        }
+      ],
+      "BenchmarkConstructor/M200": [
+        {
+          "iterations": 1725,
+          "nsPerOp": 71273,
+          "totalAllocatedBytesPerOp": 21659,
+          "allocationsPerOp": 9
+        },
+        {
+          "iterations": 1645,
+          "nsPerOp": 71552,
+          "totalAllocatedBytesPerOp": 21665,
+          "allocationsPerOp": 9
+        }
+      ],
+      "BenchmarkFullFrontierOldFirst/M150/T2400": [
+        {
+          "iterations": 4,
+          "nsPerOp": 31274260,
+          "totalAllocatedBytesPerOp": 506528,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 4,
+          "nsPerOp": 30969604,
+          "totalAllocatedBytesPerOp": 506528,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkFullFrontierOldFirst/M200/T3200": [
+        {
+          "iterations": 3,
+          "nsPerOp": 41465472,
+          "totalAllocatedBytesPerOp": 542368,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 3,
+          "nsPerOp": 41182430,
+          "totalAllocatedBytesPerOp": 542368,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkFullFrontier/M150/T2400/PendingFirst": [
+        {
+          "iterations": 138,
+          "nsPerOp": 848559,
+          "totalAllocatedBytesPerOp": 506533,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 140,
+          "nsPerOp": 853974,
+          "totalAllocatedBytesPerOp": 506532,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkFullFrontier/M150/T2400/RevealFirst": [
+        {
+          "iterations": 19,
+          "nsPerOp": 6058842,
+          "totalAllocatedBytesPerOp": 3176076,
+          "allocationsPerOp": 23
+        },
+        {
+          "iterations": 18,
+          "nsPerOp": 5990109,
+          "totalAllocatedBytesPerOp": 3215120,
+          "allocationsPerOp": 23
+        }
+      ],
+      "BenchmarkFullFrontier/M150/T2400/Issue": [
+        {
+          "iterations": 18,
+          "nsPerOp": 5861537,
+          "totalAllocatedBytesPerOp": 4114355,
+          "allocationsPerOp": 31
+        },
+        {
+          "iterations": 19,
+          "nsPerOp": 5838496,
+          "totalAllocatedBytesPerOp": 3333902,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkFullFrontier/M200/T3200/PendingFirst": [
+        {
+          "iterations": 88,
+          "nsPerOp": 1405206,
+          "totalAllocatedBytesPerOp": 542369,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 90,
+          "nsPerOp": 1395131,
+          "totalAllocatedBytesPerOp": 542368,
+          "allocationsPerOp": 28
+        }
+      ],
+      "BenchmarkFullFrontier/M200/T3200/RevealFirst": [
+        {
+          "iterations": 13,
+          "nsPerOp": 8184567,
+          "totalAllocatedBytesPerOp": 3310320,
+          "allocationsPerOp": 21
+        },
+        {
+          "iterations": 13,
+          "nsPerOp": 8204577,
+          "totalAllocatedBytesPerOp": 4602172,
+          "allocationsPerOp": 25
+        }
+      ],
+      "BenchmarkFullFrontier/M200/T3200/Issue": [
+        {
+          "iterations": 14,
+          "nsPerOp": 7797387,
+          "totalAllocatedBytesPerOp": 4618639,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 14,
+          "nsPerOp": 7851417,
+          "totalAllocatedBytesPerOp": 4618639,
+          "allocationsPerOp": 29
+        }
+      ]
+    }
+  },
+  "matched": {
+    "BenchmarkLedgerOperations/M2/T32/PendingSecond": {
+      "control": [
+        {
+          "iterations": 68,
+          "nsPerOp": 1577966,
+          "totalAllocatedBytesPerOp": 9987426,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 70,
+          "nsPerOp": 1630776,
+          "totalAllocatedBytesPerOp": 9987427,
+          "allocationsPerOp": 716
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 288,
+          "nsPerOp": 414073,
+          "totalAllocatedBytesPerOp": 369408,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 292,
+          "nsPerOp": 411925,
+          "totalAllocatedBytesPerOp": 369408,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.2574211326432602,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M2/T32/PendingFirst": {
+      "control": [
+        {
+          "iterations": 76,
+          "nsPerOp": 1637510,
+          "totalAllocatedBytesPerOp": 9987443,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 72,
+          "nsPerOp": 1698447,
+          "totalAllocatedBytesPerOp": 9987439,
+          "allocationsPerOp": 716
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 294,
+          "nsPerOp": 412194,
+          "totalAllocatedBytesPerOp": 369408,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 292,
+          "nsPerOp": 411333,
+          "totalAllocatedBytesPerOp": 369428,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.24686379350812976,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M2/T32/Reveal": {
+      "control": [
+        {
+          "iterations": 132,
+          "nsPerOp": 917462,
+          "totalAllocatedBytesPerOp": 5116224,
+          "allocationsPerOp": 383
+        },
+        {
+          "iterations": 130,
+          "nsPerOp": 917308,
+          "totalAllocatedBytesPerOp": 5117668,
+          "allocationsPerOp": 383
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 433,
+          "nsPerOp": 278647,
+          "totalAllocatedBytesPerOp": 218456,
+          "allocationsPerOp": 21
+        },
+        {
+          "iterations": 433,
+          "nsPerOp": 276677,
+          "totalAllocatedBytesPerOp": 218718,
+          "allocationsPerOp": 21
+        }
+      ],
+      "meanTimeRatio": 0.30266681927435046,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M2/T32/Issue": {
+      "control": [
+        {
+          "iterations": 124,
+          "nsPerOp": 968530,
+          "totalAllocatedBytesPerOp": 5389329,
+          "allocationsPerOp": 433
+        },
+        {
+          "iterations": 123,
+          "nsPerOp": 967057,
+          "totalAllocatedBytesPerOp": 5404883,
+          "allocationsPerOp": 436
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 1131,
+          "nsPerOp": 104495,
+          "totalAllocatedBytesPerOp": 316631,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 1156,
+          "nsPerOp": 103633,
+          "totalAllocatedBytesPerOp": 316275,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.1075270705992549,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M2/T64/PendingSecondAbstention": {
+      "control": [
+        {
+          "iterations": 74,
+          "nsPerOp": 1648641,
+          "totalAllocatedBytesPerOp": 10097534,
+          "allocationsPerOp": 709
+        },
+        {
+          "iterations": 67,
+          "nsPerOp": 1694366,
+          "totalAllocatedBytesPerOp": 10097536,
+          "allocationsPerOp": 709
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 291,
+          "nsPerOp": 408930,
+          "totalAllocatedBytesPerOp": 185456,
+          "allocationsPerOp": 13
+        },
+        {
+          "iterations": 294,
+          "nsPerOp": 409743,
+          "totalAllocatedBytesPerOp": 185456,
+          "allocationsPerOp": 13
+        }
+      ],
+      "meanTimeRatio": 0.24489120124486727,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M2/T64/PendingFirst": {
+      "control": [
+        {
+          "iterations": 34,
+          "nsPerOp": 3321527,
+          "totalAllocatedBytesPerOp": 20196264,
+          "allocationsPerOp": 1422
+        },
+        {
+          "iterations": 36,
+          "nsPerOp": 3449370,
+          "totalAllocatedBytesPerOp": 20196232,
+          "allocationsPerOp": 1422
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 145,
+          "nsPerOp": 824214,
+          "totalAllocatedBytesPerOp": 370945,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 145,
+          "nsPerOp": 823794,
+          "totalAllocatedBytesPerOp": 370947,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.24339581594580453,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M2/T64/Reveal": {
+      "control": [
+        {
+          "iterations": 64,
+          "nsPerOp": 1844464,
+          "totalAllocatedBytesPerOp": 10369677,
+          "allocationsPerOp": 742
+        },
+        {
+          "iterations": 64,
+          "nsPerOp": 1848531,
+          "totalAllocatedBytesPerOp": 10363076,
+          "allocationsPerOp": 741
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 214,
+          "nsPerOp": 559004,
+          "totalAllocatedBytesPerOp": 322530,
+          "allocationsPerOp": 22
+        },
+        {
+          "iterations": 216,
+          "nsPerOp": 556094,
+          "totalAllocatedBytesPerOp": 317494,
+          "allocationsPerOp": 22
+        }
+      ],
+      "meanTimeRatio": 0.30194950169171636,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M2/T64/Issue": {
+      "control": [
+        {
+          "iterations": 62,
+          "nsPerOp": 1896260,
+          "totalAllocatedBytesPerOp": 10662585,
+          "allocationsPerOp": 825
+        },
+        {
+          "iterations": 63,
+          "nsPerOp": 1893019,
+          "totalAllocatedBytesPerOp": 10666167,
+          "allocationsPerOp": 825
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 682,
+          "nsPerOp": 176130,
+          "totalAllocatedBytesPerOp": 357460,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 681,
+          "nsPerOp": 174551,
+          "totalAllocatedBytesPerOp": 354678,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.09254557397330733,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M150/T32/PendingSecond": {
+      "control": [
+        {
+          "iterations": 54,
+          "nsPerOp": 2245744,
+          "totalAllocatedBytesPerOp": 9992495,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 54,
+          "nsPerOp": 2242135,
+          "totalAllocatedBytesPerOp": 9992501,
+          "allocationsPerOp": 716
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 145,
+          "nsPerOp": 822905,
+          "totalAllocatedBytesPerOp": 376994,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 146,
+          "nsPerOp": 832566,
+          "totalAllocatedBytesPerOp": 376992,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.3688760325311801,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M150/T32/PendingFirst": {
+      "control": [
+        {
+          "iterations": 52,
+          "nsPerOp": 2228947,
+          "totalAllocatedBytesPerOp": 9992500,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 54,
+          "nsPerOp": 2238343,
+          "totalAllocatedBytesPerOp": 9992513,
+          "allocationsPerOp": 716
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 141,
+          "nsPerOp": 891230,
+          "totalAllocatedBytesPerOp": 376992,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 144,
+          "nsPerOp": 823700,
+          "totalAllocatedBytesPerOp": 376992,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.3838859800908381,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M150/T32/Reveal": {
+      "control": [
+        {
+          "iterations": 91,
+          "nsPerOp": 1211807,
+          "totalAllocatedBytesPerOp": 5165960,
+          "allocationsPerOp": 385
+        },
+        {
+          "iterations": 92,
+          "nsPerOp": 1207375,
+          "totalAllocatedBytesPerOp": 5167854,
+          "allocationsPerOp": 385
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 241,
+          "nsPerOp": 490319,
+          "totalAllocatedBytesPerOp": 232802,
+          "allocationsPerOp": 21
+        },
+        {
+          "iterations": 241,
+          "nsPerOp": 489571,
+          "totalAllocatedBytesPerOp": 228945,
+          "allocationsPerOp": 21
+        }
+      ],
+      "meanTimeRatio": 0.4050501367817717,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M150/T32/Issue": {
+      "control": [
+        {
+          "iterations": 94,
+          "nsPerOp": 1273196,
+          "totalAllocatedBytesPerOp": 5452039,
+          "allocationsPerOp": 438
+        },
+        {
+          "iterations": 96,
+          "nsPerOp": 1255589,
+          "totalAllocatedBytesPerOp": 5450481,
+          "allocationsPerOp": 438
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 379,
+          "nsPerOp": 310323,
+          "totalAllocatedBytesPerOp": 328260,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 384,
+          "nsPerOp": 313762,
+          "totalAllocatedBytesPerOp": 326889,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.2467924319386583,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M150/T64/PendingSecondAbstention": {
+      "control": [
+        {
+          "iterations": 62,
+          "nsPerOp": 1914123,
+          "totalAllocatedBytesPerOp": 10097530,
+          "allocationsPerOp": 709
+        },
+        {
+          "iterations": 62,
+          "nsPerOp": 1903263,
+          "totalAllocatedBytesPerOp": 10097535,
+          "allocationsPerOp": 709
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 261,
+          "nsPerOp": 459239,
+          "totalAllocatedBytesPerOp": 186720,
+          "allocationsPerOp": 13
+        },
+        {
+          "iterations": 261,
+          "nsPerOp": 460570,
+          "totalAllocatedBytesPerOp": 186720,
+          "allocationsPerOp": 13
+        }
+      ],
+      "meanTimeRatio": 0.2409525785445852,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M150/T64/PendingFirst": {
+      "control": [
+        {
+          "iterations": 28,
+          "nsPerOp": 4125522,
+          "totalAllocatedBytesPerOp": 20201300,
+          "allocationsPerOp": 1422
+        },
+        {
+          "iterations": 28,
+          "nsPerOp": 4156118,
+          "totalAllocatedBytesPerOp": 20201348,
+          "allocationsPerOp": 1423
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 98,
+          "nsPerOp": 1231892,
+          "totalAllocatedBytesPerOp": 378529,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 94,
+          "nsPerOp": 1242961,
+          "totalAllocatedBytesPerOp": 378528,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.2988361000961162,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M150/T64/Reveal": {
+      "control": [
+        {
+          "iterations": 52,
+          "nsPerOp": 2234975,
+          "totalAllocatedBytesPerOp": 10371068,
+          "allocationsPerOp": 742
+        },
+        {
+          "iterations": 54,
+          "nsPerOp": 2252241,
+          "totalAllocatedBytesPerOp": 10371033,
+          "allocationsPerOp": 742
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 156,
+          "nsPerOp": 768345,
+          "totalAllocatedBytesPerOp": 331211,
+          "allocationsPerOp": 23
+        },
+        {
+          "iterations": 157,
+          "nsPerOp": 769449,
+          "totalAllocatedBytesPerOp": 332439,
+          "allocationsPerOp": 23
+        }
+      ],
+      "meanTimeRatio": 0.3427055884985256,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M150/T64/Issue": {
+      "control": [
+        {
+          "iterations": 51,
+          "nsPerOp": 2310999,
+          "totalAllocatedBytesPerOp": 10749408,
+          "allocationsPerOp": 827
+        },
+        {
+          "iterations": 52,
+          "nsPerOp": 2300047,
+          "totalAllocatedBytesPerOp": 10749458,
+          "allocationsPerOp": 827
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 312,
+          "nsPerOp": 386687,
+          "totalAllocatedBytesPerOp": 377668,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 309,
+          "nsPerOp": 384273,
+          "totalAllocatedBytesPerOp": 378839,
+          "allocationsPerOp": 29
+        }
+      ],
+      "meanTimeRatio": 0.16719850550178852,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M200/T32/PendingSecond": {
+      "control": [
+        {
+          "iterations": 49,
+          "nsPerOp": 2400179,
+          "totalAllocatedBytesPerOp": 9994562,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 49,
+          "nsPerOp": 2415696,
+          "totalAllocatedBytesPerOp": 9994564,
+          "allocationsPerOp": 716
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 123,
+          "nsPerOp": 957857,
+          "totalAllocatedBytesPerOp": 380064,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 124,
+          "nsPerOp": 960723,
+          "totalAllocatedBytesPerOp": 380064,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.398386586030576,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M200/T32/PendingFirst": {
+      "control": [
+        {
+          "iterations": 49,
+          "nsPerOp": 2408395,
+          "totalAllocatedBytesPerOp": 9994548,
+          "allocationsPerOp": 716
+        },
+        {
+          "iterations": 48,
+          "nsPerOp": 2404243,
+          "totalAllocatedBytesPerOp": 9994544,
+          "allocationsPerOp": 716
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 124,
+          "nsPerOp": 963116,
+          "totalAllocatedBytesPerOp": 380066,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 124,
+          "nsPerOp": 957120,
+          "totalAllocatedBytesPerOp": 380064,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.3989986365066311,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M200/T32/Reveal": {
+      "control": [
+        {
+          "iterations": 87,
+          "nsPerOp": 1306329,
+          "totalAllocatedBytesPerOp": 5162121,
+          "allocationsPerOp": 385
+        },
+        {
+          "iterations": 85,
+          "nsPerOp": 1296507,
+          "totalAllocatedBytesPerOp": 5157993,
+          "allocationsPerOp": 384
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 213,
+          "nsPerOp": 561622,
+          "totalAllocatedBytesPerOp": 230256,
+          "allocationsPerOp": 21
+        },
+        {
+          "iterations": 214,
+          "nsPerOp": 560944,
+          "totalAllocatedBytesPerOp": 231664,
+          "allocationsPerOp": 21
+        }
+      ],
+      "meanTimeRatio": 0.43128572065239607,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M200/T32/Issue": {
+      "control": [
+        {
+          "iterations": 92,
+          "nsPerOp": 1355604,
+          "totalAllocatedBytesPerOp": 5440695,
+          "allocationsPerOp": 436
+        },
+        {
+          "iterations": 84,
+          "nsPerOp": 1349999,
+          "totalAllocatedBytesPerOp": 5442642,
+          "allocationsPerOp": 437
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 306,
+          "nsPerOp": 381902,
+          "totalAllocatedBytesPerOp": 330693,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 310,
+          "nsPerOp": 385331,
+          "totalAllocatedBytesPerOp": 331517,
+          "allocationsPerOp": 29
+        }
+      ],
+      "meanTimeRatio": 0.28357190615178945,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M200/T64/PendingSecondAbstention": {
+      "control": [
+        {
+          "iterations": 61,
+          "nsPerOp": 1992777,
+          "totalAllocatedBytesPerOp": 10097540,
+          "allocationsPerOp": 709
+        },
+        {
+          "iterations": 61,
+          "nsPerOp": 1999775,
+          "totalAllocatedBytesPerOp": 10097538,
+          "allocationsPerOp": 709
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 250,
+          "nsPerOp": 477911,
+          "totalAllocatedBytesPerOp": 187232,
+          "allocationsPerOp": 13
+        },
+        {
+          "iterations": 252,
+          "nsPerOp": 477782,
+          "totalAllocatedBytesPerOp": 187232,
+          "allocationsPerOp": 13
+        }
+      ],
+      "meanTimeRatio": 0.2393689549941992,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M200/T64/PendingFirst": {
+      "control": [
+        {
+          "iterations": 26,
+          "nsPerOp": 4370391,
+          "totalAllocatedBytesPerOp": 20203353,
+          "allocationsPerOp": 1422
+        },
+        {
+          "iterations": 27,
+          "nsPerOp": 4379332,
+          "totalAllocatedBytesPerOp": 20203342,
+          "allocationsPerOp": 1422
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 87,
+          "nsPerOp": 1370692,
+          "totalAllocatedBytesPerOp": 381601,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 87,
+          "nsPerOp": 1366299,
+          "totalAllocatedBytesPerOp": 381601,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.31280887406378466,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M200/T64/Reveal": {
+      "control": [
+        {
+          "iterations": 50,
+          "nsPerOp": 2387218,
+          "totalAllocatedBytesPerOp": 10453504,
+          "allocationsPerOp": 743
+        },
+        {
+          "iterations": 50,
+          "nsPerOp": 2433142,
+          "totalAllocatedBytesPerOp": 10401672,
+          "allocationsPerOp": 738
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 144,
+          "nsPerOp": 833610,
+          "totalAllocatedBytesPerOp": 347199,
+          "allocationsPerOp": 23
+        },
+        {
+          "iterations": 142,
+          "nsPerOp": 835057,
+          "totalAllocatedBytesPerOp": 353613,
+          "allocationsPerOp": 24
+        }
+      ],
+      "meanTimeRatio": 0.34617061796214393,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkLedgerOperations/M200/T64/Issue": {
+      "control": [
+        {
+          "iterations": 49,
+          "nsPerOp": 2458378,
+          "totalAllocatedBytesPerOp": 10749754,
+          "allocationsPerOp": 826
+        },
+        {
+          "iterations": 45,
+          "nsPerOp": 2442355,
+          "totalAllocatedBytesPerOp": 10743455,
+          "allocationsPerOp": 826
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 259,
+          "nsPerOp": 457755,
+          "totalAllocatedBytesPerOp": 382839,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 260,
+          "nsPerOp": 461546,
+          "totalAllocatedBytesPerOp": 380523,
+          "allocationsPerOp": 29
+        }
+      ],
+      "meanTimeRatio": 0.18758438788646514,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkConstructor/M150": {
+      "control": [
+        {
+          "iterations": 2262,
+          "nsPerOp": 53290,
+          "totalAllocatedBytesPerOp": 20351,
+          "allocationsPerOp": 9
+        },
+        {
+          "iterations": 2307,
+          "nsPerOp": 54341,
+          "totalAllocatedBytesPerOp": 20354,
+          "allocationsPerOp": 9
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 2227,
+          "nsPerOp": 53479,
+          "totalAllocatedBytesPerOp": 20366,
+          "allocationsPerOp": 9
+        },
+        {
+          "iterations": 2310,
+          "nsPerOp": 53481,
+          "totalAllocatedBytesPerOp": 20371,
+          "allocationsPerOp": 9
+        }
+      ],
+      "meanTimeRatio": 0.9937657366372142,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkConstructor/M200": {
+      "control": [
+        {
+          "iterations": 1724,
+          "nsPerOp": 70769,
+          "totalAllocatedBytesPerOp": 21641,
+          "allocationsPerOp": 9
+        },
+        {
+          "iterations": 1735,
+          "nsPerOp": 70737,
+          "totalAllocatedBytesPerOp": 21637,
+          "allocationsPerOp": 9
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 1725,
+          "nsPerOp": 71273,
+          "totalAllocatedBytesPerOp": 21659,
+          "allocationsPerOp": 9
+        },
+        {
+          "iterations": 1645,
+          "nsPerOp": 71552,
+          "totalAllocatedBytesPerOp": 21665,
+          "allocationsPerOp": 9
+        }
+      ],
+      "meanTimeRatio": 1.0093211595268046,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkFullFrontier/M150/T2400/PendingFirst": {
+      "control": [
+        {
+          "iterations": 1,
+          "nsPerOp": 147575583,
+          "totalAllocatedBytesPerOp": 765671776,
+          "allocationsPerOp": 52863
+        },
+        {
+          "iterations": 1,
+          "nsPerOp": 146612875,
+          "totalAllocatedBytesPerOp": 765669312,
+          "allocationsPerOp": 52841
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 138,
+          "nsPerOp": 848559,
+          "totalAllocatedBytesPerOp": 506533,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 140,
+          "nsPerOp": 853974,
+          "totalAllocatedBytesPerOp": 506532,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.005787218885385368,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkFullFrontier/M150/T2400/RevealFirst": {
+      "control": [
+        {
+          "iterations": 2,
+          "nsPerOp": 74979980,
+          "totalAllocatedBytesPerOp": 398400744,
+          "allocationsPerOp": 26470
+        },
+        {
+          "iterations": 2,
+          "nsPerOp": 75006042,
+          "totalAllocatedBytesPerOp": 398400968,
+          "allocationsPerOp": 26472
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 19,
+          "nsPerOp": 6058842,
+          "totalAllocatedBytesPerOp": 3176076,
+          "allocationsPerOp": 23
+        },
+        {
+          "iterations": 18,
+          "nsPerOp": 5990109,
+          "totalAllocatedBytesPerOp": 3215120,
+          "allocationsPerOp": 23
+        }
+      ],
+      "meanTimeRatio": 0.08033382604146938,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkFullFrontier/M150/T2400/Issue": {
+      "control": [
+        {
+          "iterations": 2,
+          "nsPerOp": 72366271,
+          "totalAllocatedBytesPerOp": 400182096,
+          "allocationsPerOp": 28889
+        },
+        {
+          "iterations": 2,
+          "nsPerOp": 72611042,
+          "totalAllocatedBytesPerOp": 400181536,
+          "allocationsPerOp": 28884
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 18,
+          "nsPerOp": 5861537,
+          "totalAllocatedBytesPerOp": 4114355,
+          "allocationsPerOp": 31
+        },
+        {
+          "iterations": 19,
+          "nsPerOp": 5838496,
+          "totalAllocatedBytesPerOp": 3333902,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.0807025096402497,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkFullFrontier/M200/T3200/PendingFirst": {
+      "control": [
+        {
+          "iterations": 1,
+          "nsPerOp": 186130959,
+          "totalAllocatedBytesPerOp": 1020795776,
+          "allocationsPerOp": 70445
+        },
+        {
+          "iterations": 1,
+          "nsPerOp": 187091625,
+          "totalAllocatedBytesPerOp": 1020795888,
+          "allocationsPerOp": 70446
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 88,
+          "nsPerOp": 1405206,
+          "totalAllocatedBytesPerOp": 542369,
+          "allocationsPerOp": 28
+        },
+        {
+          "iterations": 90,
+          "nsPerOp": 1395131,
+          "totalAllocatedBytesPerOp": 542368,
+          "allocationsPerOp": 28
+        }
+      ],
+      "meanTimeRatio": 0.007503128481635505,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkFullFrontier/M200/T3200/RevealFirst": {
+      "control": [
+        {
+          "iterations": 1,
+          "nsPerOp": 101277500,
+          "totalAllocatedBytesPerOp": 530165064,
+          "allocationsPerOp": 35265
+        },
+        {
+          "iterations": 1,
+          "nsPerOp": 100949417,
+          "totalAllocatedBytesPerOp": 530165624,
+          "allocationsPerOp": 35270
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 13,
+          "nsPerOp": 8184567,
+          "totalAllocatedBytesPerOp": 3310320,
+          "allocationsPerOp": 21
+        },
+        {
+          "iterations": 13,
+          "nsPerOp": 8204577,
+          "totalAllocatedBytesPerOp": 4602172,
+          "allocationsPerOp": 25
+        }
+      ],
+      "meanTimeRatio": 0.08104333608567053,
+      "timingConfidenceInterval": null
+    },
+    "BenchmarkFullFrontier/M200/T3200/Issue": {
+      "control": [
+        {
+          "iterations": 2,
+          "nsPerOp": 98702521,
+          "totalAllocatedBytesPerOp": 532448624,
+          "allocationsPerOp": 38488
+        },
+        {
+          "iterations": 2,
+          "nsPerOp": 99804208,
+          "totalAllocatedBytesPerOp": 532448288,
+          "allocationsPerOp": 38485
+        }
+      ],
+      "candidate": [
+        {
+          "iterations": 14,
+          "nsPerOp": 7797387,
+          "totalAllocatedBytesPerOp": 4618639,
+          "allocationsPerOp": 29
+        },
+        {
+          "iterations": 14,
+          "nsPerOp": 7851417,
+          "totalAllocatedBytesPerOp": 4618639,
+          "allocationsPerOp": 29
+        }
+      ],
+      "meanTimeRatio": 0.07883261226877604,
+      "timingConfidenceInterval": null
+    }
+  },
+  "benchmarkRows": 132,
+  "measurementScope": "same serial command, reference then candidate; prepared equivalent laws; not randomized paired trials or loaded serving; fixtures excluded from timing; old-query candidate has no separately measured matching old reference",
+  "supportPayloadBytes": {
+    "M150T2400": 1381968,
+    "M200T3200": 1842768
+  },
+  "cachedComponentPayloadBytes": 233856,
+  "resourceScope": "type-size payload only; not live heap, peak/RSS, serialized fingerprint or whole allowed-maximum memory bound",
+  "scientificQualityRescueEstablished": false,
+  "equalTotalCostSuperiorityEstablished": false,
+  "loadedServingEstablished": false,
+  "wholeMemoryLimitCertified": false,
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ]
+}

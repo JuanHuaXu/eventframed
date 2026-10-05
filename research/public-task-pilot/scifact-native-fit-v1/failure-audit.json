@@ -1,0 +1,48 @@
+{
+  "time": "2026-10-04T11:27:24.267Z",
+  "manifestSHA256": "8173c967c308a8f395ffdb0970e750dbc3fb12daec95d0382037896122304295",
+  "nativeManifestSHA256": "188cba84e28781ccfc11185d842beb3dc5d4d0ea00b32beec29783e9eb67d36a",
+  "traceSHA256": "dbc1b4bdf2f98a914a6b3c67ed9544f73350bec792691d4238cd5d443a096b5a",
+  "daemonLogSHA256": "1f379beced32a61c0355eceae027a492656a6391c4376040291be91c8f356478",
+  "preservedOwnedStore": {
+    "path": "research/public-task-pilot/nativefit-v1/store.libravdb",
+    "bytes": 67731271,
+    "sha256": "87437f9c30753ce13568431cf88dc6a7e318fdbfa8d7dbed7b1388b95adbd733",
+    "recoveryOrCompletenessNotEstablished": true
+  },
+  "sources": 30,
+  "completeTestDependencyClosure": true,
+  "commands": 4,
+  "allCommandsTerminal": true,
+  "raceRoots": 2,
+  "executionsPerRoot": 3,
+  "successfulImports": 4250,
+  "attemptedImports": 4251,
+  "requiredImports": 5183,
+  "fitQueriesRequired": 351,
+  "fitPredictions": 0,
+  "calibrationPredictions": 0,
+  "confirmationPredictions": 0,
+  "evaluatorLabelsRead": false,
+  "partialCorpusNotScored": true,
+  "cost": {
+    "sumAttemptedImportRPCNS": 376139432387,
+    "wholeOwnedProcessMS": 395541,
+    "sampledDaemonPeakRSSKiB": 2098608
+  },
+  "confirmed": [
+    "full-corpus fit diagnostic failed",
+    "sampled daemon RSS exceeded fixed2GiB ceiling",
+    "native DirtyJournal.Drain panic present",
+    "client socket became unavailable"
+  ],
+  "needsInvestigation": [
+    "whether dirty-journal panic preceded or followed monitor-triggered shutdown",
+    "native memory growth attribution and complete offline import recovery"
+  ],
+  "rootCauseNotProven": true,
+  "weeklyUsage": 22,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE",
+  "scriptSHA256": "fcddb4222ad2ec318035227e0c49c9f414ff641550f75fd77ecdab0dc8ae07c3"
+}

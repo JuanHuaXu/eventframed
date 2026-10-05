@@ -1,0 +1,29 @@
+{
+  "allArmsBitwiseEqual": 2160,
+  "modelArmsBitwiseEqual": 1920,
+  "populationsIdentical": 40,
+  "excludedFields": [
+    "Costs",
+    "Breakdown"
+  ],
+  "compared": "every other serialized arm field including clean/noisy issue laws, values, choices, requests, receipts, snapshots and metrics",
+  "priorIndependentReplayVerified": true,
+  "priorCompletedSHA256": "a37e0bc49327d0325874f2270c18b72d5f1760ec07d175258011252ceb8a53d8",
+  "priorDataSHA256": "6dacd579f548e4ff13bb70d6041531e37fe7fb7e225119d78935909b931687d3",
+  "dataSHA256": "4817db25ced90ce87b39a6b2fbd347cb52c52a9652196ab24496afb4da34e8bc",
+  "transitiveIndependentIssuedPackets": 4608000,
+  "transitiveScalarIssuedComparisons": 9216000,
+  "directIndependentFullReplayThisStudy": false,
+  "smallAndFullJournalIndependentAuditsThisStudy": true,
+  "scientificQualityRescueEstablished": false,
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ],
+  "goal": "ACTIVE"
+}

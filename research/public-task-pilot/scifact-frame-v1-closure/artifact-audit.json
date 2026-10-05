@@ -1,0 +1,83 @@
+{
+  "time": "2026-10-04T10:33:47.041Z",
+  "sources": 168,
+  "originalSources": 21,
+  "originalIncompleteDependencyFreezePreserved": true,
+  "fullDependencyRepeatTerminal": true,
+  "commands": 5,
+  "actualRaceRoots": [
+    "TestPublicFrameV1DecodeAndBounds",
+    "TestPublicFrameV1StrictJSONIdentity",
+    "TestPublicFrameV1CoverageIdentityAndMetadata",
+    "TestPublicFrameV1AvailabilityOwnershipAndCancellation",
+    "TestPublicFrameV1RealObserveRecallContract",
+    "TestPublicFrameV1FullCorpus"
+  ],
+  "executionsPerRoot": 3,
+  "strictRegressionRepaired": true,
+  "corruptionRejections": 20,
+  "exactRepeatFrameSHA256": "a5837e4738186b271d9e1c03d8887347e06cba57b8b575f96aaae6d5b7b973fd",
+  "inventory": {
+    "documents": 5183,
+    "frames": 10869,
+    "maxFrames": 6,
+    "maxField": 2048,
+    "canonicalBytes": 7772270,
+    "repeatedRawBytes": 16997477,
+    "docCachePayload": 41982699,
+    "queryEntries": 831,
+    "totalCacheEntries": 11700,
+    "conservativeQueryPayload": 16169598,
+    "conservativeCachePayload": 58152297,
+    "existingCacheEntryCap": 12000,
+    "existingCachePayloadCap": 67108864,
+    "cacheEntriesFit": true,
+    "cachePayloadUpperEnvelopeFits": true,
+    "confidenceMeansTranscriptionNotTruth": true,
+    "unknownFieldsRemainUnknown": true,
+    "labelsNotRead": true,
+    "noQualityClaim": true
+  },
+  "costs": {
+    "FullCorpus": [
+      {
+        "ns": 52773278,
+        "bytes": 86094666,
+        "allocs": 442087
+      },
+      {
+        "ns": 51678736,
+        "bytes": 86095666,
+        "allocs": 442078
+      },
+      {
+        "ns": 51384569,
+        "bytes": 86090946,
+        "allocs": 442067
+      }
+    ],
+    "SerializeCorpus": [
+      {
+        "ns": 42580028,
+        "bytes": 131504778,
+        "allocs": 87103
+      },
+      {
+        "ns": 39962944,
+        "bytes": 131494112,
+        "allocs": 86974
+      },
+      {
+        "ns": 39793306,
+        "bytes": 131496029,
+        "allocs": 86979
+      }
+    ]
+  },
+  "frozenManifestSHA256": "7f2b13304c06eba68a6524bf06f26a309ec11499fa1c98213c294e3c6d186e3c",
+  "scriptSHA256": "06d4d93eec89de795302c33eaca8c060a0507e195ed402ef7d08b16a3f108cea",
+  "weeklyUsage": 21,
+  "noQualityExperiment": true,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

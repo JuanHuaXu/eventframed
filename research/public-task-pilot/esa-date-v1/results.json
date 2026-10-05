@@ -1,0 +1,874 @@
+{
+  "Model": "openai-compatible:nomic-embed-text:latest:d768:rp85230b608c3f:repr=eventframe-5w1h-v1",
+  "Hashes": {
+    "cmd/public-esa-date/main.go": "55730d33f3ab88666f125ca16665d83d1ac6c315e58359914bd904a687f3b32d",
+    "internal/embed/openai.go": "ab15a280cafc350ac7800d5f8a48118d8715a26916f25bf3eb7debfd5c2d1eef",
+    "internal/service/research_rank.go": "3d44b913a685ddb80d03845a3a8f78af5cfb6ed3e3825e1fcbcff9047942a942",
+    "research/public-task-pilot/ESA_DATE_PROTOCOL.md": "b3afe9d8d38bc7e4daa1752ca2740ff59b15539e28dbccc7badd964f87e65b7f",
+    "research/public-task-pilot/esa-date-v1/corpus.json": "21465258d9684d74c8844d02168ac41c01b99b96d5f805635a978f1e4a9e86a8",
+    "research/public-task-pilot/esa-date-v1/oracle.json": "abb21c4e9336c107b8df9095bdcc5818cf7a62cad87a3f356d5e633e094f4627",
+    "research/public-task-pilot/esa-date-v1/queries.json": "561135bb570407fa75bae64581d3d862aba16688dd22404fda8e32d9cdd03da5"
+  },
+  "Results": [
+    {
+      "Arm": "baseline",
+      "Case": "before",
+      "Original": "Which retained mission event occurred before 2004?",
+      "Effective": "Which retained mission event occurred before 2004?",
+      "Candidates": [
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8211409619457609,
+          "Law": {
+            "useful": 0.8211409619457609,
+            "not_useful": 0.17885903805423908
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8183716640951118,
+          "Law": {
+            "useful": 0.8183716640951118,
+            "not_useful": 0.18162833590488825
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8174387869038462,
+          "Law": {
+            "useful": 0.8174387869038462,
+            "not_useful": 0.1825612130961538
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8164884920003893,
+          "Law": {
+            "useful": 0.8164884920003892,
+            "not_useful": 0.1835115079996108
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16894833
+    },
+    {
+      "Arm": "baseline",
+      "Case": "after",
+      "Original": "Which retained mission event occurred after 2010?",
+      "Effective": "Which retained mission event occurred after 2010?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8177156004532264,
+          "Law": {
+            "useful": 0.8177156004532264,
+            "not_useful": 0.18228439954677356
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8154935074978515,
+          "Law": {
+            "useful": 0.8154935074978515,
+            "not_useful": 0.18450649250214846
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.814412752416459,
+          "Law": {
+            "useful": 0.814412752416459,
+            "not_useful": 0.18558724758354095
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8122695857534504,
+          "Law": {
+            "useful": 0.8122695857534504,
+            "not_useful": 0.18773041424654957
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 14449167
+    },
+    {
+      "Arm": "baseline",
+      "Case": "on-mars",
+      "Original": "Which mission launched on 2 June 2003?",
+      "Effective": "Which mission launched on 2 June 2003?",
+      "Candidates": [
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8311327141036248,
+          "Law": {
+            "useful": 0.8311327141036248,
+            "not_useful": 0.16886728589637523
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8218307089367899,
+          "Law": {
+            "useful": 0.8218307089367899,
+            "not_useful": 0.1781692910632101
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8200034249228131,
+          "Law": {
+            "useful": 0.8200034249228132,
+            "not_useful": 0.1799965750771868
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8138906841003664,
+          "Law": {
+            "useful": 0.8138906841003664,
+            "not_useful": 0.18610931589963364
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 14656625
+    },
+    {
+      "Arm": "baseline",
+      "Case": "on-venus",
+      "Original": "Which mission launched on 9 November 2005?",
+      "Effective": "Which mission launched on 9 November 2005?",
+      "Candidates": [
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8250113530157038,
+          "Law": {
+            "useful": 0.8250113530157037,
+            "not_useful": 0.17498864698429628
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8214429232602903,
+          "Law": {
+            "useful": 0.8214429232602902,
+            "not_useful": 0.17855707673970977
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8185146482186764,
+          "Law": {
+            "useful": 0.8185146482186764,
+            "not_useful": 0.18148535178132363
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8141053758695513,
+          "Law": {
+            "useful": 0.8141053758695512,
+            "not_useful": 0.18589462413044877
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 2,
+      "RecallNS": 17022125
+    },
+    {
+      "Arm": "baseline",
+      "Case": "exclude-launch",
+      "Original": "Which retained Rosetta event occurred on the other date, rather than 2 March 2004?",
+      "Effective": "Which retained Rosetta event occurred on the other date, rather than 2 March 2004?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8408665476434085,
+          "Law": {
+            "useful": 0.8408665476434085,
+            "not_useful": 0.1591334523565915
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8394603962233657,
+          "Law": {
+            "useful": 0.8394603962233657,
+            "not_useful": 0.16053960377663434
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.81393554880827,
+          "Law": {
+            "useful": 0.8139355488082701,
+            "not_useful": 0.18606445119172987
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8104508190692584,
+          "Law": {
+            "useful": 0.8104508190692584,
+            "not_useful": 0.18954918093074158
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 2,
+      "RecallNS": 19065083
+    },
+    {
+      "Arm": "baseline",
+      "Case": "exclude-arrival",
+      "Original": "Which retained Rosetta event occurred on the other date, rather than 6 August 2014?",
+      "Effective": "Which retained Rosetta event occurred on the other date, rather than 6 August 2014?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8400532281645143,
+          "Law": {
+            "useful": 0.8400532281645143,
+            "not_useful": 0.15994677183548567
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8365421315766651,
+          "Law": {
+            "useful": 0.8365421315766651,
+            "not_useful": 0.16345786842333487
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8069225862161955,
+          "Law": {
+            "useful": 0.8069225862161956,
+            "not_useful": 0.19307741378380439
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.80615165667151,
+          "Law": {
+            "useful": 0.8061516566715101,
+            "not_useful": 0.19384834332848988
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 2,
+      "RecallNS": 20352916
+    },
+    {
+      "Arm": "baseline",
+      "Case": "earlier",
+      "Original": "Which retained mission event occurred earlier than 2004?",
+      "Effective": "Which retained mission event occurred earlier than 2004?",
+      "Candidates": [
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8160683735794643,
+          "Law": {
+            "useful": 0.8160683735794642,
+            "not_useful": 0.18393162642053584
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8129031186067954,
+          "Law": {
+            "useful": 0.8129031186067954,
+            "not_useful": 0.18709688139320457
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8120801681161544,
+          "Law": {
+            "useful": 0.8120801681161544,
+            "not_useful": 0.18791983188384564
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8107818682103667,
+          "Law": {
+            "useful": 0.8107818682103667,
+            "not_useful": 0.18921813178963331
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16068458
+    },
+    {
+      "Arm": "baseline",
+      "Case": "later",
+      "Original": "Which retained mission event occurred later than 2010?",
+      "Effective": "Which retained mission event occurred later than 2010?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8201508343853856,
+          "Law": {
+            "useful": 0.8201508343853857,
+            "not_useful": 0.17984916561461428
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8178324953044946,
+          "Law": {
+            "useful": 0.8178324953044945,
+            "not_useful": 0.18216750469550547
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8162817808438066,
+          "Law": {
+            "useful": 0.8162817808438065,
+            "not_useful": 0.18371821915619346
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8142723529020238,
+          "Law": {
+            "useful": 0.8142723529020237,
+            "not_useful": 0.1857276470979763
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 18260667
+    },
+    {
+      "Arm": "baseline",
+      "Case": "absent-2020",
+      "Original": "Which mission event occurred in 2020, according to a retained record?",
+      "Effective": "Which mission event occurred in 2020, according to a retained record?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8222945397342786,
+          "Law": {
+            "useful": 0.8222945397342787,
+            "not_useful": 0.17770546026572132
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8134850077275715,
+          "Law": {
+            "useful": 0.8134850077275715,
+            "not_useful": 0.18651499227242851
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8131969537307856,
+          "Law": {
+            "useful": 0.8131969537307856,
+            "not_useful": 0.1868030462692144
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8088732957685278,
+          "Law": {
+            "useful": 0.8088732957685278,
+            "not_useful": 0.19112670423147216
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 0,
+      "RecallNS": 16694791
+    },
+    {
+      "Arm": "baseline",
+      "Case": "absent-cost",
+      "Original": "What was the exact cost of Rosetta's launch, according to a retained record?",
+      "Effective": "What was the exact cost of Rosetta's launch, according to a retained record?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8302688772130437,
+          "Law": {
+            "useful": 0.8302688772130437,
+            "not_useful": 0.16973112278695635
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8232544284466349,
+          "Law": {
+            "useful": 0.8232544284466349,
+            "not_useful": 0.17674557155336512
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.7998914048638377,
+          "Law": {
+            "useful": 0.7998914048638377,
+            "not_useful": 0.2001085951361623
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.7982581622764933,
+          "Law": {
+            "useful": 0.7982581622764933,
+            "not_useful": 0.20174183772350673
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 0,
+      "RecallNS": 18097083
+    },
+    {
+      "Arm": "focus",
+      "Case": "before",
+      "Original": "Which retained mission event occurred before 2004?",
+      "Effective": "Which retained mission event occurred before 2004?",
+      "Candidates": [
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8211409619457609,
+          "Law": {
+            "useful": 0.8211409619457609,
+            "not_useful": 0.17885903805423908
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8183716640951118,
+          "Law": {
+            "useful": 0.8183716640951118,
+            "not_useful": 0.18162833590488825
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8174387869038462,
+          "Law": {
+            "useful": 0.8174387869038462,
+            "not_useful": 0.1825612130961538
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8164884920003893,
+          "Law": {
+            "useful": 0.8164884920003892,
+            "not_useful": 0.1835115079996108
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16407458
+    },
+    {
+      "Arm": "focus",
+      "Case": "after",
+      "Original": "Which retained mission event occurred after 2010?",
+      "Effective": "Which retained mission event occurred after 2010?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8177156004532264,
+          "Law": {
+            "useful": 0.8177156004532264,
+            "not_useful": 0.18228439954677356
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8154935074978515,
+          "Law": {
+            "useful": 0.8154935074978515,
+            "not_useful": 0.18450649250214846
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.814412752416459,
+          "Law": {
+            "useful": 0.814412752416459,
+            "not_useful": 0.18558724758354095
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8122695857534504,
+          "Law": {
+            "useful": 0.8122695857534504,
+            "not_useful": 0.18773041424654957
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16136334
+    },
+    {
+      "Arm": "focus",
+      "Case": "on-mars",
+      "Original": "Which mission launched on 2 June 2003?",
+      "Effective": "Which mission launched on 2 June 2003?",
+      "Candidates": [
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8311327141036248,
+          "Law": {
+            "useful": 0.8311327141036248,
+            "not_useful": 0.16886728589637523
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8218307089367899,
+          "Law": {
+            "useful": 0.8218307089367899,
+            "not_useful": 0.1781692910632101
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8200034249228131,
+          "Law": {
+            "useful": 0.8200034249228132,
+            "not_useful": 0.1799965750771868
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8138906841003664,
+          "Law": {
+            "useful": 0.8138906841003664,
+            "not_useful": 0.18610931589963364
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 15994583
+    },
+    {
+      "Arm": "focus",
+      "Case": "on-venus",
+      "Original": "Which mission launched on 9 November 2005?",
+      "Effective": "Which mission launched on 9 November 2005?",
+      "Candidates": [
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8250113530157038,
+          "Law": {
+            "useful": 0.8250113530157037,
+            "not_useful": 0.17498864698429628
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8214429232602903,
+          "Law": {
+            "useful": 0.8214429232602902,
+            "not_useful": 0.17855707673970977
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8185146482186764,
+          "Law": {
+            "useful": 0.8185146482186764,
+            "not_useful": 0.18148535178132363
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8141053758695513,
+          "Law": {
+            "useful": 0.8141053758695512,
+            "not_useful": 0.18589462413044877
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 2,
+      "RecallNS": 15955416
+    },
+    {
+      "Arm": "focus",
+      "Case": "exclude-launch",
+      "Original": "Which retained Rosetta event occurred on the other date, rather than 2 March 2004?",
+      "Effective": "Which retained Rosetta event occurred on the other date?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8399930568109999,
+          "Law": {
+            "useful": 0.8399930568109999,
+            "not_useful": 0.1600069431890001
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.835132414031811,
+          "Law": {
+            "useful": 0.835132414031811,
+            "not_useful": 0.16486758596818896
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8064436933246323,
+          "Law": {
+            "useful": 0.8064436933246323,
+            "not_useful": 0.19355630667536772
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8061144843112753,
+          "Law": {
+            "useful": 0.8061144843112753,
+            "not_useful": 0.1938855156887247
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16367916
+    },
+    {
+      "Arm": "focus",
+      "Case": "exclude-arrival",
+      "Original": "Which retained Rosetta event occurred on the other date, rather than 6 August 2014?",
+      "Effective": "Which retained Rosetta event occurred on the other date?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8399930568109999,
+          "Law": {
+            "useful": 0.8399930568109999,
+            "not_useful": 0.1600069431890001
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.835132414031811,
+          "Law": {
+            "useful": 0.835132414031811,
+            "not_useful": 0.16486758596818896
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8064436933246323,
+          "Law": {
+            "useful": 0.8064436933246323,
+            "not_useful": 0.19355630667536772
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8061144843112753,
+          "Law": {
+            "useful": 0.8061144843112753,
+            "not_useful": 0.1938855156887247
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 2,
+      "RecallNS": 17747208
+    },
+    {
+      "Arm": "focus",
+      "Case": "earlier",
+      "Original": "Which retained mission event occurred earlier than 2004?",
+      "Effective": "Which retained mission event occurred earlier than 2004?",
+      "Candidates": [
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8160683735794643,
+          "Law": {
+            "useful": 0.8160683735794642,
+            "not_useful": 0.18393162642053584
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8129031186067954,
+          "Law": {
+            "useful": 0.8129031186067954,
+            "not_useful": 0.18709688139320457
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8120801681161544,
+          "Law": {
+            "useful": 0.8120801681161544,
+            "not_useful": 0.18791983188384564
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8107818682103667,
+          "Law": {
+            "useful": 0.8107818682103667,
+            "not_useful": 0.18921813178963331
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 13505708
+    },
+    {
+      "Arm": "focus",
+      "Case": "later",
+      "Original": "Which retained mission event occurred later than 2010?",
+      "Effective": "Which retained mission event occurred later than 2010?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8201508343853856,
+          "Law": {
+            "useful": 0.8201508343853857,
+            "not_useful": 0.17984916561461428
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8178324953044946,
+          "Law": {
+            "useful": 0.8178324953044945,
+            "not_useful": 0.18216750469550547
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8162817808438066,
+          "Law": {
+            "useful": 0.8162817808438065,
+            "not_useful": 0.18371821915619346
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8142723529020238,
+          "Law": {
+            "useful": 0.8142723529020237,
+            "not_useful": 0.1857276470979763
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 15929250
+    },
+    {
+      "Arm": "focus",
+      "Case": "absent-2020",
+      "Original": "Which mission event occurred in 2020, according to a retained record?",
+      "Effective": "Which mission event occurred in 2020, according to a retained record?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8222945397342786,
+          "Law": {
+            "useful": 0.8222945397342787,
+            "not_useful": 0.17770546026572132
+          }
+        },
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8134850077275715,
+          "Law": {
+            "useful": 0.8134850077275715,
+            "not_useful": 0.18651499227242851
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.8131969537307856,
+          "Law": {
+            "useful": 0.8131969537307856,
+            "not_useful": 0.1868030462692144
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.8088732957685278,
+          "Law": {
+            "useful": 0.8088732957685278,
+            "not_useful": 0.19112670423147216
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 0,
+      "RecallNS": 18089917
+    },
+    {
+      "Arm": "focus",
+      "Case": "absent-cost",
+      "Original": "What was the exact cost of Rosetta's launch, according to a retained record?",
+      "Effective": "What was the exact cost of Rosetta's launch, according to a retained record?",
+      "Candidates": [
+        {
+          "Fixture": "rosetta-launch",
+          "Score": 0.8302688772130437,
+          "Law": {
+            "useful": 0.8302688772130437,
+            "not_useful": 0.16973112278695635
+          }
+        },
+        {
+          "Fixture": "rosetta-arrival",
+          "Score": 0.8232544284466349,
+          "Law": {
+            "useful": 0.8232544284466349,
+            "not_useful": 0.17674557155336512
+          }
+        },
+        {
+          "Fixture": "mars-launch",
+          "Score": 0.7998914048638377,
+          "Law": {
+            "useful": 0.7998914048638377,
+            "not_useful": 0.2001085951361623
+          }
+        },
+        {
+          "Fixture": "venus-launch",
+          "Score": 0.7982581622764933,
+          "Law": {
+            "useful": 0.7982581622764933,
+            "not_useful": 0.20174183772350673
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 0,
+      "RecallNS": 15964708
+    }
+  ]
+}

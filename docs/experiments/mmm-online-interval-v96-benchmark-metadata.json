@@ -1,0 +1,14 @@
+{
+  "runtime": "go1.27.1 darwin/arm64",
+  "cpu": "Apple M4",
+  "gomaxprocs": 10,
+  "commands": [
+    "go test ./internal/observationlearners -run '^$' -bench '^(BenchmarkIntervalBrier|BenchmarkOnlineV96Stream)$' -benchmem -benchtime=1x -count=3",
+    "go test ./internal/observationlearners -run '^$' -bench '^BenchmarkIntervalBrier$' -benchmem -benchtime=500ms -count=3"
+  ],
+  "boundary": "Kernel operation is a whole 256-update lifetime. Full-stream operation includes all six arms, eight fit rounds, two views, scoring and hashing. Neither is a serving request.",
+  "sourceManifest": "mmm-online-interval-v96.json:Hashes",
+  "artifactSHA256": "a6ac4766c413a26c87d81129dd23e44d3e2b3c29d420321ee0c249931f7d7cfd",
+  "fullBenchmarkSHA256": "b4a307728fd7753a8791d3b439659c35667b886045718531e217cf4f60d748b0",
+  "kernelBenchmarkSHA256": "e5f8e28a7620290ea484a92ea1108f9fda0a45e6fc6b64ab071fa787ee7740b9"
+}

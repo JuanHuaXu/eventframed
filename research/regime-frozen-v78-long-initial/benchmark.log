@@ -1,0 +1,8 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchregimefrozencheck
+cpu: Apple M4
+BenchmarkFull64Conditional-10    	      86	   1357176 ns/op	10164783 B/op	     714 allocs/op
+BenchmarkFull64Conditional-10    	      86	   1368196 ns/op	10164762 B/op	     713 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregimefrozencheck	0.618s

@@ -1,0 +1,15 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkForestPredict  	172760576	         6.795 ns/op	       0 B/op	       0 allocs/op
+BenchmarkForestPredict  	186887881	         6.557 ns/op	       0 B/op	       0 allocs/op
+BenchmarkForestPredict  	184810039	         6.428 ns/op	       0 B/op	       0 allocs/op
+BenchmarkForestUpdate   	 5213972	       234.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkForestUpdate   	 5116552	       237.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkForestUpdate   	 5072727	       235.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAdaptiveWindow 	 9048393	       133.1 ns/op	      32 B/op	       0 allocs/op
+BenchmarkAdaptiveWindow 	 9033771	       133.5 ns/op	      32 B/op	       0 allocs/op
+BenchmarkAdaptiveWindow 	 9037746	       133.1 ns/op	      32 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	13.979s

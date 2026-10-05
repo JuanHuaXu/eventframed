@@ -1,0 +1,21 @@
+{
+  "allInverseSyntaxEqual": true,
+  "checks": [
+    "complete model inverse",
+    "collectMemoV49 complete function inverse",
+    "auditHybridV48 complete function inverse",
+    "complete fixture bridge inverse"
+  ],
+  "qualityClaim": false,
+  "sources": {
+    "cmd/research-scored-inverse/main.go": "53f7d25d58a7766761715cd0cb9cff6fbba9cdbab6ba216466f484160cb7509b",
+    "internal/researchdispersion/hybrid_fixture_v48_test.go": "d784771cc8f1bd6496eb4bf1634c25f2d38c57ed756f4ed4c3c1156b7886dfe4",
+    "internal/researchdispersion/scored_fixture_v51_generated_test.go": "317f17a6951da0cf44881f1aedca280d83fed7fe7bca65e14f88b0a3d79f577d",
+    "internal/researchswitch/compact_v48_generated.go": "26588553d1cb4da928e76e7677b8d262ffd14b7361d147c85b7d0a9ee8d17fe4",
+    "internal/researchswitch/hybrid_study_v48_test.go": "aa01358a3e208b3a7db8256588cd2bed0c1aa24533849e382520ced09d47d2b8",
+    "internal/researchswitch/memo_collector_v49_generated_test.go": "b81a557a65b89bd39ef6107fe4c9a986cc4cb40328aeb8a15467728cd6ba5970",
+    "internal/researchswitch/scored_audit_v51_generated_test.go": "2112ebbf7aa0acd06d0921723a044fb011381746deb3228178aec69339aaceb3",
+    "internal/researchswitch/scored_collector_v51_generated_test.go": "800d02c7ef4bb434e0b4e8f190dbe78a11b10f7d8221ad63bc1bfd49edc679f2",
+    "internal/researchswitch/scored_model_v51_generated.go": "30db47a29131d38be47dee4408fe98b4cc76601300b470deaff0462522305d3b"
+  }
+}

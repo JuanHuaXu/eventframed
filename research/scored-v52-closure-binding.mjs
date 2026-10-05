@@ -1,0 +1,6 @@
+// Supplement the gap; do not retroactively rewrite the experiment freeze.
+import fs from 'node:fs';import assert from 'node:assert/strict';import crypto from 'node:crypto';
+const root='research/scored-v52-diagnostic',prior='research/warm-search-v37/freeze.json',read=p=>JSON.parse(fs.readFileSync(p)),hash=b=>crypto.createHash('sha256').update(b).digest('hex'),a=read(root+'/closure-audit.json'),p=read(prior),f=read(root+'/freeze.json');
+assert.equal(a.allRepositoryInputsProspectivelyFrozen,false);assert.equal(a.missing.length,3);assert(Date.parse(p.time)<Date.parse(f.time));
+const bindings={};for(const n of a.missing){const current=hash(fs.readFileSync(n));assert.equal(current,p.files[n]);assert.equal(current,a.postRunMissingHashes[n]);bindings[n]={currentSHA256:current,priorRecordedSHA256:p.files[n]};}
+const out={time:new Date().toISOString(),closureAuditSHA256:hash(fs.readFileSync(root+'/closure-audit.json')),earlierFreeze:{path:prior,sha256:hash(fs.readFileSync(prior)),time:p.time},bindings,threeCurrentHashesMatchPriorDayRecord:true,currentExperimentFreezeComplete:false,retrospectiveSupplementOnly:true,requiresCompleteProspectiveClosureForFutureRuns:true};fs.writeFileSync(root+'/closure-binding.json',JSON.stringify(out,null,2)+'\n',{flag:'wx',mode:0o600});console.log(JSON.stringify(out));

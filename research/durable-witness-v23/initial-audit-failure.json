@@ -1,0 +1,6 @@
+{
+  "code": 1,
+  "stdout": "",
+  "stderr": "file://<LOCAL_ROOT>/research/durable-witness-v23-audit.mjs:11\nconst requireThat = (ok, why) => { if (!ok) throw Error(why); };\n                                                  ^\n\nError: collector correctness errors\n    at requireThat (file://<LOCAL_ROOT>/research/durable-witness-v23-audit.mjs:11:51)\n    at audit (file://<LOCAL_ROOT>/research/durable-witness-v23-audit.mjs:24:3)\n    at file://<LOCAL_ROOT>/research/durable-witness-v23-audit.mjs:148:20\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\nNode.js v26.8.1\n",
+  "raw_sha256": "957ba698f2141c0f02d57cafcb1b01c96750efbd3f247accd83681bc9133a37c"
+}

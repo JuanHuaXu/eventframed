@@ -1,0 +1,75 @@
+{
+  "time": "2026-10-05T05:59:28.974Z",
+  "stage": "latest-fork",
+  "checks": [
+    {
+      "name": "unit",
+      "args": [
+        "test",
+        "-v",
+        "-count=1",
+        "./internal/researchregimeledger",
+        "-timeout=20m"
+      ],
+      "exitCode": 0,
+      "seconds": 4.114772457999999,
+      "logSHA256": "714a603e453e8b87388136967c373828eca6b3c4ee29b1ab1530b2b4008c46ba"
+    },
+    {
+      "name": "race",
+      "args": [
+        "test",
+        "-race",
+        "-v",
+        "-count=1",
+        "./internal/researchregimeledger",
+        "-timeout=30m"
+      ],
+      "exitCode": 0,
+      "seconds": 34.455335958,
+      "logSHA256": "f8bf052128374fa8fbac8d7dd526c397e533d158d03667f8ecd524847cedc28a"
+    },
+    {
+      "name": "vet",
+      "args": [
+        "vet",
+        "./internal/researchregimeledger"
+      ],
+      "exitCode": 0,
+      "seconds": 0.08143737500000134,
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "benchmark",
+      "args": [
+        "test",
+        "-run=^$",
+        "-bench=Benchmark",
+        "-benchtime=100ms",
+        "-count=2",
+        "./internal/researchregimeledger",
+        "-timeout=20m"
+      ],
+      "exitCode": 1,
+      "seconds": 5.225844249999994,
+      "logSHA256": "124a39b0c57fa3002564c7af4a96b1472ba6de52b6c7fdcdf9e5af4cda549962"
+    }
+  ],
+  "allJobsTerminal": true,
+  "allChecksPass": false,
+  "sourceUnchanged": true,
+  "scientificQualityRescueEstablished": false,
+  "scalableApproximationCertified": false,
+  "wholeCohortTested": false,
+  "loadedServingEstablished": false,
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ],
+  "goal": "ACTIVE"
+}

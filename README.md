@@ -36,6 +36,13 @@ Structurally impossible candidates stop before prediction. Eligible audits use
 version-matched stored EventFrame vectors and a bounded exact-score cache; the
 response states whether prediction was evaluated.
 
+## Research Track
+
+This branch also preserves experimental research and negative findings. See the
+[research index](docs/research/README.md) for the prospective Adaptive accuracy
+reference, Full speed control, validation boundaries, and curated publication
+audit. These references do not change deployed daemon defaults.
+
 ## Architecture
 
 Optional [authenticated evidence admission and reversible working beliefs](docs/authenticated-evidence.md)

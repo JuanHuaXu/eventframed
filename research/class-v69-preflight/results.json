@@ -1,0 +1,36 @@
+{
+  "checks": 1289,
+  "maxDefect": 5.412337245047638e-16,
+  "counterexample": {
+    "before": {
+      "latentX": 0.16000000000000003,
+      "latentY": 0.125,
+      "classX": 0.32000000000000006,
+      "classY": 0
+    },
+    "after": {
+      "latentX": 0.08400000000000055,
+      "latentY": 0.125,
+      "classX": 0.32000000000000006,
+      "classY": 0
+    },
+    "refinement": "split each B latent atom into20 indistinguishable copies; preserve P(class,W)"
+  },
+  "randomJointCases": 256,
+  "latentOrderingNotRefinementInvariant": true,
+  "classGainRefinementInvariant": true,
+  "notEC2Implementation": true,
+  "adaptiveSubmodularityEstablished": false,
+  "qualityRescueEstablished": false,
+  "equalTotalCostEstablished": false,
+  "goals": [
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN",
+    "OPEN"
+  ],
+  "goal": "ACTIVE"
+}

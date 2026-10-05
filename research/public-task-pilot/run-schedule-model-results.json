@@ -1,0 +1,7033 @@
+{
+  "model": "append-only binary tiering; no latency prediction",
+  "batchSize": 32,
+  "batches": 128,
+  "baseGraphs": 8,
+  "pendingDeltaSlot": 1,
+  "growingTailRewriteEntries": 264160,
+  "scenarios": [
+    {
+      "slots": 7,
+      "maxMerge": 512,
+      "accepted": 1024,
+      "rewritten": 4096,
+      "maxBuilt": 512,
+      "runs": [
+        512,
+        512
+      ],
+      "stop": "merge size cap",
+      "batch": 32,
+      "events": [
+        {
+          "kind": "flush",
+          "batch": 1,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 2,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 2,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 3,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 4,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 5,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 6,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 6,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 7,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 8,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 9,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 10,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 10,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 11,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 12,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 13,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 14,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 14,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 15,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 16,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 17,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 18,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 18,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 19,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 20,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 21,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 22,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 22,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 23,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 24,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 25,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 26,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 26,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 27,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 28,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 29,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 30,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 30,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 31,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 32,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 512
+        }
+      ]
+    },
+    {
+      "slots": 7,
+      "maxMerge": 1024,
+      "accepted": 2048,
+      "rewritten": 10240,
+      "maxBuilt": 1024,
+      "runs": [
+        1024,
+        1024
+      ],
+      "stop": "merge size cap",
+      "batch": 64,
+      "events": [
+        {
+          "kind": "flush",
+          "batch": 1,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 2,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 2,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 3,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 4,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 5,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 6,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 6,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 7,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 8,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 9,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 10,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 10,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 11,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 12,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 13,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 14,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 14,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 15,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 16,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 17,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 18,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 18,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 19,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 20,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 21,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 22,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 22,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 23,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 24,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 25,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 26,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 26,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 27,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 28,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 29,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 30,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 30,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 31,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 32,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 33,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 34,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 34,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 35,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 36,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 37,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 38,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 38,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 39,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 40,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 41,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 42,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 42,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 43,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 44,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 45,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 46,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 46,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 47,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 48,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 49,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 50,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 50,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 51,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 52,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 53,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 54,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 54,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 55,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 56,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 57,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 58,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 58,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 59,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 60,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 61,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 62,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 62,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 63,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 64,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 1024
+        }
+      ]
+    },
+    {
+      "slots": 7,
+      "maxMerge": 2048,
+      "accepted": 4064,
+      "rewritten": 20544,
+      "maxBuilt": 2048,
+      "runs": [
+        32,
+        64,
+        128,
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "stop": "no flush slot",
+      "batch": 128,
+      "events": [
+        {
+          "kind": "flush",
+          "batch": 1,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 2,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 2,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 3,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 4,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 5,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 6,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 6,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 7,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 8,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 9,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 10,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 10,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 11,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 12,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 13,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 14,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 14,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 15,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 16,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 17,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 18,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 18,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 19,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 20,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 21,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 22,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 22,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 23,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 24,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 25,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 26,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 26,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 27,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 28,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 29,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 30,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 30,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 31,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 32,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 33,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 34,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 34,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 35,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 36,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 37,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 38,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 38,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 39,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 40,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 41,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 42,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 42,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 43,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 44,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 45,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 46,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 46,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 47,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 48,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 49,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 50,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 50,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 51,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 52,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 53,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 54,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 54,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 55,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 56,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 57,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 58,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 58,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 59,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 60,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 61,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 62,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 62,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 63,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 64,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 1024
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 2048
+        },
+        {
+          "kind": "flush",
+          "batch": 65,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 66,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 66,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 67,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 68,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 68,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 68,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 69,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 70,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 70,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 71,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 72,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 73,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 74,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 74,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 75,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 76,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 76,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 76,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 77,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 78,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 78,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 79,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 80,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 81,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 82,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 82,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 83,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 84,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 84,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 84,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 85,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 86,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 86,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 87,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 88,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 89,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 90,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 90,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 91,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 92,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 92,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 92,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 93,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 94,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 94,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 95,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 96,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 97,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 98,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 98,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 99,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 100,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 100,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 100,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 101,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 102,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 102,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 103,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 104,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 105,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 106,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 106,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 107,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 108,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 108,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 108,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 109,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 110,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 110,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 111,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 112,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 113,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 114,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 114,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 115,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 116,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 116,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 116,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 117,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 118,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 118,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 119,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 120,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 121,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 122,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 122,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 123,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 124,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 124,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 124,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 125,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 126,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 126,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 127,
+          "size": 32
+        }
+      ]
+    },
+    {
+      "slots": 7,
+      "maxMerge": null,
+      "accepted": 4064,
+      "rewritten": 20544,
+      "maxBuilt": 2048,
+      "runs": [
+        32,
+        64,
+        128,
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "stop": "no flush slot",
+      "batch": 128,
+      "events": [
+        {
+          "kind": "flush",
+          "batch": 1,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 2,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 2,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 3,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 4,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 5,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 6,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 6,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 7,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 8,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 9,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 10,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 10,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 11,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 12,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 13,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 14,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 14,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 15,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 16,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 17,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 18,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 18,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 19,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 20,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 21,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 22,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 22,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 23,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 24,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 25,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 26,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 26,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 27,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 28,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 29,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 30,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 30,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 31,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 32,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 33,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 34,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 34,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 35,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 36,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 37,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 38,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 38,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 39,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 40,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 41,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 42,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 42,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 43,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 44,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 45,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 46,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 46,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 47,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 48,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 49,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 50,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 50,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 51,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 52,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 53,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 54,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 54,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 55,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 56,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 57,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 58,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 58,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 59,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 60,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 61,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 62,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 62,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 63,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 64,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 1024
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 2048
+        },
+        {
+          "kind": "flush",
+          "batch": 65,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 66,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 66,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 67,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 68,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 68,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 68,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 69,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 70,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 70,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 71,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 72,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 73,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 74,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 74,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 75,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 76,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 76,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 76,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 77,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 78,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 78,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 79,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 80,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 81,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 82,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 82,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 83,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 84,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 84,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 84,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 85,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 86,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 86,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 87,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 88,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 89,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 90,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 90,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 91,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 92,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 92,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 92,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 93,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 94,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 94,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 95,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 96,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 97,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 98,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 98,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 99,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 100,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 100,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 100,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 101,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 102,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 102,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 103,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 104,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 105,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 106,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 106,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 107,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 108,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 108,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 108,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 109,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 110,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 110,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 111,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 112,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 113,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 114,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 114,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 115,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 116,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 116,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 116,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 117,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 118,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 118,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 119,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 120,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 121,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 122,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 122,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 123,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 124,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 124,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 124,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 125,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 126,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 126,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 127,
+          "size": 32
+        }
+      ]
+    },
+    {
+      "slots": 8,
+      "maxMerge": 512,
+      "accepted": 1024,
+      "rewritten": 4096,
+      "maxBuilt": 512,
+      "runs": [
+        512,
+        512
+      ],
+      "stop": "merge size cap",
+      "batch": 32,
+      "events": [
+        {
+          "kind": "flush",
+          "batch": 1,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 2,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 2,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 3,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 4,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 5,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 6,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 6,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 7,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 8,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 9,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 10,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 10,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 11,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 12,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 13,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 14,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 14,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 15,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 16,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 17,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 18,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 18,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 19,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 20,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 21,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 22,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 22,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 23,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 24,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 25,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 26,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 26,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 27,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 28,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 29,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 30,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 30,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 31,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 32,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 512
+        }
+      ]
+    },
+    {
+      "slots": 8,
+      "maxMerge": 1024,
+      "accepted": 2048,
+      "rewritten": 10240,
+      "maxBuilt": 1024,
+      "runs": [
+        1024,
+        1024
+      ],
+      "stop": "merge size cap",
+      "batch": 64,
+      "events": [
+        {
+          "kind": "flush",
+          "batch": 1,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 2,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 2,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 3,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 4,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 5,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 6,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 6,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 7,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 8,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 9,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 10,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 10,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 11,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 12,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 13,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 14,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 14,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 15,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 16,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 17,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 18,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 18,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 19,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 20,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 21,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 22,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 22,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 23,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 24,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 25,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 26,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 26,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 27,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 28,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 29,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 30,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 30,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 31,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 32,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 33,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 34,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 34,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 35,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 36,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 37,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 38,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 38,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 39,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 40,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 41,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 42,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 42,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 43,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 44,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 45,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 46,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 46,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 47,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 48,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 49,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 50,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 50,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 51,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 52,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 53,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 54,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 54,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 55,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 56,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 57,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 58,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 58,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 59,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 60,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 61,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 62,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 62,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 63,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 64,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 1024
+        }
+      ]
+    },
+    {
+      "slots": 8,
+      "maxMerge": 2048,
+      "accepted": 4096,
+      "rewritten": 24576,
+      "maxBuilt": 2048,
+      "runs": [
+        2048,
+        2048
+      ],
+      "stop": "merge size cap",
+      "batch": 128,
+      "events": [
+        {
+          "kind": "flush",
+          "batch": 1,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 2,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 2,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 3,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 4,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 5,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 6,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 6,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 7,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 8,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 9,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 10,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 10,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 11,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 12,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 13,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 14,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 14,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 15,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 16,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 17,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 18,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 18,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 19,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 20,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 21,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 22,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 22,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 23,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 24,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 25,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 26,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 26,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 27,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 28,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 29,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 30,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 30,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 31,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 32,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 33,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 34,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 34,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 35,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 36,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 37,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 38,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 38,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 39,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 40,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 41,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 42,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 42,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 43,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 44,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 45,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 46,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 46,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 47,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 48,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 49,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 50,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 50,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 51,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 52,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 53,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 54,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 54,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 55,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 56,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 57,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 58,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 58,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 59,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 60,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 61,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 62,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 62,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 63,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 64,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 1024
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 2048
+        },
+        {
+          "kind": "flush",
+          "batch": 65,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 66,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 66,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 67,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 68,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 68,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 68,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 69,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 70,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 70,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 71,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 72,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 73,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 74,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 74,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 75,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 76,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 76,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 76,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 77,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 78,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 78,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 79,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 80,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 81,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 82,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 82,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 83,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 84,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 84,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 84,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 85,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 86,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 86,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 87,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 88,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 89,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 90,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 90,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 91,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 92,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 92,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 92,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 93,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 94,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 94,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 95,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 96,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 97,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 98,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 98,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 99,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 100,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 100,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 100,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 101,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 102,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 102,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 103,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 104,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 105,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 106,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 106,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 107,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 108,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 108,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 108,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 109,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 110,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 110,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 111,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 112,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 113,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 114,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 114,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 115,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 116,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 116,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 116,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 117,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 118,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 118,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 119,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 120,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 121,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 122,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 122,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 123,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 124,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 124,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 124,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 125,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 126,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 126,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 127,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 128,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 1024
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 2048
+        }
+      ]
+    },
+    {
+      "slots": 8,
+      "maxMerge": null,
+      "accepted": 4096,
+      "rewritten": 28672,
+      "maxBuilt": 4096,
+      "runs": [
+        4096
+      ],
+      "stop": null,
+      "events": [
+        {
+          "kind": "flush",
+          "batch": 1,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 2,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 2,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 3,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 4,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 4,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 5,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 6,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 6,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 7,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 8,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 8,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 9,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 10,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 10,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 11,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 12,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 12,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 13,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 14,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 14,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 15,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 16,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 16,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 17,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 18,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 18,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 19,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 20,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 20,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 21,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 22,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 22,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 23,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 24,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 24,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 25,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 26,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 26,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 27,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 28,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 28,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 29,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 30,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 30,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 31,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 32,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 32,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 33,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 34,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 34,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 35,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 36,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 36,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 37,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 38,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 38,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 39,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 40,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 40,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 41,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 42,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 42,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 43,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 44,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 44,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 45,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 46,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 46,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 47,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 48,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 48,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 49,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 50,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 50,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 51,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 52,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 52,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 53,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 54,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 54,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 55,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 56,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 56,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 57,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 58,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 58,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 59,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 60,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 60,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 61,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 62,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 62,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 63,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 64,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 1024
+        },
+        {
+          "kind": "merge",
+          "batch": 64,
+          "size": 2048
+        },
+        {
+          "kind": "flush",
+          "batch": 65,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 66,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 66,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 67,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 68,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 68,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 68,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 69,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 70,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 70,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 71,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 72,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 72,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 73,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 74,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 74,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 75,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 76,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 76,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 76,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 77,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 78,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 78,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 79,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 80,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 80,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 81,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 82,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 82,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 83,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 84,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 84,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 84,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 85,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 86,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 86,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 87,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 88,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 88,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 89,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 90,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 90,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 91,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 92,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 92,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 92,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 93,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 94,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 94,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 95,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 96,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 96,
+          "size": 1024
+        },
+        {
+          "kind": "flush",
+          "batch": 97,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 98,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 98,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 99,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 100,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 100,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 100,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 101,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 102,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 102,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 103,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 104,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 104,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 105,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 106,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 106,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 107,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 108,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 108,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 108,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 109,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 110,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 110,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 111,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 112,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 112,
+          "size": 512
+        },
+        {
+          "kind": "flush",
+          "batch": 113,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 114,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 114,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 115,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 116,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 116,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 116,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 117,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 118,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 118,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 119,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 120,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 120,
+          "size": 256
+        },
+        {
+          "kind": "flush",
+          "batch": 121,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 122,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 122,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 123,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 124,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 124,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 124,
+          "size": 128
+        },
+        {
+          "kind": "flush",
+          "batch": 125,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 126,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 126,
+          "size": 64
+        },
+        {
+          "kind": "flush",
+          "batch": 127,
+          "size": 32
+        },
+        {
+          "kind": "flush",
+          "batch": 128,
+          "size": 32
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 64
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 128
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 256
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 512
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 1024
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 2048
+        },
+        {
+          "kind": "merge",
+          "batch": 128,
+          "size": 4096
+        }
+      ]
+    }
+  ]
+}

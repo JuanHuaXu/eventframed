@@ -68,6 +68,7 @@ type Config struct {
 	CandidateRetriever         retrieval.CandidateRetriever
 	CandidateRetrieverRequired bool
 	CandidateIndex             retrieval.CandidateIndex
+	UserCards                  retrieval.UserCardReader
 	ExternalReadiness          retrieval.ReadinessProbe
 	CandidateCollectionPrefix  string
 	RankDeltaStore             rankdelta.Store
@@ -83,6 +84,9 @@ type Config struct {
 	AgencyIssuerToken          string
 	AgencyAuthorityToken       string
 	BackgroundFuzz             BackgroundFuzzPolicy
+	ResearchShadow             ResearchShadowPolicy
+	ResearchRanking            ResearchRankingPolicy
+	ResearchFrontier           *ResearchFrontierTap
 }
 
 type Service struct {
@@ -96,10 +100,17 @@ type Service struct {
 	rankDelta       rankdelta.Store
 	nominationCache *fuzzing.NominationCache
 	backgroundFuzz  *backgroundFuzzQueue
+	researchShadow  *researchShadowQueue
 	activeRecalls   atomic.Int64
 }
 
 func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*Service, error) {
+	if config.ResearchRanking.Score != nil && config.ResearchRanking.TenantID == "" {
+		return nil, errors.New("research ranking requires an explicit tenant")
+	}
+	if err := config.ResearchShadow.validate(); err != nil {
+		return nil, err
+	}
 	if !config.WorkingBelief.Valid() || (config.WorkingBelief.Enabled && (config.EvidenceVerifier == nil || config.RankingPolicy.HierarchicalEnabled)) {
 		return nil, errors.New("working belief requires valid policy, authenticated evidence, and non-hierarchical prediction")
 	}
@@ -241,6 +252,9 @@ func New(eventStore store.EventStore, embedder embed.Embedder, config Config) (*
 		nominationCache: fuzzing.NewNominationCache(128, 8192)}
 	if config.BackgroundFuzz.Enabled {
 		service.backgroundFuzz = newBackgroundFuzzQueue(service, config.BackgroundFuzz)
+	}
+	if config.ResearchShadow.Enabled {
+		service.researchShadow = newResearchShadow(service, config.ResearchShadow)
 	}
 	return service, nil
 }
@@ -471,7 +485,10 @@ func (s *Service) CaptureTurn(ctx context.Context, request model.CaptureTurnRequ
 	if err := request.Turn.Validate(); err != nil {
 		return model.ObserveResponse{}, err
 	}
-	event := frame.FromTurn(request.Turn)
+	event, err := s.enrichTurn(ctx, request.Turn)
+	if err != nil {
+		return model.ObserveResponse{}, err
+	}
 	if err := event.Validate(s.embedder.Dimension()); err != nil {
 		return model.ObserveResponse{}, fmt.Errorf("enrich captured turn: %w", err)
 	}
@@ -506,6 +523,18 @@ func (s *Service) observeEvent(ctx context.Context, event model.Event, digest st
 		return model.ObserveResponse{}, err
 	}
 	if s.index != nil {
+		if result.Duplicate {
+			// Re-enrichment may observe a newer card/context. A retry must index
+			// the already committed frame, not replace it with that new inference.
+			stored, readErr := s.store.GetEvents(ctx, event.TenantID, []string{event.ID}, time.Date(9999, 12, 31, 23, 59, 59, 0, time.UTC))
+			if readErr != nil {
+				return model.ObserveResponse{}, readErr
+			}
+			if len(stored) != 1 {
+				return model.ObserveResponse{}, store.ErrEventNotFound
+			}
+			event = stored[0]
+		}
 		if indexErr := IndexEventFrame(ctx, s.index, s.config.CandidateCollectionPrefix, event); indexErr != nil {
 			return model.ObserveResponse{}, fmt.Errorf("index event through LibraVDB contract: %w", indexErr)
 		}
@@ -858,6 +887,13 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 	}
 	packetAnswerCertainty := s.applyRankDeltas(candidates, deltas, queryDigest, packK)
 	applyResolutionPreference(candidates, request.Resolution)
+	if err := s.applyResearchRanking(ctx, request, snapshot, candidates); err != nil {
+		return model.ContextPacket{}, err
+	}
+	if s.config.ResearchRanking.Score != nil && s.config.ResearchRanking.TenantID == request.TenantID {
+		// The experimental order has no fitted packet-certainty calibration.
+		packetAnswerCertainty = 0
+	}
 	for index := range candidates {
 		candidates[index].RetrievalContract = s.ranker.ContractName()
 		candidates[index].Forecast.RankScore = candidates[index].Score
@@ -904,6 +940,8 @@ func (s *Service) recallOnce(ctx context.Context, request model.RecallRequest) (
 		BayesianShadow:        shadow,
 	}
 	s.nominateBackgroundFuzz(request, queryDigest, vector, candidates, packet)
+	s.nominateResearchShadow(packet, request.AsOf)
+	s.tapResearchFrontier(request, journal, candidates)
 	return packet, nil
 }
 
@@ -2005,6 +2043,9 @@ func validateSnapCertificates(request model.PredictiveSnapRequest, closure model
 }
 
 func (s *Service) Close() error {
+	if s.researchShadow != nil {
+		s.researchShadow.Close()
+	}
 	var fuzzErr error
 	if s.backgroundFuzz != nil {
 		fuzzErr = s.backgroundFuzz.Close()

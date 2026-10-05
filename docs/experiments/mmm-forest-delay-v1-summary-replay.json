@@ -1,0 +1,753 @@
+{
+  "sourceHash": "27f61eae58001bbf2de2546d05ddd21fb31d117b1a2ce14c1920cbf46ef5f423",
+  "capturedSources": 836,
+  "trajectories": 192,
+  "scheduleRuns": 384,
+  "cells": [
+    {
+      "phase": "design",
+      "case": "copy_bit",
+      "schedule": "Immediate",
+      "post": {
+        "mean": 0.0013312531019013477,
+        "lower": -0.0001899004145183758,
+        "upper": 0.0028524066183210715
+      },
+      "full": {
+        "mean": 0.000665624250988147,
+        "lower": -0.00009494981866029167,
+        "upper": 0.0014261983206365857
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.2050771641357389,
+        0.20374591103383757
+      ],
+      "foreground": [
+        4.7138671875,
+        4.6845703125
+      ],
+      "monitor": 8,
+      "audit": 4.51318359375,
+      "fits": 6.5625,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "design",
+      "case": "copy_bit",
+      "schedule": "Delayed",
+      "post": {
+        "mean": 0.00023207899762912876,
+        "lower": -0.00045235981675624624,
+        "upper": 0.0009165178120145038
+      },
+      "full": {
+        "mean": 0.00011607610138963942,
+        "lower": -0.00022613963853965137,
+        "upper": 0.0004582918413189302
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.28563298054273745,
+        0.2854009015451082
+      ],
+      "foreground": [
+        4.4853515625,
+        4.4815673828125
+      ],
+      "monitor": 8,
+      "audit": 4.51318359375,
+      "fits": 4.875,
+      "applied": 284.8125,
+      "stale": 123.3125,
+      "censored": 103.875
+    },
+    {
+      "phase": "design",
+      "case": "copy_xor2",
+      "schedule": "Immediate",
+      "post": {
+        "mean": 0.004534048453337108,
+        "lower": 0.0012105279382539488,
+        "upper": 0.007857568968420266
+      },
+      "full": {
+        "mean": 0.002267048387435273,
+        "lower": 0.0006052891013691394,
+        "upper": 0.003928807673501407
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.21165527146114405,
+        0.20712122300780697
+      ],
+      "foreground": [
+        4.64794921875,
+        4.604736328125
+      ],
+      "monitor": 8.012939453125,
+      "audit": 4.43408203125,
+      "fits": 6.4375,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "design",
+      "case": "copy_xor2",
+      "schedule": "Delayed",
+      "post": {
+        "mean": -0.00002709289876561688,
+        "lower": -0.0003674195980081159,
+        "upper": 0.00031323380047688215
+      },
+      "full": {
+        "mean": -0.000013601087692551375,
+        "lower": -0.00018366354554714357,
+        "upper": 0.00015646137016204082
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.28486004279238647,
+        0.28488713569115204
+      ],
+      "foreground": [
+        4.4722900390625,
+        4.46240234375
+      ],
+      "monitor": 8.012939453125,
+      "audit": 4.43408203125,
+      "fits": 4.6875,
+      "applied": 292.0625,
+      "stale": 117.625,
+      "censored": 102.3125
+    },
+    {
+      "phase": "design",
+      "case": "noise10_bit",
+      "schedule": "Immediate",
+      "post": {
+        "mean": 0.001535521965901985,
+        "lower": -0.002320558035643522,
+        "upper": 0.005391601967447491
+      },
+      "full": {
+        "mean": 0.0007677811772013486,
+        "lower": -0.0011602562619820805,
+        "upper": 0.0026958186163847774
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.19995194034845534,
+        0.19841641838255333
+      ],
+      "foreground": [
+        4.6297607421875,
+        4.624267578125
+      ],
+      "monitor": 8,
+      "audit": 4.497802734375,
+      "fits": 6.5625,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "design",
+      "case": "noise10_bit",
+      "schedule": "Delayed",
+      "post": {
+        "mean": 0.0008601636910514025,
+        "lower": -0.0007880347268691822,
+        "upper": 0.002508362108971987
+      },
+      "full": {
+        "mean": 0.00042959814151875657,
+        "lower": -0.00039470236127950764,
+        "upper": 0.0012538986443170208
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.28138169463298474,
+        0.2805215309419333
+      ],
+      "foreground": [
+        4.453369140625,
+        4.4500732421875
+      ],
+      "monitor": 8,
+      "audit": 4.497802734375,
+      "fits": 5.0625,
+      "applied": 281.4375,
+      "stale": 127.1875,
+      "censored": 103.375
+    },
+    {
+      "phase": "design",
+      "case": "reverses_xor2",
+      "schedule": "Immediate",
+      "post": {
+        "mean": -0.0003752471693415707,
+        "lower": -0.0019325545360589806,
+        "upper": 0.0011820601973758392
+      },
+      "full": {
+        "mean": -0.00018751510681312786,
+        "lower": -0.0009660365740770819,
+        "upper": 0.0005910063604508261
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.16887971015316874,
+        0.16925495732251034
+      ],
+      "foreground": [
+        4.458251953125,
+        4.459716796875
+      ],
+      "monitor": 8.0240478515625,
+      "audit": 4.383544921875,
+      "fits": 6.25,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "design",
+      "case": "reverses_xor2",
+      "schedule": "Delayed",
+      "post": {
+        "mean": -0.00022596334105113094,
+        "lower": -0.0007276308741010425,
+        "upper": 0.0002757041919987806
+      },
+      "full": {
+        "mean": -0.00011297137415800483,
+        "lower": -0.00036378246019035896,
+        "upper": 0.0001378397118743493
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.2592821236755478,
+        0.259508087016599
+      ],
+      "foreground": [
+        4.421630859375,
+        4.42138671875
+      ],
+      "monitor": 8.0240478515625,
+      "audit": 4.383544921875,
+      "fits": 4.8125,
+      "applied": 287.0625,
+      "stale": 121.0625,
+      "censored": 103.875
+    },
+    {
+      "phase": "design",
+      "case": "stable_noise10",
+      "schedule": "Immediate",
+      "post": {
+        "mean": -0.000005997725325761032,
+        "lower": -0.000027264698986117063,
+        "upper": 0.000015269248334595
+      },
+      "full": {
+        "mean": -0.000003011457262474225,
+        "lower": -0.000013643208741755522,
+        "upper": 0.000007620294216807072
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.046980450984894916,
+        0.046986448710220674
+      ],
+      "foreground": [
+        4.010009765625,
+        4.010009765625
+      ],
+      "monitor": 8,
+      "audit": 4.4296875,
+      "fits": 6.3125,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "design",
+      "case": "stable_noise10",
+      "schedule": "Delayed",
+      "post": {
+        "mean": -0.0000032034067742384414,
+        "lower": -0.000015085781607168994,
+        "upper": 0.00000867896805869211
+      },
+      "full": {
+        "mean": -0.000001606068708552219,
+        "lower": -0.00000754653957362236,
+        "upper": 0.000004334402156517922
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.04714679431550451,
+        0.04714999772227875
+      ],
+      "foreground": [
+        4.0087890625,
+        4.0087890625
+      ],
+      "monitor": 8,
+      "audit": 4.4296875,
+      "fits": 4.875,
+      "applied": 297.9375,
+      "stale": 108.5,
+      "censored": 105.5625
+    },
+    {
+      "phase": "design",
+      "case": "null_uniform",
+      "schedule": "Immediate",
+      "post": {
+        "mean": 0.00007889396597985168,
+        "lower": -0.00018460104763925366,
+        "upper": 0.000342388979598957
+      },
+      "full": {
+        "mean": 0.00003730465958758436,
+        "lower": -0.00009475195904152649,
+        "upper": 0.0001693612782166952
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.25189781669606043,
+        0.2518189227300805
+      ],
+      "foreground": [
+        5.998779296875,
+        5.998779296875
+      ],
+      "monitor": 12,
+      "audit": 4.3857421875,
+      "fits": 6.375,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "design",
+      "case": "null_uniform",
+      "schedule": "Delayed",
+      "post": {
+        "mean": 0.000044141927843755965,
+        "lower": -0.0000492372936659645,
+        "upper": 0.00013752114935347643
+      },
+      "full": {
+        "mean": 0.00002207096392186844,
+        "lower": -0.000024618646832997206,
+        "upper": 0.00006876057467673408
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.25312393016481916,
+        0.2530797882369754
+      ],
+      "foreground": [
+        5.999267578125,
+        5.999267578125
+      ],
+      "monitor": 12,
+      "audit": 4.3857421875,
+      "fits": 4.6875,
+      "applied": 303.6875,
+      "stale": 108,
+      "censored": 100.3125
+    },
+    {
+      "phase": "confirmation",
+      "case": "copy_bit",
+      "schedule": "Immediate",
+      "post": {
+        "mean": 0.0007567509708786523,
+        "lower": -0.0009649531582604193,
+        "upper": 0.0024784551000177238
+      },
+      "full": {
+        "mean": 0.0003785027069601616,
+        "lower": -0.00048234928747174245,
+        "upper": 0.0012393547013920658
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.20374905842510943,
+        0.2029923074542308
+      ],
+      "foreground": [
+        4.7156982421875,
+        4.6689453125
+      ],
+      "monitor": 8.0103759765625,
+      "audit": 4.447265625,
+      "fits": 6.375,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "confirmation",
+      "case": "copy_bit",
+      "schedule": "Delayed",
+      "post": {
+        "mean": -0.0003541547328290186,
+        "lower": -0.0018658827302447498,
+        "upper": 0.0011575732645867126
+      },
+      "full": {
+        "mean": -0.00017694411144769488,
+        "lower": -0.0009329758524470747,
+        "upper": 0.0005790876295516849
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.2766388160306898,
+        0.27699297076351886
+      ],
+      "foreground": [
+        4.5421142578125,
+        4.5338134765625
+      ],
+      "monitor": 8.0103759765625,
+      "audit": 4.447265625,
+      "fits": 4.8125,
+      "applied": 283.375,
+      "stale": 122.0625,
+      "censored": 106.5625
+    },
+    {
+      "phase": "confirmation",
+      "case": "copy_xor2",
+      "schedule": "Immediate",
+      "post": {
+        "mean": 0.005108175140532384,
+        "lower": 0.0023551201913661313,
+        "upper": 0.007861230089698636
+      },
+      "full": {
+        "mean": 0.002554127432731661,
+        "lower": 0.001177586976681929,
+        "upper": 0.003930667888781393
+      },
+      "gain": true,
+      "nonHarm": true,
+      "brier": [
+        0.2005786896722498,
+        0.19547051453171746
+      ],
+      "foreground": [
+        4.7410888671875,
+        4.7154541015625
+      ],
+      "monitor": 8,
+      "audit": 4.620849609375,
+      "fits": 6.8125,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "confirmation",
+      "case": "copy_xor2",
+      "schedule": "Delayed",
+      "post": {
+        "mean": 0.00011553326156936786,
+        "lower": -0.00048742858596071835,
+        "upper": 0.0007184951090994541
+      },
+      "full": {
+        "mean": 0.00005780639466844428,
+        "lower": -0.00024368433850171774,
+        "upper": 0.0003592971278386063
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.2852251977358409,
+        0.28510966447427144
+      ],
+      "foreground": [
+        4.489013671875,
+        4.4866943359375
+      ],
+      "monitor": 8,
+      "audit": 4.620849609375,
+      "fits": 5.25,
+      "applied": 281.8125,
+      "stale": 129,
+      "censored": 101.1875
+    },
+    {
+      "phase": "confirmation",
+      "case": "noise10_bit",
+      "schedule": "Immediate",
+      "post": {
+        "mean": 0.0010422335014962977,
+        "lower": -0.0015736394530954014,
+        "upper": 0.0036581064560879967
+      },
+      "full": {
+        "mean": 0.0005211932677955059,
+        "lower": -0.0007867715965715336,
+        "upper": 0.0018291581321625454
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.20236454062773035,
+        0.2013223071262341
+      ],
+      "foreground": [
+        4.651611328125,
+        4.6380615234375
+      ],
+      "monitor": 8,
+      "audit": 4.6845703125,
+      "fits": 6.9375,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "confirmation",
+      "case": "noise10_bit",
+      "schedule": "Delayed",
+      "post": {
+        "mean": 0.00017727177769124441,
+        "lower": -0.0011656662900450727,
+        "upper": 0.0015202098454275615
+      },
+      "full": {
+        "mean": 0.00008861169194674702,
+        "lower": -0.0005828973408840777,
+        "upper": 0.0007601207247775717
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.27793893156622534,
+        0.27776165978853407
+      ],
+      "foreground": [
+        4.498046875,
+        4.48291015625
+      ],
+      "monitor": 8,
+      "audit": 4.6845703125,
+      "fits": 5.1875,
+      "applied": 283.6875,
+      "stale": 126.3125,
+      "censored": 102
+    },
+    {
+      "phase": "confirmation",
+      "case": "reverses_xor2",
+      "schedule": "Immediate",
+      "post": {
+        "mean": -0.0001410095839936218,
+        "lower": -0.0008076520778779502,
+        "upper": 0.0005256329098907067
+      },
+      "full": {
+        "mean": -0.0000705127135971987,
+        "lower": -0.0004038397024345595,
+        "upper": 0.0002628142752401621
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.1793420976003787,
+        0.17948310718437235
+      ],
+      "foreground": [
+        4.5391845703125,
+        4.524169921875
+      ],
+      "monitor": 8,
+      "audit": 4.45166015625,
+      "fits": 6.5625,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "confirmation",
+      "case": "reverses_xor2",
+      "schedule": "Delayed",
+      "post": {
+        "mean": -0.0002746695119949117,
+        "lower": -0.0012159368605820756,
+        "upper": 0.0006665978365922522
+      },
+      "full": {
+        "mean": -0.00013731149916975868,
+        "lower": -0.0006079546209482804,
+        "upper": 0.00033333162260876296
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.27189924090935985,
+        0.27217391042135475
+      ],
+      "foreground": [
+        4.3326416015625,
+        4.3223876953125
+      ],
+      "monitor": 8,
+      "audit": 4.45166015625,
+      "fits": 4.9375,
+      "applied": 285.625,
+      "stale": 122.5,
+      "censored": 103.875
+    },
+    {
+      "phase": "confirmation",
+      "case": "stable_noise10",
+      "schedule": "Immediate",
+      "post": {
+        "mean": -0.0000019871427255672112,
+        "lower": -0.000008681962243406678,
+        "upper": 0.000004707676792272255
+      },
+      "full": {
+        "mean": -9.977043202926035e-7,
+        "lower": -0.000004348847836897973,
+        "upper": 0.0000023534391963127653
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.052688786719958663,
+        0.05269077386268423
+      ],
+      "foreground": [
+        4.008544921875,
+        4.008544921875
+      ],
+      "monitor": 8.013427734375,
+      "audit": 4.74169921875,
+      "fits": 7.0625,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "confirmation",
+      "case": "stable_noise10",
+      "schedule": "Delayed",
+      "post": {
+        "mean": 2.930615491416027e-7,
+        "lower": -0.0000013186300103429897,
+        "upper": 0.000001904753108626195
+      },
+      "full": {
+        "mean": 8.705824825535474e-8,
+        "lower": -7.544506509534952e-7,
+        "upper": 9.285671474642047e-7
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.05269601653812455,
+        0.0526957234765754
+      ],
+      "foreground": [
+        4.005859375,
+        4.005859375
+      ],
+      "monitor": 8.013427734375,
+      "audit": 4.74169921875,
+      "fits": 5.375,
+      "applied": 289.1875,
+      "stale": 120.625,
+      "censored": 102.1875
+    },
+    {
+      "phase": "confirmation",
+      "case": "null_uniform",
+      "schedule": "Immediate",
+      "post": {
+        "mean": 0.000014883511359982393,
+        "lower": -0.00006420460548906418,
+        "upper": 0.00009397162820902897
+      },
+      "full": {
+        "mean": 0.000011232440766336532,
+        "lower": -0.000027312367965142045,
+        "upper": 0.00004977724949781511
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.25232109876575365,
+        0.2523062152543937
+      ],
+      "foreground": [
+        5.9991455078125,
+        5.9991455078125
+      ],
+      "monitor": 12,
+      "audit": 4.471435546875,
+      "fits": 6.5,
+      "applied": 512,
+      "stale": 0,
+      "censored": 0
+    },
+    {
+      "phase": "confirmation",
+      "case": "null_uniform",
+      "schedule": "Delayed",
+      "post": {
+        "mean": 0.000040579026747714075,
+        "lower": -0.00008804078101514424,
+        "upper": 0.0001691988345105724
+      },
+      "full": {
+        "mean": 0.000032678402533844325,
+        "lower": -0.0000749476861604659,
+        "upper": 0.00014030449122815457
+      },
+      "gain": false,
+      "nonHarm": true,
+      "brier": [
+        0.25301917414251623,
+        0.25297859511576853
+      ],
+      "foreground": [
+        5.9945068359375,
+        5.9945068359375
+      ],
+      "monitor": 12,
+      "audit": 4.471435546875,
+      "fits": 4.875,
+      "applied": 303.6875,
+      "stale": 106.375,
+      "censored": 101.9375
+    }
+  ],
+  "limits": "Exploratory paired mean +/-3.5SE; no anytime guarantee. Schedules are paired, not independent trajectories. All forecasts including missing labels are scored."
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "Byte-exact replay; separate forward occupancy and Bellman verification on saved beliefs, not independent inference",
+  "inputSHA256": "76050c44114c644ab4f3941f6b062d0ad5e0dadf74111acbccdbb3641e8cd3f1",
+  "verifierSHA256": "1e494684814b1fc2744c2f72691dc74f4f03c0372229b8d4282e48ebc1e21764",
+  "replay": true,
+  "valueChecks": 288,
+  "normalizationChecks": 672,
+  "bellmanChecks": 20592,
+  "maxError": 1.2878587085651816e-14,
+  "componentTests": {
+    "exchangeabilityChecks": 90,
+    "maxError": 5.551115123125783e-17,
+    "planningChecks": 36,
+    "negativeTests": 1
+  }
+}

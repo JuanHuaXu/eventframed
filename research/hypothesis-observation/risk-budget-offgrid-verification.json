@@ -1,0 +1,22 @@
+{
+  "scope": "Byte-exact replay, direct ordered likelihood check and separate backward scoring in six representative regimes; frozen forecasts, separate risk-budget compiler, zero-budget parity; frozen source hash verification, off-grid likelihoods and scores",
+  "inputSHA256": "3431eb9942c808451206dae5faf77ef18b642e437f5500ed493af01a373bdb61",
+  "verifierSHA256": "9298386bbdb85f64ff45a4cc325ef29edcf2fff683e6c71a53c088d743ec22f4",
+  "replay": true,
+  "zeroParity": 20592,
+  "invalidBudgetTests": 3,
+  "changedByDepth": [
+    0,
+    0,
+    0,
+    96,
+    208,
+    1360
+  ],
+  "frozenHashChecks": 6,
+  "tieRuleTests": 4,
+  "likelihoodChecks": 33792,
+  "maxLikelihoodError": 1.3877787807814457e-17,
+  "valueChecks": 360,
+  "maxError": 5.595524044110789e-14
+}

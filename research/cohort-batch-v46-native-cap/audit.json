@@ -1,0 +1,5663 @@
+{
+  "time": "2026-10-04T05:31:46.189Z",
+  "rawSHA256": "91bd8c71539411a6735a85102621eba5a920aec8cc667581dd1247241a9ad998",
+  "adaptedBatchSHA256": "731d98faed8ea432c102133236c8ff2053db62559409d3bbe82b72d454f631ad",
+  "controls": {
+    "4": [
+      "missing-write",
+      "future-nominee",
+      "future-label",
+      "chain-prior",
+      "retagged-source",
+      "wire-proof",
+      "hidden-queue",
+      "premature-ack",
+      "capsule-wire",
+      "timing-fabrication",
+      "gate-fabrication",
+      "projection-root",
+      "projection-digest",
+      "projection-head",
+      "projection-source",
+      "projection-future-log",
+      "projection-late",
+      "copy-byte-count",
+      "getter-counter",
+      "trace-missing",
+      "trace-native-result",
+      "trace-key",
+      "factor-relabelling",
+      "missing-core-build",
+      "core-root",
+      "core-fields",
+      "core-late",
+      "hidden-copy",
+      "hit-count",
+      "owner-count",
+      "core-factor",
+      "missing-preparation",
+      "publisher-bytes",
+      "publisher-root",
+      "publisher-time",
+      "owner-domain",
+      "overlapping-dispositions",
+      "publisher-factor",
+      "operation-id",
+      "operation-id-duplicate",
+      "preparation-after-ack",
+      "preparation-before-durability",
+      "missing-write-id",
+      "missing-warm-use",
+      "warm-root",
+      "warm-counter",
+      "warm-late-check",
+      "warm-first-nil",
+      "warm-factor",
+      "owner-time-missing",
+      "owner-time-before-call",
+      "owner-time-after-return",
+      "missing-cap",
+      "unsupported-cap"
+    ],
+    "8": [
+      "missing-write",
+      "future-nominee",
+      "future-label",
+      "chain-prior",
+      "retagged-source",
+      "wire-proof",
+      "hidden-queue",
+      "premature-ack",
+      "capsule-wire",
+      "timing-fabrication",
+      "gate-fabrication",
+      "projection-root",
+      "projection-digest",
+      "projection-head",
+      "projection-source",
+      "projection-future-log",
+      "projection-late",
+      "copy-byte-count",
+      "getter-counter",
+      "trace-missing",
+      "trace-native-result",
+      "trace-key",
+      "factor-relabelling",
+      "missing-core-build",
+      "core-root",
+      "core-fields",
+      "core-late",
+      "hidden-copy",
+      "hit-count",
+      "owner-count",
+      "core-factor",
+      "missing-preparation",
+      "publisher-bytes",
+      "publisher-root",
+      "publisher-time",
+      "owner-domain",
+      "overlapping-dispositions",
+      "publisher-factor",
+      "operation-id",
+      "operation-id-duplicate",
+      "preparation-after-ack",
+      "preparation-before-durability",
+      "missing-write-id",
+      "missing-warm-use",
+      "warm-root",
+      "warm-counter",
+      "warm-late-check",
+      "warm-first-nil",
+      "warm-factor",
+      "owner-time-missing",
+      "owner-time-before-call",
+      "owner-time-after-return",
+      "missing-cap",
+      "unsupported-cap"
+    ]
+  },
+  "bounds": {
+    "positive": 12,
+    "negative": 10,
+    "scope": "bound-only fixtures, not load evidence"
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1007,
+      "cross_epoch": 852,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 63107000,
+        "call_p99_ns": 59209000,
+        "learned_decisions": 1007,
+        "offer_max_ns": 189440000,
+        "offer_p99_ns": 188912000,
+        "outcome_max_ns": 397650000,
+        "outcome_p99_ns": 397650000,
+        "view_max_ns": 45825000,
+        "view_p99_ns": 45819000,
+        "write_max_ns": 91962000,
+        "write_p99_ns": 89424000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 43693000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 74971000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 95958000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 123499000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 152351000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 182701000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 207067000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 230574000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 256681000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 286856000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 320933000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 345853000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 381637000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 392980000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 404300000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 410774000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 8044000,
+        "write_max_gap_ns": 7090000,
+        "outcome_max_gap_ns": 16909000
+      },
+      "mutations": 144,
+      "commits": 72,
+      "archived": false,
+      "journal_batches": 43,
+      "batch_histogram": [
+        8,
+        7,
+        5,
+        23,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1266,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 561107
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1266,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 37,
+        "PhysicalBytes": 561107
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1037,
+      "cross_epoch": 897,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 55937000,
+        "call_p99_ns": 55925000,
+        "learned_decisions": 1037,
+        "offer_max_ns": 159335000,
+        "offer_p99_ns": 156199000,
+        "outcome_max_ns": 364335000,
+        "outcome_p99_ns": 364335000,
+        "view_max_ns": 42172000,
+        "view_p99_ns": 36587000,
+        "write_max_ns": 85491000,
+        "write_p99_ns": 83719000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 40750000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 56680000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 75087000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 101587000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 122480000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 146979000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 175138000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 191598000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 216364000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 249153000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 267320000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 292723000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 319393000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 349752000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 365682000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 378224000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4981000,
+        "write_max_gap_ns": 5021000,
+        "outcome_max_gap_ns": 16734000
+      },
+      "mutations": 144,
+      "commits": 63,
+      "archived": false,
+      "journal_batches": 33,
+      "batch_histogram": [
+        5,
+        5,
+        5,
+        4,
+        6,
+        5,
+        1,
+        2
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1296,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 541132
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1296,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 45,
+        "PhysicalBytes": 541132
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1023,
+      "cross_epoch": 884,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 56831000,
+        "call_p99_ns": 52885000,
+        "learned_decisions": 1023,
+        "offer_max_ns": 176094000,
+        "offer_p99_ns": 174258000,
+        "outcome_max_ns": 383685000,
+        "outcome_p99_ns": 383685000,
+        "view_max_ns": 43113000,
+        "view_p99_ns": 37928000,
+        "write_max_ns": 90925000,
+        "write_p99_ns": 87662000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 39590000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 68757000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 90964000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 109012000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 139478000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 160959000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 187858000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 210977000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 239878000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 271951000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 298067000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 323356000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 354039000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 380798000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 394487000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 395101000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5729000,
+        "write_max_gap_ns": 5728000,
+        "outcome_max_gap_ns": 16791000
+      },
+      "mutations": 144,
+      "commits": 69,
+      "archived": false,
+      "journal_batches": 39,
+      "batch_histogram": [
+        6,
+        3,
+        3,
+        27,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1281,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 946336
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1281,
+      "eager": true,
+      "warm": {
+        "Fast": 18,
+        "Cold": 111
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 946336
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "456412000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1038,
+      "cross_epoch": 897,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 56195000,
+        "call_p99_ns": 53613000,
+        "learned_decisions": 1038,
+        "offer_max_ns": 160413000,
+        "offer_p99_ns": 156455000,
+        "outcome_max_ns": 363490000,
+        "outcome_p99_ns": 363490000,
+        "view_max_ns": 42456000,
+        "view_p99_ns": 36339000,
+        "write_max_ns": 87537000,
+        "write_p99_ns": 83447000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 34652000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 58637000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 82671000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 112841000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 126557000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 152184000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 184544000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 198634000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 225781000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 241148000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 267512000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 293242000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 323070000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 349190000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 367060000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 376601000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4971000,
+        "write_max_gap_ns": 4961000,
+        "outcome_max_gap_ns": 16974000
+      },
+      "mutations": 144,
+      "commits": 63,
+      "archived": false,
+      "journal_batches": 33,
+      "batch_histogram": [
+        5,
+        2,
+        10,
+        2,
+        9,
+        1,
+        1,
+        3
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1296,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 937623
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1296,
+      "eager": true,
+      "warm": {
+        "Fast": 16,
+        "Cold": 113
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 937623
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "4385000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1097,
+      "cross_epoch": 873,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 85888000,
+        "call_p99_ns": 84878000,
+        "learned_decisions": 1097,
+        "offer_max_ns": 302047000,
+        "offer_p99_ns": 298822000,
+        "outcome_max_ns": 437684000,
+        "outcome_p99_ns": 437684000,
+        "view_max_ns": 56859000,
+        "view_p99_ns": 51878000,
+        "write_max_ns": 106876000,
+        "write_p99_ns": 105257000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 50226000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 84966000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 111677000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 148913000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 152843000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 189165000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 226122000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 257073000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 294610000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 330906000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 371542000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 412837000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 430229000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 444916000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 462307000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 470346000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4982000,
+        "write_max_gap_ns": 5009000,
+        "outcome_max_gap_ns": 16912000
+      },
+      "mutations": 144,
+      "commits": 76,
+      "archived": true,
+      "journal_batches": 48,
+      "batch_histogram": [
+        10,
+        13,
+        7,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 48,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23929583,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1356,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 569598
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1356,
+      "eager": false,
+      "warm": {
+        "Fast": 15,
+        "Cold": 114
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 47,
+        "PhysicalBytes": 569598
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1179,
+      "cross_epoch": 964,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 87260000,
+        "call_p99_ns": 83122000,
+        "learned_decisions": 1179,
+        "offer_max_ns": 280579000,
+        "offer_p99_ns": 274122000,
+        "outcome_max_ns": 384105000,
+        "outcome_p99_ns": 384105000,
+        "view_max_ns": 53523000,
+        "view_p99_ns": 53447000,
+        "write_max_ns": 102144000,
+        "write_p99_ns": 99387000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 44898000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 87781000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 97704000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 104245000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 128748000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 159671000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 213877000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 228468000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 256265000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 287747000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 325660000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 359078000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 398034000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 405736000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 412891000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 413242000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4886000,
+        "write_max_gap_ns": 4874000,
+        "outcome_max_gap_ns": 16892000
+      },
+      "mutations": 144,
+      "commits": 68,
+      "archived": true,
+      "journal_batches": 39,
+      "batch_histogram": [
+        7,
+        6,
+        5,
+        12,
+        7,
+        2,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 39,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23853917,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1439,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 548441
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1439,
+      "eager": false,
+      "warm": {
+        "Fast": 22,
+        "Cold": 107
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 55,
+        "PhysicalBytes": 548441
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1261,
+      "cross_epoch": 1071,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 104980000,
+        "call_p99_ns": 102584000,
+        "learned_decisions": 1261,
+        "offer_max_ns": 345334000,
+        "offer_p99_ns": 341247000,
+        "outcome_max_ns": 431550000,
+        "outcome_p99_ns": 431550000,
+        "view_max_ns": 58714000,
+        "view_p99_ns": 51890000,
+        "write_max_ns": 99739000,
+        "write_p99_ns": 95901000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 60463000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 99737000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 119654000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 120483000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 144386000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 176279000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 192736000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 218992000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 247237000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 274688000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 303785000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 342197000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 373104000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 406772000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 442910000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 448321000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4973000,
+        "write_max_gap_ns": 5004000,
+        "outcome_max_gap_ns": 16846000
+      },
+      "mutations": 144,
+      "commits": 76,
+      "archived": true,
+      "journal_batches": 46,
+      "batch_histogram": [
+        12,
+        4,
+        11,
+        19,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 46,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23992917,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1520,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 953692
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1520,
+      "eager": true,
+      "warm": {
+        "Fast": 45,
+        "Cold": 84
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 953692
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "547166000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1393,
+      "cross_epoch": 1221,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 83202000,
+        "call_p99_ns": 83117000,
+        "learned_decisions": 1393,
+        "offer_max_ns": 324372000,
+        "offer_p99_ns": 319515000,
+        "outcome_max_ns": 327477000,
+        "outcome_p99_ns": 327477000,
+        "view_max_ns": 62635000,
+        "view_p99_ns": 48393000,
+        "write_max_ns": 83947000,
+        "write_p99_ns": 79946000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 55128000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 81275000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 82531000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 102786000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 144012000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 163365000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 179104000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 178074000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 203333000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 230858000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 278916000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 295264000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 319470000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 339315000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 338268000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 361466000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 6008000,
+        "write_max_gap_ns": 6047000,
+        "outcome_max_gap_ns": 16757000
+      },
+      "mutations": 144,
+      "commits": 70,
+      "archived": true,
+      "journal_batches": 39,
+      "batch_histogram": [
+        6,
+        5,
+        7,
+        15,
+        5,
+        0,
+        1,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 39,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23875625,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1653,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 967539
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1653,
+      "eager": true,
+      "warm": {
+        "Fast": 64,
+        "Cold": 65
+      },
+      "core": {
+        "Builds": 33,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 967539
+      },
+      "publication": {
+        "attempts": 160,
+        "owners": 160,
+        "built": 32,
+        "unused": 15,
+        "aggregateNS": "302279000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 15
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 58971000,
+        "call_p99_ns": 54892000,
+        "learned_decisions": 0,
+        "offer_max_ns": 152775000,
+        "offer_p99_ns": 150070000,
+        "outcome_max_ns": 360544000,
+        "outcome_p99_ns": 360544000,
+        "view_max_ns": 43057000,
+        "view_p99_ns": 37728000,
+        "write_max_ns": 89704000,
+        "write_p99_ns": 86346000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4996000,
+        "write_max_gap_ns": 7074000,
+        "outcome_max_gap_ns": 16694000
+      },
+      "mutations": 144,
+      "commits": 69,
+      "archived": false,
+      "journal_batches": 39,
+      "batch_histogram": [
+        7,
+        1,
+        4,
+        27,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 546409
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 49,
+        "PhysicalBytes": 546409
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 57907000,
+        "call_p99_ns": 51240000,
+        "learned_decisions": 0,
+        "offer_max_ns": 149530000,
+        "offer_p99_ns": 146698000,
+        "outcome_max_ns": 356182000,
+        "outcome_p99_ns": 356182000,
+        "view_max_ns": 39200000,
+        "view_p99_ns": 39158000,
+        "write_max_ns": 84794000,
+        "write_p99_ns": 82358000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5034000,
+        "write_max_gap_ns": 5053000,
+        "outcome_max_gap_ns": 16811000
+      },
+      "mutations": 144,
+      "commits": 64,
+      "archived": false,
+      "journal_batches": 34,
+      "batch_histogram": [
+        5,
+        6,
+        5,
+        6,
+        4,
+        5,
+        1,
+        2
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 541931
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 45,
+        "PhysicalBytes": 541931
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 54688000,
+        "call_p99_ns": 52904000,
+        "learned_decisions": 0,
+        "offer_max_ns": 175859000,
+        "offer_p99_ns": 171812000,
+        "outcome_max_ns": 378798000,
+        "outcome_p99_ns": 378798000,
+        "view_max_ns": 44418000,
+        "view_p99_ns": 37619000,
+        "write_max_ns": 94607000,
+        "write_p99_ns": 91738000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 6788000,
+        "write_max_gap_ns": 6895000,
+        "outcome_max_gap_ns": 16859000
+      },
+      "mutations": 144,
+      "commits": 72,
+      "archived": false,
+      "journal_batches": 42,
+      "batch_histogram": [
+        8,
+        5,
+        5,
+        24,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 942887
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 18,
+        "Cold": 111
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 942887
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "392400000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 54449000,
+        "call_p99_ns": 54444000,
+        "learned_decisions": 0,
+        "offer_max_ns": 153194000,
+        "offer_p99_ns": 152567000,
+        "outcome_max_ns": 375522000,
+        "outcome_p99_ns": 375522000,
+        "view_max_ns": 42144000,
+        "view_p99_ns": 36094000,
+        "write_max_ns": 83997000,
+        "write_p99_ns": 82812000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4989000,
+        "write_max_gap_ns": 4989000,
+        "outcome_max_gap_ns": 16860000
+      },
+      "mutations": 144,
+      "commits": 66,
+      "archived": false,
+      "journal_batches": 36,
+      "batch_histogram": [
+        6,
+        6,
+        8,
+        2,
+        7,
+        6,
+        0,
+        1
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 947391
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 17,
+        "Cold": 112
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 947391
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "4480000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 89695000,
+        "call_p99_ns": 88785000,
+        "learned_decisions": 0,
+        "offer_max_ns": 287135000,
+        "offer_p99_ns": 279846000,
+        "outcome_max_ns": 454587000,
+        "outcome_p99_ns": 454587000,
+        "view_max_ns": 50534000,
+        "view_p99_ns": 50115000,
+        "write_max_ns": 109087000,
+        "write_p99_ns": 106761000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5018000,
+        "write_max_gap_ns": 5006000,
+        "outcome_max_gap_ns": 16999000
+      },
+      "mutations": 144,
+      "commits": 74,
+      "archived": true,
+      "journal_batches": 46,
+      "batch_histogram": [
+        9,
+        9,
+        10,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 46,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 22672333,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 563453
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 9,
+        "Cold": 120
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 55,
+        "PhysicalBytes": 563453
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 97888000,
+        "call_p99_ns": 97805000,
+        "learned_decisions": 0,
+        "offer_max_ns": 263563000,
+        "offer_p99_ns": 260291000,
+        "outcome_max_ns": 359231000,
+        "outcome_p99_ns": 359231000,
+        "view_max_ns": 70228000,
+        "view_p99_ns": 70221000,
+        "write_max_ns": 95704000,
+        "write_p99_ns": 92714000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5016000,
+        "write_max_gap_ns": 5023000,
+        "outcome_max_gap_ns": 16898000
+      },
+      "mutations": 144,
+      "commits": 68,
+      "archived": true,
+      "journal_batches": 38,
+      "batch_histogram": [
+        5,
+        3,
+        12,
+        8,
+        10,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 38,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 22452291,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 491011
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 28,
+        "Cold": 101
+      },
+      "core": {
+        "Builds": 17,
+        "Hits": 112,
+        "OwnerAcquisitions": 50,
+        "PhysicalBytes": 491011
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 90346000,
+        "call_p99_ns": 89979000,
+        "learned_decisions": 0,
+        "offer_max_ns": 285927000,
+        "offer_p99_ns": 285736000,
+        "outcome_max_ns": 437909000,
+        "outcome_p99_ns": 437909000,
+        "view_max_ns": 50380000,
+        "view_p99_ns": 50372000,
+        "write_max_ns": 92233000,
+        "write_p99_ns": 88900000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5005000,
+        "write_max_gap_ns": 5025000,
+        "outcome_max_gap_ns": 16610000
+      },
+      "mutations": 144,
+      "commits": 72,
+      "archived": true,
+      "journal_batches": 43,
+      "batch_histogram": [
+        7,
+        10,
+        2,
+        24,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 43,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 22519417,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 929840
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 39,
+        "Cold": 90
+      },
+      "core": {
+        "Builds": 31,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 929840
+      },
+      "publication": {
+        "attempts": 158,
+        "owners": 158,
+        "built": 30,
+        "unused": 13,
+        "aggregateNS": "550623000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 13
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 1,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 95152000,
+        "call_p99_ns": 82989000,
+        "learned_decisions": 0,
+        "offer_max_ns": 327967000,
+        "offer_p99_ns": 322989000,
+        "outcome_max_ns": 331626000,
+        "outcome_p99_ns": 331626000,
+        "view_max_ns": 50968000,
+        "view_p99_ns": 50692000,
+        "write_max_ns": 85800000,
+        "write_p99_ns": 85055000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5003000,
+        "write_max_gap_ns": 5006000,
+        "outcome_max_gap_ns": 16869000
+      },
+      "mutations": 144,
+      "commits": 72,
+      "archived": true,
+      "journal_batches": 41,
+      "batch_histogram": [
+        8,
+        14,
+        1,
+        7,
+        4,
+        7,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 41,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23212167,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 965851
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 66,
+        "Cold": 63
+      },
+      "core": {
+        "Builds": 33,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 965851
+      },
+      "publication": {
+        "attempts": 160,
+        "owners": 160,
+        "built": 32,
+        "unused": 15,
+        "aggregateNS": "327383000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 15
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1037,
+      "cross_epoch": 910,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 55526000,
+        "call_p99_ns": 50486000,
+        "learned_decisions": 1037,
+        "offer_max_ns": 150990000,
+        "offer_p99_ns": 147035000,
+        "outcome_max_ns": 356250000,
+        "outcome_p99_ns": 356250000,
+        "view_max_ns": 39655000,
+        "view_p99_ns": 39654000,
+        "write_max_ns": 87523000,
+        "write_p99_ns": 84153000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 35601000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 53766000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 80023000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 92932000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 119135000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 138995000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 163451000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 192445000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 209480000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 232125000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 260805000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 272400000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 303568000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 335523000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 357463000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 371622000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4920000,
+        "write_max_gap_ns": 4928000,
+        "outcome_max_gap_ns": 16748000
+      },
+      "mutations": 144,
+      "commits": 63,
+      "archived": false,
+      "journal_batches": 32,
+      "batch_histogram": [
+        8,
+        3,
+        3,
+        4,
+        5,
+        1,
+        5,
+        3
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1297,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 535300
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1297,
+      "eager": false,
+      "warm": {
+        "Fast": 3,
+        "Cold": 126
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 48,
+        "PhysicalBytes": 535300
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1022,
+      "cross_epoch": 864,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 68137000,
+        "call_p99_ns": 63423000,
+        "learned_decisions": 1022,
+        "offer_max_ns": 195068000,
+        "offer_p99_ns": 191871000,
+        "outcome_max_ns": 397307000,
+        "outcome_p99_ns": 397307000,
+        "view_max_ns": 40337000,
+        "view_p99_ns": 40286000,
+        "write_max_ns": 93700000,
+        "write_p99_ns": 91978000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 42247000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 64068000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 84417000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 110206000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 139215000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 160603000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 190370000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 218968000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 248505000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 283372000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 304084000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 340482000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 373995000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 386492000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 399220000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 410880000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5005000,
+        "write_max_gap_ns": 5034000,
+        "outcome_max_gap_ns": 16555000
+      },
+      "mutations": 144,
+      "commits": 73,
+      "archived": false,
+      "journal_batches": 44,
+      "batch_histogram": [
+        9,
+        7,
+        6,
+        22,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1281,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 555961
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1281,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 39,
+        "PhysicalBytes": 555961
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1022,
+      "cross_epoch": 884,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 73519000,
+        "call_p99_ns": 73516000,
+        "learned_decisions": 1022,
+        "offer_max_ns": 183462000,
+        "offer_p99_ns": 182276000,
+        "outcome_max_ns": 396688000,
+        "outcome_p99_ns": 396688000,
+        "view_max_ns": 49251000,
+        "view_p99_ns": 49239000,
+        "write_max_ns": 105703000,
+        "write_p99_ns": 104546000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 44922000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 56258000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 77664000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 103261000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 120279000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 144008000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 172895000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 199337000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 249271000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 272943000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 300670000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 330214000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 356912000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 385687000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 394844000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 411121000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4931000,
+        "write_max_gap_ns": 4925000,
+        "outcome_max_gap_ns": 16559000
+      },
+      "mutations": 144,
+      "commits": 65,
+      "archived": false,
+      "journal_batches": 35,
+      "batch_histogram": [
+        4,
+        6,
+        6,
+        7,
+        6,
+        5,
+        1,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1281,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 947769
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1281,
+      "eager": true,
+      "warm": {
+        "Fast": 18,
+        "Cold": 111
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 947769
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "4475000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1023,
+      "cross_epoch": 884,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 66991000,
+        "call_p99_ns": 54318000,
+        "learned_decisions": 1023,
+        "offer_max_ns": 172120000,
+        "offer_p99_ns": 167854000,
+        "outcome_max_ns": 381692000,
+        "outcome_p99_ns": 381692000,
+        "view_max_ns": 45798000,
+        "view_p99_ns": 37563000,
+        "write_max_ns": 91036000,
+        "write_p99_ns": 87845000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 46885000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 71057000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 102869000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 123219000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 143140000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 165790000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 187240000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 206674000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 236306000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 252573000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 287605000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 317270000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 340851000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 375353000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 386905000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 394920000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5001000,
+        "write_max_gap_ns": 5045000,
+        "outcome_max_gap_ns": 16923000
+      },
+      "mutations": 144,
+      "commits": 70,
+      "archived": false,
+      "journal_batches": 40,
+      "batch_histogram": [
+        6,
+        6,
+        1,
+        27,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1281,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 947205
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1281,
+      "eager": true,
+      "warm": {
+        "Fast": 18,
+        "Cold": 111
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 947205
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "383127000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1060,
+      "cross_epoch": 875,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 82995000,
+        "call_p99_ns": 79487000,
+        "learned_decisions": 1060,
+        "offer_max_ns": 276195000,
+        "offer_p99_ns": 268216000,
+        "outcome_max_ns": 420619000,
+        "outcome_p99_ns": 420619000,
+        "view_max_ns": 50479000,
+        "view_p99_ns": 50141000,
+        "write_max_ns": 106537000,
+        "write_p99_ns": 101590000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 39267000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 74271000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 101690000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 130957000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 166562000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 189825000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 223272000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 258151000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 284675000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 322172000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 358200000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 387215000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 424815000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 427351000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 448097000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 454771000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4952000,
+        "write_max_gap_ns": 4956000,
+        "outcome_max_gap_ns": 16958000
+      },
+      "mutations": 144,
+      "commits": 68,
+      "archived": true,
+      "journal_batches": 39,
+      "batch_histogram": [
+        8,
+        5,
+        9,
+        6,
+        6,
+        5,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 39,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 24147208,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1319,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 563264
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1319,
+      "eager": false,
+      "warm": {
+        "Fast": 12,
+        "Cold": 117
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 50,
+        "PhysicalBytes": 563264
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1009,
+      "cross_epoch": 825,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 65553000,
+        "call_p99_ns": 65238000,
+        "learned_decisions": 1009,
+        "offer_max_ns": 251388000,
+        "offer_p99_ns": 249793000,
+        "outcome_max_ns": 448833000,
+        "outcome_p99_ns": 448833000,
+        "view_max_ns": 48972000,
+        "view_p99_ns": 48953000,
+        "write_max_ns": 99288000,
+        "write_p99_ns": 98549000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 43986000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 80644000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 111877000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 140214000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 171209000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 200413000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 237472000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 268076000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 299112000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 332095000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 367417000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 400618000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 420813000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 437505000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 462364000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 475357000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4976000,
+        "write_max_gap_ns": 4977000,
+        "outcome_max_gap_ns": 16758000
+      },
+      "mutations": 144,
+      "commits": 68,
+      "archived": true,
+      "journal_batches": 40,
+      "batch_histogram": [
+        7,
+        3,
+        4,
+        26,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 40,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23961250,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1268,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 574009
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1268,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 51,
+        "PhysicalBytes": 574009
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1415,
+      "cross_epoch": 1293,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 92797000,
+        "call_p99_ns": 92749000,
+        "learned_decisions": 1415,
+        "offer_max_ns": 326233000,
+        "offer_p99_ns": 324470000,
+        "outcome_max_ns": 333314000,
+        "outcome_p99_ns": 333314000,
+        "view_max_ns": 53402000,
+        "view_p99_ns": 53354000,
+        "write_max_ns": 92185000,
+        "write_p99_ns": 88417000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 45941000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 87720000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 103762000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 116769000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 131947000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 143106000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 146985000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 193036000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 205325000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 225213000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 247468000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 270316000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 288738000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 307124000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 315270000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 348054000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5051000,
+        "write_max_gap_ns": 5051000,
+        "outcome_max_gap_ns": 17000000
+      },
+      "mutations": 144,
+      "commits": 70,
+      "archived": true,
+      "journal_batches": 38,
+      "batch_histogram": [
+        8,
+        4,
+        6,
+        10,
+        5,
+        5,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 38,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 24053375,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1675,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 1005718
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1675,
+      "eager": true,
+      "warm": {
+        "Fast": 65,
+        "Cold": 64
+      },
+      "core": {
+        "Builds": 34,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 1005718
+      },
+      "publication": {
+        "attempts": 161,
+        "owners": 161,
+        "built": 33,
+        "unused": 16,
+        "aggregateNS": "393702000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 16
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": false,
+      "pass": false,
+      "timing": false,
+      "learned": 1200,
+      "cross_epoch": 982,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 91100000,
+        "call_p99_ns": 91066000,
+        "learned_decisions": 1200,
+        "offer_max_ns": 316213000,
+        "offer_p99_ns": 312182000,
+        "outcome_max_ns": 412831000,
+        "outcome_p99_ns": 412831000,
+        "view_max_ns": 53353000,
+        "view_p99_ns": 53347000,
+        "write_max_ns": 93070000,
+        "write_p99_ns": 91553000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": true,
+          "first_use_ns": 40625000
+        },
+        {
+          "event": "past100",
+          "used": true,
+          "first_use_ns": 62961000
+        },
+        {
+          "event": "eligible-000",
+          "used": true,
+          "first_use_ns": 86326000
+        },
+        {
+          "event": "eligible-001",
+          "used": true,
+          "first_use_ns": 112668000
+        },
+        {
+          "event": "eligible-002",
+          "used": true,
+          "first_use_ns": 136634000
+        },
+        {
+          "event": "eligible-003",
+          "used": true,
+          "first_use_ns": 162647000
+        },
+        {
+          "event": "eligible-004",
+          "used": true,
+          "first_use_ns": 193840000
+        },
+        {
+          "event": "eligible-005",
+          "used": true,
+          "first_use_ns": 233233000
+        },
+        {
+          "event": "eligible-006",
+          "used": true,
+          "first_use_ns": 263890000
+        },
+        {
+          "event": "eligible-007",
+          "used": true,
+          "first_use_ns": 292907000
+        },
+        {
+          "event": "eligible-008",
+          "used": true,
+          "first_use_ns": 322899000
+        },
+        {
+          "event": "eligible-009",
+          "used": true,
+          "first_use_ns": 351837000
+        },
+        {
+          "event": "eligible-010",
+          "used": true,
+          "first_use_ns": 397953000
+        },
+        {
+          "event": "eligible-011",
+          "used": true,
+          "first_use_ns": 402708000
+        },
+        {
+          "event": "eligible-012",
+          "used": true,
+          "first_use_ns": 422628000
+        },
+        {
+          "event": "eligible-013",
+          "used": true,
+          "first_use_ns": 431535000
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5495000,
+        "write_max_gap_ns": 7099000,
+        "outcome_max_gap_ns": 18613000
+      },
+      "mutations": 144,
+      "commits": 76,
+      "archived": true,
+      "journal_batches": 47,
+      "batch_histogram": [
+        6,
+        18,
+        5,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 47,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23957083,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 19608,
+        "NativeSuccess": 1458,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 901198
+      },
+      "metadata_calls": 19608,
+      "metadata_native_success": 1458,
+      "eager": true,
+      "warm": {
+        "Fast": 41,
+        "Cold": 88
+      },
+      "core": {
+        "Builds": 31,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 901198
+      },
+      "publication": {
+        "attempts": 158,
+        "owners": 158,
+        "built": 30,
+        "unused": 13,
+        "aggregateNS": "459833000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 13
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 53177000,
+        "call_p99_ns": 51320000,
+        "learned_decisions": 0,
+        "offer_max_ns": 145017000,
+        "offer_p99_ns": 141469000,
+        "outcome_max_ns": 358673000,
+        "outcome_p99_ns": 358673000,
+        "view_max_ns": 41732000,
+        "view_p99_ns": 35510000,
+        "write_max_ns": 84692000,
+        "write_p99_ns": 81234000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5028000,
+        "write_max_gap_ns": 5037000,
+        "outcome_max_gap_ns": 16712000
+      },
+      "mutations": 144,
+      "commits": 64,
+      "archived": false,
+      "journal_batches": 34,
+      "batch_histogram": [
+        5,
+        5,
+        7,
+        4,
+        6,
+        4,
+        1,
+        2
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 544855
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 42,
+        "PhysicalBytes": 544855
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 57845000,
+        "call_p99_ns": 55633000,
+        "learned_decisions": 0,
+        "offer_max_ns": 168674000,
+        "offer_p99_ns": 163786000,
+        "outcome_max_ns": 376362000,
+        "outcome_p99_ns": 376362000,
+        "view_max_ns": 44946000,
+        "view_p99_ns": 38907000,
+        "write_max_ns": 86340000,
+        "write_p99_ns": 83127000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4962000,
+        "write_max_gap_ns": 4962000,
+        "outcome_max_gap_ns": 16943000
+      },
+      "mutations": 144,
+      "commits": 71,
+      "archived": false,
+      "journal_batches": 41,
+      "batch_histogram": [
+        7,
+        5,
+        4,
+        25,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 551687
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 4,
+        "Cold": 125
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 57,
+        "PhysicalBytes": 551687
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 54049000,
+        "call_p99_ns": 51890000,
+        "learned_decisions": 0,
+        "offer_max_ns": 156249000,
+        "offer_p99_ns": 156241000,
+        "outcome_max_ns": 362511000,
+        "outcome_p99_ns": 362511000,
+        "view_max_ns": 50946000,
+        "view_p99_ns": 43023000,
+        "write_max_ns": 84984000,
+        "write_p99_ns": 81892000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5022000,
+        "write_max_gap_ns": 5038000,
+        "outcome_max_gap_ns": 16415000
+      },
+      "mutations": 144,
+      "commits": 66,
+      "archived": false,
+      "journal_batches": 36,
+      "batch_histogram": [
+        4,
+        8,
+        7,
+        3,
+        8,
+        6,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 933641
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 16,
+        "Cold": 113
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 933641
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "4679000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 57035000,
+        "call_p99_ns": 52397000,
+        "learned_decisions": 0,
+        "offer_max_ns": 165552000,
+        "offer_p99_ns": 160512000,
+        "outcome_max_ns": 371345000,
+        "outcome_p99_ns": 371345000,
+        "view_max_ns": 44227000,
+        "view_p99_ns": 38214000,
+        "write_max_ns": 92061000,
+        "write_p99_ns": 88627000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4975000,
+        "write_max_gap_ns": 5013000,
+        "outcome_max_gap_ns": 16851000
+      },
+      "mutations": 144,
+      "commits": 73,
+      "archived": false,
+      "journal_batches": 43,
+      "batch_histogram": [
+        8,
+        8,
+        3,
+        24,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 0,
+        "Finished": 0,
+        "Rejected": 0,
+        "Peak": 0,
+        "Active": 0,
+        "Capacity": 0,
+        "Closed": false
+      },
+      "mode": -1,
+      "shared_ancestry": false,
+      "deferred_proofs": false,
+      "ancestry_scans": 0,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 0,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1008,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 937029
+      },
+      "metadata_calls": 1008,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 17,
+        "Cold": 112
+      },
+      "core": {
+        "Builds": 32,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 937029
+      },
+      "publication": {
+        "attempts": 159,
+        "owners": 159,
+        "built": 31,
+        "unused": 14,
+        "aggregateNS": "375109000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 14
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 101105000,
+        "call_p99_ns": 101095000,
+        "learned_decisions": 0,
+        "offer_max_ns": 270468000,
+        "offer_p99_ns": 264888000,
+        "outcome_max_ns": 340729000,
+        "outcome_p99_ns": 340729000,
+        "view_max_ns": 70765000,
+        "view_p99_ns": 70753000,
+        "write_max_ns": 93560000,
+        "write_p99_ns": 92765000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4954000,
+        "write_max_gap_ns": 4976000,
+        "outcome_max_gap_ns": 16409000
+      },
+      "mutations": 144,
+      "commits": 67,
+      "archived": true,
+      "journal_batches": 36,
+      "batch_histogram": [
+        4,
+        4,
+        10,
+        6,
+        9,
+        3,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 36,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23374000,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 484198
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 33,
+        "Cold": 96
+      },
+      "core": {
+        "Builds": 16,
+        "Hits": 113,
+        "OwnerAcquisitions": 45,
+        "PhysicalBytes": 484198
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 83185000,
+        "call_p99_ns": 83159000,
+        "learned_decisions": 0,
+        "offer_max_ns": 251266000,
+        "offer_p99_ns": 250897000,
+        "outcome_max_ns": 425226000,
+        "outcome_p99_ns": 425226000,
+        "view_max_ns": 54192000,
+        "view_p99_ns": 54185000,
+        "write_max_ns": 96857000,
+        "write_p99_ns": 95587000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5010000,
+        "write_max_gap_ns": 5038000,
+        "outcome_max_gap_ns": 16993000
+      },
+      "mutations": 144,
+      "commits": 70,
+      "archived": true,
+      "journal_batches": 41,
+      "batch_histogram": [
+        7,
+        4,
+        6,
+        24,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 41,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23275416,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 566929
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": false,
+      "warm": {
+        "Fast": 10,
+        "Cold": 119
+      },
+      "core": {
+        "Builds": 18,
+        "Hits": 111,
+        "OwnerAcquisitions": 48,
+        "PhysicalBytes": 566929
+      },
+      "publication": {
+        "attempts": 0,
+        "owners": 0,
+        "built": 0,
+        "unused": 0,
+        "aggregateNS": "0",
+        "kinds": {
+          "journal": 0,
+          "outcome": 0,
+          "write": 0
+        }
+      },
+      "batch_cap": 4
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 79245000,
+        "call_p99_ns": 79195000,
+        "learned_decisions": 0,
+        "offer_max_ns": 307242000,
+        "offer_p99_ns": 303143000,
+        "outcome_max_ns": 318529000,
+        "outcome_p99_ns": 318529000,
+        "view_max_ns": 48248000,
+        "view_p99_ns": 47839000,
+        "write_max_ns": 74789000,
+        "write_p99_ns": 74095000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 5003000,
+        "write_max_gap_ns": 5033000,
+        "outcome_max_gap_ns": 16935000
+      },
+      "mutations": 144,
+      "commits": 71,
+      "archived": true,
+      "journal_batches": 39,
+      "batch_histogram": [
+        5,
+        4,
+        13,
+        9,
+        7,
+        1,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 39,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 22700542,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 1022407
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 64,
+        "Cold": 65
+      },
+      "core": {
+        "Builds": 34,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 1022407
+      },
+      "publication": {
+        "attempts": 161,
+        "owners": 161,
+        "built": 33,
+        "unused": 16,
+        "aggregateNS": "294716000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 16
+        }
+      },
+      "batch_cap": 8
+    },
+    {
+      "trial": 2,
+      "enabled": true,
+      "visible": true,
+      "pass": false,
+      "timing": false,
+      "learned": 0,
+      "cross_epoch": 0,
+      "max_predictive_error": 0,
+      "metrics": {
+        "call_max_ns": 98776000,
+        "call_p99_ns": 89696000,
+        "learned_decisions": 0,
+        "offer_max_ns": 304049000,
+        "offer_p99_ns": 296415000,
+        "outcome_max_ns": 401527000,
+        "outcome_p99_ns": 401527000,
+        "view_max_ns": 65786000,
+        "view_p99_ns": 60837000,
+        "write_max_ns": 98164000,
+        "write_p99_ns": 94965000
+      },
+      "freshness": [
+        {
+          "event": "at120",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "past100",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-000",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-001",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-002",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-003",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-004",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-005",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-006",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-007",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-008",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-009",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-010",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-011",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-012",
+          "used": false,
+          "first_use_ns": null
+        },
+        {
+          "event": "eligible-013",
+          "used": false,
+          "first_use_ns": null
+        }
+      ],
+      "offers": {
+        "read_max_gap_ns": 4973000,
+        "write_max_gap_ns": 4978000,
+        "outcome_max_gap_ns": 16668000
+      },
+      "mutations": 144,
+      "commits": 76,
+      "archived": true,
+      "journal_batches": 47,
+      "batch_histogram": [
+        6,
+        18,
+        5,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      "archive_queue": {
+        "Accepted": 129,
+        "Finished": 129,
+        "Rejected": 0,
+        "Peak": 8,
+        "Active": 0,
+        "Capacity": 128,
+        "Closed": false
+      },
+      "mode": 3,
+      "shared_ancestry": true,
+      "deferred_proofs": true,
+      "ancestry_scans": 47,
+      "proof_before_ack": 0,
+      "post_drain_proof_ns": 23365125,
+      "projected": true,
+      "metadata": {
+        "Captured": 129,
+        "ProjectedGets": 1158,
+        "NativeSuccess": 258,
+        "LegacyOwnerResults": 0,
+        "CopiesBytes": 897564
+      },
+      "metadata_calls": 1158,
+      "metadata_native_success": 258,
+      "eager": true,
+      "warm": {
+        "Fast": 42,
+        "Cold": 87
+      },
+      "core": {
+        "Builds": 31,
+        "Hits": 128,
+        "OwnerAcquisitions": 1,
+        "PhysicalBytes": 897564
+      },
+      "publication": {
+        "attempts": 158,
+        "owners": 158,
+        "built": 30,
+        "unused": 13,
+        "aggregateNS": "474853000",
+        "kinds": {
+          "journal": 129,
+          "outcome": 16,
+          "write": 13
+        }
+      },
+      "batch_cap": 4
+    }
+  ],
+  "allSevenWholeGoals": "OPEN"
+}

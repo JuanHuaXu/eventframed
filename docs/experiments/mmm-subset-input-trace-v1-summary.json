@@ -1,0 +1,53 @@
+{
+  "sourceHash": "b0c9e5a5c770a7ed8a49ddebd379ecc51871f6c97af1e15bd424d4dce397a855",
+  "archiveHash": "24a5a70f080f92a40bd51308a23b051dfec3cec0ef824e0bd2dfede4929749ee",
+  "cells": [
+    {
+      "phase": "design",
+      "n": 4096,
+      "controlComplete": 0,
+      "coupledComplete": 0,
+      "lostComplete": 0,
+      "gainedComplete": 0,
+      "subsetGuided": 104,
+      "confidenceIncomplete": 1743,
+      "subsetConfidenceIncomplete": 30,
+      "subsetBudgetIncomplete": 74,
+      "controlFloor": 0.25,
+      "coupledFloor": 0.25,
+      "controlExpected": null,
+      "coupledExpected": null,
+      "stops": {
+        "confidence": 1743,
+        "budget": 2353
+      },
+      "costs": {
+        "undefined": 4096
+      }
+    },
+    {
+      "phase": "confirmation",
+      "n": 4096,
+      "controlComplete": 0,
+      "coupledComplete": 0,
+      "lostComplete": 0,
+      "gainedComplete": 0,
+      "subsetGuided": 232,
+      "confidenceIncomplete": 1512,
+      "subsetConfidenceIncomplete": 37,
+      "subsetBudgetIncomplete": 195,
+      "controlFloor": 0.25,
+      "coupledFloor": 0.25,
+      "controlExpected": null,
+      "coupledExpected": null,
+      "stops": {
+        "confidence": 1512,
+        "budget": 2584
+      },
+      "costs": {
+        "undefined": 4096
+      }
+    }
+  ],
+  "limits": "Consumed parity4 trajectories only; known independent-input noisy-parity oracle is evaluator-only, not available to the observer. Aggregate mechanism diagnostic, not a new rescue."
+}

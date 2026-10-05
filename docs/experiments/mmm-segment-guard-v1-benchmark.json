@@ -1,0 +1,40 @@
+{
+  "variants": [
+    {
+      "name": "segment64",
+      "rounds": [
+        {
+          "milliseconds": 233.84974999999997,
+          "microsecondsPerForecast": 1.359338669549851
+        },
+        {
+          "milliseconds": 234.58720800000003,
+          "microsecondsPerForecast": 1.363625418526786
+        },
+        {
+          "milliseconds": 240.95170799999994,
+          "microsecondsPerForecast": 1.400621442522321
+        }
+      ]
+    },
+    {
+      "name": "static64",
+      "rounds": [
+        {
+          "milliseconds": 238.49645800000008,
+          "microsecondsPerForecast": 1.3863493884858635
+        },
+        {
+          "milliseconds": 230.80508299999997,
+          "microsecondsPerForecast": 1.341640409923735
+        },
+        {
+          "milliseconds": 231.87841700000013,
+          "microsecondsPerForecast": 1.3478795631045395
+        }
+      ]
+    }
+  ],
+  "checksum": 4978.993092644817,
+  "limitations": "Warm proposal plus BOTH guards on stored forecasts; excludes segment/static model fitting, I/O and loaded serving. Reference delayed filtering remains O(T^2). Not a latency comparison of model fitters."
+}

@@ -1,0 +1,10 @@
+{
+  "time": "2026-10-04T09:57:25.561Z",
+  "readbackSHA256": "b41a1e8409b3719846b5e7a3167b2b51d75f2af9efa8acee81e1e1e8d72a9e7b",
+  "preservedReportedPercent": 20,
+  "authoritativeFreshPercent": 21,
+  "resetsAt": 1791586313,
+  "reason": "Caller passed stale 20 after the usage tool returned 21. Raw readback is preserved; only usage metadata is superseded.",
+  "scientificFieldsChanged": false,
+  "criterionAbove80Triggered": false
+}

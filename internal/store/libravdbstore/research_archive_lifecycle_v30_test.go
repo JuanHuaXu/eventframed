@@ -1,0 +1,234 @@
+package libravdbstore
+
+import (
+	"context"
+	"encoding/json"
+	"os"
+	"sync"
+	"testing"
+	"time"
+
+	"github.com/JuanHuaXu/eventframed/internal/model"
+)
+
+func TestResearchArchiveInterruptionV30(t *testing.T) {
+	if os.Getenv("EVENTFRAME_RUN_ARCHIVE_V30") != "1" {
+		t.Skip("isolated archival durability controls")
+	}
+	for _, stop := range []string{"after_db", "before_witness", "after_sqlite"} {
+		t.Run(stop, func(t *testing.T) {
+			f := createWitnessFixtureV23(t, true)
+			defer f.close()
+			s := attachArchiveV29(t, f)
+			defer s.Close()
+			s.stopAt = stop
+			var capture *archiveCaptureV29
+			s.afterCapture = func(c *archiveCaptureV29) { capture = c }
+			packet, _, err := s.recall(context.Background(), f.svc, f.request(time.Now().UTC(), "interrupt"))
+			if err == nil || packet.BayesianShadow.JournalID != "" || !s.poison.Load() || s.current.Load() != nil {
+				t.Fatal("incomplete archive acknowledged/served", err)
+			}
+			if capture == nil {
+				t.Fatal("capture absent")
+			}
+			if stats := s.scheduler.Snapshot(); stats.ActiveReaders != 0 || stats.ActiveWriter {
+				t.Fatal("lease leak")
+			}
+			if stop == "after_sqlite" {
+				f.reopen(t)
+				if f.adapter.poison.Load() {
+					t.Fatal("complete durable archive lost")
+				}
+				got, err := f.adapter.gate.store.GetBayesianJournal(context.Background(), "tenant-a", capture.entry.ID)
+				if err != nil || witnessHashV23(got) != capture.wire || f.adapter.state.Journals[got.ID].Snapshot != capture.entry.Snapshot {
+					t.Fatal("reopen repaired/retagged archive", err)
+				}
+				if _, _, err := f.adapter.recallV23(context.Background(), f.svc, f.request(time.Now().UTC(), "reopen")); err != nil {
+					t.Fatal("complete archive cannot serve", err)
+				}
+			} else {
+				f.close()
+				g, err := openDenseOutcomeGateV17(f.root)
+				if err != nil {
+					t.Fatal(err)
+				}
+				defer g.close()
+				if _, ready := g.capture(context.Background()); ready {
+					t.Fatal("incomplete cross-store archive became READY")
+				}
+				base := &publishedRecallLoadStoreV16{gate: g}
+				if err := base.publishLocked(context.Background()); err == nil || base.current.Load() != nil {
+					t.Fatal("uncommitted archive allowed serving")
+				}
+			}
+		})
+	}
+}
+
+func TestResearchArchiveConcurrentV30(t *testing.T) {
+	if os.Getenv("EVENTFRAME_RUN_ARCHIVE_V30") != "1" {
+		t.Skip("isolated bounded concurrent archive")
+	}
+	f := createWitnessFixtureV23(t, true)
+	defer f.close()
+	s := attachArchiveV29(t, f)
+	defer s.Close()
+	ctx := context.Background()
+	prime, _, err := s.recall(ctx, f.svc, f.request(time.Now().UTC(), "prime"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	const n = 16
+	captures := make(chan *archiveCaptureV29, n)
+	resume := make(chan struct{})
+	var once sync.Once
+	unblock := func() { once.Do(func() { close(resume) }) }
+	defer unblock()
+	s.afterCapture = func(c *archiveCaptureV29) { captures <- c; <-resume }
+	type response struct {
+		packet model.ContextPacket
+		err    error
+	}
+	done := make(chan response, n)
+	for i := 0; i < n; i++ {
+		go func() {
+			p, _, e := s.recall(ctx, f.svc, f.request(time.Now().UTC(), "concurrent"))
+			done <- response{p, e}
+		}()
+	}
+	// Drain all live owners even when a guard fails; never close their database
+	// while background callers are still working.
+	remaining := n
+	defer func() {
+		unblock()
+		for remaining > 0 {
+			select {
+			case <-done:
+				remaining--
+			case <-time.After(5 * time.Second):
+				t.Error("live archive caller did not terminate")
+				return
+			}
+		}
+	}()
+	var owned []*archiveCaptureV29
+	for len(owned) < n {
+		select {
+		case c := <-captures:
+			owned = append(owned, c)
+		case <-time.After(5 * time.Second):
+			t.Fatal("capture did not release admission")
+		}
+	}
+	stats := s.scheduler.Snapshot()
+	if stats.ActiveReaders != 0 || stats.ActiveWriter {
+		t.Fatal("held admission", stats)
+	}
+	mutation := make(chan error, 1)
+	go func() {
+		for _, id := range []string{"first", "second"} {
+			if _, e := f.feedback(ctx, prime.BayesianShadow.JournalID, "past100", id, false); e != nil {
+				mutation <- e
+				return
+			}
+		}
+		w := pinnedWrite("visible-concurrent", f.origin)
+		w.Vector = denseRowV6(f.query, 7, .0003)
+		_, e := s.append(ctx, []ResearchEventWrite{w}, false)
+		mutation <- e
+	}()
+	select {
+	case err := <-mutation:
+		if err != nil {
+			t.Fatal(err)
+		}
+	case <-time.After(5 * time.Second):
+		t.Fatal("mutations blocked behind archival durability")
+	}
+	select {
+	case <-done:
+		remaining--
+		t.Fatal("early archive ack")
+	default:
+	}
+	unblock()
+	seen := map[string]bool{}
+	for remaining > 0 {
+		select {
+		case r := <-done:
+			remaining--
+			if r.err != nil {
+				t.Fatal(r.err)
+			}
+			id := r.packet.BayesianShadow.JournalID
+			if id == "" || seen[id] {
+				t.Fatal("lost/duplicate archive")
+			}
+			seen[id] = true
+			got, e := s.gate.store.GetBayesianJournal(ctx, "tenant-a", id)
+			if e != nil {
+				t.Fatal(e)
+			}
+			if got.Snapshot != r.packet.Snapshot || len(got.Report.Decisions) != 150 {
+				t.Fatal("concurrent capture changed")
+			}
+			for _, c := range r.packet.Candidates {
+				for _, d := range got.Report.Decisions {
+					if c.Event.ID == d.EventID && witnessHashV23(c.Forecast) != witnessHashV23(d.Forecast) {
+						t.Fatal("law changed")
+					}
+				}
+			}
+		case <-time.After(5 * time.Second):
+			t.Fatal("archive drain blocked")
+		}
+	}
+	if len(s.state.Journals) != n+1 {
+		t.Fatal("missing native/witness bindings")
+	}
+	for _, c := range owned {
+		got, e := s.gate.store.GetBayesianJournal(ctx, "tenant-a", c.entry.ID)
+		if e != nil || witnessHashV23(got) != c.wire {
+			t.Fatal("capture wire changed", e)
+		}
+	}
+	f.reopen(t)
+	if f.adapter.poison.Load() || len(f.adapter.state.Journals) != n+1 {
+		t.Fatal("concurrent chain failed reopen")
+	}
+	t.Log("16 captured Recalls, two outcomes and one visible insert; all acked, original wire/laws and reopen preserved; not a loaded latency screen")
+}
+
+func TestResearchArchiveOwnershipV30(t *testing.T) {
+	if os.Getenv("EVENTFRAME_RUN_ARCHIVE_V30") != "1" {
+		t.Skip("isolated copy/alias control")
+	}
+	f := createWitnessFixtureV23(t, true)
+	defer f.close()
+	s := attachArchiveV29(t, f)
+	defer s.Close()
+	var captured *archiveCaptureV29
+	s.afterCapture = func(c *archiveCaptureV29) { captured = c }
+	packet, _, err := s.recall(context.Background(), f.svc, f.request(time.Now().UTC(), "owned"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	before := captured.wire
+	packet.BayesianShadow.Decisions[0].Forecast.RankScore += 1
+	if packet.Candidates[0].Forecast.BeliefLaw != nil {
+		packet.Candidates[0].Forecast.BeliefLaw.Useful = .99
+	}
+	if witnessHashV23(captured.entry) != before {
+		t.Fatal("returned packet aliases owned archive")
+	}
+	saved, err := s.gate.store.GetBayesianJournal(context.Background(), "tenant-a", captured.entry.ID)
+	if err != nil || witnessHashV23(saved) != before {
+		t.Fatal("caller mutation reached durable archive", err)
+	}
+	// Getters must not expose the owned capture either.
+	saved.Report.Decisions[0].Forecast.RankScore += 1
+	encoded, err := json.Marshal(captured.entry)
+	if err != nil || len(encoded) == 0 || witnessHashV23(captured.entry) != before {
+		t.Fatal("readback aliases capture", err)
+	}
+}

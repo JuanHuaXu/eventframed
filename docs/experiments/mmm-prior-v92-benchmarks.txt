@@ -1,0 +1,27 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkPriorComparison/n16/equal-10         	      86	   6701901 ns/op	  667712 B/op	       4 allocs/op
+BenchmarkPriorComparison/n16/equal-10         	      91	   6615545 ns/op	  667649 B/op	       4 allocs/op
+BenchmarkPriorComparison/n16/equal-10         	      91	   6563175 ns/op	  667649 B/op	       4 allocs/op
+BenchmarkPriorComparison/n16/skeptical-10     	      92	   6792788 ns/op	  667649 B/op	       4 allocs/op
+BenchmarkPriorComparison/n16/skeptical-10     	      91	   6574300 ns/op	  667649 B/op	       4 allocs/op
+BenchmarkPriorComparison/n16/skeptical-10     	      92	   6566233 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorComparison/n64/equal-10         	      78	   7705592 ns/op	  667650 B/op	       4 allocs/op
+BenchmarkPriorComparison/n64/equal-10         	      75	   8112159 ns/op	  667649 B/op	       4 allocs/op
+BenchmarkPriorComparison/n64/equal-10         	      74	   7717382 ns/op	  667649 B/op	       4 allocs/op
+BenchmarkPriorComparison/n64/skeptical-10     	      78	   7728873 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorComparison/n64/skeptical-10     	      79	   7726066 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorComparison/n64/skeptical-10     	      76	   7704359 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorComparison/n256/equal-10        	      50	  11890277 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorComparison/n256/equal-10        	      49	  11953663 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorComparison/n256/equal-10        	      50	  11962524 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorComparison/n256/skeptical-10    	      50	  12077752 ns/op	  667650 B/op	       4 allocs/op
+BenchmarkPriorComparison/n256/skeptical-10    	      49	  11927252 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorComparison/n256/skeptical-10    	      48	  11993021 ns/op	  667648 B/op	       4 allocs/op
+BenchmarkPriorForecast-10                     	80657356	         7.078 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPriorForecast-10                     	83472930	         7.058 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPriorForecast-10                     	81890769	         7.398 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/observationlearners	13.281s

@@ -1,0 +1,38 @@
+[
+  {
+    "N": 800,
+    "Phase": "0",
+    "Queries": 8,
+    "Hits": 80,
+    "Expected": 80,
+    "SelfMiss": 0,
+    "MaxEvaluations": 908
+  },
+  {
+    "N": 800,
+    "Phase": "1",
+    "Queries": 8,
+    "Hits": 80,
+    "Expected": 80,
+    "SelfMiss": 0,
+    "MaxEvaluations": 893
+  },
+  {
+    "N": 6400,
+    "Phase": "0",
+    "Queries": 8,
+    "Hits": 79,
+    "Expected": 80,
+    "SelfMiss": 0,
+    "MaxEvaluations": 3016
+  },
+  {
+    "N": 6400,
+    "Phase": "1",
+    "Queries": 8,
+    "Hits": 78,
+    "Expected": 80,
+    "SelfMiss": 0,
+    "MaxEvaluations": 2998
+  }
+]

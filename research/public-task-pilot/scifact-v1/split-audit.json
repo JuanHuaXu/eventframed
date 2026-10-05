@@ -1,0 +1,30 @@
+{
+  "time": "2026-10-04T03:40:55.451Z",
+  "sourceManifestSHA256": "bed5666c5373e7d0f6ff5d436497bbc81adfe8caf8d6a9624073c0d787a4d9dc",
+  "splitPlanSHA256": "39d2a8c241e8edf855d2a188092b58a2fd8103de1a2017e6807c62bdcef79741",
+  "auditorSHA256": "afc59c0130b7044d4f43062694059d79eb241e93d66c991f739f9c6bd48c73b2",
+  "counts": {
+    "components": 572,
+    "queries": {
+      "fit": 351,
+      "calibration": 180,
+      "confirmation": 300,
+      "excludedOfficialTrain": 278
+    },
+    "units": {
+      "fit": 221,
+      "calibration": 104,
+      "confirmation": 247
+    }
+  },
+  "controls": {
+    "positiveChecks": 2,
+    "rejectedCorruptions": 12
+  },
+  "independentBreadthFirstReconstruction": true,
+  "noModelRuns": true,
+  "noFitting": true,
+  "topicIndependenceUnproven": true,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

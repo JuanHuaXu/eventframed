@@ -1,0 +1,23 @@
+{
+  "time": "2026-10-04T13:27:28.530Z",
+  "scriptSHA256": "4884bb2e8c977549ee541c46df2f143bde2d651b6fe9c842f81058a59b4743fa",
+  "auditSHA256": "1467f804cbb5007226affdb0d0b32ab8bbffabf370fd311f1930bcee4723b96e",
+  "queryMeanAnd104FamilyMeanRecomputed": true,
+  "gateAndCountsRecomputed": true,
+  "serialCostRecomputed": true,
+  "calibrationPredictions": 180,
+  "confirmationPredictions": 0,
+  "nonNativeStagesNS": {
+    "mean": 2983967.322222222,
+    "p50": 2834874,
+    "p95": 4024292,
+    "p99": 4543459,
+    "max": 5067168
+  },
+  "reportsSHA256": {
+    "native": "d75f30c4eebb82993d9cfa1b486c15ef880dc97b79e07155d9b94777111a8f03",
+    "sourceOnly": "e4e7070f14e0e7921916a34771899a7ec69e012fdd3162c36db01f3eb7589ec2"
+  },
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

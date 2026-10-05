@@ -1,0 +1,6 @@
+// Preserve attempted runs before tests; the V71 archives and source remain exact.
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const source='research/dynvariance-v71-preflight.mjs',raw=fs.readFileSync(source);
+let s=raw.toString().replaceAll('dynvariance-v71','dynvarcache-v72').replaceAll("'./internal/researchdynvariance','./internal/researchdynvarianceref'","'./internal/researchdynvarcache','./internal/researchdynvarcachecheck'");
+const from='research/checkpoint-2026-10-04-class-v69-rate-v70/manifest.json';assert(s.includes(from));s=s.replace(from,'research/checkpoint-2026-10-04-dynvariance-v71/manifest.json').replace('da8c45a0551b895cc578b919bae78d1776b662f6dccc5d946f4ff9e17c1480a3','9d6cb6dcb7fc8281b407ebc9cb5035c27a2e8b29bcf9230013517e2da9a2b297');
+const output='research/dynvarcache-v72-preflight.mjs';fs.writeFileSync(output,s,{flag:'wx',mode:0o600});const hash=b=>crypto.createHash('sha256').update(b).digest('hex');fs.writeFileSync('research/dynvarcache-v72-preflight-generation.json',JSON.stringify({source,sourceSHA256:hash(raw),output,outputSHA256:hash(s),changes:'new isolated packages and chained parent; no gate changes'},null,2)+'\n',{flag:'wx',mode:0o600});

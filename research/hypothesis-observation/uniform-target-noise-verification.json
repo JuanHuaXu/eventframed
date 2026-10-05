@@ -1,0 +1,93 @@
+{
+  "scope": "Byte-exact replay, all-world control parity, alternate conditional-risk identity; not an independent inference implementation",
+  "inputSHA256": "c880f5879a39bc8e1185fb9586bc976cbbadbe5377f3466c61b127745ab6040a",
+  "verifierSHA256": "e0080894da65accf3affd2265410fcef62ca71cc02c06845e586cc85de25e52a",
+  "replay": true,
+  "allWorldControlsExact": true,
+  "checks": 3200,
+  "maxError": 6.106226635438361e-16,
+  "componentTests": {
+    "checks": 107100,
+    "maxError": 5.551115123125783e-16,
+    "negativeTests": 5
+  },
+  "targetTests": {
+    "quadratureMonomials": 12,
+    "polynomialError": 1.3877787807814457e-16,
+    "forecastChecks": 732,
+    "maxError": 5.551115123125783e-16,
+    "negativeTests": 2
+  },
+  "summary": [
+    {
+      "noise": 0.1,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": -0.0009721571471053014,
+      "genuineGainRange": [
+        0.00651452832921301,
+        0.007020921593756696
+      ]
+    },
+    {
+      "noise": 0.15,
+      "passed": 180,
+      "failures": {
+        "nonharm": 0,
+        "gain": 0,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.0016787789325977132,
+      "genuineGainRange": [
+        0.005603127487240761,
+        0.006391824251403416
+      ]
+    },
+    {
+      "noise": 0.2,
+      "passed": 173,
+      "failures": {
+        "nonharm": 0,
+        "gain": 7,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.004366547545252453,
+      "genuineGainRange": [
+        0.004076851161770145,
+        0.005495463611799367
+      ]
+    },
+    {
+      "noise": 0.25,
+      "passed": 170,
+      "failures": {
+        "nonharm": 0,
+        "gain": 10,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.007042639397579209,
+      "genuineGainRange": [
+        0.001819067054225021,
+        0.004183599383041248
+      ]
+    },
+    {
+      "noise": 0.3,
+      "passed": 170,
+      "failures": {
+        "nonharm": 0,
+        "gain": 10,
+        "false_confidence": 0
+      },
+      "worstHarm": 0.009701244384548668,
+      "genuineGainRange": [
+        -0.0010415981851796818,
+        0.0032544183657734482
+      ]
+    }
+  ]
+}

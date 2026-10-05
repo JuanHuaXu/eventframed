@@ -1,0 +1,13 @@
+Command: go test ./internal/researchbeta -run '^$' -bench '^BenchmarkPredict32$' -benchmem -count=3 -benchtime=500ms
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchbeta
+cpu: Apple M4
+BenchmarkPredict32-10     8327304        70.48 ns/op        0 B/op        0 allocs/op
+BenchmarkPredict32-10     8702425        69.70 ns/op        0 B/op        0 allocs/op
+BenchmarkPredict32-10     8718775        69.94 ns/op        0 B/op        0 allocs/op
+PASS
+ok  github.com/JuanHuaXu/eventframed/internal/researchbeta  2.207s
+
+Each operation computes 32 posterior predictions, not one full Recall.
+This excludes retrieval, serialization, queues, persistence, sorting and packing.

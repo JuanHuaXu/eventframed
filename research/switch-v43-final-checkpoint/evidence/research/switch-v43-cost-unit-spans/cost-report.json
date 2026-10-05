@@ -1,0 +1,138 @@
+{
+  "time": "2026-10-04T02:02:54.516Z",
+  "rows": [
+    {
+      "name": "BenchmarkSwitchIssue8-10",
+      "iterations": 1,
+      "ns": 1250,
+      "bytes": 0,
+      "allocs": 0
+    },
+    {
+      "name": "BenchmarkSwitchIssue8-10",
+      "iterations": 1,
+      "ns": 958,
+      "bytes": 0,
+      "allocs": 0
+    },
+    {
+      "name": "BenchmarkSwitchIssue8-10",
+      "iterations": 1,
+      "ns": 708,
+      "bytes": 0,
+      "allocs": 0
+    },
+    {
+      "name": "BenchmarkSwitchOldestReplay8-10",
+      "iterations": 1,
+      "ns": 1500,
+      "bytes": 0,
+      "allocs": 0
+    },
+    {
+      "name": "BenchmarkSwitchOldestReplay8-10",
+      "iterations": 1,
+      "ns": 1334,
+      "bytes": 0,
+      "allocs": 0
+    },
+    {
+      "name": "BenchmarkSwitchOldestReplay8-10",
+      "iterations": 1,
+      "ns": 792,
+      "bytes": 0,
+      "allocs": 0
+    },
+    {
+      "name": "BenchmarkPoolConstructor150-10",
+      "iterations": 1,
+      "ns": 88399541,
+      "bytes": 7268208,
+      "allocs": 94
+    },
+    {
+      "name": "BenchmarkPoolConstructor150-10",
+      "iterations": 1,
+      "ns": 73038417,
+      "bytes": 7268096,
+      "allocs": 93
+    },
+    {
+      "name": "BenchmarkPoolConstructor150-10",
+      "iterations": 1,
+      "ns": 73559625,
+      "bytes": 7268224,
+      "allocs": 95
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/immediate-10",
+      "iterations": 1,
+      "ns": 340306750,
+      "bytes": 7350016,
+      "allocs": 94
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/immediate-10",
+      "iterations": 1,
+      "ns": 343670250,
+      "bytes": 7355464,
+      "allocs": 102
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/immediate-10",
+      "iterations": 1,
+      "ns": 344576333,
+      "bytes": 7350016,
+      "allocs": 94
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/fixed150-10",
+      "iterations": 1,
+      "ns": 354424875,
+      "bytes": 7350016,
+      "allocs": 94
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/fixed150-10",
+      "iterations": 1,
+      "ns": 348200542,
+      "bytes": 7350128,
+      "allocs": 95
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/fixed150-10",
+      "iterations": 1,
+      "ns": 343222666,
+      "bytes": 7350032,
+      "allocs": 95
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/fixed299-10",
+      "iterations": 1,
+      "ns": 345759500,
+      "bytes": 7350016,
+      "allocs": 94
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/fixed299-10",
+      "iterations": 1,
+      "ns": 344927667,
+      "bytes": 7350016,
+      "allocs": 94
+    },
+    {
+      "name": "BenchmarkPoolLoop150x16/fixed299-10",
+      "iterations": 1,
+      "ns": 351143625,
+      "bytes": 7350016,
+      "allocs": 94
+    }
+  ],
+  "constructorMaxBytes": 7268224,
+  "loopMaxNS": 354424875,
+  "preliminaryAllocationPass": true,
+  "preliminaryLoopPass": true,
+  "qualityOrProductionAdoption": false,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE"
+}

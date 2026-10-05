@@ -1,0 +1,530 @@
+{
+  "Renames": {
+    "TestResearchBatchArchiveInterruptionV34": "TestResearchBatchArchiveInterruptionV34_CohortV46",
+    "TestResearchBatchArchiveLifecycleV34": "TestResearchBatchArchiveLifecycleV34_CohortV46",
+    "TestResearchBatchArchiveRetryV34": "TestResearchBatchArchiveRetryV34_CohortV46",
+    "TestResearchEagerTracedOwnerAndDurabilityV44": "TestResearchEagerTracedOwnerAndDurabilityV44_CohortV46",
+    "TestResearchJoinedWitnessBatchV25": "TestResearchJoinedWitnessBatchV25_CohortV46",
+    "TestResearchJoinedWitnessCancellationV25": "TestResearchJoinedWitnessCancellationV25_CohortV46",
+    "TestResearchJoinedWitnessGapV25": "TestResearchJoinedWitnessGapV25_CohortV46",
+    "TestResearchJoinedWitnessLifecycleV25": "TestResearchJoinedWitnessLifecycleV25_CohortV46",
+    "appendArchiveJournalV29": "appendArchiveJournalV29_CohortV46",
+    "appendJoinedJournalV25": "appendJoinedJournalV25_CohortV46",
+    "archiveJobV34": "archiveJobV34_CohortV46",
+    "archiveProofV34": "archiveProofV34_CohortV46",
+    "archiveQueueStatsV34": "archiveQueueStatsV34_CohortV46",
+    "archiveTrialV34": "archiveTrialV34_CohortV46",
+    "attachBatchArchiveV34": "attachBatchArchiveV34_CohortV46",
+    "attachCombinedV26": "attachCombinedV26_CohortV46",
+    "attachJoinedV25": "attachJoinedV25_CohortV46",
+    "attachLoadArchiveV34": "attachLoadArchiveV34_CohortV46",
+    "attachLoadCoreV36": "attachLoadCoreV36_CohortV46",
+    "attachLoadEagerV44": "attachLoadEagerV44_CohortV46",
+    "attachLoadProjectionV35": "attachLoadProjectionV35_CohortV46",
+    "attachLoadWarmV37": "attachLoadWarmV37_CohortV46",
+    "batchArchiveV34": "batchArchiveV34_CohortV46",
+    "coreBuildV36": "coreBuildV36_CohortV46",
+    "coreStatsV36": "coreStatsV36_CohortV46",
+    "coreStoreV36": "coreStoreV36_CohortV46",
+    "coreTrialV36": "coreTrialV36_CohortV46",
+    "eagerStoreV44": "eagerStoreV44_CohortV46",
+    "eagerTrialV44": "eagerTrialV44_CohortV46",
+    "errArchiveCapacityV34": "errArchiveCapacityV34_CohortV46",
+    "finishArchiveTrialV34": "finishArchiveTrialV34_CohortV46",
+    "finishCoreTrialV36": "finishCoreTrialV36_CohortV46",
+    "finishEagerTrialV44": "finishEagerTrialV44_CohortV46",
+    "finishProjectionTrialV35": "finishProjectionTrialV35_CohortV46",
+    "finishWarmTrialV37": "finishWarmTrialV37_CohortV46",
+    "joinedJournalV25": "joinedJournalV25_CohortV46",
+    "joinedWitnessV25": "joinedWitnessV25_CohortV46",
+    "loadArchiveV34": "loadArchiveV34_CohortV46",
+    "loadCoreV36": "loadCoreV36_CohortV46",
+    "loadEagerV44": "loadEagerV44_CohortV46",
+    "loadProjectionV35": "loadProjectionV35_CohortV46",
+    "loadWarmV37": "loadWarmV37_CohortV46",
+    "metadataGetterV35": "metadataGetterV35_CohortV46",
+    "metadataKeyV35": "metadataKeyV35_CohortV46",
+    "metadataPinV35": "metadataPinV35_CohortV46",
+    "metadataProofV35": "metadataProofV35_CohortV46",
+    "metadataReadV35": "metadataReadV35_CohortV46",
+    "metadataStatsV35": "metadataStatsV35_CohortV46",
+    "preparationV44": "preparationV44_CohortV46",
+    "projectionStoreV35": "projectionStoreV35_CohortV46",
+    "projectionTrialV35": "projectionTrialV35_CohortV46",
+    "readCoreV36": "readCoreV36_CohortV46",
+    "runEagerLoadV44": "runEagerLoadV44_CohortV46",
+    "warmKeyV37": "warmKeyV37_CohortV46",
+    "warmStatsV37": "warmStatsV37_CohortV46",
+    "warmStoreV37": "warmStoreV37_CohortV46",
+    "warmTrialV37": "warmTrialV37_CohortV46",
+    "warmUseV37": "warmUseV37_CohortV46"
+  },
+  "Functions": [
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "PutBayesianJournal",
+      "Fork": "PutBayesianJournal",
+      "Receiver": "*joinedWitnessV25",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "prepare",
+      "Fork": "prepare",
+      "Receiver": "*joinedWitnessV25",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "apply",
+      "Fork": "apply",
+      "Receiver": "*joinedWitnessV25",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "worker",
+      "Fork": "worker",
+      "Receiver": "*joinedWitnessV25",
+      "Worker": true,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "Close",
+      "Fork": "Close",
+      "Receiver": "*joinedWitnessV25",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "attachJoinedV25",
+      "Fork": "attachJoinedV25_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "TestResearchJoinedWitnessLifecycleV25",
+      "Fork": "TestResearchJoinedWitnessLifecycleV25_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "TestResearchJoinedWitnessCancellationV25",
+      "Fork": "TestResearchJoinedWitnessCancellationV25_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "TestResearchJoinedWitnessBatchV25",
+      "Fork": "TestResearchJoinedWitnessBatchV25_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_witness_v25_test.go",
+      "Name": "TestResearchJoinedWitnessGapV25",
+      "Fork": "TestResearchJoinedWitnessGapV25_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_combined_witness_v26_test.go",
+      "Name": "attachCombinedV26",
+      "Fork": "attachCombinedV26_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_joined_journal_v25_test.go",
+      "Name": "appendJoinedJournalV25",
+      "Fork": "appendJoinedJournalV25_CohortV46",
+      "Receiver": "*incrementalSortGate",
+      "Worker": false,
+      "Native": true
+    },
+    {
+      "Source": "research_archive_journal_v29_generated_test.go",
+      "Name": "appendArchiveJournalV29",
+      "Fork": "appendArchiveJournalV29_CohortV46",
+      "Receiver": "*incrementalSortGate",
+      "Worker": false,
+      "Native": true
+    },
+    {
+      "Source": "research_archive_cost_v34_generated_test.go",
+      "Name": "attachBatchArchiveV34",
+      "Fork": "attachBatchArchiveV34_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_generated_test.go",
+      "Name": "recall",
+      "Fork": "recall",
+      "Receiver": "*batchArchiveV34",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_generated_test.go",
+      "Name": "PutBayesianJournal",
+      "Fork": "PutBayesianJournal",
+      "Receiver": "*batchArchiveV34",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_generated_test.go",
+      "Name": "applyV34",
+      "Fork": "applyV34",
+      "Receiver": "*batchArchiveV34",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_generated_test.go",
+      "Name": "workerV34",
+      "Fork": "workerV34",
+      "Receiver": "*batchArchiveV34",
+      "Worker": true,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_generated_test.go",
+      "Name": "Close",
+      "Fork": "Close",
+      "Receiver": "*batchArchiveV34",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_test.go",
+      "Name": "validatorV34",
+      "Fork": "validatorV34",
+      "Receiver": "*batchArchiveV34",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_test.go",
+      "Name": "attachLoadArchiveV34",
+      "Fork": "attachLoadArchiveV34_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_test.go",
+      "Name": "recall",
+      "Fork": "recall",
+      "Receiver": "*loadArchiveV34",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_test.go",
+      "Name": "closeV34",
+      "Fork": "closeV34",
+      "Receiver": "*loadArchiveV34",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_v34_test.go",
+      "Name": "finishArchiveTrialV34",
+      "Fork": "finishArchiveTrialV34_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_checks_v34_generated_test.go",
+      "Name": "TestResearchBatchArchiveRetryV34",
+      "Fork": "TestResearchBatchArchiveRetryV34_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_checks_v34_generated_test.go",
+      "Name": "TestResearchBatchArchiveLifecycleV34",
+      "Fork": "TestResearchBatchArchiveLifecycleV34_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_archive_cost_checks_v34_generated_test.go",
+      "Name": "TestResearchBatchArchiveInterruptionV34",
+      "Fork": "TestResearchBatchArchiveInterruptionV34_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "Search",
+      "Fork": "Search",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "pinV35",
+      "Fork": "pinV35",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "compatibleV35",
+      "Fork": "compatibleV35",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "markOwnerResultV35",
+      "Fork": "markOwnerResultV35",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "traceGetterV35",
+      "Fork": "traceGetterV35",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "PutBayesianJournal",
+      "Fork": "PutBayesianJournal",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "attachLoadProjectionV35",
+      "Fork": "attachLoadProjectionV35_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "recall",
+      "Fork": "recall",
+      "Receiver": "*loadProjectionV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "closeV35",
+      "Fork": "closeV35",
+      "Receiver": "*loadProjectionV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_projection_v35_test.go",
+      "Name": "finishProjectionTrialV35",
+      "Fork": "finishProjectionTrialV35_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_core_v36_test.go",
+      "Name": "Search",
+      "Fork": "Search",
+      "Receiver": "*coreStoreV36",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_core_v36_test.go",
+      "Name": "attachLoadCoreV36",
+      "Fork": "attachLoadCoreV36_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_core_v36_test.go",
+      "Name": "closeV36",
+      "Fork": "closeV36",
+      "Receiver": "*loadCoreV36",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_core_v36_test.go",
+      "Name": "finishCoreTrialV36",
+      "Fork": "finishCoreTrialV36_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_getters_v35_generated_test.go",
+      "Name": "GetSelectionCertificate",
+      "Fork": "GetSelectionCertificate",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_getters_v35_generated_test.go",
+      "Name": "GetOmittedInfluenceCertificate",
+      "Fork": "GetOmittedInfluenceCertificate",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_metadata_getters_v35_generated_test.go",
+      "Name": "GetBayesianPosterior",
+      "Fork": "GetBayesianPosterior",
+      "Receiver": "*projectionStoreV35",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_warm_search_v37_test.go",
+      "Name": "Search",
+      "Fork": "Search",
+      "Receiver": "*warmStoreV37",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_warm_search_v37_test.go",
+      "Name": "PutBayesianJournal",
+      "Fork": "PutBayesianJournal",
+      "Receiver": "*warmStoreV37",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_warm_search_v37_test.go",
+      "Name": "attachLoadWarmV37",
+      "Fork": "attachLoadWarmV37_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_warm_search_v37_test.go",
+      "Name": "recall",
+      "Fork": "recall",
+      "Receiver": "*loadWarmV37",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_warm_search_v37_test.go",
+      "Name": "closeV37",
+      "Fork": "closeV37",
+      "Receiver": "*loadWarmV37",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_warm_search_v37_test.go",
+      "Name": "finishWarmTrialV37",
+      "Fork": "finishWarmTrialV37_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_eager_load_v44_test.go",
+      "Name": "refresh",
+      "Fork": "refresh",
+      "Receiver": "*eagerStoreV44",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_eager_load_v44_test.go",
+      "Name": "PutBayesianJournal",
+      "Fork": "PutBayesianJournal",
+      "Receiver": "*eagerStoreV44",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_eager_load_v44_test.go",
+      "Name": "ApplyBayesianOutcome",
+      "Fork": "ApplyBayesianOutcome",
+      "Receiver": "*eagerStoreV44",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_eager_load_v44_test.go",
+      "Name": "attachLoadEagerV44",
+      "Fork": "attachLoadEagerV44_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_eager_load_v44_test.go",
+      "Name": "append",
+      "Fork": "append",
+      "Receiver": "*loadEagerV44",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_eager_load_v44_test.go",
+      "Name": "finishEagerTrialV44",
+      "Fork": "finishEagerTrialV44_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_eager_load_v44_generated_test.go",
+      "Name": "runEagerLoadV44",
+      "Fork": "runEagerLoadV44_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    },
+    {
+      "Source": "research_eager_load_v44_controls_test.go",
+      "Name": "TestResearchEagerTracedOwnerAndDurabilityV44",
+      "Fork": "TestResearchEagerTracedOwnerAndDurabilityV44_CohortV46",
+      "Receiver": "",
+      "Worker": false,
+      "Native": false
+    }
+  ],
+  "WorkerBoundsChanged": 2,
+  "NativeBoundsChanged": 2
+}

@@ -1,0 +1,32 @@
+{
+  "runtime": "go1.27.1 darwin/arm64",
+  "cpu": "Apple M4",
+  "gomaxprocs": 10,
+  "benchmark": "BenchmarkStackingLOO|BenchmarkStackingBuild|BenchmarkStackingForecast",
+  "benchtime": "500ms",
+  "count": 3,
+  "scope": "component exact LOO, full fitting and supplied-mask lookup; no concurrent experiment",
+  "hashes": {
+    "docs/experiments/mmm-stacking-v93-protocol.md": "3ff63b9b47a9adb398a85e49df622259e8b2e2aec173edb6afe51a7554485e00",
+    "go.mod": "fa72235136c9ba87b6c33424e3e28c451a53901bd5198db1ee69fe9b4f654da6",
+    "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13",
+    "internal/observation/controller.go": "3d742564146015b10c74c4a9c63e0bcf3f499ea53180ebefe634c2fbcf7e3b72",
+    "internal/observationlearners/boolean_specialist.go": "9636ff1c80f27d92444c251b2638a9d55ee392b409038267d9d5997021aed66f",
+    "internal/observationlearners/boolean_specialist_test.go": "d7d71f8ba3be3d97149422c71b3b15f5ca493c086fb27e4e74f51ef57fdd4e43",
+    "internal/observationlearners/conditional.go": "25f157a5dfe6fc4c99a8f509625de4652a68bed760e7020430529528c800c6f0",
+    "internal/observationlearners/family.go": "a78712b94ceab7b19eb22026f1a391dc06eb191b6c293a6b7654edab6d91a9b1",
+    "internal/observationlearners/family_prior.go": "b673e79814eeb8885bdd2ec0625d2adfdb9106f5c1450a2efebca0f16563a613",
+    "internal/observationlearners/family_prior_test.go": "a7122b5755a6804c32e8a968f2613e4986f119753613053e1e168151aeb89020",
+    "internal/observationlearners/family_test.go": "34564d87d500882c6ea7a8d627125cdc4f04b8b4b82d49f8682b4d86882d08b5",
+    "internal/observationlearners/stacking.go": "47b20d5b7bae8322b560b95748388be29227d06d54296b91dd72669e809d1405",
+    "internal/observationlearners/stacking_test.go": "99a8dfddda6ad2271568eefca1445fdb5b3ab43f4e6f1bfbd3c2ddbbb7208fa1",
+    "internal/observationlearners/stacking_v93_test.go": "cfb9bdd0d605407a6deba738e431b9c7718bfccb4b682e0a3d382e2fc0d307a4",
+    "internal/observationlearners/subset.go": "b33e2cbfeac2e8cbda8b596e519b777da40e7573d2b4347eaf21dc0706f321a3",
+    "internal/observationlearners/subset_test.go": "9ebd28e04c0c270ed5df3218f65c4fd7a88a16c6fb03777fa78f5835bbb155a6",
+    "research/boolean-family-rescue-proposal.md": "b39ab7adbd93d388c42ae24d124548d21bad61134a9df4ced84509de8e548741",
+    "research/boolean-specialist-proposal.md": "d31cbc66da092c057214c02bff656e0dc07492e18fe2070243c07c5e325ef5cf",
+    "research/family-prior-rescue-proposal.md": "e54e621346855693136eb072b8f441806ffb2c6024371c8acb5210db796e1206",
+    "research/predictive-stacking-proposal.md": "6b6a1af7d3740c38a98e68235201e254d0e08657e34678500ec76f0a87dc200b",
+    "docs/experiments/mmm-stacking-v93-benchmarks.txt": "df943add7456d7cb32790a0dd37ca4fcb44fb442b4702333938bfc09df68232c"
+  }
+}

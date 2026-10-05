@@ -1,0 +1,502 @@
+{
+  "hashes": {
+    "DATE_CONSTRAINT_PROTOCOL.md": "4129ae7ec9495a509f2c5a3abdf29205f68078eb139d5c5f43239f9603be266d",
+    "date-constraints.mjs": "10b2240d7d3f7ba33f1bab0e210c4ce6cfeadc91398a7d3359541161e5a1d418",
+    "date-constraints.test.mjs": "7cda56c7a77a2d9a290f4328138687c9b04263b1f1f190c1d334386bdaa14348",
+    "run-date-constraints.mjs": "fc5f5d5616501f3466ae7bcf2c3683c093fd1d7568fe5c103977c109f024d1ab",
+    "w3c-focus-v1/results.json": "9c5c90f5803b85b81f6592e9b9ecd083bde3f55557d5dd6b4f4b40622b8f07f4",
+    "w3c-focus-v1/corpus.json": "6af5d5ee89f6d277a846f4265d696cd05609466e42fd97a1e76e33ebfd6eec59",
+    "w3c-focus-v1/oracle.json": "1d52eb43f021c071944a9372b7892d1b5b7d13a5c363219c01e7ce9aa650af46"
+  },
+  "records": [
+    {
+      "case": "date-proposed",
+      "original": "When was HTML 5.1 published as a Proposed Recommendation, rather than a final Recommendation?",
+      "rules": [],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.852992885798647,
+          "Law": {
+            "useful": 0.852992885798647,
+            "not_useful": 0.14700711420135304
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8514985311689298,
+          "Law": {
+            "useful": 0.8514985311689298,
+            "not_useful": 0.14850146883107018
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8483033249061025,
+          "Law": {
+            "useful": 0.8483033249061024,
+            "not_useful": 0.15169667509389761
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.843937517739954,
+          "Law": {
+            "useful": 0.843937517739954,
+            "not_useful": 0.15606248226004604
+          },
+          "Contradiction": false
+        }
+      ],
+      "supportRank": 1
+    },
+    {
+      "case": "date-final",
+      "original": "When was HTML 5.1 published as a final Recommendation, rather than a Proposed Recommendation?",
+      "rules": [],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.8519209893895441,
+          "Law": {
+            "useful": 0.8519209893895441,
+            "not_useful": 0.14807901061045592
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8514129226924422,
+          "Law": {
+            "useful": 0.8514129226924422,
+            "not_useful": 0.14858707730755782
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8481090250070875,
+          "Law": {
+            "useful": 0.8481090250070875,
+            "not_useful": 0.1518909749929125
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.8437981530517165,
+          "Law": {
+            "useful": 0.8437981530517166,
+            "not_useful": 0.15620184694828343
+          },
+          "Contradiction": false
+        }
+      ],
+      "supportRank": 2
+    },
+    {
+      "case": "status-proposed",
+      "original": "What publication status did HTML 5.1 have on 15 September 2016, rather than 1 November 2016?",
+      "rules": [
+        {
+          "kind": "on",
+          "value": 20160915
+        },
+        {
+          "kind": "exclude",
+          "value": 20161101
+        }
+      ],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.8479298991367527,
+          "Law": {
+            "useful": 0.8479298991367527,
+            "not_useful": 0.15207010086324735
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8477834736776001,
+          "Law": {
+            "useful": 0.8477834736776001,
+            "not_useful": 0.1522165263223999
+          },
+          "Contradiction": true
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8437804208675257,
+          "Law": {
+            "useful": 0.8437804208675257,
+            "not_useful": 0.1562195791324743
+          },
+          "Contradiction": true
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.8381217806948855,
+          "Law": {
+            "useful": 0.8381217806948855,
+            "not_useful": 0.16187821930511448
+          },
+          "Contradiction": true
+        }
+      ],
+      "supportRank": 1
+    },
+    {
+      "case": "status-final",
+      "original": "What publication status did HTML 5.1 have on 1 November 2016, rather than 15 September 2016?",
+      "rules": [
+        {
+          "kind": "on",
+          "value": 20161101
+        },
+        {
+          "kind": "exclude",
+          "value": 20160915
+        }
+      ],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8493503256335639,
+          "Law": {
+            "useful": 0.8493503256335638,
+            "not_useful": 0.15064967436643617
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.8488294432940108,
+          "Law": {
+            "useful": 0.8488294432940108,
+            "not_useful": 0.15117055670598922
+          },
+          "Contradiction": true
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8446978863890351,
+          "Law": {
+            "useful": 0.8446978863890351,
+            "not_useful": 0.1553021136109649
+          },
+          "Contradiction": true
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.8393362194336285,
+          "Law": {
+            "useful": 0.8393362194336285,
+            "not_useful": 0.16066378056637154
+          },
+          "Contradiction": true
+        }
+      ],
+      "supportRank": 1
+    },
+    {
+      "case": "exclude-september",
+      "original": "Which retained HTML 5.1 publication date is the other date, rather than 15 September 2016?",
+      "rules": [
+        {
+          "kind": "exclude",
+          "value": 20160915
+        }
+      ],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8433807475735219,
+          "Law": {
+            "useful": 0.843380747573522,
+            "not_useful": 0.156619252426478
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8391338033260398,
+          "Law": {
+            "useful": 0.8391338033260398,
+            "not_useful": 0.16086619667396018
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.83470658374528,
+          "Law": {
+            "useful": 0.83470658374528,
+            "not_useful": 0.16529341625472005
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.8434812653882617,
+          "Law": {
+            "useful": 0.8434812653882617,
+            "not_useful": 0.15651873461173826
+          },
+          "Contradiction": true
+        }
+      ],
+      "supportRank": 1
+    },
+    {
+      "case": "exclude-november",
+      "original": "Which retained HTML 5.1 publication date is the other date, rather than 1 November 2016?",
+      "rules": [
+        {
+          "kind": "exclude",
+          "value": 20161101
+        }
+      ],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.8434812653882617,
+          "Law": {
+            "useful": 0.8434812653882617,
+            "not_useful": 0.15651873461173826
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8391338033260398,
+          "Law": {
+            "useful": 0.8391338033260398,
+            "not_useful": 0.16086619667396018
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.83470658374528,
+          "Law": {
+            "useful": 0.83470658374528,
+            "not_useful": 0.16529341625472005
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8433807475735219,
+          "Law": {
+            "useful": 0.843380747573522,
+            "not_useful": 0.156619252426478
+          },
+          "Contradiction": true
+        }
+      ],
+      "supportRank": 1
+    },
+    {
+      "case": "before-2016",
+      "original": "Which retained HTML Recommendation was published before 2016?",
+      "rules": [
+        {
+          "kind": "before",
+          "value": 2016
+        }
+      ],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.8392582676453062,
+          "Law": {
+            "useful": 0.8392582676453062,
+            "not_useful": 0.1607417323546938
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.8449463733661934,
+          "Law": {
+            "useful": 0.8449463733661934,
+            "not_useful": 0.15505362663380662
+          },
+          "Contradiction": true
+        },
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8446546879733791,
+          "Law": {
+            "useful": 0.8446546879733791,
+            "not_useful": 0.15534531202662094
+          },
+          "Contradiction": true
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.842059641600448,
+          "Law": {
+            "useful": 0.842059641600448,
+            "not_useful": 0.157940358399552
+          },
+          "Contradiction": true
+        }
+      ],
+      "supportRank": 1
+    },
+    {
+      "case": "after-2016",
+      "original": "Which retained HTML Recommendation was published after 2016?",
+      "rules": [
+        {
+          "kind": "after",
+          "value": 2016
+        }
+      ],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8419920522063895,
+          "Law": {
+            "useful": 0.8419920522063895,
+            "not_useful": 0.1580079477936105
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.8446240777355636,
+          "Law": {
+            "useful": 0.8446240777355637,
+            "not_useful": 0.1553759222644363
+          },
+          "Contradiction": true
+        },
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8444139645906177,
+          "Law": {
+            "useful": 0.8444139645906177,
+            "not_useful": 0.15558603540938232
+          },
+          "Contradiction": true
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.8390966633617797,
+          "Law": {
+            "useful": 0.8390966633617797,
+            "not_useful": 0.16090333663822032
+          },
+          "Contradiction": true
+        }
+      ],
+      "supportRank": 1
+    },
+    {
+      "case": "absent-53",
+      "original": "When was HTML 5.3 published as a Recommendation, according to a retained record?",
+      "rules": [],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.8533179672578635,
+          "Law": {
+            "useful": 0.8533179672578635,
+            "not_useful": 0.14668203274213654
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8528087533763126,
+          "Law": {
+            "useful": 0.8528087533763126,
+            "not_useful": 0.14719124662368743
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8506725450208475,
+          "Law": {
+            "useful": 0.8506725450208475,
+            "not_useful": 0.14932745497915245
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.8466196581283782,
+          "Law": {
+            "useful": 0.8466196581283782,
+            "not_useful": 0.15338034187162175
+          },
+          "Contradiction": false
+        }
+      ],
+      "supportRank": 0
+    },
+    {
+      "case": "absent-vote",
+      "original": "What was the exact vote count approving HTML 5.1, according to a retained record?",
+      "rules": [],
+      "allContradicted": false,
+      "candidates": [
+        {
+          "Fixture": "html51-proposed",
+          "Score": 0.833366217418861,
+          "Law": {
+            "useful": 0.8333662174188611,
+            "not_useful": 0.16663378258113892
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html51-rec",
+          "Score": 0.8332152869963185,
+          "Law": {
+            "useful": 0.8332152869963185,
+            "not_useful": 0.16678471300368147
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html52-rec",
+          "Score": 0.8292528562950444,
+          "Law": {
+            "useful": 0.8292528562950443,
+            "not_useful": 0.1707471437049557
+          },
+          "Contradiction": false
+        },
+        {
+          "Fixture": "html5-rec",
+          "Score": 0.8243819198117649,
+          "Law": {
+            "useful": 0.8243819198117649,
+            "not_useful": 0.1756180801882351
+          },
+          "Contradiction": false
+        }
+      ],
+      "supportRank": 0
+    }
+  ],
+  "scope": "offline consumed-design constraint replay; no daemon integration"
+}

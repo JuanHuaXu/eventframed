@@ -1,0 +1,59 @@
+{
+  "records": 84,
+  "stats": 2688,
+  "fits": 1008,
+  "forecasts": 32256,
+  "derivatives": 4032,
+  "maxError": 3.241851231905457e-14,
+  "maxObjectiveError": 4.440892098500626e-16,
+  "maxPGError": 1.7621650666432842e-11,
+  "stops": [
+    {
+      "projected-gradient": 663,
+      "iteration-cap": 9
+    },
+    {
+      "projected-gradient": 669,
+      "iteration-cap": 3
+    },
+    {
+      "projected-gradient": 662,
+      "iteration-cap": 10
+    },
+    {
+      "projected-gradient": 667,
+      "iteration-cap": 5
+    }
+  ],
+  "totals": [
+    {
+      "fits": 672,
+      "evaluations": 84.91964285714286,
+      "iterations": 41.09970238095238,
+      "initial": 0.23786886591391607,
+      "final": 0.16555132657519242
+    },
+    {
+      "fits": 672,
+      "evaluations": 78.79761904761905,
+      "iterations": 38.433035714285715,
+      "initial": 0.23563079442716178,
+      "final": 0.16816692672904832
+    },
+    {
+      "fits": 672,
+      "evaluations": 83.79761904761905,
+      "iterations": 40.495535714285715,
+      "initial": 0.23577083450553135,
+      "final": 0.1639665468213686
+    },
+    {
+      "fits": 672,
+      "evaluations": 78.37946428571429,
+      "iterations": 38.17559523809524,
+      "initial": 0.23513153993177152,
+      "final": 0.16671939885079926
+    }
+  ],
+  "pass": true
+}

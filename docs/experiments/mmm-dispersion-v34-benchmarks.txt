@@ -1,0 +1,27 @@
+Apple M4, darwin/arm64, Go1.27.1, 2026-10-03.
+
+Command:
+go test ./internal/researchdispersion -run '^$' -bench . -benchmem -count=3
+
+Initial model_test.go benchmarks (before outcome collection):
+BenchmarkPredict150-10            84984  13889 ns/op  0 B/op  0 allocs/op
+BenchmarkPredict150-10            87196  13829 ns/op  0 B/op  0 allocs/op
+BenchmarkPredict150-10            86296  13818 ns/op  0 B/op  0 allocs/op
+BenchmarkFreshMemberUpdate-10    862401   1475 ns/op  0 B/op  0 allocs/op
+BenchmarkFreshMemberUpdate-10    828225   1469 ns/op  0 B/op  0 allocs/op
+BenchmarkFreshMemberUpdate-10    807050   1473 ns/op  0 B/op  0 allocs/op
+
+Command:
+go test ./internal/researchdispersion -run '^$' -bench 'BenchmarkConstruct150|BenchmarkRepeatedUpdate16' -benchmem -count=3
+
+Additional bench_test.go benchmarks (post collection; audit jobs also running):
+BenchmarkConstruct150-10         66130  18189 ns/op  35712 B/op  4 allocs/op
+BenchmarkConstruct150-10         65877  18174 ns/op  35712 B/op  4 allocs/op
+BenchmarkConstruct150-10         66091  18176 ns/op  35712 B/op  4 allocs/op
+BenchmarkRepeatedUpdate16-10    801908   1484 ns/op      0 B/op  0 allocs/op
+BenchmarkRepeatedUpdate16-10    810093   1480 ns/op      0 B/op  0 allocs/op
+BenchmarkRepeatedUpdate16-10    809402   1483 ns/op      0 B/op  0 allocs/op
+
+Update benchmarks include restoring the fixed saved log/probability arrays
+and member counts before each timed update. These are inclusive component
+costs, not standalone end-to-end daemon/serving or acquisition latency.

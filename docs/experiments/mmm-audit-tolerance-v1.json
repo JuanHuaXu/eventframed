@@ -1,0 +1,3488 @@
+{
+  "streamSHA256": "c9a21a020a2321ca46481d0c145205cd8e3f78349cd4475494f87d72fd337451",
+  "zeroGapSHA256": "28175bef1fa5f0d0b96dee750fd2334e571c64cc230059dbd1ac2707e30716b9",
+  "scriptSHA256": "ed63607d96199a73b3c6dbab3e705a6b61b99b9a1708983b2a9521eb270ca560",
+  "lambda": 0.5,
+  "margin": 0.15,
+  "threshold": 20,
+  "cells": [
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "schedule": "Immediate",
+      "zeroBy511": 1,
+      "marginBy511": 0,
+      "marginBy543": 0,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": null
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "schedule": "Delayed",
+      "zeroBy511": 1,
+      "marginBy511": 0,
+      "marginBy543": 0,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": null
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "schedule": "Immediate",
+      "zeroBy511": 0,
+      "marginBy511": 0,
+      "marginBy543": 0,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": null
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "schedule": "Delayed",
+      "zeroBy511": 0,
+      "marginBy511": 0,
+      "marginBy543": 0,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": null
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "schedule": "Immediate",
+      "zeroBy511": 16,
+      "marginBy511": 2,
+      "marginBy543": 2,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": 473
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "schedule": "Delayed",
+      "zeroBy511": 16,
+      "marginBy511": 2,
+      "marginBy543": 4,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": 505
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "schedule": "Immediate",
+      "zeroBy511": 16,
+      "marginBy511": 3,
+      "marginBy543": 3,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": 494.6666666666667
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "schedule": "Delayed",
+      "zeroBy511": 16,
+      "marginBy511": 1,
+      "marginBy543": 2,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": 517.5
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "schedule": "Immediate",
+      "zeroBy511": 0,
+      "marginBy511": 0,
+      "marginBy543": 0,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": null
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "schedule": "Delayed",
+      "zeroBy511": 0,
+      "marginBy511": 0,
+      "marginBy543": 0,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": null
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "schedule": "Immediate",
+      "zeroBy511": 0,
+      "marginBy511": 0,
+      "marginBy543": 0,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": null
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "schedule": "Delayed",
+      "zeroBy511": 0,
+      "marginBy511": 0,
+      "marginBy543": 0,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": null
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "schedule": "Immediate",
+      "zeroBy511": 16,
+      "marginBy511": 2,
+      "marginBy543": 2,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": 463
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "schedule": "Delayed",
+      "zeroBy511": 16,
+      "marginBy511": 2,
+      "marginBy543": 4,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": 515.75
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "schedule": "Immediate",
+      "zeroBy511": 16,
+      "marginBy511": 3,
+      "marginBy543": 3,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": 494.3333333333333
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "schedule": "Delayed",
+      "zeroBy511": 16,
+      "marginBy511": 1,
+      "marginBy543": 1,
+      "marginBeforeChange": 0,
+      "meanMarginClockAmongDetected": 492
+    }
+  ],
+  "records": [
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": {
+        "clock": 378,
+        "origin": 378,
+        "auditUpdates": 111,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": {
+        "clock": 456,
+        "origin": 425,
+        "auditUpdates": 96,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Immediate",
+      "externalSplitClock": 371,
+      "zeroGap": {
+        "clock": 358,
+        "origin": 358,
+        "auditUpdates": 96,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Delayed",
+      "externalSplitClock": 446,
+      "zeroGap": {
+        "clock": 480,
+        "origin": 449,
+        "auditUpdates": 92,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Immediate",
+      "externalSplitClock": 333,
+      "zeroGap": {
+        "clock": 307,
+        "origin": 307,
+        "auditUpdates": 81,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Delayed",
+      "externalSplitClock": 360,
+      "zeroGap": {
+        "clock": 383,
+        "origin": 352,
+        "auditUpdates": 71,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Immediate",
+      "externalSplitClock": 428,
+      "zeroGap": {
+        "clock": 370,
+        "origin": 370,
+        "auditUpdates": 88,
+        "wealth": 23.09206062555313
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Delayed",
+      "externalSplitClock": 464,
+      "zeroGap": {
+        "clock": 419,
+        "origin": 388,
+        "auditUpdates": 76,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Immediate",
+      "externalSplitClock": 292,
+      "zeroGap": {
+        "clock": 312,
+        "origin": 312,
+        "auditUpdates": 76,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Delayed",
+      "externalSplitClock": 356,
+      "zeroGap": {
+        "clock": 318,
+        "origin": 287,
+        "auditUpdates": 60,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Immediate",
+      "externalSplitClock": 342,
+      "zeroGap": {
+        "clock": 369,
+        "origin": 369,
+        "auditUpdates": 83,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Delayed",
+      "externalSplitClock": 368,
+      "zeroGap": {
+        "clock": 435,
+        "origin": 404,
+        "auditUpdates": 70,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Immediate",
+      "externalSplitClock": 308,
+      "zeroGap": {
+        "clock": 365,
+        "origin": 365,
+        "auditUpdates": 79,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Delayed",
+      "externalSplitClock": 334,
+      "zeroGap": {
+        "clock": 392,
+        "origin": 361,
+        "auditUpdates": 64,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Immediate",
+      "externalSplitClock": 352,
+      "zeroGap": {
+        "clock": 365,
+        "origin": 365,
+        "auditUpdates": 94,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Delayed",
+      "externalSplitClock": 408,
+      "zeroGap": {
+        "clock": 479,
+        "origin": 448,
+        "auditUpdates": 87,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Immediate",
+      "externalSplitClock": 338,
+      "zeroGap": {
+        "clock": 293,
+        "origin": 293,
+        "auditUpdates": 69,
+        "wealth": 21.6243896484375
+      },
+      "margin015": {
+        "clock": 451,
+        "origin": 451,
+        "auditUpdates": 111,
+        "wealth": 24.21552050050214
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Delayed",
+      "externalSplitClock": 370,
+      "zeroGap": {
+        "clock": 324,
+        "origin": 293,
+        "auditUpdates": 55,
+        "wealth": 28.83251953125
+      },
+      "margin015": {
+        "clock": 482,
+        "origin": 451,
+        "auditUpdates": 88,
+        "wealth": 23.689067666765876
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Immediate",
+      "externalSplitClock": 305,
+      "zeroGap": {
+        "clock": 380,
+        "origin": 380,
+        "auditUpdates": 109,
+        "wealth": 29.22588922921568
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Delayed",
+      "externalSplitClock": 337,
+      "zeroGap": {
+        "clock": 466,
+        "origin": 435,
+        "auditUpdates": 103,
+        "wealth": 29.22588922921568
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Immediate",
+      "externalSplitClock": 346,
+      "zeroGap": {
+        "clock": 314,
+        "origin": 314,
+        "auditUpdates": 73,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Delayed",
+      "externalSplitClock": 397,
+      "zeroGap": {
+        "clock": 468,
+        "origin": 437,
+        "auditUpdates": 80,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Immediate",
+      "externalSplitClock": 301,
+      "zeroGap": {
+        "clock": 327,
+        "origin": 327,
+        "auditUpdates": 87,
+        "wealth": 23.09206062555313
+      },
+      "margin015": {
+        "clock": 495,
+        "origin": 495,
+        "auditUpdates": 132,
+        "wealth": 24.34800783596661
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Delayed",
+      "externalSplitClock": 365,
+      "zeroGap": {
+        "clock": 343,
+        "origin": 312,
+        "auditUpdates": 63,
+        "wealth": 27.36836814880371
+      },
+      "margin015": {
+        "clock": 480,
+        "origin": 449,
+        "auditUpdates": 97,
+        "wealth": 23.457248912129543
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Immediate",
+      "externalSplitClock": 318,
+      "zeroGap": {
+        "clock": 325,
+        "origin": 325,
+        "auditUpdates": 69,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Delayed",
+      "externalSplitClock": 362,
+      "zeroGap": {
+        "clock": 376,
+        "origin": 345,
+        "auditUpdates": 52,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Immediate",
+      "externalSplitClock": 336,
+      "zeroGap": {
+        "clock": 272,
+        "origin": 272,
+        "auditUpdates": 72,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Delayed",
+      "externalSplitClock": 392,
+      "zeroGap": {
+        "clock": 302,
+        "origin": 271,
+        "auditUpdates": 51,
+        "wealth": 25.62890625
+      },
+      "margin015": {
+        "clock": 516,
+        "origin": 485,
+        "auditUpdates": 90,
+        "wealth": 22.101660041190527
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Immediate",
+      "externalSplitClock": 316,
+      "zeroGap": {
+        "clock": 327,
+        "origin": 327,
+        "auditUpdates": 85,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Delayed",
+      "externalSplitClock": 395,
+      "zeroGap": {
+        "clock": 368,
+        "origin": 337,
+        "auditUpdates": 72,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Immediate",
+      "externalSplitClock": 322,
+      "zeroGap": {
+        "clock": 368,
+        "origin": 368,
+        "auditUpdates": 83,
+        "wealth": 25.978568203747272
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Delayed",
+      "externalSplitClock": 353,
+      "zeroGap": {
+        "clock": 384,
+        "origin": 353,
+        "auditUpdates": 62,
+        "wealth": 27.36836814880371
+      },
+      "margin015": {
+        "clock": 542,
+        "origin": 511,
+        "auditUpdates": 92,
+        "wealth": 24.51820892990959
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Immediate",
+      "externalSplitClock": 330,
+      "zeroGap": {
+        "clock": 370,
+        "origin": 370,
+        "auditUpdates": 85,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Delayed",
+      "externalSplitClock": 372,
+      "zeroGap": {
+        "clock": 422,
+        "origin": 391,
+        "auditUpdates": 71,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Immediate",
+      "externalSplitClock": 324,
+      "zeroGap": {
+        "clock": 302,
+        "origin": 302,
+        "auditUpdates": 79,
+        "wealth": 27.36836814880371
+      },
+      "margin015": {
+        "clock": 500,
+        "origin": 500,
+        "auditUpdates": 131,
+        "wealth": 24.13949829083214
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Delayed",
+      "externalSplitClock": 364,
+      "zeroGap": {
+        "clock": 344,
+        "origin": 313,
+        "auditUpdates": 68,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Immediate",
+      "externalSplitClock": 349,
+      "zeroGap": {
+        "clock": 324,
+        "origin": 324,
+        "auditUpdates": 85,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Delayed",
+      "externalSplitClock": 538,
+      "zeroGap": {
+        "clock": 399,
+        "origin": 368,
+        "auditUpdates": 74,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": {
+        "clock": 457,
+        "origin": 457,
+        "auditUpdates": 97,
+        "wealth": 29.22588922921568
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": {
+        "clock": 486,
+        "origin": 455,
+        "auditUpdates": 78,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Immediate",
+      "externalSplitClock": 422,
+      "zeroGap": {
+        "clock": 396,
+        "origin": 396,
+        "auditUpdates": 91,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Delayed",
+      "externalSplitClock": 472,
+      "zeroGap": {
+        "clock": 447,
+        "origin": 416,
+        "auditUpdates": 81,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Immediate",
+      "externalSplitClock": 385,
+      "zeroGap": {
+        "clock": 437,
+        "origin": 437,
+        "auditUpdates": 122,
+        "wealth": 25.978568203747272
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Delayed",
+      "externalSplitClock": 456,
+      "zeroGap": {
+        "clock": 482,
+        "origin": 451,
+        "auditUpdates": 92,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Immediate",
+      "externalSplitClock": 347,
+      "zeroGap": {
+        "clock": 355,
+        "origin": 355,
+        "auditUpdates": 89,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Delayed",
+      "externalSplitClock": 423,
+      "zeroGap": {
+        "clock": 392,
+        "origin": 361,
+        "auditUpdates": 74,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Immediate",
+      "externalSplitClock": 420,
+      "zeroGap": {
+        "clock": 350,
+        "origin": 350,
+        "auditUpdates": 85,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Delayed",
+      "externalSplitClock": 451,
+      "zeroGap": {
+        "clock": 424,
+        "origin": 393,
+        "auditUpdates": 75,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Immediate",
+      "externalSplitClock": 344,
+      "zeroGap": {
+        "clock": 312,
+        "origin": 312,
+        "auditUpdates": 72,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Delayed",
+      "externalSplitClock": 415,
+      "zeroGap": {
+        "clock": 355,
+        "origin": 324,
+        "auditUpdates": 62,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Immediate",
+      "externalSplitClock": 416,
+      "zeroGap": {
+        "clock": 397,
+        "origin": 397,
+        "auditUpdates": 106,
+        "wealth": 25.978568203747272
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Delayed",
+      "externalSplitClock": 463,
+      "zeroGap": {
+        "clock": 445,
+        "origin": 414,
+        "auditUpdates": 89,
+        "wealth": 23.09206062555313
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Immediate",
+      "externalSplitClock": 348,
+      "zeroGap": {
+        "clock": 337,
+        "origin": 337,
+        "auditUpdates": 80,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Delayed",
+      "externalSplitClock": 381,
+      "zeroGap": {
+        "clock": 378,
+        "origin": 347,
+        "auditUpdates": 66,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Immediate",
+      "externalSplitClock": 330,
+      "zeroGap": {
+        "clock": 322,
+        "origin": 322,
+        "auditUpdates": 81,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Delayed",
+      "externalSplitClock": 366,
+      "zeroGap": {
+        "clock": 366,
+        "origin": 335,
+        "auditUpdates": 70,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Immediate",
+      "externalSplitClock": 293,
+      "zeroGap": {
+        "clock": 302,
+        "origin": 302,
+        "auditUpdates": 74,
+        "wealth": 28.83251953125
+      },
+      "margin015": {
+        "clock": 511,
+        "origin": 511,
+        "auditUpdates": 123,
+        "wealth": 20.679850936973537
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Delayed",
+      "externalSplitClock": 323,
+      "zeroGap": {
+        "clock": 337,
+        "origin": 306,
+        "auditUpdates": 67,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Immediate",
+      "externalSplitClock": 348,
+      "zeroGap": {
+        "clock": 343,
+        "origin": 343,
+        "auditUpdates": 93,
+        "wealth": 27.36836814880371
+      },
+      "margin015": {
+        "clock": 473,
+        "origin": 473,
+        "auditUpdates": 126,
+        "wealth": 21.220371551033615
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Delayed",
+      "externalSplitClock": 383,
+      "zeroGap": {
+        "clock": 374,
+        "origin": 343,
+        "auditUpdates": 76,
+        "wealth": 21.6243896484375
+      },
+      "margin015": {
+        "clock": 495,
+        "origin": 464,
+        "auditUpdates": 102,
+        "wealth": 20.581259596839192
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Immediate",
+      "externalSplitClock": 321,
+      "zeroGap": {
+        "clock": 326,
+        "origin": 326,
+        "auditUpdates": 81,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Delayed",
+      "externalSplitClock": 388,
+      "zeroGap": {
+        "clock": 340,
+        "origin": 309,
+        "auditUpdates": 66,
+        "wealth": 21.6243896484375
+      },
+      "margin015": {
+        "clock": 540,
+        "origin": 509,
+        "auditUpdates": 103,
+        "wealth": 20.759034172976982
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Immediate",
+      "externalSplitClock": 390,
+      "zeroGap": {
+        "clock": 387,
+        "origin": 387,
+        "auditUpdates": 95,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Delayed",
+      "externalSplitClock": 369,
+      "zeroGap": {
+        "clock": 410,
+        "origin": 379,
+        "auditUpdates": 71,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Immediate",
+      "externalSplitClock": 430,
+      "zeroGap": {
+        "clock": 175,
+        "origin": 175,
+        "auditUpdates": 46,
+        "wealth": 25.62890625
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort1",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Delayed",
+      "externalSplitClock": 458,
+      "zeroGap": {
+        "clock": 206,
+        "origin": 175,
+        "auditUpdates": 41,
+        "wealth": 25.62890625
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 0,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 1,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 2,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 3,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 4,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 5,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 6,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 7,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 8,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 9,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 10,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 11,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 12,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 13,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 14,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_majority3",
+      "index": 15,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 0,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 1,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 2,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 3,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 4,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 5,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 6,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 7,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 8,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 9,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 10,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 11,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 12,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 13,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 14,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "stable_parity4",
+      "index": 15,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": null,
+      "margin015": null,
+      "changed": false
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Immediate",
+      "externalSplitClock": 305,
+      "zeroGap": {
+        "clock": 359,
+        "origin": 359,
+        "auditUpdates": 85,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 0,
+      "schedule": "Delayed",
+      "externalSplitClock": 378,
+      "zeroGap": {
+        "clock": 448,
+        "origin": 417,
+        "auditUpdates": 79,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Immediate",
+      "externalSplitClock": 321,
+      "zeroGap": {
+        "clock": 331,
+        "origin": 331,
+        "auditUpdates": 84,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 1,
+      "schedule": "Delayed",
+      "externalSplitClock": 355,
+      "zeroGap": {
+        "clock": 362,
+        "origin": 331,
+        "auditUpdates": 68,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Immediate",
+      "externalSplitClock": 314,
+      "zeroGap": {
+        "clock": 306,
+        "origin": 306,
+        "auditUpdates": 84,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 2,
+      "schedule": "Delayed",
+      "externalSplitClock": 369,
+      "zeroGap": {
+        "clock": 383,
+        "origin": 352,
+        "auditUpdates": 83,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Immediate",
+      "externalSplitClock": 310,
+      "zeroGap": {
+        "clock": 288,
+        "origin": 288,
+        "auditUpdates": 93,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 3,
+      "schedule": "Delayed",
+      "externalSplitClock": 387,
+      "zeroGap": {
+        "clock": 326,
+        "origin": 295,
+        "auditUpdates": 75,
+        "wealth": 28.83251953125
+      },
+      "margin015": {
+        "clock": 524,
+        "origin": 493,
+        "auditUpdates": 112,
+        "wealth": 22.399356462964512
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Immediate",
+      "externalSplitClock": 348,
+      "zeroGap": {
+        "clock": 356,
+        "origin": 356,
+        "auditUpdates": 78,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 4,
+      "schedule": "Delayed",
+      "externalSplitClock": 388,
+      "zeroGap": {
+        "clock": 407,
+        "origin": 376,
+        "auditUpdates": 61,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Immediate",
+      "externalSplitClock": 326,
+      "zeroGap": {
+        "clock": 346,
+        "origin": 346,
+        "auditUpdates": 85,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 5,
+      "schedule": "Delayed",
+      "externalSplitClock": 486,
+      "zeroGap": {
+        "clock": 403,
+        "origin": 372,
+        "auditUpdates": 74,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Immediate",
+      "externalSplitClock": 319,
+      "zeroGap": {
+        "clock": 319,
+        "origin": 319,
+        "auditUpdates": 77,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 6,
+      "schedule": "Delayed",
+      "externalSplitClock": 367,
+      "zeroGap": {
+        "clock": 365,
+        "origin": 334,
+        "auditUpdates": 58,
+        "wealth": 25.62890625
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Immediate",
+      "externalSplitClock": 376,
+      "zeroGap": {
+        "clock": 318,
+        "origin": 318,
+        "auditUpdates": 89,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 7,
+      "schedule": "Delayed",
+      "externalSplitClock": 425,
+      "zeroGap": {
+        "clock": 369,
+        "origin": 338,
+        "auditUpdates": 78,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Immediate",
+      "externalSplitClock": 327,
+      "zeroGap": {
+        "clock": 414,
+        "origin": 414,
+        "auditUpdates": 101,
+        "wealth": 23.09206062555313
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 8,
+      "schedule": "Delayed",
+      "externalSplitClock": 358,
+      "zeroGap": {
+        "clock": 470,
+        "origin": 439,
+        "auditUpdates": 90,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Immediate",
+      "externalSplitClock": 321,
+      "zeroGap": {
+        "clock": 369,
+        "origin": 369,
+        "auditUpdates": 97,
+        "wealth": 23.09206062555313
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 9,
+      "schedule": "Delayed",
+      "externalSplitClock": 363,
+      "zeroGap": {
+        "clock": 389,
+        "origin": 358,
+        "auditUpdates": 69,
+        "wealth": 24.327438354492188
+      },
+      "margin015": {
+        "clock": 507,
+        "origin": 476,
+        "auditUpdates": 96,
+        "wealth": 23.256367577864932
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Immediate",
+      "externalSplitClock": 292,
+      "zeroGap": {
+        "clock": 357,
+        "origin": 357,
+        "auditUpdates": 88,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 10,
+      "schedule": "Delayed",
+      "externalSplitClock": 325,
+      "zeroGap": {
+        "clock": 426,
+        "origin": 395,
+        "auditUpdates": 74,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Immediate",
+      "externalSplitClock": 326,
+      "zeroGap": {
+        "clock": 281,
+        "origin": 281,
+        "auditUpdates": 78,
+        "wealth": 25.62890625
+      },
+      "margin015": {
+        "clock": 440,
+        "origin": 440,
+        "auditUpdates": 115,
+        "wealth": 25.046117314813632
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 11,
+      "schedule": "Delayed",
+      "externalSplitClock": 423,
+      "zeroGap": {
+        "clock": 334,
+        "origin": 303,
+        "auditUpdates": 71,
+        "wealth": 25.62890625
+      },
+      "margin015": {
+        "clock": 503,
+        "origin": 472,
+        "auditUpdates": 106,
+        "wealth": 21.28720059262732
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Immediate",
+      "externalSplitClock": 335,
+      "zeroGap": {
+        "clock": 367,
+        "origin": 367,
+        "auditUpdates": 97,
+        "wealth": 23.09206062555313
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 12,
+      "schedule": "Delayed",
+      "externalSplitClock": 400,
+      "zeroGap": {
+        "clock": 451,
+        "origin": 420,
+        "auditUpdates": 87,
+        "wealth": 23.09206062555313
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Immediate",
+      "externalSplitClock": 336,
+      "zeroGap": {
+        "clock": 374,
+        "origin": 374,
+        "auditUpdates": 81,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 13,
+      "schedule": "Delayed",
+      "externalSplitClock": 414,
+      "zeroGap": {
+        "clock": 473,
+        "origin": 442,
+        "auditUpdates": 76,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Immediate",
+      "externalSplitClock": 302,
+      "zeroGap": {
+        "clock": 370,
+        "origin": 370,
+        "auditUpdates": 91,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 14,
+      "schedule": "Delayed",
+      "externalSplitClock": 335,
+      "zeroGap": {
+        "clock": 389,
+        "origin": 358,
+        "auditUpdates": 71,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Immediate",
+      "externalSplitClock": 311,
+      "zeroGap": {
+        "clock": 300,
+        "origin": 300,
+        "auditUpdates": 77,
+        "wealth": 24.327438354492188
+      },
+      "margin015": {
+        "clock": 486,
+        "origin": 486,
+        "auditUpdates": 117,
+        "wealth": 25.48066728016993
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "majority_to_parity",
+      "index": 15,
+      "schedule": "Delayed",
+      "externalSplitClock": 363,
+      "zeroGap": {
+        "clock": 364,
+        "origin": 333,
+        "auditUpdates": 65,
+        "wealth": 24.327438354492188
+      },
+      "margin015": {
+        "clock": 529,
+        "origin": 498,
+        "auditUpdates": 94,
+        "wealth": 27.180561084429428
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Immediate",
+      "externalSplitClock": 484,
+      "zeroGap": {
+        "clock": 347,
+        "origin": 347,
+        "auditUpdates": 72,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 0,
+      "schedule": "Delayed",
+      "externalSplitClock": 532,
+      "zeroGap": {
+        "clock": 429,
+        "origin": 398,
+        "auditUpdates": 71,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Immediate",
+      "externalSplitClock": 308,
+      "zeroGap": {
+        "clock": 338,
+        "origin": 338,
+        "auditUpdates": 95,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 1,
+      "schedule": "Delayed",
+      "externalSplitClock": 353,
+      "zeroGap": {
+        "clock": 389,
+        "origin": 358,
+        "auditUpdates": 79,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Immediate",
+      "externalSplitClock": -1,
+      "zeroGap": {
+        "clock": 359,
+        "origin": 359,
+        "auditUpdates": 79,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 2,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": {
+        "clock": 400,
+        "origin": 369,
+        "auditUpdates": 68,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Immediate",
+      "externalSplitClock": 390,
+      "zeroGap": {
+        "clock": 309,
+        "origin": 309,
+        "auditUpdates": 81,
+        "wealth": 24.327438354492188
+      },
+      "margin015": {
+        "clock": 502,
+        "origin": 502,
+        "auditUpdates": 133,
+        "wealth": 20.65435822509324
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 3,
+      "schedule": "Delayed",
+      "externalSplitClock": 541,
+      "zeroGap": {
+        "clock": 352,
+        "origin": 321,
+        "auditUpdates": 72,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Immediate",
+      "externalSplitClock": 495,
+      "zeroGap": {
+        "clock": 395,
+        "origin": 395,
+        "auditUpdates": 89,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 4,
+      "schedule": "Delayed",
+      "externalSplitClock": -1,
+      "zeroGap": {
+        "clock": 492,
+        "origin": 461,
+        "auditUpdates": 84,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Immediate",
+      "externalSplitClock": 369,
+      "zeroGap": {
+        "clock": 344,
+        "origin": 344,
+        "auditUpdates": 94,
+        "wealth": 23.09206062555313
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 5,
+      "schedule": "Delayed",
+      "externalSplitClock": 422,
+      "zeroGap": {
+        "clock": 392,
+        "origin": 361,
+        "auditUpdates": 76,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Immediate",
+      "externalSplitClock": 335,
+      "zeroGap": {
+        "clock": 341,
+        "origin": 341,
+        "auditUpdates": 89,
+        "wealth": 25.978568203747272
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 6,
+      "schedule": "Delayed",
+      "externalSplitClock": 370,
+      "zeroGap": {
+        "clock": 381,
+        "origin": 350,
+        "auditUpdates": 75,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Immediate",
+      "externalSplitClock": 371,
+      "zeroGap": {
+        "clock": 344,
+        "origin": 344,
+        "auditUpdates": 93,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 7,
+      "schedule": "Delayed",
+      "externalSplitClock": 490,
+      "zeroGap": {
+        "clock": 482,
+        "origin": 451,
+        "auditUpdates": 97,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Immediate",
+      "externalSplitClock": 472,
+      "zeroGap": {
+        "clock": 402,
+        "origin": 402,
+        "auditUpdates": 101,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 8,
+      "schedule": "Delayed",
+      "externalSplitClock": 505,
+      "zeroGap": {
+        "clock": 433,
+        "origin": 402,
+        "auditUpdates": 85,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Immediate",
+      "externalSplitClock": 320,
+      "zeroGap": {
+        "clock": 347,
+        "origin": 347,
+        "auditUpdates": 96,
+        "wealth": 20.526276111602783
+      },
+      "margin015": {
+        "clock": 491,
+        "origin": 491,
+        "auditUpdates": 139,
+        "wealth": 21.73345106532513
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 9,
+      "schedule": "Delayed",
+      "externalSplitClock": 397,
+      "zeroGap": {
+        "clock": 394,
+        "origin": 363,
+        "auditUpdates": 80,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Immediate",
+      "externalSplitClock": 413,
+      "zeroGap": {
+        "clock": 359,
+        "origin": 359,
+        "auditUpdates": 84,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 10,
+      "schedule": "Delayed",
+      "externalSplitClock": 454,
+      "zeroGap": {
+        "clock": 390,
+        "origin": 359,
+        "auditUpdates": 74,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Immediate",
+      "externalSplitClock": 323,
+      "zeroGap": {
+        "clock": 409,
+        "origin": 409,
+        "auditUpdates": 90,
+        "wealth": 25.978568203747272
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 11,
+      "schedule": "Delayed",
+      "externalSplitClock": 431,
+      "zeroGap": {
+        "clock": 429,
+        "origin": 398,
+        "auditUpdates": 74,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Immediate",
+      "externalSplitClock": 440,
+      "zeroGap": {
+        "clock": 283,
+        "origin": 283,
+        "auditUpdates": 63,
+        "wealth": 25.62890625
+      },
+      "margin015": {
+        "clock": 490,
+        "origin": 490,
+        "auditUpdates": 117,
+        "wealth": 23.367773608937515
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 12,
+      "schedule": "Delayed",
+      "externalSplitClock": 470,
+      "zeroGap": {
+        "clock": 314,
+        "origin": 283,
+        "auditUpdates": 52,
+        "wealth": 25.62890625
+      },
+      "margin015": {
+        "clock": 492,
+        "origin": 461,
+        "auditUpdates": 90,
+        "wealth": 20.268958522376522
+      },
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Immediate",
+      "externalSplitClock": 322,
+      "zeroGap": {
+        "clock": 351,
+        "origin": 351,
+        "auditUpdates": 80,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 13,
+      "schedule": "Delayed",
+      "externalSplitClock": 428,
+      "zeroGap": {
+        "clock": 407,
+        "origin": 376,
+        "auditUpdates": 72,
+        "wealth": 20.526276111602783
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Immediate",
+      "externalSplitClock": 491,
+      "zeroGap": {
+        "clock": 360,
+        "origin": 360,
+        "auditUpdates": 80,
+        "wealth": 21.6243896484375
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 14,
+      "schedule": "Delayed",
+      "externalSplitClock": 529,
+      "zeroGap": {
+        "clock": 409,
+        "origin": 378,
+        "auditUpdates": 66,
+        "wealth": 28.83251953125
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Immediate",
+      "externalSplitClock": 415,
+      "zeroGap": {
+        "clock": 313,
+        "origin": 313,
+        "auditUpdates": 79,
+        "wealth": 24.327438354492188
+      },
+      "margin015": null,
+      "changed": true
+    },
+    {
+      "phase": "cohort2",
+      "case": "parity_to_majority",
+      "index": 15,
+      "schedule": "Delayed",
+      "externalSplitClock": 464,
+      "zeroGap": {
+        "clock": 378,
+        "origin": 347,
+        "auditUpdates": 69,
+        "wealth": 27.36836814880371
+      },
+      "margin015": null,
+      "changed": true
+    }
+  ],
+  "limits": "Posthoc comparison on consumed synthetic trajectories. A one-sided scalar margin e-process is not the external Anti-Pigeon contract or a target-law diameter certificate. The zero-gap nomination cannot authorize splitting. No fresh confirmation or forecast benefit."
+}

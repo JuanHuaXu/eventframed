@@ -1,0 +1,5 @@
+{
+  "milliseconds": 458.6756159999988,
+  "microsecondsPerHeadForecast": 1.3331113281249967,
+  "limitations": "One-pass mixing only (strong and matched linear together), excludes input preparation, I/O, scoring, fits and serving. Includes cold/JIT effects; not a stable microbenchmark."
+}

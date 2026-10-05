@@ -1,0 +1,28 @@
+{
+  "time": "2026-10-04T06:59:06.883Z",
+  "reportSHA256": "b82ebe08f79e692cfae33de9982a2505c97df87da0cd86c1711b4525a5e6995d",
+  "auditorSHA256": "19d865998656976bb833e427f3d78ee40e6bb6bc93930a8ddceae66c2cdb0c7d",
+  "independentRelationFirstReconstruction": true,
+  "checks": {
+    "train": {
+      "claims": 809,
+      "relations": 919,
+      "textAndCitationsExact": true,
+      "emptyEvidenceClaims": 304,
+      "citationRelationsWithEvidence": 564,
+      "citationRelationsWithoutEvidence": 355
+    },
+    "dev": {
+      "claims": 300,
+      "relations": 339,
+      "textAndCitationsExact": true,
+      "emptyEvidenceClaims": 112,
+      "citationRelationsWithEvidence": 209,
+      "citationRelationsWithoutEvidence": 130
+    }
+  },
+  "upstreamUnlabeledTestClaims": 300,
+  "preparedDataUnchanged": true,
+  "noPredictionOrFitting": true,
+  "allSevenWholeGoals": "OPEN"
+}

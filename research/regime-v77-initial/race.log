@@ -1,0 +1,22 @@
+=== RUN   TestConstructorAllocation
+    benchmark_test.go:62: members=150 constructor allocated=19120; does NOT reserve a full journal or measure replay/retained peak/RSS/serving
+    benchmark_test.go:62: members=200 constructor allocated=20144; does NOT reserve a full journal or measure replay/retained peak/RSS/serving
+--- PASS: TestConstructorAllocation (0.00s)
+=== RUN   TestIndependentTransitionsAndLatentPaths
+--- PASS: TestIndependentTransitionsAndLatentPaths (0.04s)
+=== RUN   TestExactDelayedJointAndProjectionControl
+    model_test.go:143: 48 configurations: max conditional-product TV defect 0.02987798791196133
+--- PASS: TestExactDelayedJointAndProjectionControl (1.59s)
+=== RUN   TestBeamErrorEnvelopeAndCaps
+    model_test.go:186: 144 beam cases: max TV 0.317958587707261, vacuous envelopes 79
+--- PASS: TestBeamErrorEnvelopeAndCaps (0.11s)
+=== RUN   TestActualPairBranchesAndTower
+    model_test.go:229: exact tower 1.3322676295501878e-15; capped tower/evidence-mass defect 0.00820826870579161 (not an exact scored-law certificate)
+--- PASS: TestActualPairBranchesAndTower (0.01s)
+=== RUN   TestJournalFuturePhasesAndAtomicFailures
+--- PASS: TestJournalFuturePhasesAndAtomicFailures (0.02s)
+=== RUN   TestFullJournalDelayedPairs
+    model_test.go:312: 42787 counted exact scalar checks; max defect 1.2323475573339238e-14
+--- PASS: TestFullJournalDelayedPairs (0.12s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregime	3.104s

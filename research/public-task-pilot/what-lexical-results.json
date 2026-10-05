@@ -1,0 +1,2487 @@
+{
+  "hashes": {
+    "research/public-task-pilot/what-lexical.mjs": "326cd575e36e1fe68441ed1ddf6a0c8b050ac1ad97fab41da33312e40a72ee9e",
+    "research/public-task-pilot/run-what-lexical.mjs": "3c9987ce53cc7ee47bd2a66af7d97e2d5562200275b4ffd92691d963aa9c2a1a",
+    "research/public-task-pilot/WHAT_LEXICAL_PROTOCOL.md": "8ffb1af3262a82447b887cb233e936bcaece45b163a8a824fb503379064e9af2",
+    "research/public-task-pilot/semantic-role-v1/task-results.json": "61ea44721a68331bd3028a45749c66225473f26ce7c3249c73ef3bf878047b05",
+    "research/public-task-pilot/semantic-role-v1/corpus.json": "fbc227bd03120d1ca93bee84d48b2af5be322d33532911f9914e20c816473d4a",
+    "research/public-task-pilot/semantic-role-v1/oracle.json": "8260bcd9bb1baf76b32603655795dd2086936421f269607cd59ede8dbf60337e",
+    "research/public-task-pilot/w3c-focus-v1/task-results.json": "26f386a1bd7581eaf6782c411ce8f9799555c28f0c1087c4cac50d05bbd83862",
+    "research/public-task-pilot/w3c-focus-v1/corpus.json": "6af5d5ee89f6d277a846f4265d696cd05609466e42fd97a1e76e33ebfd6eec59",
+    "research/public-task-pilot/w3c-focus-v1/oracle.json": "1d52eb43f021c071944a9372b7892d1b5b7d13a5c363219c01e7ce9aa650af46",
+    "research/public-task-pilot/esa-date-v1/task-results.json": "810d0700aef46889441872063d5bb001bc6fa7901986827a740afd9e6bd41f4a",
+    "research/public-task-pilot/esa-date-v1/corpus.json": "21465258d9684d74c8844d02168ac41c01b99b96d5f805635a978f1e4a9e86a8",
+    "research/public-task-pilot/esa-date-v1/oracle.json": "abb21c4e9336c107b8df9095bdcc5818cf7a62cad87a3f356d5e633e094f4627",
+    "research/public-task-pilot/esa-iso-v1/task-results.json": "efb4327801e4cfa1737ea5b60a9862b8bb0533f1e939536fab94a3756ac16e88",
+    "research/public-task-pilot/esa-iso-v1/corpus.json": "0810632a7a55a39fdeef3095e55b539988f1752a89341a5683aca1129a4b1456",
+    "research/public-task-pilot/esa-iso-v1/oracle.json": "abb21c4e9336c107b8df9095bdcc5818cf7a62cad87a3f356d5e633e094f4627",
+    "research/public-task-pilot/landing-transfer-v1/results.json": "c3a24d982e2bf04cd6b6db6b33a4e98ea24f2216189cd6ebbb74dc0f016d9769",
+    "research/public-task-pilot/landing-transfer-v1/corpus.json": "0139a37068311efcf7e98eafe0dda4072c145ce10a8e94f5a15224b5edeb9321",
+    "research/public-task-pilot/landing-transfer-v1/oracle.json": "a266cb7894c444628d44cbc4c2fe46cd3d65cac0d3e029884807c05c43e5e22f"
+  },
+  "rows": [
+    {
+      "set": "semantic-role-v1",
+      "case": "select-before",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "select-after",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "polar-arrival",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.24938344941747673,
+          0.16345349925722558
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0
+        ],
+        "scores": [
+          0.24938344941747673,
+          0.16345349925722558
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "polar-launch",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          1,
+          0.22028815056182968
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          1,
+          0.22028815056182968
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "falsify-arrival",
+      "lexical": "rosetta-arrival",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0
+        ],
+        "scores": [
+          0.14409126294204377,
+          0.2809957172373104
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0
+        ],
+        "scores": [
+          0.14409126294204377,
+          0.2809957172373104
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "falsify-launch",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.4287193700631689,
+          0.09444179714124812
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.4287193700631689,
+          0.09444179714124812
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "contract-before",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "contract-after",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "explicit-before",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "explicit-after",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.18511190847625208,
+          0.12132797611590924
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "quote-arrival",
+      "lexical": "rosetta-arrival",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0
+        ],
+        "scores": [
+          0.14409126294204377,
+          0.2809957172373104
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0
+        ],
+        "scores": [
+          0.14409126294204377,
+          0.2809957172373104
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "semantic-role-v1",
+      "case": "quote-launch",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.4287193700631689,
+          0.09444179714124812
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1
+        ],
+        "scores": [
+          0.4287193700631689,
+          0.09444179714124812
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "date-proposed",
+      "lexical": "html51-proposed",
+      "combined": "html51-proposed",
+      "task": "html51-proposed",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.8031231723188674,
+          0.44962882000648985,
+          0.44962882000648985,
+          0.44962882000648985
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.8031231723188674,
+          0.44962882000648985,
+          0.44962882000648985,
+          0.44962882000648985
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "date-final",
+      "lexical": "html51-rec",
+      "combined": "html51-rec",
+      "task": "html51-proposed",
+      "lexicalTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.29781996442237346,
+          0.3708272587409901,
+          0.3708272587409901,
+          0.3708272587409901
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.29781996442237346,
+          0.3708272587409901,
+          0.3708272587409901,
+          0.3708272587409901
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": false,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "status-proposed",
+      "lexical": "html51-proposed",
+      "combined": "html51-proposed",
+      "task": "html51-proposed",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.2899567719521357,
+          0.07727383162585078,
+          0.07727383162585078,
+          0.07727383162585078
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.2899567719521357,
+          0.07727383162585078,
+          0.07727383162585078,
+          0.07727383162585078
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "status-final",
+      "lexical": "html51-rec",
+      "combined": "html51-rec",
+      "task": "html51-rec",
+      "lexicalTrace": {
+        "order": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "scores": [
+          0.3610364909717895,
+          0.0620604047925873,
+          0.07727383162585078,
+          0.07727383162585078
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "scores": [
+          0.3610364909717895,
+          0.0620604047925873,
+          0.07727383162585078,
+          0.07727383162585078
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-002",
+        "public-record-001",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "exclude-september",
+      "lexical": "html51-rec",
+      "combined": "html51-rec",
+      "task": "html51-rec",
+      "lexicalTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.05851159000490749,
+          0.07285506385772217,
+          0.07285506385772217,
+          0.07285506385772217
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.05851159000490749,
+          0.07285506385772217,
+          0.07285506385772217,
+          0.07285506385772217
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "exclude-november",
+      "lexical": "html51-rec",
+      "combined": "html52-rec",
+      "task": "html51-proposed",
+      "lexicalTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.05851159000490749,
+          0.07285506385772217,
+          0.07285506385772217,
+          0.07285506385772217
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          2,
+          3,
+          0,
+          1
+        ],
+        "scores": [
+          0.05851159000490749,
+          0.07285506385772217,
+          0.07285506385772217,
+          0.07285506385772217
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "before-2016",
+      "lexical": "html51-rec",
+      "combined": "html5-rec",
+      "task": "html5-rec",
+      "lexicalTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.29781996442237346,
+          0.3708272587409901,
+          0.3708272587409901,
+          0.3708272587409901
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          3,
+          1,
+          2,
+          0
+        ],
+        "scores": [
+          0.29781996442237346,
+          0.3708272587409901,
+          0.3708272587409901,
+          0.3708272587409901
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "after-2016",
+      "lexical": "html51-rec",
+      "combined": "html52-rec",
+      "task": "html52-rec",
+      "lexicalTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.29781996442237346,
+          0.3708272587409901,
+          0.3708272587409901,
+          0.3708272587409901
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          2,
+          1,
+          3,
+          0
+        ],
+        "scores": [
+          0.29781996442237346,
+          0.3708272587409901,
+          0.3708272587409901,
+          0.3708272587409901
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "absent-53",
+      "lexical": "html51-rec",
+      "combined": "html51-rec",
+      "task": "html51-proposed",
+      "lexicalTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.19271117238345195,
+          0.2399522003916717,
+          0.2399522003916717,
+          0.2399522003916717
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.19271117238345195,
+          0.2399522003916717,
+          0.2399522003916717,
+          0.2399522003916717
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": false,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "w3c-focus-v1",
+      "case": "absent-vote",
+      "lexical": "html51-rec",
+      "combined": "html51-rec",
+      "task": "html51-proposed",
+      "lexicalTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.04457013691238121,
+          0.05549601661186454,
+          0.05549601661186454,
+          0.05549601661186454
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.04457013691238121,
+          0.05549601661186454,
+          0.05549601661186454,
+          0.05549601661186454
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-002",
+        "public-record-003",
+        "public-record-000"
+      ],
+      "positive": false,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "before",
+      "lexical": "mars-launch",
+      "combined": "mars-launch",
+      "task": "mars-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001",
+        "public-record-003",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "after",
+      "lexical": "rosetta-arrival",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-000",
+        "public-record-001",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "on-mars",
+      "lexical": "mars-launch",
+      "combined": "mars-launch",
+      "task": "mars-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "scores": [
+          0.4477655847125829,
+          0.12961701946875132,
+          0.1583691321898166,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "scores": [
+          0.4477655847125829,
+          0.12961701946875132,
+          0.1583691321898166,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-002",
+        "public-record-001",
+        "public-record-003"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "on-venus",
+      "lexical": "venus-launch",
+      "combined": "venus-launch",
+      "task": "venus-launch",
+      "lexicalTrace": {
+        "order": [
+          1,
+          2,
+          0,
+          3
+        ],
+        "scores": [
+          0.12961701946875132,
+          0.4477655847125829,
+          0.1583691321898166,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          2,
+          0,
+          3
+        ],
+        "scores": [
+          0.12961701946875132,
+          0.4477655847125829,
+          0.1583691321898166,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-002",
+        "public-record-001",
+        "public-record-003"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "exclude-launch",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.0919280749952702,
+          0.13874030714377894,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "scores": [
+          0.0919280749952702,
+          0.13874030714377894,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-001",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "exclude-arrival",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.0919280749952702,
+          0.13874030714377894,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.0919280749952702,
+          0.13874030714377894,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-001",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "earlier",
+      "lexical": "mars-launch",
+      "combined": "mars-launch",
+      "task": "mars-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-003",
+        "public-record-001",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "later",
+      "lexical": "rosetta-arrival",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-000",
+        "public-record-001",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "absent-2020",
+      "lexical": "rosetta-arrival",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-001",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": false,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "esa-date-v1",
+      "case": "absent-cost",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.22508682490157939,
+          0.09009170858038483,
+          0.07293852539087735,
+          0.07293852539087735
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "scores": [
+          0.22508682490157939,
+          0.09009170858038483,
+          0.07293852539087735,
+          0.07293852539087735
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-003",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": false,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "before",
+      "lexical": "mars-launch",
+      "combined": "mars-launch",
+      "task": "mars-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-002",
+        "public-record-003",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "after",
+      "lexical": "mars-launch",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-003",
+        "public-record-002",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "on-mars",
+      "lexical": "rosetta-launch",
+      "combined": "mars-launch",
+      "task": "mars-launch",
+      "lexicalTrace": {
+        "order": [
+          2,
+          0,
+          1,
+          3
+        ],
+        "scores": [
+          0.14097966586848892,
+          0.14097966586848892,
+          0.19796549420734025,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "scores": [
+          0.14097966586848892,
+          0.14097966586848892,
+          0.19796549420734025,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-002",
+        "public-record-001",
+        "public-record-003"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "on-venus",
+      "lexical": "rosetta-launch",
+      "combined": "venus-launch",
+      "task": "venus-launch",
+      "lexicalTrace": {
+        "order": [
+          2,
+          0,
+          1,
+          3
+        ],
+        "scores": [
+          0.14097966586848892,
+          0.14097966586848892,
+          0.19796549420734025,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          2,
+          0,
+          3
+        ],
+        "scores": [
+          0.14097966586848892,
+          0.14097966586848892,
+          0.19796549420734025,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-002",
+        "public-record-001",
+        "public-record-003"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "exclude-launch",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.10384705802674707,
+          0.19482095734158922,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "scores": [
+          0.10384705802674707,
+          0.19482095734158922,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-001",
+        "public-record-002",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "exclude-arrival",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.10384705802674707,
+          0.19482095734158922,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "scores": [
+          0.10384705802674707,
+          0.19482095734158922,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-001",
+        "public-record-002",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "earlier",
+      "lexical": "mars-launch",
+      "combined": "mars-launch",
+      "task": "mars-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-002",
+        "public-record-003",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "later",
+      "lexical": "mars-launch",
+      "combined": "mars-launch",
+      "task": "mars-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-003",
+        "public-record-002",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "absent-2020",
+      "lexical": "rosetta-arrival",
+      "combined": "rosetta-arrival",
+      "task": "rosetta-arrival",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-000",
+        "public-record-001",
+        "public-record-002"
+      ],
+      "positive": false,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "esa-iso-v1",
+      "case": "absent-cost",
+      "lexical": "rosetta-launch",
+      "combined": "rosetta-launch",
+      "task": "rosetta-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.31606986906018714,
+          0.10177259655613778,
+          0.08911801101971005,
+          0.08911801101971005
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "scores": [
+          0.31606986906018714,
+          0.10177259655613778,
+          0.08911801101971005,
+          0.08911801101971005
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-003",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": false,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "launch-before",
+      "lexical": "curiosity-launch",
+      "combined": "curiosity-launch",
+      "task": "curiosity-launch",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.3543034292510059,
+          0.3543034292510059,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.3543034292510059,
+          0.3543034292510059,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-002",
+        "public-record-001",
+        "public-record-003"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "landing-after",
+      "lexical": "curiosity-landing",
+      "combined": "perseverance-landing",
+      "task": "perseverance-landing",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.28928753859441486,
+          0.28928753859441486,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.28928753859441486,
+          0.28928753859441486,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-003",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "landing-before",
+      "lexical": "curiosity-landing",
+      "combined": "curiosity-landing",
+      "task": "curiosity-landing",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.28928753859441486,
+          0.28928753859441486,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "scores": [
+          0.28928753859441486,
+          0.28928753859441486,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-003",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "verify-curiosity",
+      "lexical": "curiosity-landing",
+      "combined": "curiosity-landing",
+      "task": "curiosity-landing",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          1.0000000000000002,
+          0.6666666666666669,
+          0.408248290463863,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          1.0000000000000002,
+          0.6666666666666669,
+          0.408248290463863,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-003",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "verify-perseverance",
+      "lexical": "perseverance-landing",
+      "combined": "perseverance-landing",
+      "task": "perseverance-launch",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0,
+          3,
+          2
+        ],
+        "scores": [
+          0.3167641084316689,
+          0.5172736229901543,
+          0,
+          0.25863681149507717
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0,
+          3,
+          2
+        ],
+        "scores": [
+          0.3167641084316689,
+          0.5172736229901543,
+          0,
+          0.25863681149507717
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-002",
+        "public-record-003",
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": false,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "refute-curiosity",
+      "lexical": "curiosity-landing",
+      "combined": "curiosity-landing",
+      "task": "curiosity-launch",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.213694266869301,
+          0.34896127652528264,
+          0.17448063826264132,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.213694266869301,
+          0.34896127652528264,
+          0.17448063826264132,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-000",
+        "public-record-001",
+        "public-record-003",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": false,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "refute-perseverance",
+      "lexical": "perseverance-landing",
+      "combined": "perseverance-landing",
+      "task": "perseverance-launch",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0,
+          3,
+          2
+        ],
+        "scores": [
+          0.213694266869301,
+          0.34896127652528264,
+          0,
+          0.17448063826264132
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0,
+          3,
+          2
+        ],
+        "scores": [
+          0.213694266869301,
+          0.34896127652528264,
+          0,
+          0.17448063826264132
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-002",
+        "public-record-003",
+        "public-record-000",
+        "public-record-001"
+      ],
+      "positive": true,
+      "taskCorrect": false,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "wasnt-after",
+      "lexical": "perseverance-landing",
+      "combined": "perseverance-landing",
+      "task": "perseverance-landing",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.28928753859441486,
+          0.28928753859441486,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.28928753859441486,
+          0.28928753859441486,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-001",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "not-before",
+      "lexical": "curiosity-landing",
+      "combined": "perseverance-landing",
+      "task": "perseverance-landing",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.28928753859441486,
+          0.28928753859441486,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          3,
+          0,
+          2
+        ],
+        "scores": [
+          0.28928753859441486,
+          0.28928753859441486,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-003",
+        "public-record-000",
+        "public-record-002"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": false,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "touchdown",
+      "lexical": "perseverance-landing",
+      "combined": "perseverance-landing",
+      "task": "perseverance-landing",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.4091143605057516,
+          0.25053035742103447,
+          0.2045571802528758,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.4091143605057516,
+          0.25053035742103447,
+          0.2045571802528758,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-002",
+        "public-record-001",
+        "public-record-000"
+      ],
+      "positive": true,
+      "taskCorrect": true,
+      "lexicalCorrect": true,
+      "combinedCorrect": true
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "absent-cost",
+      "lexical": "curiosity-landing",
+      "combined": "curiosity-landing",
+      "task": "curiosity-landing",
+      "lexicalTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.280755373537793,
+          0.1719268519280209,
+          0.1403776867688965,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0.280755373537793,
+          0.1719268519280209,
+          0.1403776867688965,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-001",
+        "public-record-000",
+        "public-record-003",
+        "public-record-002"
+      ],
+      "positive": false,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    },
+    {
+      "set": "landing-transfer-v1",
+      "case": "absent-return",
+      "lexical": "perseverance-launch",
+      "combined": "perseverance-launch",
+      "task": "perseverance-landing",
+      "lexicalTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.14472062477575082,
+          0.1772458429786873,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "combinedTrace": {
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "scores": [
+          0.14472062477575082,
+          0.1772458429786873,
+          0,
+          0
+        ],
+        "method": "what-lexical-v1"
+      },
+      "ids": [
+        "public-record-003",
+        "public-record-002",
+        "public-record-001",
+        "public-record-000"
+      ],
+      "positive": false,
+      "taskCorrect": false,
+      "lexicalCorrect": false,
+      "combinedCorrect": false
+    }
+  ],
+  "summaries": [
+    {
+      "set": "semantic-role-v1",
+      "positive": 12,
+      "task": 12,
+      "lexical": 8,
+      "combined": 12,
+      "regressions": []
+    },
+    {
+      "set": "w3c-focus-v1",
+      "positive": 8,
+      "task": 7,
+      "lexical": 5,
+      "combined": 7,
+      "regressions": [
+        "exclude-november"
+      ]
+    },
+    {
+      "set": "esa-date-v1",
+      "positive": 8,
+      "task": 8,
+      "lexical": 7,
+      "combined": 8,
+      "regressions": []
+    },
+    {
+      "set": "esa-iso-v1",
+      "positive": 8,
+      "task": 7,
+      "lexical": 3,
+      "combined": 7,
+      "regressions": []
+    },
+    {
+      "set": "landing-transfer-v1",
+      "positive": 10,
+      "task": 6,
+      "lexical": 7,
+      "combined": 9,
+      "regressions": []
+    }
+  ],
+  "screen": "FAIL"
+}

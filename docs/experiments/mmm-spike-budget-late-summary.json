@@ -1,0 +1,773 @@
+{
+  "pooledMeanDelta": 0.00012894717884299033,
+  "pooledTrajectory95": [
+    -0.00014968635031902008,
+    0.00041587362739913545
+  ],
+  "indices1through7": {
+    "records": 588,
+    "meanDelta": 0.00009260707409509035,
+    "harmedAbovePoint01": 8
+  },
+  "scenarioMeansAbovePoint01": 0,
+  "scenarios": [
+    {
+      "key": "0:0:0",
+      "meanDelta": 0.0008947523029656373,
+      "pointwise95": [
+        -0.0024593609890943523,
+        0.004967298231189129
+      ],
+      "recordsHarmedAbovePoint01": 1
+    },
+    {
+      "key": "0:0:1",
+      "meanDelta": -0.002079263714820718,
+      "pointwise95": [
+        -0.004633603231094099,
+        -0.000026511590684723252
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:1:0",
+      "meanDelta": 0.004371490723229683,
+      "pointwise95": [
+        0.00020115520216644478,
+        0.01014209700342402
+      ],
+      "recordsHarmedAbovePoint01": 1
+    },
+    {
+      "key": "0:1:1",
+      "meanDelta": -0.0022755812776126087,
+      "pointwise95": [
+        -0.008331860207220567,
+        0.0028082448071893445
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:2:0",
+      "meanDelta": 0.0041866457824592355,
+      "pointwise95": [
+        0.0009148224599032986,
+        0.008325771228237917
+      ],
+      "recordsHarmedAbovePoint01": 1
+    },
+    {
+      "key": "0:2:1",
+      "meanDelta": 0.0001609034392052941,
+      "pointwise95": [
+        -0.0016446392534696756,
+        0.0019021913439125696
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:3:0",
+      "meanDelta": 0.0006531292392501394,
+      "pointwise95": [
+        -0.002047663735677163,
+        0.0032117955983063003
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:3:1",
+      "meanDelta": -0.0015547923939432003,
+      "pointwise95": [
+        -0.0033207614360375587,
+        0.00006569175294779406
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:4:0",
+      "meanDelta": -0.0012786112847229768,
+      "pointwise95": [
+        -0.004321255800995776,
+        0.0011875053581085274
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:4:1",
+      "meanDelta": -0.0014071737834796746,
+      "pointwise95": [
+        -0.003445107909390885,
+        0.0005285047208028575
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:5:0",
+      "meanDelta": -0.0007421813720861412,
+      "pointwise95": [
+        -0.004363026187454305,
+        0.0024226799912095143
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:5:1",
+      "meanDelta": -0.00024460170466595807,
+      "pointwise95": [
+        -0.0022878259694109095,
+        0.0015725571657884928
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:6:0",
+      "meanDelta": -0.004490609438218076,
+      "pointwise95": [
+        -0.013921964733137115,
+        0.0021233187006288144
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:6:1",
+      "meanDelta": -0.0013267467785942864,
+      "pointwise95": [
+        -0.003128117280711027,
+        0.0003875896289495355
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:7:0",
+      "meanDelta": 0.0011798906309924417,
+      "pointwise95": [
+        -0.0026952837098495573,
+        0.005661558437100447
+      ],
+      "recordsHarmedAbovePoint01": 1
+    },
+    {
+      "key": "0:7:1",
+      "meanDelta": 0.00025603871891003577,
+      "pointwise95": [
+        -0.0005971768612475226,
+        0.0012274025911736403
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:8:0",
+      "meanDelta": -0.0017960499908603045,
+      "pointwise95": [
+        -0.004982996751953912,
+        0.001302419944737787
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:8:1",
+      "meanDelta": -0.0007012218829163669,
+      "pointwise95": [
+        -0.0018928389863180559,
+        0.0005395464532279154
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:9:0",
+      "meanDelta": 0.00042350617896227006,
+      "pointwise95": [
+        0.000030179182102148434,
+        0.0008293164865779638
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:9:1",
+      "meanDelta": 0.0003654223773162822,
+      "pointwise95": [
+        -0.00009405687883948244,
+        0.0008545933742229268
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:10:0",
+      "meanDelta": -0.0020552395539129497,
+      "pointwise95": [
+        -0.007001756324991893,
+        0.0007015533787871203
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:10:1",
+      "meanDelta": 0.00021731045264746385,
+      "pointwise95": [
+        -0.00000882659677354982,
+        0.0005218829601606302
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:11:0",
+      "meanDelta": 0.00037939276940963853,
+      "pointwise95": [
+        -0.00005258724514707429,
+        0.0007181314884417769
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:11:1",
+      "meanDelta": -0.0000011201694528496092,
+      "pointwise95": [
+        -0.0003361200295366757,
+        0.0003255289050801101
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:12:0",
+      "meanDelta": -0.00003601679501122595,
+      "pointwise95": [
+        -0.000432060958256277,
+        0.0003119252812173647
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:12:1",
+      "meanDelta": 0.0003671445053186669,
+      "pointwise95": [
+        -0.00011007135491179071,
+        0.0008338731708608356
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:13:0",
+      "meanDelta": 0.0004344910435824618,
+      "pointwise95": [
+        -0.0001317705891866498,
+        0.0010819232025543208
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:13:1",
+      "meanDelta": 0.0004846328270078377,
+      "pointwise95": [
+        -0.00008868983609264768,
+        0.0010914169549629798
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:14:0",
+      "meanDelta": 0.005958989968894796,
+      "pointwise95": [
+        0.0035536710878077173,
+        0.0084997474619509
+      ],
+      "recordsHarmedAbovePoint01": 2
+    },
+    {
+      "key": "0:14:1",
+      "meanDelta": 0.002822808944542142,
+      "pointwise95": [
+        0.0013631124343546092,
+        0.004205670371763025
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:15:0",
+      "meanDelta": 0.005570259343105052,
+      "pointwise95": [
+        0.003581648491368214,
+        0.007537944681165787
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:15:1",
+      "meanDelta": 0.005227354849635908,
+      "pointwise95": [
+        0.0038657334128826427,
+        0.00658038344721928
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:16:0",
+      "meanDelta": 0.0003209125580844298,
+      "pointwise95": [
+        -0.00007222307152131031,
+        0.0006856395555656161
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:16:1",
+      "meanDelta": 0.0003153561878896467,
+      "pointwise95": [
+        -0.00008341462832223319,
+        0.0006800660105457986
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:17:0",
+      "meanDelta": -0.003478135987726415,
+      "pointwise95": [
+        -0.006930218147639229,
+        -0.0005716418380270205
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:17:1",
+      "meanDelta": -0.0013254022041411795,
+      "pointwise95": [
+        -0.002163935667879875,
+        -0.0004698138341401384
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:18:0",
+      "meanDelta": 0.0003431920977255542,
+      "pointwise95": [
+        -0.0012053176111999067,
+        0.001425754014430296
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:18:1",
+      "meanDelta": 0.00046104392519891093,
+      "pointwise95": [
+        -0.00010374999924691371,
+        0.0009672501136530221
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:19:0",
+      "meanDelta": 0.0002135278535085822,
+      "pointwise95": [
+        -0.0002954794402219461,
+        0.000699519431085191
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:19:1",
+      "meanDelta": -0.0007586158027318296,
+      "pointwise95": [
+        -0.002458731372021043,
+        0.0003152949283367701
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "0:20:0",
+      "meanDelta": 0.006073575056717796,
+      "pointwise95": [
+        0.0036129101409548827,
+        0.008938183969861667
+      ],
+      "recordsHarmedAbovePoint01": 1
+    },
+    {
+      "key": "0:20:1",
+      "meanDelta": 0.00012311414651276255,
+      "pointwise95": [
+        -0.003556883878755074,
+        0.00409996148386426
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:0:0",
+      "meanDelta": -0.0038081145904982037,
+      "pointwise95": [
+        -0.007944922983066541,
+        -0.00008491424771785855
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:0:1",
+      "meanDelta": -0.0008730405776156656,
+      "pointwise95": [
+        -0.0030362481854120313,
+        0.000984374729248512
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:1:0",
+      "meanDelta": 0.002142078185143448,
+      "pointwise95": [
+        -0.0008585686513314095,
+        0.004977733730881735
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:1:1",
+      "meanDelta": -0.00002557564680276056,
+      "pointwise95": [
+        -0.0020499901106349784,
+        0.00156524652199852
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:2:0",
+      "meanDelta": 0.002111063911889144,
+      "pointwise95": [
+        -0.0010389881794357174,
+        0.004549456435481658
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:2:1",
+      "meanDelta": -0.001004359344940909,
+      "pointwise95": [
+        -0.0037260224168046314,
+        0.000989054096877929
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:3:0",
+      "meanDelta": -0.0045487549017024405,
+      "pointwise95": [
+        -0.007259973760347059,
+        -0.0023192469571496517
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:3:1",
+      "meanDelta": -0.0015229903996050662,
+      "pointwise95": [
+        -0.003065680913648689,
+        -0.00017464664212517647
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:4:0",
+      "meanDelta": -0.004453651429938366,
+      "pointwise95": [
+        -0.0104480795976814,
+        -0.00009167630139992472
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:4:1",
+      "meanDelta": -0.0009226975965688257,
+      "pointwise95": [
+        -0.00290937103220814,
+        0.0005916564306851398
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:5:0",
+      "meanDelta": 0.00093457940425851,
+      "pointwise95": [
+        -0.0007131859280165402,
+        0.002806322644674595
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:5:1",
+      "meanDelta": 0.0004522591730734757,
+      "pointwise95": [
+        -0.0006135013543889581,
+        0.0015156399573775653
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:6:0",
+      "meanDelta": -0.004368295101779496,
+      "pointwise95": [
+        -0.009438168641523945,
+        0.0000817650466914642
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:6:1",
+      "meanDelta": -0.001452909660644746,
+      "pointwise95": [
+        -0.0037726835340650966,
+        0.0002358651019840237
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:7:0",
+      "meanDelta": -0.0020174542404578395,
+      "pointwise95": [
+        -0.004036131950711761,
+        0.00018505047927250273
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:7:1",
+      "meanDelta": -0.0009709598062470626,
+      "pointwise95": [
+        -0.0034591957017568245,
+        0.0009340487043468966
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:8:0",
+      "meanDelta": -0.006126477001017254,
+      "pointwise95": [
+        -0.01103424138095756,
+        -0.0013977254384243687
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:8:1",
+      "meanDelta": -0.000357051371988569,
+      "pointwise95": [
+        -0.001576078122885568,
+        0.0008943320958293456
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:9:0",
+      "meanDelta": 0.00030997456598888615,
+      "pointwise95": [
+        -0.00011943963434246207,
+        0.0006678951606917368
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:9:1",
+      "meanDelta": 0.000346422922387366,
+      "pointwise95": [
+        -0.00002578726006604356,
+        0.000758653889785986
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:10:0",
+      "meanDelta": 0.0003942521664820507,
+      "pointwise95": [
+        -0.0003755501365968212,
+        0.0012094007347446594
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:10:1",
+      "meanDelta": -0.0002244415180521278,
+      "pointwise95": [
+        -0.0011905446166116853,
+        0.0004678469722884113
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:11:0",
+      "meanDelta": 0.00033398899769137864,
+      "pointwise95": [
+        -0.000047049377158274626,
+        0.0006799843629625027
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:11:1",
+      "meanDelta": 0.0004672628802147678,
+      "pointwise95": [
+        -0.000015235748140377502,
+        0.0009976303852078407
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:12:0",
+      "meanDelta": -0.0005806995775450227,
+      "pointwise95": [
+        -0.002311806414851897,
+        0.0011952130496659732
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:12:1",
+      "meanDelta": 0.0005380765594512121,
+      "pointwise95": [
+        -0.0002404292900128214,
+        0.0014820033547210607
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:13:0",
+      "meanDelta": 0.0006219794970687463,
+      "pointwise95": [
+        0.0001457796041674196,
+        0.0011315465724262468
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:13:1",
+      "meanDelta": 0.0003822692545562183,
+      "pointwise95": [
+        -0.00011948968260082696,
+        0.0009013397232618438
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:14:0",
+      "meanDelta": 0.00513273742238161,
+      "pointwise95": [
+        0.003152165994764186,
+        0.007916802789149191
+      ],
+      "recordsHarmedAbovePoint01": 1
+    },
+    {
+      "key": "1:14:1",
+      "meanDelta": 0.0044123058288284365,
+      "pointwise95": [
+        0.0033086256647982433,
+        0.005588927618293122
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:15:0",
+      "meanDelta": 0.004996554329423471,
+      "pointwise95": [
+        0.003362774865415548,
+        0.007210607813025835
+      ],
+      "recordsHarmedAbovePoint01": 1
+    },
+    {
+      "key": "1:15:1",
+      "meanDelta": 0.0032671821961324753,
+      "pointwise95": [
+        0.0024884861466089774,
+        0.004150917471066602
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:16:0",
+      "meanDelta": 0.00017312856800537,
+      "pointwise95": [
+        -0.0005533218389767542,
+        0.0007803204580281069
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:16:1",
+      "meanDelta": 0.0003839429630285735,
+      "pointwise95": [
+        0.00008309864288599724,
+        0.0007309293221630852
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:17:0",
+      "meanDelta": -0.0026988107016018836,
+      "pointwise95": [
+        -0.00477483785230487,
+        -0.0005213812530915074
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:17:1",
+      "meanDelta": -0.0027033381015844973,
+      "pointwise95": [
+        -0.004524728451461006,
+        -0.0010590540744189955
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:18:0",
+      "meanDelta": 0.00035668131597794365,
+      "pointwise95": [
+        -0.00017063336193328792,
+        0.0007674684888879296
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:18:1",
+      "meanDelta": 0.000046334819717637823,
+      "pointwise95": [
+        -0.00028037143047526455,
+        0.0003722397809539386
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:19:0",
+      "meanDelta": -0.00006402935349390272,
+      "pointwise95": [
+        -0.0012334278657690767,
+        0.0007837548634730684
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:19:1",
+      "meanDelta": -0.0004499098278944007,
+      "pointwise95": [
+        -0.001492334467874854,
+        0.00032254015190428306
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:20:0",
+      "meanDelta": 0.004525618782351503,
+      "pointwise95": [
+        0.0029046851718872446,
+        0.00612981975065522
+      ],
+      "recordsHarmedAbovePoint01": 0
+    },
+    {
+      "key": "1:20:1",
+      "meanDelta": 0.001422908240562095,
+      "pointwise95": [
+        -0.00004571794659028426,
+        0.00294188884045702
+      ],
+      "recordsHarmedAbovePoint01": 0
+    }
+  ],
+  "pilotOverlapVerified": false,
+  "limitations": "Eight previously consumed trajectories per scenario, pointwise percentile bootstrap only; no simultaneous coverage or untouched confirmation. Pooled bootstrap clusters all scenarios/schedules by index."
+}

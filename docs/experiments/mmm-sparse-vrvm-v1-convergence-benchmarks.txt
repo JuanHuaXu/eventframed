@@ -1,0 +1,14 @@
+Command: go test ./internal/observationlearners -run '^$' -bench '^BenchmarkSparseVRVM(Fit|Convergence)$' -benchtime=1x -count=3 -benchmem -timeout=3m
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/observationlearners
+cpu: Apple M4
+BenchmarkSparseVRVMConvergence-10  1  4169047334 ns/op  128681200 B/op  1846 allocs/op
+BenchmarkSparseVRVMConvergence-10  1  4167018834 ns/op  128675880 B/op  1840 allocs/op
+BenchmarkSparseVRVMConvergence-10  1  4251178500 ns/op  128675912 B/op  1842 allocs/op
+BenchmarkSparseVRVMFit-10          1   295259417 ns/op    9051192 B/op   144 allocs/op
+BenchmarkSparseVRVMFit-10          1   295282458 ns/op    9051176 B/op   143 allocs/op
+BenchmarkSparseVRVMFit-10          1   296917375 ns/op    9051176 B/op   143 allocs/op
+PASS; package time 13.786s.
+Same fixed 64-label fixture; allocated bytes, not peak resident memory.
+Component fitting only, no production serving-latency inference.

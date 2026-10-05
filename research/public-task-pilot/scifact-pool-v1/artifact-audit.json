@@ -1,0 +1,181 @@
+{
+  "time": "2026-10-04T11:19:47.814Z",
+  "manifestSHA256": "d808af6a3359ce21b41e888cb04d36108c34be9b801ea25092eec1a5724f2823",
+  "sources": 171,
+  "commands": 6,
+  "actualRaceRoots": [
+    "TestPublicPoolV1CoverageOwnershipAndIdentity",
+    "TestPublicPoolV1ResponsesAndWholeFrontier",
+    "TestPublicPoolV1AvailabilityAndMetadataOnlyPoisoning",
+    "TestPublicPoolV1FullCorpus",
+    "TestPublicFrameV1DecodeAndBounds",
+    "TestPublicFrameV1StrictJSONIdentity",
+    "TestPublicFrameV1CoverageIdentityAndMetadata",
+    "TestPublicFrameV1AvailabilityOwnershipAndCancellation",
+    "TestPublicFrameV1RealObserveRecallContract",
+    "TestPublicFrameV1FullCorpus"
+  ],
+  "executionsPerRoot": 3,
+  "inventory": {
+    "documents": 5183,
+    "linkedSpans": 10869,
+    "textBytes": 8582765,
+    "metadataBytes": 2826303,
+    "maxTextBytes": 10579,
+    "dimension768DocumentCachePayload": 24515307,
+    "noDuplicateDocumentEvidence": true,
+    "labelsNotRead": true
+  },
+  "costs": {
+    "Build": [
+      {
+        "ns": 89036056,
+        "bytes": 162831688,
+        "allocs": 595912
+      },
+      {
+        "ns": 87182917,
+        "bytes": 162821757,
+        "allocs": 595860
+      },
+      {
+        "ns": 86785264,
+        "bytes": 162813029,
+        "allocs": 595838
+      }
+    ],
+    "Bind50": [
+      {
+        "ns": 225917,
+        "bytes": 151656,
+        "allocs": 1144
+      },
+      {
+        "ns": 227875,
+        "bytes": 151656,
+        "allocs": 1144
+      },
+      {
+        "ns": 221708,
+        "bytes": 151656,
+        "allocs": 1144
+      }
+    ],
+    "Bind200": [
+      {
+        "ns": 959861,
+        "bytes": 630957,
+        "allocs": 4992
+      },
+      {
+        "ns": 880792,
+        "bytes": 630957,
+        "allocs": 4992
+      },
+      {
+        "ns": 974764,
+        "bytes": 630957,
+        "allocs": 4992
+      }
+    ]
+  },
+  "poolCorruptionRejections": 14,
+  "nativePilotCorruptionRejections": 12,
+  "native": [
+    {
+      "variant": 1,
+      "manifestSHA256": "9cb54720445d2b57d331eb7544387a68b22fd47716ced0e139ac3ee8128349ef",
+      "client": null,
+      "daemonCode": 1,
+      "error": "Error: daemon terminated before owned socket: {\"code\":1,\"signal\":null}",
+      "watcherError": null,
+      "sampledPeakRSSKiB": 0
+    },
+    {
+      "variant": 2,
+      "manifestSHA256": "cbbf17a22c162a32c9b0ea252ac99dd41e26a5f08dc683a8405165e37b951050",
+      "client": null,
+      "daemonCode": 1,
+      "error": "Error: daemon terminated before owned socket: {\"code\":1,\"signal\":null}",
+      "watcherError": null,
+      "sampledPeakRSSKiB": 1561664
+    },
+    {
+      "variant": 3,
+      "manifestSHA256": "29bbdac989c6a4a6bb1d2690ea96cb4fbca89fa8f8ac13fd95f24a657588fdb3",
+      "client": {
+        "code": 2,
+        "signal": null
+      },
+      "daemonCode": 0,
+      "error": "Error: native pilot command failed: {\"code\":2,\"signal\":null}",
+      "watcherError": "owned daemon exceeded sampled 2GiB ceiling",
+      "sampledPeakRSSKiB": 2114032
+    },
+    {
+      "variant": 4,
+      "manifestSHA256": "7e438384c076934a53100ae1ee4b0b768182e87067666d089b89e9c6b26f1db3",
+      "client": {
+        "code": 2,
+        "signal": null
+      },
+      "daemonCode": 0,
+      "error": "Error: native pilot command failed: {\"code\":2,\"signal\":null}",
+      "watcherError": null,
+      "sampledPeakRSSKiB": 234144
+    },
+    {
+      "variant": 5,
+      "manifestSHA256": "c8ef435e3fe24e8659d7db51243484761412af3c6babf9d2682f13c4fd5b62d8",
+      "client": {
+        "code": 2,
+        "signal": null
+      },
+      "daemonCode": 0,
+      "error": "Error: native pilot command failed: {\"code\":2,\"signal\":null}",
+      "watcherError": null,
+      "sampledPeakRSSKiB": 233408
+    },
+    {
+      "variant": 6,
+      "manifestSHA256": "fc84f6438ff079563db25f8dcdfcf02a9fb3cbdde524e8a626bceeff7a23d96f",
+      "client": {
+        "code": 0,
+        "signal": null
+      },
+      "daemonCode": 0,
+      "error": null,
+      "watcherError": null,
+      "sampledPeakRSSKiB": 763184
+    }
+  ],
+  "loaderBoundaryVerified": true,
+  "nativePilot": {
+    "documents": 9,
+    "queries": 2,
+    "importNS": 737870417,
+    "queriesMeasured": [
+      {
+        "searchCandidates": 1,
+        "rankCandidates": 1,
+        "searchNS": 12750792,
+        "rankNS": 1688209
+      },
+      {
+        "searchCandidates": 1,
+        "rankCandidates": 1,
+        "searchNS": 8252083,
+        "rankNS": 720375
+      }
+    ],
+    "futurePositiveAndNegativeControls": true,
+    "raw8Returned1": true,
+    "backend": "Q8 GGUF",
+    "nativeStaleAnchorWarningPreserved": true
+  },
+  "weeklyUsage": 22,
+  "qualityValidation": false,
+  "allSevenWholeGoals": "OPEN",
+  "goal": "ACTIVE",
+  "scriptSHA256": "3c9f1b498d836ba15f80cf907f8bd68d77ecd7a77241cafc9eed35c51f03566f"
+}

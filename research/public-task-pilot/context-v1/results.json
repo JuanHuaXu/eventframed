@@ -1,0 +1,1476 @@
+{
+  "Model": "openai-compatible:nomic-embed-text:latest:d768:rp85230b608c3f:repr=eventframe-5w1h-v1",
+  "Hashes": {
+    "cmd/public-context-pilot/main.go": "86c566d94cbcc4503e85294c5b6af44f5ca96f478c4caee516e5eaa72d971002",
+    "internal/embed/openai.go": "ab15a280cafc350ac7800d5f8a48118d8715a26916f25bf3eb7debfd5c2d1eef",
+    "internal/researchsparse/sparse.go": "ea7e0a3713081ed03ce11b646b020468a64f4bf9177fa058b75fbc8ed41450c4",
+    "internal/service/research_rank.go": "3d44b913a685ddb80d03845a3a8f78af5cfb6ed3e3825e1fcbcff9047942a942",
+    "research/public-task-pilot/CONTEXT_PROTOCOL.md": "e8e16a23097fe18ab8559a232332629b380fcfc414e53fb580a36511c7cee685",
+    "research/public-task-pilot/context-v1/corpus.json": "9474f966ee3f76edd171f5fde93f998759f3d46ad23764f57d077d6197d48b2a",
+    "research/public-task-pilot/context-v1/oracle.json": "143de816d1d2b8cddf2906169e6541314172e9867778a483048b91f3082ead7e",
+    "research/public-task-pilot/context-v1/queries.json": "168c8bd7c5183f0197fcb6fc36843d6638ad249993f6ded73bda3f296d599054",
+    "research/public-task-pilot/sparse-go-golden.json": "33fc2b941b92374a3bcba12f1f1f6885042134cc4fd151b121817ccdba897f07"
+  },
+  "Results": [
+    {
+      "Arm": "baseline",
+      "Case": "history-pluto",
+      "Candidates": [
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8429349670982001,
+          "Law": {
+            "useful": 0.8429349670982001,
+            "not_useful": 0.15706503290179985
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8290281000369393,
+          "Law": {
+            "useful": 0.8290281000369393,
+            "not_useful": 0.17097189996306073
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8240589744732101,
+          "Law": {
+            "useful": 0.82405897447321,
+            "not_useful": 0.17594102552679003
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8181887562008939,
+          "Law": {
+            "useful": 0.8181887562008939,
+            "not_useful": 0.18181124379910607
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8149014878314964,
+          "Law": {
+            "useful": 0.8149014878314964,
+            "not_useful": 0.1850985121685036
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.8087855082702865,
+          "Law": {
+            "useful": 0.8087855082702865,
+            "not_useful": 0.1912144917297135
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8047895669325157,
+          "Law": {
+            "useful": 0.8047895669325157,
+            "not_useful": 0.1952104330674843
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8024359919427397,
+          "Law": {
+            "useful": 0.8024359919427397,
+            "not_useful": 0.19756400805726027
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16739042
+    },
+    {
+      "Arm": "baseline",
+      "Case": "draft-pluto",
+      "Candidates": [
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8491877483496482,
+          "Law": {
+            "useful": 0.8491877483496482,
+            "not_useful": 0.15081225165035184
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.831878025341646,
+          "Law": {
+            "useful": 0.831878025341646,
+            "not_useful": 0.168121974658354
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.822925903095198,
+          "Law": {
+            "useful": 0.822925903095198,
+            "not_useful": 0.17707409690480203
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8195035633469285,
+          "Law": {
+            "useful": 0.8195035633469285,
+            "not_useful": 0.18049643665307147
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8111064837864362,
+          "Law": {
+            "useful": 0.8111064837864362,
+            "not_useful": 0.18889351621356376
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.80885417687803,
+          "Law": {
+            "useful": 0.80885417687803,
+            "not_useful": 0.19114582312197004
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8029799341284721,
+          "Law": {
+            "useful": 0.8029799341284721,
+            "not_useful": 0.19702006587152787
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.7959698678322097,
+          "Law": {
+            "useful": 0.7959698678322097,
+            "not_useful": 0.2040301321677903
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 15673000
+    },
+    {
+      "Arm": "baseline",
+      "Case": "adopted-pluto",
+      "Candidates": [
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8479198706413226,
+          "Law": {
+            "useful": 0.8479198706413226,
+            "not_useful": 0.15208012935867743
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8315262628426074,
+          "Law": {
+            "useful": 0.8315262628426073,
+            "not_useful": 0.16847373715739267
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8307940227510495,
+          "Law": {
+            "useful": 0.8307940227510495,
+            "not_useful": 0.16920597724895048
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8240937502356317,
+          "Law": {
+            "useful": 0.8240937502356317,
+            "not_useful": 0.1759062497643683
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8159241962462759,
+          "Law": {
+            "useful": 0.8159241962462759,
+            "not_useful": 0.18407580375372412
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8122443101381547,
+          "Law": {
+            "useful": 0.8122443101381547,
+            "not_useful": 0.18775568986184532
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8119903487501877,
+          "Law": {
+            "useful": 0.8119903487501877,
+            "not_useful": 0.18800965124981228
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.8023934151298203,
+          "Law": {
+            "useful": 0.8023934151298203,
+            "not_useful": 0.19760658487017968
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 17639125
+    },
+    {
+      "Arm": "baseline",
+      "Case": "draft-count",
+      "Candidates": [
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8464290342054316,
+          "Law": {
+            "useful": 0.8464290342054316,
+            "not_useful": 0.15357096579456841
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8348719302364839,
+          "Law": {
+            "useful": 0.8348719302364839,
+            "not_useful": 0.16512806976351613
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8319016750273768,
+          "Law": {
+            "useful": 0.8319016750273769,
+            "not_useful": 0.16809832497262311
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.814880532827889,
+          "Law": {
+            "useful": 0.814880532827889,
+            "not_useful": 0.18511946717211103
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8124324871298138,
+          "Law": {
+            "useful": 0.8124324871298139,
+            "not_useful": 0.18756751287018614
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8069537829927602,
+          "Law": {
+            "useful": 0.8069537829927602,
+            "not_useful": 0.19304621700723978
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.7986425616914161,
+          "Law": {
+            "useful": 0.7986425616914161,
+            "not_useful": 0.20135743830858388
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.7945978511840182,
+          "Law": {
+            "useful": 0.7945978511840182,
+            "not_useful": 0.20540214881598184
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16186375
+    },
+    {
+      "Arm": "baseline",
+      "Case": "adopted-count",
+      "Candidates": [
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8481141341034657,
+          "Law": {
+            "useful": 0.8481141341034657,
+            "not_useful": 0.1518858658965343
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8448268674657817,
+          "Law": {
+            "useful": 0.8448268674657817,
+            "not_useful": 0.15517313253421827
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8331695621528685,
+          "Law": {
+            "useful": 0.8331695621528685,
+            "not_useful": 0.16683043784713147
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8314531770272268,
+          "Law": {
+            "useful": 0.8314531770272269,
+            "not_useful": 0.16854682297277312
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8236793806363244,
+          "Law": {
+            "useful": 0.8236793806363245,
+            "not_useful": 0.1763206193636755
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.813617105480298,
+          "Law": {
+            "useful": 0.8136171054802979,
+            "not_useful": 0.18638289451970214
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8109857449493525,
+          "Law": {
+            "useful": 0.8109857449493526,
+            "not_useful": 0.1890142550506474
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.797174628786077,
+          "Law": {
+            "useful": 0.797174628786077,
+            "not_useful": 0.20282537121392297
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16148875
+    },
+    {
+      "Arm": "baseline",
+      "Case": "initial-ceres",
+      "Candidates": [
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.850603442441627,
+          "Law": {
+            "useful": 0.8506034424416271,
+            "not_useful": 0.1493965575583729
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8388443559825419,
+          "Law": {
+            "useful": 0.8388443559825419,
+            "not_useful": 0.16115564401745808
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.832292121805339,
+          "Law": {
+            "useful": 0.832292121805339,
+            "not_useful": 0.16770787819466104
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8150848997078539,
+          "Law": {
+            "useful": 0.8150848997078539,
+            "not_useful": 0.18491510029214608
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8124966707520077,
+          "Law": {
+            "useful": 0.8124966707520077,
+            "not_useful": 0.1875033292479923
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8081585838120625,
+          "Law": {
+            "useful": 0.8081585838120624,
+            "not_useful": 0.1918414161879376
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8079808163922039,
+          "Law": {
+            "useful": 0.8079808163922038,
+            "not_useful": 0.19201918360779624
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8028014717115477,
+          "Law": {
+            "useful": 0.8028014717115477,
+            "not_useful": 0.1971985282884523
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 16439458
+    },
+    {
+      "Arm": "baseline",
+      "Case": "intermediate-ceres",
+      "Candidates": [
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.844653246028463,
+          "Law": {
+            "useful": 0.844653246028463,
+            "not_useful": 0.15534675397153697
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.844381388127833,
+          "Law": {
+            "useful": 0.844381388127833,
+            "not_useful": 0.15561861187216697
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.8403833319855265,
+          "Law": {
+            "useful": 0.8403833319855265,
+            "not_useful": 0.1596166680144735
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8240504325973702,
+          "Law": {
+            "useful": 0.8240504325973701,
+            "not_useful": 0.1759495674026299
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8235302946048114,
+          "Law": {
+            "useful": 0.8235302946048114,
+            "not_useful": 0.17646970539518858
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8217315467984314,
+          "Law": {
+            "useful": 0.8217315467984314,
+            "not_useful": 0.1782684532015686
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8207671018000346,
+          "Law": {
+            "useful": 0.8207671018000346,
+            "not_useful": 0.17923289819996535
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8171206429599176,
+          "Law": {
+            "useful": 0.8171206429599176,
+            "not_useful": 0.1828793570400824
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 3,
+      "RecallNS": 15932750
+    },
+    {
+      "Arm": "baseline",
+      "Case": "2006-ceres",
+      "Candidates": [
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8482006517603232,
+          "Law": {
+            "useful": 0.8482006517603232,
+            "not_useful": 0.15179934823967678
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8358881182035773,
+          "Law": {
+            "useful": 0.8358881182035773,
+            "not_useful": 0.16411188179642267
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.8202607962942199,
+          "Law": {
+            "useful": 0.8202607962942199,
+            "not_useful": 0.17973920370578012
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8179991908766007,
+          "Law": {
+            "useful": 0.8179991908766007,
+            "not_useful": 0.18200080912339933
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8149062636818577,
+          "Law": {
+            "useful": 0.8149062636818577,
+            "not_useful": 0.1850937363181423
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8095845796698397,
+          "Law": {
+            "useful": 0.8095845796698398,
+            "not_useful": 0.19041542033016023
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.808363923510148,
+          "Law": {
+            "useful": 0.808363923510148,
+            "not_useful": 0.19163607648985204
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.805129698819215,
+          "Law": {
+            "useful": 0.805129698819215,
+            "not_useful": 0.19487030118078497
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 1,
+      "RecallNS": 15156750
+    },
+    {
+      "Arm": "baseline",
+      "Case": "absent-neptune",
+      "Candidates": [
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8271575513635957,
+          "Law": {
+            "useful": 0.8271575513635958,
+            "not_useful": 0.1728424486364042
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.81710199988321,
+          "Law": {
+            "useful": 0.81710199988321,
+            "not_useful": 0.18289800011679003
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8137167433583561,
+          "Law": {
+            "useful": 0.8137167433583561,
+            "not_useful": 0.1862832566416439
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8119850128194183,
+          "Law": {
+            "useful": 0.8119850128194182,
+            "not_useful": 0.18801498718058185
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8112559514543938,
+          "Law": {
+            "useful": 0.8112559514543938,
+            "not_useful": 0.18874404854560622
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.809165231385248,
+          "Law": {
+            "useful": 0.8091652313852481,
+            "not_useful": 0.1908347686147519
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.805117530392484,
+          "Law": {
+            "useful": 0.805117530392484,
+            "not_useful": 0.19488246960751598
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8010968875936475,
+          "Law": {
+            "useful": 0.8010968875936475,
+            "not_useful": 0.1989031124063525
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 0,
+      "RecallNS": 14664084
+    },
+    {
+      "Arm": "baseline",
+      "Case": "absent-vote",
+      "Candidates": [
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8042708291267366,
+          "Law": {
+            "useful": 0.8042708291267366,
+            "not_useful": 0.19572917087326336
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8007699862155573,
+          "Law": {
+            "useful": 0.8007699862155572,
+            "not_useful": 0.19923001378444283
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.798275081894765,
+          "Law": {
+            "useful": 0.798275081894765,
+            "not_useful": 0.20172491810523496
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.7968855140285434,
+          "Law": {
+            "useful": 0.7968855140285434,
+            "not_useful": 0.20311448597145665
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.7966603073534926,
+          "Law": {
+            "useful": 0.7966603073534926,
+            "not_useful": 0.20333969264650742
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.7933800857920287,
+          "Law": {
+            "useful": 0.7933800857920288,
+            "not_useful": 0.2066199142079712
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.7854091714096358,
+          "Law": {
+            "useful": 0.7854091714096358,
+            "not_useful": 0.21459082859036416
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.7795940544710372,
+          "Law": {
+            "useful": 0.7795940544710372,
+            "not_useful": 0.22040594552896275
+          }
+        }
+      ],
+      "Frontier": 0,
+      "SupportRank": 0,
+      "RecallNS": 16109208
+    },
+    {
+      "Arm": "bounded",
+      "Case": "history-pluto",
+      "Candidates": [
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8410676340879719,
+          "Law": {
+            "useful": 0.8429349670982001,
+            "not_useful": 0.15706503290179985
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8245573573890226,
+          "Law": {
+            "useful": 0.8290281000369393,
+            "not_useful": 0.17097189996306073
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8195882318252934,
+          "Law": {
+            "useful": 0.82405897447321,
+            "not_useful": 0.17594102552679003
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8134490519109489,
+          "Law": {
+            "useful": 0.8181887562008939,
+            "not_useful": 0.18181124379910607
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8102777066630938,
+          "Law": {
+            "useful": 0.8149014878314964,
+            "not_useful": 0.1850985121685036
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.8042945526063747,
+          "Law": {
+            "useful": 0.8087855082702865,
+            "not_useful": 0.1912144917297135
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8001575489506473,
+          "Law": {
+            "useful": 0.8047895669325157,
+            "not_useful": 0.1952104330674843
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.7978039739608713,
+          "Law": {
+            "useful": 0.8024359919427397,
+            "not_useful": 0.19756400805726027
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 1,
+      "RecallNS": 16168000
+    },
+    {
+      "Arm": "bounded",
+      "Case": "draft-pluto",
+      "Candidates": [
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.845870988600052,
+          "Law": {
+            "useful": 0.8491877483496482,
+            "not_useful": 0.15081225165035184
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.82748198370403,
+          "Law": {
+            "useful": 0.831878025341646,
+            "not_useful": 0.168121974658354
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.818529861457582,
+          "Law": {
+            "useful": 0.822925903095198,
+            "not_useful": 0.17707409690480203
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.815678988154929,
+          "Law": {
+            "useful": 0.8195035633469285,
+            "not_useful": 0.18049643665307147
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8065123446467841,
+          "Law": {
+            "useful": 0.8111064837864362,
+            "not_useful": 0.18889351621356376
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8044569734626752,
+          "Law": {
+            "useful": 0.80885417687803,
+            "not_useful": 0.19114582312197004
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.7982579862906658,
+          "Law": {
+            "useful": 0.8029799341284721,
+            "not_useful": 0.19702006587152787
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.7913755988901439,
+          "Law": {
+            "useful": 0.7959698678322097,
+            "not_useful": 0.2040301321677903
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 1,
+      "RecallNS": 16981958
+    },
+    {
+      "Arm": "bounded",
+      "Case": "adopted-pluto",
+      "Candidates": [
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8453059659622182,
+          "Law": {
+            "useful": 0.8479198706413226,
+            "not_useful": 0.15208012935867743
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8276333654710388,
+          "Law": {
+            "useful": 0.8315262628426073,
+            "not_useful": 0.16847373715739267
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8265135627731098,
+          "Law": {
+            "useful": 0.8307940227510495,
+            "not_useful": 0.16920597724895048
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8201285567936706,
+          "Law": {
+            "useful": 0.8240937502356317,
+            "not_useful": 0.1759062497643683
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8120287796296473,
+          "Law": {
+            "useful": 0.8159241962462759,
+            "not_useful": 0.18407580375372412
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8076771395590239,
+          "Law": {
+            "useful": 0.8122443101381547,
+            "not_useful": 0.18775568986184532
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8074297457659542,
+          "Law": {
+            "useful": 0.8119903487501877,
+            "not_useful": 0.18800965124981228
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.7978262445506895,
+          "Law": {
+            "useful": 0.8023934151298203,
+            "not_useful": 0.19760658487017968
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 1,
+      "RecallNS": 16000291
+    },
+    {
+      "Arm": "bounded",
+      "Case": "draft-count",
+      "Candidates": [
+        {
+          "Fixture": "count-draft",
+          "Score": 0.842705423492565,
+          "Law": {
+            "useful": 0.8464290342054316,
+            "not_useful": 0.15357096579456841
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8306495093085374,
+          "Law": {
+            "useful": 0.8348719302364839,
+            "not_useful": 0.16512806976351613
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.827508623661641,
+          "Law": {
+            "useful": 0.8319016750273769,
+            "not_useful": 0.16809832497262311
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8102385833915973,
+          "Law": {
+            "useful": 0.814880532827889,
+            "not_useful": 0.18511946717211103
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8077093995143698,
+          "Law": {
+            "useful": 0.8124324871298139,
+            "not_useful": 0.18756751287018614
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8022306953773163,
+          "Law": {
+            "useful": 0.8069537829927602,
+            "not_useful": 0.19304621700723978
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.7939194740759722,
+          "Law": {
+            "useful": 0.7986425616914161,
+            "not_useful": 0.20135743830858388
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.7898747635685742,
+          "Law": {
+            "useful": 0.7945978511840182,
+            "not_useful": 0.20540214881598184
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 1,
+      "RecallNS": 15741708
+    },
+    {
+      "Arm": "bounded",
+      "Case": "adopted-count",
+      "Candidates": [
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8439461507269252,
+          "Law": {
+            "useful": 0.8481141341034657,
+            "not_useful": 0.1518858658965343
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8408922474798745,
+          "Law": {
+            "useful": 0.8448268674657817,
+            "not_useful": 0.15517313253421827
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8290033212738097,
+          "Law": {
+            "useful": 0.8331695621528685,
+            "not_useful": 0.16683043784713147
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8270989898106627,
+          "Law": {
+            "useful": 0.8314531770272269,
+            "not_useful": 0.16854682297277312
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8190638817343662,
+          "Law": {
+            "useful": 0.8236793806363245,
+            "not_useful": 0.1763206193636755
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8091175269373955,
+          "Law": {
+            "useful": 0.8136171054802979,
+            "not_useful": 0.18638289451970214
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8062792141538935,
+          "Law": {
+            "useful": 0.8109857449493526,
+            "not_useful": 0.1890142550506474
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.792468097990618,
+          "Law": {
+            "useful": 0.797174628786077,
+            "not_useful": 0.20282537121392297
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 1,
+      "RecallNS": 15750125
+    },
+    {
+      "Arm": "bounded",
+      "Case": "initial-ceres",
+      "Candidates": [
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8496548923496695,
+          "Law": {
+            "useful": 0.8506034424416271,
+            "not_useful": 0.1493965575583729
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8343481430737123,
+          "Law": {
+            "useful": 0.8388443559825419,
+            "not_useful": 0.16115564401745808
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.8288716021565432,
+          "Law": {
+            "useful": 0.832292121805339,
+            "not_useful": 0.16770787819466104
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8109786232739494,
+          "Law": {
+            "useful": 0.8150848997078539,
+            "not_useful": 0.18491510029214608
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8079866597422,
+          "Law": {
+            "useful": 0.8124966707520077,
+            "not_useful": 0.1875033292479923
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8036623122628314,
+          "Law": {
+            "useful": 0.8081585838120624,
+            "not_useful": 0.1918414161879376
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8032448164557973,
+          "Law": {
+            "useful": 0.8079808163922038,
+            "not_useful": 0.19201918360779624
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.7980654717751411,
+          "Law": {
+            "useful": 0.8028014717115477,
+            "not_useful": 0.1971985282884523
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 1,
+      "RecallNS": 14616792
+    },
+    {
+      "Arm": "bounded",
+      "Case": "intermediate-ceres",
+      "Candidates": [
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.840497317806442,
+          "Law": {
+            "useful": 0.844653246028463,
+            "not_useful": 0.15534675397153697
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8399077258291858,
+          "Law": {
+            "useful": 0.844381388127833,
+            "not_useful": 0.15561861187216697
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.8374959999803251,
+          "Law": {
+            "useful": 0.8403833319855265,
+            "not_useful": 0.1596166680144735
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8193774940799874,
+          "Law": {
+            "useful": 0.8240504325973701,
+            "not_useful": 0.1759495674026299
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8191907854829211,
+          "Law": {
+            "useful": 0.8235302946048114,
+            "not_useful": 0.17646970539518858
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8170509751462912,
+          "Law": {
+            "useful": 0.8217315467984314,
+            "not_useful": 0.1782684532015686
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8160191119809196,
+          "Law": {
+            "useful": 0.8207671018000346,
+            "not_useful": 0.17923289819996535
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8125297565732721,
+          "Law": {
+            "useful": 0.8171206429599176,
+            "not_useful": 0.1828793570400824
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 3,
+      "RecallNS": 18522500
+    },
+    {
+      "Arm": "bounded",
+      "Case": "2006-ceres",
+      "Candidates": [
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8454429941643397,
+          "Law": {
+            "useful": 0.8482006517603232,
+            "not_useful": 0.15179934823967678
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8314624184968474,
+          "Law": {
+            "useful": 0.8358881182035773,
+            "not_useful": 0.16411188179642267
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.81583509658749,
+          "Law": {
+            "useful": 0.8202607962942199,
+            "not_useful": 0.17973920370578012
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8135614323654886,
+          "Law": {
+            "useful": 0.8179991908766007,
+            "not_useful": 0.18200080912339933
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.8104685051707456,
+          "Law": {
+            "useful": 0.8149062636818577,
+            "not_useful": 0.1850937363181423
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8051468211587276,
+          "Law": {
+            "useful": 0.8095845796698398,
+            "not_useful": 0.19041542033016023
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8039261649990359,
+          "Law": {
+            "useful": 0.808363923510148,
+            "not_useful": 0.19163607648985204
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8006897696355337,
+          "Law": {
+            "useful": 0.805129698819215,
+            "not_useful": 0.19487030118078497
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 1,
+      "RecallNS": 16600458
+    },
+    {
+      "Arm": "bounded",
+      "Case": "absent-neptune",
+      "Candidates": [
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.8228763295097634,
+          "Law": {
+            "useful": 0.8271575513635958,
+            "not_useful": 0.1728424486364042
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.8123967342703273,
+          "Law": {
+            "useful": 0.81710199988321,
+            "not_useful": 0.18289800011679003
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.8090114777454734,
+          "Law": {
+            "useful": 0.8137167433583561,
+            "not_useful": 0.1862832566416439
+          }
+        },
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.8072797472065356,
+          "Law": {
+            "useful": 0.8119850128194182,
+            "not_useful": 0.18801498718058185
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.8065506858415111,
+          "Law": {
+            "useful": 0.8112559514543938,
+            "not_useful": 0.18874404854560622
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.8044599657723653,
+          "Law": {
+            "useful": 0.8091652313852481,
+            "not_useful": 0.1908347686147519
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.8004122647796014,
+          "Law": {
+            "useful": 0.805117530392484,
+            "not_useful": 0.19488246960751598
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.7963916219807649,
+          "Law": {
+            "useful": 0.8010968875936475,
+            "not_useful": 0.1989031124063525
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 0,
+      "RecallNS": 17544917
+    },
+    {
+      "Arm": "bounded",
+      "Case": "absent-vote",
+      "Candidates": [
+        {
+          "Fixture": "pluto-adopted",
+          "Score": 0.7999194423424505,
+          "Law": {
+            "useful": 0.8042708291267366,
+            "not_useful": 0.19572917087326336
+          }
+        },
+        {
+          "Fixture": "count-draft",
+          "Score": 0.7960357459998071,
+          "Law": {
+            "useful": 0.8007699862155572,
+            "not_useful": 0.19923001378444283
+          }
+        },
+        {
+          "Fixture": "pluto-draft",
+          "Score": 0.7935408416790148,
+          "Law": {
+            "useful": 0.798275081894765,
+            "not_useful": 0.20172491810523496
+          }
+        },
+        {
+          "Fixture": "ceres-2006",
+          "Score": 0.7921512738127932,
+          "Law": {
+            "useful": 0.7968855140285434,
+            "not_useful": 0.20311448597145665
+          }
+        },
+        {
+          "Fixture": "count-adopted",
+          "Score": 0.7920734671450053,
+          "Law": {
+            "useful": 0.7966603073534926,
+            "not_useful": 0.20333969264650742
+          }
+        },
+        {
+          "Fixture": "ceres-initial",
+          "Score": 0.7886458455762785,
+          "Law": {
+            "useful": 0.7933800857920288,
+            "not_useful": 0.2066199142079712
+          }
+        },
+        {
+          "Fixture": "ceres-intermediate",
+          "Score": 0.7806749311938856,
+          "Law": {
+            "useful": 0.7854091714096358,
+            "not_useful": 0.21459082859036416
+          }
+        },
+        {
+          "Fixture": "pluto-history",
+          "Score": 0.774859814255287,
+          "Law": {
+            "useful": 0.7795940544710372,
+            "not_useful": 0.22040594552896275
+          }
+        }
+      ],
+      "Frontier": 8,
+      "SupportRank": 0,
+      "RecallNS": 16084375
+    }
+  ]
+}

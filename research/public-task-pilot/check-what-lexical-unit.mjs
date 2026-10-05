@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {lexicalOrder as old} from './what-lexical.mjs';
+import {lexicalOrder as revised} from './what-lexical-v2.mjs';
+const candidate=(ID,text)=>({ID,Score:.5,Text:`representation: eventframe-5w1h-v1\nwhat: ${text}\nwhen: 2026-09-12`});
+const versions=[candidate('a','HTML 5.2 publication'),candidate('b','HTML 5.1 publication')];
+const before=old('HTML 5.1 publication',versions),after=revised('HTML 5.1 publication',versions);
+assert.equal(before.scores[0],before.scores[1]);
+assert(after.scores[1]>after.scores[0]);assert.equal(after.order[0],1);
+const dates=[candidate('a','A spacecraft launched on 2004-03-02.'),candidate('b','A spacecraft launched on 2014-08-06.')];
+const scored=revised('spacecraft launch',dates);assert.equal(scored.scores[0],scored.scores[1]);
+const mixedDates=[candidate('a','A spacecraft launched on 2004-03-02.'),candidate('b','A spacecraft launched on 6 August 2014.')];
+const mixedScores=revised('spacecraft launch on 2 March 2004',mixedDates);assert.equal(mixedScores.scores[0],mixedScores.scores[1]);
+assert.throws(()=>revised('q',[{ID:'x',Score:.5,Text:'what: unframed'}]));
+const clone=structuredClone(versions);revised('HTML 5.1 publication',versions);assert.deepEqual(versions,clone);
+console.log('PASS: v1 version collision reproduced, v2 separates versions, calendar-date invariance and immutable inputs');
