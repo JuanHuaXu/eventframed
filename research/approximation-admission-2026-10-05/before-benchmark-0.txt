@@ -1,0 +1,42 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchregimelogsummary
+cpu: Apple M4
+BenchmarkLedgerOperations/M2/T32/PendingFirst         	     159	    641484 ns/op	  369408 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M2/T32/PendingFirst         	     187	    640193 ns/op	  369408 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M2/T32/PendingFirst         	     186	    642304 ns/op	  369408 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M2/T32/Issue                	     807	    150776 ns/op	  448588 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M2/T32/Issue                	     813	    147105 ns/op	  448589 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M2/T32/Issue                	     814	    147865 ns/op	  448589 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M2/T64/PendingFirst         	      96	   1247535 ns/op	  370944 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M2/T64/PendingFirst         	      92	   1258744 ns/op	  370944 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M2/T64/PendingFirst         	      91	   1256084 ns/op	  370944 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M2/T64/Issue                	     506	    240494 ns/op	  480463 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M2/T64/Issue                	     501	    238247 ns/op	  480463 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M2/T64/Issue                	     494	    236419 ns/op	  480463 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M150/T32/PendingFirst       	     100	   1144162 ns/op	  376992 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M150/T32/PendingFirst       	     100	   1153158 ns/op	  376992 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M150/T32/PendingFirst       	     100	   1144822 ns/op	  376992 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M150/T32/Issue              	     284	    424303 ns/op	  455213 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M150/T32/Issue              	     286	    426586 ns/op	  455213 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M150/T32/Issue              	     283	    423657 ns/op	  455214 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M150/T64/PendingFirst       	      67	   1783141 ns/op	  378528 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M150/T64/PendingFirst       	      66	   1787109 ns/op	  378528 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M150/T64/PendingFirst       	      69	   1780541 ns/op	  378528 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M150/T64/Issue              	     232	    510461 ns/op	  491184 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M150/T64/Issue              	     236	    512663 ns/op	  491183 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M150/T64/Issue              	     231	    512966 ns/op	  491184 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M200/T32/PendingFirst       	      88	   1361243 ns/op	  380064 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M200/T32/PendingFirst       	      92	   1328768 ns/op	  380064 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M200/T32/PendingFirst       	      91	   1325119 ns/op	  380064 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M200/T32/Issue              	     232	    519513 ns/op	  456236 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M200/T32/Issue              	     232	    519219 ns/op	  456238 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M200/T32/Issue              	     231	    523379 ns/op	  456237 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M200/T64/PendingFirst       	      63	   1947913 ns/op	  381600 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M200/T64/PendingFirst       	      62	   1950099 ns/op	  381600 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M200/T64/PendingFirst       	      62	   1949989 ns/op	  381600 B/op	      28 allocs/op
+BenchmarkLedgerOperations/M200/T64/Issue              	     196	    608997 ns/op	  492208 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M200/T64/Issue              	     195	    609610 ns/op	  492207 B/op	      29 allocs/op
+BenchmarkLedgerOperations/M200/T64/Issue              	     196	    604859 ns/op	  492208 B/op	      29 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregimelogsummary	5.557s

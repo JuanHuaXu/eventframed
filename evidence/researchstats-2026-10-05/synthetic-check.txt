@@ -1,0 +1,47 @@
+Scope: utility tests and retrospective pilot planning only; not scientific confirmation.
+Run started UTC: 2026-10-05T18:09:05Z
+Toolchain: go version go1.27.1 darwin/arm64
+Workdir: /Volumes/Data/eventframed
+No raw private data, scientific confirmation, or historical verdict changes.
+
+$ go test -mod=readonly ./internal/researchstats -run 'Test(AppendixCFormula|Synthetic.*|NormalPlan.*|APMemberShiftNormalPlan|RecurringAPIsNotPositivePlanningTarget)$' -count=1 -v
+=== RUN   TestSyntheticPairedBrierStreams
+    brier_test.go:113: synthetic_interval={"alpha_family":0.05,"clocks_per_stream":2,"every_prefix_contains_known_mean":true,"family_size":1,"halfwidth":0.09962002001546141,"known_constant_mean":0.1875,"lower":0.08787997998453859,"lower_above_zero":true,"mean":0.1875,"scope":"deterministic utility check, not scientific confirmation","stream_count":4096,"upper":0.28712002001546144}
+--- PASS: TestSyntheticPairedBrierStreams (0.00s)
+=== RUN   TestAppendixCFormula
+    confidence_test.go:204: Appendix C match: K={1,3,100}, alphaFamily={0.01,0.05}, j={1,2,32,4096,1000000}; no betting method
+--- PASS: TestAppendixCFormula (0.00s)
+=== RUN   TestSyntheticSequences
+--- PASS: TestSyntheticSequences (0.01s)
+=== RUN   TestNormalPlanSubnormalCancellation
+    planning_test.go:43: planning_numeric_regression={"actual_units":604,"critical_z":3.5,"equal_se_and_gain":"SmallestNonzeroFloat64","expected_units":604,"formal_outward_rounded_ceiling_claim":false,"pilot_units":32,"power_z":0.84162123357,"scope":"floating-point utility regression, not scientific confirmation"}
+--- PASS: TestNormalPlanSubnormalCancellation (0.00s)
+=== RUN   TestNormalPlanNumericDomainControls
+=== RUN   TestNormalPlanNumericDomainControls/relative_ratio_overflow
+=== RUN   TestNormalPlanNumericDomainControls/relative_ratio_underflow
+=== RUN   TestNormalPlanNumericDomainControls/subnormal_relative_ratio
+=== RUN   TestNormalPlanNumericDomainControls/critical_sum_overflow
+=== RUN   TestNormalPlanNumericDomainControls/scaled_ratio_overflow
+=== RUN   TestNormalPlanNumericDomainControls/scaled_ratio_underflow
+=== RUN   TestNormalPlanNumericDomainControls/subnormal_scaled_ratio
+=== RUN   TestNormalPlanNumericDomainControls/finite_count_outside_range
+=== RUN   TestNormalPlanNumericDomainControls/count_overflow
+--- PASS: TestNormalPlanNumericDomainControls (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/relative_ratio_overflow (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/relative_ratio_underflow (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/subnormal_relative_ratio (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/critical_sum_overflow (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/scaled_ratio_overflow (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/scaled_ratio_underflow (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/subnormal_scaled_ratio (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/finite_count_outside_range (0.00s)
+    --- PASS: TestNormalPlanNumericDomainControls/count_overflow (0.00s)
+=== RUN   TestAPMemberShiftNormalPlan
+    planning_test.go:132: ap_member_planning={"approximate_total_fresh_units":137,"candidate":"mix_mmm_ap","control":"mix_mmm_no_ap","critical_z":3.5,"directional_power":0.8,"lower":-0.0003752428971604797,"mean":0.0005635187818819783,"observed_se":0.00026821762258355937,"old_interval_excludes_zero":false,"pilot_units":32,"power_z":0.8416212335729143,"rounded_input_units":137,"scenario":"member_shift","scope":"approximate pilot planning only, not scientific confirmation or CS power","split":"confirmation","upper":0.0015022804609244361,"window":"post"}
+--- PASS: TestAPMemberShiftNormalPlan (0.00s)
+=== RUN   TestRecurringAPIsNotPositivePlanningTarget
+    planning_test.go:151: ap_recurring_context={"candidate":"mix_mmm_ap","control":"mix_mmm_no_ap","lower":-0.0018459539459258038,"mean":-0.0003482400977983611,"old_interval_excludes_zero":false,"positive_benefit_planning_target":false,"scenario":"recurring","scope":"consumed pilot context only, not scientific confirmation","split":"confirmation","upper":0.0011494737503290817,"window":"post"}
+--- PASS: TestRecurringAPIsNotPositivePlanningTarget (0.00s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchstats	0.202s
+Exit status: 0

@@ -78,7 +78,7 @@ func FromTurn(turn model.TurnCapture) model.Event {
 		ID: turn.ID, TenantID: turn.TenantID, SessionID: turn.SessionID, Sequence: turn.Sequence,
 		Kind: "agent_turn", Content: "User: " + turn.UserText + "\n\nAssistant: " + turn.AssistantText,
 		OccurredAt: turn.OccurredAt, ObservedAt: turn.ObservedAt, AvailableAt: turn.AvailableAt,
-		Who:      firstField(sources, whoPatterns, .88, nil, participantFallback(turn, user)),
+		Who:      firstField(sources, whoPatterns, .88, validNamedActor, participantFallback(turn, user)),
 		What:     field("request: "+request.value+"; outcome: "+outcome.value, model.SourceInferred, .82, request.evidence+"; "+outcome.evidence),
 		Where:    firstField(sources, wherePatterns, .86, validLocation, field("session:"+turn.SessionID, model.SourceObserved, 1, "session metadata")),
 		When:     firstField(sources, whenPatterns, .90, nil, field(turn.OccurredAt.Format("2006-01-02T15:04:05.999999999Z07:00"), model.SourceObserved, 1, "turn timestamp")),
@@ -100,6 +100,10 @@ func firstField(sources []sourceText, patterns []pattern, confidence float64, ac
 				continue
 			}
 			start, end := indices[group], indices[group+1]
+			// Captures must not reintroduce bytes hidden by the quote mask.
+			if source.text[start:end] != clean[start:end] {
+				continue
+			}
 			value := strings.TrimSpace(source.text[start:end])
 			if value == "" || (accept != nil && !accept(value)) {
 				continue
@@ -111,6 +115,26 @@ func firstField(sources []sourceText, patterns []pattern, confidence float64, ac
 		}
 	}
 	return fallback
+}
+
+func validNamedActor(value string) bool {
+	for _, word := range strings.Fields(value) {
+		switch strings.ToLower(word) {
+		case "i", "me", "my", "mine", "myself", "we", "us", "our", "ours", "ourselves",
+			"i'm", "i've", "i'll", "i'd", "we're", "we've", "we'll", "we'd",
+			"you", "your", "yours", "yourself", "yourselves",
+			"you're", "you've", "you'll", "you'd",
+			"he", "him", "his", "himself", "she", "her", "hers", "herself",
+			"he's", "he'll", "he'd", "she's", "she'll", "she'd",
+			"it", "its", "itself", "they", "them", "their", "theirs", "themselves",
+			"it's", "it'll", "it'd", "they're", "they've", "they'll", "they'd",
+			"who", "whom", "whose", "this", "that", "these", "those",
+			"anyone", "anybody", "anything", "everyone", "everybody", "everything",
+			"someone", "somebody", "something", "nobody", "nothing", "none":
+			return false
+		}
+	}
+	return true
 }
 
 func participantFallback(turn model.TurnCapture, user sourceText) model.Field {

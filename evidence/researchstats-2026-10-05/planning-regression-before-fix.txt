@@ -1,0 +1,13 @@
+Scope: numeric utility defect reproduction only, not scientific confirmation.
+Captured before the ratio-first arithmetic fix.
+Before-fix planning.go SHA256: 34cba6d0239a5ed733d21765530283999ea1f7cbd3dbdef7ba7d1552b103e5bc
+No historical experiment verdicts changed.
+
+$ go test -mod=readonly ./internal/researchstats -run '^TestNormalPlanSubnormalCancellation$' -count=1 -v
+=== RUN   TestNormalPlanSubnormalCancellation
+    planning_test.go:13: equal SE/gain 4.9406564584124654e-324: got 512, want 604, err=<nil>
+--- FAIL: TestNormalPlanSubnormalCancellation (0.00s)
+FAIL
+FAIL	github.com/JuanHuaXu/eventframed/internal/researchstats	0.173s
+FAIL
+Exit status: 1

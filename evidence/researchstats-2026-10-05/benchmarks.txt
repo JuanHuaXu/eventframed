@@ -1,0 +1,20 @@
+Scope: utility tests and retrospective pilot planning only; not scientific confirmation.
+Run started UTC: 2026-10-05T18:09:05Z
+Toolchain: go version go1.27.1 darwin/arm64
+Workdir: /Volumes/Data/eventframed
+No raw private data, scientific confirmation, or historical verdict changes.
+
+$ go test -mod=readonly ./internal/researchstats -run '^$' -bench . -benchmem -count=3 -cpu=1
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchstats
+cpu: Apple M4
+BenchmarkConfidenceSequence 	42033654	        28.44 ns/op	       0 B/op	       0 allocs/op
+BenchmarkConfidenceSequence 	42810064	        28.70 ns/op	       0 B/op	       0 allocs/op
+BenchmarkConfidenceSequence 	43044180	        28.77 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPairedBrierMean    	  470127	      2567 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPairedBrierMean    	  466261	      2585 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPairedBrierMean    	  465343	      2556 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchstats	8.464s
+Exit status: 0

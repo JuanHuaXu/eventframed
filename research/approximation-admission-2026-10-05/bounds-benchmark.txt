@@ -1,0 +1,9 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchbounds
+cpu: Apple M4
+BenchmarkStepTV 	45980055	        25.91 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStepTV 	47487529	        25.66 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStepTV 	47062820	        25.72 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchbounds	3.790s

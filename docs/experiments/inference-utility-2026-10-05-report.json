@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "run_started_at_utc": "2026-10-05T18:09:05Z",
+  "scope": "Utility checks and retrospective pilot planning only; not scientific confirmation.",
+  "scientific_confirmation": false,
+  "historical_verdicts_changed": false,
+  "private_raw_data_used": false,
+  "appendix_c": {
+    "stream_range": [
+      -1,
+      1
+    ],
+    "allocation": "alpha_j,c = alphaFamily / (K*j*(j+1))",
+    "halfwidth": "sqrt(2*log(2/alpha_j,c)/j)",
+    "assumption": "E[X_j,c | F_(j-1)] = mu_c for one constant mu_c",
+    "notation_match_test": "PASS",
+    "stronger_betting_method_used": false
+  },
+  "synthetic_interval": {
+    "alpha_family": 0.05,
+    "clocks_per_stream": 2,
+    "every_prefix_contains_known_mean": true,
+    "family_size": 1,
+    "halfwidth": 0.09962002001546141,
+    "known_constant_mean": 0.1875,
+    "lower": 0.08787997998453859,
+    "lower_above_zero": true,
+    "mean": 0.1875,
+    "stream_count": 4096,
+    "upper": 0.28712002001546144
+  },
+  "ap_member_planning": {
+    "approximate_total_fresh_units": 137,
+    "candidate": "mix_mmm_ap",
+    "control": "mix_mmm_no_ap",
+    "critical_z": 3.5,
+    "directional_power": 0.8,
+    "lower": -0.0003752428971604797,
+    "mean": 0.0005635187818819783,
+    "observed_se": 0.00026821762258355937,
+    "old_interval_excludes_zero": false,
+    "pilot_units": 32,
+    "power_z": 0.8416212335729143,
+    "rounded_input_units": 137,
+    "scenario": "member_shift",
+    "split": "confirmation",
+    "upper": 0.0015022804609244361,
+    "window": "post"
+  },
+  "ap_recurring_context": {
+    "candidate": "mix_mmm_ap",
+    "control": "mix_mmm_no_ap",
+    "lower": -0.0018459539459258038,
+    "mean": -0.0003482400977983611,
+    "old_interval_excludes_zero": false,
+    "positive_benefit_planning_target": false,
+    "scenario": "recurring",
+    "split": "confirmation",
+    "upper": 0.0011494737503290817,
+    "window": "post"
+  },
+  "planning_source": "docs/experiments/mmm-preserved-v3-summary.json",
+  "benchmarks": {
+    "toolchain": "go version go1.27.1 darwin/arm64",
+    "cpu": "Apple M4",
+    "cpu_setting": 1,
+    "repetitions": 3,
+    "update_and_anytime_bound_ns_per_op": [
+      28.44,
+      28.7,
+      28.77
+    ],
+    "brier_512_pairs_ns_per_op": [
+      2567,
+      2585,
+      2556
+    ],
+    "bytes_per_op": 0,
+    "allocs_per_op": 0,
+    "excludes": "Construction, input creation, forecasting, training, acquisition, I/O and end-to-end latency."
+  },
+  "verification": {
+    "unit_and_example_tests": "PASS",
+    "race_tests": "PASS",
+    "statement_coverage_percent": 100,
+    "vet": "PASS",
+    "planning_numeric_domain_controls": "PASS"
+  },
+  "records_directory": "evidence/researchstats-2026-10-05",
+  "limitations": [
+    "Deterministic synthetic checks do not establish coverage for arbitrary laws.",
+    "Frozen alpha/family and constant conditional stream or fit-cluster mean are required; shared-fit stream inference is conditional on that fit.",
+    "The 137-unit AP plan assumes pilot effect and variance replicate and a normal approximation; it is total fresh-stream planning, not CS power or independent-fit evidence.",
+    "The real-valued formula is a statistically approximate model; float64 evaluation is not a certified outward-rounded ceiling near every integer boundary."
+  ],
+  "parent_source_integration": "Deferred to parent; no paper source edits.",
+  "planning_numeric_regression": {
+    "actual_units": 604,
+    "critical_z": 3.5,
+    "equal_se_and_gain": "SmallestNonzeroFloat64",
+    "expected_units": 604,
+    "formal_outward_rounded_ceiling_claim": false,
+    "pilot_units": 32,
+    "power_z": 0.84162123357
+  },
+  "planning_float64_evaluation": {
+    "model_formula": "max(2, ceil(n0*((z_critical+z_power)*observed_SE/target_gain)^2))",
+    "evaluation_order": "Divide observed_SE by target_gain before multiplying by the critical sum.",
+    "unsupported_regimes": "Nonfinite, zero or subnormal SE/target or scaled ratios; nonfinite critical sum; count above 2^53.",
+    "tiny_supported_ratio": "Return the two-unit floor without squaring when safely below the floor.",
+    "formal_outward_rounded_ceiling_claim": false,
+    "extreme_representable_combinations_may_be_conservatively_rejected": true,
+    "before_fix_observed_units": 512,
+    "before_fix_record": "evidence/researchstats-2026-10-05/planning-regression-before-fix.txt"
+  }
+}

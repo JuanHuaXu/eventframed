@@ -17,7 +17,7 @@ func QueryText(query string) string {
 	sources := []sourceText{source}
 	request := firstStatement(source)
 	event := model.Event{
-		Who:  firstField(sources, whoPatterns, .88, nil, model.Field{}),
+		Who:  firstField(sources, whoPatterns, .88, validNamedActor, model.Field{}),
 		What: field("request: "+request.value, model.SourceObserved, 1, request.evidence),
 		Where: firstField(sources, wherePatterns, .86, validLocation,
 			model.Field{}),

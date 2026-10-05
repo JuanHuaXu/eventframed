@@ -3,6 +3,8 @@ package researchregimelogsummary
 import (
 	"errors"
 	"math"
+
+	"github.com/JuanHuaXu/eventframed/internal/researchbounds"
 )
 
 const CacheStride = 64
@@ -91,14 +93,6 @@ func resume(base []float64, cfg Config, rows []Row, support [][]Key, start prefi
 		for j := range next {
 			next[j].logWeight -= z
 		}
-		e := (1 - cfg.Reset) * r.Envelope
-		if e > 0 && row.First >= 0 {
-			if minFactor == 0 {
-				e = 1
-			} else {
-				e = math.Min(1, 2*maxFactor*e/minFactor)
-			}
-		}
 		r.MaxComponents = max(r.MaxComponents, len(next))
 		var keys []Key
 		if support == nil {
@@ -144,7 +138,15 @@ func resume(base []float64, cfg Config, rows []Row, support [][]Key, start prefi
 			d = math.Max(0, -math.Expm1(kept))
 		}
 		r.Discard += d
-		r.Envelope = math.Min(1, e+d)
+		// Evidence-aware normalization can give a nonvacuous bound even when
+		// one latent class assigns zero likelihood. It never floors that zero.
+		// This is an exact-arithmetic model envelope; admission separately
+		// requires an external bound on the complete floating computation.
+		envelope, err := researchbounds.StepTV(r.Envelope, cfg.Reset, minFactor, maxFactor, math.Min(maxFactor, math.Exp(z)), d)
+		if err != nil {
+			return Result{}, nil, err
+		}
+		r.Envelope = envelope
 		r.parts, r.Components = cur, len(cur)
 		if collect && (t+1)%CacheStride == 0 {
 			cache = appendPrefix(cache, t+1, r)

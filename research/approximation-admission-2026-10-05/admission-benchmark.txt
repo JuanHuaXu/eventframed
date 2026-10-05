@@ -1,0 +1,24 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/JuanHuaXu/eventframed/internal/researchregimelogsummary
+cpu: Apple M4
+BenchmarkBoundedIssue/M2/bounded=false         	     906	    247791 ns/op	  480462 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M2/bounded=false         	     958	    245890 ns/op	  480463 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M2/bounded=false         	     978	    246992 ns/op	  480463 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M2/bounded=true          	     987	    242477 ns/op	  480607 B/op	      30 allocs/op
+BenchmarkBoundedIssue/M2/bounded=true          	     987	    241389 ns/op	  480607 B/op	      30 allocs/op
+BenchmarkBoundedIssue/M2/bounded=true          	     994	    245444 ns/op	  480607 B/op	      30 allocs/op
+BenchmarkBoundedIssue/M150/bounded=false       	     457	    523639 ns/op	  491183 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M150/bounded=false       	     458	    521558 ns/op	  491184 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M150/bounded=false       	     453	    589071 ns/op	  491183 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M150/bounded=true        	     452	    526581 ns/op	  491327 B/op	      30 allocs/op
+BenchmarkBoundedIssue/M150/bounded=true        	     454	    529064 ns/op	  491328 B/op	      30 allocs/op
+BenchmarkBoundedIssue/M150/bounded=true        	     456	    527521 ns/op	  491328 B/op	      30 allocs/op
+BenchmarkBoundedIssue/M200/bounded=false       	     381	    620407 ns/op	  492208 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M200/bounded=false       	     379	    621629 ns/op	  492208 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M200/bounded=false       	     386	    619764 ns/op	  492208 B/op	      29 allocs/op
+BenchmarkBoundedIssue/M200/bounded=true        	     386	    623917 ns/op	  492351 B/op	      30 allocs/op
+BenchmarkBoundedIssue/M200/bounded=true        	     381	    619441 ns/op	  492352 B/op	      30 allocs/op
+BenchmarkBoundedIssue/M200/bounded=true        	     385	    620865 ns/op	  492352 B/op	      30 allocs/op
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/researchregimelogsummary	6.769s

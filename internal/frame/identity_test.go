@@ -141,7 +141,13 @@ func TestIdentityAuditQuotedMultilineField(t *testing.T) {
 	turn := capture("Alex will deploy using a console\n> they need me\nand a script.", "Ready.")
 	turn.UserID = "account:a"
 	event := frame.FromTurnWithIdentities(turn, nil, nil, true)
-	if !strings.Contains(event.How.Value, "> they need me") || unresolvedReferences(t, event).Count != 0 {
+	// Retained metadata/summary may contain a quote, but a capture crossing
+	// masked bytes must fall back rather than claim direct mechanism evidence.
+	if !strings.Contains(event.Content, "\n> they need me\n") ||
+		!strings.Contains(event.What.Value, "> they need me") ||
+		event.How.Source != model.SourceInferred || event.How.Confidence != .62 ||
+		event.How.Value != "through the agent response: Ready." ||
+		event.Who.Value != "Alex" || unresolvedReferences(t, event).Count != 0 {
 		t.Fatalf("normalized quote became active reference evidence: %+v", event)
 	}
 }

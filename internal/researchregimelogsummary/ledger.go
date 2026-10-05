@@ -34,6 +34,7 @@ type Branch struct {
 	LogProbability float64
 	Underflow      bool // Finite log mass that is too small for a positive float64.
 	NextClean      []float64
+	TVEnvelope     float64 // Conditional replay bound, not current-state error.
 }
 
 type Query struct {
@@ -201,7 +202,7 @@ func (m *Ledger) Pending(token Token, ordinal, which int) (Query, error) {
 		if !finite(lp) || lp > 2e-11 || !finite(p) || p > 1+2e-11 {
 			return Query{}, errors.New("ledger branch probability bounds")
 		}
-		q.Branches[value] = Branch{Probability: p, LogProbability: lp, Underflow: p == 0, NextClean: append([]float64(nil), r.Forecast...)}
+		q.Branches[value] = Branch{Probability: p, LogProbability: lp, Underflow: p == 0, NextClean: append([]float64(nil), r.Forecast...), TVEnvelope: r.Envelope}
 		logTotal = logAdd(logTotal, lp)
 	}
 	if math.Abs(logTotal) > 2e-11 {

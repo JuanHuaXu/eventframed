@@ -1,0 +1,966 @@
+{
+  "scope": "Full FromTurn only; synthetic public fixtures, not ingestion/retrieval/loaded latency",
+  "controlRevision": "1a7edb62b6be4031fd01ebeab8071b17303a7815",
+  "results": {
+    "early/256/HEAD": [
+      {
+        "ns": 35558,
+        "bytes": 4380,
+        "allocs": 70
+      },
+      {
+        "ns": 34815,
+        "bytes": 4368,
+        "allocs": 70
+      },
+      {
+        "ns": 34713,
+        "bytes": 4368,
+        "allocs": 70
+      },
+      {
+        "ns": 35082,
+        "bytes": 4368,
+        "allocs": 70
+      },
+      {
+        "ns": 35446,
+        "bytes": 4368,
+        "allocs": 70
+      },
+      {
+        "ns": 35293,
+        "bytes": 4368,
+        "allocs": 70
+      }
+    ],
+    "early/256/current": [
+      {
+        "ns": 39495,
+        "bytes": 9481,
+        "allocs": 96
+      },
+      {
+        "ns": 39753,
+        "bytes": 9481,
+        "allocs": 96
+      },
+      {
+        "ns": 39943,
+        "bytes": 9481,
+        "allocs": 96
+      },
+      {
+        "ns": 40198,
+        "bytes": 9493,
+        "allocs": 96
+      },
+      {
+        "ns": 39959,
+        "bytes": 9481,
+        "allocs": 96
+      },
+      {
+        "ns": 39815,
+        "bytes": 9481,
+        "allocs": 96
+      }
+    ],
+    "early/2048/HEAD": [
+      {
+        "ns": 202999,
+        "bytes": 8700,
+        "allocs": 70
+      },
+      {
+        "ns": 201792,
+        "bytes": 8658,
+        "allocs": 70
+      },
+      {
+        "ns": 207021,
+        "bytes": 8657,
+        "allocs": 70
+      },
+      {
+        "ns": 198579,
+        "bytes": 8658,
+        "allocs": 70
+      },
+      {
+        "ns": 199874,
+        "bytes": 8658,
+        "allocs": 70
+      },
+      {
+        "ns": 200509,
+        "bytes": 8657,
+        "allocs": 70
+      }
+    ],
+    "early/2048/current": [
+      {
+        "ns": 240486,
+        "bytes": 49392,
+        "allocs": 96
+      },
+      {
+        "ns": 241837,
+        "bytes": 49392,
+        "allocs": 96
+      },
+      {
+        "ns": 237090,
+        "bytes": 49392,
+        "allocs": 96
+      },
+      {
+        "ns": 239344,
+        "bytes": 49443,
+        "allocs": 96
+      },
+      {
+        "ns": 237014,
+        "bytes": 49392,
+        "allocs": 96
+      },
+      {
+        "ns": 237453,
+        "bytes": 49392,
+        "allocs": 96
+      }
+    ],
+    "early/16384/HEAD": [
+      {
+        "ns": 1736013,
+        "bytes": 44866,
+        "allocs": 70
+      },
+      {
+        "ns": 1618222,
+        "bytes": 44767,
+        "allocs": 70
+      },
+      {
+        "ns": 1657678,
+        "bytes": 44767,
+        "allocs": 70
+      },
+      {
+        "ns": 1726542,
+        "bytes": 44767,
+        "allocs": 70
+      },
+      {
+        "ns": 1766538,
+        "bytes": 44767,
+        "allocs": 70
+      },
+      {
+        "ns": 1733298,
+        "bytes": 44767,
+        "allocs": 70
+      }
+    ],
+    "early/16384/current": [
+      {
+        "ns": 2224879,
+        "bytes": 368955,
+        "allocs": 97
+      },
+      {
+        "ns": 2298693,
+        "bytes": 368955,
+        "allocs": 97
+      },
+      {
+        "ns": 2294419,
+        "bytes": 368959,
+        "allocs": 97
+      },
+      {
+        "ns": 2048588,
+        "bytes": 369065,
+        "allocs": 97
+      },
+      {
+        "ns": 2029894,
+        "bytes": 368951,
+        "allocs": 96
+      },
+      {
+        "ns": 2247329,
+        "bytes": 368954,
+        "allocs": 97
+      }
+    ],
+    "late/256/HEAD": [
+      {
+        "ns": 55999,
+        "bytes": 3945,
+        "allocs": 70
+      },
+      {
+        "ns": 56901,
+        "bytes": 3928,
+        "allocs": 70
+      },
+      {
+        "ns": 56660,
+        "bytes": 3928,
+        "allocs": 70
+      },
+      {
+        "ns": 56377,
+        "bytes": 3928,
+        "allocs": 70
+      },
+      {
+        "ns": 56334,
+        "bytes": 3928,
+        "allocs": 70
+      },
+      {
+        "ns": 56191,
+        "bytes": 3928,
+        "allocs": 70
+      }
+    ],
+    "late/256/current": [
+      {
+        "ns": 60532,
+        "bytes": 9136,
+        "allocs": 96
+      },
+      {
+        "ns": 60566,
+        "bytes": 9136,
+        "allocs": 96
+      },
+      {
+        "ns": 60757,
+        "bytes": 9137,
+        "allocs": 96
+      },
+      {
+        "ns": 62073,
+        "bytes": 9137,
+        "allocs": 96
+      },
+      {
+        "ns": 61719,
+        "bytes": 9137,
+        "allocs": 96
+      },
+      {
+        "ns": 60950,
+        "bytes": 9137,
+        "allocs": 96
+      }
+    ],
+    "late/2048/HEAD": [
+      {
+        "ns": 431693,
+        "bytes": 8389,
+        "allocs": 80
+      },
+      {
+        "ns": 429327,
+        "bytes": 8297,
+        "allocs": 80
+      },
+      {
+        "ns": 427756,
+        "bytes": 8297,
+        "allocs": 80
+      },
+      {
+        "ns": 434664,
+        "bytes": 8297,
+        "allocs": 80
+      },
+      {
+        "ns": 435028,
+        "bytes": 8297,
+        "allocs": 80
+      },
+      {
+        "ns": 433416,
+        "bytes": 8297,
+        "allocs": 80
+      }
+    ],
+    "late/2048/current": [
+      {
+        "ns": 510863,
+        "bytes": 49033,
+        "allocs": 106
+      },
+      {
+        "ns": 512030,
+        "bytes": 49033,
+        "allocs": 106
+      },
+      {
+        "ns": 517202,
+        "bytes": 49033,
+        "allocs": 106
+      },
+      {
+        "ns": 532440,
+        "bytes": 49143,
+        "allocs": 106
+      },
+      {
+        "ns": 532244,
+        "bytes": 49033,
+        "allocs": 106
+      },
+      {
+        "ns": 535580,
+        "bytes": 49033,
+        "allocs": 106
+      }
+    ],
+    "late/16384/HEAD": [
+      {
+        "ns": 3590486,
+        "bytes": 44636,
+        "allocs": 81
+      },
+      {
+        "ns": 3597010,
+        "bytes": 44409,
+        "allocs": 80
+      },
+      {
+        "ns": 3589372,
+        "bytes": 44409,
+        "allocs": 80
+      },
+      {
+        "ns": 3608046,
+        "bytes": 44410,
+        "allocs": 80
+      },
+      {
+        "ns": 3611464,
+        "bytes": 44409,
+        "allocs": 80
+      },
+      {
+        "ns": 3599634,
+        "bytes": 44409,
+        "allocs": 80
+      }
+    ],
+    "late/16384/current": [
+      {
+        "ns": 4647411,
+        "bytes": 368606,
+        "allocs": 107
+      },
+      {
+        "ns": 4644171,
+        "bytes": 368607,
+        "allocs": 107
+      },
+      {
+        "ns": 4506156,
+        "bytes": 368597,
+        "allocs": 107
+      },
+      {
+        "ns": 4744319,
+        "bytes": 368837,
+        "allocs": 108
+      },
+      {
+        "ns": 4627414,
+        "bytes": 368604,
+        "allocs": 107
+      },
+      {
+        "ns": 4675637,
+        "bytes": 368604,
+        "allocs": 107
+      }
+    ],
+    "no-match/256/HEAD": [
+      {
+        "ns": 222403,
+        "bytes": 2292,
+        "allocs": 41
+      },
+      {
+        "ns": 144531,
+        "bytes": 2216,
+        "allocs": 41
+      },
+      {
+        "ns": 143191,
+        "bytes": 2216,
+        "allocs": 41
+      },
+      {
+        "ns": 140952,
+        "bytes": 2216,
+        "allocs": 41
+      },
+      {
+        "ns": 146309,
+        "bytes": 2216,
+        "allocs": 41
+      },
+      {
+        "ns": 142733,
+        "bytes": 2216,
+        "allocs": 41
+      }
+    ],
+    "no-match/256/current": [
+      {
+        "ns": 152262,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 151711,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 150999,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 149435,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 149707,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 149776,
+        "bytes": 11721,
+        "allocs": 85
+      }
+    ],
+    "no-match/2048/HEAD": [
+      {
+        "ns": 1128258,
+        "bytes": 6747,
+        "allocs": 41
+      },
+      {
+        "ns": 1119550,
+        "bytes": 6508,
+        "allocs": 41
+      },
+      {
+        "ns": 1126846,
+        "bytes": 6508,
+        "allocs": 41
+      },
+      {
+        "ns": 1141092,
+        "bytes": 6508,
+        "allocs": 41
+      },
+      {
+        "ns": 1132551,
+        "bytes": 6508,
+        "allocs": 41
+      },
+      {
+        "ns": 1148595,
+        "bytes": 6508,
+        "allocs": 41
+      }
+    ],
+    "no-match/2048/current": [
+      {
+        "ns": 1250422,
+        "bytes": 81141,
+        "allocs": 85
+      },
+      {
+        "ns": 1246460,
+        "bytes": 81141,
+        "allocs": 85
+      },
+      {
+        "ns": 1253300,
+        "bytes": 81141,
+        "allocs": 85
+      },
+      {
+        "ns": 1296210,
+        "bytes": 81389,
+        "allocs": 85
+      },
+      {
+        "ns": 1379751,
+        "bytes": 81141,
+        "allocs": 85
+      },
+      {
+        "ns": 1289632,
+        "bytes": 81145,
+        "allocs": 85
+      }
+    ],
+    "no-match/16384/HEAD": [
+      {
+        "ns": 9678632,
+        "bytes": 43256,
+        "allocs": 45
+      },
+      {
+        "ns": 9791917,
+        "bytes": 42647,
+        "allocs": 41
+      },
+      {
+        "ns": 9884125,
+        "bytes": 42647,
+        "allocs": 41
+      },
+      {
+        "ns": 9565149,
+        "bytes": 42647,
+        "allocs": 41
+      },
+      {
+        "ns": 9406618,
+        "bytes": 42647,
+        "allocs": 41
+      },
+      {
+        "ns": 9393389,
+        "bytes": 42647,
+        "allocs": 41
+      }
+    ],
+    "no-match/16384/current": [
+      {
+        "ns": 11377171,
+        "bytes": 636917,
+        "allocs": 86
+      },
+      {
+        "ns": 11211342,
+        "bytes": 640624,
+        "allocs": 87
+      },
+      {
+        "ns": 11405017,
+        "bytes": 640624,
+        "allocs": 87
+      },
+      {
+        "ns": 11957802,
+        "bytes": 637526,
+        "allocs": 90
+      },
+      {
+        "ns": 10462625,
+        "bytes": 636918,
+        "allocs": 86
+      },
+      {
+        "ns": 10958750,
+        "bytes": 636918,
+        "allocs": 86
+      }
+    ],
+    "quoted/256/HEAD": [
+      {
+        "ns": 56808,
+        "bytes": 2825,
+        "allocs": 69
+      },
+      {
+        "ns": 55979,
+        "bytes": 2808,
+        "allocs": 69
+      },
+      {
+        "ns": 54565,
+        "bytes": 2808,
+        "allocs": 69
+      },
+      {
+        "ns": 55867,
+        "bytes": 2808,
+        "allocs": 69
+      },
+      {
+        "ns": 55387,
+        "bytes": 2808,
+        "allocs": 69
+      },
+      {
+        "ns": 54970,
+        "bytes": 2808,
+        "allocs": 69
+      }
+    ],
+    "quoted/256/current": [
+      {
+        "ns": 131876,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 132261,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 132765,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 133150,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 132434,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 132349,
+        "bytes": 11589,
+        "allocs": 96
+      }
+    ],
+    "quoted/2048/HEAD": [
+      {
+        "ns": 436290,
+        "bytes": 7271,
+        "allocs": 79
+      },
+      {
+        "ns": 439868,
+        "bytes": 7177,
+        "allocs": 79
+      },
+      {
+        "ns": 439927,
+        "bytes": 7177,
+        "allocs": 79
+      },
+      {
+        "ns": 443074,
+        "bytes": 7408,
+        "allocs": 79
+      },
+      {
+        "ns": 434438,
+        "bytes": 7177,
+        "allocs": 79
+      },
+      {
+        "ns": 429906,
+        "bytes": 7177,
+        "allocs": 79
+      }
+    ],
+    "quoted/2048/current": [
+      {
+        "ns": 1252561,
+        "bytes": 81185,
+        "allocs": 96
+      },
+      {
+        "ns": 1255501,
+        "bytes": 81186,
+        "allocs": 96
+      },
+      {
+        "ns": 1264240,
+        "bytes": 81185,
+        "allocs": 96
+      },
+      {
+        "ns": 1312118,
+        "bytes": 81426,
+        "allocs": 96
+      },
+      {
+        "ns": 1233633,
+        "bytes": 81185,
+        "allocs": 96
+      },
+      {
+        "ns": 1251489,
+        "bytes": 81185,
+        "allocs": 96
+      }
+    ],
+    "quoted/16384/HEAD": [
+      {
+        "ns": 3691106,
+        "bytes": 43524,
+        "allocs": 80
+      },
+      {
+        "ns": 3660756,
+        "bytes": 43289,
+        "allocs": 79
+      },
+      {
+        "ns": 3710387,
+        "bytes": 43290,
+        "allocs": 79
+      },
+      {
+        "ns": 3603388,
+        "bytes": 43289,
+        "allocs": 79
+      },
+      {
+        "ns": 3602316,
+        "bytes": 43290,
+        "allocs": 79
+      },
+      {
+        "ns": 3644323,
+        "bytes": 43289,
+        "allocs": 79
+      }
+    ],
+    "quoted/16384/current": [
+      {
+        "ns": 10708288,
+        "bytes": 636963,
+        "allocs": 97
+      },
+      {
+        "ns": 11519576,
+        "bytes": 636963,
+        "allocs": 97
+      },
+      {
+        "ns": 10220046,
+        "bytes": 636991,
+        "allocs": 98
+      },
+      {
+        "ns": 10069983,
+        "bytes": 637566,
+        "allocs": 101
+      },
+      {
+        "ns": 10354392,
+        "bytes": 636963,
+        "allocs": 97
+      },
+      {
+        "ns": 10177382,
+        "bytes": 636963,
+        "allocs": 97
+      }
+    ],
+    "collective/256/HEAD": [
+      {
+        "ns": 132432,
+        "bytes": 2312,
+        "allocs": 42
+      },
+      {
+        "ns": 131529,
+        "bytes": 2312,
+        "allocs": 42
+      },
+      {
+        "ns": 131901,
+        "bytes": 2312,
+        "allocs": 42
+      },
+      {
+        "ns": 131782,
+        "bytes": 2312,
+        "allocs": 42
+      },
+      {
+        "ns": 132346,
+        "bytes": 2312,
+        "allocs": 42
+      },
+      {
+        "ns": 131865,
+        "bytes": 2312,
+        "allocs": 42
+      }
+    ],
+    "collective/256/current": [
+      {
+        "ns": 141414,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 141341,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 141140,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 140858,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 140671,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 141115,
+        "bytes": 11801,
+        "allocs": 86
+      }
+    ],
+    "collective/2048/HEAD": [
+      {
+        "ns": 1049747,
+        "bytes": 6843,
+        "allocs": 42
+      },
+      {
+        "ns": 1046530,
+        "bytes": 6604,
+        "allocs": 42
+      },
+      {
+        "ns": 1053792,
+        "bytes": 6604,
+        "allocs": 42
+      },
+      {
+        "ns": 1076566,
+        "bytes": 6604,
+        "allocs": 42
+      },
+      {
+        "ns": 1058622,
+        "bytes": 6604,
+        "allocs": 42
+      },
+      {
+        "ns": 1060780,
+        "bytes": 6604,
+        "allocs": 42
+      }
+    ],
+    "collective/2048/current": [
+      {
+        "ns": 1218840,
+        "bytes": 81221,
+        "allocs": 86
+      },
+      {
+        "ns": 1245945,
+        "bytes": 81225,
+        "allocs": 86
+      },
+      {
+        "ns": 1215952,
+        "bytes": 81225,
+        "allocs": 86
+      },
+      {
+        "ns": 1174770,
+        "bytes": 81460,
+        "allocs": 86
+      },
+      {
+        "ns": 1163696,
+        "bytes": 81221,
+        "allocs": 86
+      },
+      {
+        "ns": 1165422,
+        "bytes": 81221,
+        "allocs": 86
+      }
+    ],
+    "collective/16384/HEAD": [
+      {
+        "ns": 8715974,
+        "bytes": 43263,
+        "allocs": 45
+      },
+      {
+        "ns": 8697311,
+        "bytes": 42739,
+        "allocs": 42
+      },
+      {
+        "ns": 8681647,
+        "bytes": 42739,
+        "allocs": 42
+      },
+      {
+        "ns": 8864375,
+        "bytes": 42739,
+        "allocs": 42
+      },
+      {
+        "ns": 8811035,
+        "bytes": 42739,
+        "allocs": 42
+      },
+      {
+        "ns": 8772186,
+        "bytes": 42739,
+        "allocs": 42
+      }
+    ],
+    "collective/16384/current": [
+      {
+        "ns": 10038972,
+        "bytes": 636998,
+        "allocs": 87
+      },
+      {
+        "ns": 10125903,
+        "bytes": 636998,
+        "allocs": 87
+      },
+      {
+        "ns": 9527146,
+        "bytes": 636998,
+        "allocs": 87
+      },
+      {
+        "ns": 9876771,
+        "bytes": 637565,
+        "allocs": 90
+      },
+      {
+        "ns": 10766312,
+        "bytes": 636998,
+        "allocs": 87
+      },
+      {
+        "ns": 9991052,
+        "bytes": 636998,
+        "allocs": 87
+      }
+    ]
+  }
+}

@@ -1,0 +1,778 @@
+{
+  "scope": "prepared serial operations, not serving latency",
+  "runOrder": "before-after, after-before",
+  "results": {
+    "before": {
+      "BenchmarkLedgerOperations/M2/T32/PendingFirst": [
+        {
+          "ns": 641484,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 640193,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 642304,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 650955,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 650033,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 649487,
+          "bytes": 369408,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T32/Issue": [
+        {
+          "ns": 150776,
+          "bytes": 448588,
+          "allocs": 29
+        },
+        {
+          "ns": 147105,
+          "bytes": 448589,
+          "allocs": 29
+        },
+        {
+          "ns": 147865,
+          "bytes": 448589,
+          "allocs": 29
+        },
+        {
+          "ns": 148964,
+          "bytes": 448589,
+          "allocs": 29
+        },
+        {
+          "ns": 152829,
+          "bytes": 448589,
+          "allocs": 29
+        },
+        {
+          "ns": 150695,
+          "bytes": 448589,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/PendingFirst": [
+        {
+          "ns": 1247535,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1258744,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1256084,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1325925,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1276598,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1269915,
+          "bytes": 370944,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/Issue": [
+        {
+          "ns": 240494,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 238247,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 236419,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 245481,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 242888,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 242369,
+          "bytes": 480463,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/PendingFirst": [
+        {
+          "ns": 1144162,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1153158,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1144822,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1156460,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1153212,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1153337,
+          "bytes": 376992,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/Issue": [
+        {
+          "ns": 424303,
+          "bytes": 455213,
+          "allocs": 29
+        },
+        {
+          "ns": 426586,
+          "bytes": 455213,
+          "allocs": 29
+        },
+        {
+          "ns": 423657,
+          "bytes": 455214,
+          "allocs": 29
+        },
+        {
+          "ns": 427329,
+          "bytes": 455213,
+          "allocs": 29
+        },
+        {
+          "ns": 424572,
+          "bytes": 455213,
+          "allocs": 29
+        },
+        {
+          "ns": 433500,
+          "bytes": 455214,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/PendingFirst": [
+        {
+          "ns": 1783141,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1787109,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1780541,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1778673,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1790910,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1787348,
+          "bytes": 378528,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/Issue": [
+        {
+          "ns": 510461,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 512663,
+          "bytes": 491183,
+          "allocs": 29
+        },
+        {
+          "ns": 512966,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 513100,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 518759,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 511576,
+          "bytes": 491184,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/PendingFirst": [
+        {
+          "ns": 1361243,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1328768,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1325119,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1339576,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1334594,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1328330,
+          "bytes": 380064,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/Issue": [
+        {
+          "ns": 519513,
+          "bytes": 456236,
+          "allocs": 29
+        },
+        {
+          "ns": 519219,
+          "bytes": 456238,
+          "allocs": 29
+        },
+        {
+          "ns": 523379,
+          "bytes": 456237,
+          "allocs": 29
+        },
+        {
+          "ns": 524575,
+          "bytes": 456237,
+          "allocs": 29
+        },
+        {
+          "ns": 524103,
+          "bytes": 456237,
+          "allocs": 29
+        },
+        {
+          "ns": 522598,
+          "bytes": 456236,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/PendingFirst": [
+        {
+          "ns": 1947913,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1950099,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1949989,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1965128,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1965554,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1963329,
+          "bytes": 381600,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/Issue": [
+        {
+          "ns": 608997,
+          "bytes": 492208,
+          "allocs": 29
+        },
+        {
+          "ns": 609610,
+          "bytes": 492207,
+          "allocs": 29
+        },
+        {
+          "ns": 604859,
+          "bytes": 492208,
+          "allocs": 29
+        },
+        {
+          "ns": 615200,
+          "bytes": 492207,
+          "allocs": 29
+        },
+        {
+          "ns": 609368,
+          "bytes": 492208,
+          "allocs": 29
+        },
+        {
+          "ns": 616172,
+          "bytes": 492208,
+          "allocs": 29
+        }
+      ]
+    },
+    "after": {
+      "BenchmarkLedgerOperations/M2/T32/PendingFirst": [
+        {
+          "ns": 644213,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 651996,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 648777,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 648149,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 650263,
+          "bytes": 369408,
+          "allocs": 28
+        },
+        {
+          "ns": 648508,
+          "bytes": 369408,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T32/Issue": [
+        {
+          "ns": 150415,
+          "bytes": 448589,
+          "allocs": 29
+        },
+        {
+          "ns": 152178,
+          "bytes": 448589,
+          "allocs": 29
+        },
+        {
+          "ns": 151931,
+          "bytes": 448589,
+          "allocs": 29
+        },
+        {
+          "ns": 149754,
+          "bytes": 448588,
+          "allocs": 29
+        },
+        {
+          "ns": 149638,
+          "bytes": 448589,
+          "allocs": 29
+        },
+        {
+          "ns": 149171,
+          "bytes": 448589,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/PendingFirst": [
+        {
+          "ns": 1263147,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1271286,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1269357,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1277161,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1272761,
+          "bytes": 370944,
+          "allocs": 28
+        },
+        {
+          "ns": 1265779,
+          "bytes": 370944,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M2/T64/Issue": [
+        {
+          "ns": 241191,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 237019,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 239139,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 245801,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 243576,
+          "bytes": 480463,
+          "allocs": 29
+        },
+        {
+          "ns": 241699,
+          "bytes": 480463,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/PendingFirst": [
+        {
+          "ns": 1147643,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1145445,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1140520,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1146733,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1163129,
+          "bytes": 376992,
+          "allocs": 28
+        },
+        {
+          "ns": 1164536,
+          "bytes": 376992,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T32/Issue": [
+        {
+          "ns": 415908,
+          "bytes": 455213,
+          "allocs": 29
+        },
+        {
+          "ns": 411230,
+          "bytes": 455214,
+          "allocs": 29
+        },
+        {
+          "ns": 411828,
+          "bytes": 455213,
+          "allocs": 29
+        },
+        {
+          "ns": 427514,
+          "bytes": 455213,
+          "allocs": 29
+        },
+        {
+          "ns": 428173,
+          "bytes": 455213,
+          "allocs": 29
+        },
+        {
+          "ns": 430419,
+          "bytes": 455214,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/PendingFirst": [
+        {
+          "ns": 1762509,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1771705,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1771125,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1816425,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1798396,
+          "bytes": 378528,
+          "allocs": 28
+        },
+        {
+          "ns": 1812845,
+          "bytes": 378528,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M150/T64/Issue": [
+        {
+          "ns": 499689,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 516456,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 501930,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 510992,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 508121,
+          "bytes": 491184,
+          "allocs": 29
+        },
+        {
+          "ns": 510300,
+          "bytes": 491184,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/PendingFirst": [
+        {
+          "ns": 1322073,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1321261,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1315011,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1317687,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1321283,
+          "bytes": 380064,
+          "allocs": 28
+        },
+        {
+          "ns": 1321249,
+          "bytes": 380064,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T32/Issue": [
+        {
+          "ns": 514103,
+          "bytes": 456237,
+          "allocs": 29
+        },
+        {
+          "ns": 511101,
+          "bytes": 456237,
+          "allocs": 29
+        },
+        {
+          "ns": 508806,
+          "bytes": 456237,
+          "allocs": 29
+        },
+        {
+          "ns": 513682,
+          "bytes": 456237,
+          "allocs": 29
+        },
+        {
+          "ns": 514787,
+          "bytes": 456237,
+          "allocs": 29
+        },
+        {
+          "ns": 512185,
+          "bytes": 456237,
+          "allocs": 29
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/PendingFirst": [
+        {
+          "ns": 1956829,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1954287,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1959488,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1963405,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1954926,
+          "bytes": 381600,
+          "allocs": 28
+        },
+        {
+          "ns": 1946029,
+          "bytes": 381600,
+          "allocs": 28
+        }
+      ],
+      "BenchmarkLedgerOperations/M200/T64/Issue": [
+        {
+          "ns": 609314,
+          "bytes": 492208,
+          "allocs": 29
+        },
+        {
+          "ns": 605254,
+          "bytes": 492208,
+          "allocs": 29
+        },
+        {
+          "ns": 605715,
+          "bytes": 492208,
+          "allocs": 29
+        },
+        {
+          "ns": 600350,
+          "bytes": 492208,
+          "allocs": 29
+        },
+        {
+          "ns": 603830,
+          "bytes": 492208,
+          "allocs": 29
+        },
+        {
+          "ns": 603497,
+          "bytes": 492208,
+          "allocs": 29
+        }
+      ]
+    }
+  }
+}
