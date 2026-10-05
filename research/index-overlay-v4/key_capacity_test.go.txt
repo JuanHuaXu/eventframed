@@ -1,0 +1,17 @@
+package libravdb
+
+import (
+ "fmt"
+ "strings"
+ "testing"
+)
+
+func TestResearchDeltaKeyCapacity(t *testing.T){
+ for _,width:=range []int{7,8,9,15,16,17}{for _,rename:=range []bool{false,true}{t.Run(fmt.Sprintf("width%d/rename%v",width,rename),func(t *testing.T){
+  const count=1024;ops:=make([]txMutation,count)
+  for i:=range ops{id:=strings.Repeat("x",width-5)+fmt.Sprintf("%05d",i);ops[i]=txMutation{collection:"geometry",id:id,kind:txMutationInsert};if rename{ops[i].kind=txMutationRename;ops[i].oldID=strings.Repeat("y",width-5)+fmt.Sprintf("%05d",i)}}
+  state,err:=newFlatTxCollectionState(ops,"geometry");if err!=nil{t.Fatal(err)};defer state.close()
+  slots:=state.slots[:cap(state.slots)];at:=0
+  for _,op:=range ops{keys:=[]string{op.id};if rename{keys=append(keys,op.oldID)};for _,key:=range keys{if err:=state.lookup.PutString(key,&slots[at]);err!=nil{t.Fatalf("key %d/%d: %v",at,len(slots),err)};at++}}
+ })}}
+}

@@ -1,0 +1,65 @@
+package singlefile
+
+import (
+	"bytes"
+	"reflect"
+	"testing"
+
+	"github.com/xDarkicex/libravdb/internal/quant"
+	"github.com/xDarkicex/libravdb/internal/storage"
+	"github.com/xDarkicex/libravdb/internal/util"
+)
+
+func TestResearchQuantizationOptionalCodecV1(t *testing.T) {
+	for _, graph := range []bool{false, true} {
+		for _, declarations := range []bool{false, true} {
+			for _, q := range []*quant.QuantizationConfig{nil, {Type: quant.ScalarQuantization, Bits: 8, TrainRatio: 0.1}, {Type: quant.FiniteScalarQuantization, Bits: 6, TrainRatio: 0.1, Levels: []int{8, 8, 8, 6}}} {
+				config := storage.CollectionConfig{Dimension: 4, Version: 2, GraphEnabled: graph, Quantization: q}
+				if graph {
+					config.GraphNamespace = "shared-probe"
+				}
+				if declarations {
+					config.MetadataSchema = map[string]uint8{"source": 1}
+					config.IndexedFields = []string{"source"}
+				}
+				enc := util.AcquireBinaryEncoder(estimateCollectionConfigSize(config) + 8)
+				if err := writeCollectionConfig(enc, config); err != nil {
+					util.ReleaseBinaryEncoder(enc)
+					t.Fatal(err)
+				}
+				enc.WriteUint64(987654321)
+				data := append([]byte(nil), enc.Bytes()...)
+				util.ReleaseBinaryEncoder(enc)
+				dec := &util.BinaryDecoder{Data: data}
+				got, err := readCollectionConfig(dec)
+				if err != nil || !reflect.DeepEqual(got.Quantization, q) || got.GraphEnabled != graph || got.GraphNamespace != config.GraphNamespace || !reflect.DeepEqual(got.MetadataSchema, config.MetadataSchema) || !reflect.DeepEqual(got.IndexedFields, config.IndexedFields) {
+					t.Fatalf("optional config roundtrip: got=%+v err=%v", got, err)
+				}
+				sentinel, err := dec.ReadUint64()
+				if err != nil || sentinel != 987654321 || dec.Off != len(data) {
+					t.Fatal("optional block consumed following record", sentinel, err)
+				}
+				if q != nil {
+					payload := data[:len(data)-8]
+					if _, err := readCollectionConfig(&util.BinaryDecoder{Data: payload[:len(payload)-1]}); err == nil {
+						t.Fatal("truncated quantization accepted")
+					}
+					invalid := bytes.Replace(payload, []byte("\"bits\":8"), []byte("\"bits\":0"), 1)
+					if q.Bits == 8 {
+						if _, err := readCollectionConfig(&util.BinaryDecoder{Data: invalid}); err == nil {
+							t.Fatal("invalid persisted quantization accepted")
+						}
+					}
+				}
+			}
+		}
+	}
+	for _, config := range []storage.CollectionConfig{{Version: 1, Quantization: &quant.QuantizationConfig{Type: quant.ScalarQuantization, Bits: 8, TrainRatio: 0.1}}, {Version: 2, Quantization: &quant.QuantizationConfig{Type: quant.ScalarQuantization, Bits: 0, TrainRatio: 0.1}}} {
+		enc := util.AcquireBinaryEncoder(128)
+		err := writeCollectionConfig(enc, config)
+		util.ReleaseBinaryEncoder(enc)
+		if err == nil {
+			t.Fatal("unsupported/invalid declaration accepted")
+		}
+	}
+}

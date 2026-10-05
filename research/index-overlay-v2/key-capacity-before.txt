@@ -1,0 +1,37 @@
+=== RUN   TestResearchDeltaKeyCapacity
+=== RUN   TestResearchDeltaKeyCapacity/width7/renamefalse
+    research_key_capacity_test.go:37: key 896/1024: arena exhausted: insufficient space for allocation
+=== RUN   TestResearchDeltaKeyCapacity/width7/renametrue
+    research_key_capacity_test.go:37: key 1792/2048: arena exhausted: insufficient space for allocation
+=== RUN   TestResearchDeltaKeyCapacity/width8/renamefalse
+=== RUN   TestResearchDeltaKeyCapacity/width8/renametrue
+=== RUN   TestResearchDeltaKeyCapacity/width9/renamefalse
+    research_key_capacity_test.go:37: key 576/1024: arena exhausted: insufficient space for allocation
+=== RUN   TestResearchDeltaKeyCapacity/width9/renametrue
+    research_key_capacity_test.go:37: key 1152/2048: arena exhausted: insufficient space for allocation
+=== RUN   TestResearchDeltaKeyCapacity/width15/renamefalse
+    research_key_capacity_test.go:37: key 960/1024: arena exhausted: insufficient space for allocation
+=== RUN   TestResearchDeltaKeyCapacity/width15/renametrue
+    research_key_capacity_test.go:37: key 1920/2048: arena exhausted: insufficient space for allocation
+=== RUN   TestResearchDeltaKeyCapacity/width16/renamefalse
+=== RUN   TestResearchDeltaKeyCapacity/width16/renametrue
+=== RUN   TestResearchDeltaKeyCapacity/width17/renamefalse
+    research_key_capacity_test.go:37: key 725/1024: arena exhausted: insufficient space for allocation
+=== RUN   TestResearchDeltaKeyCapacity/width17/renametrue
+    research_key_capacity_test.go:37: key 1450/2048: arena exhausted: insufficient space for allocation
+--- FAIL: TestResearchDeltaKeyCapacity (0.01s)
+    --- FAIL: TestResearchDeltaKeyCapacity/width7/renamefalse (0.00s)
+    --- FAIL: TestResearchDeltaKeyCapacity/width7/renametrue (0.00s)
+    --- PASS: TestResearchDeltaKeyCapacity/width8/renamefalse (0.00s)
+    --- PASS: TestResearchDeltaKeyCapacity/width8/renametrue (0.00s)
+    --- FAIL: TestResearchDeltaKeyCapacity/width9/renamefalse (0.00s)
+    --- FAIL: TestResearchDeltaKeyCapacity/width9/renametrue (0.00s)
+    --- FAIL: TestResearchDeltaKeyCapacity/width15/renamefalse (0.00s)
+    --- FAIL: TestResearchDeltaKeyCapacity/width15/renametrue (0.00s)
+    --- PASS: TestResearchDeltaKeyCapacity/width16/renamefalse (0.00s)
+    --- PASS: TestResearchDeltaKeyCapacity/width16/renametrue (0.00s)
+    --- FAIL: TestResearchDeltaKeyCapacity/width17/renamefalse (0.00s)
+    --- FAIL: TestResearchDeltaKeyCapacity/width17/renametrue (0.00s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/libravdb	0.279s
+FAIL

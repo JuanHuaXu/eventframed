@@ -1,0 +1,19 @@
+{
+  "arm": "candidate",
+  "label": "cold-before",
+  "args": [
+    "test",
+    "./internal/index",
+    "-run",
+    "^TestResearchOverlayColdVisibility$",
+    "-count=1",
+    "-v",
+    "-timeout=1m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 743.324584,
+  "sha256": "81ed43cca9d2d76065acc7cc91bb07169ad0684a77bd65b6025b44a8822d3c59",
+  "bytes": 842
+}

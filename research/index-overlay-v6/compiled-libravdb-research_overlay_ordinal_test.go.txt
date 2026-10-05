@@ -1,0 +1,61 @@
+package libravdb
+
+import (
+	"context"
+	"fmt"
+	"github.com/xDarkicex/libravdb/internal/util"
+	"testing"
+)
+
+func TestResearchOverlayPrefixIdentity(t *testing.T) {
+	ctx := context.Background()
+	db, err := Open(WithStoragePath(t.TempDir() + "/ordinal.libravdb"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	col, err := db.CreateCollection(ctx, "events", WithDimension(32), WithHNSW(16, 100, 100))
+	if err != nil {
+		t.Fatal(err)
+	}
+	vectors := map[string][]float32{}
+	add := func(prefix string, n, start int) {
+		t.Helper()
+		if err := db.WithTx(ctx, func(tx Tx) error {
+			for i := 0; i < n; i++ {
+				id := fmt.Sprintf("%s-%04d", prefix, i)
+				v := overlayDBVector(start+i, 32)
+				vectors[id] = v
+				if err := tx.Insert(ctx, "events", id, v, nil); err != nil {
+					return err
+				}
+			}
+			return nil
+		}); err != nil {
+			t.Fatal(err)
+		}
+	}
+	add("past", 80, 0)
+	add("ahead", 65, 1000)
+	query := vectors["past-0007"]
+	result, err := col.Search(ctx, query, 5)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(result.Results) != 5 {
+		t.Fatal("lost records")
+	}
+	if result.Results[0].ID != "past-0007" {
+		t.Fatal("wrong canonical nearest identity", result.Results[0].ID)
+	}
+	metric, err := util.GetDistanceFunc(util.DistanceMetric(col.config.Metric))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, r := range result.Results {
+		expected := publicScore(col.config.Metric, metric(vectorForIndex(col.config.Metric, query), vectorForIndex(col.config.Metric, vectors[r.ID])))
+		if r.Score != expected {
+			t.Fatal("score/identity mismatch", r.ID, r.Score, expected)
+		}
+	}
+}

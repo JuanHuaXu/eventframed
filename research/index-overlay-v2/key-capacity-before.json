@@ -1,0 +1,19 @@
+{
+  "arm": "control",
+  "label": "key-capacity-before",
+  "args": [
+    "test",
+    "./libravdb",
+    "-run",
+    "^TestResearchDeltaKeyCapacity$",
+    "-count=1",
+    "-v",
+    "-timeout=2m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 3013.424292,
+  "sha256": "a8385f8501e615d7949bb4e1c38e75a495e42923b413dc8fb7f83ffecb3b6d97",
+  "bytes": 2511
+}

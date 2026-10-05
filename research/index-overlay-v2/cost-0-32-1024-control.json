@@ -1,0 +1,19 @@
+{
+  "arm": "control",
+  "label": "cost-0-32-1024-control",
+  "args": [
+    "test",
+    "./libravdb",
+    "-run",
+    "^TestResearchOverlayCostV1$",
+    "-count=1",
+    "-v",
+    "-timeout=5m"
+  ],
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "wallMS": 3651.939666,
+  "sha256": "6714df78be6859687a19c7101d848e82f149b66f3c6444980189ff07c7c8f731",
+  "bytes": 837616
+}

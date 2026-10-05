@@ -1,0 +1,22 @@
+package index
+
+import (
+    "context"
+    "testing"
+)
+
+type sparseOverlayFilter struct { ordinal uint64 }
+func (f sparseOverlayFilter) Test(i uint64) bool { return i == f.ordinal }
+func TestResearchOverlaySparseOrdinals(t *testing.T) {
+    ctx:=context.Background();idx:=overlayFixture(t)
+    entries:=make([]*VectorEntry,80);external:=map[string]uint32{}
+    for i:=range entries { entries[i]=overlayEntry(i);entries[i].Ordinal=uint32(1000+3*(79-i));external[entries[i].ID]=entries[i].Ordinal }
+    if err:=idx.BatchInsert(ctx,entries);err!=nil { t.Fatal(err) }
+    check:=func(filter GraphFilter,want int) {
+        t.Helper();out,err:=idx.Search(ctx,entries[7].Vector,200,filter);if err!=nil { t.Fatal(err) };if len(out)!=want { t.Fatal("filtered ordinal count",len(out),want) }
+        for _,r:=range out { if r.Ordinal!=external[r.ID] { t.Fatalf("ID %s: physical ordinal %d exposed, external %d",r.ID,r.Ordinal,external[r.ID]) } }
+    }
+    check(nil,80);check(sparseOverlayFilter{uint64(entries[7].Ordinal)},1)
+    if err:=idx.Delete(ctx,entries[7].ID);err!=nil { t.Fatal(err) };check(nil,79);check(sparseOverlayFilter{uint64(entries[7].Ordinal)},0)
+    blob,err:=idx.SerializeToBytes();if err!=nil { t.Fatal(err) };if err:=idx.DeserializeFromBytes(ctx,blob);err!=nil { t.Fatal(err) };check(nil,79)
+}

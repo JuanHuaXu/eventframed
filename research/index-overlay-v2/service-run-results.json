@@ -1,0 +1,78 @@
+{
+  "completed": false,
+  "commands": [
+    {
+      "arm": "control",
+      "label": "adjacent-control-ordinary",
+      "transcript": "adjacent-control-ordinary.txt",
+      "args": [
+        "test",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^Test(CaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|RecallExcludesUnavailableEventsBeforeCandidateLimit|RerankingRunsBeforeIndependentPackingCap|CalibrationChangesForecastLawWithoutChangingRetrievalScore|RerankingReceivesOnlyEventFrameCorpus|DefaultPolicyActivatesCompleteBoundedFrontier|VectorHydrationIsExplicit|StoreRoundTripAndAvailabilityGate|DurableStateSurvivesRestartAndPinsEmbeddingContract|BayesianJournalSurvivesRestartAndRejectsConflict|ConcurrentBayesianJournalsRemainDurable|BayesianPosteriorUpdateSurvivesRestart|AntiPigeonRevisionSurvivesRestart|SharedEvidenceDiscountSurvivesRestart|PredictiveSnapInvalidationRollbackAndRestart|DeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "full": false,
+      "race": false,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "wallMS": 4998.229625,
+      "sha256": "7b447de9f350c3b0086034f09b0ce419445e8a78e6c3bed2432c9072316cd516",
+      "bytes": 2104,
+      "dataRaceReported": false
+    },
+    {
+      "arm": "control",
+      "label": "adjacent-control-race",
+      "transcript": "adjacent-control-race.txt",
+      "args": [
+        "test",
+        "-race",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^Test(CaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|RecallExcludesUnavailableEventsBeforeCandidateLimit|RerankingRunsBeforeIndependentPackingCap|CalibrationChangesForecastLawWithoutChangingRetrievalScore|RerankingReceivesOnlyEventFrameCorpus|DefaultPolicyActivatesCompleteBoundedFrontier|VectorHydrationIsExplicit|StoreRoundTripAndAvailabilityGate|DurableStateSurvivesRestartAndPinsEmbeddingContract|BayesianJournalSurvivesRestartAndRejectsConflict|ConcurrentBayesianJournalsRemainDurable|BayesianPosteriorUpdateSurvivesRestart|AntiPigeonRevisionSurvivesRestart|SharedEvidenceDiscountSurvivesRestart|PredictiveSnapInvalidationRollbackAndRestart|DeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "full": false,
+      "race": true,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "wallMS": 9615.674542,
+      "sha256": "6b11f4d237939b3ad00d0c215832362b601019fd1bea0d238838af542d885739",
+      "bytes": 2104,
+      "dataRaceReported": false
+    },
+    {
+      "arm": "candidate",
+      "label": "adjacent-candidate-ordinary",
+      "transcript": "adjacent-candidate-ordinary.txt",
+      "args": [
+        "test",
+        "./internal/service",
+        "./internal/store/libravdbstore",
+        "-run",
+        "^Test(CaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|RecallExcludesUnavailableEventsBeforeCandidateLimit|RerankingRunsBeforeIndependentPackingCap|CalibrationChangesForecastLawWithoutChangingRetrievalScore|RerankingReceivesOnlyEventFrameCorpus|DefaultPolicyActivatesCompleteBoundedFrontier|VectorHydrationIsExplicit|StoreRoundTripAndAvailabilityGate|DurableStateSurvivesRestartAndPinsEmbeddingContract|BayesianJournalSurvivesRestartAndRejectsConflict|ConcurrentBayesianJournalsRemainDurable|BayesianPosteriorUpdateSurvivesRestart|AntiPigeonRevisionSurvivesRestart|SharedEvidenceDiscountSurvivesRestart|PredictiveSnapInvalidationRollbackAndRestart|DeleteRetentionCompactAndBackup)$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "full": false,
+      "race": false,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "wallMS": 4111.705957999999,
+      "sha256": "3b95040210a5656e59e8a85d27147e8c27e313b56a0496c03aca9e94e7e3b35d",
+      "bytes": 2789,
+      "dataRaceReported": false
+    }
+  ]
+}

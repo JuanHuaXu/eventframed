@@ -1,0 +1,524 @@
+package index
+
+import (
+	"bytes"
+	"context"
+	"crypto/sha256"
+	"encoding/json"
+	"errors"
+	"github.com/xDarkicex/libravdb/internal/util"
+	"math"
+	"os"
+	"sort"
+	"sync"
+	"time"
+)
+
+// Research-only: O(ND) copied canonical payload, synchronous capped compaction.
+// Canonical metadata stays in durable storage, matching ordinary HNSW ingress.
+type researchGeneration struct {
+	base     Index
+	records  map[string]*VectorEntry
+	ordinals map[uint32]string
+	overlay  map[string]*VectorEntry
+	size     int
+}
+type researchOverlay struct {
+	providerBacked bool
+	mutations      sync.Mutex
+	mu             sync.RWMutex
+	config         HNSWConfig
+	cap            int
+	g              *researchGeneration
+	retired        Index
+	closed         bool
+}
+
+var _ Index = (*researchOverlay)(nil)
+var _ DeltaIndex = (*researchOverlay)(nil)
+
+func newResearchOverlay(config *HNSWConfig, capacity int) (*researchOverlay, error) {
+	if config == nil || config.Metric != util.CosineDistance || capacity < 1 {
+		return nil, errors.New("unsupported overlay contract")
+	}
+	cfg := *config
+	cfg.Provider = nil // A base generation must not read mutable rows.
+	base, err := newPlainHNSW(&cfg)
+	if err != nil {
+		return nil, err
+	}
+	return &researchOverlay{config: cfg, cap: capacity, providerBacked: config.Provider != nil, g: &researchGeneration{base: base, records: map[string]*VectorEntry{}, ordinals: map[uint32]string{}, overlay: map[string]*VectorEntry{}}}, nil
+}
+func (w *researchOverlay) validateVector(v []float32) error {
+	if len(v) != w.config.Dimension {
+		return errors.New("overlay dimension mismatch")
+	}
+	for _, x := range v {
+		if math.IsNaN(float64(x)) || math.IsInf(float64(x), 0) {
+			return errors.New("nonfinite overlay vector")
+		}
+	}
+	return nil
+}
+
+// Reserve the writer, not the reader lock, through WAL commit. A storage
+// checkpoint must be able to serialize the old generation during preparation.
+func (w *researchOverlay) PrepareMutations(ctx context.Context, puts []*VectorEntry, deletes []string) (PreparedMutation, error) {
+	w.mutations.Lock()
+	w.mu.Lock()
+	if w.closed {
+		w.mu.Unlock()
+		w.mutations.Unlock()
+		return nil, errors.New("overlay closed")
+	}
+	if w.retired != nil {
+		if err := w.retired.Close(); err != nil {
+			w.mu.Unlock()
+			w.mutations.Unlock()
+			return nil, err
+		}
+		w.retired = nil
+	}
+	g := w.g
+	w.mu.Unlock()
+	fail := func(err error) (PreparedMutation, error) { w.mutations.Unlock(); return nil, err }
+	if err := ctx.Err(); err != nil {
+		return fail(err)
+	}
+	changed := make(map[string]*VectorEntry, len(g.overlay)+len(puts)+len(deletes))
+	for id, e := range g.overlay {
+		changed[id] = e
+	}
+	for _, id := range deletes {
+		if id == "" {
+			return fail(errors.New("empty delete ID"))
+		}
+		changed[id] = nil
+	}
+	for _, e := range puts {
+		if e == nil || e.ID == "" {
+			return fail(errors.New("invalid overlay entry"))
+		}
+		if err := w.validateVector(e.Vector); err != nil {
+			return fail(err)
+		}
+		copyEntry := *e
+		copyEntry.Vector = append([]float32(nil), e.Vector...)
+		copyEntry.Metadata = nil
+		changed[e.ID] = &copyEntry
+	}
+	seen := map[uint32]string{}
+	for id, e := range changed {
+		if e == nil {
+			continue
+		}
+		if previous, ok := seen[e.Ordinal]; ok && previous != id {
+			return fail(errors.New("duplicate overlay ordinal"))
+		}
+		seen[e.Ordinal] = id
+		if previous, ok := g.ordinals[e.Ordinal]; ok && previous != id {
+			replacement, shadowed := changed[previous]
+			if !shadowed || (replacement != nil && replacement.Ordinal == e.Ordinal) {
+				return fail(errors.New("duplicate base ordinal"))
+			}
+		}
+	}
+	size := len(g.records)
+	for id, e := range changed {
+		_, was := g.records[id]
+		if was && e == nil {
+			size--
+		}
+		if !was && e != nil {
+			size++
+		}
+	}
+	candidate := &researchGeneration{base: g.base, records: g.records, ordinals: g.ordinals, overlay: changed, size: size}
+	if len(changed) > w.cap {
+		entries := make(map[string]*VectorEntry, size)
+		for id, e := range g.records {
+			entries[id] = e
+		}
+		for id, e := range changed {
+			if e == nil {
+				delete(entries, id)
+			} else {
+				entries[id] = e
+			}
+		}
+		base, err := w.build(ctx, entries)
+		if err != nil {
+			return fail(err)
+		}
+		ordinals := map[uint32]string{}
+		for id, e := range entries {
+			ordinals[e.Ordinal] = id
+		}
+		candidate = &researchGeneration{base: base, records: entries, ordinals: ordinals, overlay: map[string]*VectorEntry{}, size: len(entries)}
+	}
+	if err := ctx.Err(); err != nil {
+		if candidate.base != g.base {
+			_ = candidate.base.Close()
+		}
+		return fail(err)
+	}
+	return &researchPrepared{owner: w, next: candidate}, nil
+}
+func (w *researchOverlay) build(ctx context.Context, entries map[string]*VectorEntry) (Index, error) {
+	base, err := newPlainHNSW(&w.config)
+	if err != nil {
+		return nil, err
+	}
+	ids := make([]string, 0, len(entries))
+	for id := range entries {
+		ids = append(ids, id)
+	}
+	sort.Strings(ids)
+	// Serial compaction keeps worker schedule out of the quality comparison.
+	for _, id := range ids {
+		if err := ctx.Err(); err != nil {
+			base.Close()
+			return nil, err
+		}
+		if err := base.Insert(ctx, entries[id]); err != nil {
+			base.Close()
+			return nil, err
+		}
+	}
+	return base, nil
+}
+
+type researchPrepared struct {
+	mu    sync.Mutex
+	owner *researchOverlay
+	next  *researchGeneration
+	done  bool
+}
+
+func (p *researchPrepared) Commit() error {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	if p.done {
+		return errors.New("prepared generation already terminal")
+	}
+	w := p.owner
+	w.mu.Lock()
+	if p.next.base != w.g.base {
+		w.retired = w.g.base
+	}
+	w.g = p.next
+	p.done = true
+	w.mu.Unlock()
+	w.mutations.Unlock()
+	return nil
+}
+func (p *researchPrepared) Abort() error {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	if p.done {
+		return nil
+	}
+	w := p.owner
+	if p.next.base != w.g.base {
+		_ = p.next.base.Close()
+	}
+	p.done = true
+	w.mutations.Unlock()
+	return nil
+}
+func (w *researchOverlay) Insert(ctx context.Context, e *VectorEntry) error {
+	return w.BatchInsert(ctx, []*VectorEntry{e})
+}
+func (w *researchOverlay) BatchInsert(ctx context.Context, entries []*VectorEntry) error {
+	p, err := w.PrepareMutations(ctx, entries, nil)
+	if err != nil {
+		return err
+	}
+	return p.Commit()
+}
+func (w *researchOverlay) Delete(ctx context.Context, id string) error {
+	p, err := w.PrepareMutations(ctx, nil, []string{id})
+	if err != nil {
+		return err
+	}
+	return p.Commit()
+}
+
+type researchShadowFilter struct {
+	base   GraphFilter
+	shadow map[uint32]bool
+}
+
+func (f *researchShadowFilter) Test(id uint64) bool {
+	return !f.shadow[uint32(id)] && (f.base == nil || f.base.Test(id))
+}
+func (w *researchOverlay) Search(ctx context.Context, q []float32, k int, f GraphFilter) ([]*SearchResult, error) {
+	return w.SearchWithEf(ctx, q, k, w.config.EfSearch, f)
+}
+func (w *researchOverlay) SearchWithEf(ctx context.Context, q []float32, k, ef int, f GraphFilter) ([]*SearchResult, error) {
+	w.mu.RLock()
+	defer w.mu.RUnlock()
+	if w.closed {
+		return nil, errors.New("overlay closed")
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if err := w.validateVector(q); err != nil {
+		return nil, err
+	}
+	if k <= 0 {
+		return nil, nil
+	}
+	g := w.g
+	shadow := map[uint32]bool{}
+	for id := range g.overlay {
+		if e := g.records[id]; e != nil {
+			shadow[e.Ordinal] = true
+		}
+	}
+	base := g.base.(interface {
+		SearchWithEf(context.Context, []float32, int, int, GraphFilter) ([]*SearchResult, error)
+	})
+	count := k
+	if count < g.size {
+		if len(g.overlay) > g.size-count {
+			count = g.size
+		} else {
+			count += len(g.overlay)
+		}
+	}
+	out, err := base.SearchWithEf(ctx, q, count, ef, &researchShadowFilter{base: f, shadow: shadow})
+	if err != nil {
+		return nil, err
+	}
+	for _, e := range g.overlay {
+		if err := ctx.Err(); err != nil {
+			return nil, err
+		}
+		if e == nil || (f != nil && !f.Test(uint64(e.Ordinal))) {
+			continue
+		}
+		score := util.CosineDistance_func(q, e.Vector)
+		if threshold, ok := f.(ThresholdFilter); ok && 1-score < threshold.Threshold() {
+			continue
+		}
+		out = append(out, &SearchResult{ID: e.ID, Ordinal: e.Ordinal, Score: score})
+	}
+	if threshold, ok := f.(ThresholdFilter); ok {
+		filtered := out[:0]
+		for _, r := range out {
+			if 1-r.Score >= threshold.Threshold() {
+				filtered = append(filtered, r)
+			}
+		}
+		out = filtered
+	}
+	sort.Slice(out, func(i, j int) bool {
+		if out[i].Score == out[j].Score {
+			return out[i].ID < out[j].ID
+		}
+		return out[i].Score < out[j].Score
+	})
+	if len(out) > k {
+		out = out[:k]
+	}
+	// A caller owns returned payloads after the generation read lock ends.
+	// Storage-backed collections hydrate their authoritative (unnormalized)
+	// record vectors; standalone callers receive independent vector copies.
+	for _, r := range out {
+		r.Vector = nil
+		if !w.providerBacked {
+			entry, changed := g.overlay[r.ID]
+			if !changed {
+				entry = g.records[r.ID]
+			}
+			if entry == nil {
+				return nil, errors.New("result missing from immutable generation")
+			}
+			r.Vector = append([]float32(nil), entry.Vector...)
+		}
+	}
+	return out, nil
+}
+func (w *researchOverlay) Size() int {
+	w.mu.RLock()
+	defer w.mu.RUnlock()
+	if w.closed {
+		return 0
+	}
+	return w.g.size
+}
+func (w *researchOverlay) MemoryUsage() int64 {
+	w.mu.RLock()
+	defer w.mu.RUnlock()
+	if w.closed {
+		return 0
+	}
+	n := w.g.base.MemoryUsage()
+	if w.retired != nil {
+		n += w.retired.MemoryUsage()
+	}
+	for id, e := range w.g.records {
+		n += int64(len(id) + len(e.Vector)*4)
+	}
+	for id, e := range w.g.overlay {
+		n += int64(len(id))
+		if e != nil {
+			n += int64(len(e.Vector) * 4)
+		}
+	}
+	return n
+}
+func (w *researchOverlay) Close() error {
+	w.mutations.Lock()
+	defer w.mutations.Unlock()
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	if w.closed {
+		return nil
+	}
+	w.closed = true
+	err := w.g.base.Close()
+	if w.retired != nil {
+		if e := w.retired.Close(); err == nil {
+			err = e
+		}
+	}
+	w.g = nil
+	w.retired = nil
+	return err
+}
+
+// Snapshot only canonical vectors; rebuilding on reopen deliberately makes no
+// promise of identical approximate topology or ranks across restart.
+func (w *researchOverlay) SerializeToBytes() ([]byte, error) {
+	w.mu.RLock()
+	defer w.mu.RUnlock()
+	if w.closed {
+		return nil, errors.New("overlay closed")
+	}
+	entries := map[string]*VectorEntry{}
+	for id, e := range w.g.records {
+		entries[id] = e
+	}
+	for id, e := range w.g.overlay {
+		if e == nil {
+			delete(entries, id)
+		} else {
+			entries[id] = e
+		}
+	}
+	data, err := json.Marshal(struct {
+		Dimension int
+		Entries   map[string]*VectorEntry
+	}{w.config.Dimension, entries})
+	if err != nil {
+		return nil, err
+	}
+	sum := sha256.Sum256(data)
+	out := append([]byte("EFOV01"), sum[:]...)
+	return append(out, data...), nil
+}
+func (w *researchOverlay) DeserializeFromBytes(ctx context.Context, data []byte) error {
+	w.mutations.Lock()
+	defer w.mutations.Unlock()
+	if len(data) < 38 || !bytes.Equal(data[:6], []byte("EFOV01")) {
+		return errors.New("unsupported overlay snapshot")
+	}
+	sum := sha256.Sum256(data[38:])
+	if !bytes.Equal(sum[:], data[6:38]) {
+		return errors.New("overlay snapshot checksum")
+	}
+	var saved struct {
+		Dimension int
+		Entries   map[string]*VectorEntry
+	}
+	if err := json.Unmarshal(data[38:], &saved); err != nil {
+		return err
+	}
+	if saved.Dimension != w.config.Dimension {
+		return errors.New("overlay snapshot dimension")
+	}
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	if w.closed {
+		return errors.New("overlay closed")
+	}
+	ordinals := map[uint32]string{}
+	for id, e := range saved.Entries {
+		if e == nil || e.ID != id {
+			return errors.New("overlay snapshot identity")
+		}
+		if err := w.validateVector(e.Vector); err != nil {
+			return err
+		}
+		if _, ok := ordinals[e.Ordinal]; ok {
+			return errors.New("overlay snapshot ordinal")
+		}
+		ordinals[e.Ordinal] = id
+		e.Metadata = nil
+	}
+	base, err := w.build(ctx, saved.Entries)
+	if err != nil {
+		return err
+	}
+	old := w.g.base
+	w.g = &researchGeneration{base: base, records: saved.Entries, ordinals: ordinals, overlay: map[string]*VectorEntry{}, size: len(saved.Entries)}
+	if w.retired != nil {
+		_ = w.retired.Close()
+		w.retired = nil
+	}
+	return old.Close()
+}
+func (w *researchOverlay) SaveToDisk(ctx context.Context, path string) error {
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	b, err := w.SerializeToBytes()
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, b, 0600)
+}
+func (w *researchOverlay) LoadFromDisk(ctx context.Context, path string) error {
+	b, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+	return w.DeserializeFromBytes(ctx, b)
+}
+func (w *researchOverlay) GetPersistenceMetadata() *PersistenceMetadata {
+	w.mu.RLock()
+	defer w.mu.RUnlock()
+	if w.closed || w.g.size == 0 {
+		return nil
+	}
+	return &PersistenceMetadata{IndexType: "HNSW", Dimension: w.config.Dimension, NodeCount: w.g.size, Version: 1, CreatedAt: time.Now()}
+}
+func (w *researchOverlay) RawVectorStoreProfile() map[string]any {
+	w.mu.RLock()
+	defer w.mu.RUnlock()
+	if w.closed {
+		return nil
+	}
+	// Collection.Stats requires the complete typed raw-store profile. Preserve
+	// base-store accounting, and label the additional generation payload apart.
+	profile := w.g.base.(*hnswWrapper).RawVectorStoreProfile()
+	if profile == nil {
+		return nil
+	}
+	profile["research_overlay"] = true
+	profile["overlay_slots"] = len(w.g.overlay)
+	profile["overlay_cap"] = w.cap
+	retained := len(w.g.records)
+	for _, entry := range w.g.overlay {
+		if entry != nil {
+			retained++
+		}
+	}
+	profile["canonical_vector_bytes"] = retained * w.config.Dimension * 4
+	profile["records"] = w.g.size
+	profile["not_peak_rss"] = true
+	return profile
+}

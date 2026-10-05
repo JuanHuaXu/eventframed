@@ -1,0 +1,89 @@
+package libravdb
+
+import (
+	"context"
+	"errors"
+	"fmt"
+	"hash/fnv"
+	"testing"
+	"time"
+)
+
+func TestResearchTransactionSharedShardAdmissionV1(t *testing.T) {
+	path := t.TempDir() + "/admission.libravdb"
+	db, err := Open(WithStoragePath(path), WithMaxConcurrentWrites(1), WithMaxWriteQueueDepth(8))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() {
+		if db != nil {
+			db.Close()
+		}
+	}()
+	col, err := db.EnsureCollection(context.Background(), "event", 4, WithHNSW(8, 40, 20), WithSharding(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	ids := make([]string, 4)
+	for i := 0; i < 128; i++ {
+		id := fmt.Sprintf("route-%03d", i)
+		h := fnv.New32a()
+		h.Write([]byte(id))
+		route := h.Sum32() % 4
+		if ids[route] == "" {
+			ids[route] = id
+		}
+	}
+	for _, id := range ids {
+		if id == "" {
+			t.Fatal("missing declared route")
+		}
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 200*time.Millisecond)
+	err = db.WithTx(ctx, func(tx Tx) error {
+		for _, id := range ids {
+			if err := tx.Insert(ctx, "event", id, []float32{1, 0, 0, 0}, map[string]interface{}{"route_id": id}); err != nil {
+				return err
+			}
+		}
+		return nil
+	})
+	cancel()
+	if err != nil {
+		count, countErr := col.Count(context.Background())
+		if countErr != nil || count != 0 || len(col.writes.permits) != 0 {
+			t.Fatalf("failed transaction leaked records/permits: count=%d err=%v permits=%d", count, countErr, len(col.writes.permits))
+		}
+		t.Fatalf("bounded multi-shard transaction failed: %v", err)
+	}
+	if count, err := col.Count(context.Background()); err != nil || count != 4 || len(col.writes.permits) != 0 {
+		t.Fatal("commit or permit accounting", count, err, len(col.writes.permits))
+	}
+	ctx, cancel = context.WithCancel(context.Background())
+	cancel()
+	err = db.WithTx(ctx, func(tx Tx) error { return tx.Insert(ctx, "event", "cancelled", []float32{1, 0, 0, 0}, nil) })
+	if !errors.Is(err, context.Canceled) {
+		t.Fatal("cancelled transaction", err)
+	}
+	if count, err := col.Count(context.Background()); err != nil || count != 4 || len(col.writes.permits) != 0 {
+		t.Fatal("cancellation changed records/permits", count, err)
+	}
+	if err := db.Close(); err != nil {
+		t.Fatal(err)
+	}
+	db = nil
+	db, err = Open(WithStoragePath(path), WithMaxConcurrentWrites(1), WithMaxWriteQueueDepth(8))
+	if err != nil {
+		t.Fatal(err)
+	}
+	col, err = db.GetCollection("event")
+	if err != nil {
+		t.Fatal("reopen parent", err)
+	}
+	for _, id := range ids {
+		record, err := col.Get(context.Background(), id)
+		if err != nil || record.Metadata["route_id"] != id {
+			t.Fatal("reopen committed route", id, err)
+		}
+	}
+}

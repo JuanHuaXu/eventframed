@@ -1,0 +1,22 @@
+package index
+
+import (
+ "context"
+ "testing"
+ "github.com/xDarkicex/libravdb/internal/util"
+)
+
+func TestResearchOverlayResultOwnership(t *testing.T){
+ idx:=overlayFixture(t);ctx:=context.Background();entries:=make([]*VectorEntry,80);for i:=range entries{entries[i]=overlayEntry(i)};if err:=idx.BatchInsert(ctx,entries);err!=nil{t.Fatal(err)}
+ out,err:=idx.Search(ctx,entries[0].Vector,1,nil);if err!=nil{t.Fatal(err)};if len(out)!=1||out[0].ID!=entries[0].ID||len(out[0].Vector)!=32{t.Fatal("standalone result binding")}
+ out[0].Vector[0]=-100
+ next,err:=idx.Search(ctx,entries[0].Vector,1,nil);if err!=nil{t.Fatal(err)};if len(next)!=1||next[0].ID!=entries[0].ID||next[0].Score>1e-7{t.Fatal("returned vector aliases immutable base storage")}
+}
+type overlayNoReadProvider struct{}
+func(overlayNoReadProvider)GetByOrdinal(uint32)([]float32,error){panic("immutable base consulted mutable provider")}
+func(overlayNoReadProvider)Distance([]float32,uint32)(float32,error){panic("immutable base consulted mutable provider")}
+func TestResearchOverlayProviderHydrationBoundary(t *testing.T){
+ idx,err:=NewHNSW(&HNSWConfig{Dimension:32,M:16,EfConstruction:100,EfSearch:100,ML:.36,Metric:util.CosineDistance,Provider:overlayNoReadProvider{},RawVectorStore:"slabby",RawStoreCap:4096,IDMapCapacity:4096});if err!=nil{t.Fatal(err)};defer idx.Close()
+ entries:=make([]*VectorEntry,81);for i:=range entries{entries[i]=overlayEntry(i)};if err:=idx.BatchInsert(context.Background(),entries[:80]);err!=nil{t.Fatal(err)};if err:=idx.Insert(context.Background(),entries[80]);err!=nil{t.Fatal(err)}
+ out,err:=idx.Search(context.Background(),entries[0].Vector,100,nil);if err!=nil{t.Fatal(err)};if len(out)!=81{t.Fatal("lost record")};for _,r:=range out{if r.Vector!=nil{t.Fatal("storage-owned canonical vector must hydrate from record, not normalized index copy")}}
+}

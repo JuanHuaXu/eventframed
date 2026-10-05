@@ -1,0 +1,19 @@
+{
+  "arm": "candidate",
+  "label": "preflight-lock-before",
+  "args": [
+    "test",
+    "./internal/index",
+    "-run",
+    "^TestResearchOverlay",
+    "-count=1",
+    "-v",
+    "-timeout=2m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 558.15975,
+  "sha256": "699e98518f75cb17590a2901ac3ce41f59c64e364eb536cb4e4f527731f2691c",
+  "bytes": 713
+}

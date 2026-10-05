@@ -1,0 +1,19 @@
+{
+  "arm": "candidate",
+  "label": "cost-1-128-1024-candidate",
+  "args": [
+    "test",
+    "./libravdb",
+    "-run",
+    "^TestResearchOverlayCostV1$",
+    "-count=1",
+    "-v",
+    "-timeout=5m"
+  ],
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "wallMS": 1547.569,
+  "sha256": "2d1413577dcd55aff6932d13971c644ad24bce84cb0115d74d81510e5b43bdca",
+  "bytes": 843458
+}

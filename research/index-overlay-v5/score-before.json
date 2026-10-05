@@ -1,0 +1,19 @@
+{
+  "arm": "candidate",
+  "label": "score-before",
+  "args": [
+    "test",
+    "./libravdb",
+    "-run",
+    "^TestResearchOverlayCanonicalPublicScore$",
+    "-count=1",
+    "-v",
+    "-timeout=1m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 3589.584833,
+  "sha256": "9a179fa073d5c182eb5debc12ce6270e11de836103cffd0f08c3698a39103bd1",
+  "bytes": 344
+}

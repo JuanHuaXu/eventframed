@@ -1,0 +1,239 @@
+package index
+
+import (
+	"context"
+	"fmt"
+	"github.com/xDarkicex/libravdb/internal/util"
+	"math"
+	"sync"
+	"testing"
+	"time"
+)
+
+func overlayFixture(t *testing.T) Index {
+	t.Helper()
+	idx, err := NewHNSW(&HNSWConfig{Dimension: 32, M: 16, EfConstruction: 100, EfSearch: 100, ML: .36, Metric: util.CosineDistance, RawVectorStore: "slabby", RawStoreCap: 4096, IDMapCapacity: 4096})
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { idx.Close() })
+	return idx
+}
+func overlayEntry(i int) *VectorEntry {
+	v := make([]float32, 32)
+	v[i%32] = 1
+	return &VectorEntry{ID: fmt.Sprintf("entry-%04d", i), Ordinal: uint32(i), Vector: v, Version: 1}
+}
+func overlayDelta(t *testing.T, idx Index) DeltaIndex {
+	t.Helper()
+	d, ok := idx.(DeltaIndex)
+	if !ok {
+		t.Fatal("prepared-delta capability missing")
+	}
+	return d
+}
+
+func TestResearchOverlaySnapshotWhilePrepared(t *testing.T) {
+	idx := overlayFixture(t)
+	if err := idx.Insert(context.Background(), overlayEntry(0)); err != nil {
+		t.Fatal(err)
+	}
+	p, err := overlayDelta(t, idx).PrepareMutations(context.Background(), []*VectorEntry{overlayEntry(1)}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	done := make(chan error, 1)
+	go func() { _, err := idx.SerializeToBytes(); done <- err }()
+	select {
+	case err := <-done:
+		if err != nil {
+			p.Abort()
+			t.Fatal(err)
+		}
+		p.Abort()
+	case <-time.After(100 * time.Millisecond):
+		p.Abort()
+		<-done
+		t.Fatal("durable checkpoint snapshot blocked behind its own prepared generation")
+	}
+	if idx.Size() != 1 {
+		t.Fatal("precommit visibility")
+	}
+}
+func TestResearchOverlayAbortCommitOwnership(t *testing.T) {
+	idx := overlayFixture(t)
+	d := overlayDelta(t, idx)
+	ctx := context.Background()
+	entries := make([]*VectorEntry, 80)
+	for i := range entries {
+		entries[i] = overlayEntry(i)
+	}
+	if err := idx.BatchInsert(ctx, entries); err != nil {
+		t.Fatal(err)
+	}
+	p, err := d.PrepareMutations(ctx, []*VectorEntry{overlayEntry(80)}, []string{entries[0].ID})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := p.Abort(); err != nil {
+		t.Fatal(err)
+	}
+	if idx.Size() != 80 {
+		t.Fatal("abort changed cardinality")
+	}
+	e := overlayEntry(80)
+	p, err = d.PrepareMutations(ctx, []*VectorEntry{e}, []string{entries[0].ID})
+	if err != nil {
+		t.Fatal(err)
+	}
+	e.Vector[16] = 0
+	e.Vector[17] = 1
+	if err := p.Commit(); err != nil {
+		t.Fatal(err)
+	}
+	if p.Commit() == nil {
+		t.Fatal("double commit accepted")
+	}
+	if err := p.Abort(); err != nil {
+		t.Fatal(err)
+	}
+	out, err := idx.Search(ctx, overlayEntry(80).Vector, 100, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	seen := map[string]bool{}
+	for _, r := range out {
+		if seen[r.ID] {
+			t.Fatal("duplicate")
+		}
+		seen[r.ID] = true
+		if r.ID == e.ID && r.Score > 1e-7 {
+			t.Fatal("borrowed vector retained")
+		}
+	}
+	if seen[entries[0].ID] || !seen[e.ID] || len(out) != 80 {
+		t.Fatal("delete/put precedence", len(out))
+	}
+}
+
+type overlayEvenFilter struct{}
+
+func (overlayEvenFilter) Test(i uint64) bool { return i%2 == 0 }
+func (overlayEvenFilter) Threshold() float32 { return .75 }
+func TestResearchOverlayFilterUpsertCompaction(t *testing.T) {
+	idx := overlayFixture(t)
+	ctx := context.Background()
+	d := overlayDelta(t, idx)
+	for i := 0; i < 160; i++ {
+		if err := idx.Insert(ctx, overlayEntry(i)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	replacement := overlayEntry(0)
+	replacement.Vector = overlayEntry(1).Vector
+	p, err := d.PrepareMutations(ctx, []*VectorEntry{replacement}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := p.Commit(); err != nil {
+		t.Fatal(err)
+	}
+	out, err := idx.Search(ctx, overlayEntry(0).Vector, 200, overlayEvenFilter{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, r := range out {
+		if r.ID == replacement.ID || r.Ordinal%2 != 0 || 1-r.Score < .75 {
+			t.Fatal("filter/upsert bypass")
+		}
+	}
+	if len(out) != 4 {
+		t.Fatal("filtered count", len(out))
+	}
+}
+func TestResearchOverlayValidationPersistence(t *testing.T) {
+	idx := overlayFixture(t)
+	ctx := context.Background()
+	d := overlayDelta(t, idx)
+	if err := idx.Insert(ctx, overlayEntry(0)); err != nil {
+		t.Fatal(err)
+	}
+	invalid := []*VectorEntry{nil, {ID: "bad", Ordinal: 2, Vector: []float32{1}}, overlayEntry(2)}
+	invalid[2].Vector[0] = float32(math.NaN())
+	alias := overlayEntry(0)
+	alias.ID = "alias"
+	invalid = append(invalid, alias)
+	for _, e := range invalid {
+		p, err := d.PrepareMutations(ctx, []*VectorEntry{e}, nil)
+		if err == nil {
+			p.Abort()
+			t.Fatal("invalid accepted")
+		}
+	}
+	cancelCtx, cancel := context.WithCancel(ctx)
+	cancel()
+	if p, err := d.PrepareMutations(cancelCtx, []*VectorEntry{overlayEntry(3)}, nil); err == nil {
+		p.Abort()
+		t.Fatal("canceled accepted")
+	}
+	blob, err := idx.SerializeToBytes()
+	if err != nil {
+		t.Fatal(err)
+	}
+	other := overlayFixture(t)
+	if err := other.DeserializeFromBytes(ctx, blob); err != nil {
+		t.Fatal(err)
+	}
+	if other.Size() != 1 {
+		t.Fatal("reopen count")
+	}
+	corrupt := append([]byte(nil), blob...)
+	corrupt[len(corrupt)-1] ^= 1
+	if other.DeserializeFromBytes(ctx, corrupt) == nil {
+		t.Fatal("corrupt snapshot accepted")
+	}
+	if other.DeserializeFromBytes(ctx, []byte("legacy")) == nil {
+		t.Fatal("legacy format silently accepted")
+	}
+	if other.Size() != 1 {
+		t.Fatal("failed load mutated live generation")
+	}
+}
+func TestResearchOverlayConcurrentReaders(t *testing.T) {
+	idx := overlayFixture(t)
+	ctx := context.Background()
+	for i := 0; i < 80; i++ {
+		if err := idx.Insert(ctx, overlayEntry(i)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	var wg sync.WaitGroup
+	errs := make(chan error, 8)
+	for j := 0; j < 4; j++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			for i := 0; i < 100; i++ {
+				out, err := idx.Search(ctx, overlayEntry(i%80).Vector, 50, nil)
+				if err != nil {
+					errs <- err
+					return
+				}
+				if len(out) != 50 {
+					errs <- fmt.Errorf("count %d", len(out))
+					return
+				}
+			}
+		}()
+	}
+	for i := 80; i < 160; i++ {
+		if err := idx.Insert(ctx, overlayEntry(i)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	wg.Wait()
+	close(errs)
+	for err := range errs {
+		t.Fatal(err)
+	}
+}

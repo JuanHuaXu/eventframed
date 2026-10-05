@@ -1,0 +1,21 @@
+✔ ties differ in ID without an exact-score deficit (1.520458ms)
+✔ missed high-score neighbor incurs regret and lost tie recall (0.551792ms)
+✔ boundary tie cannot replace a required strictly better neighbor (0.708458ms)
+✔ future and duplicate nominations fail validation (3.131125ms)
+✔ law motion cannot hide behind matching packet IDs (1.241042ms)
+✔ packet confidence motion and frontier order are independently visible (1.331083ms)
+✔ invalid and nonnormalized laws are rejected (1.065333ms)
+✔ field deletion is not numerical equality (0.053333ms)
+✔ binary Brier difference is bounded by 2 absolute probability motion (0.984709ms)
+✔ service verifier rejects a hidden failed preflight (18.391709ms)
+✔ service verifier requires every named adjacent case (9.305958ms)
+✔ service verifier rejects changed frozen protocol (8.492ms)
+✔ service verifier rejects fabricated aggregate verdict (3974.327292ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4053.519458

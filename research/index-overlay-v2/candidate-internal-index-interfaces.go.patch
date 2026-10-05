@@ -1,0 +1,17 @@
+--- a/internal/index/interfaces.go
++++ b/internal/index/interfaces.go
+@@ -286,6 +286,14 @@
+ 
+ // NewHNSW creates a new HNSW index
+ func NewHNSW(config *HNSWConfig) (Index, error) {
++	// Isolated research fork only; other metrics keep the existing path.
++	if config.Metric == util.CosineDistance {
++		return newResearchOverlay(config, 64)
++	}
++	return newPlainHNSW(config)
++}
++
++func newPlainHNSW(config *HNSWConfig) (Index, error) {
+ 	// Convert to internal HNSW config
+ 	hnswConfig := &hnsw.Config{
+ 		Dimension:            config.Dimension,

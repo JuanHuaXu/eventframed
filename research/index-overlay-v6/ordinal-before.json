@@ -1,0 +1,20 @@
+{
+  "arm": "candidate",
+  "label": "ordinal-before",
+  "args": [
+    "test",
+    "./internal/index",
+    "./libravdb",
+    "-run",
+    "^TestResearchOverlay(SparseOrdinals|PrefixIdentity)$",
+    "-count=1",
+    "-v",
+    "-timeout=1m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 3344.156417,
+  "sha256": "b05d7e7c529cec2d3262143e27324d4bffb24565de757991e896bdbf94ff5f96",
+  "bytes": 497
+}

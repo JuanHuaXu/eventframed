@@ -1,0 +1,21 @@
+{
+  "arm": "candidate",
+  "label": "preflight-full-race",
+  "args": [
+    "test",
+    "-race",
+    "./internal/index",
+    "./libravdb",
+    "-run",
+    "^(TestResearchOverlay(SnapshotWhilePrepared|AbortCommitOwnership|FilterUpsertCompaction|ValidationPersistence|ConcurrentReaders|ProfileContract|ResultOwnership|ProviderHydrationBoundary|ColdVisibility|BaseErrorsRemainVisible|CanonicalPublicScore|WALAndReopen)|TestResearchDeltaKeyCapacity|TestWithTxCommitsAcrossCollectionsAtomically|TestTransactionRollbackLeavesNoVisibleWrites|TestTransactionManyCommitsRemainCorrectAfterReopen|TestDurability_IncompleteWALTransaction)$",
+    "-count=1",
+    "-v",
+    "-timeout=3m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 6895.876334,
+  "sha256": "276349313918f966903c2e4bd897b491461a650568d869bf7b23ef533211feee",
+  "bytes": 4373
+}

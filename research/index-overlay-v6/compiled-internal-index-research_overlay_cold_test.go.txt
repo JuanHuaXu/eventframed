@@ -1,0 +1,106 @@
+package index
+
+import (
+	"context"
+	"errors"
+	"fmt"
+	"testing"
+)
+
+type failingOverlayBase struct {
+	Index
+	err error
+}
+
+func (b failingOverlayBase) SearchWithEf(context.Context, []float32, int, int, GraphFilter) ([]*SearchResult, error) {
+	return nil, b.err
+}
+
+func TestResearchOverlayBaseErrorsRemainVisible(t *testing.T) {
+	idx := overlayFixture(t).(*researchOverlay)
+	ctx := context.Background()
+	entries := make([]*VectorEntry, 80)
+	for i := range entries {
+		entries[i] = overlayEntry(i)
+	}
+	if err := idx.BatchInsert(ctx, entries); err != nil {
+		t.Fatal(err)
+	}
+	injected := errors.New("injected nonempty base failure")
+	idx.mu.Lock()
+	original := idx.g.base
+	idx.g.base = failingOverlayBase{Index: original, err: injected}
+	idx.mu.Unlock()
+	defer func() { idx.mu.Lock(); idx.g.base = original; idx.mu.Unlock() }()
+	if _, err := idx.Search(ctx, overlayEntry(0).Vector, 50, nil); !errors.Is(err, injected) {
+		t.Fatal("base failure hidden", err)
+	}
+}
+
+func TestResearchOverlayColdVisibility(t *testing.T) {
+	ctx := context.Background()
+	for _, n := range []int{0, 1, 2, 64} {
+		t.Run(fmt.Sprint(n), func(t *testing.T) {
+			idx := overlayFixture(t)
+			for i := 0; i < n; i++ {
+				if err := idx.Insert(ctx, overlayEntry(i)); err != nil {
+					t.Fatal(err)
+				}
+			}
+			// Before compaction every record lives in the overlay, not the base.
+			check := func(index Index, want int, filter GraphFilter) {
+				t.Helper()
+				out, err := index.Search(ctx, overlayEntry(0).Vector, 100, filter)
+				if err != nil {
+					t.Fatalf("search n=%d: %v", n, err)
+				}
+				if len(out) != want {
+					t.Fatalf("n=%d: got %d records, want %d", n, len(out), want)
+				}
+				seen := map[string]bool{}
+				for _, r := range out {
+					if seen[r.ID] || (filter != nil && !filter.Test(uint64(r.Ordinal))) {
+						t.Fatal("duplicate/filter bypass")
+					}
+					seen[r.ID] = true
+				}
+			}
+			check(idx, n, nil)
+			wantEven := 0
+			for i := 0; i < n; i++ {
+				if i%32 == 0 {
+					wantEven++
+				}
+			}
+			check(idx, wantEven, overlayEvenFilter{})
+			p, err := overlayDelta(t, idx).PrepareMutations(ctx, []*VectorEntry{overlayEntry(n)}, nil)
+			if err != nil {
+				t.Fatal(err)
+			}
+			check(idx, n, nil)
+			if err := p.Abort(); err != nil {
+				t.Fatal(err)
+			}
+			check(idx, n, nil)
+			if n > 0 {
+				if err := idx.Delete(ctx, overlayEntry(0).ID); err != nil {
+					t.Fatal(err)
+				}
+				check(idx, n-1, nil)
+			}
+			blob, err := idx.SerializeToBytes()
+			if err != nil {
+				t.Fatal(err)
+			}
+			reopened := overlayFixture(t)
+			if err := reopened.DeserializeFromBytes(ctx, blob); err != nil {
+				t.Fatal(err)
+			}
+			count := n
+			if n > 0 {
+				count--
+			}
+			check(reopened, count, nil)
+		})
+	}
+}

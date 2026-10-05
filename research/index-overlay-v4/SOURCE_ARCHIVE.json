@@ -1,0 +1,80 @@
+{
+  "base": "inherited sharded-capture-load-v1 dependency-v3 fork of LibraVDB v1.6.13",
+  "sourceFiles": {
+    "control-libravdb-tx.go.patch": {
+      "target": "libravdb/tx.go",
+      "beforeSHA256": "e760458e6dd870b3d531d9d34106d8dd285e8468a7a8968462f82819b794dbd5",
+      "afterSHA256": "32552631745730797d89987e11f375f87e8aa0a926bb9579c4b4869676799045",
+      "patchSHA256": "f81fe7f9d55c3bbbb2674fbea04a6f1586df4ae2d58171b59d9639ca0277b43a"
+    },
+    "candidate-internal-index-interfaces.go.patch": {
+      "target": "internal/index/interfaces.go",
+      "beforeSHA256": "bb806010e1978bacc3598c44447e554b544f69ac11c64af2cdef94fbcc4921fd",
+      "afterSHA256": "a6fd378e15a906cd5915bec1e81fd6b4cb2871e03735d833ee703ff92be27474",
+      "patchSHA256": "f4c65900e841e86343bd6054b21b30e6a486d238401ea12d53b8a6b837f561e1"
+    },
+    "candidate-libravdb-tx.go.patch": {
+      "target": "libravdb/tx.go",
+      "beforeSHA256": "e760458e6dd870b3d531d9d34106d8dd285e8468a7a8968462f82819b794dbd5",
+      "afterSHA256": "32552631745730797d89987e11f375f87e8aa0a926bb9579c4b4869676799045",
+      "patchSHA256": "f81fe7f9d55c3bbbb2674fbea04a6f1586df4ae2d58171b59d9639ca0277b43a"
+    },
+    "candidate-internal-index-research_overlay.go.patch": {
+      "target": "internal/index/research_overlay.go",
+      "beforeSHA256": null,
+      "afterSHA256": "e87fc441e520d2417af18044303516760f7f6b4733bbf9b5334a57b7b3f399a1",
+      "patchSHA256": "3fde87c0f42bd47a5d53c13f98b7aa132832d89520c15bb34b3c39df3d84963e"
+    }
+  },
+  "fixtures": {
+    "compiled-internal-index-hnsw-research_training_race_test.go.txt": {
+      "target": "internal/index/hnsw/research_training_race_test.go",
+      "sha256": "2da8b0a9d4dbb7b625c0d1e46c7f23b2668404ffdd227ca97fe630b22cb7116a"
+    },
+    "compiled-internal-index-research_overlay_cold_test.go.txt": {
+      "target": "internal/index/research_overlay_cold_test.go",
+      "sha256": "255e8dff16213701a40835b35e9379b189cdde505ce327087e1acbe5d3ba29aa"
+    },
+    "compiled-internal-index-research_overlay_ownership_test.go.txt": {
+      "target": "internal/index/research_overlay_ownership_test.go",
+      "sha256": "830939b01ecd2eddf718c3ab8a69db083247835eab5a1f901493a04253d39fb5"
+    },
+    "compiled-internal-index-research_overlay_profile_test.go.txt": {
+      "target": "internal/index/research_overlay_profile_test.go",
+      "sha256": "311acd097b028ca874d6406bbb51b35d8db8f9ab292791f50166f5c2ecab2dad"
+    },
+    "compiled-internal-index-research_overlay_test.go.txt": {
+      "target": "internal/index/research_overlay_test.go",
+      "sha256": "8d16a8933bf8d3253bb859af85e3bb99a49065280476c2afb406ff6cd62a672f"
+    },
+    "compiled-internal-storage-singlefile-research_quantization_codec_test.go.txt": {
+      "target": "internal/storage/singlefile/research_quantization_codec_test.go",
+      "sha256": "e8f7f90c874b025ad33f6a74dd711a4d90439bbbff0962f517f65310ba0d7fae"
+    },
+    "compiled-libravdb-research_admission_regression_test.go.txt": {
+      "target": "libravdb/research_admission_regression_test.go",
+      "sha256": "bc4a9f6aa5522e1bb253397ef5e1d7a8741fc82f617f0cab7194d2ae0e572be0"
+    },
+    "compiled-libravdb-research_key_capacity_test.go.txt": {
+      "target": "libravdb/research_key_capacity_test.go",
+      "sha256": "6f555a5d6e1bb066d091b0cda91b1400427f36bedb751904e04937a93951ab9e"
+    },
+    "compiled-libravdb-research_logical_discovery_test.go.txt": {
+      "target": "libravdb/research_logical_discovery_test.go",
+      "sha256": "888ca89ab72e505866bc5ee7272b0c3e5cd84968fd73347d98473d614e93921a"
+    },
+    "compiled-libravdb-research_missing_shard_test.go.txt": {
+      "target": "libravdb/research_missing_shard_test.go",
+      "sha256": "5bf1f2e765f8a777bb59956c18b053bc0276010b293a269ffea2cd9dba8237a6"
+    },
+    "compiled-libravdb-research_overlay_test.go.txt": {
+      "target": "libravdb/research_overlay_test.go",
+      "sha256": "86998fb0983526a2f65f99472a60a936002dd478d22d9d2dd2de9a32a884a870"
+    },
+    "compiled-libravdb-research_quantization_reopen_test.go.txt": {
+      "target": "libravdb/research_quantization_reopen_test.go",
+      "sha256": "a50ed730a10e9aefbe895f9a9e4e95d1d966455095a78300a720428b10d2014c"
+    }
+  },
+  "wholeGoalValidation": false
+}

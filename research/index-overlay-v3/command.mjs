@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const out=path.dirname(fileURLToPath(import.meta.url));
+const manifest=JSON.parse(fs.readFileSync(path.join(out,'manifest.json')));
+const [arm,label,...args]=process.argv.slice(2);
+if(!manifest.paths[arm]||!label||!args.length)throw Error('arm,label,go args required');
+const logfile=path.join(out,label+'.txt');if(fs.existsSync(logfile))throw Error('preserve existing output');
+const fd=fs.openSync(logfile,'wx'),start=performance.now();
+const r=spawnSync('go',args,{cwd:manifest.paths[arm],env:{...process.env,GOMAXPROCS:'10'},stdio:['ignore',fd,fd]});fs.closeSync(fd);
+const bytes=fs.readFileSync(logfile);const receipt={arm,label,args,status:r.status,signal:r.signal,error:r.error?.message??null,wallMS:performance.now()-start,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};
+fs.writeFileSync(path.join(out,label+'.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));process.exit(r.status??1);

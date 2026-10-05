@@ -1,0 +1,39 @@
+=== RUN   TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields
+--- PASS: TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields (0.00s)
+=== RUN   TestRecallExcludesUnavailableEventsBeforeCandidateLimit
+--- PASS: TestRecallExcludesUnavailableEventsBeforeCandidateLimit (0.00s)
+=== RUN   TestRerankingRunsBeforeIndependentPackingCap
+--- PASS: TestRerankingRunsBeforeIndependentPackingCap (0.00s)
+=== RUN   TestCalibrationChangesForecastLawWithoutChangingRetrievalScore
+--- PASS: TestCalibrationChangesForecastLawWithoutChangingRetrievalScore (0.00s)
+=== RUN   TestRerankingReceivesOnlyEventFrameCorpus
+--- PASS: TestRerankingReceivesOnlyEventFrameCorpus (0.00s)
+=== RUN   TestDefaultPolicyActivatesCompleteBoundedFrontier
+--- PASS: TestDefaultPolicyActivatesCompleteBoundedFrontier (0.00s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/service	0.320s
+=== RUN   TestVectorHydrationIsExplicit
+--- PASS: TestVectorHydrationIsExplicit (0.09s)
+=== RUN   TestStoreRoundTripAndAvailabilityGate
+--- FAIL: TestStoreRoundTripAndAvailabilityGate (0.04s)
+panic: interface conversion: interface {} is nil, not string [recovered, repanicked]
+
+goroutine 86 [running]:
+testing.tRunner.func1.2({0x1059b98c8, 0x20edfb18dd10})
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2123 +0x1a0
+testing.tRunner.func1()
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2126 +0x2c8
+panic({0x1059b98c8?, 0x20edfb18dd10?})
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/runtime/panic.go:859 +0x120
+github.com/xDarkicex/libravdb/libravdb.(*Collection).Stats(0x20edfb204000, {0x105b87fa8, 0x105c4adc0})
+	/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-index-overlay-v2-Dt7bmT/candidate/libravdb/collection.go:4505 +0xb24
+github.com/JuanHuaXu/eventframed/internal/store/libravdbstore.(*Store).Search(0x104e4fb41?, {0x105b87fa8, 0x105c4adc0}, {0x104e524e6?, 0x104e53779?}, {0x20edfb090300, 0x4, 0x4}, {0x4?, 0x104e573bf?, ...}, ...)
+	/private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-index-overlay-v2-Dt7bmT/service-candidate/internal/store/libravdbstore/store.go:259 +0x10c
+github.com/JuanHuaXu/eventframed/internal/store/libravdbstore_test.TestStoreRoundTripAndAvailabilityGate(0x20edfb515d48)
+	/private/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-index-overlay-v2-Dt7bmT/service-candidate/internal/store/libravdbstore/store_test.go:279 +0x3d4
+testing.tRunner(0x20edfb515d48, 0x105b8eef8)
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2193 +0xc4
+created by testing.(*T).Run in goroutine 1
+	/Users/clawdius/homebrew/Cellar/go/1.27.1/libexec/src/testing/testing.go:2258 +0x3b8
+FAIL	github.com/JuanHuaXu/eventframed/internal/store/libravdbstore	0.483s
+FAIL

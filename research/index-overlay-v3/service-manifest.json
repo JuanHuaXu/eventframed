@@ -1,0 +1,35 @@
+{
+  "paths": {
+    "control": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-index-overlay-v3-kKppNQ/service-control",
+    "candidate": "/var/folders/r0/_5s3l2253hg9lld7bm0z_2680000gp/T/eventframe-index-overlay-v3-kKppNQ/service-candidate"
+  },
+  "sources": {
+    "control": {
+      "go.mod": "19a158323bf4fe50898339d09de8f8ed7c2f9ad6c42049cb0dc2d491749ba7e8",
+      "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13",
+      "internal/store/libravdbstore/store.go": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7",
+      "internal/service/sharded_quality_test.go": "94c0e9035654b0a6f2a52483e7e3ea4dd8b8697088242cc755800ed68cba79b6"
+    },
+    "candidate": {
+      "go.mod": "30c47b2dff5619235e26c17843c8877969855baec7cef47feaa2bb18347cd6ef",
+      "go.sum": "d6ea4b0e19a07904c297b689eef052f191b7495a1ca8766d6b90594e94243c13",
+      "internal/store/libravdbstore/store.go": "198a859b3039cabd199d93d975791ae9fe0bfd9fa6dafa6c4dc230ad2fc21974",
+      "internal/service/service.go": "0a5f2cf982e0054101066f44bdfe47ccfc1dd5afff906dc6606d368bba27fca6",
+      "internal/frame/turn.go": "88527b6032ebdd1f9d50102134a16fbcddabbf093e0aed708b5e76644fe51cb3",
+      "internal/service/public_capture_load_test.go": "5b1eb1f342a732cc48a20d45e1e3db33e026dae59a0d5a5363aa6f48cfa5d2f6",
+      "testdata/text-public-facts/corpus.jsonl": "20f85fc6d35ed2ec0fa5d68ec66b0cdcb48229dd85b6d1a7616731a9e7356de7",
+      "internal/service/sharded_quality_test.go": "94c0e9035654b0a6f2a52483e7e3ea4dd8b8697088242cc755800ed68cba79b6"
+    }
+  },
+  "serviceProtocolSHA256": "12809ebe8304d9fa1d004104d7b2b173f82551b7d88b8a30cdefefcb401efc74",
+  "parentPinsSHA256": "29eda5814ffde62234589352c8a320c48875c8de7b348c3fbe6863bd0c065b11",
+  "testSHA256": "94c0e9035654b0a6f2a52483e7e3ea4dd8b8697088242cc755800ed68cba79b6",
+  "bothUnsharded": true,
+  "productionTouched": false,
+  "privateDataUsed": false,
+  "wholeGoalValidation": false
+}

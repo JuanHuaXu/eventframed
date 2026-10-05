@@ -1,0 +1,14 @@
+=== RUN   TestResearchOverlaySnapshotWhilePrepared
+    research_overlay_test.go:57: durable checkpoint snapshot blocked behind its own prepared generation
+--- FAIL: TestResearchOverlaySnapshotWhilePrepared (0.10s)
+=== RUN   TestResearchOverlayAbortCommitOwnership
+--- PASS: TestResearchOverlayAbortCommitOwnership (0.01s)
+=== RUN   TestResearchOverlayFilterUpsertCompaction
+--- PASS: TestResearchOverlayFilterUpsertCompaction (0.02s)
+=== RUN   TestResearchOverlayValidationPersistence
+--- PASS: TestResearchOverlayValidationPersistence (0.00s)
+=== RUN   TestResearchOverlayConcurrentReaders
+--- PASS: TestResearchOverlayConcurrentReaders (0.02s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/internal/index	0.349s
+FAIL

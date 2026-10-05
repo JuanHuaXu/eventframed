@@ -1,0 +1,19 @@
+{
+  "arm": "candidate",
+  "label": "database-preflight",
+  "args": [
+    "test",
+    "./libravdb",
+    "-run",
+    "^(TestResearchOverlayWALAndReopen|TestWithTxCommitsAcrossCollectionsAtomically|TestTransactionRollbackLeavesNoVisibleWrites|TestTransactionManyCommitsRemainCorrectAfterReopen|TestDurability_IncompleteWALTransaction)$",
+    "-count=1",
+    "-v",
+    "-timeout=3m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 81.94645799999999,
+  "sha256": "4e7226c4fd85bc11230ad31ad3484db060a49619cad34327fde38c964b2ed414",
+  "bytes": 369
+}

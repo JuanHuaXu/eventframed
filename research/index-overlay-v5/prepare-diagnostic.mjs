@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const out=path.dirname(fileURLToPath(import.meta.url)),mp=path.join(out,'manifest.json'),m=JSON.parse(fs.readFileSync(mp)),old=JSON.parse(fs.readFileSync(path.join(out,'../index-overlay-v4/manifest.json'))),pins=JSON.parse(fs.readFileSync(path.join(out,'../index-overlay-v4/SOURCE_PINS.json'))),hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+if(m.paths.diagnostic)throw Error('preserve diagnostic');
+for(const[f,h]of Object.entries(pins.files))if(hash(fs.readFileSync(f))!==h)throw Error('V4 drift');
+const dest=path.join(path.dirname(m.paths.candidate),'diagnostic-v4');fs.cpSync(old.paths.candidate,dest,{recursive:true});
+const test=execFileSync('gofmt',[],{input:fs.readFileSync(path.join(out,'score_test.go.txt'))});fs.writeFileSync(path.join(dest,'libravdb/research_overlay_score_test.go'),test);
+m.paths.diagnostic=dest;fs.writeFileSync(mp,JSON.stringify(m,null,2)+'\n');
+fs.writeFileSync(path.join(out,'DIAGNOSTIC_MANIFEST.json'),JSON.stringify({base:'V4 frozen candidate',parentPinsSHA256:hash(fs.readFileSync(path.join(out,'../index-overlay-v4/SOURCE_PINS.json'))),overlaySHA256:hash(fs.readFileSync(path.join(dest,'internal/index/research_overlay.go'))),fixtureSHA256:hash(test),protocolSHA256:hash(fs.readFileSync(path.join(out,'METRIC_PROTOCOL.md')))},null,2)+'\n');console.log(JSON.stringify({prepared:true,dest}));

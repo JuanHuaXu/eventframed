@@ -1,0 +1,16 @@
+--- a/libravdb/tx.go
++++ b/libravdb/tx.go
+@@ -1622,10 +1622,11 @@
+ 			continue
+ 		}
+ 		count++
+-		keyBytes += uint64(len(op.id))
++		// IDMap's copied-key arena aligns every allocation to eight bytes.
++		keyBytes += (uint64(len(op.id)) + 7) &^ 7
+ 		if op.kind == txMutationRename {
+ 			count++
+-			keyBytes += uint64(len(op.oldID))
++			keyBytes += (uint64(len(op.oldID)) + 7) &^ 7
+ 		}
+ 	}
+ 	if count == 0 {

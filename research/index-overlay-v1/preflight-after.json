@@ -1,0 +1,19 @@
+{
+  "arm": "candidate",
+  "label": "preflight-after",
+  "args": [
+    "test",
+    "./internal/index",
+    "-run",
+    "^TestResearchOverlay",
+    "-count=1",
+    "-v",
+    "-timeout=2m"
+  ],
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "wallMS": 540.895041,
+  "sha256": "d815b69edab9bc387c1f0e88669715be81821f2e0673c4b7d80e3671383d7413",
+  "bytes": 604
+}

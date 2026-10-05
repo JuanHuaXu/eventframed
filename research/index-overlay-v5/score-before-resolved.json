@@ -1,0 +1,19 @@
+{
+  "arm": "diagnostic",
+  "label": "score-before-resolved",
+  "args": [
+    "test",
+    "./libravdb",
+    "-run",
+    "^TestResearchOverlayCanonicalPublicScore$",
+    "-count=1",
+    "-v",
+    "-timeout=1m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 3060.185,
+  "sha256": "b735d5c57078f35a929d8ba145d0f3a946a3ddf26a98a6a52cb011f0620727c3",
+  "bytes": 345
+}

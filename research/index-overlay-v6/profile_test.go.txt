@@ -1,0 +1,11 @@
+package index
+
+import "testing"
+
+func TestResearchOverlayProfileContract(t *testing.T){
+ idx:=overlayFixture(t);profile:=idx.(interface{RawVectorStoreProfile()map[string]any}).RawVectorStoreProfile()
+ for _,key:=range []string{"backend"}{if _,ok:=profile[key].(string);!ok{t.Fatalf("missing string %s",key)}}
+ for _,key:=range []string{"vector_count","dimension","bytes_per_vector"}{if _,ok:=profile[key].(int);!ok{t.Fatalf("missing int %s",key)}}
+ for _,key:=range []string{"memory_usage","reserved_bytes","reserved_data_bytes","reserved_meta_bytes","reserved_guard_bytes","live_bytes","free_bytes"}{if _,ok:=profile[key].(int64);!ok{t.Fatalf("missing int64 %s",key)}}
+ if _,ok:=profile["capacity_utilization"].(float64);!ok{t.Fatal("missing utilization")}
+}

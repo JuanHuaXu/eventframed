@@ -1,0 +1,20 @@
+{
+  "arm": "control",
+  "label": "control-race",
+  "args": [
+    "test",
+    "-race",
+    "./libravdb",
+    "-run",
+    "^(TestResearchOverlayWALAndReopen|TestResearchDeltaKeyCapacity|TestWithTxCommitsAcrossCollectionsAtomically|TestTransactionRollbackLeavesNoVisibleWrites|TestTransactionManyCommitsRemainCorrectAfterReopen|TestDurability_IncompleteWALTransaction)$",
+    "-count=1",
+    "-v",
+    "-timeout=3m"
+  ],
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "wallMS": 7682.532875,
+  "sha256": "e9d4fdc265dd1ae5002ffb0b35fea86daae7a4bbc7c287b4cf9db7116f793256",
+  "bytes": 2539
+}

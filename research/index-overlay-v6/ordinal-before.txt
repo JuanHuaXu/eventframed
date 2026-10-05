@@ -1,0 +1,11 @@
+=== RUN   TestResearchOverlaySparseOrdinals
+    research_overlay_ordinal_test.go:19: ID entry-0007: physical ordinal 7 exposed, external 1216
+--- FAIL: TestResearchOverlaySparseOrdinals (0.00s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/internal/index	0.200s
+=== RUN   TestResearchOverlayPrefixIdentity
+    research_overlay_ordinal_test.go:19: wrong canonical nearest identity past-0020
+--- FAIL: TestResearchOverlayPrefixIdentity (0.09s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/libravdb	0.368s
+FAIL

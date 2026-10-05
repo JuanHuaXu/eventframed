@@ -1,0 +1,18 @@
+=== RUN   TestResearchOverlaySnapshotWhilePrepared
+    research_overlay_test.go:37: invalid HNSW config: ML must be positive
+--- FAIL: TestResearchOverlaySnapshotWhilePrepared (0.00s)
+=== RUN   TestResearchOverlayAbortCommitOwnership
+    research_overlay_test.go:64: invalid HNSW config: ML must be positive
+--- FAIL: TestResearchOverlayAbortCommitOwnership (0.00s)
+=== RUN   TestResearchOverlayFilterUpsertCompaction
+    research_overlay_test.go:124: invalid HNSW config: ML must be positive
+--- FAIL: TestResearchOverlayFilterUpsertCompaction (0.00s)
+=== RUN   TestResearchOverlayValidationPersistence
+    research_overlay_test.go:155: invalid HNSW config: ML must be positive
+--- FAIL: TestResearchOverlayValidationPersistence (0.00s)
+=== RUN   TestResearchOverlayConcurrentReaders
+    research_overlay_test.go:203: invalid HNSW config: ML must be positive
+--- FAIL: TestResearchOverlayConcurrentReaders (0.00s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/internal/index	0.199s
+FAIL

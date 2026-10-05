@@ -1,0 +1,18 @@
+✔ boundary tie cannot replace strictly better neighbor (0.706042ms)
+✔ exact geometry passes (0.169792ms)
+✔ future nominee rejected (2.403417ms)
+✔ duplicate nominee rejected (0.239833ms)
+✔ nonfinite native score rejected (0.202333ms)
+✔ actual archive/report validates before mutations (208.1895ms)
+✔ reject fabricated-mean (118.0765ms)
+✔ reject hidden-failure (111.971375ms)
+✔ reject omitted-cell (109.056958ms)
+✔ reject changed-protocol (12.621292ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 602.795958

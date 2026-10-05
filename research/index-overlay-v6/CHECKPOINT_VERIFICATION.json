@@ -1,0 +1,99 @@
+{
+  "verified": true,
+  "geometry": {
+    "verified": true,
+    "commands": 24,
+    "completed": true,
+    "qualityPass": true,
+    "independentRows": 3072,
+    "currentSourceReadback": true,
+    "wholeGoalValidation": false
+  },
+  "service": {
+    "verified": true,
+    "commands": 8,
+    "adjacentCases": 64,
+    "ordinaryServiceRecalls": 3072,
+    "exactReferenceRecalls": 3072,
+    "currentSourceReadback": true,
+    "annAbsolutePass": true,
+    "packetQualityPass": true,
+    "repeatEqualityPass": true,
+    "counterfactualEqualityPass": true,
+    "wholeGoalValidation": false
+  },
+  "lineage": [
+    {
+      "version": 1,
+      "geometryCompleted": false,
+      "geometryQuality": false,
+      "geometryCommands": 4,
+      "service": null
+    },
+    {
+      "version": 2,
+      "geometryCompleted": true,
+      "geometryQuality": true,
+      "geometryCommands": 24,
+      "service": {
+        "completed": false
+      }
+    },
+    {
+      "version": 3,
+      "geometryCompleted": true,
+      "geometryQuality": true,
+      "geometryCommands": 24,
+      "service": {
+        "completed": false
+      }
+    },
+    {
+      "version": 4,
+      "geometryCompleted": true,
+      "geometryQuality": true,
+      "geometryCommands": 24,
+      "service": {
+        "functional": true,
+        "ann": true,
+        "packet": true,
+        "counterfactual": false
+      }
+    },
+    {
+      "version": 5,
+      "geometryCompleted": true,
+      "geometryQuality": true,
+      "geometryCommands": 24,
+      "service": {
+        "functional": true,
+        "ann": false,
+        "packet": false,
+        "counterfactual": false
+      }
+    },
+    {
+      "version": 6,
+      "geometryCompleted": true,
+      "geometryQuality": true,
+      "geometryCommands": 24,
+      "service": {
+        "functional": true,
+        "ann": true,
+        "packet": true,
+        "counterfactual": true
+      }
+    }
+  ],
+  "sourceReconstructionFiles": 6590,
+  "originalSevenGoals": "all OPEN",
+  "weeklyUsedPercent": 50,
+  "goalStatus": "active",
+  "peakRSS": "not captured",
+  "loadedFreshnessValidated": false,
+  "compactionStillSynchronous": true,
+  "productionTouched": false,
+  "privateDataUsed": false,
+  "automaticPush": false,
+  "wholeGoalValidation": false
+}

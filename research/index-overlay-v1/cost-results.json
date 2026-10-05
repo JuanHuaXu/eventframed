@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "repeat": 0,
+      "dimension": 32,
+      "initial": 256,
+      "arm": "control",
+      "label": "cost-0-32-256-control",
+      "args": [
+        "test",
+        "./libravdb",
+        "-run",
+        "^TestResearchOverlayCostV1$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "wallMS": 1868.867542,
+      "sha256": "0f61170edb3b2adcfd416f62a4b470f916eea1c12d52916f8949540ab901cfda",
+      "bytes": 840268
+    },
+    {
+      "repeat": 0,
+      "dimension": 32,
+      "initial": 256,
+      "arm": "candidate",
+      "label": "cost-0-32-256-candidate",
+      "args": [
+        "test",
+        "./libravdb",
+        "-run",
+        "^TestResearchOverlayCostV1$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "wallMS": 1370.09425,
+      "sha256": "f8347e4453261c2bd5743fae8041f1274b5cecd821d0bfc181a9defbc0e3d9c9",
+      "bytes": 840371
+    },
+    {
+      "repeat": 0,
+      "dimension": 32,
+      "initial": 1024,
+      "arm": "control",
+      "label": "cost-0-32-1024-control",
+      "args": [
+        "test",
+        "./libravdb",
+        "-run",
+        "^TestResearchOverlayCostV1$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "wallMS": 3672.864416,
+      "sha256": "49079669401c36b333345b6a8142ab90e6e770e2c50453aacd30ae48025cdaf8",
+      "bytes": 837616
+    },
+    {
+      "repeat": 0,
+      "dimension": 32,
+      "initial": 1024,
+      "arm": "candidate",
+      "label": "cost-0-32-1024-candidate",
+      "args": [
+        "test",
+        "./libravdb",
+        "-run",
+        "^TestResearchOverlayCostV1$",
+        "-count=1",
+        "-v",
+        "-timeout=5m"
+      ],
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "wallMS": 651.4830000000001,
+      "sha256": "c2ce1bceb909b6ee029aabee72db0e8ac82f717e10e38ebdf3ec9d6f8e101b13",
+      "bytes": 292
+    }
+  ],
+  "sourcePinsSHA256": "6dde8993cc359dad2f49daeed829192f30913863511094e6af2f5877cee7cc9f",
+  "protocolSHA256": "35725a901e76d6ecfd82636e31e3a0c4eb818a0f2c0a4fedcf869a613bbc91cd"
+}

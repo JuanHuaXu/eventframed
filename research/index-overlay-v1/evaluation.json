@@ -1,0 +1,98 @@
+{
+  "verified": true,
+  "completed": false,
+  "commands": 4,
+  "completedRows": 384,
+  "failed": [
+    {
+      "key": "0/32/1024/candidate",
+      "label": "cost-0-32-1024-candidate",
+      "status": 1,
+      "rows": 0
+    }
+  ],
+  "cells": [
+    {
+      "key": "0/32/256/control",
+      "arm": "control",
+      "repeat": 0,
+      "dimension": 32,
+      "initial": 256,
+      "rows": 128,
+      "meanTieRecall": 1,
+      "meanStrictRecall": 1,
+      "meanRegret": 0,
+      "maxNativeScoreError": 9.183392429834569e-8,
+      "commitMeanMS": 9.2078352578125,
+      "commitP99MS": 10.772666,
+      "commitMaxMS": 10.840583,
+      "queryMeanMS": 0.097580046875,
+      "queryP99MS": 0.225375,
+      "initialMS": 10.859041,
+      "totalMS": 1254.437958,
+      "totalAllocBytes": 146410480,
+      "qualityPass": true
+    },
+    {
+      "key": "0/32/256/candidate",
+      "arm": "candidate",
+      "repeat": 0,
+      "dimension": 32,
+      "initial": 256,
+      "rows": 128,
+      "meanTieRecall": 1,
+      "meanStrictRecall": 1,
+      "meanRegret": 0,
+      "maxNativeScoreError": 1.5508534545460861e-7,
+      "commitMeanMS": 3.760638046875,
+      "commitP99MS": 10.920583,
+      "commitMaxMS": 28.753875,
+      "queryMeanMS": 0.2328343125,
+      "queryP99MS": 0.6685,
+      "initialMS": 29.11625,
+      "totalMS": 599.025,
+      "totalAllocBytes": 16352952,
+      "qualityPass": true
+    },
+    {
+      "key": "0/32/1024/control",
+      "arm": "control",
+      "repeat": 0,
+      "dimension": 32,
+      "initial": 1024,
+      "rows": 128,
+      "meanTieRecall": 0.9945312500000005,
+      "meanStrictRecall": 0.9945312500000005,
+      "meanRegret": 0.00053129100041816,
+      "maxNativeScoreError": 1.0382551779430926e-7,
+      "commitMeanMS": 23.1279355390625,
+      "commitP99MS": 24.726042,
+      "commitMaxMS": 25.779833,
+      "queryMeanMS": 0.1287220078125,
+      "queryP99MS": 0.243,
+      "initialMS": 26.94575,
+      "totalMS": 3071.201,
+      "totalAllocBytes": 220674016,
+      "qualityPass": true
+    }
+  ],
+  "paired": [
+    {
+      "repeat": 0,
+      "dimension": 32,
+      "initial": 256,
+      "commitMeanRatio": 0.40841717315524745,
+      "queryP99Ratio": 2.966167498613422,
+      "tieRecallDifference": 0
+    }
+  ],
+  "qualityPass": false,
+  "peakRetainedPayload": "not captured",
+  "peakRSS": "not captured",
+  "finiteSyntheticGeometryOnly": true,
+  "untouchedAgentUtility": false,
+  "loadedFreshness": false,
+  "wholeGoalValidation": false,
+  "productionTouched": false,
+  "privateDataUsed": false
+}

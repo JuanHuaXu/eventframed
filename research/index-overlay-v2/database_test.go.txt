@@ -1,0 +1,60 @@
+package libravdb
+
+import (
+ "context"
+ "encoding/json"
+ "errors"
+ "fmt"
+ "math"
+ "math/rand"
+ "os"
+ "runtime"
+ "sort"
+ "strconv"
+ "testing"
+ "time"
+ "github.com/xDarkicex/libravdb/internal/storage/singlefile"
+)
+
+func overlayDBVector(i,d int)[]float32{r:=rand.New(rand.NewSource(int64(i)+982451653));v:=make([]float32,d);var n float64;for j:=range v{v[j]=float32(r.NormFloat64());n+=float64(v[j])*float64(v[j])};for j:=range v{v[j]/=float32(math.Sqrt(n))};return v}
+func TestResearchOverlayWALAndReopen(t *testing.T){
+ ctx:=context.Background();path:=t.TempDir()+"/overlay.libravdb";db,err:=Open(WithStoragePath(path));if err!=nil{t.Fatal(err)}
+ defer func(){db.Close()}()
+ col,err:=db.CreateCollection(ctx,"events",WithDimension(32),WithHNSW(16,100,100),WithScalarQuantization(8,.05));if err!=nil{t.Fatal(err)}
+ aux,err:=db.CreateCollection(ctx,"runtime",WithDimension(1),WithFlat());if err!=nil{t.Fatal(err)}
+ if err:=db.WithTx(ctx,func(tx Tx)error{for i:=0;i<140;i++{if err:=tx.Insert(ctx,"events",fmt.Sprintf("e-%04d",i),overlayDBVector(i,32),map[string]interface{}{"source":"synthetic-geometry","ordinal":i});err!=nil{return err}};return tx.Insert(ctx,"runtime","marker",[]float32{1},nil)});err!=nil{t.Fatal(err)}
+ before,err:=db.LatestCommitLSN(ctx);if err!=nil{t.Fatal(err)}
+ singlefile.SetTestCommitFailpoint(func()error{return errors.New("research fail before WAL commit marker")})
+ err=db.WithTx(ctx,func(tx Tx)error{if err:=tx.Update(ctx,"events","e-0000",overlayDBVector(500,32),nil);err!=nil{return err};if err:=tx.Delete(ctx,"events","e-0001");err!=nil{return err};if err:=tx.Insert(ctx,"events","failed",overlayDBVector(501,32),nil);err!=nil{return err};return tx.Update(ctx,"runtime","marker",[]float32{2},nil)})
+ singlefile.ClearTestCommitFailpoint();if err==nil{t.Fatal("WAL failure accepted")}
+ if lsn,err:=db.LatestCommitLSN(ctx);err!=nil||lsn!=before{t.Fatal("failed LSN",lsn,err)}
+ if _,err:=col.Get(ctx,"failed");err==nil{t.Fatal("failed insert visible")};if _,err:=col.Get(ctx,"e-0001");err!=nil{t.Fatal("failed delete visible")}
+ out,err:=col.Search(ctx,overlayDBVector(0,32),10);if err!=nil||len(out.Results)!=10||out.Results[0].ID!="e-0000"{t.Fatal("failed prepared update reached search",err)}
+ record,err:=aux.Get(ctx,"marker");if err!=nil||record.Vector[0]!=1{t.Fatal("cross-collection failure",err)}
+ if err:=db.WithTx(ctx,func(tx Tx)error{if err:=tx.Update(ctx,"events","e-0000",overlayDBVector(500,32),nil);err!=nil{return err};if err:=tx.Delete(ctx,"events","e-0001");err!=nil{return err};if err:=tx.Insert(ctx,"events","new",overlayDBVector(501,32),nil);err!=nil{return err};return tx.Update(ctx,"runtime","marker",[]float32{2},nil)});err!=nil{t.Fatal(err)}
+ if err:=db.Close();err!=nil{t.Fatal(err)};db,err=Open(WithStoragePath(path));if err!=nil{t.Fatal(err)}
+ col,err=db.GetCollection("events");if err!=nil{t.Fatal(err)};if count,err:=col.Count(ctx);err!=nil||count!=140{t.Fatal("reopen count",count,err)}
+ for _,id:=range []string{"failed","e-0001"}{if _,err:=col.Get(ctx,id);err==nil{t.Fatal("reopen phantom",id)}}
+ out,err=col.Search(ctx,overlayDBVector(500,32),10);if err!=nil||len(out.Results)!=10||out.Results[0].ID!="e-0000"{t.Fatal("reopen corrected search",err)}
+ aux,err=db.GetCollection("runtime");if err!=nil{t.Fatal(err)};record,err=aux.Get(ctx,"marker");if err!=nil||record.Vector[0]!=2{t.Fatal("durable runtime marker",err)}
+}
+
+type overlayMeasuredScore struct{ID string `json:"id"`;Native float64 `json:"native"`;Exact float64 `json:"exact"`}
+func overlayCosine64(a,b []float32)float64{var dot,aa,bb float64;for i:=range a{x,y:=float64(a[i]),float64(b[i]);dot+=x*y;aa+=x*x;bb+=y*y};return dot/math.Sqrt(aa*bb)}
+func TestResearchOverlayCostV1(t *testing.T){
+ d,err:=strconv.Atoi(os.Getenv("RESEARCH_OVERLAY_DIM"));if err!=nil||(d!=32&&d!=128){t.Fatal("frozen dimension required")};n,err:=strconv.Atoi(os.Getenv("RESEARCH_OVERLAY_SIZE"));if err!=nil||(n!=256&&n!=1024){t.Fatal("frozen size required")}
+ ctx:=context.Background();path:=t.TempDir()+"/cost.libravdb";started:=time.Now();db,err:=Open(WithStoragePath(path));if err!=nil{t.Fatal(err)};defer db.Close()
+ col,err:=db.CreateCollection(ctx,"events",WithDimension(d),WithHNSW(16,100,100),WithScalarQuantization(8,.05));if err!=nil{t.Fatal(err)}
+ vectors:=make([][]float32,n+128);for i:=range vectors{vectors[i]=overlayDBVector(i,d)}
+ initialStart:=time.Now();if err:=db.WithTx(ctx,func(tx Tx)error{for i:=0;i<n;i++{if err:=tx.Insert(ctx,"events",fmt.Sprintf("e-%05d",i),vectors[i],nil);err!=nil{return err}};return nil});err!=nil{t.Fatal(err)};initialNS:=time.Since(initialStart).Nanoseconds()
+ var before runtime.MemStats;runtime.ReadMemStats(&before)
+ for step:=0;step<128;step++{
+  i:=n+step;start:=time.Now();if err:=db.WithTx(ctx,func(tx Tx)error{return tx.Insert(ctx,"events",fmt.Sprintf("e-%05d",i),vectors[i],nil)});err!=nil{t.Fatal(err)};commitNS:=time.Since(start).Nanoseconds()
+  q:=overlayDBVector(100000+step,d);start=time.Now();result,err:=col.Search(ctx,q,50);queryNS:=time.Since(start).Nanoseconds();if err!=nil{t.Fatal(err)};if len(result.Results)!=50{t.Fatal("nominee loss",len(result.Results))}
+  exact:=make([]overlayMeasuredScore,i+1);for j:=range exact{exact[j]=overlayMeasuredScore{ID:fmt.Sprintf("e-%05d",j),Exact:overlayCosine64(q,vectors[j])}}
+  sort.Slice(exact,func(i,j int)bool{if exact[i].Exact==exact[j].Exact{return exact[i].ID<exact[j].ID};return exact[i].Exact>exact[j].Exact})
+  actual:=make([]overlayMeasuredScore,len(result.Results));seen:=map[string]bool{};for j,r:=range result.Results{if seen[r.ID]{t.Fatal("duplicate nominee")};seen[r.ID]=true;var id int;if _,err:=fmt.Sscanf(r.ID,"e-%05d",&id);err!=nil||id<0||id>i{t.Fatal("invalid ID",r.ID)};actual[j]=overlayMeasuredScore{ID:r.ID,Native:float64(r.Score),Exact:overlayCosine64(q,vectors[id])}}
+  row:=struct{Step int `json:"step"`;Records int `json:"records"`;CommitNS int64 `json:"commit_ns"`;QueryNS int64 `json:"query_ns"`;Actual []overlayMeasuredScore `json:"actual"`;Exact []overlayMeasuredScore `json:"exact_top"`}{step,i+1,commitNS,queryNS,actual,exact[:50]};b,err:=json.Marshal(row);if err!=nil{t.Fatal(err)};t.Log("OVERLAY_ROW "+string(b))
+ }
+ var after runtime.MemStats;runtime.ReadMemStats(&after);summary:=struct{Dimension int `json:"dimension"`;Initial int `json:"initial"`;InitialNS int64 `json:"initial_ns"`;TotalNS int64 `json:"total_ns"`;TotalAlloc uint64 `json:"total_alloc_bytes"`;Final int `json:"final_records"`;WholeGoal bool `json:"whole_goal_validation"`}{d,n,initialNS,time.Since(started).Nanoseconds(),after.TotalAlloc-before.TotalAlloc,n+128,false};b,err:=json.Marshal(summary);if err!=nil{t.Fatal(err)};t.Log("OVERLAY_SUMMARY "+string(b))
+}

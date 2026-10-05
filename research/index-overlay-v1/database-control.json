@@ -1,0 +1,19 @@
+{
+  "arm": "control",
+  "label": "database-control",
+  "args": [
+    "test",
+    "./libravdb",
+    "-run",
+    "^(TestResearchOverlayWALAndReopen|TestWithTxCommitsAcrossCollectionsAtomically|TestTransactionRollbackLeavesNoVisibleWrites|TestTransactionManyCommitsRemainCorrectAfterReopen|TestDurability_IncompleteWALTransaction)$",
+    "-count=1",
+    "-v",
+    "-timeout=3m"
+  ],
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "wallMS": 3382.537292,
+  "sha256": "3f9ff409bee0435074dd7c794114ec9edd87ca8deaf1fd597bb91f378c644111",
+  "bytes": 917
+}

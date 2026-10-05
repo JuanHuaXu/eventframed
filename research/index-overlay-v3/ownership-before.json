@@ -1,0 +1,19 @@
+{
+  "arm": "candidate",
+  "label": "ownership-before",
+  "args": [
+    "test",
+    "./internal/index",
+    "-run",
+    "^TestResearchOverlay(ResultOwnership|ProviderHydrationBoundary)$",
+    "-count=1",
+    "-v",
+    "-timeout=2m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 421.38250000000005,
+  "sha256": "b7ebfee15baddc16695d1ac8332e3c36abe086a1961e61fa4a9213ded892e323",
+  "bytes": 499
+}

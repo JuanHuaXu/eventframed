@@ -1,0 +1,79 @@
+package libravdb
+
+import (
+	"context"
+	"errors"
+	"reflect"
+	"testing"
+)
+
+func TestResearchLogicalParentDiscoveryV1(t *testing.T) {
+	ctx := context.Background()
+	path := t.TempDir() + "/discovery.libravdb"
+	db, err := Open(WithStoragePath(path))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() {
+		if db != nil {
+			db.Close()
+		}
+	}()
+	for _, item := range []struct {
+		name    string
+		sharded bool
+	}{{"ordinary", false}, {"event", true}} {
+		col, err := db.EnsureCollection(ctx, item.name, 4, WithHNSW(8, 40, 20), WithSharding(item.sharded))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := col.Insert(ctx, item.name+"-record", []float32{1, 0, 0, 0}, map[string]interface{}{"source": "public probe"}); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := db.Close(); err != nil {
+		t.Fatal(err)
+	}
+	db = nil
+	db, err = Open(WithStoragePath(path))
+	if err != nil {
+		t.Fatal(err)
+	}
+	names, err := db.ListCollectionsWithContext(ctx)
+	if err != nil || !reflect.DeepEqual(names, []string{"event", "ordinary"}) {
+		t.Fatalf("logical parents not discoverable before loading: names=%v err=%v", names, err)
+	}
+	seen := make(map[string]bool)
+	err = db.Iterate(ctx, func(collection string, record Record) error {
+		if (collection != "event" && collection != "ordinary") || record.ID != collection+"-record" || seen[record.ID] {
+			t.Fatalf("invalid/duplicate logical iteration: %s/%s", collection, record.ID)
+		}
+		seen[record.ID] = true
+		return nil
+	})
+	if err != nil || len(seen) != 2 {
+		t.Fatal("iteration missing logical records", len(seen), err)
+	}
+	col, err := db.GetCollection("event")
+	if err != nil || !col.Config().Sharded {
+		t.Fatal("logical parent reopen", err)
+	}
+	if _, err := db.GetCollection("event__shard__0"); err == nil {
+		t.Fatal("hidden child exposed")
+	}
+	if _, err := db.GetCollection("missing"); err == nil {
+		t.Fatal("missing collection created")
+	}
+	cancelled, cancel := context.WithCancel(ctx)
+	cancel()
+	if _, err := db.ListCollectionsWithContext(cancelled); !errors.Is(err, context.Canceled) {
+		t.Fatal("cancelled discovery", err)
+	}
+	if err := db.Close(); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := db.ListCollectionsWithContext(ctx); !errors.Is(err, ErrDatabaseClosed) {
+		t.Fatal("closed discovery", err)
+	}
+	db = nil
+}

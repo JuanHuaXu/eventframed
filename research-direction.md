@@ -17,6 +17,47 @@ entry below records new work, not a change to any original success criterion.
 
 ## Current Continuation
 
+2026-10-05 latest: [immutable-base overlay V6](research/index-overlay-v6/RESULTS.md).
+Previous GOAL turn PROGRESS (V1-V3 prototype/cost evidence; the intervening user
+push request verified published refs without new research). This turn PROGRESS:
+fresh V4/V5/V6 repairs, unchanged controlled measurements, full public integration,
+negative-control/verifier tests and exact source reconstruction. All seven WHOLE
+goals OPEN/ACTIVE; weekly usage49%at entry,50%on recheck, below80%stop threshold.
+
+V4 fixes an empty-base error that hid live overlay records, but still changes
+6/96past packets after future-only captures. V5 fixes mixed scalar/SIMD public
+scores yet FAILS real retrieval: future nomination recall .46056 and96/96packet
+changes. Its initially scalar test oracle was invalid; both that harness error
+and corrected runtime-metric witness remain separate. V6 identifies the root
+integration error: provider-free HNSW physical ordinals differ from immutable
+storage ordinals after sorted compaction. Explicit translation repairs graph
+filter/shadow semantics and ordinal hydration. Sparse/prefix failing witnesses,
+ordinary/race checks and all earlier failures are preserved.
+
+V6 completes24geometry commands (3072individual commits/queries),64adjacent
+service/store cases, and4public DESIGN trials (3072ordinary/3072exact recalls).
+All frozen mean quality, packet and repeat/future gates PASS. Candidate minimum
+mean tie recall .95802; packed-score deficitZERO. Future-only captures cause
+ZERO retained past packet/frontier/law/confidence motion in both pairs at50/200,
+but every native nomination sequence still changes. No universal chronology,
+selection-support certificate, learned-law or untouched agent utility is proved.
+
+Mean durable commit3.659-4.960ms, paired ratios .146-.432 (57-85%lower); quiet
+service p99 4.928-31.418ms. Worst commit143.356ms still exceeds100ms; compaction
+is synchronous. Loaded freshness, sustained offered load, heap/RSS/retired bytes,
+crash/cross-epoch and large heterogeneous scaling remain untested for this arm.
+The V6 ordinal table adds4bytes/base vector atop copied O(ND) payload; not a RAM
+bound.12armtrees/6590source files reconstruct byte-identically; independent row
+arithmetic and evaluator tamper checks agree. Raw public numerical traces are
+losslessly archived; originals remain local. No private or sealed labels used.
+
+Retain scoped LOCAL checkpoint; no automatic push/default change. Production,
+installed module caches, pre-existing dirty runtime files and paper untouched.
+Next: frozen overlay x four-route factorial load/quality, then bounded async
+merge/backpressure and open-loop/RSS/recovery, while retaining all seven original
+requirements and the unresolved .698246TV defect. See V6 NEXT.md, not a narrower
+replacement goal or a declaration that continuous learning is now complete.
+
 2026-10-05 latest: [four-shard cold quality](research/sharded-quality-v1/RESULTS.md)
 and [4000-record ANN follow-up](research/sharded-quality-scale-v2/RESULTS.md).
 Previous goal turn PROGRESS (V3 load rescue and scoped publication); this turn

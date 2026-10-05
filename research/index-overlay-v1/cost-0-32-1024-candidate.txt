@@ -1,0 +1,6 @@
+=== RUN   TestResearchOverlayCostV1
+    research_overlay_test.go:193: transaction commit failed: index flat transaction record e-00896: arena exhausted: insufficient space for allocation
+--- FAIL: TestResearchOverlayCostV1 (0.06s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/libravdb	0.303s
+FAIL

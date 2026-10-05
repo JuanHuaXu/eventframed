@@ -1,0 +1,9 @@
+=== RUN   TestResearchOverlayResultOwnership
+    research_overlay_ownership_test.go:32: returned vector aliases immutable base storage
+--- FAIL: TestResearchOverlayResultOwnership (0.01s)
+=== RUN   TestResearchOverlayProviderHydrationBoundary
+    research_overlay_ownership_test.go:69: storage-owned canonical vector must hydrate from record, not normalized index copy
+--- FAIL: TestResearchOverlayProviderHydrationBoundary (0.00s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/internal/index	0.212s
+FAIL

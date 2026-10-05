@@ -1,0 +1,7 @@
+=== RUN   TestResearchOverlayCanonicalPublicScore
+    research_overlay_score_test.go:58: canonical mismatch: got=0.0867147446 want=0.086714685
+    research_overlay_score_test.go:64: 1 scores do not use canonical public metric
+--- FAIL: TestResearchOverlayCanonicalPublicScore (0.08s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/libravdb	0.385s
+FAIL

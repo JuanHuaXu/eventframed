@@ -1,0 +1,20 @@
+{
+  "arm": "candidate",
+  "label": "preflight-ordinary",
+  "args": [
+    "test",
+    "./internal/index",
+    "./libravdb",
+    "-run",
+    "^Test(ResearchOverlay(SnapshotWhilePrepared|AbortCommitOwnership|FilterUpsertCompaction|ValidationPersistence|ConcurrentReaders|ProfileContract|ResultOwnership|ProviderHydrationBoundary|ColdVisibility|BaseErrorsRemainVisible|WALAndReopen)|ResearchFlatTxAlignedKeys|TxCommit|TxDelete|TxRollback|TxReadYourWrites)$",
+    "-count=1",
+    "-v",
+    "-timeout=3m"
+  ],
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "wallMS": 2856.361417,
+  "sha256": "60ac9bbdc275bd9bfd35f2e98e827998ff650ea95e5232213b9a813d101a7cb8",
+  "bytes": 1694
+}

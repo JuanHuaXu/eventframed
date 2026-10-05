@@ -1,0 +1,19 @@
+{
+  "arm": "candidate",
+  "label": "profile-before",
+  "args": [
+    "test",
+    "./internal/index",
+    "-run",
+    "^TestResearchOverlayProfileContract$",
+    "-count=1",
+    "-v",
+    "-timeout=2m"
+  ],
+  "status": 1,
+  "signal": null,
+  "error": null,
+  "wallMS": 726.019,
+  "sha256": "9d01f5764d50afc705faaefcd8b608ed4f12208eed3e6a0acd13f3f918e957b6",
+  "bytes": 229
+}

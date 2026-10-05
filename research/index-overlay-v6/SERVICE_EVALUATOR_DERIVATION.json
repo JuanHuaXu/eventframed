@@ -1,0 +1,26 @@
+{
+  "derivations": [
+    {
+      "source": "../sharded-quality-v1/evaluate.mjs",
+      "sourceSHA256": "a1eb063df954297233faa5a5d975c608fe5a59bc453a9d5b17f5571c19b86512",
+      "destination": "service-evaluate.mjs",
+      "destinationSHA256": "043d0225da891a38a338dba058033dd18fcffcf11f255e45ac26cb8da183d1c6",
+      "change": "only local artifact basenames; arithmetic and phase gates unchanged"
+    },
+    {
+      "source": "../sharded-quality-v1/independent.mjs",
+      "sourceSHA256": "1694ea911c1fc66c0bf2de73060cfa0ae49bb295856c29d7c5932300f149e00e",
+      "destination": "service-independent.mjs",
+      "destinationSHA256": "05a5094fc0fe1f61a1dfb8ffea6a065f91c8f3d55049d0e263d84621d6a4c5f8",
+      "change": "only local artifact basenames; arithmetic and phase gates unchanged"
+    },
+    {
+      "source": "../sharded-quality-v1/archive.mjs",
+      "sourceSHA256": "1ff5236555c176b41782a59c81bdd5b3881839af83f2d3e98199eedda8a232ab",
+      "destination": "service-archive.mjs",
+      "destinationSHA256": "29b29a19258dda3dc991797096669c26fe7a90fb67b3717e7c541f97233276e8",
+      "change": "only local artifact basenames; arithmetic and phase gates unchanged"
+    }
+  ],
+  "wholeGoalValidation": false
+}

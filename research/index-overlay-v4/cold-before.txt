@@ -1,0 +1,17 @@
+=== RUN   TestResearchOverlayColdVisibility
+=== RUN   TestResearchOverlayColdVisibility/0
+    research_overlay_cold_test.go:29: search n=0: index is empty
+=== RUN   TestResearchOverlayColdVisibility/1
+    research_overlay_cold_test.go:29: search n=1: index is empty
+=== RUN   TestResearchOverlayColdVisibility/2
+    research_overlay_cold_test.go:29: search n=2: index is empty
+=== RUN   TestResearchOverlayColdVisibility/64
+    research_overlay_cold_test.go:29: search n=64: index is empty
+--- FAIL: TestResearchOverlayColdVisibility (0.01s)
+    --- FAIL: TestResearchOverlayColdVisibility/0 (0.00s)
+    --- FAIL: TestResearchOverlayColdVisibility/1 (0.00s)
+    --- FAIL: TestResearchOverlayColdVisibility/2 (0.00s)
+    --- FAIL: TestResearchOverlayColdVisibility/64 (0.00s)
+FAIL
+FAIL	github.com/xDarkicex/libravdb/internal/index	0.247s
+FAIL

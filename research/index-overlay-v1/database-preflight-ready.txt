@@ -1,0 +1,15 @@
+=== RUN   TestDurability_IncompleteWALTransaction
+    epoch_durability_test.go:481: Phase 1: epoch commit failed as expected: injected failure before TxCommit
+    epoch_durability_test.go:509: Phase 2: incomplete transaction did not leak record or edges ✓
+    epoch_durability_test.go:510: ✅ test E: incomplete WAL transaction does not leak
+--- PASS: TestDurability_IncompleteWALTransaction (0.06s)
+=== RUN   TestResearchOverlayWALAndReopen
+--- PASS: TestResearchOverlayWALAndReopen (0.08s)
+=== RUN   TestWithTxCommitsAcrossCollectionsAtomically
+--- PASS: TestWithTxCommitsAcrossCollectionsAtomically (0.04s)
+=== RUN   TestTransactionRollbackLeavesNoVisibleWrites
+--- PASS: TestTransactionRollbackLeavesNoVisibleWrites (0.03s)
+=== RUN   TestTransactionManyCommitsRemainCorrectAfterReopen
+--- PASS: TestTransactionManyCommitsRemainCorrectAfterReopen (0.13s)
+PASS
+ok  	github.com/xDarkicex/libravdb/libravdb	0.658s
