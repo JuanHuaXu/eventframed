@@ -1,0 +1,566 @@
+=== RUN   TestMaskReuseDifferential
+    mask_reuse_test.go:74: 8192 complete repaired-control comparisons; synthetic text, no outcome labels
+--- PASS: TestMaskReuseDifferential (2.91s)
+=== RUN   TestMaskReuseEmptyAndUnpreparedSources
+--- PASS: TestMaskReuseEmptyAndUnpreparedSources (0.00s)
+=== RUN   TestMaskReuseParallelCalls
+=== RUN   TestMaskReuseParallelCalls/0
+=== PAUSE TestMaskReuseParallelCalls/0
+=== RUN   TestMaskReuseParallelCalls/1
+=== PAUSE TestMaskReuseParallelCalls/1
+=== RUN   TestMaskReuseParallelCalls/2
+=== PAUSE TestMaskReuseParallelCalls/2
+=== RUN   TestMaskReuseParallelCalls/3
+=== PAUSE TestMaskReuseParallelCalls/3
+=== RUN   TestMaskReuseParallelCalls/4
+=== PAUSE TestMaskReuseParallelCalls/4
+=== RUN   TestMaskReuseParallelCalls/5
+=== PAUSE TestMaskReuseParallelCalls/5
+=== RUN   TestMaskReuseParallelCalls/6
+=== PAUSE TestMaskReuseParallelCalls/6
+=== RUN   TestMaskReuseParallelCalls/7
+=== PAUSE TestMaskReuseParallelCalls/7
+=== RUN   TestMaskReuseParallelCalls/8
+=== PAUSE TestMaskReuseParallelCalls/8
+=== RUN   TestMaskReuseParallelCalls/9
+=== PAUSE TestMaskReuseParallelCalls/9
+=== RUN   TestMaskReuseParallelCalls/10
+=== PAUSE TestMaskReuseParallelCalls/10
+=== RUN   TestMaskReuseParallelCalls/11
+=== PAUSE TestMaskReuseParallelCalls/11
+=== RUN   TestMaskReuseParallelCalls/12
+=== PAUSE TestMaskReuseParallelCalls/12
+=== RUN   TestMaskReuseParallelCalls/13
+=== PAUSE TestMaskReuseParallelCalls/13
+=== RUN   TestMaskReuseParallelCalls/14
+=== PAUSE TestMaskReuseParallelCalls/14
+=== RUN   TestMaskReuseParallelCalls/15
+=== PAUSE TestMaskReuseParallelCalls/15
+=== CONT  TestMaskReuseParallelCalls/0
+=== CONT  TestMaskReuseParallelCalls/8
+=== CONT  TestMaskReuseParallelCalls/4
+=== CONT  TestMaskReuseParallelCalls/2
+=== CONT  TestMaskReuseParallelCalls/12
+=== CONT  TestMaskReuseParallelCalls/14
+=== CONT  TestMaskReuseParallelCalls/15
+=== CONT  TestMaskReuseParallelCalls/10
+=== CONT  TestMaskReuseParallelCalls/11
+=== CONT  TestMaskReuseParallelCalls/13
+=== CONT  TestMaskReuseParallelCalls/1
+=== CONT  TestMaskReuseParallelCalls/9
+=== CONT  TestMaskReuseParallelCalls/6
+=== CONT  TestMaskReuseParallelCalls/7
+=== CONT  TestMaskReuseParallelCalls/3
+=== CONT  TestMaskReuseParallelCalls/5
+--- PASS: TestMaskReuseParallelCalls (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/8 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/4 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/0 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/2 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/12 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/9 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/7 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/14 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/15 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/6 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/13 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/11 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/10 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/1 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/3 (0.00s)
+    --- PASS: TestMaskReuseParallelCalls/5 (0.00s)
+=== RUN   TestTurnFallbackAuditParticipantControls
+=== RUN   TestTurnFallbackAuditParticipantControls/collective-we
+=== RUN   TestTurnFallbackAuditParticipantControls/collective-We-no-name-pattern
+=== RUN   TestTurnFallbackAuditParticipantControls/collective-us
+=== RUN   TestTurnFallbackAuditParticipantControls/collective-our
+=== RUN   TestTurnFallbackAuditParticipantControls/collective-ours
+=== RUN   TestTurnFallbackAuditParticipantControls/collective-before-singular
+=== RUN   TestTurnFallbackAuditParticipantControls/speaker-fallback
+=== RUN   TestTurnFallbackAuditParticipantControls/agent-fallback
+=== RUN   TestTurnFallbackAuditParticipantControls/no-agent-no-addressee-inference
+=== RUN   TestTurnFallbackAuditParticipantControls/participants-metadata
+=== RUN   TestTurnFallbackAuditParticipantControls/participants-no-agent
+--- PASS: TestTurnFallbackAuditParticipantControls (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/collective-we (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/collective-We-no-name-pattern (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/collective-us (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/collective-our (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/collective-ours (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/collective-before-singular (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/speaker-fallback (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/agent-fallback (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/no-agent-no-addressee-inference (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/participants-metadata (0.00s)
+    --- PASS: TestTurnFallbackAuditParticipantControls/participants-no-agent (0.00s)
+=== RUN   TestTurnFallbackAuditIdentityControls
+=== RUN   TestTurnFallbackAuditIdentityControls/I_will_deploy.
+=== RUN   TestTurnFallbackAuditIdentityControls/I_am_Another_Person.
+=== RUN   TestTurnFallbackAuditIdentityControls/You_will_review.
+=== RUN   TestTurnFallbackAuditIdentityControls/We_will_deploy.
+=== RUN   TestTurnFallbackAuditIdentityControls/we_plan_a_release.
+=== RUN   TestTurnFallbackAuditIdentityControls/We_plan_a_release.
+--- PASS: TestTurnFallbackAuditIdentityControls (0.00s)
+    --- PASS: TestTurnFallbackAuditIdentityControls/I_will_deploy. (0.00s)
+    --- PASS: TestTurnFallbackAuditIdentityControls/I_am_Another_Person. (0.00s)
+    --- PASS: TestTurnFallbackAuditIdentityControls/You_will_review. (0.00s)
+    --- PASS: TestTurnFallbackAuditIdentityControls/We_will_deploy. (0.00s)
+    --- PASS: TestTurnFallbackAuditIdentityControls/we_plan_a_release. (0.00s)
+    --- PASS: TestTurnFallbackAuditIdentityControls/We_plan_a_release. (0.00s)
+=== RUN   TestTurnFallbackAuditQuotedClaims
+=== RUN   TestTurnFallbackAuditQuotedClaims/double/user
+=== RUN   TestTurnFallbackAuditQuotedClaims/double/assistant
+=== RUN   TestTurnFallbackAuditQuotedClaims/single/user
+=== RUN   TestTurnFallbackAuditQuotedClaims/single/assistant
+=== RUN   TestTurnFallbackAuditQuotedClaims/curly-double/user
+=== RUN   TestTurnFallbackAuditQuotedClaims/curly-double/assistant
+=== RUN   TestTurnFallbackAuditQuotedClaims/curly-single/user
+=== RUN   TestTurnFallbackAuditQuotedClaims/curly-single/assistant
+=== RUN   TestTurnFallbackAuditQuotedClaims/inline-code/user
+=== RUN   TestTurnFallbackAuditQuotedClaims/inline-code/assistant
+=== RUN   TestTurnFallbackAuditQuotedClaims/fenced-code/user
+=== RUN   TestTurnFallbackAuditQuotedClaims/fenced-code/assistant
+=== RUN   TestTurnFallbackAuditQuotedClaims/blockquote/user
+=== RUN   TestTurnFallbackAuditQuotedClaims/blockquote/assistant
+=== RUN   TestTurnFallbackAuditQuotedClaims/indented-blockquote/user
+=== RUN   TestTurnFallbackAuditQuotedClaims/indented-blockquote/assistant
+--- PASS: TestTurnFallbackAuditQuotedClaims (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/double/user (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/double/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/single/user (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/single/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/curly-double/user (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/curly-double/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/curly-single/user (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/curly-single/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/inline-code/user (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/inline-code/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/fenced-code/user (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/fenced-code/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/blockquote/user (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/blockquote/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/indented-blockquote/user (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedClaims/indented-blockquote/assistant (0.00s)
+=== RUN   TestTurnFallbackAuditQuotedPronouns
+=== RUN   TestTurnFallbackAuditQuotedPronouns/double
+=== RUN   TestTurnFallbackAuditQuotedPronouns/single
+=== RUN   TestTurnFallbackAuditQuotedPronouns/curly-double
+=== RUN   TestTurnFallbackAuditQuotedPronouns/curly-single
+=== RUN   TestTurnFallbackAuditQuotedPronouns/inline-code
+=== RUN   TestTurnFallbackAuditQuotedPronouns/fenced-code
+=== RUN   TestTurnFallbackAuditQuotedPronouns/blockquote
+=== RUN   TestTurnFallbackAuditQuotedPronouns/indented-blockquote
+--- PASS: TestTurnFallbackAuditQuotedPronouns (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedPronouns/double (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedPronouns/single (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedPronouns/curly-double (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedPronouns/curly-single (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedPronouns/inline-code (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedPronouns/fenced-code (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedPronouns/blockquote (0.00s)
+    --- PASS: TestTurnFallbackAuditQuotedPronouns/indented-blockquote (0.00s)
+=== RUN   TestTurnFallbackAuditUnquotedEvidenceAfterQuotes
+--- PASS: TestTurnFallbackAuditUnquotedEvidenceAfterQuotes (0.00s)
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment/double
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment/single
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment/curly-double
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment/curly-single
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment/inline-code
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment/fenced-code
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment/blockquote
+=== RUN   TestTurnFallbackAuditQuoteMaskAlignment/indented-blockquote
+--- PASS: TestTurnFallbackAuditQuoteMaskAlignment (0.00s)
+    --- PASS: TestTurnFallbackAuditQuoteMaskAlignment/double (0.00s)
+    --- PASS: TestTurnFallbackAuditQuoteMaskAlignment/single (0.00s)
+    --- PASS: TestTurnFallbackAuditQuoteMaskAlignment/curly-double (0.00s)
+    --- PASS: TestTurnFallbackAuditQuoteMaskAlignment/curly-single (0.00s)
+    --- PASS: TestTurnFallbackAuditQuoteMaskAlignment/inline-code (0.00s)
+    --- PASS: TestTurnFallbackAuditQuoteMaskAlignment/fenced-code (0.00s)
+    --- PASS: TestTurnFallbackAuditQuoteMaskAlignment/blockquote (0.00s)
+    --- PASS: TestTurnFallbackAuditQuoteMaskAlignment/indented-blockquote (0.00s)
+=== RUN   TestTurnFallbackAuditKnownBugRegressions
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/capitalized-collective-bypasses-fallback
+    turn_fallback_audit_test.go:233: prior Who={Value:We Source:observed Confidence:0.88 Evidence:user[bytes:0:2]}; current Who={Value:unresolved group Source:inferred Confidence:0 Evidence:user[bytes:0:2]}
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-reason
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-reason/user
+    turn_fallback_audit_test.go:253: prior Why={Value:"cache failed" Source:observed Confidence:0.9 Evidence:user[bytes:22:36]}; How={Value:through the agent response: Acknowledged. Source:inferred Confidence:0.62 Evidence:assistant[bytes:0:13]}; When={Value:2026-10-05T12:00:00Z Source:observed Confidence:1 Evidence:turn timestamp}
+    turn_fallback_audit_test.go:260: identity=false; field={Value:to address the user request: Please deploy because "cache failed". Source:inferred Confidence:0.62 Evidence:user[bytes:0:37]}; mask="Please deploy because               ."
+    turn_fallback_audit_test.go:260: identity=true; field={Value:to address the user request: Please deploy because "cache failed". Source:inferred Confidence:0.62 Evidence:user[bytes:0:37]}; mask="Please deploy because               ."
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-reason/assistant
+    turn_fallback_audit_test.go:253: prior Why={Value:"cache failed" Source:synthetic Confidence:0.78 Evidence:assistant[bytes:22:36]}; How={Value:through the agent response: Please deploy because "cache failed". Source:inferred Confidence:0.62 Evidence:assistant[bytes:0:37]}; When={Value:2026-10-05T12:00:00Z Source:observed Confidence:1 Evidence:turn timestamp}
+    turn_fallback_audit_test.go:260: identity=false; field={Value:to address the user request: Please review. Source:inferred Confidence:0.62 Evidence:user[bytes:0:14]}; mask="Please deploy because               ."
+    turn_fallback_audit_test.go:260: identity=true; field={Value:to address the user request: Please review. Source:inferred Confidence:0.62 Evidence:user[bytes:0:14]}; mask="Please deploy because               ."
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-method
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-method/user
+    turn_fallback_audit_test.go:253: prior Why={Value:to address the user request: Please deploy using `console`. Source:inferred Confidence:0.62 Evidence:user[bytes:0:30]}; How={Value:using `console` Source:observed Confidence:0.86 Evidence:user[bytes:14:29]}; When={Value:2026-10-05T12:00:00Z Source:observed Confidence:1 Evidence:turn timestamp}
+    turn_fallback_audit_test.go:260: identity=false; field={Value:through the agent response: Acknowledged. Source:inferred Confidence:0.62 Evidence:assistant[bytes:0:13]}; mask="Please deploy using          ."
+    turn_fallback_audit_test.go:260: identity=true; field={Value:through the agent response: Acknowledged. Source:inferred Confidence:0.62 Evidence:assistant[bytes:0:13]}; mask="Please deploy using          ."
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-method/assistant
+    turn_fallback_audit_test.go:253: prior Why={Value:to address the user request: Please review. Source:inferred Confidence:0.62 Evidence:user[bytes:0:14]}; How={Value:using `console` Source:synthetic Confidence:0.74 Evidence:assistant[bytes:14:29]}; When={Value:2026-10-05T12:00:00Z Source:observed Confidence:1 Evidence:turn timestamp}
+    turn_fallback_audit_test.go:260: identity=false; field={Value:through the agent response: Please deploy using `console`. Source:inferred Confidence:0.62 Evidence:assistant[bytes:0:30]}; mask="Please deploy using          ."
+    turn_fallback_audit_test.go:260: identity=true; field={Value:through the agent response: Please deploy using `console`. Source:inferred Confidence:0.62 Evidence:assistant[bytes:0:30]}; mask="Please deploy using          ."
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-temporal-clause
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-temporal-clause/user
+    turn_fallback_audit_test.go:253: prior Why={Value:to address the user request: Please deploy after "approval". Source:inferred Confidence:0.62 Evidence:user[bytes:0:31]}; How={Value:through the agent response: Acknowledged. Source:inferred Confidence:0.62 Evidence:assistant[bytes:0:13]}; When={Value:after "approval" Source:observed Confidence:0.9 Evidence:user[bytes:14:30]}
+    turn_fallback_audit_test.go:260: identity=false; field={Value:2026-10-05T12:00:00Z Source:observed Confidence:1 Evidence:turn timestamp}; mask="Please deploy after           ."
+    turn_fallback_audit_test.go:260: identity=true; field={Value:2026-10-05T12:00:00Z Source:observed Confidence:1 Evidence:turn timestamp}; mask="Please deploy after           ."
+=== RUN   TestTurnFallbackAuditKnownBugRegressions/quoted-only-temporal-clause/assistant
+    turn_fallback_audit_test.go:253: prior Why={Value:to address the user request: Please review. Source:inferred Confidence:0.62 Evidence:user[bytes:0:14]}; How={Value:through the agent response: Please deploy after "approval". Source:inferred Confidence:0.62 Evidence:assistant[bytes:0:31]}; When={Value:after "approval" Source:synthetic Confidence:0.78 Evidence:assistant[bytes:14:30]}
+    turn_fallback_audit_test.go:260: identity=false; field={Value:2026-10-05T12:00:00Z Source:observed Confidence:1 Evidence:turn timestamp}; mask="Please deploy after           ."
+    turn_fallback_audit_test.go:260: identity=true; field={Value:2026-10-05T12:00:00Z Source:observed Confidence:1 Evidence:turn timestamp}; mask="Please deploy after           ."
+--- PASS: TestTurnFallbackAuditKnownBugRegressions (0.00s)
+    --- PASS: TestTurnFallbackAuditKnownBugRegressions/capitalized-collective-bypasses-fallback (0.00s)
+    --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-reason (0.00s)
+        --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-reason/user (0.00s)
+        --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-reason/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-method (0.00s)
+        --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-method/user (0.00s)
+        --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-method/assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-temporal-clause (0.00s)
+        --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-temporal-clause/user (0.00s)
+        --- PASS: TestTurnFallbackAuditKnownBugRegressions/quoted-only-temporal-clause/assistant (0.00s)
+=== RUN   TestTurnFallbackAuditMatchedControls
+=== RUN   TestTurnFallbackAuditMatchedControls/early/256
+=== RUN   TestTurnFallbackAuditMatchedControls/early/2048
+=== RUN   TestTurnFallbackAuditMatchedControls/early/16384
+=== RUN   TestTurnFallbackAuditMatchedControls/late/256
+=== RUN   TestTurnFallbackAuditMatchedControls/late/2048
+=== RUN   TestTurnFallbackAuditMatchedControls/late/16384
+=== RUN   TestTurnFallbackAuditMatchedControls/no-match/256
+=== RUN   TestTurnFallbackAuditMatchedControls/no-match/2048
+=== RUN   TestTurnFallbackAuditMatchedControls/no-match/16384
+=== RUN   TestTurnFallbackAuditMatchedControls/collective/256
+=== RUN   TestTurnFallbackAuditMatchedControls/collective/2048
+=== RUN   TestTurnFallbackAuditMatchedControls/collective/16384
+--- PASS: TestTurnFallbackAuditMatchedControls (0.05s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/early/256 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/early/2048 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/early/16384 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/late/256 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/late/2048 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/late/16384 (0.01s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/no-match/256 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/no-match/2048 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/no-match/16384 (0.02s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/collective/256 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/collective/2048 (0.00s)
+    --- PASS: TestTurnFallbackAuditMatchedControls/collective/16384 (0.02s)
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Alex_"quoted"_Blair_will_deploy.
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Alex_"quoted"_Blair_will_deploy./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Alex_"quoted"_Blair_will_deploy./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_in_north_"quoted"_zone_tomorrow.
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_in_north_"quoted"_zone_tomorrow./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_in_north_"quoted"_zone_tomorrow./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_next_"quoted"_week.
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_next_"quoted"_week./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_next_"quoted"_week./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_after_"approval".
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_after_"approval"./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_after_"approval"./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_"cache_failed".
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_"cache_failed"./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_"cache_failed"./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_cache_"quoted"_failed.
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_cache_"quoted"_failed./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_cache_"quoted"_failed./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_"quoted"_and_script.
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_"quoted"_and_script./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_"quoted"_and_script./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_`console`.
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_`console`./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_`console`./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_>_they_need_me_and_script.
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_>_they_need_me_and_script./user
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_>_they_need_me_and_script./assistant
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/quote-form/double
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/quote-form/single
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/quote-form/curly-double
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/quote-form/curly-single
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/quote-form/inline-code
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/quote-form/fenced-code
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/quote-form/blockquote
+=== RUN   TestTurnFallbackAuditMaskedSpanAdmission/quote-form/indented-blockquote
+--- PASS: TestTurnFallbackAuditMaskedSpanAdmission (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Alex_"quoted"_Blair_will_deploy. (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Alex_"quoted"_Blair_will_deploy./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Alex_"quoted"_Blair_will_deploy./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_in_north_"quoted"_zone_tomorrow. (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_in_north_"quoted"_zone_tomorrow./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_in_north_"quoted"_zone_tomorrow./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_next_"quoted"_week. (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_next_"quoted"_week./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_next_"quoted"_week./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_after_"approval". (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_after_"approval"./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_after_"approval"./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_"cache_failed". (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_"cache_failed"./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_"cache_failed"./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_cache_"quoted"_failed. (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_cache_"quoted"_failed./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_because_cache_"quoted"_failed./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_"quoted"_and_script. (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_"quoted"_and_script./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_"quoted"_and_script./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_`console`. (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_`console`./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_`console`./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_>_they_need_me_and_script. (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_>_they_need_me_and_script./user (0.00s)
+        --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/Please_deploy_using_console_>_they_need_me_and_script./assistant (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/quote-form/double (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/quote-form/single (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/quote-form/curly-double (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/quote-form/curly-single (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/quote-form/inline-code (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/quote-form/fenced-code (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/quote-form/blockquote (0.00s)
+    --- PASS: TestTurnFallbackAuditMaskedSpanAdmission/quote-form/indented-blockquote (0.00s)
+=== RUN   TestTurnFallbackAuditNamedActorAdmission
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/I
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Me
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/My
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Mine
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/You
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Your
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Yours
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/He
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Him
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/His
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/She
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Her
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Hers
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/It
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Its
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/They
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Them
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Their
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Theirs
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/We
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Us
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Our
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Ours
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Ourselves
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Myself
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Yourself
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Yourselves
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Himself
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Herself
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Itself
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Themselves
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/We_All
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Our_Team
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/You_And_I
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/All_Of_Us
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Who
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Whom
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Whose
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/This
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/That
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/These
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Those
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Anyone
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Anybody
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Anything
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Everyone
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Everybody
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Everything
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Someone
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Somebody
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Something
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Nobody
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/Nothing
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/None
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Alex
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Example_Operator
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Operations_Team
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/O'Brien
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Jean-Luc
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Iris
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Usain
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Theodore
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Ié
+=== RUN   TestTurnFallbackAuditNamedActorAdmission/genuine/Alex_Élodie
+--- PASS: TestTurnFallbackAuditNamedActorAdmission (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/I (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Me (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/My (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Mine (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/You (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Your (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Yours (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/He (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Him (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/His (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/She (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Her (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Hers (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/It (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Its (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/They (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Them (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Their (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Theirs (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/We (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Us (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Our (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Ours (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Ourselves (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Myself (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Yourself (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Yourselves (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Himself (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Herself (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Itself (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Themselves (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/We_All (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Our_Team (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/You_And_I (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/All_Of_Us (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Who (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Whom (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Whose (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/This (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/That (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/These (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Those (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Anyone (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Anybody (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Anything (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Everyone (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Everybody (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Everything (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Someone (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Somebody (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Something (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Nobody (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/Nothing (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/None (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Alex (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Example_Operator (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Operations_Team (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/O'Brien (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Jean-Luc (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Iris (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Usain (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Theodore (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Ié (0.00s)
+    --- PASS: TestTurnFallbackAuditNamedActorAdmission/genuine/Alex_Élodie (0.00s)
+=== RUN   TestTurnFallbackAuditAdjacentUnquotedControls
+--- PASS: TestTurnFallbackAuditAdjacentUnquotedControls (0.00s)
+=== RUN   TestTurnFallbackAuditContractedActors
+=== RUN   TestTurnFallbackAuditContractedActors/I'm
+=== RUN   TestTurnFallbackAuditContractedActors/I've
+=== RUN   TestTurnFallbackAuditContractedActors/I'll
+=== RUN   TestTurnFallbackAuditContractedActors/I'd
+=== RUN   TestTurnFallbackAuditContractedActors/We're
+=== RUN   TestTurnFallbackAuditContractedActors/We've
+=== RUN   TestTurnFallbackAuditContractedActors/We'll
+=== RUN   TestTurnFallbackAuditContractedActors/We'd
+=== RUN   TestTurnFallbackAuditContractedActors/You're
+=== RUN   TestTurnFallbackAuditContractedActors/You've
+=== RUN   TestTurnFallbackAuditContractedActors/You'll
+=== RUN   TestTurnFallbackAuditContractedActors/You'd
+=== RUN   TestTurnFallbackAuditContractedActors/He's
+=== RUN   TestTurnFallbackAuditContractedActors/He'll
+=== RUN   TestTurnFallbackAuditContractedActors/He'd
+=== RUN   TestTurnFallbackAuditContractedActors/She's
+=== RUN   TestTurnFallbackAuditContractedActors/She'll
+=== RUN   TestTurnFallbackAuditContractedActors/She'd
+=== RUN   TestTurnFallbackAuditContractedActors/It's
+=== RUN   TestTurnFallbackAuditContractedActors/It'll
+=== RUN   TestTurnFallbackAuditContractedActors/It'd
+=== RUN   TestTurnFallbackAuditContractedActors/They're
+=== RUN   TestTurnFallbackAuditContractedActors/They've
+=== RUN   TestTurnFallbackAuditContractedActors/They'll
+=== RUN   TestTurnFallbackAuditContractedActors/They'd
+--- PASS: TestTurnFallbackAuditContractedActors (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/I'm (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/I've (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/I'll (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/I'd (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/We're (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/We've (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/We'll (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/We'd (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/You're (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/You've (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/You'll (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/You'd (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/He's (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/He'll (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/He'd (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/She's (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/She'll (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/She'd (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/It's (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/It'll (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/It'd (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/They're (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/They've (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/They'll (0.00s)
+    --- PASS: TestTurnFallbackAuditContractedActors/They'd (0.00s)
+=== RUN   TestIdentityUnresolvedReferencesAreExplicit
+--- PASS: TestIdentityUnresolvedReferencesAreExplicit (0.00s)
+=== RUN   TestIdentityUnresolvedReferenceReasonsAndNegativeControls
+=== RUN   TestIdentityUnresolvedReferenceReasonsAndNegativeControls/I
+=== RUN   TestIdentityUnresolvedReferenceReasonsAndNegativeControls/You
+=== RUN   TestIdentityUnresolvedReferenceReasonsAndNegativeControls/He
+=== RUN   TestIdentityUnresolvedReferenceReasonsAndNegativeControls/We
+=== RUN   TestIdentityUnresolvedReferenceReasonsAndNegativeControls/himself
+--- PASS: TestIdentityUnresolvedReferenceReasonsAndNegativeControls (0.00s)
+    --- PASS: TestIdentityUnresolvedReferenceReasonsAndNegativeControls/I (0.00s)
+    --- PASS: TestIdentityUnresolvedReferenceReasonsAndNegativeControls/You (0.00s)
+    --- PASS: TestIdentityUnresolvedReferenceReasonsAndNegativeControls/He (0.00s)
+    --- PASS: TestIdentityUnresolvedReferenceReasonsAndNegativeControls/We (0.00s)
+    --- PASS: TestIdentityUnresolvedReferenceReasonsAndNegativeControls/himself (0.00s)
+=== RUN   TestIdentityUnresolvedReferenceMetadataIsBounded
+--- PASS: TestIdentityUnresolvedReferenceMetadataIsBounded (0.00s)
+=== RUN   TestIdentityAuditSubjectAndTokenBoundaries
+=== RUN   TestIdentityAuditSubjectAndTokenBoundaries/contracted_addressee
+=== RUN   TestIdentityAuditSubjectAndTokenBoundaries/noninitial_pronoun
+=== RUN   TestIdentityAuditSubjectAndTokenBoundaries/structured_identifiers
+=== RUN   TestIdentityAuditSubjectAndTokenBoundaries/unicode_word_boundary
+--- PASS: TestIdentityAuditSubjectAndTokenBoundaries (0.00s)
+    --- PASS: TestIdentityAuditSubjectAndTokenBoundaries/contracted_addressee (0.00s)
+    --- PASS: TestIdentityAuditSubjectAndTokenBoundaries/noninitial_pronoun (0.00s)
+    --- PASS: TestIdentityAuditSubjectAndTokenBoundaries/structured_identifiers (0.00s)
+    --- PASS: TestIdentityAuditSubjectAndTokenBoundaries/unicode_word_boundary (0.00s)
+=== RUN   TestIdentityAuditQuotedMultilineField
+--- PASS: TestIdentityAuditQuotedMultilineField (0.00s)
+=== RUN   TestIdentityAuditPriorFocusDoesNotBorrowFutureNames
+--- PASS: TestIdentityAuditPriorFocusDoesNotBorrowFutureNames (0.00s)
+=== RUN   TestIdentityAuditUnicodeSubjectsAndPunctuation
+--- PASS: TestIdentityAuditUnicodeSubjectsAndPunctuation (0.00s)
+=== RUN   TestIdentityAuditTruncationDoesNotInventPronouns
+--- PASS: TestIdentityAuditTruncationDoesNotInventPronouns (0.00s)
+=== RUN   TestIdentitySpeakerIsNotSelfClaimedName
+--- PASS: TestIdentitySpeakerIsNotSelfClaimedName (0.00s)
+=== RUN   TestIdentityContextResolvesButAbstainsOnCompetingSubjects
+--- PASS: TestIdentityContextResolvesButAbstainsOnCompetingSubjects (0.00s)
+=== RUN   TestIdentityDoesNotBorrowLaterSubjectOrQuotedNames
+--- PASS: TestIdentityDoesNotBorrowLaterSubjectOrQuotedNames (0.00s)
+=== RUN   TestIdentityIncompleteRosterDoesNotCreateUniqueAlias
+--- PASS: TestIdentityIncompleteRosterDoesNotCreateUniqueAlias (0.00s)
+=== RUN   TestIdentityAliasAmbiguityAndScopedAccount
+--- PASS: TestIdentityAliasAmbiguityAndScopedAccount (0.00s)
+=== RUN   TestIdentityOpaqueProfileDoesNotInventAliases
+--- PASS: TestIdentityOpaqueProfileDoesNotInventAliases (0.00s)
+=== RUN   TestIdentityKeepsSpeakerSeparateAndPreservesAmbiguousTense
+--- PASS: TestIdentityKeepsSpeakerSeparateAndPreservesAmbiguousTense (0.00s)
+=== RUN   TestIdentityNamesakesAndLongKeysStayDistinct
+--- PASS: TestIdentityNamesakesAndLongKeysStayDistinct (0.00s)
+=== RUN   TestFromTurnExtractsContentSpecificFieldsAfterCapture
+--- PASS: TestFromTurnExtractsContentSpecificFieldsAfterCapture (0.00s)
+=== RUN   TestFromTurnLabelsAssistantEvidenceSyntheticAndBoundsFields
+--- PASS: TestFromTurnLabelsAssistantEvidenceSyntheticAndBoundsFields (0.00s)
+=== RUN   TestFromTurnStopsLocationBeforeTemporalPhrase
+--- PASS: TestFromTurnStopsLocationBeforeTemporalPhrase (0.00s)
+=== RUN   TestQueryTextUsesOnlyPartialEventFrame
+--- PASS: TestQueryTextUsesOnlyPartialEventFrame (0.00s)
+=== RUN   TestFromTextCreatesContentBearingEventFrame
+--- PASS: TestFromTextCreatesContentBearingEventFrame (0.00s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/frame	3.118s

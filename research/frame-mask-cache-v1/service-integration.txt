@@ -1,0 +1,24 @@
+=== RUN   TestCaptureIdentityLookupBudgetAndIncompleteRoster
+--- PASS: TestCaptureIdentityLookupBudgetAndIncompleteRoster (0.10s)
+=== RUN   TestCaptureIdentityDurableAndRetryIndexesCommittedFrame
+--- PASS: TestCaptureIdentityDurableAndRetryIndexesCommittedFrame (0.08s)
+=== RUN   TestCaptureIdentityRetryKeepsCommittedUnresolvedReferences
+--- PASS: TestCaptureIdentityRetryKeepsCommittedUnresolvedReferences (0.00s)
+=== RUN   TestCaptureIdentityContextAndFutureCardBoundaries
+=== RUN   TestCaptureIdentityContextAndFutureCardBoundaries/valid
+=== RUN   TestCaptureIdentityContextAndFutureCardBoundaries/different-tenant
+=== RUN   TestCaptureIdentityContextAndFutureCardBoundaries/different-session
+=== RUN   TestCaptureIdentityContextAndFutureCardBoundaries/future-context
+=== RUN   TestCaptureIdentityContextAndFutureCardBoundaries/future-card
+=== RUN   TestCaptureIdentityContextAndFutureCardBoundaries/missing-context
+--- PASS: TestCaptureIdentityContextAndFutureCardBoundaries (0.00s)
+    --- PASS: TestCaptureIdentityContextAndFutureCardBoundaries/valid (0.00s)
+    --- PASS: TestCaptureIdentityContextAndFutureCardBoundaries/different-tenant (0.00s)
+    --- PASS: TestCaptureIdentityContextAndFutureCardBoundaries/different-session (0.00s)
+    --- PASS: TestCaptureIdentityContextAndFutureCardBoundaries/future-context (0.00s)
+    --- PASS: TestCaptureIdentityContextAndFutureCardBoundaries/future-card (0.00s)
+    --- PASS: TestCaptureIdentityContextAndFutureCardBoundaries/missing-context (0.00s)
+=== RUN   TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields
+--- PASS: TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields (0.00s)
+PASS
+ok  	github.com/JuanHuaXu/eventframed/internal/service	0.554s

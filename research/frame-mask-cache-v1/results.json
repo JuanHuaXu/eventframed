@@ -1,0 +1,3362 @@
+{
+  "revision": "f3231fab2244c5c6bca8f7f822e5669ac58d13cd",
+  "semanticComparisons": 8192,
+  "parallelCallComparisons": 384,
+  "semanticTestsRun": 36,
+  "historicalSourceIdentityTest": "Control only; candidate is a distinct source-hashed patch",
+  "scientificConfirmation": false,
+  "wholeGoalValidation": false,
+  "loadedLatencyTested": false,
+  "preflightPass": true,
+  "workflows": {
+    "turn": {
+      "geometricMeanImprovementPercent": 11.494834313815183,
+      "worstRegressionPercent": -3.6209523213627137,
+      "pass": true
+    },
+    "text": {
+      "geometricMeanImprovementPercent": 10.283230731432724,
+      "worstRegressionPercent": -3.2980167990697917,
+      "pass": true
+    },
+    "query": {
+      "geometricMeanImprovementPercent": 12.020111221336528,
+      "worstRegressionPercent": -3.742554575941537,
+      "pass": true
+    }
+  },
+  "cells": [
+    {
+      "cell": "turn/early/256",
+      "oldNS": 39674.5,
+      "newNS": 37268.5,
+      "changePercent": -6.064348637033867,
+      "oldBytes": 9481,
+      "newBytes": 6088,
+      "oldAllocations": 96,
+      "newAllocations": 80
+    },
+    {
+      "cell": "turn/early/2048",
+      "oldNS": 234043,
+      "newNS": 214505,
+      "changePercent": -8.348038608289931,
+      "oldBytes": 49393,
+      "newBytes": 22252,
+      "oldAllocations": 96,
+      "newAllocations": 80
+    },
+    {
+      "cell": "turn/early/16384",
+      "oldNS": 2237167.5,
+      "newNS": 2044873,
+      "changePercent": -8.595444909690485,
+      "oldBytes": 369022.5,
+      "newBytes": 152848.5,
+      "oldAllocations": 97,
+      "newAllocations": 80
+    },
+    {
+      "cell": "turn/late/256",
+      "oldNS": 74936.5,
+      "newNS": 57256,
+      "changePercent": -23.59397623321079,
+      "oldBytes": 9137,
+      "newBytes": 5680,
+      "oldAllocations": 96,
+      "newAllocations": 80
+    },
+    {
+      "cell": "turn/late/2048",
+      "oldNS": 527416.5,
+      "newNS": 508319,
+      "changePercent": -3.6209523213627137,
+      "oldBytes": 49033,
+      "newBytes": 21893,
+      "oldAllocations": 106,
+      "newAllocations": 90
+    },
+    {
+      "cell": "turn/late/16384",
+      "oldNS": 4878524,
+      "newNS": 4154929.5,
+      "changePercent": -14.832242292955822,
+      "oldBytes": 368610,
+      "newBytes": 152485,
+      "oldAllocations": 107,
+      "newAllocations": 90
+    },
+    {
+      "cell": "turn/no-match/256",
+      "oldNS": 155531,
+      "newNS": 147324.5,
+      "changePercent": -5.27644006661051,
+      "oldBytes": 11721,
+      "newBytes": 3944,
+      "oldAllocations": 85,
+      "newAllocations": 49
+    },
+    {
+      "cell": "turn/no-match/2048",
+      "oldNS": 1343750,
+      "newNS": 1157159.5,
+      "changePercent": -13.885804651162792,
+      "oldBytes": 81146,
+      "newBytes": 20076,
+      "oldAllocations": 85,
+      "newAllocations": 49
+    },
+    {
+      "cell": "turn/no-match/16384",
+      "oldNS": 11370038,
+      "newNS": 9883217,
+      "changePercent": -13.076658143095033,
+      "oldBytes": 636946,
+      "newBytes": 150679,
+      "oldAllocations": 87,
+      "newAllocations": 49
+    },
+    {
+      "cell": "turn/quoted/256",
+      "oldNS": 130443.5,
+      "newNS": 124368,
+      "changePercent": -4.657572052267844,
+      "oldBytes": 11589,
+      "newBytes": 3920,
+      "oldAllocations": 96,
+      "newAllocations": 51
+    },
+    {
+      "cell": "turn/quoted/2048",
+      "oldNS": 1314156,
+      "newNS": 1140114.5,
+      "changePercent": -13.243595128736619,
+      "oldBytes": 81190,
+      "newBytes": 20084,
+      "oldAllocations": 96,
+      "newAllocations": 51
+    },
+    {
+      "cell": "turn/quoted/16384",
+      "oldNS": 11706638.5,
+      "newNS": 9711331.5,
+      "changePercent": -17.044235200395054,
+      "oldBytes": 637353.5,
+      "newBytes": 150687,
+      "oldAllocations": 98,
+      "newAllocations": 51
+    },
+    {
+      "cell": "turn/collective/256",
+      "oldNS": 138322.5,
+      "newNS": 132294,
+      "changePercent": -4.358293119340672,
+      "oldBytes": 11801,
+      "newBytes": 4024,
+      "oldAllocations": 86,
+      "newAllocations": 50
+    },
+    {
+      "cell": "turn/collective/2048",
+      "oldNS": 1245036.5,
+      "newNS": 1063356,
+      "changePercent": -14.59238343614826,
+      "oldBytes": 81225,
+      "newBytes": 20156,
+      "oldAllocations": 86,
+      "newAllocations": 50
+    },
+    {
+      "cell": "turn/collective/16384",
+      "oldNS": 11033173.5,
+      "newNS": 9008590,
+      "changePercent": -18.349965220795273,
+      "oldBytes": 637045,
+      "newBytes": 150755,
+      "oldAllocations": 88,
+      "newAllocations": 50
+    },
+    {
+      "cell": "text/early/256",
+      "oldNS": 20650.5,
+      "newNS": 18667,
+      "changePercent": -9.60509430764388,
+      "oldBytes": 4712,
+      "newBytes": 2168,
+      "oldAllocations": 58,
+      "newAllocations": 46
+    },
+    {
+      "cell": "text/early/2048",
+      "oldNS": 112337.5,
+      "newNS": 97367,
+      "changePercent": -13.326360298208527,
+      "oldBytes": 28461,
+      "newBytes": 8105,
+      "oldAllocations": 58,
+      "newAllocations": 46
+    },
+    {
+      "cell": "text/early/16384",
+      "oldNS": 1104357.5,
+      "newNS": 887358.5,
+      "changePercent": -19.649343622875747,
+      "oldBytes": 217435,
+      "newBytes": 55349.5,
+      "oldAllocations": 58,
+      "newAllocations": 46
+    },
+    {
+      "cell": "text/late/256",
+      "oldNS": 40317,
+      "newNS": 38366,
+      "changePercent": -4.839149738323789,
+      "oldBytes": 4584,
+      "newBytes": 2040,
+      "oldAllocations": 58,
+      "newAllocations": 46
+    },
+    {
+      "cell": "text/late/2048",
+      "oldNS": 366599.5,
+      "newNS": 319706.5,
+      "changePercent": -12.79134314149365,
+      "oldBytes": 28397,
+      "newBytes": 8042,
+      "oldAllocations": 66,
+      "newAllocations": 54
+    },
+    {
+      "cell": "text/late/16384",
+      "oldNS": 3094155.5,
+      "newNS": 2555287.5,
+      "changePercent": -17.415672870998243,
+      "oldBytes": 217404,
+      "newBytes": 55316,
+      "oldAllocations": 66,
+      "newAllocations": 54
+    },
+    {
+      "cell": "text/no-match/256",
+      "oldNS": 61491.5,
+      "newNS": 59463.5,
+      "changePercent": -3.2980167990697917,
+      "oldBytes": 3872,
+      "newBytes": 1280,
+      "oldAllocations": 35,
+      "newAllocations": 23
+    },
+    {
+      "cell": "text/no-match/2048",
+      "oldNS": 529816.5,
+      "newNS": 478252.5,
+      "changePercent": -9.732426226816271,
+      "oldBytes": 27557,
+      "newBytes": 7201,
+      "oldAllocations": 35,
+      "newAllocations": 23
+    },
+    {
+      "cell": "text/no-match/16384",
+      "oldNS": 4773212,
+      "newNS": 4056394.5,
+      "changePercent": -15.017508126603218,
+      "oldBytes": 216541.5,
+      "newBytes": 54452,
+      "oldAllocations": 35,
+      "newAllocations": 23
+    },
+    {
+      "cell": "text/quoted/256",
+      "oldNS": 53246.5,
+      "newNS": 51245.5,
+      "changePercent": -3.757993483139732,
+      "oldBytes": 3824,
+      "newBytes": 1268,
+      "oldAllocations": 39,
+      "newAllocations": 24
+    },
+    {
+      "cell": "text/quoted/2048",
+      "oldNS": 522334,
+      "newNS": 469544.5,
+      "changePercent": -10.106464446120677,
+      "oldBytes": 27573,
+      "newBytes": 7205,
+      "oldAllocations": 39,
+      "newAllocations": 24
+    },
+    {
+      "cell": "text/quoted/16384",
+      "oldNS": 4470445,
+      "newNS": 4075276.5,
+      "changePercent": -8.839578610183107,
+      "oldBytes": 216559,
+      "newBytes": 54456,
+      "oldAllocations": 39,
+      "newAllocations": 24
+    },
+    {
+      "cell": "text/collective/256",
+      "oldNS": 62764,
+      "newNS": 60503,
+      "changePercent": -3.6023835319609954,
+      "oldBytes": 3952,
+      "newBytes": 1360,
+      "oldAllocations": 35,
+      "newAllocations": 23
+    },
+    {
+      "cell": "text/collective/2048",
+      "oldNS": 536534.5,
+      "newNS": 481912.5,
+      "changePercent": -10.18051961243872,
+      "oldBytes": 27637,
+      "newBytes": 7281,
+      "oldAllocations": 35,
+      "newAllocations": 23
+    },
+    {
+      "cell": "text/collective/16384",
+      "oldNS": 4460487.5,
+      "newNS": 4007909,
+      "changePercent": -10.14639094941977,
+      "oldBytes": 216620,
+      "newBytes": 54532,
+      "oldAllocations": 35,
+      "newAllocations": 23
+    },
+    {
+      "cell": "query/early/256",
+      "oldNS": 26711.5,
+      "newNS": 23137.5,
+      "changePercent": -13.380004866817663,
+      "oldBytes": 6616,
+      "newBytes": 3224,
+      "oldAllocations": 78,
+      "newAllocations": 62
+    },
+    {
+      "cell": "query/early/2048",
+      "oldNS": 144989,
+      "newNS": 127711.5,
+      "changePercent": -11.916421245749675,
+      "oldBytes": 36302,
+      "newBytes": 9161,
+      "oldAllocations": 78,
+      "newAllocations": 62
+    },
+    {
+      "cell": "query/early/16384",
+      "oldNS": 1470613.5,
+      "newNS": 1101034,
+      "changePercent": -25.13097424986239,
+      "oldBytes": 272524,
+      "newBytes": 56409,
+      "oldAllocations": 78,
+      "newAllocations": 62
+    },
+    {
+      "cell": "query/late/256",
+      "oldNS": 47117,
+      "newNS": 43972.5,
+      "changePercent": -6.673811999915102,
+      "oldBytes": 6384,
+      "newBytes": 2992,
+      "oldAllocations": 78,
+      "newAllocations": 62
+    },
+    {
+      "cell": "query/late/2048",
+      "oldNS": 433078.5,
+      "newNS": 379287.5,
+      "changePercent": -12.420611967576312,
+      "oldBytes": 36151.5,
+      "newBytes": 9010,
+      "oldAllocations": 88,
+      "newAllocations": 72
+    },
+    {
+      "cell": "query/late/16384",
+      "oldNS": 3575722,
+      "newNS": 3012781,
+      "changePercent": -15.743421887943187,
+      "oldBytes": 272365,
+      "newBytes": 56254,
+      "oldAllocations": 88,
+      "newAllocations": 72
+    },
+    {
+      "cell": "query/no-match/256",
+      "oldNS": 68939.5,
+      "newNS": 66196,
+      "changePercent": -3.97957629515735,
+      "oldBytes": 4736,
+      "newBytes": 1280,
+      "oldAllocations": 34,
+      "newAllocations": 18
+    },
+    {
+      "cell": "query/no-match/2048",
+      "oldNS": 605349,
+      "newNS": 537867.5,
+      "changePercent": -11.147536379840394,
+      "oldBytes": 34342,
+      "newBytes": 7201,
+      "oldAllocations": 34,
+      "newAllocations": 18
+    },
+    {
+      "cell": "query/no-match/16384",
+      "oldNS": 5201030,
+      "newNS": 4510728.5,
+      "changePercent": -13.27239989002178,
+      "oldBytes": 270564,
+      "newBytes": 54453,
+      "oldAllocations": 34,
+      "newAllocations": 18
+    },
+    {
+      "cell": "query/quoted/256",
+      "oldNS": 60803.5,
+      "newNS": 57085.5,
+      "changePercent": -6.114779576833573,
+      "oldBytes": 4676,
+      "newBytes": 1268,
+      "oldAllocations": 39,
+      "newAllocations": 19
+    },
+    {
+      "cell": "query/quoted/2048",
+      "oldNS": 606147,
+      "newNS": 527314,
+      "changePercent": -13.005591052995392,
+      "oldBytes": 34362,
+      "newBytes": 7205,
+      "oldAllocations": 39,
+      "newAllocations": 19
+    },
+    {
+      "cell": "query/quoted/16384",
+      "oldNS": 5289130.5,
+      "newNS": 4490602,
+      "changePercent": -15.097538243762376,
+      "oldBytes": 270584.5,
+      "newBytes": 54458,
+      "oldAllocations": 39,
+      "newAllocations": 19
+    },
+    {
+      "cell": "query/collective/256",
+      "oldNS": 69925.5,
+      "newNS": 67308.5,
+      "changePercent": -3.742554575941537,
+      "oldBytes": 4896,
+      "newBytes": 1440,
+      "oldAllocations": 34,
+      "newAllocations": 18
+    },
+    {
+      "cell": "query/collective/2048",
+      "oldNS": 624654.5,
+      "newNS": 536986,
+      "changePercent": -14.034718392327283,
+      "oldBytes": 34502,
+      "newBytes": 7361,
+      "oldAllocations": 34,
+      "newAllocations": 18
+    },
+    {
+      "cell": "query/collective/16384",
+      "oldNS": 5141684,
+      "newNS": 4508948.5,
+      "changePercent": -12.305997412520874,
+      "oldBytes": 270724,
+      "newBytes": 54613,
+      "oldAllocations": 34,
+      "newAllocations": 18
+    }
+  ],
+  "samples": {
+    "turn/early/256/control": [
+      {
+        "ns": 48620,
+        "bytes": 9498,
+        "allocs": 96
+      },
+      {
+        "ns": 39301,
+        "bytes": 9481,
+        "allocs": 96
+      },
+      {
+        "ns": 39079,
+        "bytes": 9481,
+        "allocs": 96
+      },
+      {
+        "ns": 39817,
+        "bytes": 9481,
+        "allocs": 96
+      },
+      {
+        "ns": 39621,
+        "bytes": 9481,
+        "allocs": 96
+      },
+      {
+        "ns": 39728,
+        "bytes": 9481,
+        "allocs": 96
+      }
+    ],
+    "turn/early/256/candidate": [
+      {
+        "ns": 36391,
+        "bytes": 6088,
+        "allocs": 80
+      },
+      {
+        "ns": 36262,
+        "bytes": 6088,
+        "allocs": 80
+      },
+      {
+        "ns": 37544,
+        "bytes": 6088,
+        "allocs": 80
+      },
+      {
+        "ns": 37522,
+        "bytes": 6100,
+        "allocs": 80
+      },
+      {
+        "ns": 37393,
+        "bytes": 6088,
+        "allocs": 80
+      },
+      {
+        "ns": 37144,
+        "bytes": 6088,
+        "allocs": 80
+      }
+    ],
+    "turn/early/2048/control": [
+      {
+        "ns": 237847,
+        "bytes": 49445,
+        "allocs": 96
+      },
+      {
+        "ns": 233598,
+        "bytes": 49393,
+        "allocs": 96
+      },
+      {
+        "ns": 238208,
+        "bytes": 49393,
+        "allocs": 96
+      },
+      {
+        "ns": 232714,
+        "bytes": 49393,
+        "allocs": 96
+      },
+      {
+        "ns": 234206,
+        "bytes": 49393,
+        "allocs": 96
+      },
+      {
+        "ns": 233880,
+        "bytes": 49393,
+        "allocs": 96
+      }
+    ],
+    "turn/early/2048/candidate": [
+      {
+        "ns": 214076,
+        "bytes": 22252,
+        "allocs": 80
+      },
+      {
+        "ns": 217591,
+        "bytes": 22252,
+        "allocs": 80
+      },
+      {
+        "ns": 212845,
+        "bytes": 22252,
+        "allocs": 80
+      },
+      {
+        "ns": 215593,
+        "bytes": 22298,
+        "allocs": 80
+      },
+      {
+        "ns": 214260,
+        "bytes": 22252,
+        "allocs": 80
+      },
+      {
+        "ns": 214750,
+        "bytes": 22252,
+        "allocs": 80
+      }
+    ],
+    "turn/early/16384/control": [
+      {
+        "ns": 2226625,
+        "bytes": 369077,
+        "allocs": 97
+      },
+      {
+        "ns": 2272502,
+        "bytes": 368966,
+        "allocs": 97
+      },
+      {
+        "ns": 2218499,
+        "bytes": 368960,
+        "allocs": 97
+      },
+      {
+        "ns": 2226765,
+        "bytes": 368968,
+        "allocs": 97
+      },
+      {
+        "ns": 2247570,
+        "bytes": 369547,
+        "allocs": 97
+      },
+      {
+        "ns": 2260187,
+        "bytes": 369544,
+        "allocs": 97
+      }
+    ],
+    "turn/early/16384/candidate": [
+      {
+        "ns": 2044472,
+        "bytes": 152849,
+        "allocs": 80
+      },
+      {
+        "ns": 1782224,
+        "bytes": 152848,
+        "allocs": 80
+      },
+      {
+        "ns": 1951029,
+        "bytes": 152848,
+        "allocs": 80
+      },
+      {
+        "ns": 2082682,
+        "bytes": 152954,
+        "allocs": 81
+      },
+      {
+        "ns": 2045274,
+        "bytes": 152849,
+        "allocs": 80
+      },
+      {
+        "ns": 2065466,
+        "bytes": 152848,
+        "allocs": 80
+      }
+    ],
+    "turn/late/256/control": [
+      {
+        "ns": 59080,
+        "bytes": 9137,
+        "allocs": 96
+      },
+      {
+        "ns": 59605,
+        "bytes": 9137,
+        "allocs": 96
+      },
+      {
+        "ns": 59383,
+        "bytes": 9137,
+        "allocs": 96
+      },
+      {
+        "ns": 90268,
+        "bytes": 9137,
+        "allocs": 96
+      },
+      {
+        "ns": 366134,
+        "bytes": 9137,
+        "allocs": 96
+      },
+      {
+        "ns": 191832,
+        "bytes": 9137,
+        "allocs": 96
+      }
+    ],
+    "turn/late/256/candidate": [
+      {
+        "ns": 56864,
+        "bytes": 5680,
+        "allocs": 80
+      },
+      {
+        "ns": 57203,
+        "bytes": 5680,
+        "allocs": 80
+      },
+      {
+        "ns": 56855,
+        "bytes": 5680,
+        "allocs": 80
+      },
+      {
+        "ns": 57309,
+        "bytes": 5698,
+        "allocs": 80
+      },
+      {
+        "ns": 57771,
+        "bytes": 5680,
+        "allocs": 80
+      },
+      {
+        "ns": 61306,
+        "bytes": 5680,
+        "allocs": 80
+      }
+    ],
+    "turn/late/2048/control": [
+      {
+        "ns": 502509,
+        "bytes": 49142,
+        "allocs": 106
+      },
+      {
+        "ns": 496233,
+        "bytes": 49033,
+        "allocs": 106
+      },
+      {
+        "ns": 516519,
+        "bytes": 49033,
+        "allocs": 106
+      },
+      {
+        "ns": 547995,
+        "bytes": 49033,
+        "allocs": 106
+      },
+      {
+        "ns": 546226,
+        "bytes": 49033,
+        "allocs": 106
+      },
+      {
+        "ns": 538314,
+        "bytes": 49033,
+        "allocs": 106
+      }
+    ],
+    "turn/late/2048/candidate": [
+      {
+        "ns": 474860,
+        "bytes": 21893,
+        "allocs": 90
+      },
+      {
+        "ns": 478574,
+        "bytes": 21893,
+        "allocs": 90
+      },
+      {
+        "ns": 499495,
+        "bytes": 21892,
+        "allocs": 90
+      },
+      {
+        "ns": 1055214,
+        "bytes": 22152,
+        "allocs": 90
+      },
+      {
+        "ns": 517143,
+        "bytes": 21893,
+        "allocs": 90
+      },
+      {
+        "ns": 528778,
+        "bytes": 21893,
+        "allocs": 90
+      }
+    ],
+    "turn/late/16384/control": [
+      {
+        "ns": 4884390,
+        "bytes": 368848,
+        "allocs": 108
+      },
+      {
+        "ns": 4885425,
+        "bytes": 368604,
+        "allocs": 107
+      },
+      {
+        "ns": 4872658,
+        "bytes": 368607,
+        "allocs": 107
+      },
+      {
+        "ns": 4664443,
+        "bytes": 368614,
+        "allocs": 107
+      },
+      {
+        "ns": 5199037,
+        "bytes": 368613,
+        "allocs": 107
+      },
+      {
+        "ns": 4551921,
+        "bytes": 368607,
+        "allocs": 107
+      }
+    ],
+    "turn/late/16384/candidate": [
+      {
+        "ns": 4029426,
+        "bytes": 152484,
+        "allocs": 90
+      },
+      {
+        "ns": 4153165,
+        "bytes": 152484,
+        "allocs": 90
+      },
+      {
+        "ns": 4106651,
+        "bytes": 152485,
+        "allocs": 90
+      },
+      {
+        "ns": 4156694,
+        "bytes": 152727,
+        "allocs": 92
+      },
+      {
+        "ns": 4251335,
+        "bytes": 152485,
+        "allocs": 90
+      },
+      {
+        "ns": 4313262,
+        "bytes": 152495,
+        "allocs": 90
+      }
+    ],
+    "turn/no-match/256/control": [
+      {
+        "ns": 150725,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 157368,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 155358,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 181700,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 155704,
+        "bytes": 11721,
+        "allocs": 85
+      },
+      {
+        "ns": 154325,
+        "bytes": 11721,
+        "allocs": 85
+      }
+    ],
+    "turn/no-match/256/candidate": [
+      {
+        "ns": 147095,
+        "bytes": 3944,
+        "allocs": 49
+      },
+      {
+        "ns": 145699,
+        "bytes": 3944,
+        "allocs": 49
+      },
+      {
+        "ns": 147554,
+        "bytes": 3944,
+        "allocs": 49
+      },
+      {
+        "ns": 145741,
+        "bytes": 3944,
+        "allocs": 49
+      },
+      {
+        "ns": 148920,
+        "bytes": 3944,
+        "allocs": 49
+      },
+      {
+        "ns": 174380,
+        "bytes": 3944,
+        "allocs": 49
+      }
+    ],
+    "turn/no-match/2048/control": [
+      {
+        "ns": 1331150,
+        "bytes": 81386,
+        "allocs": 85
+      },
+      {
+        "ns": 1295040,
+        "bytes": 81144,
+        "allocs": 85
+      },
+      {
+        "ns": 1323003,
+        "bytes": 81145,
+        "allocs": 85
+      },
+      {
+        "ns": 1407074,
+        "bytes": 81146,
+        "allocs": 85
+      },
+      {
+        "ns": 1356350,
+        "bytes": 81146,
+        "allocs": 85
+      },
+      {
+        "ns": 1460900,
+        "bytes": 81146,
+        "allocs": 85
+      }
+    ],
+    "turn/no-match/2048/candidate": [
+      {
+        "ns": 1143921,
+        "bytes": 20076,
+        "allocs": 49
+      },
+      {
+        "ns": 1151709,
+        "bytes": 20076,
+        "allocs": 49
+      },
+      {
+        "ns": 1141222,
+        "bytes": 20076,
+        "allocs": 49
+      },
+      {
+        "ns": 1162610,
+        "bytes": 20315,
+        "allocs": 49
+      },
+      {
+        "ns": 1177361,
+        "bytes": 20076,
+        "allocs": 49
+      },
+      {
+        "ns": 1184689,
+        "bytes": 20076,
+        "allocs": 49
+      }
+    ],
+    "turn/no-match/16384/control": [
+      {
+        "ns": 11328389,
+        "bytes": 637538,
+        "allocs": 91
+      },
+      {
+        "ns": 11381338,
+        "bytes": 641377,
+        "allocs": 92
+      },
+      {
+        "ns": 11283896,
+        "bytes": 636918,
+        "allocs": 86
+      },
+      {
+        "ns": 12905892,
+        "bytes": 636946,
+        "allocs": 87
+      },
+      {
+        "ns": 12319617,
+        "bytes": 636946,
+        "allocs": 87
+      },
+      {
+        "ns": 11358738,
+        "bytes": 636946,
+        "allocs": 87
+      }
+    ],
+    "turn/no-match/16384/candidate": [
+      {
+        "ns": 9830958,
+        "bytes": 150679,
+        "allocs": 49
+      },
+      {
+        "ns": 9777611,
+        "bytes": 150679,
+        "allocs": 49
+      },
+      {
+        "ns": 9726285,
+        "bytes": 150679,
+        "allocs": 49
+      },
+      {
+        "ns": 9984149,
+        "bytes": 151288,
+        "allocs": 53
+      },
+      {
+        "ns": 10058617,
+        "bytes": 150688,
+        "allocs": 49
+      },
+      {
+        "ns": 9935476,
+        "bytes": 150679,
+        "allocs": 49
+      }
+    ],
+    "turn/quoted/256/control": [
+      {
+        "ns": 130398,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 131052,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 129748,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 131182,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 130489,
+        "bytes": 11589,
+        "allocs": 96
+      },
+      {
+        "ns": 129292,
+        "bytes": 11589,
+        "allocs": 96
+      }
+    ],
+    "turn/quoted/256/candidate": [
+      {
+        "ns": 124172,
+        "bytes": 3920,
+        "allocs": 51
+      },
+      {
+        "ns": 123787,
+        "bytes": 3920,
+        "allocs": 51
+      },
+      {
+        "ns": 124564,
+        "bytes": 3920,
+        "allocs": 51
+      },
+      {
+        "ns": 125561,
+        "bytes": 3920,
+        "allocs": 51
+      },
+      {
+        "ns": 125518,
+        "bytes": 3920,
+        "allocs": 51
+      },
+      {
+        "ns": 123489,
+        "bytes": 3920,
+        "allocs": 51
+      }
+    ],
+    "turn/quoted/2048/control": [
+      {
+        "ns": 1305233,
+        "bytes": 81434,
+        "allocs": 96
+      },
+      {
+        "ns": 1309802,
+        "bytes": 81189,
+        "allocs": 96
+      },
+      {
+        "ns": 1315362,
+        "bytes": 81189,
+        "allocs": 96
+      },
+      {
+        "ns": 1326900,
+        "bytes": 81190,
+        "allocs": 96
+      },
+      {
+        "ns": 1321893,
+        "bytes": 81190,
+        "allocs": 96
+      },
+      {
+        "ns": 1312950,
+        "bytes": 81190,
+        "allocs": 96
+      }
+    ],
+    "turn/quoted/2048/candidate": [
+      {
+        "ns": 1140380,
+        "bytes": 20084,
+        "allocs": 51
+      },
+      {
+        "ns": 1139849,
+        "bytes": 20084,
+        "allocs": 51
+      },
+      {
+        "ns": 1183025,
+        "bytes": 20084,
+        "allocs": 51
+      },
+      {
+        "ns": 1142628,
+        "bytes": 20323,
+        "allocs": 51
+      },
+      {
+        "ns": 1118473,
+        "bytes": 20084,
+        "allocs": 51
+      },
+      {
+        "ns": 1124995,
+        "bytes": 20084,
+        "allocs": 51
+      }
+    ],
+    "turn/quoted/16384/control": [
+      {
+        "ns": 11883679,
+        "bytes": 637716,
+        "allocs": 102
+      },
+      {
+        "ns": 11568562,
+        "bytes": 636974,
+        "allocs": 97
+      },
+      {
+        "ns": 11197056,
+        "bytes": 640668,
+        "allocs": 102
+      },
+      {
+        "ns": 11720781,
+        "bytes": 636988,
+        "allocs": 98
+      },
+      {
+        "ns": 11833242,
+        "bytes": 640698,
+        "allocs": 98
+      },
+      {
+        "ns": 11692496,
+        "bytes": 636991,
+        "allocs": 98
+      }
+    ],
+    "turn/quoted/16384/candidate": [
+      {
+        "ns": 9710538,
+        "bytes": 154380,
+        "allocs": 55
+      },
+      {
+        "ns": 9712125,
+        "bytes": 150687,
+        "allocs": 51
+      },
+      {
+        "ns": 9599458,
+        "bytes": 150687,
+        "allocs": 51
+      },
+      {
+        "ns": 9832017,
+        "bytes": 151290,
+        "allocs": 55
+      },
+      {
+        "ns": 9499899,
+        "bytes": 150687,
+        "allocs": 51
+      },
+      {
+        "ns": 9752972,
+        "bytes": 150687,
+        "allocs": 51
+      }
+    ],
+    "turn/collective/256/control": [
+      {
+        "ns": 138878,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 138789,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 138571,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 138074,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 137399,
+        "bytes": 11801,
+        "allocs": 86
+      },
+      {
+        "ns": 137398,
+        "bytes": 11801,
+        "allocs": 86
+      }
+    ],
+    "turn/collective/256/candidate": [
+      {
+        "ns": 131960,
+        "bytes": 4024,
+        "allocs": 50
+      },
+      {
+        "ns": 131600,
+        "bytes": 4024,
+        "allocs": 50
+      },
+      {
+        "ns": 131408,
+        "bytes": 4024,
+        "allocs": 50
+      },
+      {
+        "ns": 133532,
+        "bytes": 4024,
+        "allocs": 50
+      },
+      {
+        "ns": 132628,
+        "bytes": 4024,
+        "allocs": 50
+      },
+      {
+        "ns": 139372,
+        "bytes": 4024,
+        "allocs": 50
+      }
+    ],
+    "turn/collective/2048/control": [
+      {
+        "ns": 1239652,
+        "bytes": 81465,
+        "allocs": 86
+      },
+      {
+        "ns": 1250421,
+        "bytes": 81225,
+        "allocs": 86
+      },
+      {
+        "ns": 1203182,
+        "bytes": 81225,
+        "allocs": 86
+      },
+      {
+        "ns": 1226695,
+        "bytes": 81225,
+        "allocs": 86
+      },
+      {
+        "ns": 1263372,
+        "bytes": 81225,
+        "allocs": 86
+      },
+      {
+        "ns": 1282139,
+        "bytes": 81225,
+        "allocs": 86
+      }
+    ],
+    "turn/collective/2048/candidate": [
+      {
+        "ns": 1079470,
+        "bytes": 20156,
+        "allocs": 50
+      },
+      {
+        "ns": 1057577,
+        "bytes": 20156,
+        "allocs": 50
+      },
+      {
+        "ns": 1056514,
+        "bytes": 20156,
+        "allocs": 50
+      },
+      {
+        "ns": 1069135,
+        "bytes": 20395,
+        "allocs": 50
+      },
+      {
+        "ns": 1071766,
+        "bytes": 20156,
+        "allocs": 50
+      },
+      {
+        "ns": 1049845,
+        "bytes": 20156,
+        "allocs": 50
+      }
+    ],
+    "turn/collective/16384/control": [
+      {
+        "ns": 10887628,
+        "bytes": 637544,
+        "allocs": 90
+      },
+      {
+        "ns": 10245580,
+        "bytes": 640087,
+        "allocs": 88
+      },
+      {
+        "ns": 10758938,
+        "bytes": 636998,
+        "allocs": 87
+      },
+      {
+        "ns": 12064885,
+        "bytes": 637045,
+        "allocs": 88
+      },
+      {
+        "ns": 11275545,
+        "bytes": 637045,
+        "allocs": 88
+      },
+      {
+        "ns": 11178719,
+        "bytes": 637045,
+        "allocs": 88
+      }
+    ],
+    "turn/collective/16384/candidate": [
+      {
+        "ns": 9019641,
+        "bytes": 150755,
+        "allocs": 50
+      },
+      {
+        "ns": 9015962,
+        "bytes": 150759,
+        "allocs": 50
+      },
+      {
+        "ns": 9052196,
+        "bytes": 150755,
+        "allocs": 50
+      },
+      {
+        "ns": 8918016,
+        "bytes": 151279,
+        "allocs": 53
+      },
+      {
+        "ns": 9001218,
+        "bytes": 150755,
+        "allocs": 50
+      },
+      {
+        "ns": 8941394,
+        "bytes": 150755,
+        "allocs": 50
+      }
+    ],
+    "text/early/256/control": [
+      {
+        "ns": 20634,
+        "bytes": 4712,
+        "allocs": 58
+      },
+      {
+        "ns": 20538,
+        "bytes": 4712,
+        "allocs": 58
+      },
+      {
+        "ns": 20577,
+        "bytes": 4712,
+        "allocs": 58
+      },
+      {
+        "ns": 20871,
+        "bytes": 4712,
+        "allocs": 58
+      },
+      {
+        "ns": 20680,
+        "bytes": 4712,
+        "allocs": 58
+      },
+      {
+        "ns": 20667,
+        "bytes": 4712,
+        "allocs": 58
+      }
+    ],
+    "text/early/256/candidate": [
+      {
+        "ns": 18564,
+        "bytes": 2168,
+        "allocs": 46
+      },
+      {
+        "ns": 18650,
+        "bytes": 2168,
+        "allocs": 46
+      },
+      {
+        "ns": 18497,
+        "bytes": 2168,
+        "allocs": 46
+      },
+      {
+        "ns": 18971,
+        "bytes": 2168,
+        "allocs": 46
+      },
+      {
+        "ns": 18805,
+        "bytes": 2168,
+        "allocs": 46
+      },
+      {
+        "ns": 18684,
+        "bytes": 2168,
+        "allocs": 46
+      }
+    ],
+    "text/early/2048/control": [
+      {
+        "ns": 112353,
+        "bytes": 28484,
+        "allocs": 58
+      },
+      {
+        "ns": 115433,
+        "bytes": 28461,
+        "allocs": 58
+      },
+      {
+        "ns": 115737,
+        "bytes": 28461,
+        "allocs": 58
+      },
+      {
+        "ns": 112322,
+        "bytes": 28461,
+        "allocs": 58
+      },
+      {
+        "ns": 111914,
+        "bytes": 28461,
+        "allocs": 58
+      },
+      {
+        "ns": 111894,
+        "bytes": 28461,
+        "allocs": 58
+      }
+    ],
+    "text/early/2048/candidate": [
+      {
+        "ns": 97578,
+        "bytes": 8105,
+        "allocs": 46
+      },
+      {
+        "ns": 97001,
+        "bytes": 8105,
+        "allocs": 46
+      },
+      {
+        "ns": 97246,
+        "bytes": 8105,
+        "allocs": 46
+      },
+      {
+        "ns": 99049,
+        "bytes": 8125,
+        "allocs": 46
+      },
+      {
+        "ns": 97045,
+        "bytes": 8105,
+        "allocs": 46
+      },
+      {
+        "ns": 97488,
+        "bytes": 8105,
+        "allocs": 46
+      }
+    ],
+    "text/early/16384/control": [
+      {
+        "ns": 1100579,
+        "bytes": 217504,
+        "allocs": 58
+      },
+      {
+        "ns": 1071549,
+        "bytes": 217435,
+        "allocs": 58
+      },
+      {
+        "ns": 1071115,
+        "bytes": 217435,
+        "allocs": 58
+      },
+      {
+        "ns": 1108136,
+        "bytes": 217435,
+        "allocs": 58
+      },
+      {
+        "ns": 1130485,
+        "bytes": 217435,
+        "allocs": 58
+      },
+      {
+        "ns": 1138383,
+        "bytes": 217435,
+        "allocs": 58
+      }
+    ],
+    "text/early/16384/candidate": [
+      {
+        "ns": 861891,
+        "bytes": 55353,
+        "allocs": 46
+      },
+      {
+        "ns": 870961,
+        "bytes": 55349,
+        "allocs": 46
+      },
+      {
+        "ns": 890143,
+        "bytes": 55349,
+        "allocs": 46
+      },
+      {
+        "ns": 884574,
+        "bytes": 55406,
+        "allocs": 46
+      },
+      {
+        "ns": 899666,
+        "bytes": 55349,
+        "allocs": 46
+      },
+      {
+        "ns": 952214,
+        "bytes": 55350,
+        "allocs": 46
+      }
+    ],
+    "text/late/256/control": [
+      {
+        "ns": 41907,
+        "bytes": 4597,
+        "allocs": 58
+      },
+      {
+        "ns": 40808,
+        "bytes": 4584,
+        "allocs": 58
+      },
+      {
+        "ns": 40530,
+        "bytes": 4584,
+        "allocs": 58
+      },
+      {
+        "ns": 40104,
+        "bytes": 4584,
+        "allocs": 58
+      },
+      {
+        "ns": 39382,
+        "bytes": 4584,
+        "allocs": 58
+      },
+      {
+        "ns": 39503,
+        "bytes": 4584,
+        "allocs": 58
+      }
+    ],
+    "text/late/256/candidate": [
+      {
+        "ns": 38367,
+        "bytes": 2040,
+        "allocs": 46
+      },
+      {
+        "ns": 38365,
+        "bytes": 2040,
+        "allocs": 46
+      },
+      {
+        "ns": 37909,
+        "bytes": 2040,
+        "allocs": 46
+      },
+      {
+        "ns": 38459,
+        "bytes": 2040,
+        "allocs": 46
+      },
+      {
+        "ns": 38298,
+        "bytes": 2040,
+        "allocs": 46
+      },
+      {
+        "ns": 38380,
+        "bytes": 2040,
+        "allocs": 46
+      }
+    ],
+    "text/late/2048/control": [
+      {
+        "ns": 365547,
+        "bytes": 28477,
+        "allocs": 66
+      },
+      {
+        "ns": 375860,
+        "bytes": 28397,
+        "allocs": 66
+      },
+      {
+        "ns": 356340,
+        "bytes": 28397,
+        "allocs": 66
+      },
+      {
+        "ns": 369580,
+        "bytes": 28397,
+        "allocs": 66
+      },
+      {
+        "ns": 367652,
+        "bytes": 28397,
+        "allocs": 66
+      },
+      {
+        "ns": 337473,
+        "bytes": 28397,
+        "allocs": 66
+      }
+    ],
+    "text/late/2048/candidate": [
+      {
+        "ns": 321644,
+        "bytes": 8042,
+        "allocs": 54
+      },
+      {
+        "ns": 317769,
+        "bytes": 8042,
+        "allocs": 54
+      },
+      {
+        "ns": 317327,
+        "bytes": 8042,
+        "allocs": 54
+      },
+      {
+        "ns": 337387,
+        "bytes": 8107,
+        "allocs": 54
+      },
+      {
+        "ns": 335268,
+        "bytes": 8042,
+        "allocs": 54
+      },
+      {
+        "ns": 301523,
+        "bytes": 8042,
+        "allocs": 54
+      }
+    ],
+    "text/late/16384/control": [
+      {
+        "ns": 3072884,
+        "bytes": 217559,
+        "allocs": 67
+      },
+      {
+        "ns": 3178782,
+        "bytes": 217404,
+        "allocs": 66
+      },
+      {
+        "ns": 3041444,
+        "bytes": 217401,
+        "allocs": 66
+      },
+      {
+        "ns": 3041160,
+        "bytes": 217404,
+        "allocs": 66
+      },
+      {
+        "ns": 3150415,
+        "bytes": 217405,
+        "allocs": 66
+      },
+      {
+        "ns": 3115427,
+        "bytes": 217404,
+        "allocs": 66
+      }
+    ],
+    "text/late/16384/candidate": [
+      {
+        "ns": 2547293,
+        "bytes": 55316,
+        "allocs": 54
+      },
+      {
+        "ns": 2470980,
+        "bytes": 55315,
+        "allocs": 54
+      },
+      {
+        "ns": 2558456,
+        "bytes": 55315,
+        "allocs": 54
+      },
+      {
+        "ns": 2675674,
+        "bytes": 55477,
+        "allocs": 55
+      },
+      {
+        "ns": 2552119,
+        "bytes": 55316,
+        "allocs": 54
+      },
+      {
+        "ns": 2559606,
+        "bytes": 55316,
+        "allocs": 54
+      }
+    ],
+    "text/no-match/256/control": [
+      {
+        "ns": 61308,
+        "bytes": 3892,
+        "allocs": 35
+      },
+      {
+        "ns": 60760,
+        "bytes": 3872,
+        "allocs": 35
+      },
+      {
+        "ns": 60935,
+        "bytes": 3872,
+        "allocs": 35
+      },
+      {
+        "ns": 61675,
+        "bytes": 3872,
+        "allocs": 35
+      },
+      {
+        "ns": 61856,
+        "bytes": 3872,
+        "allocs": 35
+      },
+      {
+        "ns": 62403,
+        "bytes": 3872,
+        "allocs": 35
+      }
+    ],
+    "text/no-match/256/candidate": [
+      {
+        "ns": 59250,
+        "bytes": 1280,
+        "allocs": 23
+      },
+      {
+        "ns": 59015,
+        "bytes": 1280,
+        "allocs": 23
+      },
+      {
+        "ns": 59677,
+        "bytes": 1280,
+        "allocs": 23
+      },
+      {
+        "ns": 60358,
+        "bytes": 1280,
+        "allocs": 23
+      },
+      {
+        "ns": 58548,
+        "bytes": 1280,
+        "allocs": 23
+      },
+      {
+        "ns": 60561,
+        "bytes": 1280,
+        "allocs": 23
+      }
+    ],
+    "text/no-match/2048/control": [
+      {
+        "ns": 522549,
+        "bytes": 27816,
+        "allocs": 35
+      },
+      {
+        "ns": 539534,
+        "bytes": 27557,
+        "allocs": 35
+      },
+      {
+        "ns": 535814,
+        "bytes": 27557,
+        "allocs": 35
+      },
+      {
+        "ns": 559717,
+        "bytes": 27557,
+        "allocs": 35
+      },
+      {
+        "ns": 517443,
+        "bytes": 27557,
+        "allocs": 35
+      },
+      {
+        "ns": 523819,
+        "bytes": 27557,
+        "allocs": 35
+      }
+    ],
+    "text/no-match/2048/candidate": [
+      {
+        "ns": 481018,
+        "bytes": 7201,
+        "allocs": 23
+      },
+      {
+        "ns": 478569,
+        "bytes": 7201,
+        "allocs": 23
+      },
+      {
+        "ns": 482187,
+        "bytes": 7201,
+        "allocs": 23
+      },
+      {
+        "ns": 476319,
+        "bytes": 7297,
+        "allocs": 23
+      },
+      {
+        "ns": 477215,
+        "bytes": 7201,
+        "allocs": 23
+      },
+      {
+        "ns": 477936,
+        "bytes": 7201,
+        "allocs": 23
+      }
+    ],
+    "text/no-match/16384/control": [
+      {
+        "ns": 4892494,
+        "bytes": 216792,
+        "allocs": 36
+      },
+      {
+        "ns": 4350003,
+        "bytes": 216543,
+        "allocs": 35
+      },
+      {
+        "ns": 5022400,
+        "bytes": 216540,
+        "allocs": 35
+      },
+      {
+        "ns": 4707735,
+        "bytes": 216543,
+        "allocs": 35
+      },
+      {
+        "ns": 4838689,
+        "bytes": 216540,
+        "allocs": 35
+      },
+      {
+        "ns": 4379202,
+        "bytes": 216540,
+        "allocs": 35
+      }
+    ],
+    "text/no-match/16384/candidate": [
+      {
+        "ns": 4072493,
+        "bytes": 54452,
+        "allocs": 23
+      },
+      {
+        "ns": 4092399,
+        "bytes": 54452,
+        "allocs": 23
+      },
+      {
+        "ns": 4060725,
+        "bytes": 54452,
+        "allocs": 23
+      },
+      {
+        "ns": 3992743,
+        "bytes": 54692,
+        "allocs": 24
+      },
+      {
+        "ns": 4038086,
+        "bytes": 54452,
+        "allocs": 23
+      },
+      {
+        "ns": 4052064,
+        "bytes": 54452,
+        "allocs": 23
+      }
+    ],
+    "text/quoted/256/control": [
+      {
+        "ns": 53712,
+        "bytes": 3824,
+        "allocs": 39
+      },
+      {
+        "ns": 52664,
+        "bytes": 3824,
+        "allocs": 39
+      },
+      {
+        "ns": 53230,
+        "bytes": 3824,
+        "allocs": 39
+      },
+      {
+        "ns": 53437,
+        "bytes": 3824,
+        "allocs": 39
+      },
+      {
+        "ns": 53263,
+        "bytes": 3824,
+        "allocs": 39
+      },
+      {
+        "ns": 52732,
+        "bytes": 3840,
+        "allocs": 39
+      }
+    ],
+    "text/quoted/256/candidate": [
+      {
+        "ns": 51322,
+        "bytes": 1268,
+        "allocs": 24
+      },
+      {
+        "ns": 51500,
+        "bytes": 1268,
+        "allocs": 24
+      },
+      {
+        "ns": 51224,
+        "bytes": 1268,
+        "allocs": 24
+      },
+      {
+        "ns": 51267,
+        "bytes": 1268,
+        "allocs": 24
+      },
+      {
+        "ns": 50297,
+        "bytes": 1268,
+        "allocs": 24
+      },
+      {
+        "ns": 51104,
+        "bytes": 1268,
+        "allocs": 24
+      }
+    ],
+    "text/quoted/2048/control": [
+      {
+        "ns": 512582,
+        "bytes": 27674,
+        "allocs": 39
+      },
+      {
+        "ns": 520390,
+        "bytes": 27573,
+        "allocs": 39
+      },
+      {
+        "ns": 522885,
+        "bytes": 27573,
+        "allocs": 39
+      },
+      {
+        "ns": 521783,
+        "bytes": 27573,
+        "allocs": 39
+      },
+      {
+        "ns": 525360,
+        "bytes": 27573,
+        "allocs": 39
+      },
+      {
+        "ns": 534897,
+        "bytes": 27573,
+        "allocs": 39
+      }
+    ],
+    "text/quoted/2048/candidate": [
+      {
+        "ns": 473485,
+        "bytes": 7205,
+        "allocs": 24
+      },
+      {
+        "ns": 470350,
+        "bytes": 7205,
+        "allocs": 24
+      },
+      {
+        "ns": 466370,
+        "bytes": 7205,
+        "allocs": 24
+      },
+      {
+        "ns": 469786,
+        "bytes": 7299,
+        "allocs": 24
+      },
+      {
+        "ns": 469303,
+        "bytes": 7205,
+        "allocs": 24
+      },
+      {
+        "ns": 465672,
+        "bytes": 7205,
+        "allocs": 24
+      }
+    ],
+    "text/quoted/16384/control": [
+      {
+        "ns": 4465646,
+        "bytes": 216800,
+        "allocs": 40
+      },
+      {
+        "ns": 4282698,
+        "bytes": 216543,
+        "allocs": 39
+      },
+      {
+        "ns": 4299357,
+        "bytes": 218124,
+        "allocs": 41
+      },
+      {
+        "ns": 4840833,
+        "bytes": 216559,
+        "allocs": 39
+      },
+      {
+        "ns": 4863599,
+        "bytes": 216559,
+        "allocs": 39
+      },
+      {
+        "ns": 4475244,
+        "bytes": 216559,
+        "allocs": 39
+      }
+    ],
+    "text/quoted/16384/candidate": [
+      {
+        "ns": 4117779,
+        "bytes": 54457,
+        "allocs": 24
+      },
+      {
+        "ns": 4114912,
+        "bytes": 54456,
+        "allocs": 24
+      },
+      {
+        "ns": 4076403,
+        "bytes": 54456,
+        "allocs": 24
+      },
+      {
+        "ns": 4062235,
+        "bytes": 54698,
+        "allocs": 25
+      },
+      {
+        "ns": 4045638,
+        "bytes": 54456,
+        "allocs": 24
+      },
+      {
+        "ns": 4074150,
+        "bytes": 54456,
+        "allocs": 24
+      }
+    ],
+    "text/collective/256/control": [
+      {
+        "ns": 63581,
+        "bytes": 3952,
+        "allocs": 35
+      },
+      {
+        "ns": 61934,
+        "bytes": 3952,
+        "allocs": 35
+      },
+      {
+        "ns": 62890,
+        "bytes": 3952,
+        "allocs": 35
+      },
+      {
+        "ns": 63031,
+        "bytes": 3971,
+        "allocs": 35
+      },
+      {
+        "ns": 62350,
+        "bytes": 3952,
+        "allocs": 35
+      },
+      {
+        "ns": 62638,
+        "bytes": 3952,
+        "allocs": 35
+      }
+    ],
+    "text/collective/256/candidate": [
+      {
+        "ns": 60336,
+        "bytes": 1360,
+        "allocs": 23
+      },
+      {
+        "ns": 60913,
+        "bytes": 1360,
+        "allocs": 23
+      },
+      {
+        "ns": 59955,
+        "bytes": 1360,
+        "allocs": 23
+      },
+      {
+        "ns": 61458,
+        "bytes": 1360,
+        "allocs": 23
+      },
+      {
+        "ns": 60670,
+        "bytes": 1360,
+        "allocs": 23
+      },
+      {
+        "ns": 60030,
+        "bytes": 1360,
+        "allocs": 23
+      }
+    ],
+    "text/collective/2048/control": [
+      {
+        "ns": 540276,
+        "bytes": 27739,
+        "allocs": 35
+      },
+      {
+        "ns": 532793,
+        "bytes": 27637,
+        "allocs": 35
+      },
+      {
+        "ns": 547069,
+        "bytes": 27637,
+        "allocs": 35
+      },
+      {
+        "ns": 540355,
+        "bytes": 27637,
+        "allocs": 35
+      },
+      {
+        "ns": 531142,
+        "bytes": 27637,
+        "allocs": 35
+      },
+      {
+        "ns": 532014,
+        "bytes": 27637,
+        "allocs": 35
+      }
+    ],
+    "text/collective/2048/candidate": [
+      {
+        "ns": 480951,
+        "bytes": 7281,
+        "allocs": 23
+      },
+      {
+        "ns": 483870,
+        "bytes": 7281,
+        "allocs": 23
+      },
+      {
+        "ns": 487891,
+        "bytes": 7281,
+        "allocs": 23
+      },
+      {
+        "ns": 482874,
+        "bytes": 7378,
+        "allocs": 23
+      },
+      {
+        "ns": 475416,
+        "bytes": 7281,
+        "allocs": 23
+      },
+      {
+        "ns": 479059,
+        "bytes": 7281,
+        "allocs": 23
+      }
+    ],
+    "text/collective/16384/control": [
+      {
+        "ns": 4881039,
+        "bytes": 216872,
+        "allocs": 36
+      },
+      {
+        "ns": 4234904,
+        "bytes": 216623,
+        "allocs": 35
+      },
+      {
+        "ns": 4278543,
+        "bytes": 216620,
+        "allocs": 35
+      },
+      {
+        "ns": 4316083,
+        "bytes": 216620,
+        "allocs": 35
+      },
+      {
+        "ns": 4787573,
+        "bytes": 216620,
+        "allocs": 35
+      },
+      {
+        "ns": 4604892,
+        "bytes": 216612,
+        "allocs": 35
+      }
+    ],
+    "text/collective/16384/candidate": [
+      {
+        "ns": 4025601,
+        "bytes": 54530,
+        "allocs": 23
+      },
+      {
+        "ns": 4064539,
+        "bytes": 54532,
+        "allocs": 23
+      },
+      {
+        "ns": 4001490,
+        "bytes": 54532,
+        "allocs": 23
+      },
+      {
+        "ns": 4014328,
+        "bytes": 54755,
+        "allocs": 24
+      },
+      {
+        "ns": 3990987,
+        "bytes": 54532,
+        "allocs": 23
+      },
+      {
+        "ns": 3989600,
+        "bytes": 54532,
+        "allocs": 23
+      }
+    ],
+    "query/early/256/control": [
+      {
+        "ns": 25767,
+        "bytes": 6616,
+        "allocs": 78
+      },
+      {
+        "ns": 35038,
+        "bytes": 6616,
+        "allocs": 78
+      },
+      {
+        "ns": 25766,
+        "bytes": 6616,
+        "allocs": 78
+      },
+      {
+        "ns": 27032,
+        "bytes": 6616,
+        "allocs": 78
+      },
+      {
+        "ns": 26976,
+        "bytes": 6616,
+        "allocs": 78
+      },
+      {
+        "ns": 26447,
+        "bytes": 6616,
+        "allocs": 78
+      }
+    ],
+    "query/early/256/candidate": [
+      {
+        "ns": 22986,
+        "bytes": 3224,
+        "allocs": 62
+      },
+      {
+        "ns": 23019,
+        "bytes": 3224,
+        "allocs": 62
+      },
+      {
+        "ns": 22912,
+        "bytes": 3224,
+        "allocs": 62
+      },
+      {
+        "ns": 23256,
+        "bytes": 3231,
+        "allocs": 62
+      },
+      {
+        "ns": 24425,
+        "bytes": 3224,
+        "allocs": 62
+      },
+      {
+        "ns": 24212,
+        "bytes": 3224,
+        "allocs": 62
+      }
+    ],
+    "query/early/2048/control": [
+      {
+        "ns": 144587,
+        "bytes": 36333,
+        "allocs": 78
+      },
+      {
+        "ns": 144818,
+        "bytes": 36302,
+        "allocs": 78
+      },
+      {
+        "ns": 143927,
+        "bytes": 36302,
+        "allocs": 78
+      },
+      {
+        "ns": 145160,
+        "bytes": 36302,
+        "allocs": 78
+      },
+      {
+        "ns": 148847,
+        "bytes": 36302,
+        "allocs": 78
+      },
+      {
+        "ns": 145344,
+        "bytes": 36303,
+        "allocs": 78
+      }
+    ],
+    "query/early/2048/candidate": [
+      {
+        "ns": 125352,
+        "bytes": 9161,
+        "allocs": 62
+      },
+      {
+        "ns": 126111,
+        "bytes": 9161,
+        "allocs": 62
+      },
+      {
+        "ns": 127040,
+        "bytes": 9161,
+        "allocs": 62
+      },
+      {
+        "ns": 129577,
+        "bytes": 9188,
+        "allocs": 62
+      },
+      {
+        "ns": 128383,
+        "bytes": 9161,
+        "allocs": 62
+      },
+      {
+        "ns": 128936,
+        "bytes": 9161,
+        "allocs": 62
+      }
+    ],
+    "query/early/16384/control": [
+      {
+        "ns": 1543706,
+        "bytes": 272596,
+        "allocs": 79
+      },
+      {
+        "ns": 1461592,
+        "bytes": 272524,
+        "allocs": 78
+      },
+      {
+        "ns": 1512922,
+        "bytes": 272524,
+        "allocs": 78
+      },
+      {
+        "ns": 1459952,
+        "bytes": 272524,
+        "allocs": 78
+      },
+      {
+        "ns": 1473065,
+        "bytes": 272524,
+        "allocs": 78
+      },
+      {
+        "ns": 1468162,
+        "bytes": 272524,
+        "allocs": 78
+      }
+    ],
+    "query/early/16384/candidate": [
+      {
+        "ns": 1073840,
+        "bytes": 56409,
+        "allocs": 62
+      },
+      {
+        "ns": 1110583,
+        "bytes": 56409,
+        "allocs": 62
+      },
+      {
+        "ns": 1060266,
+        "bytes": 56409,
+        "allocs": 62
+      },
+      {
+        "ns": 1134440,
+        "bytes": 56480,
+        "allocs": 62
+      },
+      {
+        "ns": 1165103,
+        "bytes": 56409,
+        "allocs": 62
+      },
+      {
+        "ns": 1091485,
+        "bytes": 56409,
+        "allocs": 62
+      }
+    ],
+    "query/late/256/control": [
+      {
+        "ns": 48157,
+        "bytes": 6384,
+        "allocs": 78
+      },
+      {
+        "ns": 47453,
+        "bytes": 6384,
+        "allocs": 78
+      },
+      {
+        "ns": 46792,
+        "bytes": 6384,
+        "allocs": 78
+      },
+      {
+        "ns": 46445,
+        "bytes": 6384,
+        "allocs": 78
+      },
+      {
+        "ns": 47442,
+        "bytes": 6384,
+        "allocs": 78
+      },
+      {
+        "ns": 46683,
+        "bytes": 6384,
+        "allocs": 78
+      }
+    ],
+    "query/late/256/candidate": [
+      {
+        "ns": 44026,
+        "bytes": 2992,
+        "allocs": 62
+      },
+      {
+        "ns": 44291,
+        "bytes": 2992,
+        "allocs": 62
+      },
+      {
+        "ns": 44155,
+        "bytes": 2992,
+        "allocs": 62
+      },
+      {
+        "ns": 43758,
+        "bytes": 2992,
+        "allocs": 62
+      },
+      {
+        "ns": 43919,
+        "bytes": 2992,
+        "allocs": 62
+      },
+      {
+        "ns": 43748,
+        "bytes": 2992,
+        "allocs": 62
+      }
+    ],
+    "query/late/2048/control": [
+      {
+        "ns": 400724,
+        "bytes": 36232,
+        "allocs": 88
+      },
+      {
+        "ns": 432211,
+        "bytes": 36152,
+        "allocs": 88
+      },
+      {
+        "ns": 433398,
+        "bytes": 36152,
+        "allocs": 88
+      },
+      {
+        "ns": 432759,
+        "bytes": 36151,
+        "allocs": 88
+      },
+      {
+        "ns": 435776,
+        "bytes": 36151,
+        "allocs": 88
+      },
+      {
+        "ns": 435188,
+        "bytes": 36151,
+        "allocs": 88
+      }
+    ],
+    "query/late/2048/candidate": [
+      {
+        "ns": 384564,
+        "bytes": 9010,
+        "allocs": 72
+      },
+      {
+        "ns": 386373,
+        "bytes": 9010,
+        "allocs": 72
+      },
+      {
+        "ns": 371271,
+        "bytes": 9010,
+        "allocs": 72
+      },
+      {
+        "ns": 374495,
+        "bytes": 9087,
+        "allocs": 72
+      },
+      {
+        "ns": 384080,
+        "bytes": 9010,
+        "allocs": 72
+      },
+      {
+        "ns": 367210,
+        "bytes": 9010,
+        "allocs": 72
+      }
+    ],
+    "query/late/16384/control": [
+      {
+        "ns": 3529913,
+        "bytes": 272559,
+        "allocs": 89
+      },
+      {
+        "ns": 3694805,
+        "bytes": 272365,
+        "allocs": 88
+      },
+      {
+        "ns": 3579522,
+        "bytes": 272363,
+        "allocs": 88
+      },
+      {
+        "ns": 3465881,
+        "bytes": 272383,
+        "allocs": 88
+      },
+      {
+        "ns": 3595342,
+        "bytes": 272365,
+        "allocs": 88
+      },
+      {
+        "ns": 3571922,
+        "bytes": 272365,
+        "allocs": 88
+      }
+    ],
+    "query/late/16384/candidate": [
+      {
+        "ns": 3025010,
+        "bytes": 56254,
+        "allocs": 72
+      },
+      {
+        "ns": 3054820,
+        "bytes": 56254,
+        "allocs": 72
+      },
+      {
+        "ns": 3018093,
+        "bytes": 56254,
+        "allocs": 72
+      },
+      {
+        "ns": 2991263,
+        "bytes": 56443,
+        "allocs": 73
+      },
+      {
+        "ns": 2978612,
+        "bytes": 56254,
+        "allocs": 72
+      },
+      {
+        "ns": 3007469,
+        "bytes": 56254,
+        "allocs": 72
+      }
+    ],
+    "query/no-match/256/control": [
+      {
+        "ns": 69209,
+        "bytes": 4736,
+        "allocs": 34
+      },
+      {
+        "ns": 68982,
+        "bytes": 4758,
+        "allocs": 34
+      },
+      {
+        "ns": 69240,
+        "bytes": 4736,
+        "allocs": 34
+      },
+      {
+        "ns": 68608,
+        "bytes": 4736,
+        "allocs": 34
+      },
+      {
+        "ns": 68897,
+        "bytes": 4736,
+        "allocs": 34
+      },
+      {
+        "ns": 68418,
+        "bytes": 4736,
+        "allocs": 34
+      }
+    ],
+    "query/no-match/256/candidate": [
+      {
+        "ns": 67007,
+        "bytes": 1280,
+        "allocs": 18
+      },
+      {
+        "ns": 66098,
+        "bytes": 1280,
+        "allocs": 18
+      },
+      {
+        "ns": 66404,
+        "bytes": 1280,
+        "allocs": 18
+      },
+      {
+        "ns": 66294,
+        "bytes": 1280,
+        "allocs": 18
+      },
+      {
+        "ns": 66059,
+        "bytes": 1280,
+        "allocs": 18
+      },
+      {
+        "ns": 65943,
+        "bytes": 1280,
+        "allocs": 18
+      }
+    ],
+    "query/no-match/2048/control": [
+      {
+        "ns": 617114,
+        "bytes": 34465,
+        "allocs": 34
+      },
+      {
+        "ns": 607515,
+        "bytes": 34342,
+        "allocs": 34
+      },
+      {
+        "ns": 600628,
+        "bytes": 34342,
+        "allocs": 34
+      },
+      {
+        "ns": 601052,
+        "bytes": 34342,
+        "allocs": 34
+      },
+      {
+        "ns": 604188,
+        "bytes": 34342,
+        "allocs": 34
+      },
+      {
+        "ns": 606510,
+        "bytes": 34342,
+        "allocs": 34
+      }
+    ],
+    "query/no-match/2048/candidate": [
+      {
+        "ns": 537359,
+        "bytes": 7201,
+        "allocs": 18
+      },
+      {
+        "ns": 541798,
+        "bytes": 7201,
+        "allocs": 18
+      },
+      {
+        "ns": 540028,
+        "bytes": 7202,
+        "allocs": 18
+      },
+      {
+        "ns": 532777,
+        "bytes": 7308,
+        "allocs": 18
+      },
+      {
+        "ns": 530771,
+        "bytes": 7201,
+        "allocs": 18
+      },
+      {
+        "ns": 538376,
+        "bytes": 7201,
+        "allocs": 18
+      }
+    ],
+    "query/no-match/16384/control": [
+      {
+        "ns": 5391562,
+        "bytes": 270851,
+        "allocs": 36
+      },
+      {
+        "ns": 5322780,
+        "bytes": 270564,
+        "allocs": 34
+      },
+      {
+        "ns": 5345665,
+        "bytes": 270564,
+        "allocs": 34
+      },
+      {
+        "ns": 5079280,
+        "bytes": 270564,
+        "allocs": 34
+      },
+      {
+        "ns": 5020358,
+        "bytes": 270564,
+        "allocs": 34
+      },
+      {
+        "ns": 5054018,
+        "bytes": 270561,
+        "allocs": 34
+      }
+    ],
+    "query/no-match/16384/candidate": [
+      {
+        "ns": 4534353,
+        "bytes": 54453,
+        "allocs": 18
+      },
+      {
+        "ns": 4522332,
+        "bytes": 54453,
+        "allocs": 18
+      },
+      {
+        "ns": 4566782,
+        "bytes": 54453,
+        "allocs": 18
+      },
+      {
+        "ns": 4471729,
+        "bytes": 54729,
+        "allocs": 19
+      },
+      {
+        "ns": 4499125,
+        "bytes": 54454,
+        "allocs": 18
+      },
+      {
+        "ns": 4476466,
+        "bytes": 54453,
+        "allocs": 18
+      }
+    ],
+    "query/quoted/256/control": [
+      {
+        "ns": 61311,
+        "bytes": 4676,
+        "allocs": 39
+      },
+      {
+        "ns": 61066,
+        "bytes": 4676,
+        "allocs": 39
+      },
+      {
+        "ns": 60804,
+        "bytes": 4676,
+        "allocs": 39
+      },
+      {
+        "ns": 60497,
+        "bytes": 4695,
+        "allocs": 39
+      },
+      {
+        "ns": 60498,
+        "bytes": 4676,
+        "allocs": 39
+      },
+      {
+        "ns": 60803,
+        "bytes": 4676,
+        "allocs": 39
+      }
+    ],
+    "query/quoted/256/candidate": [
+      {
+        "ns": 57500,
+        "bytes": 1268,
+        "allocs": 19
+      },
+      {
+        "ns": 56834,
+        "bytes": 1268,
+        "allocs": 19
+      },
+      {
+        "ns": 56349,
+        "bytes": 1268,
+        "allocs": 19
+      },
+      {
+        "ns": 57337,
+        "bytes": 1268,
+        "allocs": 19
+      },
+      {
+        "ns": 57361,
+        "bytes": 1268,
+        "allocs": 19
+      },
+      {
+        "ns": 56767,
+        "bytes": 1268,
+        "allocs": 19
+      }
+    ],
+    "query/quoted/2048/control": [
+      {
+        "ns": 607013,
+        "bytes": 34482,
+        "allocs": 39
+      },
+      {
+        "ns": 591796,
+        "bytes": 34362,
+        "allocs": 39
+      },
+      {
+        "ns": 605281,
+        "bytes": 34362,
+        "allocs": 39
+      },
+      {
+        "ns": 611985,
+        "bytes": 34362,
+        "allocs": 39
+      },
+      {
+        "ns": 615831,
+        "bytes": 34363,
+        "allocs": 39
+      },
+      {
+        "ns": 587796,
+        "bytes": 34362,
+        "allocs": 39
+      }
+    ],
+    "query/quoted/2048/candidate": [
+      {
+        "ns": 525367,
+        "bytes": 7205,
+        "allocs": 19
+      },
+      {
+        "ns": 525668,
+        "bytes": 7205,
+        "allocs": 19
+      },
+      {
+        "ns": 526468,
+        "bytes": 7205,
+        "allocs": 19
+      },
+      {
+        "ns": 528682,
+        "bytes": 7311,
+        "allocs": 19
+      },
+      {
+        "ns": 528724,
+        "bytes": 7205,
+        "allocs": 19
+      },
+      {
+        "ns": 528160,
+        "bytes": 7205,
+        "allocs": 19
+      }
+    ],
+    "query/quoted/16384/control": [
+      {
+        "ns": 5487047,
+        "bytes": 270871,
+        "allocs": 41
+      },
+      {
+        "ns": 4927396,
+        "bytes": 270582,
+        "allocs": 39
+      },
+      {
+        "ns": 5391262,
+        "bytes": 270584,
+        "allocs": 39
+      },
+      {
+        "ns": 5277579,
+        "bytes": 270581,
+        "allocs": 39
+      },
+      {
+        "ns": 5300682,
+        "bytes": 270585,
+        "allocs": 39
+      },
+      {
+        "ns": 5150683,
+        "bytes": 270585,
+        "allocs": 39
+      }
+    ],
+    "query/quoted/16384/candidate": [
+      {
+        "ns": 4537130,
+        "bytes": 54459,
+        "allocs": 19
+      },
+      {
+        "ns": 4517527,
+        "bytes": 54458,
+        "allocs": 19
+      },
+      {
+        "ns": 4503277,
+        "bytes": 54458,
+        "allocs": 19
+      },
+      {
+        "ns": 4477927,
+        "bytes": 54746,
+        "allocs": 21
+      },
+      {
+        "ns": 4433191,
+        "bytes": 54458,
+        "allocs": 19
+      },
+      {
+        "ns": 4374718,
+        "bytes": 54458,
+        "allocs": 19
+      }
+    ],
+    "query/collective/256/control": [
+      {
+        "ns": 69310,
+        "bytes": 4896,
+        "allocs": 34
+      },
+      {
+        "ns": 70067,
+        "bytes": 4896,
+        "allocs": 34
+      },
+      {
+        "ns": 70430,
+        "bytes": 4896,
+        "allocs": 34
+      },
+      {
+        "ns": 69742,
+        "bytes": 4896,
+        "allocs": 34
+      },
+      {
+        "ns": 69784,
+        "bytes": 4896,
+        "allocs": 34
+      },
+      {
+        "ns": 71421,
+        "bytes": 4896,
+        "allocs": 34
+      }
+    ],
+    "query/collective/256/candidate": [
+      {
+        "ns": 67233,
+        "bytes": 1440,
+        "allocs": 18
+      },
+      {
+        "ns": 67808,
+        "bytes": 1440,
+        "allocs": 18
+      },
+      {
+        "ns": 67384,
+        "bytes": 1440,
+        "allocs": 18
+      },
+      {
+        "ns": 67431,
+        "bytes": 1440,
+        "allocs": 18
+      },
+      {
+        "ns": 66908,
+        "bytes": 1440,
+        "allocs": 18
+      },
+      {
+        "ns": 66776,
+        "bytes": 1440,
+        "allocs": 18
+      }
+    ],
+    "query/collective/2048/control": [
+      {
+        "ns": 631419,
+        "bytes": 34626,
+        "allocs": 34
+      },
+      {
+        "ns": 620654,
+        "bytes": 34502,
+        "allocs": 34
+      },
+      {
+        "ns": 628655,
+        "bytes": 34502,
+        "allocs": 34
+      },
+      {
+        "ns": 634717,
+        "bytes": 34502,
+        "allocs": 34
+      },
+      {
+        "ns": 601353,
+        "bytes": 34502,
+        "allocs": 34
+      },
+      {
+        "ns": 606627,
+        "bytes": 34502,
+        "allocs": 34
+      }
+    ],
+    "query/collective/2048/candidate": [
+      {
+        "ns": 542858,
+        "bytes": 7362,
+        "allocs": 18
+      },
+      {
+        "ns": 530294,
+        "bytes": 7361,
+        "allocs": 18
+      },
+      {
+        "ns": 538432,
+        "bytes": 7361,
+        "allocs": 18
+      },
+      {
+        "ns": 543011,
+        "bytes": 7469,
+        "allocs": 18
+      },
+      {
+        "ns": 535540,
+        "bytes": 7361,
+        "allocs": 18
+      },
+      {
+        "ns": 535140,
+        "bytes": 7361,
+        "allocs": 18
+      }
+    ],
+    "query/collective/16384/control": [
+      {
+        "ns": 5003797,
+        "bytes": 270993,
+        "allocs": 36
+      },
+      {
+        "ns": 5123175,
+        "bytes": 270721,
+        "allocs": 34
+      },
+      {
+        "ns": 5193035,
+        "bytes": 270721,
+        "allocs": 34
+      },
+      {
+        "ns": 5553277,
+        "bytes": 270724,
+        "allocs": 34
+      },
+      {
+        "ns": 5160193,
+        "bytes": 270724,
+        "allocs": 34
+      },
+      {
+        "ns": 5109980,
+        "bytes": 270724,
+        "allocs": 34
+      }
+    ],
+    "query/collective/16384/candidate": [
+      {
+        "ns": 4516277,
+        "bytes": 54613,
+        "allocs": 18
+      },
+      {
+        "ns": 4588337,
+        "bytes": 54614,
+        "allocs": 18
+      },
+      {
+        "ns": 4525897,
+        "bytes": 54613,
+        "allocs": 18
+      },
+      {
+        "ns": 4501620,
+        "bytes": 54872,
+        "allocs": 19
+      },
+      {
+        "ns": 4479466,
+        "bytes": 54613,
+        "allocs": 18
+      },
+      {
+        "ns": 4445543,
+        "bytes": 54613,
+        "allocs": 18
+      }
+    ]
+  }
+}

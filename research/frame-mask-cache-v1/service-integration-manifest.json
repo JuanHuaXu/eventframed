@@ -1,0 +1,25 @@
+{
+  "revision": "f3231fab2244c5c6bca8f7f822e5669ac58d13cd",
+  "command": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-count=1",
+    "-v",
+    "-run",
+    "^(TestCaptureTurnEnrichesInsideServiceAndObservePreservesAuthoredFields|TestCaptureIdentityLookupBudgetAndIncompleteRoster|TestCaptureIdentityDurableAndRetryIndexesCommittedFrame|TestCaptureIdentityRetryKeepsCommittedUnresolvedReferences|TestCaptureIdentityContextAndFutureCardBoundaries)$",
+    "./internal/service"
+  ],
+  "patchSHA256": "afe0da66cc0bd2712f432c3eae42e5065e7f0a4c49d398842a6269b75963a908",
+  "transcriptSHA256": "0fff4ae6f5c5f97efdb6f53178ad82a0271918fcf9f5fd0905da416d5f9054ee",
+  "productionTouched": false,
+  "privateDataUsed": false,
+  "loadedLatencyTested": false,
+  "wholeGoalValidation": false,
+  "sources": {
+    "turn.go": "230a62c9656ecf5ce620776f7cab50e7265b05c764495fab6897bc2580efd053",
+    "text.go": "ddb3174bd6f4a63f6a1fab6c7f40cc8fec61e85827990852a2c154245a06b636",
+    "query.go": "b8bdf97f86e5f8f28a03137e78913bdca3c0d366541d34d098ae42deb463e610",
+    "identity.go": "78e20396658bdb15940e62cece042af4334f4f74e85f497dbc0e483ed919689d"
+  }
+}

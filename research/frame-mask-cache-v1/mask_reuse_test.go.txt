@@ -1,0 +1,163 @@
+package frame
+
+import (
+	"fmt"
+	"math/rand/v2"
+	"reflect"
+	"strings"
+	"testing"
+	"time"
+
+	control "github.com/JuanHuaXu/eventframed/internal/framecontrol"
+	"github.com/JuanHuaXu/eventframed/internal/model"
+)
+
+func TestMaskReuseDifferential(t *testing.T) {
+	texts := []string{
+		"", "I will deploy.", "We will deploy.", "We're ready.", "Alex will deploy in Toronto tomorrow because tests passed using console.",
+		"\"Alex will deploy in Toronto tomorrow because tests passed using console.\"",
+		"> Alex will deploy in Toronto tomorrow because tests passed using console.\nReady.",
+		"```text\nAlex will deploy in Toronto tomorrow because tests passed using console.\n```",
+		"Alex will deploy using \"we execute commands\".", "Alex will deploy using \"commands", "'unclosed text",
+		"Alex will deploy using `commands` tomorrow.", "I’m ready. You’re helpful.",
+		"\u201cAlex will deploy\u201d. Blair reported progress.",
+		"Alex will deploy using \xff\xfe bytes.", "help\\\"we will deploy\\\"",
+	}
+	rng := rand.New(rand.NewPCG(2026100501, 2026100502))
+	const filler = "public fixture alpha beta gamma delta epsilon.\n"
+	clock := time.Date(2026, 10, 5, 0, 0, 0, 0, time.UTC)
+	card := control.IdentityCard{UserID: "account:operator", Name: "Operator", Version: 1}
+	ownCard := IdentityCard{UserID: card.UserID, Name: card.Name, Version: card.Version}
+	for i := 0; i < 2048; i++ {
+		user, assistant := texts[rng.IntN(len(texts))], texts[rng.IntN(len(texts))]
+		size := 256
+		if i%16 == 0 {
+			size = 2048
+		}
+		if i%128 == 0 {
+			size = 16384
+		}
+		pad := strings.Repeat(filler, size/len(filler))
+		if i%2 == 0 {
+			user += pad
+		} else {
+			user = pad + user
+		}
+		assistant += pad
+		turn := turnFallbackAuditCapture(user, assistant)
+		if i%3 == 0 {
+			turn.AgentID = ""
+		}
+		if i%5 == 0 {
+			turn.ParticipantUserIDs = []string{"account:operator", "account:other"}
+		}
+		if got, want := FromTurn(turn), control.FromTurn(turn); !reflect.DeepEqual(got, want) {
+			t.Fatalf("turn %d differs: got %+v; want %+v", i, got, want)
+		}
+		if got, want := QueryText(user), control.QueryText(user); got != want {
+			t.Fatalf("query %d differs: %q / %q", i, got, want)
+		}
+		source := model.SourceObserved
+		if i%2 == 0 {
+			source = model.SourceSynthetic
+		}
+		if got, want := FromText(user, "public-role", "public-session", clock, source),
+			control.FromText(user, "public-role", "public-session", clock, source); !reflect.DeepEqual(got, want) {
+			t.Fatalf("text %d differs: got %+v; want %+v", i, got, want)
+		}
+		previous := control.FromTurn(turnFallbackAuditCapture("Blair will deploy.", "Ready."))
+		if got, want := FromTurnWithIdentities(turn, []IdentityCard{ownCard}, &previous, true),
+			control.FromTurnWithIdentities(turn, []control.IdentityCard{card}, &previous, true); !reflect.DeepEqual(got, want) {
+			t.Fatalf("identity %d differs: got %+v; want %+v", i, got, want)
+		}
+	}
+	t.Log("8192 complete repaired-control comparisons; synthetic text, no outcome labels")
+}
+
+func TestMaskReuseEmptyAndUnpreparedSources(t *testing.T) {
+	for _, text := range []string{"", "\"quoted\"", "ordinary", "\xff\xfe", "> quoted\nordinary", "’"} {
+		prepared := preparedSource("test", text, model.SourceObserved)
+		if len(prepared.clean) != len(text) || prepared.maskedText() != unquoted(text) {
+			t.Fatal("prepared mask lost alignment or changed quotation semantics")
+		}
+		raw := sourceText{name: "test", text: text, source: model.SourceObserved}
+		if raw.maskedText() != prepared.maskedText() {
+			t.Fatal("literal/unprepared source behavior differs")
+		}
+	}
+}
+
+func TestMaskReuseParallelCalls(t *testing.T) {
+	for worker := 0; worker < 16; worker++ {
+		t.Run(fmt.Sprint(worker), func(t *testing.T) {
+			t.Parallel()
+			for i := 0; i < 24; i++ {
+				turn := turnFallbackAuditCapture(fmt.Sprintf("Alex will deploy using \"quoted %d %d\".", worker, i), "Ready.")
+				if !reflect.DeepEqual(FromTurn(turn), control.FromTurn(turn)) {
+					t.Fatal("independent invocation cache leaked across callers")
+				}
+			}
+		})
+	}
+}
+
+var maskEventSink model.Event
+var maskQuerySink string
+
+func BenchmarkMaskReuseForward(b *testing.B) { maskReuseBenchmark(b, false) }
+func BenchmarkMaskReuseReverse(b *testing.B) { maskReuseBenchmark(b, true) }
+
+func maskReuseBenchmark(b *testing.B, reverse bool) {
+	for _, workflow := range []string{"turn", "text", "query"} {
+		for _, profile := range []string{"early", "late", "no-match", "quoted", "collective"} {
+			for _, size := range []int{256, 2048, 16384} {
+				turn := turnFallbackAuditFixture(profile, size)
+				order := []bool{false, true}
+				if reverse {
+					order = []bool{true, false}
+				}
+				for _, candidate := range order {
+					arm := "control"
+					if candidate {
+						arm = "candidate"
+					}
+					name := fmt.Sprintf("%s/%s/%dB/%s", workflow, profile, size, arm)
+					b.Run(name, func(b *testing.B) {
+						b.ReportAllocs()
+						bytes := len(turn.UserText)
+						if workflow == "turn" {
+							bytes += len(turn.AssistantText)
+						}
+						b.SetBytes(int64(bytes))
+						switch workflow {
+						case "turn":
+							fn := control.FromTurn
+							if candidate {
+								fn = FromTurn
+							}
+							for b.Loop() {
+								maskEventSink = fn(turn)
+							}
+						case "text":
+							fn := control.FromText
+							if candidate {
+								fn = FromText
+							}
+							for b.Loop() {
+								maskEventSink = fn(turn.UserText, "public-role", "public-session", turn.OccurredAt, model.SourceObserved)
+							}
+						case "query":
+							fn := control.QueryText
+							if candidate {
+								fn = QueryText
+							}
+							for b.Loop() {
+								maskQuerySink = fn(turn.UserText)
+							}
+						}
+					})
+				}
+			}
+		}
+	}
+}

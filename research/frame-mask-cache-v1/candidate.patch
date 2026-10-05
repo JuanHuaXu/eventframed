@@ -1,0 +1,79 @@
+diff --git a/internal/frame/query.go b/internal/frame/query.go
+index 5713995..8975c96 100644
+--- a/internal/frame/query.go
++++ b/internal/frame/query.go
+@@ -13,7 +13,7 @@ func QueryText(query string) string {
+ 	if query == "" {
+ 		return "representation: " + model.SemanticRepresentationVersion
+ 	}
+-	source := sourceText{name: "query", text: query, source: model.SourceObserved}
++	source := preparedSource("query", query, model.SourceObserved)
+ 	sources := []sourceText{source}
+ 	request := firstStatement(source)
+ 	event := model.Event{
+diff --git a/internal/frame/text.go b/internal/frame/text.go
+index 65ed46e..61477f4 100644
+--- a/internal/frame/text.go
++++ b/internal/frame/text.go
+@@ -11,7 +11,7 @@ import (
+ // daemon-owned ingestion paths that do not have a paired turn envelope.
+ func FromText(text, participant, sessionID string, occurredAt time.Time, source model.FieldSource) model.Event {
+ 	text = strings.TrimSpace(text)
+-	input := sourceText{name: "message", text: text, source: source}
++	input := preparedSource("message", text, source)
+ 	sources := []sourceText{input}
+ 	statement := firstStatement(input)
+ 	return model.Event{
+diff --git a/internal/frame/turn.go b/internal/frame/turn.go
+index 2a0e018..065def9 100644
+--- a/internal/frame/turn.go
++++ b/internal/frame/turn.go
+@@ -18,6 +18,19 @@ type sourceText struct {
+ 	name   string
+ 	text   string
+ 	source model.FieldSource
++	clean  string
++	ready  bool
++}
++
++func preparedSource(name, text string, source model.FieldSource) sourceText {
++	return sourceText{name: name, text: text, source: source, clean: unquoted(text), ready: true}
++}
++
++func (source sourceText) maskedText() string {
++	if source.ready {
++		return source.clean
++	}
++	return unquoted(source.text)
+ }
+ 
+ type match struct {
+@@ -68,8 +81,8 @@ var (
+ // fallbacks are explicitly marked inferred or synthetic rather than treated as
+ // ground truth.
+ func FromTurn(turn model.TurnCapture) model.Event {
+-	user := sourceText{name: "user", text: turn.UserText, source: model.SourceObserved}
+-	assistant := sourceText{name: "assistant", text: turn.AssistantText, source: model.SourceSynthetic}
++	user := preparedSource("user", turn.UserText, model.SourceObserved)
++	assistant := preparedSource("assistant", turn.AssistantText, model.SourceSynthetic)
+ 	sources := []sourceText{user, assistant}
+ 	request := firstStatement(user)
+ 	outcome := firstStatement(assistant)
+@@ -92,7 +105,7 @@ func FromTurn(turn model.TurnCapture) model.Event {
+ 
+ func firstField(sources []sourceText, patterns []pattern, confidence float64, accept func(string) bool, fallback model.Field) model.Field {
+ 	for _, source := range sources {
+-		clean := unquoted(source.text)
++		clean := source.maskedText()
+ 		for _, candidate := range patterns {
+ 			indices := candidate.expression.FindStringSubmatchIndex(clean)
+ 			group := candidate.group * 2
+@@ -138,7 +151,7 @@ func validNamedActor(value string) bool {
+ }
+ 
+ func participantFallback(turn model.TurnCapture, user sourceText) model.Field {
+-	clean := unquoted(user.text)
++	clean := user.maskedText()
+ 	if indices := collectivePattern.FindStringIndex(clean); indices != nil {
+ 		return field("unresolved group", model.SourceInferred, 0, span(user.name, indices[0], indices[1]))
+ 	}

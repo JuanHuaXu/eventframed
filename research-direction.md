@@ -11,10 +11,36 @@ old controls, negative results, and all seven whole-goal requirements remain
 unchanged. This is not a deployed daemon default or untouched confirmation.
 V83 remains the current numerically repaired regime candidate, without a
 comparable broad-cohort quality result or accuracy promotion over Adaptive.
-The goal controller was last observed BLOCKED after model-capacity errors;
-the ACTIVE labels below describe earlier historical runs, not a resume action.
+The earlier BLOCKED observation is historical. The goal controller was directly
+rechecked ACTIVE on 2026-10-05 after the user-provided continuation; the latest
+entry below records new work, not a change to any original success criterion.
 
 ## Current Continuation
+
+2026-10-05 latest: [per-message mask reuse](research/frame-mask-cache-v1/RESULTS.md).
+Previous goal turn PROGRESS (reviewed software and whitepaper fixes published).
+This continuation PROGRESS: isolated repaired-control performance rescue,
+frozen protocol/source hashes, complete control regression suite, candidate
+semantic/race/vet checks and 45-cell matched timing. All seven WHOLE goals OPEN;
+no scientific gate or historical verdict was revised. Goal ACTIVE, weekly 45%.
+
+The call-local mask candidate retains the repaired quotation admission rules,
+with 8,192 complete output comparisons and 384 parallel comparisons agreeing.
+Turn/text/query geometric-mean latency reductions are 11.495%/10.283%/12.020%;
+all fixture cells improve, with 16-47/12-15/16-20 allocations saved per call.
+These are balanced synthetic COMPONENT timings, not real-traffic weights,
+loaded serving p99, durable freshness or independent scientific confirmation.
+Existing exact-source identity tests remain control-only where their frozen
+source pins apply; no semantic test was excluded. Candidate identity is the
+prospectively source-hashed patch. Service capture boundary checks are recorded
+separately. The candidate is not deployed or applied to live extractor files.
+
+Next: measure the candidate under the unchanged loaded mixed-workload/freshness
+gates, and continue approximation fidelity, useful external split results,
+untouched agent outcomes and equal-TOTAL-cost observation work. The .698246 TV
+defect, weak historical AP inference and all original seven requirements remain.
+Production, private datasets, whitepaper and published branches are untouched
+by this new experiment; reproducible component evidence is retained locally.
 
 2026-10-05 latest: [V82 persistent log-state rescue](docs/experiments/mmm-regime-log-v82-results.md).
 Previous goal turn PROGRESS (V81 controlled screen and checkpoint). This turn
