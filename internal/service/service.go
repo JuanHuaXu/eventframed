@@ -1874,6 +1874,10 @@ func (s *Service) IssueAgencyProposal(ctx context.Context, request model.IssueAg
 	if err != nil {
 		return model.IssueAgencyProposalResponse{}, err
 	}
+	return s.persistAgencyProposal(ctx, proposal, now)
+}
+
+func (s *Service) persistAgencyProposal(ctx context.Context, proposal model.AgencyProposal, now time.Time) (model.IssueAgencyProposalResponse, error) {
 	signed, err := s.config.AgencySigner.Sign(proposal)
 	if err != nil {
 		return model.IssueAgencyProposalResponse{}, err
@@ -1932,14 +1936,22 @@ func (s *Service) ResolveAgencyProposal(ctx context.Context, request model.Resol
 	if !boundedAgencyIdentifier(request.TenantID) || !boundedAgencyIdentifier(request.ProposalID) || !boundedAgencyIdentifier(request.ConsumerID) || request.Reason == "" || len(request.Reason) > 1024 || len(request.ExecutionRef) > 512 {
 		return model.ResolveAgencyProposalResponse{}, errors.New("bounded tenant, proposal, consumer, and resolution reason are required")
 	}
-	if request.Decision != model.AgencyApproved && request.Decision != model.AgencyRejected {
-		return model.ResolveAgencyProposalResponse{}, errors.New("agency resolution must be approved or rejected")
+	if request.Decision != model.AgencyApproved && request.Decision != model.AgencyRejected && request.Decision != model.AgencyUncertain {
+		return model.ResolveAgencyProposalResponse{}, errors.New("agency resolution must be approved, rejected or uncertain")
 	}
-	if request.Decision == model.AgencyApproved && request.ExecutionRef == "" {
+	if (request.Decision == model.AgencyApproved || request.Decision == model.AgencyUncertain) && request.ExecutionRef == "" {
 		return model.ResolveAgencyProposalResponse{}, errors.New("approved agency resolution requires an execution_ref")
 	}
 	if request.Decision == model.AgencyRejected && request.ExecutionRef != "" {
 		return model.ResolveAgencyProposalResponse{}, errors.New("rejected agency resolution cannot carry an execution_ref")
+	}
+	if len(request.CancelledExecutionRefs) > 32 || len(request.CancelledExecutionRefs) > 0 && request.Decision != model.AgencyRejected {
+		return model.ResolveAgencyProposalResponse{}, errors.New("cancellation acknowledgment requires rejection and at most 32 handles")
+	}
+	for _, ref := range request.CancelledExecutionRefs {
+		if ref == "" || len(ref) > 512 {
+			return model.ResolveAgencyProposalResponse{}, errors.New("invalid cancellation acknowledgment handle")
+		}
 	}
 	result, err := s.store.ResolveAgencyProposal(ctx, request, time.Now().UTC())
 	if err != nil {

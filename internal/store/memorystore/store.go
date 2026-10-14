@@ -85,7 +85,18 @@ func (s *Store) PutAgencyProposal(_ context.Context, record model.AgencyProposal
 		if s.agencyDigests[record.Proposal.TenantID][record.Proposal.ID] != digest {
 			return store.AgencyPutResult{}, store.ErrAgencyConflict
 		}
-		return store.AgencyPutResult{Duplicate: true, Record: existing, Snapshot: s.snapshot}, nil
+		return store.AgencyPutResult{Duplicate: true, Record: cloneAgencyRecord(existing), Snapshot: s.snapshot}, nil
+	}
+	if !store.TauSnapshotCompatible(record.Proposal.Tau, s.snapshot) {
+		return store.AgencyPutResult{}, store.ErrStaleSnapshot
+	}
+	for _, existing := range records {
+		if record.Proposal.Tau != nil && existing.Proposal.Tau != nil && record.Proposal.Tau.ForecastID == existing.Proposal.Tau.ForecastID && record.Proposal.Tau.ForecastDigest != existing.Proposal.Tau.ForecastDigest {
+			return store.AgencyPutResult{}, store.ErrAgencyConflict
+		}
+		if store.TauOpportunityBlocked(record, existing, s.snapshot, evidenceAvailableBy) {
+			return store.AgencyPutResult{}, store.ErrAgencyChainBudget
+		}
 	}
 	for _, id := range record.Proposal.EvidenceIDs {
 		entry, ok := s.entries[record.Proposal.TenantID][id]
@@ -96,11 +107,21 @@ func (s *Store) PutAgencyProposal(_ context.Context, record model.AgencyProposal
 	if !validAgencyParent(records, record.Proposal) || countAgencyChain(records, record.Proposal.CausalChainID) >= maxPerChain || countPendingAgency(records, evidenceAvailableBy) >= maxPending {
 		return store.AgencyPutResult{}, store.ErrAgencyChainBudget
 	}
-	records[record.Proposal.ID] = record
+	records[record.Proposal.ID] = cloneAgencyRecord(record)
 	s.agencyDigests[record.Proposal.TenantID][record.Proposal.ID] = digest
 	s.snapshot.RuntimeVersion++
 	s.snapshot.AgencyVersion++
-	return store.AgencyPutResult{Record: record, Snapshot: s.snapshot}, nil
+	return store.AgencyPutResult{Record: cloneAgencyRecord(record), Snapshot: s.snapshot}, nil
+}
+
+func (s *Store) GetAgencyProposal(_ context.Context, tenantID, proposalID string) (model.AgencyProposalRecord, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	r, ok := s.agencyRecords[tenantID][proposalID]
+	if !ok {
+		return model.AgencyProposalRecord{}, store.ErrAgencyNotFound
+	}
+	return cloneAgencyRecord(r), nil
 }
 
 func (s *Store) ClaimAgencyProposals(_ context.Context, tenantID, consumerID string, now time.Time, limit int, lease time.Duration) ([]model.AgencyProposalRecord, model.Snapshot, error) {
@@ -109,7 +130,25 @@ func (s *Store) ClaimAgencyProposals(_ context.Context, tenantID, consumerID str
 	records := s.agencyRecords[tenantID]
 	eligible := make([]model.AgencyProposalRecord, 0)
 	changed := false
+	blocked := map[store.TauScope]bool{}
+	for _, r := range records {
+		if r.Status == model.AgencyUncertain {
+			blocked[store.TauScopeOf(r.Proposal)] = true
+		}
+	}
 	for id, record := range records {
+		if record.Proposal.Tau != nil && blocked[store.TauScopeOf(record.Proposal)] && (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) {
+			record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyRejected, "", time.Time{}
+			record.ResolutionReason, record.ResolvedAt = "another execution for this tau target is unresolved", now
+			records[id], changed = record, true
+			continue
+		}
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && !store.TauSnapshotCompatible(record.Proposal.Tau, s.snapshot) {
+			record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyRejected, "", time.Time{}
+			record.ResolutionReason, record.ResolvedAt = "tau forecast invalidated by state change", now
+			records[id], changed = record, true
+			continue
+		}
 		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && !now.Before(record.Proposal.ExpiresAt) {
 			record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyExpired, "", time.Time{}
 			record.ResolutionReason, record.ResolvedAt = "proposal expired before authorization", now
@@ -119,7 +158,7 @@ func (s *Store) ClaimAgencyProposals(_ context.Context, tenantID, consumerID str
 		if now.Before(record.Proposal.NotBefore) || record.Status != model.AgencyPending && (record.Status != model.AgencyClaimed || now.Before(record.LeaseUntil)) {
 			continue
 		}
-		eligible = append(eligible, record)
+		eligible = append(eligible, cloneAgencyRecord(record))
 	}
 	sort.Slice(eligible, func(i, j int) bool {
 		if eligible[i].Proposal.Priority != eligible[j].Proposal.Priority {
@@ -136,7 +175,7 @@ func (s *Store) ClaimAgencyProposals(_ context.Context, tenantID, consumerID str
 	for index := range eligible {
 		record := eligible[index]
 		record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyClaimed, consumerID, now.Add(lease)
-		records[record.Proposal.ID], eligible[index], changed = record, record, true
+		records[record.Proposal.ID], eligible[index], changed = cloneAgencyRecord(record), record, true
 	}
 	if changed {
 		s.snapshot.RuntimeVersion++
@@ -152,9 +191,32 @@ func (s *Store) ResolveAgencyProposal(_ context.Context, request model.ResolveAg
 	if !ok {
 		return store.AgencyResolveResult{}, store.ErrAgencyNotFound
 	}
-	if record.Status == model.AgencyApproved || record.Status == model.AgencyRejected || record.Status == model.AgencyExpired {
+	if request.Decision == model.AgencyUncertain && record.Status == model.AgencyUncertain && request.Reason == record.ResolutionReason && request.ExecutionRef == record.ExecutionRef {
+		return store.AgencyResolveResult{Duplicate: true, Record: cloneAgencyRecord(record), Snapshot: s.snapshot}, nil
+	}
+	if request.Decision == model.AgencyUncertain {
+		updated, err := store.AgencyUncertainRecord(record, request, now)
+		if err != nil {
+			return store.AgencyResolveResult{}, err
+		}
+		s.agencyRecords[request.TenantID][request.ProposalID] = updated
+		s.snapshot.RuntimeVersion++
+		s.snapshot.AgencyVersion++
+		return store.AgencyResolveResult{Record: cloneAgencyRecord(updated), Snapshot: s.snapshot}, nil
+	}
+	if record.Status == model.AgencyUncertain && request.Decision == model.AgencyRejected {
+		if !store.TauCancellationMatches(record, request) {
+			return store.AgencyResolveResult{}, store.ErrAgencyConflict
+		}
+		record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = request.Decision, request.Reason, request.ExecutionRef, now
+		s.agencyRecords[request.TenantID][request.ProposalID] = record
+		s.snapshot.RuntimeVersion++
+		s.snapshot.AgencyVersion++
+		return store.AgencyResolveResult{Record: cloneAgencyRecord(record), Snapshot: s.snapshot}, nil
+	}
+	if record.Status == model.AgencyApproved || record.Status == model.AgencyRejected || record.Status == model.AgencyExpired || record.Status == model.AgencyUncertain {
 		if record.Status == request.Decision && record.ResolutionReason == request.Reason && record.ExecutionRef == request.ExecutionRef {
-			return store.AgencyResolveResult{Duplicate: true, Record: record, Snapshot: s.snapshot}, nil
+			return store.AgencyResolveResult{Duplicate: true, Record: cloneAgencyRecord(record), Snapshot: s.snapshot}, nil
 		}
 		return store.AgencyResolveResult{}, store.ErrAgencyConflict
 	}
@@ -167,17 +229,42 @@ func (s *Store) ResolveAgencyProposal(_ context.Context, request model.ResolveAg
 		s.agencyRecords[request.TenantID][request.ProposalID] = record
 		s.snapshot.RuntimeVersion++
 		s.snapshot.AgencyVersion++
-		return store.AgencyResolveResult{Record: record, Snapshot: s.snapshot}, store.ErrAgencyExpired
+		return store.AgencyResolveResult{Record: cloneAgencyRecord(record), Snapshot: s.snapshot}, store.ErrAgencyExpired
 	}
 	if !now.Before(record.LeaseUntil) {
 		return store.AgencyResolveResult{}, store.ErrAgencyLease
+	}
+	if request.Decision == model.AgencyApproved && record.Proposal.Tau != nil {
+		for _, other := range s.agencyRecords[request.TenantID] {
+			if other.Status == model.AgencyUncertain && store.TauScopeOf(other.Proposal) == store.TauScopeOf(record.Proposal) {
+				return store.AgencyResolveResult{}, store.ErrAgencyConflict
+			}
+		}
+	}
+	if request.Decision == model.AgencyApproved && !store.TauSnapshotCompatible(record.Proposal.Tau, s.snapshot) {
+		return store.AgencyResolveResult{}, store.ErrStaleSnapshot
 	}
 	record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = request.Decision, request.Reason, request.ExecutionRef, now
 	record.ClaimedBy, record.LeaseUntil = "", time.Time{}
 	s.agencyRecords[request.TenantID][request.ProposalID] = record
 	s.snapshot.RuntimeVersion++
 	s.snapshot.AgencyVersion++
-	return store.AgencyResolveResult{Record: record, Snapshot: s.snapshot}, nil
+	return store.AgencyResolveResult{Record: cloneAgencyRecord(record), Snapshot: s.snapshot}, nil
+}
+
+func cloneAgencyRecord(record model.AgencyProposalRecord) model.AgencyProposalRecord {
+	record.UncertainExecutionRefs = append([]string(nil), record.UncertainExecutionRefs...)
+	record.Proposal.EvidenceIDs = append([]string(nil), record.Proposal.EvidenceIDs...)
+	if record.Proposal.ScheduledFor != nil {
+		v := *record.Proposal.ScheduledFor
+		record.Proposal.ScheduledFor = &v
+	}
+	if record.Proposal.Tau != nil {
+		v := *record.Proposal.Tau
+		v.Forecast.Points = append([]model.TauPoint(nil), v.Forecast.Points...)
+		record.Proposal.Tau = &v
+	}
+	return record
 }
 
 func validAgencyParent(records map[string]model.AgencyProposalRecord, proposal model.AgencyProposal) bool {
@@ -201,7 +288,7 @@ func countAgencyChain(records map[string]model.AgencyProposalRecord, chainID str
 func countPendingAgency(records map[string]model.AgencyProposalRecord, now time.Time) int {
 	count := 0
 	for _, record := range records {
-		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
+		if record.Status == model.AgencyUncertain || (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
 			count++
 		}
 	}

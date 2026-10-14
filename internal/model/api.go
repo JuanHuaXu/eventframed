@@ -3,7 +3,7 @@ package model
 import "time"
 
 const ProtocolVersion = "eventframe.v1alpha1"
-const ContractVersion uint64 = 16
+const ContractVersion uint64 = 17
 
 type Snapshot struct {
 	RuntimeVersion     uint64 `json:"runtime_version"`

@@ -139,6 +139,7 @@ export type AdapterConfig = {
 export type AgencyAction = "wake" | "notify" | "schedule";
 
 export type AgencyProposal = {
+	 tau?: { plan_id: string; target_kind: string; forecast_id: string; forecast_digest: string; policy_digest: string; latest_dispatch: string; lower_probability: number; lower_utility: number; cooldown_ms: number; base: ContextPacket["snapshot"] };
   id: string;
   tenant_id: string;
   session_id: string;
@@ -160,9 +161,10 @@ export type AgencyProposal = {
 };
 
 export type AgencyProposalRecord = {
+	uncertain_execution_refs?: string[];
   proposal: AgencyProposal;
   signed: { payload: string; signature: string; key_id: string };
-  status: "pending" | "claimed" | "approved" | "rejected" | "expired";
+  status: "pending" | "claimed" | "approved" | "rejected" | "expired" | "uncertain";
   claimed_by?: string;
   lease_until?: string;
   resolution_reason?: string;

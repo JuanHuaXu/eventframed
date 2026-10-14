@@ -204,6 +204,9 @@ func (signer *Signer) Sign(proposal model.AgencyProposal) (model.SignedAgencyPro
 	if err != nil {
 		return model.SignedAgencyProposal{}, err
 	}
+	if len(payload) > 16<<10 {
+		return model.SignedAgencyProposal{}, errors.New("agency signed payload exceeds adapter byte limit")
+	}
 	signature := ed25519.Sign(signer.private, payload)
 	return model.SignedAgencyProposal{Payload: base64.RawURLEncoding.EncodeToString(payload), Signature: base64.RawURLEncoding.EncodeToString(signature), KeyID: signer.keyID}, nil
 }

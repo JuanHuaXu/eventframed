@@ -823,6 +823,7 @@ func (s *fixedStore) PutAgencyProposal(context.Context, model.AgencyProposalReco
 func (s *fixedStore) ClaimAgencyProposals(context.Context, string, string, time.Time, int, time.Duration) ([]model.AgencyProposalRecord, model.Snapshot, error) {
 	return nil, model.Snapshot{}, nil
 }
+
 func (s *fixedStore) ResolveAgencyProposal(context.Context, model.ResolveAgencyProposalRequest, time.Time) (store.AgencyResolveResult, error) {
 	return store.AgencyResolveResult{}, nil
 }

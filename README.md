@@ -226,8 +226,12 @@ least one `agencyAllowedSessionPrefixes` entry. Empty consent, capability, or
 session scopes deny every proposal. Both UTC quiet-hour endpoints must be set or
 both omitted.
 
-The current daemon accepts proposals from an authenticated planner; it does not
-yet synthesize them from recall or Bayesian state by itself. Proposal issuance,
+The daemon also accepts authenticated timing laws at `/v1/agency/tau:plan`,
+chooses a positive-utility time or abstains, and can fit a bounded timing
+histogram from explicit closed EventFrame episodes. See
+[tau-driven automatic turns](docs/tau-agency.md) for the policy, stale-state
+checks, reconciliation, and external OpenClaw authority worker. Target nomination
+and forecast publication remain explicit producer responsibilities. Proposal issuance,
 leasing, signature verification, policy authorization, scheduling, and terminal
 resolution are implemented end to end.
 

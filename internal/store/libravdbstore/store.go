@@ -896,6 +896,9 @@ func (s *Store) PutAgencyProposal(ctx context.Context, agencyRecord model.Agency
 	} else if !errors.Is(err, libra.ErrRecordNotFound) {
 		return store.AgencyPutResult{}, err
 	}
+	if !store.TauSnapshotCompatible(agencyRecord.Proposal.Tau, s.snapshot) {
+		return store.AgencyPutResult{}, store.ErrStaleSnapshot
+	}
 	collection, err := s.collection(ctx, agencyRecord.Proposal.TenantID)
 	if err != nil {
 		return store.AgencyPutResult{}, err
@@ -916,6 +919,12 @@ func (s *Store) PutAgencyProposal(ctx context.Context, agencyRecord model.Agency
 	}
 	byID := make(map[string]model.AgencyProposalRecord, len(records))
 	for _, current := range records {
+		if agencyRecord.Proposal.Tau != nil && current.Proposal.Tau != nil && agencyRecord.Proposal.Tau.ForecastID == current.Proposal.Tau.ForecastID && agencyRecord.Proposal.Tau.ForecastDigest != current.Proposal.Tau.ForecastDigest {
+			return store.AgencyPutResult{}, store.ErrAgencyConflict
+		}
+		if store.TauOpportunityBlocked(agencyRecord, current, s.snapshot, evidenceAvailableBy) {
+			return store.AgencyPutResult{}, store.ErrAgencyChainBudget
+		}
 		byID[current.Proposal.ID] = current
 	}
 	if !validAgencyParentRecords(byID, agencyRecord.Proposal) || countAgencyChainRecords(records, agencyRecord.Proposal.CausalChainID) >= maxPerChain || countPendingAgencyRecords(records, evidenceAvailableBy) >= maxPending {
@@ -962,7 +971,25 @@ func (s *Store) ClaimAgencyProposals(ctx context.Context, tenantID, consumerID s
 	}
 	eligible := make([]model.AgencyProposalRecord, 0)
 	updates := make(map[string]model.AgencyProposalRecord)
+	blocked := map[store.TauScope]bool{}
+	for _, r := range records {
+		if r.Status == model.AgencyUncertain {
+			blocked[store.TauScopeOf(r.Proposal)] = true
+		}
+	}
 	for _, record := range records {
+		if record.Proposal.Tau != nil && blocked[store.TauScopeOf(record.Proposal)] && (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) {
+			record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyRejected, "", time.Time{}
+			record.ResolutionReason, record.ResolvedAt = "another execution for this tau target is unresolved", now
+			updates[record.Proposal.ID] = record
+			continue
+		}
+		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && !store.TauSnapshotCompatible(record.Proposal.Tau, s.snapshot) {
+			record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyRejected, "", time.Time{}
+			record.ResolutionReason, record.ResolvedAt = "tau forecast invalidated by state change", now
+			updates[record.Proposal.ID] = record
+			continue
+		}
 		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && !now.Before(record.Proposal.ExpiresAt) {
 			record.Status, record.ClaimedBy, record.LeaseUntil = model.AgencyExpired, "", time.Time{}
 			record.ResolutionReason, record.ResolvedAt = "proposal expired before authorization", now
@@ -1017,7 +1044,7 @@ func (s *Store) ClaimAgencyProposals(ctx context.Context, tenantID, consumerID s
 			if upsertErr := tx.Upsert(ctx, agencyCollection, agencyProposalRecordID(tenantID, id), nil, metadata); upsertErr != nil {
 				return upsertErr
 			}
-			if updates[id].Status == model.AgencyExpired {
+			if updates[id].Status == model.AgencyExpired || updates[id].Status == model.AgencyRejected {
 				if deleteErr := tx.Delete(ctx, activeName, agencyProposalRecordID(tenantID, id)); deleteErr != nil {
 					return deleteErr
 				}
@@ -1048,7 +1075,24 @@ func (s *Store) ResolveAgencyProposal(ctx context.Context, request model.Resolve
 	if err != nil {
 		return store.AgencyResolveResult{}, err
 	}
-	if record.Status == model.AgencyApproved || record.Status == model.AgencyRejected || record.Status == model.AgencyExpired {
+	if request.Decision == model.AgencyUncertain && record.Status == model.AgencyUncertain && request.Reason == record.ResolutionReason && request.ExecutionRef == record.ExecutionRef {
+		return store.AgencyResolveResult{Duplicate: true, Record: record, Snapshot: s.snapshot}, nil
+	}
+	if request.Decision == model.AgencyUncertain {
+		updated, err := store.AgencyUncertainRecord(record, request, now)
+		if err != nil {
+			return store.AgencyResolveResult{}, err
+		}
+		return s.persistAgencyResolution(ctx, recordID, updated, stored.Metadata["content_digest"], agencyMutatedSnapshot(s.snapshot))
+	}
+	if record.Status == model.AgencyUncertain && request.Decision == model.AgencyRejected {
+		if !store.TauCancellationMatches(record, request) {
+			return store.AgencyResolveResult{}, store.ErrAgencyConflict
+		}
+		record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = request.Decision, request.Reason, request.ExecutionRef, now
+		return s.persistAgencyResolution(ctx, recordID, record, stored.Metadata["content_digest"], agencyMutatedSnapshot(s.snapshot))
+	}
+	if record.Status == model.AgencyApproved || record.Status == model.AgencyRejected || record.Status == model.AgencyExpired || record.Status == model.AgencyUncertain {
 		if record.Status == request.Decision && record.ResolutionReason == request.Reason && record.ExecutionRef == request.ExecutionRef {
 			return store.AgencyResolveResult{Duplicate: true, Record: record, Snapshot: s.snapshot}, nil
 		}
@@ -1068,6 +1112,24 @@ func (s *Store) ResolveAgencyProposal(ctx context.Context, request model.Resolve
 	}
 	if !now.Before(record.LeaseUntil) {
 		return store.AgencyResolveResult{}, store.ErrAgencyLease
+	}
+	if request.Decision == model.AgencyApproved && record.Proposal.Tau != nil {
+		active, _, err := s.activeAgencyCollection(ctx, request.TenantID)
+		if err != nil {
+			return store.AgencyResolveResult{}, err
+		}
+		others, err := listAgencyRecordsFrom(ctx, active, request.TenantID)
+		if err != nil {
+			return store.AgencyResolveResult{}, err
+		}
+		for _, other := range others {
+			if other.Status == model.AgencyUncertain && store.TauScopeOf(other.Proposal) == store.TauScopeOf(record.Proposal) {
+				return store.AgencyResolveResult{}, store.ErrAgencyConflict
+			}
+		}
+	}
+	if request.Decision == model.AgencyApproved && !store.TauSnapshotCompatible(record.Proposal.Tau, s.snapshot) {
+		return store.AgencyResolveResult{}, store.ErrStaleSnapshot
 	}
 	record.Status, record.ResolutionReason, record.ExecutionRef, record.ResolvedAt = request.Decision, request.Reason, request.ExecutionRef, now
 	record.ClaimedBy, record.LeaseUntil = "", time.Time{}
@@ -1093,8 +1155,14 @@ func (s *Store) persistAgencyResolution(ctx context.Context, recordID string, re
 		if err := tx.Upsert(ctx, agencyCollection, recordID, nil, metadata); err != nil {
 			return err
 		}
-		if err := tx.Delete(ctx, activeName, recordID); err != nil {
-			return err
+		if record.Status == model.AgencyUncertain {
+			if err := tx.Upsert(ctx, activeName, recordID, nil, metadata); err != nil {
+				return err
+			}
+		} else {
+			if err := tx.Delete(ctx, activeName, recordID); err != nil {
+				return err
+			}
 		}
 		return tx.Upsert(ctx, systemCollection, "runtime", nil, state)
 	}); err != nil {
@@ -1848,7 +1916,7 @@ func (s *Store) rebuildActiveAgencyCollections(ctx context.Context, now time.Tim
 		if _, exists := byTenant[record.Proposal.TenantID]; !exists {
 			byTenant[record.Proposal.TenantID] = nil
 		}
-		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
+		if record.Status == model.AgencyUncertain || (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
 			byTenant[record.Proposal.TenantID] = append(byTenant[record.Proposal.TenantID], stored)
 		}
 	}
@@ -2010,7 +2078,7 @@ func countAgencyChainRecords(records []model.AgencyProposalRecord, chainID strin
 func countPendingAgencyRecords(records []model.AgencyProposalRecord, now time.Time) int {
 	count := 0
 	for _, record := range records {
-		if (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
+		if record.Status == model.AgencyUncertain || (record.Status == model.AgencyPending || record.Status == model.AgencyClaimed) && record.Proposal.ExpiresAt.After(now) {
 			count++
 		}
 	}

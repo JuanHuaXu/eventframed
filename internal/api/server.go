@@ -50,6 +50,8 @@ func NewServer(runtime *service.Service, logger *slog.Logger) *Server {
 	server.mux.HandleFunc("POST /v1/abstraction/snaps:publish", server.publishPredictiveSnap)
 	server.mux.HandleFunc("POST /v1/abstraction/snaps:rollback", server.rollbackPredictiveSnap)
 	server.mux.HandleFunc("POST /v1/agency/proposals:issue", server.issueAgencyProposal)
+	server.mux.HandleFunc("POST /v1/agency/tau:plan", server.planTauTurn)
+	server.mux.HandleFunc("POST /v1/agency/proposals:get", server.getAgencyProposal)
 	server.mux.HandleFunc("POST /v1/agency/proposals:claim", server.claimAgencyProposals)
 	server.mux.HandleFunc("POST /v1/agency/proposals:resolve", server.resolveAgencyProposal)
 	server.mux.HandleFunc("GET /metrics", server.metrics.handle)

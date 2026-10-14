@@ -10,7 +10,7 @@ const ED25519_SPKI_PREFIX = Buffer.from("302a300506032b6570032100", "hex");
 const MAX_SIGNED_PAYLOAD_BYTES = 16 << 10;
 const MAX_IDENTIFIER_BYTES = 256;
 const MAX_SESSION_ID_BYTES = 1024;
-type AgencyClient = Pick<EventFrameClient, "claimAgency" | "resolveAgency">;
+type AgencyClient = Pick<EventFrameClient, "claimAgency" | "resolveAgency"> & Partial<Pick<EventFrameClient, "getAgency">>;
 
 export function registerAgencyService(api: OpenClawPluginApi, client: AgencyClient, config: AdapterConfig): void {
   if (api.registrationMode !== "full" || !config.agencyEnabled || config.agencyKillSwitch) {
@@ -74,7 +74,10 @@ export async function processAgencyClaim(
   record: AgencyProposalRecord,
   now = new Date(),
   authorityActive: () => boolean = () => true,
+  clock?: () => Date,
 ): Promise<void> {
+  const started = performance.now();
+  const readNow = clock ?? (() => new Date(now.getTime() + performance.now() - started));
   if (!authorityActive()) return;
   if (record.claimed_by !== config.agencyConsumerId) {
     await rejectClaim(client, config, authorityToken, record, "proposal lease belongs to a different authority consumer");
@@ -96,10 +99,12 @@ export async function processAgencyClaim(
   if (!authorityActive()) return;
   let handle: { id: string };
   try {
-    await api.session.workflow.unscheduleSessionTurnsByTag({ sessionKey: proposal.session_id, tag });
+    await unscheduleOwned(api, proposal.session_id, tag);
+    const refreshed = evaluateAgencyProposal(proposal, config, readNow());
+    if (!refreshed.allowed || !refreshed.deliverAt) throw new Error(refreshed.reason);
     const scheduled = await api.session.workflow.scheduleSessionTurn({
       sessionKey: proposal.session_id,
-      at: gate.deliverAt,
+      at: refreshed.deliverAt,
       message: proposalMessage(proposal),
       deliveryMode: proposal.action === "wake" ? "none" : "announce",
       deleteAfterRun: true,
@@ -111,9 +116,10 @@ export async function processAgencyClaim(
     handle = scheduled;
   } catch (error) {
     try {
-      await api.session.workflow.unscheduleSessionTurnsByTag({ sessionKey: proposal.session_id, tag });
+      await unscheduleOwned(api, proposal.session_id, tag);
     } catch (rollbackError) {
       api.logger.warn(`eventframe-memory: scheduling failed and rollback is uncertain: ${String(error)}; ${String(rollbackError)}`);
+      await recordUncertain(client, authorityToken, record, `tag:${tag}`, `scheduler/cancellation failed: ${String(error)}; ${String(rollbackError)}`, api);
       return;
     }
     await rejectClaim(client, config, authorityToken, record, `OpenClaw scheduling failed; deterministic tag rolled back: ${String(error)}`);
@@ -121,33 +127,65 @@ export async function processAgencyClaim(
   }
   if (!authorityActive()) {
     try {
-      await api.session.workflow.unscheduleSessionTurnsByTag({ sessionKey: proposal.session_id, tag });
+      await unscheduleOwned(api, proposal.session_id, tag);
     } catch (rollbackError) {
       api.logger.warn(`eventframe-memory: authority stopped and scheduler rollback is uncertain: ${String(rollbackError)}`);
+      await recordUncertain(client, authorityToken, record, handle.id, `authority stopped; cancellation failed: ${String(rollbackError)}`, api);
       return;
     }
     await rejectClaim(client, config, authorityToken, record, "authority stopped before durable approval; scheduled turn rolled back");
     return;
   }
-  try {
-    await client.resolveAgency({
+  const approval = {
       tenantId: proposal.tenant_id,
       proposalId: proposal.id,
       consumerId: config.agencyConsumerId,
       authorityToken,
-      decision: "approved",
+      decision: "approved" as const,
       reason: "authorized by the OpenClaw EventFrame authority policy",
       executionRef: handle.id,
-    });
+    };
+  try {
+    await client.resolveAgency(approval);
   } catch (error) {
-    try {
-      await api.session.workflow.unscheduleSessionTurnsByTag({ sessionKey: proposal.session_id, tag });
-    } catch (rollbackError) {
-      api.logger.warn(`eventframe-memory: approval failed and scheduler rollback is uncertain: ${String(error)}; ${String(rollbackError)}`);
+    // The commit may have succeeded while its reply was lost. Retry the exact
+    // resolution before compensating; terminal resolutions are idempotent.
+    try { await client.resolveAgency(approval); return; } catch { /* reconcile below */ }
+    let current: AgencyProposalRecord | undefined;
+    try { current = await client.getAgency?.({ authorityToken, tenantId: proposal.tenant_id, proposalId: proposal.id }); } catch { /* unknown commit state */ }
+    if (current?.status === "approved" && current.execution_ref === handle.id) return;
+    if (current?.status === "approved") {
+      await recordUncertain(client, authorityToken, record, handle.id, "another worker approved a different scheduler handle; reconcile both", api);
       return;
     }
-    await rejectClaim(client, config, authorityToken, record, `durable approval failed; scheduled turn rolled back: ${String(error)}`);
+    if (!current || current.status === "uncertain") {
+      await recordUncertain(client, authorityToken, record, handle.id, `approval outcome unknown: ${String(error)}`, api);
+      return;
+    }
+    // Reserve the opportunity throughout compensation; a rejected status would
+    // release it while external work was still live.
+    const reserved = await recordUncertain(client, authorityToken, record, handle.id, "approval failed; cancellation outstanding", api);
+    if (!reserved || reserved.uncertain_execution_refs?.some(ref => ref !== handle.id)) return;
+    try {
+      await unscheduleOwned(api, proposal.session_id, tag);
+    } catch (rollbackError) {
+      api.logger.warn(`eventframe-memory: approval failed and scheduler rollback is uncertain: ${String(error)}; ${String(rollbackError)}`);
+      await recordUncertain(client, authorityToken, record, handle.id, `cancellation failed: ${String(error)}; ${String(rollbackError)}`, api);
+      return;
+    }
+    try { await client.resolveAgency({ ...approval, decision: "rejected", executionRef: undefined, reason: "scheduler cancellation acknowledged", cancelledExecutionRefs: reserved.uncertain_execution_refs ?? [handle.id] }); }
+    catch (error) { api.logger.warn(`eventframe-memory: cancellation acknowledgment needs reconciliation: ${String(error)}`); }
   }
+}
+
+async function unscheduleOwned(api: OpenClawPluginApi, sessionKey: string, tag: string): Promise<void> {
+  const result = await api.session.workflow.unscheduleSessionTurnsByTag({sessionKey,tag});
+  if (result?.failed) throw new Error("scheduler did not acknowledge every cancellation");
+}
+
+async function recordUncertain(client: AgencyClient, authorityToken: string, record: AgencyProposalRecord, executionRef: string, reason: string, api: OpenClawPluginApi): Promise<AgencyProposalRecord | undefined> {
+  try { return await client.resolveAgency({ authorityToken, tenantId: record.proposal.tenant_id, proposalId: record.proposal.id, consumerId: record.claimed_by!, decision: "uncertain", executionRef, reason: reason.slice(0, 1024) }); }
+  catch (error) { api.logger.warn(`eventframe-memory: unable to persist uncertain scheduler handle ${executionRef}: ${String(error)}`); }
 }
 
 async function rejectClaim(
@@ -213,6 +251,11 @@ export function evaluateAgencyProposal(
     return { allowed: false, reason: "proposal is unavailable or expired" };
   }
   let deliverAt = proposal.action === "schedule" ? new Date(proposal.scheduled_for ?? "") : new Date(Math.max(now.getTime() + 1_000, notBefore.getTime()));
+  if (proposal.tau) {
+    // Lease only when due, then dispatch inside the signed jitter allowance.
+    deliverAt = new Date(Math.max(deliverAt.getTime(), now.getTime() + 1_000));
+    if (deliverAt.getTime() >= new Date(proposal.tau.latest_dispatch).getTime()) return { allowed: false, reason: "tau dispatch allowance exhausted" };
+  }
   if (!validDate(deliverAt) || deliverAt >= expiresAt) return { allowed: false, reason: "delivery time is outside proposal validity" };
   if ((config.agencyQuietHoursStartUtc === undefined) !== (config.agencyQuietHoursEndUtc === undefined)) {
     return { allowed: false, reason: "quiet-hours policy is incomplete" };
@@ -221,6 +264,7 @@ export function evaluateAgencyProposal(
     deliverAt = nextQuietEnd(deliverAt, config.agencyQuietHoursEndUtc!);
   }
   if (deliverAt >= expiresAt) return { allowed: false, reason: "quiet-hours deferral exceeds proposal expiry" };
+  if (proposal.tau && deliverAt >= new Date(proposal.tau.latest_dispatch)) return { allowed: false, reason: "quiet-hours deferral exceeds tau dispatch allowance" };
   return { allowed: true, reason: "authorized", deliverAt };
 }
 
@@ -242,12 +286,16 @@ function validateAgencyProposal(value: unknown): asserts value is AgencyProposal
     typeof value.priority !== "number" || value.priority < 0 || value.priority > 1 ||
     value.idempotency_key !== value.id || typeof value.causal_chain_id !== "string" || !value.causal_chain_id || Buffer.byteLength(value.causal_chain_id) > MAX_IDENTIFIER_BYTES ||
     typeof value.causal_chain_depth !== "number" || !Number.isInteger(value.causal_chain_depth) || value.causal_chain_depth < 0 ||
-    typeof value.contract_version !== "number" || ![6, 7, 8, 9, 10, 11].includes(value.contract_version) ||
+    typeof value.contract_version !== "number" || !Number.isInteger(value.contract_version) || value.contract_version < 6 || value.contract_version > 17 ||
     typeof value.not_before !== "string" || typeof value.expires_at !== "string" || typeof value.created_at !== "string"
   ) {
     throw new Error("proposal payload violates the authority contract");
   }
   if (new Set(value.evidence_ids).size !== value.evidence_ids.length) throw new Error("proposal evidence ids are not unique");
+  if (value.tau !== undefined) {
+    const tau = value.tau;
+    if (!isRecord(tau) || value.contract_version < 17 || value.action !== "schedule" || typeof tau.latest_dispatch !== "string" || !validDate(new Date(tau.latest_dispatch)) || tau.latest_dispatch !== value.expires_at || typeof tau.plan_id !== "string" || !tau.plan_id || typeof tau.forecast_id !== "string" || !tau.forecast_id || typeof tau.target_kind !== "string" || !tau.target_kind || typeof tau.forecast_digest !== "string" || !/^[a-f0-9]{64}$/.test(tau.forecast_digest) || typeof tau.policy_digest !== "string" || !/^[a-f0-9]{64}$/.test(tau.policy_digest) || typeof tau.lower_probability !== "number" || !Number.isFinite(tau.lower_probability) || tau.lower_probability < 0 || tau.lower_probability > 1 || typeof tau.lower_utility !== "number" || !Number.isFinite(tau.lower_utility) || tau.lower_utility <= 0 || tau.lower_utility !== value.expected_utility) throw new Error("invalid signed tau binding");
+  }
   if (value.causal_chain_depth === 0 && value.parent_proposal_id !== undefined) throw new Error("root proposal has a parent");
   if (value.causal_chain_depth > 0 && (typeof value.parent_proposal_id !== "string" || !value.parent_proposal_id || Buffer.byteLength(value.parent_proposal_id) > MAX_IDENTIFIER_BYTES)) {
     throw new Error("child proposal parent is malformed");

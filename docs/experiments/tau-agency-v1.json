@@ -1,0 +1,244 @@
+{
+  "kind": "tau-turn-policy-v1",
+  "date": "2026-10-14",
+  "evidence_scope": "public synthetic timing mechanism and fresh-session lab delivery; no accuracy, utility or deadline guarantee",
+  "lab_openclaw_version": "2026.9.8",
+  "native_model_calls": 2,
+  "pre_dispatch_harness_abort": {
+    "count": 1,
+    "model_calls": 0,
+    "cause": "shared policy fixture object; repaired by cloning each request",
+    "result": "preserved failed harness attempt"
+  },
+  "core_benchmark": {
+    "hardware": "Apple M4",
+    "atoms": 32,
+    "ns_per_op": [
+      4364,
+      4303,
+      4103
+    ],
+    "bytes_per_op": 4584,
+    "allocations_per_op": 10,
+    "includes": "validation and finite policy arithmetic",
+    "excludes": "database, RPC, queue and model"
+  },
+  "reference_policy": {
+    "target_kind": "complete",
+    "benefit": 1,
+    "false_cost": 0.1,
+    "turn_cost": 0.01,
+    "min_probability": 0.4,
+    "margin": 0.01,
+    "lead_ms": 2000,
+    "window_ms": 15000,
+    "slack_ms": 10000,
+    "min_delay_ms": 1000,
+    "cooldown_ms": 60000
+  },
+  "finite_law_bound_checks": 3369,
+  "runs": [
+    {
+      "phase": "initial-smoke",
+      "source_summary_sha256": "ce9903d88c2518b41b8969342bb8b575e0954451f3bda75067f4496ef39ab7cd",
+      "controls": [
+        {
+          "name": "no-event",
+          "pass": true
+        },
+        {
+          "name": "negative-utility",
+          "pass": true
+        },
+        {
+          "name": "missing-error-budget",
+          "pass": true
+        },
+        {
+          "name": "unauthenticated",
+          "pass": true
+        },
+        {
+          "name": "stale-plan",
+          "pass": true
+        },
+        {
+          "name": "durable-idempotency",
+          "pass": true
+        }
+      ],
+      "daemon_restarted": true,
+      "proposal_status": "approved",
+      "forecast": {
+        "base": {
+          "runtime_version": 12,
+          "policy_version": 2,
+          "contract_version": 17,
+          "graph_version": 1,
+          "posterior_version": 1,
+          "residual_version": 1,
+          "abstraction_version": 1,
+          "agency_version": 3,
+          "evidence_epoch": 9
+        },
+        "id": "fitted-law",
+        "origin": "2026-10-14T21:55:45.175Z",
+        "issued_at": "2026-10-14T21:55:45.193Z",
+        "valid_until": "2026-10-14T21:56:45.175Z",
+        "horizon_ms": 60000,
+        "points": [
+          {
+            "mark": "complete",
+            "delay_ms": 20000,
+            "probability": 0.5
+          },
+          {
+            "mark": "complete",
+            "delay_ms": 60000,
+            "probability": 0.16666666666666666
+          }
+        ],
+        "no_event": 0.3333333333333333,
+        "tv_radius": 0
+      },
+      "decision": {
+        "schedule": true,
+        "reason": "positive conservative turn utility",
+        "deliver_at": "2026-10-14T21:55:53.175Z",
+        "latest_dispatch": "2026-10-14T21:56:03.175Z",
+        "probability": 0.5,
+        "lower_probability": 0.5,
+        "lower_utility": 0.4399999999990001
+      },
+      "native_run": {
+        "status": "ok",
+        "runAtMs": 1792014954897,
+        "durationMs": 5287,
+        "model": "gpt-6-luna",
+        "provider": "openai",
+        "markerPresent": true
+      },
+      "eligible_plan_http_ms": null,
+      "no_turn_http": {
+        "n": 100,
+        "p50MS": 0.2356660000004922,
+        "p95MS": 0.6155829999997877,
+        "p99MS": 1.0565420000002632
+      },
+      "lab_config_unchanged": true,
+      "job_start_lateness_ms": 1722,
+      "job_completion_lateness_ms": 7009
+    },
+    {
+      "phase": "final-build-smoke",
+      "source_summary_sha256": "deb6002381c39c5463364acbc92ee6202f0d75ce02ec23eff976a3defc10e347",
+      "controls": [
+        {
+          "name": "no-event",
+          "pass": true
+        },
+        {
+          "name": "negative-utility",
+          "pass": true
+        },
+        {
+          "name": "empty-candidates",
+          "pass": true
+        },
+        {
+          "name": "uncertain-law",
+          "pass": true
+        },
+        {
+          "name": "missing-error-budget",
+          "pass": true
+        },
+        {
+          "name": "unauthenticated",
+          "pass": true
+        },
+        {
+          "name": "stale-plan",
+          "pass": true
+        },
+        {
+          "name": "durable-idempotency",
+          "pass": true
+        }
+      ],
+      "daemon_restarted": true,
+      "proposal_status": "approved",
+      "forecast": {
+        "base": {
+          "runtime_version": 12,
+          "policy_version": 2,
+          "contract_version": 17,
+          "graph_version": 1,
+          "posterior_version": 1,
+          "residual_version": 1,
+          "abstraction_version": 1,
+          "agency_version": 3,
+          "evidence_epoch": 9
+        },
+        "id": "fitted-law",
+        "origin": "2026-10-14T22:17:26.49Z",
+        "issued_at": "2026-10-14T22:17:26.507Z",
+        "valid_until": "2026-10-14T22:18:26.49Z",
+        "horizon_ms": 60000,
+        "points": [
+          {
+            "mark": "complete",
+            "delay_ms": 20000,
+            "probability": 0.5
+          },
+          {
+            "mark": "complete",
+            "delay_ms": 60000,
+            "probability": 0.16666666666666666
+          }
+        ],
+        "no_event": 0.3333333333333333,
+        "tv_radius": 0
+      },
+      "decision": {
+        "schedule": true,
+        "reason": "positive conservative turn utility",
+        "deliver_at": "2026-10-14T22:17:34.49Z",
+        "latest_dispatch": "2026-10-14T22:17:44.49Z",
+        "probability": 0.5,
+        "lower_probability": 0.5,
+        "lower_utility": 0.4399999999990001
+      },
+      "native_run": {
+        "status": "ok",
+        "runAtMs": 1792016256173,
+        "durationMs": 4777,
+        "model": "gpt-6-luna",
+        "provider": "openai",
+        "markerPresent": false
+      },
+      "eligible_plan_http_ms": 7.480457999999999,
+      "no_turn_http": {
+        "n": 100,
+        "p50MS": 0.09275000000002365,
+        "p95MS": 0.1307080000001406,
+        "p99MS": 0.17174999999997453
+      },
+      "lab_config_unchanged": true,
+      "job_start_lateness_ms": 1683,
+      "job_completion_lateness_ms": 6460
+    }
+  ],
+  "final_post_run_history_check": {
+    "messages": 1,
+    "assistant_messages": 1,
+    "user_message_persisted": false,
+    "assistant_marker_verified": true,
+    "assistant_content_sha256": [
+      "19d20444aa6527c990724168fd4764b0810688ac0a9abb089c4f07cb124d915d"
+    ]
+  },
+  "post_run_binary_sha256": "9bc24864717a65f375d4793725a7cc10b287924810ef657e63386ac79588cfb0",
+  "final_source_harness_sha256": "0084d46ba018954f4b3ec200b8e15e73824e92cc1b1f322695ff038b00fa64ab",
+  "promotion": "mechanism retained; no production or seven-goal baseline promotion"
+}

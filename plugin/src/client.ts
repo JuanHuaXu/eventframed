@@ -103,9 +103,10 @@ export class EventFrameClient {
     proposalId: string;
     consumerId: string;
     authorityToken: string;
-    decision: "approved" | "rejected";
+    decision: "approved" | "rejected" | "uncertain";
     reason: string;
     executionRef?: string;
+	 cancelledExecutionRefs?: string[];
   }): Promise<AgencyProposalRecord> {
     const value = await this.request("POST", "/v1/agency/proposals:resolve", {
       protocol_version: PROTOCOL_VERSION,
@@ -116,6 +117,7 @@ export class EventFrameClient {
       decision: input.decision,
       reason: input.reason,
       execution_ref: input.executionRef ?? "",
+	   cancelled_execution_refs: input.cancelledExecutionRefs,
     });
     assertProtocol(value);
     if (
@@ -124,10 +126,17 @@ export class EventFrameClient {
       value.record.proposal.id !== input.proposalId ||
       value.record.proposal.tenant_id !== input.tenantId ||
       value.record.status !== input.decision ||
-      (input.decision === "approved" && value.record.execution_ref !== input.executionRef)
+      ((input.decision === "approved" || input.decision === "uncertain") && value.record.execution_ref !== input.executionRef)
     ) {
       throw new Error("eventframed returned a malformed agency resolution");
     }
+    return value.record as AgencyProposalRecord;
+  }
+
+  async getAgency(input: { authorityToken: string; tenantId: string; proposalId: string }): Promise<AgencyProposalRecord> {
+    const value = await this.request("POST", "/v1/agency/proposals:get", { protocol_version: PROTOCOL_VERSION, authority_token: input.authorityToken, tenant_id: input.tenantId, proposal_id: input.proposalId });
+    assertProtocol(value);
+    if (!isRecord(value.record) || !isRecord(value.record.proposal) || value.record.proposal.id !== input.proposalId || value.record.proposal.tenant_id !== input.tenantId) throw new Error("malformed agency read");
     return value.record as AgencyProposalRecord;
   }
 
